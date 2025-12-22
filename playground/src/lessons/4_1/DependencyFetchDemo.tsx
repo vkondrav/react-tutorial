@@ -5,6 +5,8 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineUser } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import dependencyFetchCode from './examples/DependencyFetch.tsx?raw';
 
 interface User {
   id: number;
@@ -170,20 +172,7 @@ export default function DependencyFetchDemo(): React.ReactElement {
       </div>
 
       {/* Code snippet */}
-      <div className="bg-base-300 rounded-lg p-4 mt-4">
-        <div className="text-xs font-semibold text-primary mb-2">Key Concept</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>{`useEffect(() => {
-  async function fetchUser() {
-    const response = await fetch(\`/api/users/\${selectedUserId}\`);
-    const data = await response.json();
-    setUser(data);
-  }
-  
-  fetchUser();
-}, [selectedUserId]); // Re-fetches whenever selectedUserId changes`}</code>
-        </pre>
-      </div>
+      <CodeSnippet title="Key Concept" language="tsx" code={dependencyFetchCode} />
     </div>
   );
 }

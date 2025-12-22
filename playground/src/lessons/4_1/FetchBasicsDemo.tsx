@@ -10,6 +10,8 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import basicFetchPatternCode from './examples/BasicFetchPattern.tsx?raw';
 
 interface User {
   id: number;
@@ -165,38 +167,7 @@ export default function FetchBasicsDemo(): React.ReactElement {
       </button>
 
       {showCode && (
-        <div className="bg-base-300 rounded-lg p-4">
-          <div className="text-xs font-semibold text-primary mb-2">The useEffect Pattern</div>
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>{`const [users, setUsers] = useState<User[]>([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState<string | null>(null);
-
-useEffect(() => {
-  async function fetchUsers() {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
-      
-      if (!response.ok) {
-        throw new Error(\`HTTP error! status: \${response.status}\`);
-      }
-      
-      const data = await response.json();
-      setUsers(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  fetchUsers();
-}, []); // Empty array = fetch once on mount`}</code>
-          </pre>
-        </div>
+        <CodeSnippet title="The useEffect Pattern" language="tsx" code={basicFetchPatternCode} />
       )}
     </div>
   );

@@ -10,11 +10,12 @@ import {
   HiOutlineBeaker,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../components';
+import { LessonHeader, Section, TakeawayList, CodeSnippet } from '../components';
 import FetchBasicsDemo from './FetchBasicsDemo';
 import DependencyFetchDemo from './DependencyFetchDemo';
 import RaceConditionDemo from './RaceConditionDemo';
 import FetchPlayground from './FetchPlayground';
+import completeFetchPatternCode from './examples/CompleteFetchPattern.tsx?raw';
 
 export default function Lesson4_1(): React.ReactElement {
   return (
@@ -120,56 +121,11 @@ export default function Lesson4_1(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           Here's the pattern you'll use for most data fetching in React:
         </p>
-        <div className="bg-base-300 rounded-lg p-4 mb-4">
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>{`interface User {
-  id: number;
-  name: string;
-}
-
-function UserProfile({ userId }: { userId: number }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function fetchUser() {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const res = await fetch(\`/api/users/\${userId}\`, {
-          signal: controller.signal
-        });
-        
-        if (!res.ok) throw new Error('Failed to fetch');
-        
-        const data = await res.json();
-        setUser(data);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err as Error);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchUser();
-    
-    return () => controller.abort();
-  }, [userId]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!user) return null;
-  
-  return <div>{user.name}</div>;
-}`}</code>
-          </pre>
-        </div>
+        <CodeSnippet
+          title="Complete Fetch Pattern"
+          language="tsx"
+          code={completeFetchPatternCode}
+        />
       </Section>
 
       {/* Takeaways */}

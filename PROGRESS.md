@@ -63,7 +63,7 @@
 | 3.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 3.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 3.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 4.1    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 4.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 4.2    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
 | 4.3    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
 | 4.4    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |

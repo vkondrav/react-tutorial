@@ -10,6 +10,8 @@ import {
   HiOutlineDocumentText,
   HiOutlineRefresh,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import pollingPatternCode from './examples/PollingPattern.tsx?raw';
 
 // Types
 interface Todo {
@@ -416,25 +418,7 @@ function AutoRefreshDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-4 mt-4">
-        <div className="text-xs font-semibold text-primary mb-2">Polling Pattern</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>{`useEffect(() => {
-  if (!isPolling) return;
-  
-  const fetchData = async () => {
-    const res = await fetch('/api/data');
-    const data = await res.json();
-    setData(data);
-  };
-  
-  fetchData(); // Fetch immediately
-  const timer = setInterval(fetchData, interval);
-  
-  return () => clearInterval(timer);
-}, [isPolling, interval]);`}</code>
-        </pre>
-      </div>
+      <CodeSnippet title="Polling Pattern" language="tsx" code={pollingPatternCode} />
     </div>
   );
 }

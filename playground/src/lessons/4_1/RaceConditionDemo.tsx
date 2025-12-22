@@ -9,6 +9,9 @@ import {
   HiOutlineShieldCheck,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import raceConditionBugCode from './examples/RaceConditionBug.tsx?raw';
+import abortControllerFixCode from './examples/AbortControllerFix.tsx?raw';
 
 interface Post {
   id: number;
@@ -156,17 +159,7 @@ function ProblemDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-4 mt-4">
-        <div className="text-xs font-semibold text-error mb-2">Buggy Code (No Cleanup)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>{`useEffect(() => {
-  fetch(\`/api/posts/\${postId}\`)
-    .then(res => res.json())
-    .then(data => setPost(data)); // ⚠️ Might set stale data!
-}, [postId]);
-// No cleanup! Old requests can overwrite new ones.`}</code>
-        </pre>
-      </div>
+      <CodeSnippet title="Buggy Code (No Cleanup)" language="tsx" code={raceConditionBugCode} />
     </div>
   );
 }
@@ -301,28 +294,11 @@ function SolutionDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-4 mt-4">
-        <div className="text-xs font-semibold text-success mb-2">
-          Fixed Code (With AbortController)
-        </div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>{`useEffect(() => {
-  const controller = new AbortController();
-  
-  fetch(\`/api/posts/\${postId}\`, { signal: controller.signal })
-    .then(res => res.json())
-    .then(data => setPost(data))
-    .catch(err => {
-      if (err.name !== 'AbortError') {
-        setError(err.message);
-      }
-    });
-  
-  // Cleanup: abort when postId changes or component unmounts
-  return () => controller.abort();
-}, [postId]);`}</code>
-        </pre>
-      </div>
+      <CodeSnippet
+        title="Fixed Code (With AbortController)"
+        language="tsx"
+        code={abortControllerFixCode}
+      />
     </div>
   );
 }
