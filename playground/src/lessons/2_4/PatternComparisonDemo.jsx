@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineRefresh, HiX, HiCheck, HiOutlineCube, HiOutlineInbox } from 'react-icons/hi';
 
 export default function PatternComparisonDemo() {
   const [selectedPattern, setSelectedPattern] = useState('ternary');
@@ -7,10 +8,10 @@ export default function PatternComparisonDemo() {
   const [hasError, setHasError] = useState(false);
 
   const patterns = [
-    { id: 'ternary', name: 'Ternary ?:', color: '#3b82f6' },
-    { id: 'and', name: 'Logical &&', color: '#22c55e' },
-    { id: 'early', name: 'Early Return', color: '#f59e0b' },
-    { id: 'variable', name: 'Variable', color: '#8b5cf6' },
+    { id: 'ternary', name: 'Ternary ?:', color: 'primary' },
+    { id: 'and', name: 'Logical &&', color: 'success' },
+    { id: 'early', name: 'Early Return', color: 'warning' },
+    { id: 'variable', name: 'Variable', color: 'secondary' },
   ];
 
   // Simulate loading
@@ -23,38 +24,17 @@ export default function PatternComparisonDemo() {
     }, 1500);
   };
 
+  const currentPattern = patterns.find((p) => p.id === selectedPattern);
+
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        padding: '1.5rem',
-        marginTop: '1rem',
-      }}
-    >
+    <div className="mt-4 card bg-base-200 p-6">
       {/* Pattern Selector */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '0.5rem',
-          flexWrap: 'wrap',
-          marginBottom: '1.5rem',
-        }}
-      >
+      <div className="flex gap-2 flex-wrap mb-6">
         {patterns.map((p) => (
           <button
             key={p.id}
             onClick={() => setSelectedPattern(p.id)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: selectedPattern === p.id ? p.color : '#0f172a',
-              border: `2px solid ${selectedPattern === p.id ? p.color : '#334155'}`,
-              borderRadius: '0.5rem',
-              color: 'white',
-              cursor: 'pointer',
-              fontWeight: selectedPattern === p.id ? '600' : '400',
-              transition: 'all 0.2s',
-            }}
+            className={`btn btn-sm ${selectedPattern === p.id ? `btn-${p.color}` : 'btn-outline'}`}
           >
             {p.name}
           </button>
@@ -62,353 +42,280 @@ export default function PatternComparisonDemo() {
       </div>
 
       {/* State Controls */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '0.5rem',
-          flexWrap: 'wrap',
-          marginBottom: '1.5rem',
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-        }}
-      >
-        <button
-          onClick={simulateLoad}
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: '#3b82f6',
-            border: 'none',
-            borderRadius: '0.375rem',
-            color: 'white',
-            cursor: 'pointer',
-          }}
-        >
-          🔄 Simulate Load
+      <div className="flex gap-2 flex-wrap mb-6 p-4 card bg-base-300">
+        <button onClick={simulateLoad} className="btn btn-primary btn-sm">
+          <HiOutlineRefresh size={16} />
+          Simulate Load
         </button>
         <button
           onClick={() => {
             setHasData(!hasData);
             setHasError(false);
           }}
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: hasData ? '#22c55e' : '#475569',
-            border: 'none',
-            borderRadius: '0.375rem',
-            color: 'white',
-            cursor: 'pointer',
-          }}
+          className={`btn btn-sm ${hasData ? 'btn-success' : 'btn-ghost'}`}
         >
-          {hasData ? '📦 Has Data' : '📭 No Data'}
+          {hasData ? (
+            <>
+              <HiOutlineCube size={16} />
+              Has Data
+            </>
+          ) : (
+            <>
+              <HiOutlineInbox size={16} />
+              No Data
+            </>
+          )}
         </button>
         <button
           onClick={() => {
             setHasError(!hasError);
             setIsLoading(false);
           }}
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: hasError ? '#ef4444' : '#475569',
-            border: 'none',
-            borderRadius: '0.375rem',
-            color: 'white',
-            cursor: 'pointer',
-          }}
+          className={`btn btn-sm ${hasError ? 'btn-error' : 'btn-ghost'}`}
         >
-          {hasError ? '❌ Error' : '✓ No Error'}
+          {hasError ? (
+            <>
+              <HiX size={16} />
+              Error
+            </>
+          ) : (
+            <>
+              <HiCheck size={16} />
+              No Error
+            </>
+          )}
         </button>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '1rem',
-        }}
-      >
+      <div className="grid grid-cols-2 gap-4">
         {/* Code Panel */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-            overflow: 'auto',
-          }}
-        >
+        <div className="card bg-base-300 p-4 overflow-auto">
           <div
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: patterns.find((p) => p.id === selectedPattern)?.color,
-              marginBottom: '0.75rem',
-              textTransform: 'uppercase',
-            }}
+            className={`text-xs font-semibold mb-3 uppercase ${
+              currentPattern?.color === 'primary'
+                ? 'text-primary'
+                : currentPattern?.color === 'success'
+                  ? 'text-success'
+                  : currentPattern?.color === 'warning'
+                    ? 'text-warning'
+                    : 'text-secondary'
+            }`}
           >
             Code Pattern
           </div>
 
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              fontSize: '0.75rem',
-              margin: 0,
-              lineHeight: 1.6,
-              whiteSpace: 'pre-wrap',
-            }}
-          >
+          <pre className="m-0 font-mono text-xs leading-relaxed whitespace-pre-wrap">
             {selectedPattern === 'ternary' && (
               <>
-                <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                <span className="text-secondary">{'function '}</span>
+                <span className="text-base-content">DataDisplay() {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>
+                <span className="text-base-content">{'  return ('}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>
+                <span className="text-base-content">{'    <div>'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'      '}</span>
-                <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>isLoading</span>
+                <span className="text-base-content">{'      '}</span>
+                <span className="text-secondary">{'{'}</span>
+                <span className="text-base-content">isLoading</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
+                <span className="text-warning">{'        ? '}</span>
+                <span className="text-success">{'<Spinner />'}</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        : '}</span>
-                <span style={{ color: '#f8fafc' }}>hasError</span>
+                <span className="text-warning">{'        : '}</span>
+                <span className="text-base-content">hasError</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
+                <span className="text-warning">{'        ? '}</span>
+                <span className="text-error">{'<Error />'}</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        : '}</span>
-                <span style={{ color: '#f8fafc' }}>hasData</span>
+                <span className="text-warning">{'        : '}</span>
+                <span className="text-base-content">hasData</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
+                <span className="text-warning">{'        ? '}</span>
+                <span className="text-primary">{'<DataList />'}</span>
                 {'\n'}
-                <span style={{ color: '#f59e0b' }}>{'        : '}</span>
-                <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                <span className="text-warning">{'        : '}</span>
+                <span className="text-base-content/70">{'<Empty />'}</span>
+                <span className="text-secondary">{'}'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>
+                <span className="text-base-content">{'    </div>'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  );'}</span>
+                <span className="text-base-content">{'  );'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'}'}</span>
+                <span className="text-base-content">{'}'}</span>
               </>
             )}
 
             {selectedPattern === 'and' && (
               <>
-                <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                <span className="text-secondary">{'function '}</span>
+                <span className="text-base-content">DataDisplay() {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>
+                <span className="text-base-content">{'  return ('}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>
+                <span className="text-base-content">{'    <div>'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'      '}</span>
-                <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>isLoading </span>
-                <span style={{ color: '#f59e0b' }}>{'&& '}</span>
-                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                <span className="text-base-content">{'      '}</span>
+                <span className="text-secondary">{'{'}</span>
+                <span className="text-base-content">isLoading </span>
+                <span className="text-warning">{'&& '}</span>
+                <span className="text-success">{'<Spinner />'}</span>
+                <span className="text-secondary">{'}'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'      '}</span>
-                <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>hasError </span>
-                <span style={{ color: '#f59e0b' }}>{'&& '}</span>
-                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                <span className="text-base-content">{'      '}</span>
+                <span className="text-secondary">{'{'}</span>
+                <span className="text-base-content">hasError </span>
+                <span className="text-warning">{'&& '}</span>
+                <span className="text-error">{'<Error />'}</span>
+                <span className="text-secondary">{'}'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'      '}</span>
-                <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>hasData </span>
-                <span style={{ color: '#f59e0b' }}>{'&& '}</span>
-                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                <span className="text-base-content">{'      '}</span>
+                <span className="text-secondary">{'{'}</span>
+                <span className="text-base-content">hasData </span>
+                <span className="text-warning">{'&& '}</span>
+                <span className="text-primary">{'<DataList />'}</span>
+                <span className="text-secondary">{'}'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'      '}</span>
-                <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>{'!isLoading && !hasData '}</span>
-                <span style={{ color: '#f59e0b' }}>{'&& '}</span>
-                <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                <span className="text-base-content">{'      '}</span>
+                <span className="text-secondary">{'{'}</span>
+                <span className="text-base-content">{'!isLoading && !hasData '}</span>
+                <span className="text-warning">{'&& '}</span>
+                <span className="text-base-content/70">{'<Empty />'}</span>
+                <span className="text-secondary">{'}'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>
+                <span className="text-base-content">{'    </div>'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  );'}</span>
+                <span className="text-base-content">{'  );'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'}'}</span>
+                <span className="text-base-content">{'}'}</span>
               </>
             )}
 
             {selectedPattern === 'early' && (
               <>
-                <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                <span className="text-secondary">{'function '}</span>
+                <span className="text-base-content">DataDisplay() {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>if </span>
-                <span style={{ color: '#f8fafc' }}>(isLoading) </span>
-                <span style={{ color: '#c084fc' }}>return </span>
-                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">if </span>
+                <span className="text-base-content">(isLoading) </span>
+                <span className="text-secondary">return </span>
+                <span className="text-success">{'<Spinner />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>if </span>
-                <span style={{ color: '#f8fafc' }}>(hasError) </span>
-                <span style={{ color: '#c084fc' }}>return </span>
-                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">if </span>
+                <span className="text-base-content">(hasError) </span>
+                <span className="text-secondary">return </span>
+                <span className="text-error">{'<Error />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>if </span>
-                <span style={{ color: '#f8fafc' }}>(!hasData) </span>
-                <span style={{ color: '#c084fc' }}>return </span>
-                <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">if </span>
+                <span className="text-base-content">(!hasData) </span>
+                <span className="text-secondary">return </span>
+                <span className="text-base-content/70">{'<Empty />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n\n'}
-                <span style={{ color: '#64748b' }}>{'  // Happy path!'}</span>
+                <span className="text-base-content/50">{'  // Happy path!'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>return </span>
-                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">return </span>
+                <span className="text-primary">{'<DataList />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'}'}</span>
+                <span className="text-base-content">{'}'}</span>
               </>
             )}
 
             {selectedPattern === 'variable' && (
               <>
-                <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                <span className="text-secondary">{'function '}</span>
+                <span className="text-base-content">DataDisplay() {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>let </span>
-                <span style={{ color: '#f8fafc' }}>content;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">let </span>
+                <span className="text-base-content">content;</span>
                 {'\n\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>if </span>
-                <span style={{ color: '#f8fafc' }}>(isLoading) {'{'}</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">if </span>
+                <span className="text-base-content">(isLoading) {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
-                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'    content = '}</span>
+                <span className="text-success">{'<Spinner />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  } '}</span>
-                <span style={{ color: '#c084fc' }}>else if </span>
-                <span style={{ color: '#f8fafc' }}>(hasError) {'{'}</span>
+                <span className="text-base-content">{'  } '}</span>
+                <span className="text-secondary">else if </span>
+                <span className="text-base-content">(hasError) {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
-                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'    content = '}</span>
+                <span className="text-error">{'<Error />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  } '}</span>
-                <span style={{ color: '#c084fc' }}>else if </span>
-                <span style={{ color: '#f8fafc' }}>(hasData) {'{'}</span>
+                <span className="text-base-content">{'  } '}</span>
+                <span className="text-secondary">else if </span>
+                <span className="text-base-content">(hasData) {'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
-                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'    content = '}</span>
+                <span className="text-primary">{'<DataList />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  } '}</span>
-                <span style={{ color: '#c084fc' }}>else </span>
-                <span style={{ color: '#f8fafc' }}>{'{'}</span>
+                <span className="text-base-content">{'  } '}</span>
+                <span className="text-secondary">else </span>
+                <span className="text-base-content">{'{'}</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
-                <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'    content = '}</span>
+                <span className="text-base-content/70">{'<Empty />'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  }'}</span>
+                <span className="text-base-content">{'  }'}</span>
                 {'\n\n'}
-                <span style={{ color: '#f8fafc' }}>{'  '}</span>
-                <span style={{ color: '#c084fc' }}>return </span>
-                <span style={{ color: '#f8fafc' }}>{'<div>{content}</div>'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>
+                <span className="text-base-content">{'  '}</span>
+                <span className="text-secondary">return </span>
+                <span className="text-base-content">{'<div>{content}</div>'}</span>
+                <span className="text-base-content">;</span>
                 {'\n'}
-                <span style={{ color: '#f8fafc' }}>{'}'}</span>
+                <span className="text-base-content">{'}'}</span>
               </>
             )}
           </pre>
         </div>
 
         {/* Preview Panel */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#3b82f6',
-              marginBottom: '0.75rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            Live Preview
-          </div>
+        <div className="card bg-base-300 p-4">
+          <div className="text-primary text-xs font-semibold mb-3 uppercase">Live Preview</div>
 
-          <div
-            style={{
-              minHeight: '150px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#1e293b',
-              borderRadius: '0.375rem',
-              padding: '1rem',
-            }}
-          >
+          <div className="min-h-[150px] flex items-center justify-center bg-base-200 rounded-lg p-4">
             {isLoading ? (
-              <div style={{ textAlign: 'center' }}>
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    border: '3px solid #334155',
-                    borderTopColor: '#3b82f6',
-                    borderRadius: '50%',
-                    margin: '0 auto 0.75rem',
-                    animation: 'spin 1s linear infinite',
-                  }}
-                />
-                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                <div style={{ color: '#64748b' }}>Loading...</div>
+              <div className="text-center">
+                <div className="loading loading-spinner loading-lg text-primary mb-3"></div>
+                <div className="text-base-content/50">Loading...</div>
               </div>
             ) : hasError ? (
-              <div style={{ textAlign: 'center', color: '#ef4444' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>❌</div>
-                <div style={{ fontWeight: '600' }}>Error Loading Data</div>
-                <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>Please try again</div>
+              <div className="text-center text-error">
+                <div className="text-4xl mb-2">
+                  <HiX size={48} />
+                </div>
+                <div className="font-semibold">Error Loading Data</div>
+                <div className="text-sm text-base-content/70">Please try again</div>
               </div>
             ) : hasData ? (
-              <div style={{ width: '100%' }}>
-                <div style={{ fontWeight: '600', marginBottom: '0.75rem', color: '#22c55e' }}>
-                  📦 Data Loaded!
+              <div className="w-full">
+                <div className="font-semibold mb-3 text-success flex items-center gap-2">
+                  <HiOutlineCube size={18} />
+                  Data Loaded!
                 </div>
                 {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    style={{
-                      padding: '0.5rem',
-                      backgroundColor: '#0f172a',
-                      borderRadius: '0.25rem',
-                      marginBottom: '0.25rem',
-                      fontSize: '0.875rem',
-                    }}
-                  >
+                  <div key={i} className="p-2 bg-base-300 rounded mb-1 text-sm">
                     Item {i}
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ textAlign: 'center', color: '#64748b' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📭</div>
+              <div className="text-center text-base-content/50">
+                <div className="text-4xl mb-2">
+                  <HiOutlineInbox size={48} />
+                </div>
                 <div>No data available</div>
               </div>
             )}
@@ -417,74 +324,31 @@ export default function PatternComparisonDemo() {
       </div>
 
       {/* Pattern Tips */}
-      <div
-        style={{
-          marginTop: '1.5rem',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1rem',
-        }}
-      >
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            borderTop: '3px solid #3b82f6',
-          }}
-        >
-          <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#3b82f6' }}>
-            Ternary ?:
-          </div>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+      <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+        <div className="card bg-base-300 p-4 border-t-4 border-primary">
+          <div className="font-semibold mb-2 text-primary">Ternary ?:</div>
+          <div className="text-sm text-base-content/70">
             Best for simple either/or. Avoid nesting more than 2 deep.
           </div>
         </div>
 
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            borderTop: '3px solid #22c55e',
-          }}
-        >
-          <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#22c55e' }}>
-            Logical &&
-          </div>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+        <div className="card bg-base-300 p-4 border-t-4 border-success">
+          <div className="font-semibold mb-2 text-success">Logical &&</div>
+          <div className="text-sm text-base-content/70">
             Best for show/hide one thing. Watch out for 0 gotcha!
           </div>
         </div>
 
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            borderTop: '3px solid #f59e0b',
-          }}
-        >
-          <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#f59e0b' }}>
-            Early Return
-          </div>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+        <div className="card bg-base-300 p-4 border-t-4 border-warning">
+          <div className="font-semibold mb-2 text-warning">Early Return</div>
+          <div className="text-sm text-base-content/70">
             Best for multiple conditions. Keeps "happy path" clean.
           </div>
         </div>
 
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            borderTop: '3px solid #8b5cf6',
-          }}
-        >
-          <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#8b5cf6' }}>
-            Variable
-          </div>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+        <div className="card bg-base-300 p-4 border-t-4 border-secondary">
+          <div className="font-semibold mb-2 text-secondary">Variable</div>
+          <div className="text-sm text-base-content/70">
             Best when logic is complex. Extract logic from JSX.
           </div>
         </div>

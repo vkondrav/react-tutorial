@@ -1,4 +1,12 @@
 import { useState } from 'react';
+import {
+  HiOutlineLockClosed,
+  HiOutlineStar,
+  HiOutlineShieldCheck,
+  HiOutlineBell,
+  HiOutlineCog,
+  HiOutlineUser,
+} from 'react-icons/hi';
 
 export default function ConditionalPlayground() {
   // User profile state
@@ -27,126 +35,60 @@ export default function ConditionalPlayground() {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        padding: '1.5rem',
-        marginTop: '1rem',
-      }}
-    >
+    <div className="mt-4 card bg-base-200 p-6">
       {/* Controls Panel */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1rem',
-          marginBottom: '1.5rem',
-        }}
-      >
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 mb-6">
         {/* User State Controls */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#3b82f6',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            👤 User State
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs font-semibold text-primary mb-4 uppercase flex items-center gap-2">
+            <HiOutlineUser size={14} />
+            User State
           </div>
 
           {/* Name Input */}
-          <div style={{ marginBottom: '0.75rem' }}>
-            <label
-              style={{
-                fontSize: '0.75rem',
-                color: '#64748b',
-                display: 'block',
-                marginBottom: '0.25rem',
-              }}
-            >
-              Name
-            </label>
+          <div className="mb-3">
+            <label className="block text-xs text-base-content/50 mb-1">Name</label>
             <input
               type="text"
               value={user.name}
               onChange={(e) => updateUser('name', e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.5rem',
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: 'white',
-                fontSize: '0.875rem',
-              }}
+              className="input input-bordered w-full input-sm"
             />
           </div>
 
           {/* Toggle Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => updateUser('isLoggedIn', !user.isLoggedIn)}
-              style={{
-                padding: '0.375rem 0.75rem',
-                backgroundColor: user.isLoggedIn ? '#22c55e' : '#475569',
-                border: 'none',
-                borderRadius: '0.25rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-              }}
+              className={`btn btn-xs ${user.isLoggedIn ? 'btn-success' : 'btn-ghost'}`}
             >
-              {user.isLoggedIn ? '✓ Logged In' : '✗ Logged Out'}
+              {user.isLoggedIn ? (
+                <>
+                  <HiOutlineStar size={12} />
+                  Logged In
+                </>
+              ) : (
+                <>
+                  <HiX size={12} />
+                  Logged Out
+                </>
+              )}
             </button>
             <button
               onClick={() => updateUser('isPremium', !user.isPremium)}
-              style={{
-                padding: '0.375rem 0.75rem',
-                backgroundColor: user.isPremium ? '#f59e0b' : '#475569',
-                border: 'none',
-                borderRadius: '0.25rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-              }}
+              className={`btn btn-xs ${user.isPremium ? 'btn-warning' : 'btn-ghost'}`}
             >
-              {user.isPremium ? '⭐ Premium' : '○ Free'}
+              {user.isPremium ? <>⭐ Premium</> : <>○ Free</>}
             </button>
           </div>
 
           {/* Role Selector */}
-          <div style={{ marginTop: '0.75rem' }}>
-            <label
-              style={{
-                fontSize: '0.75rem',
-                color: '#64748b',
-                display: 'block',
-                marginBottom: '0.25rem',
-              }}
-            >
-              Role
-            </label>
+          <div className="mt-3">
+            <label className="block text-xs text-base-content/50 mb-1">Role</label>
             <select
               value={user.role}
               onChange={(e) => updateUser('role', e.target.value)}
-              style={{
-                padding: '0.5rem',
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: 'white',
-                fontSize: '0.875rem',
-              }}
+              className="select select-bordered w-full select-sm"
             >
               <option value="user">User</option>
               <option value="moderator">Moderator</option>
@@ -155,15 +97,8 @@ export default function ConditionalPlayground() {
           </div>
 
           {/* Notifications Counter */}
-          <div style={{ marginTop: '0.75rem' }}>
-            <label
-              style={{
-                fontSize: '0.75rem',
-                color: '#64748b',
-                display: 'block',
-                marginBottom: '0.25rem',
-              }}
-            >
+          <div className="mt-3">
+            <label className="block text-xs text-base-content/50 mb-1">
               Notifications: {user.notifications}
             </label>
             <input
@@ -172,49 +107,27 @@ export default function ConditionalPlayground() {
               max="99"
               value={user.notifications}
               onChange={(e) => updateUser('notifications', Number(e.target.value))}
-              style={{ width: '100%' }}
+              className="range range-sm"
             />
           </div>
         </div>
 
         {/* Feature Toggles */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#8b5cf6',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            🎛️ Feature Toggles
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs font-semibold text-secondary mb-4 uppercase flex items-center gap-2">
+            <HiOutlineCog size={14} />
+            Feature Toggles
           </div>
 
           {Object.entries(features).map(([key, value]) => (
-            <label
-              key={key}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.5rem',
-                cursor: 'pointer',
-              }}
-            >
+            <label key={key} className="flex items-center gap-2 mb-2 cursor-pointer">
               <input
                 type="checkbox"
                 checked={value}
                 onChange={() => toggleFeature(key)}
-                style={{ accentColor: '#8b5cf6' }}
+                className="checkbox checkbox-sm"
               />
-              <span style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+              <span className="text-sm text-base-content/70">
                 {key.replace(/([A-Z])/g, ' $1').replace(/^./, (s) => s.toUpperCase())}
               </span>
             </label>
@@ -224,125 +137,75 @@ export default function ConditionalPlayground() {
 
       {/* Live Preview */}
       <div
-        style={{
-          backgroundColor: features.darkMode ? '#0f172a' : '#f8fafc',
-          borderRadius: '0.5rem',
-          padding: '1.5rem',
-          border: '2px solid #3b82f6',
-          transition: 'all 0.3s',
-        }}
+        className={`card p-6 border-2 border-primary transition-all ${
+          features.darkMode ? 'bg-base-300' : 'bg-base-100'
+        }`}
       >
-        <div
-          style={{
-            fontSize: '0.75rem',
-            fontWeight: '600',
-            color: '#3b82f6',
-            marginBottom: '1rem',
-          }}
-        >
-          🎬 LIVE RESULT
+        <div className="text-primary text-xs font-semibold mb-4 flex items-center gap-2">
+          <span>🎬</span>
+          LIVE RESULT
         </div>
 
         {/* Conditional: Show logged out state OR logged in UI */}
         {!user.isLoggedIn ? (
-          <div
-            style={{
-              textAlign: 'center',
-              padding: '2rem',
-              color: features.darkMode ? '#64748b' : '#475569',
-            }}
-          >
-            <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🔐</div>
-            <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Please Log In</div>
-            <div style={{ fontSize: '0.875rem' }}>
-              Toggle "Logged In" above to see the dashboard
+          <div className="text-center p-8 text-base-content/50">
+            <div className="text-5xl mb-2">
+              <HiOutlineLockClosed size={64} />
             </div>
+            <div className="font-semibold mb-1">Please Log In</div>
+            <div className="text-sm">Toggle "Logged In" above to see the dashboard</div>
           </div>
         ) : (
           <div>
             {/* Header */}
             <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '1rem',
-                backgroundColor: features.darkMode ? '#1e293b' : '#e2e8f0',
-                borderRadius: '0.5rem',
-                marginBottom: '1rem',
-              }}
+              className={`flex items-center justify-between p-4 card rounded-lg mb-4 ${
+                features.darkMode ? 'bg-base-200' : 'bg-base-200'
+              }`}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div className="flex items-center gap-3">
                 {/* Conditional: Show avatar */}
                 {features.showAvatar && (
-                  <div
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      backgroundColor: '#3b82f6',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1rem',
-                      fontWeight: '600',
-                      color: 'white',
-                    }}
-                  >
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-base font-semibold text-primary-content">
                     {user.name.charAt(0).toUpperCase()}
                   </div>
                 )}
 
                 <div>
                   <div
-                    style={{
-                      fontWeight: '600',
-                      color: features.darkMode ? '#f8fafc' : '#1e293b',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                    }}
+                    className={`font-semibold flex items-center gap-2 ${
+                      features.darkMode ? 'text-base-content' : 'text-base-content'
+                    }`}
                   >
                     {user.name || 'Anonymous'}
 
                     {/* Conditional: Premium badge */}
                     {features.showBadge && user.isPremium && (
-                      <span
-                        style={{
-                          padding: '0.125rem 0.375rem',
-                          backgroundColor: '#f59e0b',
-                          borderRadius: '0.25rem',
-                          fontSize: '0.625rem',
-                          fontWeight: '700',
-                          color: 'white',
-                        }}
-                      >
-                        ⭐ PRO
-                      </span>
+                      <span className="badge badge-warning badge-sm">⭐ PRO</span>
                     )}
 
                     {/* Conditional: Role badge (ternary for different colors) */}
                     {features.showBadge && user.role !== 'user' && (
                       <span
-                        style={{
-                          padding: '0.125rem 0.375rem',
-                          backgroundColor: user.role === 'admin' ? '#ef4444' : '#8b5cf6',
-                          borderRadius: '0.25rem',
-                          fontSize: '0.625rem',
-                          fontWeight: '700',
-                          color: 'white',
-                        }}
+                        className={`badge badge-sm ${
+                          user.role === 'admin' ? 'badge-error' : 'badge-secondary'
+                        }`}
                       >
-                        {user.role === 'admin' ? '👑 ADMIN' : '🛡️ MOD'}
+                        {user.role === 'admin' ? (
+                          <>
+                            <HiOutlineStar size={12} />
+                            ADMIN
+                          </>
+                        ) : (
+                          <>
+                            <HiOutlineShieldCheck size={12} />
+                            MOD
+                          </>
+                        )}
                       </span>
                     )}
                   </div>
-                  <div
-                    style={{
-                      fontSize: '0.75rem',
-                      color: features.darkMode ? '#64748b' : '#475569',
-                    }}
-                  >
+                  <div className="text-xs text-base-content/50">
                     {user.isPremium ? 'Premium Member' : 'Free Account'}
                   </div>
                 </div>
@@ -350,32 +213,11 @@ export default function ConditionalPlayground() {
 
               {/* Conditional: Notifications */}
               {features.showNotifications && (
-                <div style={{ position: 'relative' }}>
-                  <span
-                    style={{
-                      fontSize: '1.5rem',
-                      filter: features.darkMode ? 'none' : 'grayscale(0.3)',
-                    }}
-                  >
-                    🔔
-                  </span>
+                <div className="relative mt-2">
+                  <HiOutlineBell size={24} />
                   {/* Conditional: Badge only if > 0 */}
                   {user.notifications > 0 && (
-                    <span
-                      style={{
-                        position: 'absolute',
-                        top: '-4px',
-                        right: '-8px',
-                        backgroundColor: '#ef4444',
-                        color: 'white',
-                        fontSize: '0.625rem',
-                        fontWeight: '700',
-                        padding: '0.125rem 0.375rem',
-                        borderRadius: '9999px',
-                        minWidth: '18px',
-                        textAlign: 'center',
-                      }}
-                    >
+                    <span className="badge badge-error badge-xs absolute -top-1 -right-3.5 rounded-full min-w-[16px] text-[10px]">
                       {user.notifications > 99 ? '99+' : user.notifications}
                     </span>
                   )}
@@ -386,81 +228,41 @@ export default function ConditionalPlayground() {
             {/* Admin Panel - Conditional */}
             {user.role === 'admin' && (
               <div
-                style={{
-                  padding: '1rem',
-                  backgroundColor: features.darkMode ? '#450a0a' : '#fef2f2',
-                  borderRadius: '0.5rem',
-                  marginBottom: '1rem',
-                  border: `1px dashed ${features.darkMode ? '#ef4444' : '#fca5a5'}`,
-                }}
+                className={`p-4 card rounded-lg mb-4 border-2 border-dashed ${
+                  features.darkMode ? 'bg-error/10 border-error' : 'bg-error/5 border-error/50'
+                }`}
               >
-                <div
-                  style={{
-                    fontWeight: '600',
-                    marginBottom: '0.5rem',
-                    color: features.darkMode ? '#fca5a5' : '#b91c1c',
-                  }}
-                >
-                  🔧 Admin Controls
+                <div className="font-semibold mb-2 text-error flex items-center gap-2">
+                  <HiOutlineCog size={16} />
+                  Admin Controls
                 </div>
-                <div
-                  style={{
-                    fontSize: '0.875rem',
-                    color: features.darkMode ? '#fecaca' : '#dc2626',
-                  }}
-                >
-                  You have full access to system settings
-                </div>
+                <div className="text-sm text-error/70">You have full access to system settings</div>
               </div>
             )}
 
             {/* Moderator Panel - Conditional */}
             {user.role === 'moderator' && (
               <div
-                style={{
-                  padding: '1rem',
-                  backgroundColor: features.darkMode ? '#2e1065' : '#f3e8ff',
-                  borderRadius: '0.5rem',
-                  marginBottom: '1rem',
-                  border: `1px dashed ${features.darkMode ? '#8b5cf6' : '#c4b5fd'}`,
-                }}
+                className={`p-4 card rounded-lg mb-4 border-2 border-dashed ${
+                  features.darkMode
+                    ? 'bg-secondary/10 border-secondary'
+                    : 'bg-secondary/5 border-secondary/50'
+                }`}
               >
-                <div
-                  style={{
-                    fontWeight: '600',
-                    marginBottom: '0.5rem',
-                    color: features.darkMode ? '#c4b5fd' : '#6b21a8',
-                  }}
-                >
-                  🛡️ Moderator Tools
+                <div className="font-semibold mb-2 text-secondary flex items-center gap-2">
+                  <HiOutlineShieldCheck size={16} />
+                  Moderator Tools
                 </div>
-                <div
-                  style={{
-                    fontSize: '0.875rem',
-                    color: features.darkMode ? '#ddd6fe' : '#7c3aed',
-                  }}
-                >
-                  You can manage content and users
-                </div>
+                <div className="text-sm text-secondary/70">You can manage content and users</div>
               </div>
             )}
 
             {/* Welcome Message */}
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: features.darkMode ? '#1e293b' : '#e2e8f0',
-                borderRadius: '0.5rem',
-                color: features.darkMode ? '#94a3b8' : '#475569',
-              }}
-            >
+            <div className="p-4 rounded-lg bg-base-200 text-base-content/70">
               Welcome to your dashboard,{' '}
-              <strong style={{ color: features.darkMode ? '#f8fafc' : '#1e293b' }}>
-                {user.name || 'Guest'}
-              </strong>
-              !
+              <strong className="text-base-content">{user.name || 'Guest'}</strong>!
               {user.isPremium && (
-                <span style={{ color: '#f59e0b' }}> Enjoy your premium features ✨</span>
+                <span className="text-warning"> Enjoy your premium features ✨</span>
               )}
             </div>
           </div>
@@ -468,33 +270,22 @@ export default function ConditionalPlayground() {
       </div>
 
       {/* Current Conditions Display */}
-      <div
-        style={{
-          marginTop: '1rem',
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          fontFamily: 'monospace',
-          fontSize: '0.75rem',
-        }}
-      >
-        <div style={{ color: '#64748b', marginBottom: '0.5rem' }}>
-          // Current conditions being evaluated:
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-          <span style={{ color: user.isLoggedIn ? '#22c55e' : '#ef4444' }}>
+      <div className="mt-4 p-4 card bg-base-300 font-mono text-xs">
+        <div className="text-base-content/50 mb-2">// Current conditions being evaluated:</div>
+        <div className="flex flex-wrap gap-2">
+          <span className={user.isLoggedIn ? 'text-success' : 'text-error'}>
             isLoggedIn={String(user.isLoggedIn)}
           </span>
-          <span style={{ color: '#94a3b8' }}>|</span>
-          <span style={{ color: user.isPremium ? '#f59e0b' : '#64748b' }}>
+          <span className="text-base-content/50">|</span>
+          <span className={user.isPremium ? 'text-warning' : 'text-base-content/50'}>
             isPremium={String(user.isPremium)}
           </span>
-          <span style={{ color: '#94a3b8' }}>|</span>
-          <span style={{ color: user.role !== 'user' ? '#8b5cf6' : '#64748b' }}>
+          <span className="text-base-content/50">|</span>
+          <span className={user.role !== 'user' ? 'text-secondary' : 'text-base-content/50'}>
             role="{user.role}"
           </span>
-          <span style={{ color: '#94a3b8' }}>|</span>
-          <span style={{ color: user.notifications > 0 ? '#3b82f6' : '#64748b' }}>
+          <span className="text-base-content/50">|</span>
+          <span className={user.notifications > 0 ? 'text-primary' : 'text-base-content/50'}>
             notifications={user.notifications}
           </span>
         </div>

@@ -1,100 +1,64 @@
 import { useState } from 'react';
+import {
+  HiChevronDown,
+  HiChevronRight,
+  HiOutlineLightBulb,
+  HiOutlineLockClosed,
+  HiOutlineHand,
+} from 'react-icons/hi';
 
 export default function ConditionalBasicsDemo() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showCode, setShowCode] = useState(true);
 
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        padding: '1.5rem',
-        marginTop: '1rem',
-      }}
-    >
+    <div className="mt-4 card bg-base-200 p-6">
       {/* Controls */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '1.5rem',
-          flexWrap: 'wrap',
-        }}
-      >
+      <div className="flex items-center gap-4 mb-6 flex-wrap">
         <button
           onClick={() => setIsLoggedIn(!isLoggedIn)}
-          style={{
-            padding: '0.75rem 1.5rem',
-            backgroundColor: isLoggedIn ? '#ef4444' : '#22c55e',
-            border: 'none',
-            borderRadius: '0.5rem',
-            color: 'white',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
+          className={`btn ${isLoggedIn ? 'btn-error' : 'btn-success'}`}
         >
-          {isLoggedIn ? '🚪 Log Out' : '🔑 Log In'}
+          {isLoggedIn ? (
+            <>
+              <HiOutlineLockClosed size={18} />
+              Log Out
+            </>
+          ) : (
+            <>
+              <HiOutlineHand size={18} />
+              Log In
+            </>
+          )}
         </button>
 
-        <div
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            fontFamily: 'monospace',
-            fontSize: '0.875rem',
-          }}
-        >
+        <div className="px-4 py-2 bg-base-300 rounded-lg font-mono text-sm">
           isLoggedIn ={' '}
-          <span style={{ color: isLoggedIn ? '#22c55e' : '#ef4444' }}>{String(isLoggedIn)}</span>
+          <span className={isLoggedIn ? 'text-success' : 'text-error'}>{String(isLoggedIn)}</span>
         </div>
       </div>
 
       {/* Live Result */}
-      <div
-        style={{
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          padding: '1.5rem',
-          marginBottom: '1rem',
-          border: '2px solid #3b82f6',
-        }}
-      >
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#3b82f6',
-            marginBottom: '0.75rem',
-            fontWeight: '600',
-          }}
-        >
-          🎬 LIVE RESULT
+      <div className="card bg-base-300 p-6 mb-4 border-2 border-primary">
+        <div className="text-primary text-xs mb-3 font-semibold flex items-center gap-2">
+          <span>🎬</span>
+          LIVE RESULT
         </div>
 
         {/* This is the conditional rendering in action! */}
-        <div
-          style={{
-            fontSize: '1.25rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-          }}
-        >
+        <div className="text-xl flex items-center gap-3">
           {isLoggedIn ? (
             <>
-              <span style={{ fontSize: '1.5rem' }}>👋</span>
+              <span className="text-2xl">👋</span>
               <span>
-                Welcome back, <strong style={{ color: '#22c55e' }}>User!</strong>
+                Welcome back, <strong className="text-success">User!</strong>
               </span>
             </>
           ) : (
             <>
-              <span style={{ fontSize: '1.5rem' }}>🔐</span>
+              <HiOutlineLockClosed className="text-2xl text-warning" />
               <span>
-                Please <strong style={{ color: '#f59e0b' }}>log in</strong> to continue
+                Please <strong className="text-warning">log in</strong> to continue
               </span>
             </>
           )}
@@ -102,77 +66,58 @@ export default function ConditionalBasicsDemo() {
       </div>
 
       {/* Toggle Code View */}
-      <button
-        onClick={() => setShowCode(!showCode)}
-        style={{
-          padding: '0.5rem 1rem',
-          backgroundColor: 'transparent',
-          border: '1px solid #475569',
-          borderRadius: '0.375rem',
-          color: '#94a3b8',
-          cursor: 'pointer',
-          fontSize: '0.875rem',
-          marginBottom: showCode ? '1rem' : 0,
-        }}
-      >
-        {showCode ? '▼ Hide Code' : '▶ Show Code'}
+      <button onClick={() => setShowCode(!showCode)} className="btn btn-outline btn-sm mb-4">
+        {showCode ? (
+          <>
+            <HiChevronDown size={16} />
+            Hide Code
+          </>
+        ) : (
+          <>
+            <HiChevronRight size={16} />
+            Show Code
+          </>
+        )}
       </button>
 
       {/* Code Explanation */}
       {showCode && (
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-            fontFamily: 'monospace',
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
-            overflow: 'auto',
-          }}
-        >
-          <div style={{ color: '#64748b' }}>
+        <div className="card bg-base-300 p-4 font-mono text-sm leading-relaxed overflow-auto">
+          <div className="text-base-content/50">
             {'// Using ternary operator for conditional rendering'}
           </div>
           <div>
-            <span style={{ color: '#c084fc' }}>{'{'}</span>
-            <span style={{ color: '#f8fafc' }}>isLoggedIn </span>
-            <span style={{ color: '#f59e0b' }}>? </span>
-            <span style={{ color: '#94a3b8' }}>{'('}</span>
+            <span className="text-secondary">{'{'}</span>
+            <span className="text-base-content">isLoggedIn </span>
+            <span className="text-warning">? </span>
+            <span className="text-base-content/70">{'('}</span>
           </div>
-          <div style={{ paddingLeft: '1rem' }}>
-            <span style={{ color: '#22c55e' }}>&lt;WelcomeMessage /&gt;</span>
-          </div>
-          <div>
-            <span style={{ color: '#94a3b8' }}>{')'}</span>
-            <span style={{ color: '#f59e0b' }}> : </span>
-            <span style={{ color: '#94a3b8' }}>{'('}</span>
-          </div>
-          <div style={{ paddingLeft: '1rem' }}>
-            <span style={{ color: '#ef4444' }}>&lt;LoginPrompt /&gt;</span>
+          <div className="pl-4">
+            <span className="text-success">&lt;WelcomeMessage /&gt;</span>
           </div>
           <div>
-            <span style={{ color: '#94a3b8' }}>{')'}</span>
-            <span style={{ color: '#c084fc' }}>{'}'}</span>
+            <span className="text-base-content/70">{')'}</span>
+            <span className="text-warning"> : </span>
+            <span className="text-base-content/70">{'('}</span>
+          </div>
+          <div className="pl-4">
+            <span className="text-error">&lt;LoginPrompt /&gt;</span>
+          </div>
+          <div>
+            <span className="text-base-content/70">{')'}</span>
+            <span className="text-secondary">{'}'}</span>
           </div>
         </div>
       )}
 
       {/* Explanation */}
-      <div
-        style={{
-          marginTop: '1rem',
-          padding: '1rem',
-          backgroundColor: '#1e3a5f',
-          borderRadius: '0.5rem',
-          borderLeft: '4px solid #3b82f6',
-        }}
-      >
-        <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#38bdf8' }}>
-          💡 How it works
+      <div className="mt-4 p-4 card bg-primary/10 border-l-4 border-primary">
+        <div className="font-semibold mb-2 text-primary flex items-center gap-2">
+          <HiOutlineLightBulb size={18} />
+          How it works
         </div>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#94a3b8' }}>
-          The <code style={{ color: '#f59e0b' }}>?</code> is called the{' '}
+        <div className="text-sm leading-relaxed text-base-content/70">
+          The <code className="text-warning">?</code> is called the{' '}
           <strong>ternary operator</strong>. It works like:{' '}
           <code>condition ? valueIfTrue : valueIfFalse</code>. Inside JSX, we use it to choose
           between different elements to render!

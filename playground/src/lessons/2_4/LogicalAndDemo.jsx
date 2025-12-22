@@ -1,4 +1,15 @@
 import { useState } from 'react';
+import {
+  HiMinus,
+  HiPlus,
+  HiCheck,
+  HiX,
+  HiOutlineLightBulb,
+  HiOutlineStar,
+  HiOutlineUser,
+  HiOutlineExclamationCircle,
+  HiOutlineBell,
+} from 'react-icons/hi';
 
 export default function LogicalAndDemo() {
   const [notifications, setNotifications] = useState(3);
@@ -6,204 +17,103 @@ export default function LogicalAndDemo() {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        padding: '1.5rem',
-        marginTop: '1rem',
-      }}
-    >
+    <div className="mt-4 card bg-base-200 p-6">
       {/* Interactive Controls */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1rem',
-          marginBottom: '1.5rem',
-        }}
-      >
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 mb-6">
         {/* Notification Counter */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            Notifications
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs text-base-content/50 mb-2">Notifications</div>
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setNotifications(Math.max(0, notifications - 1))}
-              style={{
-                width: '32px',
-                height: '32px',
-                backgroundColor: '#334155',
-                border: 'none',
-                borderRadius: '0.375rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '1.25rem',
-              }}
+              className="btn btn-sm btn-circle"
             >
-              −
+              <HiMinus size={18} />
             </button>
             <span
-              style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                minWidth: '2rem',
-                textAlign: 'center',
-                color: notifications > 0 ? '#22c55e' : '#64748b',
-              }}
+              className={`text-2xl font-bold min-w-8 text-center ${
+                notifications > 0 ? 'text-success' : 'text-base-content/50'
+              }`}
             >
               {notifications}
             </span>
             <button
               onClick={() => setNotifications(notifications + 1)}
-              style={{
-                width: '32px',
-                height: '32px',
-                backgroundColor: '#334155',
-                border: 'none',
-                borderRadius: '0.375rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '1.25rem',
-              }}
+              className="btn btn-sm btn-circle"
             >
-              +
+              <HiPlus size={18} />
             </button>
           </div>
         </div>
 
         {/* Admin Toggle */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            Admin Status
-          </div>
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs text-base-content/50 mb-2">Admin Status</div>
           <button
             onClick={() => setIsAdmin(!isAdmin)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: isAdmin ? '#8b5cf6' : '#334155',
-              border: 'none',
-              borderRadius: '0.375rem',
-              color: 'white',
-              cursor: 'pointer',
-              fontWeight: '500',
-            }}
+            className={`btn btn-sm ${isAdmin ? 'btn-secondary' : 'btn-ghost'}`}
           >
-            {isAdmin ? '👑 Admin' : '👤 User'}
+            {isAdmin ? (
+              <>
+                <HiOutlineStar size={16} />
+                Admin
+              </>
+            ) : (
+              <>
+                <HiOutlineUser size={16} />
+                User
+              </>
+            )}
           </button>
         </div>
 
         {/* Error Toggle */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.5rem' }}>
-            Error State
-          </div>
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs text-base-content/50 mb-2">Error State</div>
           <button
             onClick={() => setHasError(!hasError)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: hasError ? '#ef4444' : '#334155',
-              border: 'none',
-              borderRadius: '0.375rem',
-              color: 'white',
-              cursor: 'pointer',
-              fontWeight: '500',
-            }}
+            className={`btn btn-sm ${hasError ? 'btn-error' : 'btn-ghost'}`}
           >
-            {hasError ? '❌ Error' : '✓ No Error'}
+            {hasError ? (
+              <>
+                <HiX size={16} />
+                Error
+              </>
+            ) : (
+              <>
+                <HiCheck size={16} />
+                No Error
+              </>
+            )}
           </button>
         </div>
       </div>
 
       {/* Live Preview */}
-      <div
-        style={{
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          padding: '1.5rem',
-          marginBottom: '1.5rem',
-          border: '2px solid #3b82f6',
-        }}
-      >
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#3b82f6',
-            marginBottom: '1rem',
-            fontWeight: '600',
-          }}
-        >
-          🎬 LIVE RESULT
+      <div className="card bg-base-300 p-6 mb-6 border-2 border-primary">
+        <div className="text-primary text-xs mb-4 font-semibold flex items-center gap-2">
+          <span>🎬</span>
+          LIVE RESULT
         </div>
 
         {/* Header Bar */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '0.75rem 1rem',
-            backgroundColor: '#1e293b',
-            borderRadius: '0.5rem',
-            marginBottom: '1rem',
-          }}
-        >
-          <span style={{ fontWeight: '600' }}>Dashboard</span>
+        <div className="flex items-center justify-between p-3 card bg-base-200 rounded-lg mb-4">
+          <span className="font-semibold">Dashboard</span>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="flex items-center gap-4">
             {/* Admin badge only shows for admins */}
             {isAdmin && (
-              <span
-                style={{
-                  padding: '0.25rem 0.5rem',
-                  backgroundColor: '#8b5cf6',
-                  borderRadius: '0.25rem',
-                  fontSize: '0.75rem',
-                  fontWeight: '600',
-                }}
-              >
-                👑 ADMIN
+              <span className="badge badge-secondary gap-1">
+                <HiOutlineStar size={12} />
+                ADMIN
               </span>
             )}
 
             {/* Notification badge only shows when > 0 */}
-            <div style={{ position: 'relative' }}>
-              <span style={{ fontSize: '1.25rem' }}>🔔</span>
+            <div className="relative mt-2">
+              <HiOutlineBell size={20} />
               {notifications > 0 && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: '-4px',
-                    right: '-8px',
-                    backgroundColor: '#ef4444',
-                    color: 'white',
-                    fontSize: '0.625rem',
-                    fontWeight: '700',
-                    padding: '0.125rem 0.375rem',
-                    borderRadius: '9999px',
-                    minWidth: '16px',
-                    textAlign: 'center',
-                  }}
-                >
+                <span className="badge badge-error badge-xs absolute -top-1 -right-3.5 rounded-full min-w-[16px] text-[10px]">
                   {notifications > 99 ? '99+' : notifications}
                 </span>
               )}
@@ -213,193 +123,98 @@ export default function LogicalAndDemo() {
 
         {/* Error Message only shows when error */}
         {hasError && (
-          <div
-            style={{
-              padding: '0.75rem 1rem',
-              backgroundColor: '#7f1d1d',
-              borderRadius: '0.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '1rem',
-            }}
-          >
-            <span>⚠️</span>
+          <div className="p-3 card bg-error/10 rounded-lg flex items-center gap-2 mb-4">
+            <HiOutlineExclamationCircle className="text-error" size={20} />
             <span>Something went wrong. Please try again.</span>
           </div>
         )}
 
         {/* Admin Panel only shows for admins */}
         {isAdmin && (
-          <div
-            style={{
-              padding: '1rem',
-              backgroundColor: '#3b0764',
-              borderRadius: '0.5rem',
-              border: '1px dashed #8b5cf6',
-            }}
-          >
-            <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#c4b5fd' }}>
-              🔧 Admin Panel
+          <div className="p-4 card bg-secondary/10 rounded-lg border-2 border-dashed border-secondary mb-4">
+            <div className="font-semibold mb-2 text-secondary flex items-center gap-2">
+              <HiOutlineStar size={16} />
+              Admin Panel
             </div>
-            <div style={{ fontSize: '0.875rem', color: '#a78bfa' }}>
-              Secret admin controls appear here...
-            </div>
+            <div className="text-sm text-secondary/70">Secret admin controls appear here...</div>
           </div>
         )}
 
         {/* Empty state message */}
         {!isAdmin && !hasError && notifications === 0 && (
-          <div
-            style={{
-              padding: '1rem',
-              textAlign: 'center',
-              color: '#64748b',
-              fontStyle: 'italic',
-            }}
-          >
+          <div className="p-4 text-center text-base-content/50 italic">
             All caught up! No notifications. 🎉
           </div>
         )}
       </div>
 
       {/* Code Examples */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1rem',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#22c55e',
-              marginBottom: '0.5rem',
-              fontWeight: '600',
-            }}
-          >
-            ✓ GOOD
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
+        <div className="card bg-base-300 p-4">
+          <div className="text-success text-xs mb-2 font-semibold flex items-center gap-1">
+            <HiCheck size={12} />
+            GOOD
           </div>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              fontSize: '0.8rem',
-              margin: 0,
-              lineHeight: 1.5,
-            }}
-          >
-            <span style={{ color: '#64748b' }}>{'// Show only if true'}</span>
+          <pre className="m-0 font-mono text-xs leading-relaxed">
+            <span className="text-base-content/50">{'// Show only if true'}</span>
             {'\n'}
-            <span style={{ color: '#c084fc' }}>{'{'}</span>
-            <span style={{ color: '#f8fafc' }}>isAdmin </span>
-            <span style={{ color: '#f59e0b' }}>&& </span>
-            <span style={{ color: '#22c55e' }}>&lt;AdminPanel /&gt;</span>
-            <span style={{ color: '#c084fc' }}>{'}'}</span>
+            <span className="text-secondary">{'{'}</span>
+            <span className="text-base-content">isAdmin </span>
+            <span className="text-warning">&& </span>
+            <span className="text-success">&lt;AdminPanel /&gt;</span>
+            <span className="text-secondary">{'}'}</span>
           </pre>
         </div>
 
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#ef4444',
-              marginBottom: '0.5rem',
-              fontWeight: '600',
-            }}
-          >
-            ⚠️ GOTCHA
+        <div className="card bg-base-300 p-4">
+          <div className="text-error text-xs mb-2 font-semibold flex items-center gap-1">
+            <HiOutlineExclamationCircle size={12} />
+            GOTCHA
           </div>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              fontSize: '0.8rem',
-              margin: 0,
-              lineHeight: 1.5,
-            }}
-          >
-            <span style={{ color: '#64748b' }}>{'// 0 will render as "0"!'}</span>
+          <pre className="m-0 font-mono text-xs leading-relaxed">
+            <span className="text-base-content/50">{'// 0 will render as "0"!'}</span>
             {'\n'}
-            <span style={{ color: '#c084fc' }}>{'{'}</span>
-            <span style={{ color: '#f8fafc' }}>count </span>
-            <span style={{ color: '#f59e0b' }}>&& </span>
-            <span style={{ color: '#22c55e' }}>&lt;Badge /&gt;</span>
-            <span style={{ color: '#c084fc' }}>{'}'}</span>
-            <span style={{ color: '#64748b' }}>{' // if count=0'}</span>
+            <span className="text-secondary">{'{'}</span>
+            <span className="text-base-content">count </span>
+            <span className="text-warning">&& </span>
+            <span className="text-success">&lt;Badge /&gt;</span>
+            <span className="text-secondary">{'}'}</span>
+            <span className="text-base-content/50">{' // if count=0'}</span>
           </pre>
         </div>
 
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-          }}
-        >
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#3b82f6',
-              marginBottom: '0.5rem',
-              fontWeight: '600',
-            }}
-          >
-            ✓ FIX FOR NUMBERS
+        <div className="card bg-base-300 p-4">
+          <div className="text-primary text-xs mb-2 font-semibold flex items-center gap-1">
+            <HiCheck size={12} />
+            FIX FOR NUMBERS
           </div>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              fontSize: '0.8rem',
-              margin: 0,
-              lineHeight: 1.5,
-            }}
-          >
-            <span style={{ color: '#64748b' }}>{'// Use > 0 for numbers'}</span>
+          <pre className="m-0 font-mono text-xs leading-relaxed">
+            <span className="text-base-content/50">{'// Use > 0 for numbers'}</span>
             {'\n'}
-            <span style={{ color: '#c084fc' }}>{'{'}</span>
-            <span style={{ color: '#f8fafc' }}>count </span>
-            <span style={{ color: '#f59e0b' }}>&gt; 0 && </span>
-            <span style={{ color: '#22c55e' }}>&lt;Badge /&gt;</span>
-            <span style={{ color: '#c084fc' }}>{'}'}</span>
+            <span className="text-secondary">{'{'}</span>
+            <span className="text-base-content">count </span>
+            <span className="text-warning">&gt; 0 && </span>
+            <span className="text-success">&lt;Badge /&gt;</span>
+            <span className="text-secondary">{'}'}</span>
           </pre>
         </div>
       </div>
 
       {/* Explanation */}
-      <div
-        style={{
-          marginTop: '1.5rem',
-          padding: '1rem',
-          backgroundColor: '#1e3a5f',
-          borderRadius: '0.5rem',
-          borderLeft: '4px solid #3b82f6',
-        }}
-      >
-        <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#38bdf8' }}>
-          💡 Why && Works
+      <div className="mt-6 p-4 card bg-primary/10 border-l-4 border-primary">
+        <div className="font-semibold mb-2 text-primary flex items-center gap-2">
+          <HiOutlineLightBulb size={18} />
+          Why && Works
         </div>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#94a3b8' }}>
-          JavaScript's <code style={{ color: '#f59e0b' }}>&&</code> returns the first falsy value OR
-          the last value. So <code>true && &lt;Component /&gt;</code> returns{' '}
+        <div className="text-sm leading-relaxed text-base-content/70">
+          JavaScript's <code className="text-warning">&&</code> returns the first falsy value OR the
+          last value. So <code>true && &lt;Component /&gt;</code> returns{' '}
           <code>&lt;Component /&gt;</code>, while <code>false && &lt;Component /&gt;</code> returns{' '}
           <code>false</code> (which React ignores).
           <br />
           <br />
-          <strong style={{ color: '#fcd34d' }}>⚠️ Gotcha:</strong> <code>0 && &lt;X /&gt;</code>{' '}
-          renders <code>"0"</code> because 0 is falsy but still a number React will display!
+          <strong className="text-warning">⚠️ Gotcha:</strong> <code>0 && &lt;X /&gt;</code> renders{' '}
+          <code>"0"</code> because 0 is falsy but still a number React will display!
         </div>
       </div>
     </div>

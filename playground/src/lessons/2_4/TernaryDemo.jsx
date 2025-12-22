@@ -1,67 +1,59 @@
 import { useState } from 'react';
+import {
+  HiOutlineSun,
+  HiOutlineMoon,
+  HiOutlineExclamationCircle,
+  HiOutlineCheckCircle,
+  HiOutlineXCircle,
+  HiOutlineUser,
+} from 'react-icons/hi';
 
 export default function TernaryDemo() {
   const [theme, setTheme] = useState('light');
   const [status, setStatus] = useState('online');
 
+  const statusConfig = {
+    online: { color: 'success', icon: HiOutlineCheckCircle, label: '🟢 Available' },
+    away: { color: 'warning', icon: HiOutlineExclamationCircle, label: '🟡 Away' },
+    busy: { color: 'error', icon: HiOutlineXCircle, label: '🔴 Do not disturb' },
+    offline: { color: 'base-content/50', icon: HiOutlineXCircle, label: '⚫ Offline' },
+  };
+
+  const currentStatus = statusConfig[status];
+
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        padding: '1.5rem',
-        marginTop: '1rem',
-      }}
-    >
+    <div className="mt-4 card bg-base-200 p-6">
       {/* Example 1: Theme Toggle */}
-      <div style={{ marginBottom: '2rem' }}>
-        <div
-          style={{
-            fontSize: '0.875rem',
-            fontWeight: '600',
-            color: '#94a3b8',
-            marginBottom: '1rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
+      <div className="mb-8">
+        <div className="text-sm font-semibold text-base-content/70 mb-4 uppercase tracking-wide">
           Example 1: Theme Toggle
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
+        <div className="flex gap-4 items-center flex-wrap">
           <button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: theme === 'light' ? '#fef3c7' : '#1e293b',
-              border: `2px solid ${theme === 'light' ? '#f59e0b' : '#64748b'}`,
-              borderRadius: '0.5rem',
-              color: theme === 'light' ? '#92400e' : '#e2e8f0',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
+            className={`btn ${theme === 'light' ? 'btn-warning' : 'btn-ghost'}`}
           >
-            {theme === 'light' ? '☀️ Light' : '🌙 Dark'}
+            {theme === 'light' ? (
+              <>
+                <HiOutlineSun size={18} />
+                Light
+              </>
+            ) : (
+              <>
+                <HiOutlineMoon size={18} />
+                Dark
+              </>
+            )}
           </button>
 
           {/* Result Box */}
           <div
-            style={{
-              padding: '1rem 1.5rem',
-              backgroundColor: theme === 'light' ? '#f8fafc' : '#0f172a',
-              color: theme === 'light' ? '#1e293b' : '#f8fafc',
-              borderRadius: '0.5rem',
-              border: `1px solid ${theme === 'light' ? '#e2e8f0' : '#334155'}`,
-              transition: 'all 0.3s',
-            }}
+            className={`p-4 rounded-lg border transition-all ${
+              theme === 'light'
+                ? 'bg-base-100 text-base-content border-base-300'
+                : 'bg-base-300 text-base-content border-base-300'
+            }`}
           >
             {theme === 'light' ? (
               <span>🌻 Bright and sunny!</span>
@@ -72,66 +64,31 @@ export default function TernaryDemo() {
         </div>
 
         {/* Code */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-            marginTop: '1rem',
-            fontFamily: 'monospace',
-            fontSize: '0.8rem',
-            lineHeight: 1.5,
-          }}
-        >
-          <span style={{ color: '#64748b' }}>{'// Style changes based on condition'}</span>
+        <div className="mt-4 card bg-base-300 p-4 font-mono text-xs leading-relaxed">
+          <span className="text-base-content/50">{'// Style changes based on condition'}</span>
           <br />
-          <span style={{ color: '#c084fc' }}>backgroundColor: </span>
-          <span style={{ color: '#f8fafc' }}>theme === </span>
-          <span style={{ color: '#a5f3fc' }}>'light'</span>
-          <span style={{ color: '#f59e0b' }}> ? </span>
-          <span style={{ color: '#a5f3fc' }}>'#f8fafc'</span>
-          <span style={{ color: '#f59e0b' }}> : </span>
-          <span style={{ color: '#a5f3fc' }}>'#0f172a'</span>
+          <span className="text-secondary">backgroundColor: </span>
+          <span className="text-base-content">theme === </span>
+          <span className="text-warning">'light'</span>
+          <span className="text-warning"> ? </span>
+          <span className="text-warning">'#f8fafc'</span>
+          <span className="text-warning"> : </span>
+          <span className="text-warning">'#0f172a'</span>
         </div>
       </div>
 
       {/* Example 2: User Status */}
       <div>
-        <div
-          style={{
-            fontSize: '0.875rem',
-            fontWeight: '600',
-            color: '#94a3b8',
-            marginBottom: '1rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
+        <div className="text-sm font-semibold text-base-content/70 mb-4 uppercase tracking-wide">
           Example 2: User Status Badge
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '0.5rem',
-            marginBottom: '1rem',
-            flexWrap: 'wrap',
-          }}
-        >
+        <div className="flex gap-2 mb-4 flex-wrap">
           {['online', 'away', 'busy', 'offline'].map((s) => (
             <button
               key={s}
               onClick={() => setStatus(s)}
-              style={{
-                padding: '0.5rem 1rem',
-                backgroundColor: status === s ? '#3b82f6' : '#0f172a',
-                border: `1px solid ${status === s ? '#3b82f6' : '#475569'}`,
-                borderRadius: '0.375rem',
-                color: status === s ? 'white' : '#94a3b8',
-                cursor: 'pointer',
-                textTransform: 'capitalize',
-                fontSize: '0.875rem',
-              }}
+              className={`btn btn-sm capitalize ${status === s ? 'btn-primary' : 'btn-outline'}`}
             >
               {s}
             </button>
@@ -139,120 +96,68 @@ export default function TernaryDemo() {
         </div>
 
         {/* Status Display */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-          }}
-        >
-          <div
-            style={{
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              backgroundColor: '#475569',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.5rem',
-              position: 'relative',
-            }}
-          >
-            👤
+        <div className="flex items-center gap-3 p-4 card bg-base-300">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full bg-base-content/20 flex items-center justify-center text-2xl">
+              <HiOutlineUser size={24} />
+            </div>
             <div
-              style={{
-                position: 'absolute',
-                bottom: '2px',
-                right: '2px',
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                border: '2px solid #0f172a',
-                backgroundColor:
-                  status === 'online'
-                    ? '#22c55e'
-                    : status === 'away'
-                      ? '#f59e0b'
-                      : status === 'busy'
-                        ? '#ef4444'
-                        : '#64748b',
-              }}
+              className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-base-300 ${
+                status === 'online'
+                  ? 'bg-success'
+                  : status === 'away'
+                    ? 'bg-warning'
+                    : status === 'busy'
+                      ? 'bg-error'
+                      : 'bg-base-content/50'
+              }`}
             />
           </div>
           <div>
-            <div style={{ fontWeight: '600' }}>Alex Developer</div>
+            <div className="font-semibold">Alex Developer</div>
             <div
-              style={{
-                fontSize: '0.875rem',
-                color:
-                  status === 'online'
-                    ? '#22c55e'
-                    : status === 'away'
-                      ? '#f59e0b'
-                      : status === 'busy'
-                        ? '#ef4444'
-                        : '#64748b',
-              }}
+              className={`text-sm ${
+                status === 'online'
+                  ? 'text-success'
+                  : status === 'away'
+                    ? 'text-warning'
+                    : status === 'busy'
+                      ? 'text-error'
+                      : 'text-base-content/50'
+              }`}
             >
-              {status === 'online'
-                ? '🟢 Available'
-                : status === 'away'
-                  ? '🟡 Away'
-                  : status === 'busy'
-                    ? '🔴 Do not disturb'
-                    : '⚫ Offline'}
+              {currentStatus.label}
             </div>
           </div>
         </div>
 
         {/* Code */}
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            padding: '1rem',
-            marginTop: '1rem',
-            fontFamily: 'monospace',
-            fontSize: '0.8rem',
-            lineHeight: 1.5,
-          }}
-        >
-          <span style={{ color: '#64748b' }}>{'// Nested ternaries (use sparingly!)'}</span>
+        <div className="mt-4 card bg-base-300 p-4 font-mono text-xs leading-relaxed">
+          <span className="text-base-content/50">{'// Nested ternaries (use sparingly!)'}</span>
           <br />
-          <span style={{ color: '#f8fafc' }}>status === </span>
-          <span style={{ color: '#a5f3fc' }}>'online'</span>
-          <span style={{ color: '#f59e0b' }}> ? </span>
-          <span style={{ color: '#a5f3fc' }}>'🟢 Available'</span>
-          <span style={{ color: '#f59e0b' }}> :</span>
+          <span className="text-base-content">status === </span>
+          <span className="text-warning">'online'</span>
+          <span className="text-warning"> ? </span>
+          <span className="text-warning">'🟢 Available'</span>
+          <span className="text-warning"> :</span>
           <br />
-          <span style={{ color: '#f8fafc' }}>status === </span>
-          <span style={{ color: '#a5f3fc' }}>'away'</span>
-          <span style={{ color: '#f59e0b' }}> ? </span>
-          <span style={{ color: '#a5f3fc' }}>'🟡 Away'</span>
-          <span style={{ color: '#f59e0b' }}> :</span>
+          <span className="text-base-content">status === </span>
+          <span className="text-warning">'away'</span>
+          <span className="text-warning"> ? </span>
+          <span className="text-warning">'🟡 Away'</span>
+          <span className="text-warning"> :</span>
           <br />
-          <span style={{ color: '#f59e0b' }}>...</span>
+          <span className="text-warning">...</span>
         </div>
       </div>
 
       {/* Warning */}
-      <div
-        style={{
-          marginTop: '1.5rem',
-          padding: '1rem',
-          backgroundColor: '#451a03',
-          borderRadius: '0.5rem',
-          borderLeft: '4px solid #f59e0b',
-        }}
-      >
-        <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#fcd34d' }}>
-          ⚠️ Watch Out for Nested Ternaries!
+      <div className="mt-6 p-4 card bg-warning/10 border-l-4 border-warning">
+        <div className="font-semibold mb-2 text-warning flex items-center gap-2">
+          <HiOutlineExclamationCircle size={18} />
+          Watch Out for Nested Ternaries!
         </div>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#fde68a' }}>
+        <div className="text-sm leading-relaxed text-warning/80">
           While nested ternaries work, they can get hard to read quickly. For many conditions,
           consider extracting to a variable or using early returns instead!
         </div>
