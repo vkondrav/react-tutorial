@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 7: State Management |
-| **Current Lesson** | Lesson 7.2: useReducer for Complex State |
-| **Next Lesson** | Lesson 7.3: Context + Reducer Pattern |
+| **Current Lesson** | Lesson 7.3: Context + Reducer Pattern |
+| **Next Lesson** | Lesson 7.4: When to Use External State Libraries |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -161,8 +161,8 @@ import exampleCode from './examples/Example1.tsx?raw';
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 7.1 | Lifting State Up | ✅ Complete | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
-| 7.2 | useReducer for Complex State | 🔄 Current | useState vs useReducer, reducer basics, action patterns, todo/cart/form demos |
-| 7.3 | Context + Reducer Pattern | ⬜ Pending | |
+| 7.2 | useReducer for Complex State | ✅ Complete | useState vs useReducer, reducer basics, action patterns, todo/cart/form demos |
+| 7.3 | Context + Reducer Pattern | 🔄 Current | Why combine, 6-step setup, separate contexts, custom providers, theme/todo/cart demos |
 | 7.4 | When to Use External State Libraries | ⬜ Pending | |
 
 ### Module 8: Best Practices & Patterns ⬜ Not Started
@@ -681,6 +681,22 @@ Beginning the State Management module.
   - Updated `config.json` to mark 7.1 complete and add 7.2 as current
   - Updated `App.jsx` to import and register Lesson7_2 component
 
+---
+
+### Session 23 - December 10, 2025
+**Goal:** Implement Lesson 7.3: Context + Reducer Pattern
+
+#### Completed:
+- ✅ **Implemented Lesson 7.3: Context + Reducer Pattern**
+  - `index.tsx` - Main lesson with 5 sections combining Context and Reducer
+  - `WhyContextReducerDemo.tsx` - Side-by-side prop drilling vs context+reducer, visual "mini Redux" explanation
+  - `PatternSetupDemo.tsx` - 6-step guide with interactive tabs, separate contexts explanation, live example
+  - `CustomProviderDemo.tsx` - Pattern 1: named actions, Pattern 2: selector hooks with cart/notification demos
+  - `ContextReducerPlayground.tsx` - 3 interactive demos: Theme switcher, Todo list, Shopping cart
+  - `examples/` folder with code snippets
+  - Updated `config.json` to mark 7.2 complete and add 7.3 as current
+  - Updated `App.jsx` to import and register Lesson7_3 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -759,7 +775,11 @@ Beginning the State Management module.
 - [x] Reducer pattern: (state, action) => newState
 - [x] Actions with type and payload
 - [x] TypeScript discriminated unions for type-safe actions
-- [ ] Context + Reducer pattern - next
+- [x] Context + Reducer pattern for global state
+- [x] Separate contexts for state vs dispatch (performance)
+- [x] Custom provider components with named actions
+- [x] Selector hooks for specific state slices
+- [ ] When to use external state libraries - next
 - [ ] ...more to come
 
 ---

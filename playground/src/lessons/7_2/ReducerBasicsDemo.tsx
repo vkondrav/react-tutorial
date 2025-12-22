@@ -11,6 +11,10 @@ import {
 } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
 import reducerAnatomyCode from './examples/ReducerAnatomy.tsx?raw';
+import anatomyStep1Code from './examples/AnatomyStep1State.tsx?raw';
+import anatomyStep2Code from './examples/AnatomyStep2Actions.tsx?raw';
+import anatomyStep3Code from './examples/AnatomyStep3Reducer.tsx?raw';
+import anatomyStep4Code from './examples/AnatomyStep4Usage.tsx?raw';
 
 // ============================================
 // Interactive Counter with Action Log
@@ -153,50 +157,26 @@ const anatomySteps: AnatomyStep[] = [
     step: 1,
     title: 'Define State Type',
     description: 'Create an interface that describes the shape of your state',
-    code: `interface State {
-  count: number;
-}`,
+    code: anatomyStep1Code,
   },
   {
     step: 2,
     title: 'Define Action Types',
     description: 'Use a discriminated union to list all possible actions',
-    code: `type Action =
-  | { type: 'INCREMENT' }
-  | { type: 'DECREMENT' }
-  | { type: 'SET'; payload: number };`,
+    code: anatomyStep2Code,
   },
   {
     step: 3,
     title: 'Create the Reducer',
     description: 'A pure function that takes state + action and returns new state',
-    code: `function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    case 'SET':
-      return { count: action.payload };
-    default:
-      return state;
-  }
-}`,
+    code: anatomyStep3Code,
   },
   {
     step: 4,
     title: 'Use in Component',
     description:
       'useReducer returns [state, dispatch] just like useState returns [state, setState]',
-    code: `function Counter() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  
-  return (
-    <button onClick={() => dispatch({ type: 'INCREMENT' })}>
-      {state.count}
-    </button>
-  );
-}`,
+    code: anatomyStep4Code,
   },
 ];
 

@@ -5,6 +5,12 @@
 import { useState, useReducer } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import patternSimpleGood from './examples/PatternSimpleGood.tsx?raw';
+import patternSimpleBad from './examples/PatternSimpleBad.tsx?raw';
+import patternPayloadGood from './examples/PatternPayloadGood.tsx?raw';
+import patternPayloadBad from './examples/PatternPayloadBad.tsx?raw';
+import patternDiscriminatedGood from './examples/PatternDiscriminatedGood.tsx?raw';
+import patternDiscriminatedBad from './examples/PatternDiscriminatedBad.tsx?raw';
 
 // ============================================
 // Action Pattern Examples
@@ -14,51 +20,20 @@ const actionPatterns = {
   simple: {
     title: 'Simple Action (no payload)',
     description: "For actions that don't need additional data",
-    goodCode: `// Good: Clear intent
-dispatch({ type: 'INCREMENT' });
-dispatch({ type: 'RESET' });
-dispatch({ type: 'TOGGLE_MODAL' });`,
-    badCode: `// Bad: Using magic values
-dispatch({ type: 1 });
-dispatch('increment');`,
+    goodCode: patternSimpleGood,
+    badCode: patternSimpleBad,
   },
   withPayload: {
     title: 'Action with Payload',
     description: 'When the action needs data to perform the update',
-    goodCode: `// Good: Payload carries the data
-dispatch({ type: 'SET_USER', payload: { name: 'Alex', age: 25 } });
-dispatch({ type: 'ADD_ITEM', payload: newItem });
-dispatch({ type: 'UPDATE_FIELD', payload: { field: 'email', value: 'a@b.com' } });`,
-    badCode: `// Bad: Data as separate properties
-dispatch({ type: 'SET_USER', name: 'Alex', age: 25 });
-// Hard to type consistently`,
+    goodCode: patternPayloadGood,
+    badCode: patternPayloadBad,
   },
   discriminated: {
     title: 'TypeScript Discriminated Union',
     description: 'Use discriminated unions for exhaustive type checking',
-    goodCode: `type Action =
-  | { type: 'INCREMENT' }
-  | { type: 'DECREMENT' }
-  | { type: 'SET'; payload: number }
-  | { type: 'ADD_ITEM'; payload: { id: number; name: string } };
-
-// TypeScript ensures you handle all cases!
-function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { ...state, count: state.count + 1 };
-    case 'SET':
-      // TypeScript knows action.payload is number here
-      return { ...state, count: action.payload };
-    case 'ADD_ITEM':
-      // TypeScript knows payload has id and name
-      return { ...state, items: [...state.items, action.payload] };
-    // If you miss a case, TypeScript warns you!
-  }
-}`,
-    badCode: `// Bad: Loose typing
-type Action = { type: string; payload?: any };
-// No type safety, easy to make mistakes`,
+    goodCode: patternDiscriminatedGood,
+    badCode: patternDiscriminatedBad,
   },
 };
 
