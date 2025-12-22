@@ -9,9 +9,7 @@ export default function ChildrenDemo() {
       {/* Controls */}
       <div className="p-6 grid grid-cols-2 gap-4 border-b border-slate-700">
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">
-            title prop
-          </label>
+          <label className="block text-xs text-slate-500 mb-2 uppercase">title prop</label>
           <input
             type="text"
             value={cardTitle}
@@ -20,9 +18,7 @@ export default function ChildrenDemo() {
           />
         </div>
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">
-            children content
-          </label>
+          <label className="block text-xs text-slate-500 mb-2 uppercase">children content</label>
           <input
             type="text"
             value={cardContent}
@@ -56,9 +52,7 @@ export default function ChildrenDemo() {
           </code>
         </pre>
 
-        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">
-          Usage
-        </div>
+        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">Usage</div>
         <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
           <code className="text-slate-200">
             {`<Card title="`}
@@ -74,22 +68,16 @@ export default function ChildrenDemo() {
 
       {/* Live Preview */}
       <div className="p-6 bg-slate-900">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
-          Live Result
-        </div>
+        <div className="text-xs text-slate-500 mb-3 uppercase">Live Result</div>
         <div className="p-6 bg-slate-50 rounded-lg shadow-sm">
-          <h3 className="m-0 mb-3 text-slate-800 text-lg">
-            {cardTitle || 'Card Title'}
-          </h3>
+          <h3 className="m-0 mb-3 text-slate-800 text-lg">{cardTitle || 'Card Title'}</h3>
           <div className="text-slate-500">{cardContent || 'Card content goes here...'}</div>
         </div>
       </div>
 
       {/* Examples */}
       <div className="p-6 bg-slate-800 border-t border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
-          Children can be anything!
-        </div>
+        <div className="text-xs text-slate-500 mb-3 uppercase">Children can be anything!</div>
         <div className="grid grid-cols-3 gap-4 text-sm">
           <div className="bg-slate-900 p-3 rounded-md">
             <div className="text-green-500 mb-2">Text</div>

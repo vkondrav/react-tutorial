@@ -9,9 +9,7 @@ export default function PropsBasicsDemo() {
       {/* Controls */}
       <div className="p-6 grid grid-cols-2 gap-4 border-b border-slate-700">
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">
-            name prop
-          </label>
+          <label className="block text-xs text-slate-500 mb-2 uppercase">name prop</label>
           <input
             type="text"
             value={userName}
@@ -20,9 +18,7 @@ export default function PropsBasicsDemo() {
           />
         </div>
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">
-            age prop
-          </label>
+          <label className="block text-xs text-slate-500 mb-2 uppercase">age prop</label>
           <input
             type="number"
             value={userAge}
@@ -84,14 +80,10 @@ export default function PropsBasicsDemo() {
 
       {/* Live Preview */}
       <div className="p-6 bg-slate-900">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
-          Live Result
-        </div>
+        <div className="text-xs text-slate-500 mb-3 uppercase">Live Result</div>
         <div className="p-6 bg-slate-800 rounded-lg border border-dashed border-slate-700">
           {/* This is UserCard with props */}
-          <h2 className="m-0 mb-2 text-slate-50 text-xl">
-            Hello, {userName || 'friend'}!
-          </h2>
+          <h2 className="m-0 mb-2 text-slate-50 text-xl">Hello, {userName || 'friend'}!</h2>
           <p className="m-0 text-slate-400">Age: {userAge}</p>
         </div>
       </div>
@@ -100,8 +92,8 @@ export default function PropsBasicsDemo() {
       <div className="px-6 py-4 bg-blue-500/10 border-t border-blue-500 flex items-center gap-3">
         <span className="text-xl">💡</span>
         <span className="text-slate-400 text-sm">
-          Props flow <strong className="text-blue-500">one way</strong> - from parent to child.
-          The child can read props but cannot modify them!
+          Props flow <strong className="text-blue-500">one way</strong> - from parent to child. The
+          child can read props but cannot modify them!
         </span>
       </div>
     </div>

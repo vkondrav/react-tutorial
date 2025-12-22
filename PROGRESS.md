@@ -116,9 +116,30 @@
 ---
 
 ### Session 2 - December 6, 2025
-- refactoring the application to use tailwind instead of raw css
-- Progress: 4/12 lessons refactored (1_1, 1_2, 1_3, 1_4)
-Module 1 complete. Next up: Module 2 lessons (2_1, 2_2, 2_3, 2_4). 
+**Goal:** Refactoring the application to use Tailwind CSS instead of inline styles
+
+#### Completed:
+- ✅ Refactored Module 1 lessons to Tailwind (1_1, 1_2, 1_3, 1_4)
+- ✅ Refactored Lesson 2.1 (Props) to Tailwind:
+  - `index.jsx` - Main lesson layout
+  - `PropsBasicsDemo.jsx` - Props introduction demo
+  - `PropsPlayground.jsx` - Interactive props editor
+  - `DefaultPropsDemo.jsx` - Default values demo
+  - `DestructuringDemo.jsx` - Destructuring comparison
+  - `ChildrenDemo.jsx` - Children prop demo
+- ✅ Refactored Lesson 2.2 (State with useState) to Tailwind:
+  - `index.jsx` - Main lesson layout
+  - `StateBasicsDemo.jsx` - Counter demo with code toggle
+  - `StateVsPropsDemo.jsx` - Comparison table and interactive demo
+  - `MultipleStateDemo.jsx` - Form with multiple state values
+  - `StateUpdatesDemo.jsx` - Batching and functional updates demo
+  - `StatePlayground.jsx` - Complete todo app example
+- 🔧 Fixed CSS conflict in `index.css` - removed global reset (`* { padding: 0 }`) that was overriding Tailwind utility classes
+  - Tailwind v4's preflight already handles CSS reset
+
+#### Progress: 6/8 lessons refactored
+- Module 1: ✅ Complete (1_1, 1_2, 1_3, 1_4)
+- Module 2: 🔄 In Progress (2_1 ✅, 2_2 ✅, 2_3 ⬜, 2_4 ⬜) 
 
 ## Concepts Mastered
 

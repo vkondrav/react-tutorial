@@ -103,9 +103,7 @@ export default function DefaultPropsDemo() {
 
       {/* Code */}
       <div className="p-6 border-b border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
-          Component with Default Props
-        </div>
+        <div className="text-xs text-slate-500 mb-3 uppercase">Component with Default Props</div>
         <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
           <code className="text-slate-200">
             {`function Button({ 
@@ -130,9 +128,7 @@ export default function DefaultPropsDemo() {
           </code>
         </pre>
 
-        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">
-          Usage
-        </div>
+        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">Usage</div>
         <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
           <code className="text-slate-200">
             {`<Button label="Click me"`}
@@ -161,9 +157,7 @@ export default function DefaultPropsDemo() {
 
       {/* Live Preview */}
       <div className="p-6 bg-slate-900">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
-          Live Result
-        </div>
+        <div className="text-xs text-slate-500 mb-3 uppercase">Live Result</div>
         <div className="p-8 bg-slate-800 rounded-lg border border-dashed border-slate-700 flex justify-center items-center gap-4">
           <button
             className="border-none rounded-md font-medium cursor-pointer"
@@ -175,11 +169,14 @@ export default function DefaultPropsDemo() {
             Click me
           </button>
           <div className="text-slate-500 text-xs">
-            size: <span className={showSize ? 'text-green-500' : 'text-amber-500'}>{activeSize}</span>
+            size:{' '}
+            <span className={showSize ? 'text-green-500' : 'text-amber-500'}>{activeSize}</span>
             {!showSize && <span className="text-amber-500"> (default)</span>}
             <br />
             variant:{' '}
-            <span className={showVariant ? 'text-green-500' : 'text-amber-500'}>{activeVariant}</span>
+            <span className={showVariant ? 'text-green-500' : 'text-amber-500'}>
+              {activeVariant}
+            </span>
             {!showVariant && <span className="text-amber-500"> (default)</span>}
           </div>
         </div>

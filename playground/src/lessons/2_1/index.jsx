@@ -12,9 +12,9 @@ export default function Lesson2_1() {
 
       <Section title="📦 What are Props?">
         <p className="text-slate-400 leading-relaxed">
-          <strong className="text-blue-500">Props</strong> (short for "properties") are how you
-          pass data from a parent component to a child component. They're like function arguments,
-          but for components!
+          <strong className="text-blue-500">Props</strong> (short for "properties") are how you pass
+          data from a parent component to a child component. They're like function arguments, but
+          for components!
         </p>
         <PropsBasicsDemo />
       </Section>
@@ -22,8 +22,8 @@ export default function Lesson2_1() {
       <Section title="🎯 Destructuring Props">
         <p className="text-slate-400 leading-relaxed">
           Instead of accessing <code className="text-green-500">props.name</code> every time, you
-          can <strong className="text-amber-500">destructure</strong> props directly in the
-          function parameters:
+          can <strong className="text-amber-500">destructure</strong> props directly in the function
+          parameters:
         </p>
         <DestructuringDemo />
       </Section>

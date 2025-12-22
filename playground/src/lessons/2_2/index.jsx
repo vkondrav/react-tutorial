@@ -7,21 +7,21 @@ import StatePlayground from './StatePlayground';
 
 export default function Lesson2_2() {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="2" title="State with useState" />
 
       <Section title="🎯 What is State?">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-          <strong style={{ color: '#3b82f6' }}>State</strong> is data that changes over time in your
+        <p className="text-slate-400 leading-relaxed">
+          <strong className="text-blue-500">State</strong> is data that changes over time in your
           component. Unlike props (which come from parent), state is{' '}
-          <strong style={{ color: '#22c55e' }}>owned and managed by the component itself</strong>.
+          <strong className="text-green-500">owned and managed by the component itself</strong>.
           When state changes, React automatically re-renders the component!
         </p>
         <StateBasicsDemo />
       </Section>
 
       <Section title="⚖️ State vs Props">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           Both state and props hold data, but they serve different purposes. Understanding when to
           use each is key to React mastery:
         </p>
@@ -29,23 +29,23 @@ export default function Lesson2_2() {
       </Section>
 
       <Section title="📦 Multiple State Values">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           Components often need to track multiple pieces of data. You can call{' '}
-          <code style={{ color: '#ec4899' }}>useState</code> multiple times!
+          <code className="text-pink-500">useState</code> multiple times!
         </p>
         <MultipleStateDemo />
       </Section>
 
       <Section title="🔄 Updating State Correctly">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           State updates have some gotchas! Learn about{' '}
-          <strong style={{ color: '#f59e0b' }}>functional updates</strong> and why they matter:
+          <strong className="text-amber-500">functional updates</strong> and why they matter:
         </p>
         <StateUpdatesDemo />
       </Section>
 
       <Section title="🎮 State Playground">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           Build a mini app using state! See how different state values work together:
         </p>
         <StatePlayground />

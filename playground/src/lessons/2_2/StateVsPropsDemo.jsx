@@ -4,48 +4,17 @@ export default function StateVsPropsDemo() {
   const [parentColor, setParentColor] = useState('#3b82f6');
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Comparison Table */}
-      <div style={{ padding: '1.5rem', borderBottom: '1px solid #334155' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="p-6 border-b border-slate-700">
+        <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th
-                style={{
-                  padding: '0.75rem',
-                  textAlign: 'left',
-                  color: '#64748b',
-                  fontSize: '0.75rem',
-                  borderBottom: '1px solid #334155',
-                }}
-              ></th>
-              <th
-                style={{
-                  padding: '0.75rem',
-                  textAlign: 'left',
-                  color: '#3b82f6',
-                  fontSize: '0.875rem',
-                  borderBottom: '1px solid #334155',
-                }}
-              >
+              <th className="px-3 py-3 text-left text-xs text-slate-500 border-b border-slate-700"></th>
+              <th className="px-3 py-3 text-left text-sm text-blue-500 border-b border-slate-700">
                 Props
               </th>
-              <th
-                style={{
-                  padding: '0.75rem',
-                  textAlign: 'left',
-                  color: '#22c55e',
-                  fontSize: '0.875rem',
-                  borderBottom: '1px solid #334155',
-                }}
-              >
+              <th className="px-3 py-3 text-left text-sm text-green-500 border-b border-slate-700">
                 State
               </th>
             </tr>
@@ -59,29 +28,9 @@ export default function StateVsPropsDemo() {
               ['Triggers re-render', 'When parent changes', 'When setter called'],
             ].map(([label, props, state], i) => (
               <tr key={i}>
-                <td style={{ padding: '0.75rem', color: '#94a3b8', fontSize: '0.875rem' }}>
-                  {label}
-                </td>
-                <td
-                  style={{
-                    padding: '0.75rem',
-                    color: '#3b82f6',
-                    fontSize: '0.875rem',
-                    backgroundColor: '#3b82f611',
-                  }}
-                >
-                  {props}
-                </td>
-                <td
-                  style={{
-                    padding: '0.75rem',
-                    color: '#22c55e',
-                    fontSize: '0.875rem',
-                    backgroundColor: '#22c55e11',
-                  }}
-                >
-                  {state}
-                </td>
+                <td className="px-3 py-3 text-slate-400 text-sm">{label}</td>
+                <td className="px-3 py-3 text-blue-500 text-sm bg-blue-500/10">{props}</td>
+                <td className="px-3 py-3 text-green-500 text-sm bg-green-500/10">{state}</td>
               </tr>
             ))}
           </tbody>
@@ -89,141 +38,65 @@ export default function StateVsPropsDemo() {
       </div>
 
       {/* Interactive Demo */}
-      <div style={{ padding: '1.5rem' }}>
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#64748b',
-            marginBottom: '1rem',
-            textTransform: 'uppercase',
-          }}
-        >
+      <div className="p-6">
+        <div className="text-xs text-slate-500 mb-4 uppercase">
           Interactive Example: Props vs State
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        <div className="grid grid-cols-2 gap-6">
           {/* Parent (has state) */}
-          <div
-            style={{
-              padding: '1rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              border: '2px solid #22c55e',
-            }}
-          >
-            <div
-              style={{
-                color: '#22c55e',
-                fontSize: '0.75rem',
-                marginBottom: '1rem',
-                fontWeight: '600',
-              }}
-            >
+          <div className="p-4 bg-slate-900 rounded-lg border-2 border-green-500">
+            <div className="text-green-500 text-xs mb-4 font-semibold">
               PARENT COMPONENT (owns state)
             </div>
-            <pre
-              style={{
-                margin: 0,
-                fontSize: '0.75rem',
-                color: '#94a3b8',
-                lineHeight: 1.6,
-              }}
-            >
+            <pre className="m-0 text-xs text-slate-400 leading-relaxed">
               {`const [color, setColor] = useState('${parentColor}');`}
             </pre>
-            <div style={{ marginTop: '1rem' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: '0.5rem' }}>
-                Change state:
-              </div>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="mt-4">
+              <div className="text-[0.7rem] text-slate-500 mb-2">Change state:</div>
+              <div className="flex gap-2">
                 {['#3b82f6', '#22c55e', '#f59e0b', '#ec4899', '#8b5cf6'].map((color) => (
                   <button
                     key={color}
                     onClick={() => setParentColor(color)}
+                    className="w-8 h-8 rounded cursor-pointer transition-all"
                     style={{
-                      width: '2rem',
-                      height: '2rem',
                       backgroundColor: color,
                       border: parentColor === color ? '2px solid white' : 'none',
-                      borderRadius: '0.25rem',
-                      cursor: 'pointer',
                     }}
                   />
                 ))}
               </div>
             </div>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.5rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.25rem',
-                fontSize: '0.75rem',
-              }}
-            >
-              <code style={{ color: '#e2e8f0' }}>
+            <div className="mt-4 p-2 bg-slate-800 rounded text-xs">
+              <code className="text-slate-200">
                 {`<ChildComponent `}
-                <span style={{ color: '#3b82f6' }}>color</span>
+                <span className="text-blue-500">color</span>
                 {`={`}
-                <span style={{ color: '#22c55e' }}>color</span>
+                <span className="text-green-500">color</span>
                 {`} />`}
               </code>
             </div>
           </div>
 
           {/* Child (receives props) */}
-          <div
-            style={{
-              padding: '1rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              border: '2px solid #3b82f6',
-            }}
-          >
-            <div
-              style={{
-                color: '#3b82f6',
-                fontSize: '0.75rem',
-                marginBottom: '1rem',
-                fontWeight: '600',
-              }}
-            >
+          <div className="p-4 bg-slate-900 rounded-lg border-2 border-blue-500">
+            <div className="text-blue-500 text-xs mb-4 font-semibold">
               CHILD COMPONENT (receives props)
             </div>
-            <pre
-              style={{
-                margin: 0,
-                fontSize: '0.75rem',
-                color: '#94a3b8',
-                lineHeight: 1.6,
-              }}
-            >
+            <pre className="m-0 text-xs text-slate-400 leading-relaxed">
               {`function Child({ color }) {
   // Can READ color
   // Cannot CHANGE color
 }`}
             </pre>
             <div
-              style={{
-                marginTop: '1rem',
-                padding: '1rem',
-                backgroundColor: parentColor,
-                borderRadius: '0.5rem',
-                color: 'white',
-                textAlign: 'center',
-                fontWeight: '600',
-              }}
+              className="mt-4 p-4 rounded-lg text-white text-center font-semibold"
+              style={{ backgroundColor: parentColor }}
             >
               My color is: {parentColor}
             </div>
-            <div
-              style={{
-                marginTop: '0.75rem',
-                color: '#64748b',
-                fontSize: '0.7rem',
-                textAlign: 'center',
-              }}
-            >
+            <div className="mt-3 text-slate-500 text-[0.7rem] text-center">
               ↑ Color comes from parent's state as a prop
             </div>
           </div>
@@ -231,21 +104,12 @@ export default function StateVsPropsDemo() {
       </div>
 
       {/* Key insight */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#3b82f622',
-          borderTop: '1px solid #3b82f6',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-        }}
-      >
-        <span style={{ fontSize: '1.25rem' }}>🔑</span>
-        <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-          <strong style={{ color: '#f8fafc' }}>Rule of thumb:</strong> If data needs to change, use{' '}
-          <strong style={{ color: '#22c55e' }}>state</strong>. If data is passed from parent, it's{' '}
-          <strong style={{ color: '#3b82f6' }}>props</strong>.
+      <div className="px-6 py-4 bg-blue-500/10 border-t border-blue-500 flex items-center gap-3">
+        <span className="text-xl">🔑</span>
+        <span className="text-slate-400 text-sm">
+          <strong className="text-slate-50">Rule of thumb:</strong> If data needs to change, use{' '}
+          <strong className="text-green-500">state</strong>. If data is passed from parent, it's{' '}
+          <strong className="text-blue-500">props</strong>.
         </span>
       </div>
     </div>

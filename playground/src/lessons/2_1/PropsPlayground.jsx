@@ -31,9 +31,7 @@ export default function PropsPlayground() {
       <div className="grid grid-cols-2 min-h-[400px]">
         {/* Props Editor */}
         <div className="p-6 border-r border-slate-700">
-          <div className="text-xs text-slate-500 mb-4 uppercase">
-            Edit Props
-          </div>
+          <div className="text-xs text-slate-500 mb-4 uppercase">Edit Props</div>
 
           {/* Name */}
           <div className="mb-4">
@@ -155,17 +153,13 @@ export default function PropsPlayground() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="m-0 text-slate-50 text-lg">
-                    {name || 'Name'}
-                  </h3>
+                  <h3 className="m-0 text-slate-50 text-lg">{name || 'Name'}</h3>
                   <span
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: isOnline ? '#22c55e' : '#64748b' }}
                   />
                 </div>
-                <p className="mt-1 mb-0 text-slate-500 text-sm">
-                  {role || 'Role'}
-                </p>
+                <p className="mt-1 mb-0 text-slate-500 text-sm">{role || 'Role'}</p>
               </div>
               <span
                 className="px-3 py-1 rounded-full text-xs font-semibold"
@@ -193,9 +187,7 @@ export default function PropsPlayground() {
 
           {/* Props Object */}
           <div className="mt-4">
-            <div className="text-[0.7rem] text-slate-500 mb-2">
-              PROPS OBJECT
-            </div>
+            <div className="text-[0.7rem] text-slate-500 mb-2">PROPS OBJECT</div>
             <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed overflow-auto">
               <code className="text-slate-400">
                 {JSON.stringify({ name, role, level, isOnline, skills }, null, 2)}

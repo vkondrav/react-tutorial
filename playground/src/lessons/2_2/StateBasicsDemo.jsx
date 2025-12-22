@@ -5,80 +5,27 @@ export default function StateBasicsDemo() {
   const [showCode, setShowCode] = useState(true);
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Live Demo */}
-      <div
-        style={{
-          padding: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem',
-          borderBottom: '1px solid #334155',
-        }}
-      >
-        <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase' }}>
-          Live Counter Example
-        </div>
-        <div
-          style={{
-            fontSize: '4rem',
-            fontWeight: 'bold',
-            color: '#f8fafc',
-            fontFamily: 'monospace',
-          }}
-        >
-          {count}
-        </div>
-        <div style={{ display: 'flex', gap: '0.75rem' }}>
+      <div className="p-8 flex flex-col items-center gap-6 border-b border-slate-700">
+        <div className="text-xs text-slate-500 uppercase">Live Counter Example</div>
+        <div className="text-7xl font-bold text-slate-50 font-mono">{count}</div>
+        <div className="flex gap-3">
           <button
             onClick={() => setCount(count - 1)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#ef4444',
-              border: 'none',
-              borderRadius: '0.5rem',
-              color: 'white',
-              fontSize: '1.25rem',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
+            className="px-6 py-3 bg-red-500 border-none rounded-lg text-white text-xl cursor-pointer font-bold hover:bg-red-600 transition-colors"
           >
             −
           </button>
           <button
             onClick={() => setCount(0)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#475569',
-              border: 'none',
-              borderRadius: '0.5rem',
-              color: 'white',
-              fontSize: '0.875rem',
-              cursor: 'pointer',
-            }}
+            className="px-6 py-3 bg-slate-600 border-none rounded-lg text-white text-sm cursor-pointer hover:bg-slate-500 transition-colors"
           >
             Reset
           </button>
           <button
             onClick={() => setCount(count + 1)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#22c55e',
-              border: 'none',
-              borderRadius: '0.5rem',
-              color: 'white',
-              fontSize: '1.25rem',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
+            className="px-6 py-3 bg-green-500 border-none rounded-lg text-white text-xl cursor-pointer font-bold hover:bg-green-600 transition-colors"
           >
             +
           </button>
@@ -88,125 +35,72 @@ export default function StateBasicsDemo() {
       {/* Toggle */}
       <button
         onClick={() => setShowCode(!showCode)}
-        style={{
-          width: '100%',
-          padding: '0.75rem',
-          backgroundColor: '#0f172a',
-          border: 'none',
-          borderBottom: '1px solid #334155',
-          color: '#64748b',
-          cursor: 'pointer',
-          fontSize: '0.875rem',
-        }}
+        className="w-full px-4 py-3 bg-slate-900 border-none border-b border-slate-700 text-slate-500 cursor-pointer text-sm hover:bg-slate-800 transition-colors"
       >
         {showCode ? '▼ Hide Code' : '▶ Show Code'}
       </button>
 
       {/* Code Explanation */}
       {showCode && (
-        <div style={{ padding: '1.5rem' }}>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              overflow: 'auto',
-              fontSize: '0.8rem',
-              lineHeight: 1.8,
-            }}
-          >
-            <code style={{ color: '#e2e8f0' }}>
-              <span style={{ color: '#c084fc' }}>import</span>
+        <div className="p-6">
+          <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
+            <code className="text-slate-200">
+              <span className="text-purple-400">import</span>
               {` { `}
-              <span style={{ color: '#22c55e' }}>useState</span>
+              <span className="text-green-500">useState</span>
               {` } `}
-              <span style={{ color: '#c084fc' }}>from</span>
+              <span className="text-purple-400">from</span>
               {` `}
-              <span style={{ color: '#fbbf24' }}>'react'</span>
+              <span className="text-yellow-400">'react'</span>
               {`;\n\n`}
-              <span style={{ color: '#c084fc' }}>function</span>
+              <span className="text-purple-400">function</span>
               {` `}
-              <span style={{ color: '#3b82f6' }}>Counter</span>
+              <span className="text-blue-500">Counter</span>
               {`() {\n`}
-              <span style={{ color: '#64748b' }}>
+              <span className="text-slate-500">
                 {'  '}// Declare state: [currentValue, setterFunction]
               </span>
               {`\n  `}
-              <span style={{ color: '#c084fc' }}>const</span>
+              <span className="text-purple-400">const</span>
               {` [`}
-              <span style={{ color: '#f59e0b' }}>count</span>
+              <span className="text-amber-500">count</span>
               {`, `}
-              <span style={{ color: '#ec4899' }}>setCount</span>
+              <span className="text-pink-500">setCount</span>
               {`] = `}
-              <span style={{ color: '#22c55e' }}>useState</span>
+              <span className="text-green-500">useState</span>
               {`(`}
-              <span style={{ color: '#3b82f6' }}>0</span>
+              <span className="text-blue-500">0</span>
               {`);`}
-              <span style={{ color: '#64748b' }}> // 0 is initial value</span>
+              <span className="text-slate-500"> // 0 is initial value</span>
               {`\n\n  `}
-              <span style={{ color: '#c084fc' }}>return</span>
+              <span className="text-purple-400">return</span>
               {` (\n    <div>\n      <p>Count: {`}
-              <span style={{ color: '#f59e0b' }}>count</span>
+              <span className="text-amber-500">count</span>
               {`}</p>\n      <button onClick={() => `}
-              <span style={{ color: '#ec4899' }}>setCount</span>
+              <span className="text-pink-500">setCount</span>
               {`(`}
-              <span style={{ color: '#f59e0b' }}>count</span>
+              <span className="text-amber-500">count</span>
               {` + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}`}
             </code>
           </pre>
 
           {/* Anatomy */}
-          <div
-            style={{
-              marginTop: '1.5rem',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '1rem',
-            }}
-          >
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                borderTop: '3px solid #f59e0b',
-              }}
-            >
-              <div style={{ color: '#f59e0b', fontWeight: '600', marginBottom: '0.5rem' }}>
-                count
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+          <div className="mt-6 grid grid-cols-3 gap-4">
+            <div className="p-4 bg-slate-900 rounded-lg border-t-4 border-amber-500">
+              <div className="text-amber-500 font-semibold mb-2">count</div>
+              <div className="text-slate-400 text-sm">
                 The current state value. Use this to display data.
               </div>
             </div>
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                borderTop: '3px solid #ec4899',
-              }}
-            >
-              <div style={{ color: '#ec4899', fontWeight: '600', marginBottom: '0.5rem' }}>
-                setCount
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+            <div className="p-4 bg-slate-900 rounded-lg border-t-4 border-pink-500">
+              <div className="text-pink-500 font-semibold mb-2">setCount</div>
+              <div className="text-slate-400 text-sm">
                 Function to update state. Calling it triggers a re-render.
               </div>
             </div>
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                borderTop: '3px solid #3b82f6',
-              }}
-            >
-              <div style={{ color: '#3b82f6', fontWeight: '600', marginBottom: '0.5rem' }}>
-                useState(0)
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+            <div className="p-4 bg-slate-900 rounded-lg border-t-4 border-blue-500">
+              <div className="text-blue-500 font-semibold mb-2">useState(0)</div>
+              <div className="text-slate-400 text-sm">
                 The hook call. 0 is the initial value (only used on first render).
               </div>
             </div>
@@ -215,20 +109,11 @@ export default function StateBasicsDemo() {
       )}
 
       {/* Key insight */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#22c55e22',
-          borderTop: '1px solid #22c55e',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-        }}
-      >
-        <span style={{ fontSize: '1.25rem' }}>💡</span>
-        <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-          Every time you call <code style={{ color: '#ec4899' }}>setCount</code>, React re-renders
-          the component with the new value. Try clicking the buttons!
+      <div className="px-6 py-4 bg-green-500/10 border-t border-green-500 flex items-center gap-3">
+        <span className="text-xl">💡</span>
+        <span className="text-slate-400 text-sm">
+          Every time you call <code className="text-pink-500">setCount</code>, React re-renders the
+          component with the new value. Try clicking the buttons!
         </span>
       </div>
     </div>

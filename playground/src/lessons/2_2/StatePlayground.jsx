@@ -33,81 +33,47 @@ export default function StatePlayground() {
   const doneCount = todos.filter((t) => t.done).length;
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Header */}
-      <div
-        style={{
-          padding: '1.5rem',
-          borderBottom: '1px solid #334155',
-          background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-        }}
-      >
-        <h3 style={{ margin: 0, color: 'white', fontSize: '1.25rem' }}>📝 Mini Todo App</h3>
-        <p style={{ margin: '0.5rem 0 0', color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem' }}>
+      <div className="p-6 border-b border-slate-700 bg-linear-to-br from-blue-500 to-purple-500">
+        <h3 className="m-0 text-white text-xl">📝 Mini Todo App</h3>
+        <p className="mt-2 mb-0 text-white/80 text-sm">
           A complete example using multiple state values
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '400px' }}>
+      <div className="grid grid-cols-2 min-h-[400px]">
         {/* Todo App */}
-        <div style={{ padding: '1.5rem', borderRight: '1px solid #334155' }}>
+        <div className="p-6 border-r border-slate-700">
           {/* Add Todo */}
-          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+          <div className="flex gap-2 mb-4">
             <input
               type="text"
               value={newTodo}
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && addTodo()}
               placeholder="What needs to be done?"
-              style={{
-                flex: 1,
-                padding: '0.75rem',
-                backgroundColor: '#0f172a',
-                border: '1px solid #334155',
-                borderRadius: '0.5rem',
-                color: '#f8fafc',
-                fontSize: '0.875rem',
-              }}
+              className="flex-1 px-3 py-3 bg-slate-900 border border-slate-700 rounded-lg text-slate-50 text-sm"
             />
             <button
               onClick={addTodo}
-              style={{
-                padding: '0.75rem 1.25rem',
-                backgroundColor: '#3b82f6',
-                border: 'none',
-                borderRadius: '0.5rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontWeight: '600',
-              }}
+              className="px-5 py-3 bg-blue-500 border-none rounded-lg text-white cursor-pointer font-semibold hover:bg-blue-600 transition-colors"
             >
               Add
             </button>
           </div>
 
           {/* Filters */}
-          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+          <div className="flex gap-2 mb-4">
             {['all', 'active', 'done'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                style={{
-                  padding: '0.5rem 1rem',
-                  backgroundColor: filter === f ? '#3b82f6' : '#0f172a',
-                  border: '1px solid #334155',
-                  borderRadius: '0.375rem',
-                  color: filter === f ? 'white' : '#94a3b8',
-                  cursor: 'pointer',
-                  fontSize: '0.75rem',
-                  textTransform: 'capitalize',
-                }}
+                className={`px-4 py-2 border rounded-md cursor-pointer text-xs capitalize transition-colors ${
+                  filter === f
+                    ? 'bg-blue-500 border-blue-500 text-white'
+                    : 'bg-slate-900 border-slate-700 text-slate-400 hover:bg-slate-800'
+                }`}
               >
                 {f}
               </button>
@@ -115,56 +81,28 @@ export default function StatePlayground() {
           </div>
 
           {/* Todo List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className="flex flex-col gap-2">
             {filteredTodos.length === 0 ? (
-              <div
-                style={{
-                  padding: '2rem',
-                  textAlign: 'center',
-                  color: '#64748b',
-                  fontSize: '0.875rem',
-                }}
-              >
-                No todos to show
-              </div>
+              <div className="p-8 text-center text-slate-500 text-sm">No todos to show</div>
             ) : (
               filteredTodos.map((todo) => (
-                <div
-                  key={todo.id}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    padding: '0.75rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '0.5rem',
-                  }}
-                >
+                <div key={todo.id} className="flex items-center gap-3 p-3 bg-slate-900 rounded-lg">
                   <input
                     type="checkbox"
                     checked={todo.done}
                     onChange={() => toggleTodo(todo.id)}
-                    style={{ width: '1.25rem', height: '1.25rem', cursor: 'pointer' }}
+                    className="w-5 h-5 cursor-pointer"
                   />
                   <span
-                    style={{
-                      flex: 1,
-                      color: todo.done ? '#64748b' : '#f8fafc',
-                      textDecoration: todo.done ? 'line-through' : 'none',
-                    }}
+                    className={`flex-1 ${
+                      todo.done ? 'text-slate-500 line-through' : 'text-slate-50'
+                    }`}
                   >
                     {todo.text}
                   </span>
                   <button
                     onClick={() => deleteTodo(todo.id)}
-                    style={{
-                      padding: '0.25rem 0.5rem',
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      color: '#ef4444',
-                      cursor: 'pointer',
-                      fontSize: '1rem',
-                    }}
+                    className="px-2 py-1 bg-transparent border-none text-red-500 cursor-pointer text-base hover:text-red-400 transition-colors"
                   >
                     ×
                   </button>
@@ -174,18 +112,7 @@ export default function StatePlayground() {
           </div>
 
           {/* Stats */}
-          <div
-            style={{
-              marginTop: '1rem',
-              padding: '0.75rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              display: 'flex',
-              justifyContent: 'space-between',
-              fontSize: '0.75rem',
-              color: '#64748b',
-            }}
-          >
+          <div className="mt-4 p-3 bg-slate-900 rounded-lg flex justify-between text-xs text-slate-500">
             <span>
               {todos.length} total • {doneCount} done • {todos.length - doneCount} remaining
             </span>
@@ -193,121 +120,46 @@ export default function StatePlayground() {
         </div>
 
         {/* State Visualization */}
-        <div style={{ padding: '1.5rem', backgroundColor: '#0f172a' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            State Values (Live)
-          </div>
+        <div className="p-6 bg-slate-900">
+          <div className="text-xs text-slate-500 mb-4 uppercase">State Values (Live)</div>
 
           {/* todos state */}
-          <div style={{ marginBottom: '1rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.5rem',
-              }}
-            >
-              <span style={{ color: '#22c55e', fontWeight: '600', fontSize: '0.875rem' }}>
-                todos
-              </span>
-              <span style={{ color: '#64748b', fontSize: '0.75rem' }}>
-                (array of {todos.length} items)
-              </span>
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-green-500 font-semibold text-sm">todos</span>
+              <span className="text-slate-500 text-xs">(array of {todos.length} items)</span>
             </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.7rem',
-                lineHeight: 1.5,
-                maxHeight: '150px',
-                overflow: 'auto',
-              }}
-            >
-              <code style={{ color: '#94a3b8' }}>{JSON.stringify(todos, null, 2)}</code>
+            <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed max-h-[150px] overflow-auto">
+              <code className="text-slate-400">{JSON.stringify(todos, null, 2)}</code>
             </pre>
           </div>
 
           {/* newTodo state */}
-          <div style={{ marginBottom: '1rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.5rem',
-              }}
-            >
-              <span style={{ color: '#3b82f6', fontWeight: '600', fontSize: '0.875rem' }}>
-                newTodo
-              </span>
-              <span style={{ color: '#64748b', fontSize: '0.75rem' }}>(string)</span>
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-blue-500 font-semibold text-sm">newTodo</span>
+              <span className="text-slate-500 text-xs">(string)</span>
             </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.75rem',
-              }}
-            >
-              <code style={{ color: '#fbbf24' }}>"{newTodo}"</code>
+            <pre className="m-0 p-3 bg-slate-800 rounded-md text-xs">
+              <code className="text-yellow-400">"{newTodo}"</code>
             </pre>
           </div>
 
           {/* filter state */}
           <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.5rem',
-              }}
-            >
-              <span style={{ color: '#ec4899', fontWeight: '600', fontSize: '0.875rem' }}>
-                filter
-              </span>
-              <span style={{ color: '#64748b', fontSize: '0.75rem' }}>(string)</span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-pink-500 font-semibold text-sm">filter</span>
+              <span className="text-slate-500 text-xs">(string)</span>
             </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.75rem',
-              }}
-            >
-              <code style={{ color: '#fbbf24' }}>"{filter}"</code>
+            <pre className="m-0 p-3 bg-slate-800 rounded-md text-xs">
+              <code className="text-yellow-400">"{filter}"</code>
             </pre>
           </div>
 
           {/* State updates used */}
-          <div
-            style={{
-              marginTop: '1.5rem',
-              padding: '1rem',
-              backgroundColor: '#1e293b',
-              borderRadius: '0.5rem',
-              border: '1px dashed #334155',
-            }}
-          >
-            <div style={{ color: '#64748b', fontSize: '0.7rem', marginBottom: '0.5rem' }}>
-              FUNCTIONAL UPDATES USED:
-            </div>
-            <code style={{ color: '#94a3b8', fontSize: '0.7rem', lineHeight: 1.8 }}>
+          <div className="mt-6 p-4 bg-slate-800 rounded-lg border border-dashed border-slate-700">
+            <div className="text-slate-500 text-[0.7rem] mb-2">FUNCTIONAL UPDATES USED:</div>
+            <code className="text-slate-400 text-[0.7rem] leading-relaxed">
               {`setTodos(prev => [...prev, newItem])\nsetTodos(prev => prev.map(...))\nsetTodos(prev => prev.filter(...))`}
             </code>
           </div>

@@ -106,9 +106,7 @@ export default function DestructuringDemo() {
 
       {/* Comparison */}
       <div className="px-6 py-4 bg-slate-900 border-t border-slate-700">
-        <div className="text-xs text-slate-500 mb-2">
-          DESTRUCTURING SYNTAX
-        </div>
+        <div className="text-xs text-slate-500 mb-2">DESTRUCTURING SYNTAX</div>
         <pre className="m-0 text-sm text-slate-400">
           <code>
             {`// These are equivalent:

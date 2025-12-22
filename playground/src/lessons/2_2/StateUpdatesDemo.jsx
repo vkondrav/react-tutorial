@@ -20,168 +20,78 @@ export default function StateUpdatesDemo() {
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #334155' }}>
+      <div className="flex border-b border-slate-700">
         <button
           onClick={() => setActiveTab('batching')}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: activeTab === 'batching' ? '#0f172a' : 'transparent',
-            border: 'none',
-            borderBottom: activeTab === 'batching' ? '2px solid #3b82f6' : '2px solid transparent',
-            color: activeTab === 'batching' ? '#3b82f6' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-4 py-3 border-none cursor-pointer font-medium transition-colors ${
+            activeTab === 'batching'
+              ? 'bg-slate-900 border-b-2 border-b-blue-500 text-blue-500'
+              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           🔄 Batching Problem
         </button>
         <button
           onClick={() => setActiveTab('functional')}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: activeTab === 'functional' ? '#0f172a' : 'transparent',
-            border: 'none',
-            borderBottom:
-              activeTab === 'functional' ? '2px solid #22c55e' : '2px solid transparent',
-            color: activeTab === 'functional' ? '#22c55e' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-4 py-3 border-none cursor-pointer font-medium transition-colors ${
+            activeTab === 'functional'
+              ? 'bg-slate-900 border-b-2 border-b-green-500 text-green-500'
+              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           ✅ Functional Updates
         </button>
       </div>
 
-      <div style={{ padding: '1.5rem' }}>
+      <div className="p-6">
         {activeTab === 'batching' && (
           <>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-                React <strong style={{ color: '#f59e0b' }}>batches</strong> state updates for
+            <div className="mb-6">
+              <p className="text-slate-400 text-sm m-0">
+                React <strong className="text-amber-500">batches</strong> state updates for
                 performance. Multiple updates in the same event use the{' '}
                 <strong>same starting value</strong>!
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="grid grid-cols-2 gap-6">
               {/* Wrong Way */}
-              <div
-                style={{
-                  padding: '1.5rem',
-                  backgroundColor: '#0f172a',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #ef4444',
-                }}
-              >
-                <div style={{ color: '#ef4444', fontSize: '0.75rem', marginBottom: '1rem' }}>
-                  ❌ WRONG - Using Current Value
-                </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '0.75rem',
-                    backgroundColor: '#1e293b',
-                    borderRadius: '0.375rem',
-                    fontSize: '0.7rem',
-                    lineHeight: 1.6,
-                  }}
-                >
-                  <code style={{ color: '#94a3b8' }}>
+              <div className="p-6 bg-slate-900 rounded-lg border border-red-500">
+                <div className="text-red-500 text-xs mb-4">❌ WRONG - Using Current Value</div>
+                <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed">
+                  <code className="text-slate-400">
                     {`// All three see count = ${wrongCount}!\nsetCount(count + 1); // ${wrongCount} + 1\nsetCount(count + 1); // ${wrongCount} + 1\nsetCount(count + 1); // ${wrongCount} + 1`}
                   </code>
                 </pre>
-                <div
-                  style={{
-                    marginTop: '1rem',
-                    fontSize: '2.5rem',
-                    fontWeight: 'bold',
-                    color: '#f8fafc',
-                    textAlign: 'center',
-                    fontFamily: 'monospace',
-                  }}
-                >
+                <div className="mt-4 text-5xl font-bold text-slate-50 text-center font-mono">
                   {wrongCount}
                 </div>
                 <button
                   onClick={handleWrongTripleClick}
-                  style={{
-                    width: '100%',
-                    marginTop: '1rem',
-                    padding: '0.75rem',
-                    backgroundColor: '#ef4444',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                  }}
+                  className="w-full mt-4 px-4 py-3 bg-red-500 border-none rounded-lg text-white cursor-pointer text-sm hover:bg-red-600 transition-colors"
                 >
                   +3 (but only adds 1!)
                 </button>
               </div>
 
               {/* Right Way */}
-              <div
-                style={{
-                  padding: '1.5rem',
-                  backgroundColor: '#0f172a',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #22c55e',
-                }}
-              >
-                <div style={{ color: '#22c55e', fontSize: '0.75rem', marginBottom: '1rem' }}>
+              <div className="p-6 bg-slate-900 rounded-lg border border-green-500">
+                <div className="text-green-500 text-xs mb-4">
                   ✅ CORRECT - Using Functional Update
                 </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '0.75rem',
-                    backgroundColor: '#1e293b',
-                    borderRadius: '0.375rem',
-                    fontSize: '0.7rem',
-                    lineHeight: 1.6,
-                  }}
-                >
-                  <code style={{ color: '#94a3b8' }}>
+                <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed">
+                  <code className="text-slate-400">
                     {`// Each gets latest value!\nsetCount(prev => prev + 1);\nsetCount(prev => prev + 1);\nsetCount(prev => prev + 1);`}
                   </code>
                 </pre>
-                <div
-                  style={{
-                    marginTop: '1rem',
-                    fontSize: '2.5rem',
-                    fontWeight: 'bold',
-                    color: '#f8fafc',
-                    textAlign: 'center',
-                    fontFamily: 'monospace',
-                  }}
-                >
+                <div className="mt-4 text-5xl font-bold text-slate-50 text-center font-mono">
                   {rightCount}
                 </div>
                 <button
                   onClick={handleRightTripleClick}
-                  style={{
-                    width: '100%',
-                    marginTop: '1rem',
-                    padding: '0.75rem',
-                    backgroundColor: '#22c55e',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                  }}
+                  className="w-full mt-4 px-4 py-3 bg-green-500 border-none rounded-lg text-white cursor-pointer text-sm hover:bg-green-600 transition-colors"
                 >
                   +3 (actually adds 3!)
                 </button>
@@ -193,16 +103,7 @@ export default function StateUpdatesDemo() {
                 setWrongCount(0);
                 setRightCount(0);
               }}
-              style={{
-                marginTop: '1rem',
-                padding: '0.5rem 1rem',
-                backgroundColor: '#475569',
-                border: 'none',
-                borderRadius: '0.375rem',
-                color: 'white',
-                cursor: 'pointer',
-                fontSize: '0.75rem',
-              }}
+              className="mt-4 px-4 py-2 bg-slate-600 border-none rounded-md text-white cursor-pointer text-xs hover:bg-slate-500 transition-colors"
             >
               Reset Both
             </button>
@@ -211,76 +112,33 @@ export default function StateUpdatesDemo() {
 
         {activeTab === 'functional' && (
           <>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
-                Use <strong style={{ color: '#22c55e' }}>functional updates</strong> when your new
+            <div className="mb-6">
+              <p className="text-slate-400 text-sm m-0">
+                Use <strong className="text-green-500">functional updates</strong> when your new
                 state depends on the previous state:
               </p>
             </div>
 
-            <div
-              style={{
-                padding: '1.5rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-              }}
-            >
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr auto 1fr',
-                  gap: '1rem',
-                  alignItems: 'center',
-                }}
-              >
+            <div className="p-6 bg-slate-900 rounded-lg">
+              <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
                 <div>
-                  <div style={{ color: '#ef4444', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                    ❌ Direct Value
-                  </div>
-                  <pre
-                    style={{
-                      margin: 0,
-                      padding: '0.75rem',
-                      backgroundColor: '#1e293b',
-                      borderRadius: '0.375rem',
-                      fontSize: '0.75rem',
-                    }}
-                  >
-                    <code style={{ color: '#94a3b8' }}>{`setCount(count + 1)`}</code>
+                  <div className="text-red-500 text-xs mb-2">❌ Direct Value</div>
+                  <pre className="m-0 p-3 bg-slate-800 rounded-md text-xs">
+                    <code className="text-slate-400">{`setCount(count + 1)`}</code>
                   </pre>
                 </div>
-                <div style={{ color: '#64748b', fontSize: '1.5rem' }}>→</div>
+                <div className="text-slate-500 text-2xl">→</div>
                 <div>
-                  <div style={{ color: '#22c55e', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                    ✅ Functional Update
-                  </div>
-                  <pre
-                    style={{
-                      margin: 0,
-                      padding: '0.75rem',
-                      backgroundColor: '#1e293b',
-                      borderRadius: '0.375rem',
-                      fontSize: '0.75rem',
-                    }}
-                  >
-                    <code style={{ color: '#94a3b8' }}>{`setCount(prev => prev + 1)`}</code>
+                  <div className="text-green-500 text-xs mb-2">✅ Functional Update</div>
+                  <pre className="m-0 p-3 bg-slate-800 rounded-md text-xs">
+                    <code className="text-slate-400">{`setCount(prev => prev + 1)`}</code>
                   </pre>
                 </div>
               </div>
 
-              <div style={{ marginTop: '1.5rem' }}>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  WHEN TO USE FUNCTIONAL UPDATES:
-                </div>
-                <ul
-                  style={{
-                    margin: 0,
-                    paddingLeft: '1.25rem',
-                    color: '#94a3b8',
-                    fontSize: '0.875rem',
-                    lineHeight: 1.8,
-                  }}
-                >
+              <div className="mt-6">
+                <div className="text-slate-500 text-xs mb-3">WHEN TO USE FUNCTIONAL UPDATES:</div>
+                <ul className="m-0 pl-5 text-slate-400 text-sm leading-relaxed list-disc">
                   <li>Incrementing/decrementing numbers</li>
                   <li>Toggling booleans</li>
                   <li>Adding/removing from arrays</li>
@@ -288,25 +146,9 @@ export default function StateUpdatesDemo() {
                 </ul>
               </div>
 
-              <div
-                style={{
-                  marginTop: '1.5rem',
-                  padding: '1rem',
-                  backgroundColor: '#1e293b',
-                  borderRadius: '0.5rem',
-                }}
-              >
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                  EXAMPLES:
-                </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    fontSize: '0.75rem',
-                    lineHeight: 1.8,
-                    color: '#94a3b8',
-                  }}
-                >
+              <div className="mt-6 p-4 bg-slate-800 rounded-lg">
+                <div className="text-slate-500 text-xs mb-2">EXAMPLES:</div>
+                <pre className="m-0 text-xs leading-relaxed text-slate-400">
                   {`// Toggle boolean
 setIsOpen(prev => !prev);
 
