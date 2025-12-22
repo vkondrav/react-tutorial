@@ -6,10 +6,18 @@ import { useState, useEffect } from 'react';
 import { HiOutlineLightBulb, HiCheck, HiX } from 'react-icons/hi';
 
 // ============================================
+// Types
+// ============================================
+interface WindowSize {
+  width: number;
+  height: number;
+}
+
+// ============================================
 // Custom Hook: useWindowSize
 // ============================================
-function useWindowSize() {
-  const [size, setSize] = useState({
+function useWindowSize(): WindowSize {
+  const [size, setSize] = useState<WindowSize>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
@@ -29,7 +37,7 @@ function useWindowSize() {
   return size;
 }
 
-export default function ExtractingLogicDemo() {
+export default function ExtractingLogicDemo(): React.ReactElement {
   const [showBefore, setShowBefore] = useState(true);
 
   return (
@@ -71,14 +79,19 @@ export default function ExtractingLogicDemo() {
   );
 }
 
-function BeforeCode() {
+function BeforeCode(): React.ReactElement {
   return (
     <div className="card bg-error/10 border border-error/30 p-4">
       <div className="text-xs font-semibold text-error mb-2">Before: Logic in Component</div>
       <pre className="font-mono text-xs overflow-x-auto">
         <code>
-          {`function MyComponent() {
-  const [size, setSize] = useState({
+          {`interface WindowSize {
+  width: number;
+  height: number;
+}
+
+function MyComponent(): React.ReactElement {
+  const [size, setSize] = useState<WindowSize>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
@@ -94,7 +107,7 @@ function BeforeCode() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // 15+ lines just for window size!
+  // 20+ lines just for window size!
   return <div>Width: {size.width}</div>;
 }`}
         </code>
@@ -106,15 +119,20 @@ function BeforeCode() {
   );
 }
 
-function AfterCode() {
+function AfterCode(): React.ReactElement {
   return (
     <div className="space-y-4">
       <div className="card bg-success/10 border border-success/30 p-4">
-        <div className="text-xs font-semibold text-success mb-2">After: Custom Hook</div>
+        <div className="text-xs font-semibold text-success mb-2">After: Custom Hook (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`function useWindowSize() {
-  const [size, setSize] = useState({
+            {`interface WindowSize {
+  width: number;
+  height: number;
+}
+
+function useWindowSize(): WindowSize {
+  const [size, setSize] = useState<WindowSize>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
@@ -137,13 +155,13 @@ function AfterCode() {
         <div className="text-xs font-semibold text-primary mb-2">Usage: Clean & Simple</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`function MyComponent() {
+            {`function MyComponent(): React.ReactElement {
   const { width, height } = useWindowSize();
   return <div>Width: {width}</div>;
 }
 
 // Reuse anywhere!
-function AnotherComponent() {
+function AnotherComponent(): React.ReactElement {
   const { width } = useWindowSize();
   return width < 768 ? <MobileNav /> : <DesktopNav />;
 }`}
@@ -157,7 +175,7 @@ function AnotherComponent() {
   );
 }
 
-function WindowSizeDisplay() {
+function WindowSizeDisplay(): React.ReactElement {
   const { width, height } = useWindowSize();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
@@ -178,3 +196,4 @@ function WindowSizeDisplay() {
     </div>
   );
 }
+

@@ -10,6 +10,23 @@
 | **Current Lesson** | Lesson 3.5: Custom Hooks |
 | **Next Lesson** | Lesson 4.1: Fetching Data with useEffect |
 | **Dev Server** | Running at http://localhost:5173 |
+| **Language** | **TypeScript** (from Lesson 3.5 onward) |
+
+---
+
+## TypeScript Migration
+
+| Status | Details |
+|--------|---------|
+| **Started** | Lesson 3.5 |
+| **New Lessons** | All new lessons should be written in TypeScript (`.tsx`) |
+| **Existing Lessons** | Lessons 1.1 - 3.4 are still JavaScript (`.jsx`) — will refactor later |
+| **Config** | `tsconfig.json` with `allowJs: true` allows both JS and TS |
+
+### Migration Plan
+- ✅ Lesson 3.5 converted to TypeScript (with typed code samples)
+- ⬜ Lessons 1.1 - 3.4 to be refactored to TypeScript (low priority)
+- ⬜ Shared components (`lessons/components/`) to be converted (when touched)
 
 ---
 

@@ -2,7 +2,7 @@
 // Playground: Custom Hooks in Action
 // ============================================
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, type ChangeEvent } from 'react';
 import {
   HiOutlineLightBulb,
   HiOutlineStatusOnline,
@@ -13,10 +13,24 @@ import {
 } from 'react-icons/hi';
 
 // ============================================
+// Types
+// ============================================
+interface HoverBind {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+
+interface UseCopyToClipboardReturn {
+  copiedText: string | null;
+  copy: (text: string) => Promise<boolean>;
+  reset: () => void;
+}
+
+// ============================================
 // Custom Hook: useOnlineStatus
 // ============================================
-function useOnlineStatus() {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+function useOnlineStatus(): boolean {
+  const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -37,7 +51,7 @@ function useOnlineStatus() {
 // ============================================
 // Custom Hook: useInterval
 // ============================================
-function useInterval(callback, delay) {
+function useInterval(callback: () => void, delay: number | null): void {
   useEffect(() => {
     if (delay === null) return;
 
@@ -49,10 +63,10 @@ function useInterval(callback, delay) {
 // ============================================
 // Custom Hook: useCopyToClipboard
 // ============================================
-function useCopyToClipboard() {
-  const [copiedText, setCopiedText] = useState(null);
+function useCopyToClipboard(): UseCopyToClipboardReturn {
+  const [copiedText, setCopiedText] = useState<string | null>(null);
 
-  const copy = useCallback(async (text) => {
+  const copy = useCallback(async (text: string): Promise<boolean> => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedText(text);
@@ -72,10 +86,10 @@ function useCopyToClipboard() {
 // ============================================
 // Custom Hook: useHover
 // ============================================
-function useHover() {
-  const [isHovered, setIsHovered] = useState(false);
+function useHover(): [boolean, HoverBind] {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const bind = {
+  const bind: HoverBind = {
     onMouseEnter: () => setIsHovered(true),
     onMouseLeave: () => setIsHovered(false),
   };
@@ -83,8 +97,8 @@ function useHover() {
   return [isHovered, bind];
 }
 
-export default function CustomHooksPlayground() {
-  const [activeDemo, setActiveDemo] = useState('online');
+export default function CustomHooksPlayground(): React.ReactElement {
+  const [activeDemo, setActiveDemo] = useState<string>('online');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -125,7 +139,7 @@ export default function CustomHooksPlayground() {
 // ============================================
 // Online Status Demo
 // ============================================
-function OnlineStatusDemo() {
+function OnlineStatusDemo(): React.ReactElement {
   const isOnline = useOnlineStatus();
 
   return (
@@ -151,10 +165,16 @@ function OnlineStatusDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`const isOnline = useOnlineStatus();
+            {`function useOnlineStatus(): boolean {
+  const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
+  // ... event listeners
+  return isOnline;
+}
+
+const isOnline: boolean = useOnlineStatus();
 return isOnline ? <App /> : <OfflineMessage />;`}
           </code>
         </pre>
@@ -166,10 +186,10 @@ return isOnline ? <App /> : <OfflineMessage />;`}
 // ============================================
 // Interval Demo
 // ============================================
-function IntervalDemo() {
-  const [count, setCount] = useState(0);
-  const [delay, setDelay] = useState(1000);
-  const [isRunning, setIsRunning] = useState(true);
+function IntervalDemo(): React.ReactElement {
+  const [count, setCount] = useState<number>(0);
+  const [delay, setDelay] = useState<number>(1000);
+  const [isRunning, setIsRunning] = useState<boolean>(true);
 
   const tick = useCallback(() => {
     setCount((c) => c + 1);
@@ -208,7 +228,7 @@ function IntervalDemo() {
             max="2000"
             step="100"
             value={delay}
-            onChange={(e) => setDelay(Number(e.target.value))}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setDelay(Number(e.target.value))}
             className="range range-primary range-sm w-full"
           />
         </div>
@@ -219,12 +239,19 @@ function IntervalDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`useInterval(() => {
-  setCount(c => c + 1);
-}, isRunning ? 1000 : null); // null pauses the interval`}
+            {`// delay: number | null - pass null to pause
+function useInterval(callback: () => void, delay: number | null): void {
+  useEffect(() => {
+    if (delay === null) return;
+    const id = setInterval(callback, delay);
+    return () => clearInterval(id);
+  }, [callback, delay]);
+}
+
+useInterval(() => setCount(c => c + 1), isRunning ? 1000 : null);`}
           </code>
         </pre>
       </div>
@@ -235,9 +262,9 @@ function IntervalDemo() {
 // ============================================
 // Clipboard Demo
 // ============================================
-function ClipboardDemo() {
+function ClipboardDemo(): React.ReactElement {
   const { copiedText, copy } = useCopyToClipboard();
-  const sampleTexts = [
+  const sampleTexts: string[] = [
     'npm install react',
     'const [state, setState] = useState()',
     'npx create-react-app my-app',
@@ -272,10 +299,16 @@ function ClipboardDemo() {
       {copiedText && <div className="text-center text-sm text-success">Copied to clipboard!</div>}
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`const { copiedText, copy } = useCopyToClipboard();
+            {`interface UseCopyReturn {
+  copiedText: string | null;
+  copy: (text: string) => Promise<boolean>;
+  reset: () => void;
+}
+
+const { copiedText, copy }: UseCopyReturn = useCopyToClipboard();
 <button onClick={() => copy(text)}>
   {copiedText === text ? 'Copied!' : 'Copy'}
 </button>`}
@@ -289,7 +322,7 @@ function ClipboardDemo() {
 // ============================================
 // Hover Demo
 // ============================================
-function HoverDemo() {
+function HoverDemo(): React.ReactElement {
   const [isHovered1, bind1] = useHover();
   const [isHovered2, bind2] = useHover();
   const [isHovered3, bind3] = useHover();
@@ -331,10 +364,15 @@ function HoverDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`const [isHovered, bind] = useHover();
+            {`interface HoverBind {
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+
+const [isHovered, bind]: [boolean, HoverBind] = useHover();
 <div {...bind} className={isHovered ? 'active' : ''}>
   {isHovered ? 'Hovering!' : 'Hover me'}
 </div>`}
@@ -344,3 +382,4 @@ function HoverDemo() {
     </div>
   );
 }
+

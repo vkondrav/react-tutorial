@@ -2,13 +2,24 @@
 // Demo: Common Custom Hook Patterns
 // ============================================
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, type ChangeEvent } from 'react';
 import { HiOutlineLightBulb, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
+
+// ============================================
+// Types
+// ============================================
+type SetValue<T> = (value: T | ((prev: T) => T)) => void;
+
+interface ToggleActions {
+  toggle: () => void;
+  setTrue: () => void;
+  setFalse: () => void;
+}
 
 // ============================================
 // Custom Hook: useToggle
 // ============================================
-function useToggle(initialValue = false) {
+function useToggle(initialValue: boolean = false): [boolean, ToggleActions] {
   const [value, setValue] = useState(initialValue);
   const toggle = useCallback(() => setValue((v) => !v), []);
   const setTrue = useCallback(() => setValue(true), []);
@@ -19,17 +30,17 @@ function useToggle(initialValue = false) {
 // ============================================
 // Custom Hook: useLocalStorage
 // ============================================
-function useLocalStorage(key, initialValue) {
-  const [storedValue, setStoredValue] = useState(() => {
+function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+  const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      return item ? (JSON.parse(item) as T) : initialValue;
     } catch {
       return initialValue;
     }
   });
 
-  const setValue = useCallback(
+  const setValue: SetValue<T> = useCallback(
     (value) => {
       try {
         const valueToStore = value instanceof Function ? value(storedValue) : value;
@@ -48,8 +59,8 @@ function useLocalStorage(key, initialValue) {
 // ============================================
 // Custom Hook: useDebounce
 // ============================================
-function useDebounce(value, delay = 500) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+function useDebounce<T>(value: T, delay: number = 500): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,8 +73,8 @@ function useDebounce(value, delay = 500) {
   return debouncedValue;
 }
 
-export default function CommonHooksDemo() {
-  const [activeHook, setActiveHook] = useState('toggle');
+export default function CommonHooksDemo(): React.ReactElement {
+  const [activeHook, setActiveHook] = useState<string>('toggle');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -102,7 +113,7 @@ export default function CommonHooksDemo() {
 // ============================================
 // Toggle Demo
 // ============================================
-function ToggleDemo() {
+function ToggleDemo(): React.ReactElement {
   const [isOn, { toggle, setTrue, setFalse }] = useToggle(false);
   const [darkMode, { toggle: toggleDark }] = useToggle(false);
 
@@ -140,12 +151,20 @@ function ToggleDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Hook Code</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Hook Code (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`function useToggle(initialValue = false) {
+            {`interface ToggleActions {
+  toggle: () => void;
+  setTrue: () => void;
+  setFalse: () => void;
+}
+
+function useToggle(initialValue: boolean = false): [boolean, ToggleActions] {
   const [value, setValue] = useState(initialValue);
   const toggle = useCallback(() => setValue(v => !v), []);
+  const setTrue = useCallback(() => setValue(true), []);
+  const setFalse = useCallback(() => setValue(false), []);
   return [value, { toggle, setTrue, setFalse }];
 }`}
           </code>
@@ -158,9 +177,9 @@ function ToggleDemo() {
 // ============================================
 // LocalStorage Demo
 // ============================================
-function LocalStorageDemo() {
-  const [name, setName] = useLocalStorage('demo-name', '');
-  const [count, setCount] = useLocalStorage('demo-count', 0);
+function LocalStorageDemo(): React.ReactElement {
+  const [name, setName] = useLocalStorage<string>('demo-name', '');
+  const [count, setCount] = useLocalStorage<number>('demo-count', 0);
 
   return (
     <div className="space-y-4">
@@ -174,7 +193,7 @@ function LocalStorageDemo() {
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
             placeholder="Enter your name..."
             className="input input-bordered w-full mb-2"
           />
@@ -200,11 +219,13 @@ function LocalStorageDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`const [name, setName] = useLocalStorage('user-name', '');
-const [theme, setTheme] = useLocalStorage('theme', 'light');`}
+            {`// Generic hook - type is inferred from initial value
+const [name, setName] = useLocalStorage<string>('user-name', '');
+const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
+const [count, setCount] = useLocalStorage<number>('counter', 0);`}
           </code>
         </pre>
       </div>
@@ -215,10 +236,10 @@ const [theme, setTheme] = useLocalStorage('theme', 'light');`}
 // ============================================
 // Debounce Demo
 // ============================================
-function DebounceDemo() {
-  const [inputValue, setInputValue] = useState('');
+function DebounceDemo(): React.ReactElement {
+  const [inputValue, setInputValue] = useState<string>('');
   const debouncedValue = useDebounce(inputValue, 500);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<string[]>([]);
 
   // Simulate API call when debounced value changes
   useEffect(() => {
@@ -247,7 +268,7 @@ function DebounceDemo() {
         <input
           type="text"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
           placeholder="Type to search..."
           className="input input-bordered w-full mb-3"
         />
@@ -274,11 +295,11 @@ function DebounceDemo() {
       </div>
 
       <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Hook Code</div>
+        <div className="text-xs font-semibold text-secondary mb-2">Hook Code (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`function useDebounce(value, delay = 500) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+            {`function useDebounce<T>(value: T, delay: number = 500): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedValue(value), delay);
     return () => clearTimeout(timer);
@@ -291,3 +312,4 @@ function DebounceDemo() {
     </div>
   );
 }
+

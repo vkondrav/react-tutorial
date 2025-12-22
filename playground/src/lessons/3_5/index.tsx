@@ -15,7 +15,7 @@ import ExtractingLogicDemo from './ExtractingLogicDemo';
 import CommonHooksDemo from './CommonHooksDemo';
 import CustomHooksPlayground from './CustomHooksPlayground';
 
-export default function Lesson3_5() {
+export default function Lesson3_5(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="3" lesson="5" title="Custom Hooks: Reusable Logic" />
@@ -132,3 +132,4 @@ export default function Lesson3_5() {
     </div>
   );
 }
+

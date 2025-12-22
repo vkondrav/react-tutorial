@@ -34,6 +34,7 @@ react-tutorial/
 └── playground/            ← Live React app
     ├── index.html
     ├── package.json
+    ├── tsconfig.json      ← TypeScript config (allowJs: true)
     ├── vite.config.js
     └── src/
         ├── main.jsx
@@ -41,34 +42,65 @@ react-tutorial/
         ├── index.css
         └── lessons/
             ├── config.json       ← Lesson metadata (titles, status, modules, projectPath)
-            ├── components/       ← Shared UI components
+            ├── components/       ← Shared UI components (JS - to be migrated)
             │   ├── index.js
             │   ├── LessonHeader.jsx
             │   ├── Section.jsx
             │   ├── TakeawayList.jsx
             │   └── CodeBlock.jsx
-            ├── 1_1/              ← Lesson 1.1: What is React?
-            │   ├── index.jsx     ← Main lesson component
-            │   ├── ComparisonDemo.jsx
-            │   ├── ComponentTreeDemo.jsx
-            │   └── VirtualDomDemo.jsx
-            ├── 1_2/              ← Lesson 1.2: Setting Up
+            ├── 1_1/              ← Lesson 1.1: What is React? (JS - legacy)
             │   ├── index.jsx
             │   └── ...
-            └── 1_3/              ← Lesson 1.3: Understanding JSX
-                ├── index.jsx
+            ├── 3_5/              ← Lesson 3.5: Custom Hooks (TypeScript!)
+            │   ├── index.tsx     ← Main lesson component
+            │   ├── CustomHookBasicsDemo.tsx
+            │   ├── ExtractingLogicDemo.tsx
+            │   ├── CommonHooksDemo.tsx
+            │   └── CustomHooksPlayground.tsx
+            └── 4_1/              ← Future lessons use TypeScript
+                ├── index.tsx
                 └── ...
 ```
 
 ### Key Architecture
 
-1. **Each lesson is a folder** (e.g., `1_1/`, `1_2/`) with its own `index.jsx` and helper components
+1. **Each lesson is a folder** (e.g., `1_1/`, `1_2/`) with its own `index.tsx` and helper components
 2. **Shared components** live in `lessons/components/` for reuse across lessons
 3. **Lesson metadata** is in `config.json` - edit this for titles, status, modules, and project path
 4. **Component registration** is in `App.jsx` - add imports and `LESSON_COMPONENTS` mapping
 5. **URL hash routing** - Direct links like `http://localhost:5173/#1.3` load specific lessons
 6. **View Source button** - Each lesson has a link to open its source file in Cursor
 7. **Copy to Chat button** - When on the last implemented lesson, the "Next" button becomes a green "📋 Copy to Chat" button that copies a message like "Let's continue to Lesson X.X: Title" to the clipboard for pasting in the AI chat
+
+### TypeScript Guidelines
+
+**All new lessons should be written in TypeScript** (`.tsx` files).
+
+| Rule | Details |
+|------|---------|
+| **File extension** | Use `.tsx` for components, `.ts` for utilities |
+| **Props** | Define interfaces for all component props |
+| **Hook returns** | Define return type interfaces for custom hooks |
+| **Generics** | Use generics for reusable hooks (e.g., `useLocalStorage<T>`) |
+| **Code samples** | Show TypeScript syntax in displayed code snippets |
+
+```tsx
+// Example: Typed custom hook
+interface UseCounterReturn {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  reset: () => void;
+}
+
+function useCounter(initialValue: number = 0, step: number = 1): UseCounterReturn {
+  const [count, setCount] = useState(initialValue);
+  // ...
+  return { count, increment, decrement, reset };
+}
+```
+
+**Note:** Lessons 1.1 - 3.4 are still JavaScript and will be refactored later. The `tsconfig.json` has `allowJs: true` to support both.
 
 ## Instructions for Creating a New Lesson
 
@@ -91,15 +123,15 @@ react-tutorial/
 mkdir playground/src/lessons/1_4
 ```
 
-### Step 3: Create index.jsx (Main Lesson)
+### Step 3: Create index.tsx (Main Lesson)
 
-```jsx
-// playground/src/lessons/1_4/index.jsx
+```tsx
+// playground/src/lessons/1_4/index.tsx
 import { HiOutlineBookOpen, HiOutlineClipboardCheck } from 'react-icons/hi';
 import { LessonHeader, Section, TakeawayList } from '../components';
 import MyDemo from './MyDemo';
 
-export default function Lesson1_4() {
+export default function Lesson1_4(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="4" title="Components" />
@@ -133,14 +165,19 @@ export default function Lesson1_4() {
 }
 ```
 
-### Step 4: Create Helper Components (with daisyUI)
+### Step 4: Create Helper Components (with daisyUI + TypeScript)
 
-```jsx
-// playground/src/lessons/1_4/MyDemo.jsx
+```tsx
+// playground/src/lessons/1_4/MyDemo.tsx
 import { useState } from 'react';
 
-export default function MyDemo() {
-  const [value, setValue] = useState(0);
+interface MyDemoProps {
+  initialValue?: number;
+}
+
+export default function MyDemo({ initialValue = 0 }: MyDemoProps): React.ReactElement {
+  const [value, setValue] = useState<number>(initialValue);
+  
   return (
     <div className="card bg-base-200 p-6">
       <p className="text-xl mb-4">
@@ -179,6 +216,7 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 ## Design Guidelines
 
 ### Tech Stack
+- **TypeScript** - All new lessons use `.tsx` files with proper type annotations
 - **Tailwind CSS v4** - Utility-first CSS framework
 - **daisyUI v5** - Component library for Tailwind (provides `btn`, `card`, `input`, etc.)
 - **react-icons** - Icon library (using Heroicons set: `HiOutlineMenuAlt2`, etc.)
@@ -289,6 +327,9 @@ Common icon replacements:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
+| `typescript` | latest | Type safety for React components |
+| `@types/react` | latest | React type definitions |
+| `@types/react-dom` | latest | React DOM type definitions |
 | `tailwindcss` | v4 | Utility-first CSS framework |
 | `daisyui` | v5 | Component library for Tailwind |
 | `react-icons` | latest | Icon library (Heroicons, etc.) |

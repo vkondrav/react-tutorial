@@ -6,9 +6,28 @@ import { useState } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiMinus } from 'react-icons/hi';
 
 // ============================================
+// Types
+// ============================================
+interface UseCounterReturn {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  reset: () => void;
+}
+
+interface CounterCardProps {
+  title: string;
+  subtitle: string;
+  count: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+  onReset: () => void;
+}
+
+// ============================================
 // Custom Hook: useCounter
 // ============================================
-function useCounter(initialValue = 0, step = 1) {
+function useCounter(initialValue: number = 0, step: number = 1): UseCounterReturn {
   const [count, setCount] = useState(initialValue);
 
   const increment = () => setCount((c) => c + step);
@@ -18,7 +37,7 @@ function useCounter(initialValue = 0, step = 1) {
   return { count, increment, decrement, reset };
 }
 
-export default function CustomHookBasicsDemo() {
+export default function CustomHookBasicsDemo(): React.ReactElement {
   // Using the custom hook - each component gets its own state!
   const counter1 = useCounter(0, 1);
   const counter2 = useCounter(10, 5);
@@ -57,10 +76,17 @@ export default function CustomHookBasicsDemo() {
 
       {/* The hook code */}
       <div className="bg-base-300 rounded-lg p-4">
-        <div className="text-xs font-semibold text-primary mb-2">The Custom Hook</div>
+        <div className="text-xs font-semibold text-primary mb-2">The Custom Hook (TypeScript)</div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
-            {`function useCounter(initialValue = 0, step = 1) {
+            {`interface UseCounterReturn {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+  reset: () => void;
+}
+
+function useCounter(initialValue: number = 0, step: number = 1): UseCounterReturn {
   const [count, setCount] = useState(initialValue);
 
   const increment = () => setCount(c => c + step);
@@ -77,7 +103,14 @@ export default function CustomHookBasicsDemo() {
 }
 
 // Helper component for counter display
-function CounterCard({ title, subtitle, count, onIncrement, onDecrement, onReset }) {
+function CounterCard({
+  title,
+  subtitle,
+  count,
+  onIncrement,
+  onDecrement,
+  onReset,
+}: CounterCardProps): React.ReactElement {
   return (
     <div className="card bg-base-300 p-4">
       <div className="text-xs text-base-content/60 mb-1">{title}</div>
@@ -97,3 +130,4 @@ function CounterCard({ title, subtitle, count, onIncrement, onDecrement, onReset
     </div>
   );
 }
+
