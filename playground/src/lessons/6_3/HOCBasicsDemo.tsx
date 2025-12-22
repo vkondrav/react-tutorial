@@ -6,6 +6,8 @@
 import { ComponentType } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import basicHOCCode from './examples/BasicHOC.tsx?raw';
+import formulaCode from './examples/HOCFormula.tsx?raw';
 
 // ---- Simple HOC Example ----
 
@@ -64,40 +66,6 @@ function Stats({ value, label }: StatsProps) {
 const GreetingWithBorder = withBorder(Greeting, 'primary');
 const GreetingWithAccentBorder = withBorder(Greeting, 'accent');
 const StatsWithBorder = withBorder(Stats, 'success');
-
-const basicHOCCode = `// An HOC is a function that takes a component...
-function withBorder(WrappedComponent, color = 'blue') {
-  // ...and returns a NEW component
-  return function WithBorderComponent(props) {
-    return (
-      <div className={\`border-2 border-\${color}\`}>
-        <WrappedComponent {...props} />
-      </div>
-    );
-  };
-}
-
-// Original component
-function Greeting({ name }) {
-  return <p>Hello, {name}!</p>;
-}
-
-// Enhanced component (with border added)
-const GreetingWithBorder = withBorder(Greeting, 'blue');
-
-// Usage - same props as original!
-<GreetingWithBorder name="React" />`;
-
-const formulaCode = `// The HOC formula
-const EnhancedComponent = higherOrderComponent(WrappedComponent);
-
-// Or with configuration
-const EnhancedComponent = withFeature(config)(WrappedComponent);
-
-// Real examples
-const ConnectedApp = connect(mapState)(App);           // Redux
-const ThemedButton = withTheme(Button);                // Theming
-const AuthenticatedPage = withAuth(Dashboard);         // Auth`;
 
 export default function HOCBasicsDemo() {
   return (

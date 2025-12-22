@@ -6,6 +6,9 @@
 import { useState, ComponentType } from 'react';
 import { HiOutlineLockClosed, HiOutlineRefresh, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import withAuthCode from './examples/WithAuth.tsx?raw';
+import withLoadingCode from './examples/WithLoading.tsx?raw';
+import withThemeCode from './examples/WithTheme.tsx?raw';
 
 // ============================================
 // withAuth HOC
@@ -157,57 +160,6 @@ function ThemeableCard({ theme, toggleTheme }: ThemeProps) {
 const ProtectedDashboard = withAuth(Dashboard);
 const LoadableUserList = withLoading(UserList);
 const ThemedCard = withTheme(ThemeableCard);
-
-const withAuthCode = `function withAuth<P>(WrappedComponent: ComponentType<P>) {
-  return function WithAuthComponent(props: P & { isAuthenticated?: boolean }) {
-    const { isAuthenticated = false, ...restProps } = props;
-
-    if (!isAuthenticated) {
-      return <AccessDenied />;
-    }
-
-    return <WrappedComponent {...restProps} />;
-  };
-}
-
-// Usage
-const ProtectedDashboard = withAuth(Dashboard);
-
-<ProtectedDashboard isAuthenticated={false} />  // Shows Access Denied
-<ProtectedDashboard isAuthenticated={true} />   // Shows Dashboard`;
-
-const withLoadingCode = `function withLoading<P>(WrappedComponent: ComponentType<P>) {
-  return function WithLoadingComponent(props: P & { isLoading?: boolean }) {
-    const { isLoading = false, ...restProps } = props;
-
-    if (isLoading) {
-      return <Spinner />;
-    }
-
-    return <WrappedComponent {...restProps} />;
-  };
-}
-
-// Usage
-const LoadableUserList = withLoading(UserList);
-
-<LoadableUserList isLoading={true} users={[]} />   // Shows Spinner
-<LoadableUserList isLoading={false} users={data} /> // Shows UserList`;
-
-const withThemeCode = `function withTheme<P>(WrappedComponent: ComponentType<P & ThemeProps>) {
-  return function WithThemeComponent(props: P) {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
-    const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
-
-    // Inject theme props into wrapped component
-    return <WrappedComponent {...props} theme={theme} toggleTheme={toggleTheme} />;
-  };
-}
-
-// Usage
-const ThemedCard = withTheme(Card);
-
-<ThemedCard />  // Card now has theme and toggleTheme props!`;
 
 export default function CommonHOCsDemo() {
   const [activeTab, setActiveTab] = useState<'auth' | 'loading' | 'theme'>('auth');

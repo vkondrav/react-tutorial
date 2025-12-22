@@ -6,88 +6,11 @@
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
-
-const namingCode = `// ✅ Use "with" prefix - makes it clear it's an HOC
-const EnhancedComponent = withAuth(MyComponent);
-const ThemedButton = withTheme(Button);
-const LoggedComponent = withLogging(Form);
-
-// ❌ Don't use unclear names
-const Component = enhance(MyComponent);  // What does "enhance" do?
-const Result = wrap(Button);             // Wrap how?`;
-
-const displayNameCode = `function withAuth<P>(WrappedComponent: ComponentType<P>) {
-  function WithAuth(props: P) {
-    // ... HOC logic
-    return <WrappedComponent {...props} />;
-  }
-
-  // ✅ Set displayName for React DevTools
-  WithAuth.displayName = \`WithAuth(\${
-    WrappedComponent.displayName || WrappedComponent.name || 'Component'
-  })\`;
-
-  return WithAuth;
-}
-
-// In DevTools:
-// Without displayName: <Unknown>
-// With displayName:    <WithAuth(Dashboard)>`;
-
-const passPropsCode = `// ❌ Bad: Only passing known props
-function withBorder(WrappedComponent) {
-  return function(props) {
-    const { title } = props;  // Only extracts title
-    return (
-      <div className="border">
-        <WrappedComponent title={title} />  {/* Other props lost! */}
-      </div>
-    );
-  };
-}
-
-// ✅ Good: Pass through ALL props
-function withBorder(WrappedComponent) {
-  return function(props) {
-    return (
-      <div className="border">
-        <WrappedComponent {...props} />  {/* All props forwarded */}
-      </div>
-    );
-  };
-}`;
-
-const dontMutateCode = `// ❌ Bad: Mutating the original component
-function withAuth(WrappedComponent) {
-  WrappedComponent.prototype.checkAuth = function() {
-    // Modifying the original!
-  };
-  return WrappedComponent;
-}
-
-// ✅ Good: Use composition, return a NEW component
-function withAuth(WrappedComponent) {
-  return function WithAuth(props) {
-    const isAuth = useAuth();  // HOC's own logic
-    if (!isAuth) return <Login />;
-    return <WrappedComponent {...props} />;
-  };
-}`;
-
-const composeCode = `// Multiple HOCs can be composed
-const EnhancedComponent = withAuth(withTheme(withLogging(MyComponent)));
-
-// Cleaner with compose utility (like Redux's compose)
-const enhance = compose(
-  withAuth,
-  withTheme,
-  withLogging
-);
-const EnhancedComponent = enhance(MyComponent);
-
-// Or use a library like recompose/lodash
-import { flowRight } from 'lodash';
-const enhance = flowRight(withAuth, withTheme, withLogging);`;
+import namingCode from './examples/NamingConvention.tsx?raw';
+import displayNameCode from './examples/DisplayName.tsx?raw';
+import passPropsCode from './examples/PassProps.tsx?raw';
+import dontMutateCode from './examples/DontMutate.tsx?raw';
+import composeCode from './examples/ComposeHOCs.tsx?raw';
 
 interface ConventionCardProps {
   title: string;
