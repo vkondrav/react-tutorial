@@ -6,6 +6,8 @@
 import { useState, ReactNode } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import hardcodedCode from './examples/HardcodedComponent.tsx?raw';
+import renderPropCode from './examples/RenderPropComponent.tsx?raw';
 
 // ---- WITHOUT Render Props (hardcoded output) ----
 function CounterHardcoded() {
@@ -33,46 +35,6 @@ function Counter({ render }: CounterProps) {
   // Let the consumer decide how to render!
   return <>{render(count, increment)}</>;
 }
-
-const hardcodedCode = `// ❌ Hardcoded rendering - not flexible
-function Counter() {
-  const [count, setCount] = useState(0);
-  
-  return (
-    <div className="card">
-      <p>{count}</p>
-      <button onClick={() => setCount(c => c + 1)}>
-        Increment
-      </button>
-    </div>
-  );
-}
-
-// Usage - stuck with this one design
-<Counter />`;
-
-const renderPropCode = `// ✅ Render prop - consumer decides the UI
-interface CounterProps {
-  render: (count: number, increment: () => void) => ReactNode;
-}
-
-function Counter({ render }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount(c => c + 1);
-  
-  // Call the render function with state and handlers
-  return <>{render(count, increment)}</>;
-}
-
-// Usage - YOU decide how it looks!
-<Counter
-  render={(count, increment) => (
-    <div>
-      <span>Count: {count}</span>
-      <button onClick={increment}>+1</button>
-    </div>
-  )}
-/>`;
 
 export default function RenderPropsBasicsDemo() {
   const [activeTab, setActiveTab] = useState<'hardcoded' | 'render-prop'>('hardcoded');

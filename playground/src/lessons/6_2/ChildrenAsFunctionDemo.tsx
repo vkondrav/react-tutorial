@@ -3,9 +3,12 @@
 // Shows the cleaner children-as-function pattern
 // ============================================
 
-import { useState, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import namedPropCode from './examples/NamedRenderProp.tsx?raw';
+import childrenAsFunctionCode from './examples/ChildrenAsFunction.tsx?raw';
+import toggleComponentCode from './examples/ToggleComponent.tsx?raw';
 
 // ---- Toggle component with children as function ----
 interface ToggleProps {
@@ -46,58 +49,16 @@ function WindowSize({ children }: WindowSizeProps) {
     height: window.innerHeight,
   });
 
-  useState(() => {
+  useEffect(() => {
     const handleResize = () => {
       setSize({ width: window.innerWidth, height: window.innerHeight });
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, []);
 
   return <>{children(size)}</>;
 }
-
-const namedPropCode = `// Named render prop - works but verbose
-<Counter
-  render={(count, increment) => (
-    <div>
-      <span>{count}</span>
-      <button onClick={increment}>+</button>
-    </div>
-  )}
-/>`;
-
-const childrenAsFunctionCode = `// Children as function - cleaner syntax!
-<Counter>
-  {(count, increment) => (
-    <div>
-      <span>{count}</span>
-      <button onClick={increment}>+</button>
-    </div>
-  )}
-</Counter>`;
-
-const toggleComponentCode = `interface ToggleProps {
-  children: (isOn: boolean, toggle: () => void) => ReactNode;
-  initialValue?: boolean;
-}
-
-function Toggle({ children, initialValue = false }: ToggleProps) {
-  const [isOn, setIsOn] = useState(initialValue);
-  const toggle = () => setIsOn(prev => !prev);
-
-  // Call children as a function!
-  return <>{children(isOn, toggle)}</>;
-}
-
-// Usage - children IS the render function
-<Toggle>
-  {(isOn, toggle) => (
-    <button onClick={toggle}>
-      {isOn ? 'ON' : 'OFF'}
-    </button>
-  )}
-</Toggle>`;
 
 export default function ChildrenAsFunctionDemo() {
   const [showCode, setShowCode] = useState(false);

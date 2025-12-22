@@ -6,6 +6,8 @@
 import { useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import mouseCode from './examples/MouseTracking.tsx?raw';
+import fetchCode from './examples/FetchComponent.tsx?raw';
 
 // ---- Mouse Position Tracker ----
 interface MousePosition {
@@ -92,61 +94,6 @@ function SelectableList({ items, children }: SelectableListProps) {
 
   return <>{children(selected, setSelected, items)}</>;
 }
-
-const mouseCode = `interface MouseProps {
-  children: (position: { x: number; y: number }) => ReactNode;
-}
-
-function Mouse({ children }: MouseProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY });
-  };
-
-  return (
-    <div onMouseMove={handleMouseMove}>
-      {children(position)}
-    </div>
-  );
-}
-
-// Usage
-<Mouse>
-  {({ x, y }) => <p>Mouse at: {x}, {y}</p>}
-</Mouse>`;
-
-const fetchCode = `interface FetchProps<T> {
-  url: string;
-  children: (state: { 
-    data: T | null; 
-    loading: boolean; 
-    error: Error | null;
-    refetch: () => void;
-  }) => ReactNode;
-}
-
-function Fetch<T>({ url, children }: FetchProps<T>) {
-  const [state, setState] = useState({ data: null, loading: true, error: null });
-  
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => setState({ data, loading: false, error: null }))
-      .catch(error => setState({ data: null, loading: false, error }));
-  }, [url]);
-
-  return <>{children({ ...state, refetch: () => { /* ... */ } })}</>;
-}
-
-// Usage
-<Fetch url="/api/users">
-  {({ data, loading, error }) => {
-    if (loading) return <Spinner />;
-    if (error) return <Error message={error.message} />;
-    return <UserList users={data} />;
-  }}
-</Fetch>`;
 
 export default function CommonUseCasesDemo() {
   const [activeTab, setActiveTab] = useState<'mouse' | 'fetch' | 'list'>('mouse');
