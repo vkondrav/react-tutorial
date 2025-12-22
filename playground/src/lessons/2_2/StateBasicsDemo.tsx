@@ -1,9 +1,19 @@
+// ============================================
+// StateBasicsDemo - Introduction to useState
+// ============================================
+
 import { useState } from 'react';
 import { HiMinus, HiPlus, HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import counterExample from './examples/CounterExample.tsx?raw';
 
-export default function StateBasicsDemo() {
-  const [count, setCount] = useState(0);
-  const [showCode, setShowCode] = useState(true);
+// ============================================
+// Main Component
+// ============================================
+
+export default function StateBasicsDemo(): React.ReactElement {
+  const [count, setCount] = useState<number>(0);
+  const [showCode, setShowCode] = useState<boolean>(true);
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -45,46 +55,7 @@ export default function StateBasicsDemo() {
       {/* Code Explanation */}
       {showCode && (
         <div className="p-6">
-          <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-            <code className="text-base-content">
-              <span className="text-secondary">import</span>
-              {` { `}
-              <span className="text-success">useState</span>
-              {` } `}
-              <span className="text-secondary">from</span>
-              {` `}
-              <span className="text-warning">'react'</span>
-              {`;\n\n`}
-              <span className="text-secondary">function</span>
-              {` `}
-              <span className="text-primary">Counter</span>
-              {`() {\n`}
-              <span className="text-base-content/50">
-                {'  '}// Declare state: [currentValue, setterFunction]
-              </span>
-              {`\n  `}
-              <span className="text-secondary">const</span>
-              {` [`}
-              <span className="text-warning">count</span>
-              {`, `}
-              <span className="text-accent">setCount</span>
-              {`] = `}
-              <span className="text-success">useState</span>
-              {`(`}
-              <span className="text-primary">0</span>
-              {`);`}
-              <span className="text-base-content/50"> // 0 is initial value</span>
-              {`\n\n  `}
-              <span className="text-secondary">return</span>
-              {` (\n    <div>\n      <p>Count: {`}
-              <span className="text-warning">count</span>
-              {`}</p>\n      <button onClick={() => `}
-              <span className="text-accent">setCount</span>
-              {`(`}
-              <span className="text-warning">count</span>
-              {` + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}`}
-            </code>
-          </pre>
+          <CodeSnippet code={counterExample} language="tsx" showCopy={false} />
 
           {/* Anatomy */}
           <div className="mt-6 grid grid-cols-3 gap-4">

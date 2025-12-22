@@ -1,27 +1,57 @@
+// ============================================
+// StatePlayground - Mini Todo App Example
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineDocumentText, HiX } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import todoUpdatesExample from './examples/TodoUpdates.tsx?raw';
 
-export default function StatePlayground() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Learn useState', done: true },
-    { id: 2, text: 'Build a counter', done: true },
-    { id: 3, text: 'Create a todo app', done: false },
-  ]);
-  const [newTodo, setNewTodo] = useState('');
-  const [filter, setFilter] = useState('all');
+// ============================================
+// Types
+// ============================================
 
-  const addTodo = () => {
+interface Todo {
+  id: number;
+  text: string;
+  done: boolean;
+}
+
+type FilterType = 'all' | 'active' | 'done';
+
+// ============================================
+// Constants
+// ============================================
+
+const INITIAL_TODOS: Todo[] = [
+  { id: 1, text: 'Learn useState', done: true },
+  { id: 2, text: 'Build a counter', done: true },
+  { id: 3, text: 'Create a todo app', done: false },
+];
+
+const FILTER_OPTIONS: FilterType[] = ['all', 'active', 'done'];
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function StatePlayground(): React.ReactElement {
+  const [todos, setTodos] = useState<Todo[]>(INITIAL_TODOS);
+  const [newTodo, setNewTodo] = useState<string>('');
+  const [filter, setFilter] = useState<FilterType>('all');
+
+  const addTodo = (): void => {
     if (newTodo.trim()) {
       setTodos((prev) => [...prev, { id: Date.now(), text: newTodo.trim(), done: false }]);
       setNewTodo('');
     }
   };
 
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: number): void => {
     setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number): void => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
@@ -54,8 +84,10 @@ export default function StatePlayground() {
             <input
               type="text"
               value={newTodo}
-              onChange={(e) => setNewTodo(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && addTodo()}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewTodo(e.target.value)}
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                e.key === 'Enter' && addTodo()
+              }
               placeholder="What needs to be done?"
               className="input input-bordered flex-1 input-sm"
             />
@@ -66,7 +98,7 @@ export default function StatePlayground() {
 
           {/* Filters */}
           <div className="flex gap-2 mb-4">
-            {['all', 'active', 'done'].map((f) => (
+            {FILTER_OPTIONS.map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
@@ -126,9 +158,9 @@ export default function StatePlayground() {
               <span className="text-success font-semibold text-sm">todos</span>
               <span className="text-base-content/50 text-xs">(array of {todos.length} items)</span>
             </div>
-            <pre className="m-0 p-3 bg-base-200 rounded-md text-[0.7rem] leading-relaxed max-h-[150px] overflow-auto">
-              <code className="text-base-content/70">{JSON.stringify(todos, null, 2)}</code>
-            </pre>
+            <div className="max-h-[150px] overflow-auto">
+              <CodeSnippet code={JSON.stringify(todos, null, 2)} language="json" showCopy={false} />
+            </div>
           </div>
 
           {/* newTodo state */}
@@ -137,28 +169,22 @@ export default function StatePlayground() {
               <span className="text-primary font-semibold text-sm">newTodo</span>
               <span className="text-base-content/50 text-xs">(string)</span>
             </div>
-            <pre className="m-0 p-3 bg-base-200 rounded-md text-xs">
-              <code className="text-warning">"{newTodo}"</code>
-            </pre>
+            <CodeSnippet code={`"${newTodo}"`} language="json" showCopy={false} />
           </div>
 
           {/* filter state */}
-          <div>
+          <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-accent font-semibold text-sm">filter</span>
               <span className="text-base-content/50 text-xs">(string)</span>
             </div>
-            <pre className="m-0 p-3 bg-base-200 rounded-md text-xs">
-              <code className="text-warning">"{filter}"</code>
-            </pre>
+            <CodeSnippet code={`"${filter}"`} language="json" showCopy={false} />
           </div>
 
           {/* State updates used */}
           <div className="mt-6 p-4 card bg-base-200 border border-dashed border-base-300">
             <div className="text-base-content/50 text-[0.7rem] mb-2">FUNCTIONAL UPDATES USED:</div>
-            <code className="text-base-content/70 text-[0.7rem] leading-relaxed">
-              {`setTodos(prev => [...prev, newItem])\nsetTodos(prev => prev.map(...))\nsetTodos(prev => prev.filter(...))`}
-            </code>
+            <CodeSnippet code={todoUpdatesExample} language="tsx" showCopy={false} />
           </div>
         </div>
       </div>

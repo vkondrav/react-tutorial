@@ -1,3 +1,7 @@
+// ============================================
+// Module 2, Lesson 2: State with useState
+// ============================================
+
 import {
   HiOutlineCursorClick,
   HiOutlineSwitchHorizontal,
@@ -13,7 +17,7 @@ import MultipleStateDemo from './MultipleStateDemo';
 import StateUpdatesDemo from './StateUpdatesDemo';
 import StatePlayground from './StatePlayground';
 
-export default function Lesson2_2() {
+export default function Lesson2_2(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="2" title="State with useState" />

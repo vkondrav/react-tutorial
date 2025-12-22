@@ -1,10 +1,27 @@
+// ============================================
+// MultipleStateDemo - Using Multiple useState Calls
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import signupFormExample from './examples/SignupFormExample.tsx?raw';
 
-export default function MultipleStateDemo() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+// ============================================
+// Main Component
+// ============================================
+
+export default function MultipleStateDemo(): React.ReactElement {
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [subscribed, setSubscribed] = useState<boolean>(false);
+
+  // Generate dynamic state display
+  const stateDisplay = `{
+  name: "${name}",
+  email: "${email}",
+  subscribed: ${subscribed}
+}`;
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -14,28 +31,7 @@ export default function MultipleStateDemo() {
           <div className="text-xs text-base-content/50 mb-4 uppercase">
             Each useState = One Piece of State
           </div>
-          <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-xs leading-relaxed">
-            <code className="text-base-content">
-              <span className="text-secondary">function</span>
-              {` SignupForm() {\n  `}
-              <span className="text-base-content/50">// Three separate state values</span>
-              {`\n  `}
-              <span className="text-secondary">const</span>
-              {` [name, setName] = useState(`}
-              <span className="text-warning">''</span>
-              {`);\n  `}
-              <span className="text-secondary">const</span>
-              {` [email, setEmail] = useState(`}
-              <span className="text-warning">''</span>
-              {`);\n  `}
-              <span className="text-secondary">const</span>
-              {` [subscribed, setSubscribed] = useState(`}
-              <span className="text-warning">false</span>
-              {`);\n\n  `}
-              <span className="text-secondary">return</span>
-              {` (\n    <form>\n      <input\n        value={name}\n        onChange={e => setName(e.target.value)}\n      />\n      <input\n        value={email}\n        onChange={e => setEmail(e.target.value)}\n      />\n      <input\n        type="checkbox"\n        checked={subscribed}\n        onChange={e => setSubscribed(e.target.checked)}\n      />\n    </form>\n  );\n}`}
-            </code>
-          </pre>
+          <CodeSnippet code={signupFormExample} language="tsx" showCopy={false} />
         </div>
 
         {/* Live Form */}
@@ -48,7 +44,7 @@ export default function MultipleStateDemo() {
               <input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                 placeholder="Enter your name"
                 className="input input-bordered w-full input-sm"
               />
@@ -58,7 +54,7 @@ export default function MultipleStateDemo() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="input input-bordered w-full input-sm"
               />
@@ -67,7 +63,9 @@ export default function MultipleStateDemo() {
               <input
                 type="checkbox"
                 checked={subscribed}
-                onChange={(e) => setSubscribed(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSubscribed(e.target.checked)
+                }
                 className="checkbox checkbox-sm"
               />
               Subscribe to newsletter
@@ -75,16 +73,9 @@ export default function MultipleStateDemo() {
           </div>
 
           {/* Current State */}
-          <div className="mt-6 p-4 bg-base-200 rounded-lg">
+          <div className="mt-6">
             <div className="text-[0.7rem] text-base-content/50 mb-2">CURRENT STATE VALUES</div>
-            <pre className="m-0 text-xs text-base-content/70 leading-relaxed">
-              {`name: `}
-              <span className="text-success">"{name}"</span>
-              {`\nemail: `}
-              <span className="text-success">"{email}"</span>
-              {`\nsubscribed: `}
-              <span className="text-warning">{subscribed.toString()}</span>
-            </pre>
+            <CodeSnippet code={stateDisplay} language="json" showCopy={false} />
           </div>
         </div>
       </div>

@@ -1,24 +1,50 @@
+// ============================================
+// StateUpdatesDemo - Batching and Functional Updates
+// ============================================
+
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineRefresh, HiOutlineArrowRight } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import functionalUpdatesExample from './examples/FunctionalUpdates.tsx?raw';
 
-export default function StateUpdatesDemo() {
-  const [wrongCount, setWrongCount] = useState(0);
-  const [rightCount, setRightCount] = useState(0);
-  const [activeTab, setActiveTab] = useState('batching');
+// ============================================
+// Types
+// ============================================
 
-  const handleWrongTripleClick = () => {
+type Tab = 'batching' | 'functional';
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function StateUpdatesDemo(): React.ReactElement {
+  const [wrongCount, setWrongCount] = useState<number>(0);
+  const [rightCount, setRightCount] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<Tab>('batching');
+
+  const handleWrongTripleClick = (): void => {
     // This won't work as expected!
     setWrongCount(wrongCount + 1);
     setWrongCount(wrongCount + 1);
     setWrongCount(wrongCount + 1);
   };
 
-  const handleRightTripleClick = () => {
+  const handleRightTripleClick = (): void => {
     // This works correctly!
     setRightCount((prev) => prev + 1);
     setRightCount((prev) => prev + 1);
     setRightCount((prev) => prev + 1);
   };
+
+  const wrongExampleCode = `// All three see count = ${wrongCount}!
+setCount(count + 1); // ${wrongCount} + 1
+setCount(count + 1); // ${wrongCount} + 1
+setCount(count + 1); // ${wrongCount} + 1`;
+
+  const rightExampleCode = `// Each gets latest value!
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);
+setCount(prev => prev + 1);`;
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -66,11 +92,7 @@ export default function StateUpdatesDemo() {
                   <HiX size={14} />
                   WRONG - Using Current Value
                 </div>
-                <pre className="m-0 p-3 bg-base-200 rounded-md text-[0.7rem] leading-relaxed">
-                  <code className="text-base-content/70">
-                    {`// All three see count = ${wrongCount}!\nsetCount(count + 1); // ${wrongCount} + 1\nsetCount(count + 1); // ${wrongCount} + 1\nsetCount(count + 1); // ${wrongCount} + 1`}
-                  </code>
-                </pre>
+                <CodeSnippet code={wrongExampleCode} language="tsx" showCopy={false} />
                 <div className="mt-4 text-5xl font-bold text-base-content text-center font-mono">
                   {wrongCount}
                 </div>
@@ -85,11 +107,7 @@ export default function StateUpdatesDemo() {
                   <HiCheck size={14} />
                   CORRECT - Using Functional Update
                 </div>
-                <pre className="m-0 p-3 bg-base-200 rounded-md text-[0.7rem] leading-relaxed">
-                  <code className="text-base-content/70">
-                    {`// Each gets latest value!\nsetCount(prev => prev + 1);\nsetCount(prev => prev + 1);\nsetCount(prev => prev + 1);`}
-                  </code>
-                </pre>
+                <CodeSnippet code={rightExampleCode} language="tsx" showCopy={false} />
                 <div className="mt-4 text-5xl font-bold text-base-content text-center font-mono">
                   {rightCount}
                 </div>
@@ -127,9 +145,7 @@ export default function StateUpdatesDemo() {
                     <HiX size={12} />
                     Direct Value
                   </div>
-                  <pre className="m-0 p-3 bg-base-200 rounded-md text-xs">
-                    <code className="text-base-content/70">{`setCount(count + 1)`}</code>
-                  </pre>
+                  <CodeSnippet code={`setCount(count + 1)`} language="tsx" showCopy={false} />
                 </div>
                 <HiOutlineArrowRight className="text-base-content/50" size={24} />
                 <div>
@@ -137,9 +153,11 @@ export default function StateUpdatesDemo() {
                     <HiCheck size={12} />
                     Functional Update
                   </div>
-                  <pre className="m-0 p-3 bg-base-200 rounded-md text-xs">
-                    <code className="text-base-content/70">{`setCount(prev => prev + 1)`}</code>
-                  </pre>
+                  <CodeSnippet
+                    code={`setCount(prev => prev + 1)`}
+                    language="tsx"
+                    showCopy={false}
+                  />
                 </div>
               </div>
 
@@ -155,18 +173,9 @@ export default function StateUpdatesDemo() {
                 </ul>
               </div>
 
-              <div className="mt-6 p-4 bg-base-200 rounded-lg">
+              <div className="mt-6">
                 <div className="text-base-content/50 text-xs mb-2">EXAMPLES:</div>
-                <pre className="m-0 text-xs leading-relaxed text-base-content/70">
-                  {`// Toggle boolean
-setIsOpen(prev => !prev);
-
-// Add to array
-setItems(prev => [...prev, newItem]);
-
-// Update object
-setUser(prev => ({ ...prev, name: 'New' }));`}
-                </pre>
+                <CodeSnippet code={functionalUpdatesExample} language="tsx" showCopy={false} />
               </div>
             </div>
           </>

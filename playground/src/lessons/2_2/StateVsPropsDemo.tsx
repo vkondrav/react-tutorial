@@ -1,8 +1,31 @@
+// ============================================
+// StateVsPropsDemo - State vs Props Comparison
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineKey } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function StateVsPropsDemo() {
-  const [parentColor, setParentColor] = useState('#3b82f6');
+// ============================================
+// Constants
+// ============================================
+
+const COMPARISON_DATA: [string, string, string][] = [
+  ['Owned by', 'Parent component', 'The component itself'],
+  ['Can change?', 'No (read-only)', 'Yes (via setter)'],
+  ['Passed from', 'Parent → Child', 'Created internally'],
+  ['Purpose', 'Configure component', 'Track changing data'],
+  ['Triggers re-render', 'When parent changes', 'When setter called'],
+];
+
+const COLOR_OPTIONS: string[] = ['#3b82f6', '#22c55e', '#f59e0b', '#ec4899', '#8b5cf6'];
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function StateVsPropsDemo(): React.ReactElement {
+  const [parentColor, setParentColor] = useState<string>('#3b82f6');
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -22,13 +45,7 @@ export default function StateVsPropsDemo() {
               </tr>
             </thead>
             <tbody>
-              {[
-                ['Owned by', 'Parent component', 'The component itself'],
-                ['Can change?', 'No (read-only)', 'Yes (via setter)'],
-                ['Passed from', 'Parent → Child', 'Created internally'],
-                ['Purpose', 'Configure component', 'Track changing data'],
-                ['Triggers re-render', 'When parent changes', 'When setter called'],
-              ].map(([label, props, state], i) => (
+              {COMPARISON_DATA.map(([label, props, state], i) => (
                 <tr key={i}>
                   <td className="px-3 py-3 text-base-content/70 text-sm">{label}</td>
                   <td className="px-3 py-3 text-primary text-sm bg-primary/10">{props}</td>
@@ -52,13 +69,15 @@ export default function StateVsPropsDemo() {
             <div className="text-success text-xs mb-4 font-semibold">
               PARENT COMPONENT (owns state)
             </div>
-            <pre className="m-0 text-xs text-base-content/70 leading-relaxed">
-              {`const [color, setColor] = useState('${parentColor}');`}
-            </pre>
+            <CodeSnippet
+              code={`const [color, setColor] = useState('${parentColor}');`}
+              language="tsx"
+              showCopy={false}
+            />
             <div className="mt-4">
               <div className="text-[0.7rem] text-base-content/50 mb-2">Change state:</div>
               <div className="flex gap-2">
-                {['#3b82f6', '#22c55e', '#f59e0b', '#ec4899', '#8b5cf6'].map((color) => (
+                {COLOR_OPTIONS.map((color) => (
                   <button
                     key={color}
                     onClick={() => setParentColor(color)}
@@ -71,14 +90,12 @@ export default function StateVsPropsDemo() {
                 ))}
               </div>
             </div>
-            <div className="mt-4 p-2 bg-base-200 rounded text-xs">
-              <code className="text-base-content">
-                {`<ChildComponent `}
-                <span className="text-primary">color</span>
-                {`={`}
-                <span className="text-success">color</span>
-                {`} />`}
-              </code>
+            <div className="mt-4">
+              <CodeSnippet
+                code={`<ChildComponent color={color} />`}
+                language="tsx"
+                showCopy={false}
+              />
             </div>
           </div>
 
@@ -87,12 +104,14 @@ export default function StateVsPropsDemo() {
             <div className="text-primary text-xs mb-4 font-semibold">
               CHILD COMPONENT (receives props)
             </div>
-            <pre className="m-0 text-xs text-base-content/70 leading-relaxed">
-              {`function Child({ color }) {
+            <CodeSnippet
+              code={`function Child({ color }) {
   // Can READ color
   // Cannot CHANGE color
 }`}
-            </pre>
+              language="tsx"
+              showCopy={false}
+            />
             <div
               className="mt-4 p-4 rounded-lg text-white text-center font-semibold"
               style={{ backgroundColor: parentColor }}
