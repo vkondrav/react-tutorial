@@ -32,7 +32,8 @@
     { "id": "7.3", "module": 7, "title": "Context + Reducer Pattern" },
     { "id": "7.4", "module": 7, "title": "When to Use External State Libraries" },
     { "id": "8.1", "module": 8, "title": "Server-Side Rendering" },
-    { "id": "8.2", "module": 8, "title": "Testing Strategies" }
+    { "id": "8.2", "module": 8, "title": "Testing Strategies" },
+    { "id": "8.3", "module": 8, "title": "Server State with TanStack Query" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },

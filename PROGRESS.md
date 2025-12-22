@@ -7,7 +7,7 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 8: Advanced Topics |
-| **Current Lesson** | 8.2 Testing Strategies ✅ |
+| **Current Lesson** | 8.3 Server State with TanStack Query ✅ |
 | **Next Lesson** | TBD |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
@@ -111,6 +111,7 @@
 | 7.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 8.1    | ✅ .tsx    | ✅          | N/A        | ✅    | ✅ Done         | ✅ Done            |
 | 8.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
+| 8.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 
 ### Shared Components
 

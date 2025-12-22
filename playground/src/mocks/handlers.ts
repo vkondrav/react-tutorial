@@ -207,6 +207,26 @@ export const handlers = [
     return HttpResponse.json(comments);
   }),
 
+  // GET /posts - List posts with optional userId filter and limit
+  http.get('https://jsonplaceholder.typicode.com/posts', async ({ request }) => {
+    await delay(100);
+    const url = new URL(request.url);
+    const userId = url.searchParams.get('userId');
+    const limit = url.searchParams.get('_limit');
+
+    let posts = mockPosts;
+
+    if (userId) {
+      posts = posts.filter((p) => p.userId === Number(userId));
+    }
+
+    if (limit) {
+      posts = posts.slice(0, Number(limit));
+    }
+
+    return HttpResponse.json(posts);
+  }),
+
   // GET /posts/:id - Single post
   http.get('https://jsonplaceholder.typicode.com/posts/:id', async ({ params }) => {
     await delay(100);
