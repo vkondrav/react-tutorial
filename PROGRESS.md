@@ -164,9 +164,16 @@
   - `VirtualDomDemo.jsx` - `input input-bordered`, `card` component
 - ✅ **Refactored Shared Components to use daisyUI + react-icons:**
   - `LessonHeader.jsx` - Tailwind classes, semantic `text-primary`, gradient text
-  - `Section.jsx` - daisyUI `card bg-base-200` component
+  - `Section.jsx` - daisyUI `card bg-base-200` component, accepts JSX for title prop
   - `TakeawayList.jsx` - react-icons `HiCheck`, daisyUI `bg-success` badge
   - `CodeBlock.jsx` - react-icons `HiCheck`/`HiX`, daisyUI semantic colors (`success`/`error`)
+- ✅ **Replaced all emojis with react-icons in Lesson 1.1:**
+  - Section titles use icons (`HiOutlineLightBulb`, `HiOutlineSwitchHorizontal`, etc.)
+  - Instruction text uses `HiOutlineCursorClick` instead of 👇/👆
+  - Hello greeting uses `HiOutlineHand` instead of 👋
+- 📝 **Established "Icons vs Emojis" rule in STARTING_POINT.md:**
+  - Use react-icons for all UI elements
+  - Emojis OK only in code examples that users are learning from
 
 #### Code Reduction Results:
 | Element | Before | After | Reduction |

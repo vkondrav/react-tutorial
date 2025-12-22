@@ -95,6 +95,7 @@ mkdir playground/src/lessons/1_4
 
 ```jsx
 // playground/src/lessons/1_4/index.jsx
+import { HiOutlineBookOpen, HiOutlineClipboardCheck } from 'react-icons/hi';
 import { LessonHeader, Section, TakeawayList } from '../components';
 import MyDemo from './MyDemo';
 
@@ -103,14 +104,28 @@ export default function Lesson1_4() {
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="4" title="Components" />
       
-      <Section title="📖 Concept">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineBookOpen className="text-primary" size={20} />
+            Concept
+          </span>
+        }
+      >
         <p className="leading-relaxed text-base-content/70">
           Explanation with <strong className="text-primary">highlighted</strong> terms...
         </p>
         <MyDemo />
       </Section>
 
-      <Section title="✅ Key Takeaways">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineClipboardCheck className="text-primary" size={20} />
+            Key Takeaways
+          </span>
+        }
+      >
         <TakeawayList items={["Takeaway 1", "Takeaway 2"]} />
       </Section>
     </div>
@@ -197,9 +212,11 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 | Component | Usage |
 |-----------|-------|
 | `LessonHeader` | `<LessonHeader module="1" lesson="3" title="Understanding JSX" />` |
-| `Section` | `<Section title="📖 Topic">content</Section>` |
+| `Section` | `<Section title={<span className="flex items-center gap-2"><Icon /> Title</span>}>content</Section>` |
 | `TakeawayList` | `<TakeawayList items={["Point 1", "Point 2"]} />` |
 | `CodeBlock` | `<CodeBlock title="Example" code={codeString} variant="good" />` |
+
+Note: `Section` accepts JSX for the `title` prop, allowing icons to be included.
 
 ### Using Icons (react-icons)
 
@@ -215,9 +232,27 @@ import { FaReact } from 'react-icons/fa';
 
 Common icon sets: `hi` (Heroicons), `fa` (Font Awesome), `fi` (Feather), `md` (Material Design)
 
+### Icons vs Emojis Rule
+- **Use react-icons** for all UI elements (section titles, buttons, instructions)
+- **Emojis are OK** only inside code examples/snippets that users are learning from
+- This ensures a professional, consistent look across the app
+
+Common icon replacements:
+| Old (Emoji) | New (Icon) | Import |
+|-------------|------------|--------|
+| 🎯 / 💡 | `HiOutlineLightBulb` | `react-icons/hi` |
+| ⚔️ / ↔️ | `HiOutlineSwitchHorizontal` | `react-icons/hi` |
+| 🧱 / 📦 | `HiOutlineViewGrid` | `react-icons/hi` |
+| ⚡ | `HiOutlineLightningBolt` | `react-icons/hi` |
+| ✅ | `HiOutlineClipboardCheck` | `react-icons/hi` |
+| 👇 / 👆 | `HiOutlineCursorClick` | `react-icons/hi` |
+| 👋 | `HiOutlineHand` | `react-icons/hi` |
+| ✓ | `HiCheck` | `react-icons/hi` |
+| ✗ | `HiX` | `react-icons/hi` |
+
 ### Interactive Demos Should:
 - Be self-contained in their own `.jsx` file
-- Have clear instructions ("Click to...", "Type to...")
+- Have clear instructions (with icons, not emojis)
 - Show immediate visual feedback
 - Teach ONE concept clearly
 
@@ -263,7 +298,7 @@ Common icon sets: `hi` (Heroicons), `fa` (Font Awesome), `fi` (Feather), `md` (M
 ```css
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: dark --default;
+  themes: synthwave --default;
 }
 ```
 
