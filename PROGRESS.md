@@ -112,7 +112,7 @@
 | 8.1    | ✅ .tsx    | ✅          | N/A        | ✅    | ✅ Done         | ✅ Done            |
 | 8.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 8.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 8.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 8.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 
 ### Shared Components
 
@@ -843,6 +843,10 @@ Beginning the Advanced Topics module with Server-Side Rendering.
   - Console logging shows bundle size comparison (168 KB → 12 KB)
   - Added `/rsc-demo` route to Express server
   - Added proxy configuration in `vite.config.js`
+- ✅ **Added Storybook Stories + Tests**
+  - 6 story files covering all demos
+  - 30 passing interaction tests
+  - Stories for: Lesson, RSCBasicsDemo, ServerVsClientDemo, UseClientDirectiveDemo, RSCBenefitsDemo, RSCPlayground
 
 ---
 
