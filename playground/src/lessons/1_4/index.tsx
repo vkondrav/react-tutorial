@@ -1,3 +1,7 @@
+// ============================================
+// Module 1, Lesson 4: Components
+// ============================================
+
 import {
   HiOutlineCube,
   HiOutlineDocumentText,
@@ -11,7 +15,7 @@ import ComponentRulesDemo from './ComponentRulesDemo';
 import CompositionDemo from './CompositionDemo';
 import ComponentBuilder from './ComponentBuilder';
 
-export default function Lesson1_4() {
+export default function Lesson1_4(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="4" title="Components: Your First Building Block" />

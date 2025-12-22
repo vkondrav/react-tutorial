@@ -1,25 +1,104 @@
+// ============================================
+// CompositionDemo - Component Composition Visualization
+// ============================================
+
 import { useState } from 'react';
 
-export default function CompositionDemo() {
-  const [hoveredComponent, setHoveredComponent] = useState(null);
+// ============================================
+// Types
+// ============================================
 
-  const componentInfo = {
-    App: { color: 'blue', colorHex: '#3b82f6', desc: 'Root component - contains everything' },
-    Header: { color: 'violet', colorHex: '#8b5cf6', desc: 'Contains Logo and Nav' },
-    Logo: { color: 'pink', colorHex: '#ec4899', desc: 'Simple leaf component' },
-    Nav: { color: 'amber', colorHex: '#f59e0b', desc: 'Contains NavLink children' },
-    NavLink: { color: 'emerald', colorHex: '#22c55e', desc: 'Reused 3 times with different text' },
-    Main: { color: 'cyan', colorHex: '#06b6d4', desc: 'Main content area' },
-  };
+type ComponentColor = 'blue' | 'violet' | 'pink' | 'amber' | 'emerald' | 'cyan' | 'slate';
 
-  const colorClasses = {
-    blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-500' },
-    violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-500' },
-    pink: { bg: 'bg-pink-500/20', border: 'border-pink-500', text: 'text-pink-500' },
-    amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-500' },
-    emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-500' },
-    cyan: { bg: 'bg-cyan-500/20', border: 'border-cyan-500', text: 'text-cyan-500' },
-  };
+interface ComponentInfo {
+  color: ComponentColor;
+  colorHex: string;
+  desc: string;
+}
+
+interface ColorClasses {
+  bg: string;
+  border: string;
+  text: string;
+}
+
+interface TreeNodeProps {
+  name: string;
+  info: Record<string, ComponentInfo>;
+  hovered: string | null;
+  setHovered: (name: string | null) => void;
+  children?: React.ReactNode;
+  count?: number;
+}
+
+// ============================================
+// Constants
+// ============================================
+
+const componentInfo: Record<string, ComponentInfo> = {
+  App: { color: 'blue', colorHex: '#3b82f6', desc: 'Root component - contains everything' },
+  Header: { color: 'violet', colorHex: '#8b5cf6', desc: 'Contains Logo and Nav' },
+  Logo: { color: 'pink', colorHex: '#ec4899', desc: 'Simple leaf component' },
+  Nav: { color: 'amber', colorHex: '#f59e0b', desc: 'Contains NavLink children' },
+  NavLink: { color: 'emerald', colorHex: '#22c55e', desc: 'Reused 3 times with different text' },
+  Main: { color: 'cyan', colorHex: '#06b6d4', desc: 'Main content area' },
+};
+
+const colorClasses: Record<ComponentColor, ColorClasses> = {
+  blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-500' },
+  violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-500' },
+  pink: { bg: 'bg-pink-500/20', border: 'border-pink-500', text: 'text-pink-500' },
+  amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-500' },
+  emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-500' },
+  cyan: { bg: 'bg-cyan-500/20', border: 'border-cyan-500', text: 'text-cyan-500' },
+  slate: { bg: 'bg-slate-500/20', border: 'border-slate-500', text: 'text-slate-500' },
+};
+
+// ============================================
+// Sub-components
+// ============================================
+
+function TreeNode({
+  name,
+  info,
+  hovered,
+  setHovered,
+  children,
+  count,
+}: TreeNodeProps): React.ReactElement {
+  const isHovered = hovered === name;
+  const color = info[name]?.color || 'slate';
+  const colors = colorClasses[color] || colorClasses.slate;
+
+  return (
+    <div className={children ? '' : 'ml-4'}>
+      <div
+        onMouseEnter={() => setHovered(name)}
+        onMouseLeave={() => setHovered(null)}
+        className={`inline-flex items-center gap-1 px-2 py-1 rounded cursor-pointer transition-colors ${
+          isHovered ? colors.bg : ''
+        }`}
+      >
+        <span className={colors.text}>{'<'}</span>
+        <span
+          className={isHovered ? `${colors.text} font-semibold` : 'text-base-content font-normal'}
+        >
+          {name}
+        </span>
+        <span className={colors.text}>{' />'}</span>
+        {count && <span className="text-xs text-base-content/50 ml-1">×{count}</span>}
+      </div>
+      {children && <div className="ml-5 border-l border-base-300 pl-3">{children}</div>}
+    </div>
+  );
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function CompositionDemo(): React.ReactElement {
+  const [hoveredComponent, setHoveredComponent] = useState<string | null>(null);
 
   return (
     <div className="mt-6 grid grid-cols-2 gap-6">
@@ -177,43 +256,6 @@ export default function CompositionDemo() {
           </div>
         )}
       </div>
-    </div>
-  );
-}
-
-function TreeNode({ name, info, hovered, setHovered, children, count }) {
-  const isHovered = hovered === name;
-  const color = info[name]?.color || 'slate';
-  const colorClasses = {
-    blue: { bg: 'bg-blue-500/20', text: 'text-blue-500' },
-    violet: { bg: 'bg-violet-500/20', text: 'text-violet-500' },
-    pink: { bg: 'bg-pink-500/20', text: 'text-pink-500' },
-    amber: { bg: 'bg-amber-500/20', text: 'text-amber-500' },
-    emerald: { bg: 'bg-emerald-500/20', text: 'text-emerald-500' },
-    cyan: { bg: 'bg-cyan-500/20', text: 'text-cyan-500' },
-    slate: { bg: 'bg-slate-500/20', text: 'text-slate-500' },
-  };
-  const colors = colorClasses[color] || colorClasses.slate;
-
-  return (
-    <div className={children ? '' : 'ml-4'}>
-      <div
-        onMouseEnter={() => setHovered(name)}
-        onMouseLeave={() => setHovered(null)}
-        className={`inline-flex items-center gap-1 px-2 py-1 rounded cursor-pointer transition-colors ${
-          isHovered ? colors.bg : ''
-        }`}
-      >
-        <span className={colors.text}>{'<'}</span>
-        <span
-          className={isHovered ? `${colors.text} font-semibold` : 'text-base-content font-normal'}
-        >
-          {name}
-        </span>
-        <span className={colors.text}>{' />'}</span>
-        {count && <span className="text-xs text-base-content/50 ml-1">×{count}</span>}
-      </div>
-      {children && <div className="ml-5 border-l border-base-300 pl-3">{children}</div>}
     </div>
   );
 }

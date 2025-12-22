@@ -1,10 +1,25 @@
+// ============================================
+// ComponentBuilder - Interactive Component Builder
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function ComponentBuilder() {
-  const [componentName, setComponentName] = useState('MyButton');
-  const [buttonText, setButtonText] = useState('Click Me');
-  const [buttonColor, setButtonColor] = useState('#3b82f6');
+// ============================================
+// Constants
+// ============================================
+
+const colorOptions: string[] = ['#3b82f6', '#22c55e', '#ef4444', '#f59e0b', '#8b5cf6', '#ec4899'];
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function ComponentBuilder(): React.ReactElement {
+  const [componentName, setComponentName] = useState<string>('MyButton');
+  const [buttonText, setButtonText] = useState<string>('Click Me');
+  const [buttonColor, setButtonColor] = useState<string>('#3b82f6');
 
   const isValidName = /^[A-Z][a-zA-Z0-9]*$/.test(componentName);
 
@@ -37,7 +52,7 @@ export default function ComponentBuilder() {
           <input
             type="text"
             value={componentName}
-            onChange={(e) => setComponentName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setComponentName(e.target.value)}
             className={`input input-bordered w-full input-sm font-mono ${
               isValidName ? '' : 'input-error'
             }`}
@@ -55,7 +70,7 @@ export default function ComponentBuilder() {
           <input
             type="text"
             value={buttonText}
-            onChange={(e) => setButtonText(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setButtonText(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -66,7 +81,7 @@ export default function ComponentBuilder() {
             Button Color
           </label>
           <div className="flex gap-2">
-            {['#3b82f6', '#22c55e', '#ef4444', '#f59e0b', '#8b5cf6', '#ec4899'].map((color) => (
+            {colorOptions.map((color) => (
               <button
                 key={color}
                 onClick={() => setButtonColor(color)}
@@ -84,12 +99,12 @@ export default function ComponentBuilder() {
 
       {/* Code Output */}
       <div className="p-6 border-b border-base-300">
-        <div className="text-xs text-base-content/50 mb-3 uppercase tracking-wide">
-          Generated Component Code
-        </div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-xs leading-relaxed">
-          <code className="text-base-content">{generatedCode}</code>
-        </pre>
+        <CodeSnippet
+          code={generatedCode}
+          language="tsx"
+          title="Generated Component Code"
+          showCopy={false}
+        />
       </div>
 
       {/* Live Preview */}
