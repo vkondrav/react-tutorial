@@ -4,67 +4,42 @@ export default function CompositionDemo() {
   const [hoveredComponent, setHoveredComponent] = useState(null);
 
   const componentInfo = {
-    App: { color: '#3b82f6', desc: 'Root component - contains everything' },
-    Header: { color: '#8b5cf6', desc: 'Contains Logo and Nav' },
-    Logo: { color: '#ec4899', desc: 'Simple leaf component' },
-    Nav: { color: '#f59e0b', desc: 'Contains NavLink children' },
-    NavLink: { color: '#22c55e', desc: 'Reused 3 times with different text' },
-    Main: { color: '#06b6d4', desc: 'Main content area' },
+    App: { color: 'blue', colorHex: '#3b82f6', desc: 'Root component - contains everything' },
+    Header: { color: 'violet', colorHex: '#8b5cf6', desc: 'Contains Logo and Nav' },
+    Logo: { color: 'pink', colorHex: '#ec4899', desc: 'Simple leaf component' },
+    Nav: { color: 'amber', colorHex: '#f59e0b', desc: 'Contains NavLink children' },
+    NavLink: { color: 'emerald', colorHex: '#22c55e', desc: 'Reused 3 times with different text' },
+    Main: { color: 'cyan', colorHex: '#06b6d4', desc: 'Main content area' },
+  };
+
+  const colorClasses = {
+    blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-500' },
+    violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-500' },
+    pink: { bg: 'bg-pink-500/20', border: 'border-pink-500', text: 'text-pink-500' },
+    amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-500' },
+    emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-500' },
+    cyan: { bg: 'bg-cyan-500/20', border: 'border-cyan-500', text: 'text-cyan-500' },
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '1.5rem',
-      }}
-    >
+    <div className="mt-6 grid grid-cols-2 gap-6">
       {/* Live Preview */}
-      <div
-        style={{
-          backgroundColor: '#1e293b',
-          borderRadius: '0.75rem',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          style={{
-            padding: '0.75rem 1rem',
-            backgroundColor: '#0f172a',
-            fontSize: '0.75rem',
-            color: '#64748b',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
+      <div className="bg-slate-800 rounded-xl overflow-hidden">
+        <div className="px-4 py-3 bg-slate-900 text-xs text-slate-500 uppercase tracking-wide">
           Live Preview - Hover components to highlight
         </div>
-        <div style={{ padding: '1rem' }}>
+        <div className="p-4">
           {/* Mini App Preview */}
-          <div
-            style={{
-              backgroundColor: '#f8fafc',
-              borderRadius: '0.5rem',
-              overflow: 'hidden',
-              fontSize: '0.75rem',
-            }}
-          >
+          <div className="bg-slate-50 rounded-lg overflow-hidden text-xs">
             {/* Header */}
             <div
               onMouseEnter={() => setHoveredComponent('Header')}
               onMouseLeave={() => setHoveredComponent(null)}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0.5rem 0.75rem',
-                backgroundColor: hoveredComponent === 'Header' ? '#8b5cf622' : 'white',
-                borderBottom: '1px solid #e5e7eb',
-                transition: 'background 0.2s',
-                outline: hoveredComponent === 'Header' ? '2px solid #8b5cf6' : 'none',
-              }}
+              className={`flex justify-between items-center px-3 py-2 border-b border-gray-200 transition-colors ${
+                hoveredComponent === 'Header'
+                  ? `${colorClasses.violet.bg} outline outline-2 ${colorClasses.violet.border}`
+                  : 'bg-white'
+              }`}
             >
               {/* Logo */}
               <div
@@ -76,14 +51,11 @@ export default function CompositionDemo() {
                   e.stopPropagation();
                   setHoveredComponent('Header');
                 }}
-                style={{
-                  fontWeight: 'bold',
-                  color: '#3b82f6',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '0.25rem',
-                  backgroundColor: hoveredComponent === 'Logo' ? '#ec489922' : 'transparent',
-                  outline: hoveredComponent === 'Logo' ? '2px solid #ec4899' : 'none',
-                }}
+                className={`font-bold text-blue-500 px-2 py-1 rounded transition-colors ${
+                  hoveredComponent === 'Logo'
+                    ? `${colorClasses.pink.bg} outline outline-2 ${colorClasses.pink.border}`
+                    : ''
+                }`}
               >
                 ⚛️ MyApp
               </div>
@@ -97,14 +69,11 @@ export default function CompositionDemo() {
                   e.stopPropagation();
                   setHoveredComponent('Header');
                 }}
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '0.25rem',
-                  backgroundColor: hoveredComponent === 'Nav' ? '#f59e0b22' : 'transparent',
-                  outline: hoveredComponent === 'Nav' ? '2px solid #f59e0b' : 'none',
-                }}
+                className={`flex gap-2 px-2 py-1 rounded transition-colors ${
+                  hoveredComponent === 'Nav'
+                    ? `${colorClasses.amber.bg} outline outline-2 ${colorClasses.amber.border}`
+                    : ''
+                }`}
               >
                 {['Home', 'About', 'Contact'].map((text) => (
                   <span
@@ -117,13 +86,11 @@ export default function CompositionDemo() {
                       e.stopPropagation();
                       setHoveredComponent('Nav');
                     }}
-                    style={{
-                      color: '#4b5563',
-                      padding: '0.125rem 0.25rem',
-                      borderRadius: '0.125rem',
-                      backgroundColor: hoveredComponent === 'NavLink' ? '#22c55e22' : 'transparent',
-                      outline: hoveredComponent === 'NavLink' ? '1px solid #22c55e' : 'none',
-                    }}
+                    className={`text-gray-600 px-1 py-0.5 rounded transition-colors ${
+                      hoveredComponent === 'NavLink'
+                        ? `${colorClasses.emerald.bg} outline outline-1 ${colorClasses.emerald.border}`
+                        : ''
+                    }`}
                   >
                     {text}
                   </span>
@@ -134,40 +101,24 @@ export default function CompositionDemo() {
             <div
               onMouseEnter={() => setHoveredComponent('Main')}
               onMouseLeave={() => setHoveredComponent(null)}
-              style={{
-                padding: '1rem',
-                backgroundColor: hoveredComponent === 'Main' ? '#06b6d422' : 'white',
-                outline: hoveredComponent === 'Main' ? '2px solid #06b6d4' : 'none',
-                minHeight: '60px',
-              }}
+              className={`p-4 min-h-[60px] transition-colors ${
+                hoveredComponent === 'Main'
+                  ? `${colorClasses.cyan.bg} outline outline-2 ${colorClasses.cyan.border}`
+                  : 'bg-white'
+              }`}
             >
-              <div style={{ color: '#6b7280', textAlign: 'center' }}>Main content here...</div>
+              <div className="text-gray-500 text-center">Main content here...</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Component Tree */}
-      <div
-        style={{
-          backgroundColor: '#1e293b',
-          borderRadius: '0.75rem',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          style={{
-            padding: '0.75rem 1rem',
-            backgroundColor: '#0f172a',
-            fontSize: '0.75rem',
-            color: '#64748b',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
+      <div className="bg-slate-800 rounded-xl overflow-hidden">
+        <div className="px-4 py-3 bg-slate-900 text-xs text-slate-500 uppercase tracking-wide">
           Component Tree
         </div>
-        <div style={{ padding: '1rem', fontFamily: 'monospace', fontSize: '0.8rem' }}>
+        <div className="p-4 font-mono text-xs">
           <TreeNode
             name="App"
             info={componentInfo}
@@ -212,22 +163,15 @@ export default function CompositionDemo() {
 
         {/* Component Info */}
         {hoveredComponent && (
-          <div
-            style={{
-              padding: '0.75rem 1rem',
-              backgroundColor: '#0f172a',
-              borderTop: '1px solid #334155',
-              fontSize: '0.8rem',
-            }}
-          >
-            <span style={{ color: componentInfo[hoveredComponent]?.color, fontWeight: '600' }}>
+          <div className="px-4 py-3 bg-slate-900 border-t border-slate-700 text-xs">
+            <span
+              className={`${colorClasses[componentInfo[hoveredComponent]?.color]?.text} font-semibold`}
+            >
               {'<'}
               {hoveredComponent}
-              {'>'}
+              {' />'}
             </span>
-            <span style={{ color: '#94a3b8', marginLeft: '0.5rem' }}>
-              {componentInfo[hoveredComponent]?.desc}
-            </span>
+            <span className="text-slate-400 ml-2">{componentInfo[hoveredComponent]?.desc}</span>
           </div>
         )}
       </div>
@@ -237,50 +181,35 @@ export default function CompositionDemo() {
 
 function TreeNode({ name, info, hovered, setHovered, children, count }) {
   const isHovered = hovered === name;
-  const color = info[name]?.color || '#64748b';
+  const color = info[name]?.color || 'slate';
+  const colorClasses = {
+    blue: { bg: 'bg-blue-500/20', text: 'text-blue-500' },
+    violet: { bg: 'bg-violet-500/20', text: 'text-violet-500' },
+    pink: { bg: 'bg-pink-500/20', text: 'text-pink-500' },
+    amber: { bg: 'bg-amber-500/20', text: 'text-amber-500' },
+    emerald: { bg: 'bg-emerald-500/20', text: 'text-emerald-500' },
+    cyan: { bg: 'bg-cyan-500/20', text: 'text-cyan-500' },
+    slate: { bg: 'bg-slate-500/20', text: 'text-slate-500' },
+  };
+  const colors = colorClasses[color] || colorClasses.slate;
 
   return (
-    <div style={{ marginLeft: children ? 0 : '1rem' }}>
+    <div className={children ? '' : 'ml-4'}>
       <div
         onMouseEnter={() => setHovered(name)}
         onMouseLeave={() => setHovered(null)}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.25rem',
-          padding: '0.25rem 0.5rem',
-          borderRadius: '0.25rem',
-          backgroundColor: isHovered ? `${color}22` : 'transparent',
-          cursor: 'pointer',
-          transition: 'background 0.2s',
-        }}
+        className={`inline-flex items-center gap-1 px-2 py-1 rounded cursor-pointer transition-colors ${
+          isHovered ? colors.bg : ''
+        }`}
       >
-        <span style={{ color }}>{'<'}</span>
-        <span
-          style={{ color: isHovered ? color : '#e2e8f0', fontWeight: isHovered ? '600' : '400' }}
-        >
+        <span className={colors.text}>{'<'}</span>
+        <span className={isHovered ? `${colors.text} font-semibold` : 'text-slate-200 font-normal'}>
           {name}
         </span>
-        <span style={{ color }}>{' />'}</span>
-        {count && (
-          <span
-            style={{
-              fontSize: '0.7rem',
-              color: '#64748b',
-              marginLeft: '0.25rem',
-            }}
-          >
-            ×{count}
-          </span>
-        )}
+        <span className={colors.text}>{' />'}</span>
+        {count && <span className="text-xs text-slate-500 ml-1">×{count}</span>}
       </div>
-      {children && (
-        <div
-          style={{ marginLeft: '1.25rem', borderLeft: '1px solid #334155', paddingLeft: '0.75rem' }}
-        >
-          {children}
-        </div>
-      )}
+      {children && <div className="ml-5 border-l border-slate-700 pl-3">{children}</div>}
     </div>
   );
 }

@@ -98,9 +98,7 @@ export default function ProjectStructureExplorer() {
 
       <div
         className={`bg-slate-900 rounded-xl p-5 min-h-[150px] transition-colors ${
-          selected
-            ? `${colorClasses[selected.color].border} border`
-            : 'border-slate-700 border'
+          selected ? `${colorClasses[selected.color].border} border` : 'border-slate-700 border'
         }`}
       >
         {selected ? (

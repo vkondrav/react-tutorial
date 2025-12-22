@@ -15,9 +15,9 @@ export default function Lesson1_3() {
 
       <Section title="🤔 What is JSX?">
         <p className="leading-relaxed text-slate-400 mb-4">
-          <strong className="text-cyan-400">JSX</strong> (JavaScript XML) lets you write
-          HTML-like code inside JavaScript. It's not actually HTML - it gets transformed into
-          JavaScript function calls!
+          <strong className="text-cyan-400">JSX</strong> (JavaScript XML) lets you write HTML-like
+          code inside JavaScript. It's not actually HTML - it gets transformed into JavaScript
+          function calls!
         </p>
         <JSXTransformDemo />
       </Section>
@@ -32,8 +32,8 @@ export default function Lesson1_3() {
       <Section title="🔀 Embedding JavaScript">
         <p className="leading-relaxed text-slate-400 mb-6">
           Use curly braces{' '}
-          <code className="bg-slate-700 px-2 py-0.5 rounded text-amber-400">{'{}'}</code>{' '}
-          to embed any JavaScript expression in JSX:
+          <code className="bg-slate-700 px-2 py-0.5 rounded text-amber-400">{'{}'}</code> to embed
+          any JavaScript expression in JSX:
         </p>
         <EmbeddingDemo />
       </Section>

@@ -41,19 +41,10 @@ export default function EmbeddingDemo() {
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
         {expressions.map((expr, i) => (
-          <div
-            key={i}
-            className="bg-slate-900 p-4 rounded-lg border border-slate-700"
-          >
-            <div className="text-slate-500 text-xs mb-1 uppercase">
-              {expr.label}
-            </div>
-            <code className="text-amber-400 text-sm block mb-2">
-              {expr.code}
-            </code>
-            <div className="text-green-500 font-semibold text-sm">
-              → {expr.result}
-            </div>
+          <div key={i} className="bg-slate-900 p-4 rounded-lg border border-slate-700">
+            <div className="text-slate-500 text-xs mb-1 uppercase">{expr.label}</div>
+            <code className="text-amber-400 text-sm block mb-2">{expr.code}</code>
+            <div className="text-green-500 font-semibold text-sm">→ {expr.result}</div>
           </div>
         ))}
       </div>

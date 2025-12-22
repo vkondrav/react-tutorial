@@ -74,9 +74,7 @@ export default function FileFlowDemo() {
               >
                 {step.title}
               </button>
-              {i < steps.length - 1 && (
-                <span className="text-slate-600 px-1">→</span>
-              )}
+              {i < steps.length - 1 && <span className="text-slate-600 px-1">→</span>}
             </div>
           );
         })}

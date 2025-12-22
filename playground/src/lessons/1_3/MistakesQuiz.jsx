@@ -41,21 +41,13 @@ export default function MistakesQuiz() {
           onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: true }))}
           className="bg-slate-900 p-4 rounded-lg border border-slate-700 cursor-pointer hover:bg-slate-800 transition-colors"
         >
-          <div
-            className={`flex items-center justify-between ${
-              answers[q.id] ? 'mb-3' : ''
-            }`}
-          >
+          <div className={`flex items-center justify-between ${answers[q.id] ? 'mb-3' : ''}`}>
             <code className="text-red-400">{q.code}</code>
-            {!answers[q.id] && (
-              <span className="text-slate-500 text-xs">Click to reveal →</span>
-            )}
+            {!answers[q.id] && <span className="text-slate-500 text-xs">Click to reveal →</span>}
           </div>
           {answers[q.id] && (
             <div className="pt-3 border-t border-slate-700">
-              <div className="text-amber-400 text-sm mb-2">
-                ⚠️ {q.error}
-              </div>
+              <div className="text-amber-400 text-sm mb-2">⚠️ {q.error}</div>
               <code className="text-emerald-400">✓ {q.fix}</code>
             </div>
           )}

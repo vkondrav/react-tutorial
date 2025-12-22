@@ -74,24 +74,18 @@ export default function ComponentRulesDemo() {
   ];
 
   return (
-    <div style={{ marginTop: '1.5rem' }}>
+    <div className="mt-6">
       {/* Rule Buttons */}
-      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+      <div className="flex gap-3 flex-wrap mb-4">
         {rules.map((rule) => (
           <button
             key={rule.id}
             onClick={() => setActiveRule(activeRule === rule.id ? null : rule.id)}
-            style={{
-              padding: '0.75rem 1rem',
-              backgroundColor: activeRule === rule.id ? '#3b82f6' : '#1e293b',
-              border: `1px solid ${activeRule === rule.id ? '#3b82f6' : '#334155'}`,
-              borderRadius: '0.5rem',
-              color: '#f8fafc',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              transition: 'all 0.2s',
-            }}
+            className={`px-4 py-3 rounded-lg cursor-pointer text-sm font-medium transition-all ${
+              activeRule === rule.id
+                ? 'bg-blue-500 border border-blue-500 text-white'
+                : 'bg-slate-800 border border-slate-700 text-slate-50 hover:bg-slate-700'
+            }`}
           >
             {rule.emoji} {rule.title}
           </button>
@@ -107,15 +101,7 @@ export default function ComponentRulesDemo() {
       )}
 
       {!activeRule && (
-        <div
-          style={{
-            padding: '2rem',
-            backgroundColor: '#1e293b',
-            borderRadius: '0.75rem',
-            textAlign: 'center',
-            color: '#64748b',
-          }}
-        >
+        <div className="p-8 bg-slate-800 rounded-xl text-center text-slate-500">
           👆 Click a rule to see examples
         </div>
       )}
@@ -127,103 +113,60 @@ function RuleDetail({ rule, onClose }) {
   const [showCorrect, setShowCorrect] = useState(false);
 
   return (
-    <div
-      style={{
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-        animation: 'fadeIn 0.2s ease',
-      }}
-    >
+    <div className="bg-slate-800 rounded-xl overflow-hidden animate-fadeIn">
       {/* Header */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#0f172a',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <span style={{ color: '#f8fafc', fontWeight: '600' }}>
+      <div className="px-6 py-4 bg-slate-900 flex justify-between items-center">
+        <span className="text-slate-50 font-semibold">
           {rule.emoji} {rule.title}
         </span>
         <button
           onClick={onClose}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: '#64748b',
-            cursor: 'pointer',
-            fontSize: '1.25rem',
-          }}
+          className="bg-transparent border-none text-slate-500 cursor-pointer text-xl hover:text-slate-400"
         >
           ✕
         </button>
       </div>
 
       {/* Toggle */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #334155' }}>
+      <div className="flex border-b border-slate-700">
         <button
           onClick={() => setShowCorrect(false)}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: !showCorrect ? '#ef444422' : 'transparent',
-            border: 'none',
-            borderBottom: !showCorrect ? '2px solid #ef4444' : '2px solid transparent',
-            color: !showCorrect ? '#ef4444' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors ${
+            !showCorrect
+              ? 'bg-red-500/20 border-b-2 border-b-red-500 text-red-500'
+              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           ❌ Wrong
         </button>
         <button
           onClick={() => setShowCorrect(true)}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: showCorrect ? '#22c55e22' : 'transparent',
-            border: 'none',
-            borderBottom: showCorrect ? '2px solid #22c55e' : '2px solid transparent',
-            color: showCorrect ? '#22c55e' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors ${
+            showCorrect
+              ? 'bg-green-500/20 border-b-2 border-b-green-500 text-green-500'
+              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           ✅ Correct
         </button>
       </div>
 
       {/* Code */}
-      <div style={{ padding: '1.5rem' }}>
+      <div className="p-6">
         <pre
-          style={{
-            margin: 0,
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            overflow: 'auto',
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
-            border: `1px solid ${showCorrect ? '#22c55e44' : '#ef444444'}`,
-          }}
+          className={`m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed border ${
+            showCorrect ? 'border-green-500/30' : 'border-red-500/30'
+          }`}
         >
-          <code style={{ color: '#e2e8f0' }}>
+          <code className="text-slate-200">
             {showCorrect ? rule.correct.code : rule.wrong.code}
           </code>
         </pre>
 
         <div
-          style={{
-            marginTop: '1rem',
-            padding: '0.75rem 1rem',
-            backgroundColor: showCorrect ? '#22c55e22' : '#ef444422',
-            borderRadius: '0.5rem',
-            color: showCorrect ? '#22c55e' : '#ef4444',
-            fontSize: '0.875rem',
-          }}
+          className={`mt-4 px-4 py-3 rounded-lg text-sm ${
+            showCorrect ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'
+          }`}
         >
           {showCorrect ? `💡 ${rule.correct.note}` : `⚠️ ${rule.wrong.error}`}
         </div>

@@ -28,37 +28,18 @@ export default function ComponentBasicsDemo() {
   const current = syntaxExamples[syntax];
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Syntax Tabs */}
-      <div
-        style={{
-          display: 'flex',
-          borderBottom: '1px solid #334155',
-        }}
-      >
+      <div className="flex border-b border-slate-700">
         {Object.entries(syntaxExamples).map(([key, { label }]) => (
           <button
             key={key}
             onClick={() => setSyntax(key)}
-            style={{
-              flex: 1,
-              padding: '0.75rem 1rem',
-              backgroundColor: syntax === key ? '#334155' : 'transparent',
-              border: 'none',
-              borderBottom: syntax === key ? '2px solid #3b82f6' : '2px solid transparent',
-              color: syntax === key ? '#f8fafc' : '#94a3b8',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: syntax === key ? '600' : '400',
-              transition: 'all 0.2s',
-            }}
+            className={`flex-1 px-4 py-3 bg-transparent border-none cursor-pointer text-sm transition-all ${
+              syntax === key
+                ? 'bg-slate-700 border-b-2 border-b-blue-500 text-slate-50 font-semibold'
+                : 'border-b-2 border-b-transparent text-slate-400 font-normal'
+            }`}
           >
             {label}
           </button>
@@ -66,66 +47,23 @@ export default function ComponentBasicsDemo() {
       </div>
 
       {/* Code Display */}
-      <div style={{ padding: '1.5rem' }}>
-        <pre
-          style={{
-            margin: 0,
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            overflow: 'auto',
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
-          }}
-        >
-          <code style={{ color: '#e2e8f0' }}>{current.code}</code>
+      <div className="p-6">
+        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-slate-200">{current.code}</code>
         </pre>
 
-        <p
-          style={{
-            marginTop: '1rem',
-            marginBottom: 0,
-            color: '#94a3b8',
-            fontSize: '0.875rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}
-        >
-          <span style={{ color: '#22c55e' }}>💡</span>
+        <p className="mt-4 mb-0 text-slate-400 text-sm flex items-center gap-2">
+          <span className="text-green-500">💡</span>
           {current.description}
         </p>
       </div>
 
       {/* Live Preview */}
-      <div
-        style={{
-          padding: '1.5rem',
-          backgroundColor: '#0f172a',
-          borderTop: '1px solid #334155',
-        }}
-      >
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#64748b',
-            marginBottom: '0.75rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
-          Preview
-        </div>
-        <div
-          style={{
-            padding: '1rem',
-            backgroundColor: '#1e293b',
-            borderRadius: '0.5rem',
-            border: '1px dashed #334155',
-          }}
-        >
+      <div className="p-6 bg-slate-900 border-t border-slate-700">
+        <div className="text-xs text-slate-500 mb-3 uppercase tracking-wide">Preview</div>
+        <div className="p-4 bg-slate-800 rounded-lg border border-dashed border-slate-700">
           {/* This IS the Greeting component rendered! */}
-          <h1 style={{ margin: 0, fontSize: '1.5rem', color: '#f8fafc' }}>Hello, World!</h1>
+          <h1 className="m-0 text-2xl text-slate-50">Hello, World!</h1>
         </div>
       </div>
     </div>

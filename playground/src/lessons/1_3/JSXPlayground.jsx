@@ -61,9 +61,7 @@ export default function JSXPlayground() {
         <div className="p-4 bg-slate-800 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <div
-              className={`w-2.5 h-2.5 rounded-full ${
-                isOnline ? 'bg-green-500' : 'bg-slate-500'
-              }`}
+              className={`w-2.5 h-2.5 rounded-full ${isOnline ? 'bg-green-500' : 'bg-slate-500'}`}
             />
             <span className="font-semibold text-slate-50">
               {firstName} {lastName}
