@@ -26,7 +26,13 @@
     { "id": "6.2", "module": 6, "title": "Render Props Pattern", "status": "complete" },
     { "id": "6.3", "module": 6, "title": "Higher-Order Components", "status": "complete" },
     { "id": "6.4", "module": 6, "title": "Compound Components", "status": "complete" },
-    { "id": "6.5", "module": 6, "title": "Activity: Preserving Hidden State", "status": "current" }
+    {
+      "id": "6.5",
+      "module": 6,
+      "title": "Activity: Preserving Hidden State",
+      "status": "complete"
+    },
+    { "id": "7.1", "module": 7, "title": "Lifting State Up", "status": "current" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },
@@ -34,6 +40,7 @@
     { "id": 3, "title": "Hooks Deep Dive", "color": "#ec4899" },
     { "id": 4, "title": "Data Fetching", "color": "#f59e0b" },
     { "id": 5, "title": "Forms & User Input", "color": "#10b981" },
-    { "id": 6, "title": "Component Patterns", "color": "#06b6d4" }
+    { "id": 6, "title": "Component Patterns", "color": "#06b6d4" },
+    { "id": 7, "title": "State Management", "color": "#ef4444" }
   ]
 }

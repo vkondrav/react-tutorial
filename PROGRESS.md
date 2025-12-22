@@ -1,14 +1,14 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 9, 2025
+> Last Updated: December 10, 2025
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 6: Component Patterns |
-| **Current Lesson** | Lesson 6.5: Activity: Preserving Hidden State |
-| **Next Lesson** | Module 7: State Management |
+| **Current Module** | Module 7: State Management |
+| **Current Lesson** | Lesson 7.1: Lifting State Up |
+| **Next Lesson** | Lesson 7.2: useReducer for Complex State |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -154,16 +154,16 @@ import exampleCode from './examples/Example1.tsx?raw';
 | 6.2 | Render Props Pattern | ✅ Complete | Basics, children as function, mouse/fetch/list use cases, playground |
 | 6.3 | Higher-Order Components | ✅ Complete | HOC basics, withAuth/withLoading/withTheme, patterns & conventions, playground |
 | 6.4 | Compound Components | ✅ Complete | Compound basics, Context pattern, flexible API design, Tabs/Menu/Select playground |
-| 6.5 | Activity: Preserving Hidden State | 🔄 Current | State preservation problem, CSS hiding approach, React 19 Activity concept, playground |
+| 6.5 | Activity: Preserving Hidden State | ✅ Complete | State preservation problem, CSS hiding approach, React 19 Activity concept, playground |
 
-### Module 7: State Management ⬜ Not Started
+### Module 7: State Management ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 7.1 | Lifting State Up | ⬜ Pending |
-| 7.2 | useReducer for Complex State | ⬜ Pending |
-| 7.3 | Context + Reducer Pattern | ⬜ Pending |
-| 7.4 | When to Use External State Libraries | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 7.1 | Lifting State Up | 🔄 Current | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
+| 7.2 | useReducer for Complex State | ⬜ Pending | |
+| 7.3 | Context + Reducer Pattern | ⬜ Pending | |
+| 7.4 | When to Use External State Libraries | ⬜ Pending | |
 
 ### Module 8: Best Practices & Patterns ⬜ Not Started
 
@@ -646,6 +646,25 @@ Beginning the Component Patterns module.
   - Updated `config.json` to mark 6.3 complete and add 6.4 as current
   - Updated `App.jsx` to import and register Lesson6_4 component
 
+---
+
+### Session 21 - December 10, 2025
+**Goal:** Implement Lesson 7.1: Lifting State Up
+
+#### Completed:
+- ✅ **Implemented Lesson 7.1: Lifting State Up**
+  - `index.tsx` - Main lesson with 5 sections covering state lifting patterns
+  - `WhyLiftStateDemo.tsx` - Problem/solution tabs showing isolated vs lifted state (shopping cart example)
+  - `LiftingPatternDemo.tsx` - Temperature converter with 4-step explanation, data flow diagram
+  - `LiftingGuidelinesDemo.tsx` - Decision tree, comparison table, anti-patterns, quick reference
+  - `LiftingPlayground.tsx` - 3 interactive demos: shopping cart, form wizard, currency converter
+  - `examples/` folder with code snippets using `?raw` import pattern
+  - Updated `config.json` to mark 6.5 complete, add 7.1 as current, add Module 7
+  - Updated `App.jsx` to import and register Lesson7_1 component
+
+#### Module 7 Started! 🎯
+Beginning the State Management module.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -715,7 +734,12 @@ Beginning the Component Patterns module.
 - [x] Context pattern for implicit state sharing
 - [x] Static sub-component properties (Tabs.Tab, Menu.Item)
 - [x] Flexible API design with inversion of control
-- [ ] Activity pattern (preserving hidden state) - next
+- [x] Activity pattern (preserving hidden state)
+- [x] Lifting state up - sharing state between siblings via common parent
+- [x] Single source of truth pattern
+- [x] Controlled children pattern (props down, callbacks up)
+- [x] When to lift vs keep local vs use context
+- [ ] useReducer for complex state - next
 - [ ] ...more to come
 
 ---
