@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 7: State Management |
-| **Current Lesson** | Lesson 7.3: Context + Reducer Pattern |
-| **Next Lesson** | Lesson 7.4: When to Use External State Libraries |
+| **Current Lesson** | Lesson 7.4: When to Use External State Libraries |
+| **Next Lesson** | Lesson 8.1: File & Folder Structure |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -162,8 +162,8 @@ import exampleCode from './examples/Example1.tsx?raw';
 |--------|-------|--------|-------|
 | 7.1 | Lifting State Up | ✅ Complete | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
 | 7.2 | useReducer for Complex State | ✅ Complete | useState vs useReducer, reducer basics, action patterns, todo/cart/form demos |
-| 7.3 | Context + Reducer Pattern | 🔄 Current | Why combine, 6-step setup, separate contexts, custom providers, theme/todo/cart demos |
-| 7.4 | When to Use External State Libraries | ⬜ Pending | |
+| 7.3 | Context + Reducer Pattern | ✅ Complete | Why combine, 6-step setup, separate contexts, custom providers, theme/todo/cart demos |
+| 7.4 | When to Use External State Libraries | 🔄 Current | When built-in is enough, pain points, library overview (Zustand/Redux/Query/Jotai), decision flowchart |
 
 ### Module 8: Best Practices & Patterns ⬜ Not Started
 
@@ -697,6 +697,24 @@ Beginning the State Management module.
   - Updated `config.json` to mark 7.2 complete and add 7.3 as current
   - Updated `App.jsx` to import and register Lesson7_3 component
 
+---
+
+### Session 24 - December 10, 2025
+**Goal:** Implement Lesson 7.4: When to Use External State Libraries
+
+#### Completed:
+- ✅ **Implemented Lesson 7.4: When to Use External State Libraries**
+  - `index.tsx` - Main lesson with 5 sections covering state library decisions
+  - `WhenBuiltInDemo.tsx` - Scenarios grid showing when useState/useReducer/Context is enough, code examples
+  - `SignsYouNeedLibraryDemo.tsx` - 6 pain points (prop drilling, context hell, performance, server state, debugging, team scale) with expandable details
+  - `LibraryOverviewDemo.tsx` - Zustand, Redux Toolkit, TanStack Query, Jotai comparison with code examples, pros/cons
+  - `DecisionFrameworkDemo.tsx` - Interactive flowchart to choose the right state management approach
+  - Updated `config.json` to mark 7.3 complete and add 7.4 as current
+  - Updated `App.jsx` to import and register Lesson7_4 component
+
+#### Module 7 Complete! 🎉
+All 4 lessons in Module 7: State Management are now implemented.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -779,7 +797,8 @@ Beginning the State Management module.
 - [x] Separate contexts for state vs dispatch (performance)
 - [x] Custom provider components with named actions
 - [x] Selector hooks for specific state slices
-- [ ] When to use external state libraries - next
+- [x] When to use external state libraries (Zustand, Redux Toolkit, TanStack Query, Jotai)
+- [x] Decision framework for choosing state management approach
 - [ ] ...more to come
 
 ---
