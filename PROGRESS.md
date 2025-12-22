@@ -1,14 +1,14 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 6, 2024
+> Last Updated: December 6, 2025
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 2: Core Concepts |
-| **Current Lesson** | Lesson 2.1: Props |
-| **Next Lesson** | Lesson 2.1: Props - Passing Data to Components |
+| **Current Lesson** | Lesson 2.4: Conditional Rendering |
+| **Next Lesson** | Lesson 2.5: Lists & Keys |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -29,9 +29,9 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 2.1 | Props: Passing Data to Components | ✅ Complete | Basics, destructuring, defaults, children, playground |
-| 2.2 | State with useState Hook | ⬜ Pending |
-| 2.3 | Event Handling | ⬜ Pending |
-| 2.4 | Conditional Rendering | ⬜ Pending |
+| 2.2 | State with useState Hook | ✅ Complete |
+| 2.3 | Event Handling | ✅ Complete |
+| 2.4 | Conditional Rendering | ✅ Complete | Ternary, &&, early returns, pattern comparison, playground |
 | 2.5 | Lists & Keys | ⬜ Pending |
 
 ### Module 3: Hooks Deep Dive ⬜ Not Started
