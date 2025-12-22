@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 4: Data Fetching & REST APIs |
-| **Current Lesson** | Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE) |
-| **Next Lesson** | Lesson 4.4: Building a Custom useFetch Hook |
+| **Current Lesson** | Lesson 4.4: Building a Custom useFetch Hook |
+| **Next Lesson** | Lesson 5.1: Controlled Components |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -61,14 +61,14 @@
 | 3.4 | useMemo & useCallback: Performance | ✅ Complete | Render count, useMemo, useCallback, when to use, playground |
 | 3.5 | Custom Hooks: Reusable Logic | ✅ Complete | Hook basics, extracting logic, useToggle/useLocalStorage/useDebounce, playground |
 
-### Module 4: Data Fetching & REST APIs ⏳ In Progress
+### Module 4: Data Fetching & REST APIs ✅ Complete!
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 4.1 | Fetching Data with useEffect | ✅ Complete | Basic fetch pattern, dependencies, race conditions, AbortController, playground |
 | 4.2 | Loading, Error & Empty States | ✅ Complete | Spinner/skeleton/progress/shimmer, error types/inline/toast, empty states, composition, playground |
 | 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ✅ Complete | POST/PUT/PATCH/DELETE patterns, optimistic vs pessimistic updates, full CRUD playground |
-| 4.4 | Building a Custom useFetch Hook | ⬜ Pending | Cover both useEffect pattern AND React 19 `use` API with Suspense |
+| 4.4 | Building a Custom useFetch Hook | ✅ Complete | Why useFetch, step-by-step implementation, TypeScript generics, React 19 Suspense approach, playground |
 
 ### Module 5: Forms & User Input ⬜ Not Started
 
@@ -439,6 +439,26 @@ Beginning the Data Fetching & REST APIs module.
   - Updated `config.json` to mark 4.2 complete and add 4.3 as current
   - Updated `App.jsx` to import and register Lesson4_3 component
 
+---
+
+### Session 13 - December 9, 2025
+**Goal:** Implement Lesson 4.4: Building a Custom useFetch Hook
+
+#### Completed:
+- ✅ **Implemented Lesson 4.4: Building a Custom useFetch Hook**
+  - `index.tsx` - Main lesson with 7 sections covering custom data fetching hook
+  - `UseFetchBasicsDemo.tsx` - Before/after comparison showing why to extract fetch logic
+  - `BuildingUseFetchDemo.tsx` - Step-by-step implementation (state setup, fetch logic, cleanup, refetch)
+  - `GenericUseFetchDemo.tsx` - TypeScript generics for type-safe API responses (Users, Posts, Todos)
+  - `SuspenseApproachDemo.tsx` - React 19 `use()` hook + `<Suspense>` + ErrorBoundary pattern
+  - `UseFetchPlayground.tsx` - 4 interactive demos: User search, Photo gallery, Comments, Error simulation
+  - Updated `config.json` to mark 4.3 complete and add 4.4 as current
+  - Updated `App.jsx` to import and register Lesson4_4 component
+- 🐛 **Fixed Photo Gallery demo** - Changed image source from JSONPlaceholder's `via.placeholder.com` (often fails to load) to `picsum.photos` (reliable)
+
+#### Module 4 Complete! 🎉
+All 4 lessons in Module 4: Data Fetching & REST APIs are now implemented.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -471,7 +491,11 @@ Beginning the Data Fetching & REST APIs module.
 - [x] PUT vs PATCH for updates
 - [x] DELETE with confirmation
 - [x] Optimistic vs pessimistic updates
-- [ ] Custom useFetch hook - next
+- [x] Custom useFetch hook (useEffect pattern)
+- [x] TypeScript generics for type-safe hooks
+- [x] React 19 `use()` hook and Suspense for data fetching
+- [x] ErrorBoundary for handling rejected promises
+- [ ] Controlled components (forms) - next
 - [ ] ...more to come
 
 ---
@@ -480,11 +504,11 @@ Beginning the Data Fetching & REST APIs module.
 
 *Add any questions or notes here during learning:*
 
-- **Lesson 4.4 Plan:** Build `useFetch` hook covering both approaches:
-  1. Traditional `useEffect` pattern (works in all React versions)
-  2. React 19 `use` API with `<Suspense>` (modern, declarative approach)
-  - Compare trade-offs: manual loading state vs automatic Suspense integration
-  - Reference: https://react.dev/reference/react/use
+- **Module 4 Complete!** Built comprehensive useFetch hook covering both approaches:
+  1. Traditional `useEffect` pattern (works in all React versions) - production ready
+  2. React 19 `use` API with `<Suspense>` - declarative but requires new patterns
+  - Trade-offs discussed: manual loading state vs automatic Suspense integration
+  - Recommendation: Use useEffect pattern as default, consider libraries like TanStack Query for caching
 
 
 ---
