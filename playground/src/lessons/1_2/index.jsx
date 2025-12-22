@@ -1,5 +1,12 @@
 // Module 1, Lesson 2: Setting Up Your First React App
 
+import {
+  HiOutlineFolder,
+  HiOutlineLink,
+  HiOutlineLightningBolt,
+  HiOutlineCube,
+  HiOutlineClipboardCheck,
+} from 'react-icons/hi';
 import { LessonHeader, Section, TakeawayList } from '../components';
 import ProjectStructureExplorer from './ProjectStructureExplorer';
 import FileFlowDemo from './FileFlowDemo';
@@ -11,30 +18,65 @@ export default function Lesson1_2() {
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="2" title="Setting Up Your First React App" />
 
-      <Section title="📁 Project Structure">
-        <p className="leading-relaxed text-slate-400 mb-6">
-          We used <strong className="text-cyan-400">Vite</strong> to create this project. Vite is
-          the modern, lightning-fast way to build React apps.
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineFolder className="text-primary" size={20} />
+            Project Structure
+          </span>
+        }
+      >
+        <p className="leading-relaxed text-base-content/70 mb-6">
+          We used <strong className="text-primary">Vite</strong> to create this project. Vite is the
+          modern, lightning-fast way to build React apps.
         </p>
         <ProjectStructureExplorer />
       </Section>
 
-      <Section title="🔗 How Files Connect">
-        <p className="leading-relaxed text-slate-400 mb-6">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineLink className="text-primary" size={20} />
+            How Files Connect
+          </span>
+        }
+      >
+        <p className="leading-relaxed text-base-content/70 mb-6">
           React apps have a clear flow from HTML → JavaScript → Components.
         </p>
         <FileFlowDemo />
       </Section>
 
-      <Section title="🔥 Hot Module Replacement (HMR)">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineLightningBolt className="text-primary" size={20} />
+            Hot Module Replacement (HMR)
+          </span>
+        }
+      >
         <HMRDemo />
       </Section>
 
-      <Section title="📦 package.json Explained">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineCube className="text-primary" size={20} />
+            package.json Explained
+          </span>
+        }
+      >
         <PackageJsonExplorer />
       </Section>
 
-      <Section title="✅ Key Takeaways">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineClipboardCheck className="text-primary" size={20} />
+            Key Takeaways
+          </span>
+        }
+      >
         <TakeawayList
           items={[
             'Vite is the modern build tool for React (fast dev server, optimized builds)',

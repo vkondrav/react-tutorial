@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineArrowRight, HiOutlineCursorClick } from 'react-icons/hi';
 
 export default function FileFlowDemo() {
   const [activeStep, setActiveStep] = useState(null);
@@ -6,53 +7,57 @@ export default function FileFlowDemo() {
     {
       id: 1,
       title: 'index.html',
-      color: 'orange',
-      colorHex: '#f97316',
+      color: 'warning',
       content: 'Browser loads index.html with <div id="root">.',
     },
     {
       id: 2,
       title: 'main.jsx',
-      color: 'violet',
-      colorHex: '#8b5cf6',
+      color: 'secondary',
       content: 'React initializes and renders <App /> into #root.',
     },
     {
       id: 3,
       title: 'App.jsx',
-      color: 'blue',
-      colorHex: '#3b82f6',
+      color: 'primary',
       content: 'Your components execute and return JSX.',
     },
     {
       id: 4,
-      title: '🎉 Done!',
-      color: 'emerald',
-      colorHex: '#22c55e',
+      title: 'Done!',
+      color: 'success',
       content: 'UI is rendered. State changes update efficiently.',
     },
   ];
 
   const colorClasses = {
-    orange: {
-      bg: 'bg-orange-500',
-      border: 'border-orange-500',
-      text: 'text-orange-500',
+    warning: {
+      bg: 'bg-warning',
+      border: 'border-warning',
+      text: 'text-warning',
+      btnActive: 'btn-warning',
+      btnOutline: 'btn-outline btn-warning',
     },
-    violet: {
-      bg: 'bg-violet-500',
-      border: 'border-violet-500',
-      text: 'text-violet-500',
+    secondary: {
+      bg: 'bg-secondary',
+      border: 'border-secondary',
+      text: 'text-secondary',
+      btnActive: 'btn-secondary',
+      btnOutline: 'btn-outline btn-secondary',
     },
-    blue: {
-      bg: 'bg-blue-500',
-      border: 'border-blue-500',
-      text: 'text-blue-500',
+    primary: {
+      bg: 'bg-primary',
+      border: 'border-primary',
+      text: 'text-primary',
+      btnActive: 'btn-primary',
+      btnOutline: 'btn-outline btn-primary',
     },
-    emerald: {
-      bg: 'bg-emerald-500',
-      border: 'border-emerald-500',
-      text: 'text-emerald-500',
+    success: {
+      bg: 'bg-success',
+      border: 'border-success',
+      text: 'text-success',
+      btnActive: 'btn-success',
+      btnOutline: 'btn-outline btn-success',
     },
   };
 
@@ -66,25 +71,26 @@ export default function FileFlowDemo() {
             <div key={step.id} className="flex items-center flex-1">
               <button
                 onClick={() => setActiveStep(isActive ? null : step.id)}
-                className={`flex-1 px-3 py-3 rounded-lg cursor-pointer font-semibold text-sm transition-colors border-2 ${
-                  isActive
-                    ? `${colors.bg} ${colors.border} text-white`
-                    : `bg-slate-900 ${colors.border} ${colors.text} hover:bg-slate-800`
-                }`}
+                className={`btn flex-1 ${isActive ? colors.btnActive : colors.btnOutline}`}
               >
                 {step.title}
               </button>
-              {i < steps.length - 1 && <span className="text-slate-600 px-1">→</span>}
+              {i < steps.length - 1 && (
+                <HiOutlineArrowRight className="text-base-content/30 px-1" size={20} />
+              )}
             </div>
           );
         })}
       </div>
 
-      <div className="bg-slate-900 p-4 rounded-lg min-h-[60px]">
+      <div className="card bg-base-200 p-4 min-h-[60px]">
         {activeStep ? (
-          <p className="text-slate-400 m-0">{steps[activeStep - 1].content}</p>
+          <p className="text-base-content m-0">{steps[activeStep - 1].content}</p>
         ) : (
-          <p className="text-slate-500 m-0">👆 Click a step</p>
+          <p className="text-base-content/50 m-0 flex items-center gap-2">
+            <HiOutlineCursorClick size={18} />
+            <span>Click a step</span>
+          </p>
         )}
       </div>
     </div>
