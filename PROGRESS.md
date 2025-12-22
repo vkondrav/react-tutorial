@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 4: Data Fetching & REST APIs |
-| **Current Lesson** | Lesson 4.2: Loading, Error & Empty States |
-| **Next Lesson** | Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE) |
+| **Current Lesson** | Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE) |
+| **Next Lesson** | Lesson 4.4: Building a Custom useFetch Hook |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -67,7 +67,7 @@
 |--------|-------|--------|-------|
 | 4.1 | Fetching Data with useEffect | ✅ Complete | Basic fetch pattern, dependencies, race conditions, AbortController, playground |
 | 4.2 | Loading, Error & Empty States | ✅ Complete | Spinner/skeleton/progress/shimmer, error types/inline/toast, empty states, composition, playground |
-| 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ⬜ Pending |
+| 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ✅ Complete | POST/PUT/PATCH/DELETE patterns, optimistic vs pessimistic updates, full CRUD playground |
 | 4.4 | Building a Custom useFetch Hook | ⬜ Pending | Cover both useEffect pattern AND React 19 `use` API with Suspense |
 
 ### Module 5: Forms & User Input ⬜ Not Started
@@ -423,6 +423,22 @@ Beginning the Data Fetching & REST APIs module.
   - Updated `config.json` to mark 4.1 complete and add 4.2 as current
   - Updated `App.jsx` to import and register Lesson4_2 component
 
+---
+
+### Session 12 - December 9, 2025
+**Goal:** Implement Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE)
+
+#### Completed:
+- ✅ **Implemented Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE)**
+  - `index.tsx` - Main lesson with 6 sections covering CRUD operations
+  - `CreateDataDemo.tsx` - POST request pattern with form, loading states, success/error feedback
+  - `UpdateDataDemo.tsx` - PUT vs PATCH comparison with inline editing, server response display
+  - `DeleteDataDemo.tsx` - DELETE with confirmation dialog, best practices
+  - `OptimisticUpdatesDemo.tsx` - Side-by-side comparison of optimistic vs pessimistic updates with error simulation
+  - `CrudPlayground.tsx` - Full CRUD todo app with add, edit, toggle, delete, optimistic updates
+  - Updated `config.json` to mark 4.2 complete and add 4.3 as current
+  - Updated `App.jsx` to import and register Lesson4_3 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -451,7 +467,11 @@ Beginning the Data Fetching & REST APIs module.
 - [x] Error states (types, inline, toast)
 - [x] Empty states (no data, no results, first-time, filtered)
 - [x] State composition pattern (loading → error → empty → data)
-- [ ] Creating & updating data (POST/PUT/DELETE) - next
+- [x] POST requests to create data
+- [x] PUT vs PATCH for updates
+- [x] DELETE with confirmation
+- [x] Optimistic vs pessimistic updates
+- [ ] Custom useFetch hook - next
 - [ ] ...more to come
 
 ---

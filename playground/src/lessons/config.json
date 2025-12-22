@@ -16,7 +16,8 @@
     { "id": "3.4", "module": 3, "title": "useMemo & useCallback", "status": "complete" },
     { "id": "3.5", "module": 3, "title": "Custom Hooks", "status": "complete" },
     { "id": "4.1", "module": 4, "title": "Fetching Data with useEffect", "status": "complete" },
-    { "id": "4.2", "module": 4, "title": "Loading, Error & Empty States", "status": "current" }
+    { "id": "4.2", "module": 4, "title": "Loading, Error & Empty States", "status": "complete" },
+    { "id": "4.3", "module": 4, "title": "Creating & Updating Data", "status": "current" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },
