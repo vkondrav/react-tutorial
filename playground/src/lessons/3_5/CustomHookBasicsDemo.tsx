@@ -4,6 +4,8 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiMinus } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useCounterCode from './examples/UseCounterHook.tsx?raw';
 
 // ============================================
 // Types
@@ -75,29 +77,7 @@ export default function CustomHookBasicsDemo(): React.ReactElement {
       </div>
 
       {/* The hook code */}
-      <div className="bg-base-300 rounded-lg p-4">
-        <div className="text-xs font-semibold text-primary mb-2">The Custom Hook (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`interface UseCounterReturn {
-  count: number;
-  increment: () => void;
-  decrement: () => void;
-  reset: () => void;
-}
-
-function useCounter(initialValue: number = 0, step: number = 1): UseCounterReturn {
-  const [count, setCount] = useState(initialValue);
-
-  const increment = () => setCount(c => c + step);
-  const decrement = () => setCount(c => c - step);
-  const reset = () => setCount(initialValue);
-
-  return { count, increment, decrement, reset };
-}`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="The Custom Hook (TypeScript)" language="tsx" code={useCounterCode} />
     </div>
   );
 }

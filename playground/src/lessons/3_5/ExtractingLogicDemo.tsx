@@ -4,6 +4,10 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineLightBulb, HiCheck, HiX } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import beforeExtractionCode from './examples/BeforeExtraction.tsx?raw';
+import afterExtractionHookCode from './examples/AfterExtractionHook.tsx?raw';
+import afterExtractionUsageCode from './examples/AfterExtractionUsage.tsx?raw';
 
 // ============================================
 // Types
@@ -81,37 +85,8 @@ export default function ExtractingLogicDemo(): React.ReactElement {
 
 function BeforeCode(): React.ReactElement {
   return (
-    <div className="card bg-error/10 border border-error/30 p-4">
-      <div className="text-xs font-semibold text-error mb-2">Before: Logic in Component</div>
-      <pre className="font-mono text-xs overflow-x-auto">
-        <code>
-          {`interface WindowSize {
-  width: number;
-  height: number;
-}
-
-function MyComponent(): React.ReactElement {
-  const [size, setSize] = useState<WindowSize>({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // 20+ lines just for window size!
-  return <div>Width: {size.width}</div>;
-}`}
-        </code>
-      </pre>
+    <div>
+      <CodeSnippet title="Before: Logic in Component" language="tsx" code={beforeExtractionCode} />
       <p className="text-xs text-error/70 mt-2">
         Problem: This logic would be duplicated in every component that needs window size.
       </p>
@@ -122,53 +97,13 @@ function MyComponent(): React.ReactElement {
 function AfterCode(): React.ReactElement {
   return (
     <div className="space-y-4">
-      <div className="card bg-success/10 border border-success/30 p-4">
-        <div className="text-xs font-semibold text-success mb-2">
-          After: Custom Hook (TypeScript)
-        </div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`interface WindowSize {
-  width: number;
-  height: number;
-}
-
-function useWindowSize(): WindowSize {
-  const [size, setSize] = useState<WindowSize>({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useEffect(() => {
-    const handleResize = () => setSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return size;
-}`}
-          </code>
-        </pre>
-      </div>
-      <div className="card bg-primary/10 border border-primary/30 p-4">
-        <div className="text-xs font-semibold text-primary mb-2">Usage: Clean & Simple</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`function MyComponent(): React.ReactElement {
-  const { width, height } = useWindowSize();
-  return <div>Width: {width}</div>;
-}
-
-// Reuse anywhere!
-function AnotherComponent(): React.ReactElement {
-  const { width } = useWindowSize();
-  return width < 768 ? <MobileNav /> : <DesktopNav />;
-}`}
-          </code>
-        </pre>
+      <CodeSnippet
+        title="After: Custom Hook (TypeScript)"
+        language="tsx"
+        code={afterExtractionHookCode}
+      />
+      <div>
+        <CodeSnippet title="Usage: Clean & Simple" language="tsx" code={afterExtractionUsageCode} />
         <p className="text-xs text-primary/70 mt-2">
           Benefit: Write once, use everywhere. Components stay focused on rendering.
         </p>

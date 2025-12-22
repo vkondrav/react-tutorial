@@ -11,6 +11,11 @@ import {
   HiOutlineClipboard,
   HiCheck,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useOnlineStatusUsageCode from './examples/UseOnlineStatusUsage.tsx?raw';
+import useIntervalUsageCode from './examples/UseIntervalUsage.tsx?raw';
+import useCopyToClipboardUsageCode from './examples/UseCopyToClipboardUsage.tsx?raw';
+import useHoverUsageCode from './examples/UseHoverUsage.tsx?raw';
 
 // ============================================
 // Types
@@ -164,21 +169,7 @@ function OnlineStatusDemo(): React.ReactElement {
         )}
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`function useOnlineStatus(): boolean {
-  const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
-  // ... event listeners
-  return isOnline;
-}
-
-const isOnline: boolean = useOnlineStatus();
-return isOnline ? <App /> : <OfflineMessage />;`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Usage (TypeScript)" language="tsx" code={useOnlineStatusUsageCode} />
     </div>
   );
 }
@@ -238,23 +229,7 @@ function IntervalDemo(): React.ReactElement {
         </button>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`// delay: number | null - pass null to pause
-function useInterval(callback: () => void, delay: number | null): void {
-  useEffect(() => {
-    if (delay === null) return;
-    const id = setInterval(callback, delay);
-    return () => clearInterval(id);
-  }, [callback, delay]);
-}
-
-useInterval(() => setCount(c => c + 1), isRunning ? 1000 : null);`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Usage (TypeScript)" language="tsx" code={useIntervalUsageCode} />
     </div>
   );
 }
@@ -298,23 +273,7 @@ function ClipboardDemo(): React.ReactElement {
 
       {copiedText && <div className="text-center text-sm text-success">Copied to clipboard!</div>}
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`interface UseCopyReturn {
-  copiedText: string | null;
-  copy: (text: string) => Promise<boolean>;
-  reset: () => void;
-}
-
-const { copiedText, copy }: UseCopyReturn = useCopyToClipboard();
-<button onClick={() => copy(text)}>
-  {copiedText === text ? 'Copied!' : 'Copy'}
-</button>`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Usage (TypeScript)" language="tsx" code={useCopyToClipboardUsageCode} />
     </div>
   );
 }
@@ -363,22 +322,7 @@ function HoverDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`interface HoverBind {
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-}
-
-const [isHovered, bind]: [boolean, HoverBind] = useHover();
-<div {...bind} className={isHovered ? 'active' : ''}>
-  {isHovered ? 'Hovering!' : 'Hover me'}
-</div>`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Usage (TypeScript)" language="tsx" code={useHoverUsageCode} />
     </div>
   );
 }

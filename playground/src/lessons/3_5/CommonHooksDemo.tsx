@@ -4,6 +4,10 @@
 
 import { useState, useEffect, useCallback, type ChangeEvent } from 'react';
 import { HiOutlineLightBulb, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useToggleCode from './examples/UseToggleHook.tsx?raw';
+import useLocalStorageUsageCode from './examples/UseLocalStorageUsage.tsx?raw';
+import useDebounceCode from './examples/UseDebounceHook.tsx?raw';
 
 // ============================================
 // Types
@@ -150,26 +154,7 @@ function ToggleDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Hook Code (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`interface ToggleActions {
-  toggle: () => void;
-  setTrue: () => void;
-  setFalse: () => void;
-}
-
-function useToggle(initialValue: boolean = false): [boolean, ToggleActions] {
-  const [value, setValue] = useState(initialValue);
-  const toggle = useCallback(() => setValue(v => !v), []);
-  const setTrue = useCallback(() => setValue(true), []);
-  const setFalse = useCallback(() => setValue(false), []);
-  return [value, { toggle, setTrue, setFalse }];
-}`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Hook Code (TypeScript)" language="tsx" code={useToggleCode} />
     </div>
   );
 }
@@ -218,17 +203,7 @@ function LocalStorageDemo(): React.ReactElement {
         </div>
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Usage (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`// Generic hook - type is inferred from initial value
-const [name, setName] = useLocalStorage<string>('user-name', '');
-const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
-const [count, setCount] = useLocalStorage<number>('counter', 0);`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Usage (TypeScript)" language="tsx" code={useLocalStorageUsageCode} />
     </div>
   );
 }
@@ -294,21 +269,7 @@ function DebounceDemo(): React.ReactElement {
         )}
       </div>
 
-      <div className="bg-base-300 rounded-lg p-3">
-        <div className="text-xs font-semibold text-secondary mb-2">Hook Code (TypeScript)</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            {`function useDebounce<T>(value: T, delay: number = 500): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-  return debouncedValue;
-}`}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet title="Hook Code (TypeScript)" language="tsx" code={useDebounceCode} />
     </div>
   );
 }
