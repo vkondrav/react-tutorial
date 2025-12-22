@@ -12,6 +12,8 @@ import {
   HiOutlineUser,
 } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import flexibleCode from './examples/FlexibleLayouts.tsx?raw';
+import propsVsCompoundCode from './examples/PropsVsCompound.tsx?raw';
 
 // -------------------------------------------
 // Card Component - Flexible Compound Pattern
@@ -101,66 +103,6 @@ Card.Footer = CardFooter;
 // -------------------------------------------
 // Code Examples
 // -------------------------------------------
-
-const flexibleCode = `// Same components, completely different layouts!
-
-// Layout 1: Image at top
-<Card>
-  <Card.Image src="..." alt="..." />
-  <Card.Body>Content</Card.Body>
-  <Card.Footer>Actions</Card.Footer>
-</Card>
-
-// Layout 2: Header + Body only
-<Card variant="bordered">
-  <Card.Header>Title</Card.Header>
-  <Card.Body>Content</Card.Body>
-</Card>
-
-// Layout 3: Custom order with extra elements
-<Card variant="elevated">
-  <Card.Header>
-    <CustomTitle />
-    <Badge>New</Badge>
-  </Card.Header>
-  <Card.Image src="..." alt="..." />
-  <Card.Body>
-    <CustomContent />
-  </Card.Body>
-  <Card.Footer>
-    <PrimaryButton />
-    <SecondaryButton />
-  </Card.Footer>
-</Card>`;
-
-const propsVsCompoundCode = `// ❌ Props-based: Rigid, limited flexibility
-<Card
-  title="My Card"
-  subtitle="Description"
-  image="/photo.jpg"
-  actions={[
-    { label: 'Save', onClick: handleSave },
-    { label: 'Cancel', onClick: handleCancel }
-  ]}
-  footer="Footer text"
-  showImage={true}
-  imagePosition="top"
-/>
-
-// ✅ Compound: Full control, any structure
-<Card>
-  <Card.Image src="/photo.jpg" />
-  <Card.Body>
-    <h3>My Card</h3>
-    <p>Description</p>
-    {/* Add anything you want! */}
-    <MyCustomComponent />
-  </Card.Body>
-  <Card.Footer>
-    <button onClick={handleSave}>Save</button>
-    <button onClick={handleCancel}>Cancel</button>
-  </Card.Footer>
-</Card>`;
 
 export default function FlexibleAPIDemo(): React.ReactElement {
   const [activeLayout, setActiveLayout] = useState<1 | 2 | 3>(1);

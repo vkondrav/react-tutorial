@@ -5,6 +5,9 @@
 import { useState, createContext, useContext, ReactNode } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import contextCode from './examples/CreateContext.tsx?raw';
+import parentCode from './examples/ParentComponent.tsx?raw';
+import childCode from './examples/ChildComponents.tsx?raw';
 
 // -------------------------------------------
 // Accordion Example - Complete Implementation
@@ -116,73 +119,6 @@ Accordion.Content = AccordionContent;
 // -------------------------------------------
 // Code Examples
 // -------------------------------------------
-
-const contextCode = `// 1. Create the context type
-interface AccordionContextType {
-  openItems: Set<string>;
-  toggleItem: (id: string) => void;
-  allowMultiple: boolean;
-}
-
-// 2. Create context with null default
-const AccordionContext = createContext<AccordionContextType | null>(null);
-
-// 3. Create a safe hook with error handling
-function useAccordionContext() {
-  const context = useContext(AccordionContext);
-  if (!context) {
-    throw new Error(
-      'Accordion components must be used within <Accordion>'
-    );
-  }
-  return context;
-}`;
-
-const parentCode = `// Parent manages state and provides context
-function Accordion({ children, allowMultiple = false }: Props) {
-  const [openItems, setOpenItems] = useState<Set<string>>(new Set());
-
-  const toggleItem = (id: string) => {
-    setOpenItems((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        if (!allowMultiple) next.clear();  // Close others
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
-  return (
-    <AccordionContext.Provider value={{ openItems, toggleItem, allowMultiple }}>
-      <div>{children}</div>
-    </AccordionContext.Provider>
-  );
-}`;
-
-const childCode = `// Children consume context - no props needed!
-function AccordionTrigger({ id, children }: Props) {
-  // Context gives us everything we need
-  const { openItems, toggleItem } = useAccordionContext();
-  const isOpen = openItems.has(id);
-
-  return (
-    <button onClick={() => toggleItem(id)}>
-      {children}
-      {isOpen ? <ChevronDown /> : <ChevronRight />}
-    </button>
-  );
-}
-
-function AccordionContent({ id, children }: Props) {
-  const { openItems } = useAccordionContext();
-  
-  // Only render if this item is open
-  if (!openItems.has(id)) return null;
-  return <div>{children}</div>;
-}`;
 
 export default function ContextPatternDemo(): React.ReactElement {
   const [showCode, setShowCode] = useState<'context' | 'parent' | 'child' | null>(null);

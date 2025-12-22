@@ -5,6 +5,8 @@
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import traditionalCode from './examples/TraditionalApproach.tsx?raw';
+import compoundCode from './examples/CompoundApproach.tsx?raw';
 
 // -------------------------------------------
 // Traditional Props Approach (The Problem)
@@ -45,21 +47,6 @@ function TraditionalTabs({ tabs }: TraditionalTabsProps) {
     </div>
   );
 }
-
-const traditionalCode = `// ❌ Traditional approach: config object
-<Tabs
-  tabs={[
-    { id: 'home', label: 'Home', content: <HomePanel /> },
-    { id: 'profile', label: 'Profile', content: <ProfilePanel /> },
-    { id: 'settings', label: 'Settings', content: <SettingsPanel />, disabled: true }
-  ]}
-/>
-
-// Problems:
-// 1. Complex, nested configuration
-// 2. Hard to add custom rendering
-// 3. Limited flexibility in layout
-// 4. JSX mixed with config objects`;
 
 // -------------------------------------------
 // Compound Components Approach (The Solution)
@@ -149,32 +136,6 @@ function TabPanel({ id, children }: TabPanelProps) {
 Tabs.List = TabList;
 Tabs.Tab = Tab;
 Tabs.Panel = TabPanel;
-
-const compoundCode = `// ✅ Compound components approach
-<Tabs defaultTab="home">
-  <Tabs.List>
-    <Tabs.Tab id="home">🏠 Home</Tabs.Tab>
-    <Tabs.Tab id="profile">👤 Profile</Tabs.Tab>
-    <Tabs.Tab id="settings" disabled>⚙️ Settings</Tabs.Tab>
-  </Tabs.List>
-
-  <Tabs.Panel id="home">
-    <h3>Welcome Home!</h3>
-    <p>This is your dashboard.</p>
-  </Tabs.Panel>
-  <Tabs.Panel id="profile">
-    <ProfileForm />
-  </Tabs.Panel>
-  <Tabs.Panel id="settings">
-    <SettingsPanel />
-  </Tabs.Panel>
-</Tabs>
-
-// Benefits:
-// 1. Natural JSX structure
-// 2. Full control over rendering
-// 3. Easy to add icons, badges, etc.
-// 4. Type-safe and discoverable API`;
 
 export default function CompoundBasicsDemo(): React.ReactElement {
   const [showCode, setShowCode] = useState(false);
