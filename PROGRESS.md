@@ -198,6 +198,13 @@
   - `DefaultPropsDemo.jsx` - daisyUI `card`, `btn`, `checkbox` components, semantic colors
   - `ChildrenDemo.jsx` - daisyUI `card`, `input` components, semantic colors
   - `PropsPlayground.jsx` - daisyUI `card`, `input`, `btn`, `badge`, `checkbox` components, `HiX`, `HiOutlineCheckCircle`, `HiOutlineXCircle` icons
+- ✅ **Refactored Lesson 2.2 to use daisyUI + react-icons:**
+  - `index.jsx` - Replaced emojis with icons (`HiOutlineCursorClick`, `HiOutlineSwitchHorizontal`, `HiOutlineCube`, `HiOutlineRefresh`, `HiOutlineBeaker`, `HiOutlineClipboardCheck`)
+  - `StateBasicsDemo.jsx` - daisyUI `card`, `btn` components, `HiMinus`, `HiPlus`, `HiChevronDown`, `HiChevronRight`, `HiOutlineLightBulb` icons
+  - `StateVsPropsDemo.jsx` - daisyUI `card` component, `HiOutlineKey` icon, semantic colors for table
+  - `MultipleStateDemo.jsx` - daisyUI `card`, `input`, `checkbox` components, `HiOutlineLightBulb` icon
+  - `StateUpdatesDemo.jsx` - daisyUI `card`, `btn` components, `HiX`, `HiCheck`, `HiOutlineRefresh`, `HiOutlineArrowRight` icons
+  - `StatePlayground.jsx` - daisyUI `card`, `input`, `btn`, `checkbox` components, `HiOutlineDocumentText`, `HiX` icons, gradient header
 - 📝 **Established "Icons vs Emojis" rule in STARTING_POINT.md:**
   - Use react-icons for all UI elements
   - Emojis OK only in code examples that users are learning from
@@ -226,7 +233,7 @@
 | Lesson 1.3 | ✅ Complete | All 7 files converted (index, JSXTransformDemo, DifferencesExplorer, EmbeddingDemo, JSXRulesDemo, MistakesQuiz, JSXPlayground) |
 | Lesson 1.4 | ✅ Complete | All 5 files converted (index, ComponentBasicsDemo, ComponentRulesDemo, ComponentBuilder, CompositionDemo) |
 | Lesson 2.1 | ✅ Complete | All 6 files converted (index, PropsBasicsDemo, DestructuringDemo, DefaultPropsDemo, ChildrenDemo, PropsPlayground) |
-| Lesson 2.2 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.2 | ✅ Complete | All 6 files converted (index, StateBasicsDemo, StateVsPropsDemo, MultipleStateDemo, StateUpdatesDemo, StatePlayground) |
 | Lesson 2.3 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.4 | ⬜ Pending | Still using Tailwind-only |
 | Shared components | ✅ Complete | All 4 components converted to daisyUI + react-icons | 
