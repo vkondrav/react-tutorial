@@ -1,4 +1,8 @@
 dist
+dist-ssr
+dist-server
 node_modules
 *.md
+*.html
+public
 

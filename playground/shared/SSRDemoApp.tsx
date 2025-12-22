@@ -45,11 +45,10 @@ export function SSRDemoApp({ initialData }: SSRDemoAppProps): React.ReactElement
 
   // This effect only runs on the client after hydration
   useEffect(() => {
-    setTimeout(() => {
+    queueMicrotask(() => {
       setIsHydrated(true);
-    }, 0);
+    });
 
-    // Update the status indicator
     const indicator = document.getElementById('ssr-status');
     if (indicator) {
       indicator.textContent = '✅ Hydrated';
@@ -87,9 +86,7 @@ export function SSRDemoApp({ initialData }: SSRDemoAppProps): React.ReactElement
         >
           {initialData.title}
         </h1>
-        <p style={{ color: '#9ca3af', fontSize: '14px' }}>
-          Server time: {initialData.serverTime}
-        </p>
+        <p style={{ color: '#9ca3af', fontSize: '14px' }}>Server time: {initialData.serverTime}</p>
       </header>
 
       {/* User Card */}
@@ -231,4 +228,3 @@ export function SSRDemoApp({ initialData }: SSRDemoAppProps): React.ReactElement
     </div>
   );
 }
-

@@ -46,4 +46,3 @@ app.listen(PORT, () => {
   console.log(`\n🚀 SSR Demo Server running at http://localhost:${PORT}/ssr-demo`);
   console.log(`   Health check: http://localhost:${PORT}/ssr-demo/health\n`);
 });
-

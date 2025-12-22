@@ -38,7 +38,7 @@ export function createHtmlTemplate({ appHtml, initialData, title }: TemplateOpti
     .replace('{{TITLE}}', escapeHtml(title))
     .replace('{{APP_HTML}}', appHtml)
     .replace('"__INITIAL_DATA__"', serializedData)
-    .replace('__SSR_TIME__', new Date().toISOString());
+    .replace('"__SSR_TIME__"', `"${new Date().toISOString()}"`);
 }
 
 /**

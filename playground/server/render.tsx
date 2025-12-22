@@ -89,4 +89,3 @@ async function fetchDataOnServer(): Promise<PageData> {
     serverTime: new Date().toISOString(),
   };
 }
-
