@@ -4,8 +4,11 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineExclamationCircle, HiOutlineTrash } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import timerCleanupExample from './examples/TimerCleanupExample.tsx?raw';
+import keyboardCleanupExample from './examples/KeyboardCleanupExample.tsx?raw';
 
-export default function CleanupDemo() {
+export default function CleanupDemo(): React.ReactElement {
   const [showTimer, setShowTimer] = useState(false);
   const [showListener, setShowListener] = useState(false);
 
@@ -38,16 +41,8 @@ export default function CleanupDemo() {
 
           {showTimer && <TimerWithCleanup />}
 
-          <div className="mt-4 bg-base-300 p-3 rounded-lg font-mono text-xs overflow-x-auto">
-            <pre className="text-base-content/80">{`useEffect(() => {
-  const id = setInterval(() => {
-    setSeconds(s => s + 1);
-  }, 1000);
-  
-  return () => {
-    clearInterval(id); // Cleanup!
-  };
-}, []);`}</pre>
+          <div className="mt-4">
+            <CodeSnippet code={timerCleanupExample} language="tsx" showCopy={false} />
           </div>
         </div>
 
@@ -70,17 +65,8 @@ export default function CleanupDemo() {
 
           {showListener && <KeyboardListenerDemo />}
 
-          <div className="mt-4 bg-base-300 p-3 rounded-lg font-mono text-xs overflow-x-auto">
-            <pre className="text-base-content/80">{`useEffect(() => {
-  const handler = (e) => {
-    setLastKey(e.key);
-  };
-  window.addEventListener('keydown', handler);
-  
-  return () => {
-    window.removeEventListener('keydown', handler);
-  };
-}, []);`}</pre>
+          <div className="mt-4">
+            <CodeSnippet code={keyboardCleanupExample} language="tsx" showCopy={false} />
           </div>
         </div>
       </div>
@@ -129,8 +115,11 @@ export default function CleanupDemo() {
   );
 }
 
+// ============================================
 // Timer component with proper cleanup
-function TimerWithCleanup() {
+// ============================================
+
+function TimerWithCleanup(): React.ReactElement {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -155,13 +144,16 @@ function TimerWithCleanup() {
   );
 }
 
+// ============================================
 // Keyboard listener component with proper cleanup
-function KeyboardListenerDemo() {
-  const [lastKey, setLastKey] = useState(null);
+// ============================================
+
+function KeyboardListenerDemo(): React.ReactElement {
+  const [lastKey, setLastKey] = useState<string | null>(null);
   const [keyCount, setKeyCount] = useState(0);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent): void => {
       setLastKey(e.key);
       setKeyCount((c) => c + 1);
     };

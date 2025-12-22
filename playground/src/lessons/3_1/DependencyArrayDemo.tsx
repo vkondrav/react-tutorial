@@ -4,9 +4,35 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineExclamationCircle, HiCheck, HiX } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import emptyArrayExample from './examples/EmptyArrayExample.tsx?raw';
+import withDepsExample from './examples/WithDepsExample.tsx?raw';
+import noArrayExample from './examples/NoArrayExample.tsx?raw';
 
-export default function DependencyArrayDemo() {
-  const [activeTab, setActiveTab] = useState('empty');
+// ============================================
+// Types
+// ============================================
+
+type TabId = 'empty' | 'deps' | 'none';
+
+interface TabConfig {
+  id: TabId;
+  label: string;
+  color: string;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function DependencyArrayDemo(): React.ReactElement {
+  const [activeTab, setActiveTab] = useState<TabId>('empty');
+
+  const tabs: TabConfig[] = [
+    { id: 'empty', label: '[] Empty Array', color: 'btn-success' },
+    { id: 'deps', label: '[deps] With Values', color: 'btn-primary' },
+    { id: 'none', label: 'No Array', color: 'btn-warning' },
+  ];
 
   return (
     <div className="card bg-base-300 p-6">
@@ -14,11 +40,7 @@ export default function DependencyArrayDemo() {
 
       {/* Tab Navigation */}
       <div className="flex gap-2 mb-6 flex-wrap">
-        {[
-          { id: 'empty', label: '[] Empty Array', color: 'btn-success' },
-          { id: 'deps', label: '[deps] With Values', color: 'btn-primary' },
-          { id: 'none', label: 'No Array', color: 'btn-warning' },
-        ].map((tab) => (
+        {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
@@ -67,8 +89,11 @@ export default function DependencyArrayDemo() {
   );
 }
 
+// ============================================
 // Demo 1: Empty dependency array
-function EmptyArrayDemo() {
+// ============================================
+
+function EmptyArrayDemo(): React.ReactElement {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -103,21 +128,19 @@ function EmptyArrayDemo() {
           </div>
         </div>
 
-        <div className="mt-4 bg-base-200 p-3 rounded-lg font-mono text-sm">
-          <span className="text-secondary">useEffect</span>(() =&gt; {'{'}
-          <br />
-          <span className="pl-4 text-base-content/70">console.log('Mounted!');</span>
-          <br />
-          {'}'}, <span className="text-success">[]</span>);{' '}
-          <span className="text-base-content/50">// Empty array</span>
+        <div className="mt-4">
+          <CodeSnippet code={emptyArrayExample} language="tsx" showCopy={false} />
         </div>
       </div>
     </div>
   );
 }
 
+// ============================================
 // Demo 2: With dependencies
-function WithDepsDemo() {
+// ============================================
+
+function WithDepsDemo(): React.ReactElement {
   const [name, setName] = useState('');
   const [age, setAge] = useState(25);
 
@@ -179,23 +202,19 @@ function WithDepsDemo() {
           </div>
         )}
 
-        <div className="mt-4 bg-base-200 p-3 rounded-lg font-mono text-sm">
-          <span className="text-secondary">useEffect</span>(() =&gt; {'{'}
-          <br />
-          <span className="pl-4 text-base-content/70">
-            document.title = `Hello, ${'{'}name{'}'}`;
-          </span>
-          <br />
-          {'}'}, <span className="text-primary">[name]</span>);{' '}
-          <span className="text-base-content/50">// Only when name changes</span>
+        <div className="mt-4">
+          <CodeSnippet code={withDepsExample} language="tsx" showCopy={false} />
         </div>
       </div>
     </div>
   );
 }
 
+// ============================================
 // Demo 3: No array (dangerous!)
-function NoArrayDemo() {
+// ============================================
+
+function NoArrayDemo(): React.ReactElement {
   const [clickCount, setClickCount] = useState(0);
 
   useEffect(() => {
@@ -241,12 +260,8 @@ function NoArrayDemo() {
           </div>
         </div>
 
-        <div className="mt-4 bg-base-200 p-3 rounded-lg font-mono text-sm">
-          <span className="text-secondary">useEffect</span>(() =&gt; {'{'}
-          <br />
-          <span className="pl-4 text-base-content/70">// Runs every render!</span>
-          <br />
-          {'}'}); <span className="text-warning">// No array = every render</span>
+        <div className="mt-4">
+          <CodeSnippet code={noArrayExample} language="tsx" showCopy={false} />
         </div>
       </div>
     </div>

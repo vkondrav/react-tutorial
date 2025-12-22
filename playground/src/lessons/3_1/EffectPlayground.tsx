@@ -9,11 +9,32 @@ import {
   HiOutlineDesktopComputer,
   HiOutlineDatabase,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import documentTitleExample from './examples/DocumentTitleExample.tsx?raw';
+import stopwatchExample from './examples/StopwatchExample.tsx?raw';
+import windowResizeExample from './examples/WindowResizeExample.tsx?raw';
+import localStorageExample from './examples/LocalStorageExample.tsx?raw';
 
-export default function EffectPlayground() {
-  const [activeDemo, setActiveDemo] = useState('title');
+// ============================================
+// Types
+// ============================================
 
-  const demos = [
+type DemoId = 'title' | 'timer' | 'resize' | 'storage';
+
+interface DemoConfig {
+  id: DemoId;
+  label: string;
+  icon: typeof HiOutlineDocumentText;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EffectPlayground(): React.ReactElement {
+  const [activeDemo, setActiveDemo] = useState<DemoId>('title');
+
+  const demos: DemoConfig[] = [
     { id: 'title', label: 'Document Title', icon: HiOutlineDocumentText },
     { id: 'timer', label: 'Stopwatch', icon: HiOutlineClock },
     { id: 'resize', label: 'Window Size', icon: HiOutlineDesktopComputer },
@@ -49,8 +70,11 @@ export default function EffectPlayground() {
   );
 }
 
+// ============================================
 // Demo 1: Document Title
-function DocumentTitleDemo() {
+// ============================================
+
+function DocumentTitleDemo(): React.ReactElement {
   const [title, setTitle] = useState('React Tutorial');
   const [notifications, setNotifications] = useState(0);
 
@@ -115,21 +139,19 @@ function DocumentTitleDemo() {
         </div>
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 font-mono text-xs overflow-x-auto">
-        <pre>{`useEffect(() => {
-  const prefix = notifications > 0 ? \`(\${notifications}) \` : '';
-  document.title = \`\${prefix}\${title}\`;
-}, [title, notifications]);`}</pre>
-      </div>
+      <CodeSnippet code={documentTitleExample} language="tsx" showCopy={false} />
     </div>
   );
 }
 
+// ============================================
 // Demo 2: Stopwatch with setInterval
-function StopwatchDemo() {
+// ============================================
+
+function StopwatchDemo(): React.ReactElement {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedMs, setElapsedMs] = useState(0);
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef(0);
 
   useEffect(() => {
@@ -147,14 +169,14 @@ function StopwatchDemo() {
     };
   }, [isRunning, elapsedMs]);
 
-  const formatTime = (ms) => {
+  const formatTime = (ms: number): string => {
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);
     const centiseconds = Math.floor((ms % 1000) / 10);
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${centiseconds.toString().padStart(2, '0')}`;
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     setIsRunning(false);
     setElapsedMs(0);
   };
@@ -183,23 +205,16 @@ function StopwatchDemo() {
         </div>
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 font-mono text-xs overflow-x-auto">
-        <pre>{`useEffect(() => {
-  if (isRunning) {
-    const id = setInterval(() => {
-      setElapsedMs(ms => ms + 10);
-    }, 10);
-    
-    return () => clearInterval(id); // Cleanup!
-  }
-}, [isRunning]);`}</pre>
-      </div>
+      <CodeSnippet code={stopwatchExample} language="tsx" showCopy={false} />
     </div>
   );
 }
 
+// ============================================
 // Demo 3: Window resize listener
-function WindowSizeDemo() {
+// ============================================
+
+function WindowSizeDemo(): React.ReactElement {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -207,7 +222,7 @@ function WindowSizeDemo() {
   const [resizeCount, setResizeCount] = useState(0);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -262,25 +277,16 @@ function WindowSizeDemo() {
         />
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 font-mono text-xs overflow-x-auto">
-        <pre>{`useEffect(() => {
-  const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-  };
-  
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []); // Empty deps = mount/unmount only`}</pre>
-      </div>
+      <CodeSnippet code={windowResizeExample} language="tsx" showCopy={false} />
     </div>
   );
 }
 
+// ============================================
 // Demo 4: localStorage sync
-function LocalStorageDemo() {
+// ============================================
+
+function LocalStorageDemo(): React.ReactElement {
   const [name, setName] = useState(() => {
     // Initialize from localStorage
     return localStorage.getItem('playground-name') || '';
@@ -299,7 +305,7 @@ function LocalStorageDemo() {
     localStorage.setItem('playground-theme', theme);
   }, [theme]);
 
-  const clearStorage = () => {
+  const clearStorage = (): void => {
     localStorage.removeItem('playground-name');
     localStorage.removeItem('playground-theme');
     setName('');
@@ -307,6 +313,21 @@ function LocalStorageDemo() {
   };
 
   const themes = ['default', 'ocean', 'forest', 'sunset', 'midnight'];
+
+  const getThemeClass = (t: string): string => {
+    switch (t) {
+      case 'ocean':
+        return 'bg-blue-900/50';
+      case 'forest':
+        return 'bg-green-900/50';
+      case 'sunset':
+        return 'bg-orange-900/50';
+      case 'midnight':
+        return 'bg-slate-900';
+      default:
+        return 'bg-base-200';
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -363,19 +384,7 @@ function LocalStorageDemo() {
 
       {/* Preview */}
       {name && (
-        <div
-          className={`rounded-lg p-4 transition-all ${
-            theme === 'ocean'
-              ? 'bg-blue-900/50'
-              : theme === 'forest'
-                ? 'bg-green-900/50'
-                : theme === 'sunset'
-                  ? 'bg-orange-900/50'
-                  : theme === 'midnight'
-                    ? 'bg-slate-900'
-                    : 'bg-base-200'
-          }`}
-        >
+        <div className={`rounded-lg p-4 transition-all ${getThemeClass(theme)}`}>
           <p className="text-lg">
             Welcome back, <span className="font-bold text-primary">{name}</span>!
           </p>
@@ -383,17 +392,7 @@ function LocalStorageDemo() {
         </div>
       )}
 
-      <div className="bg-base-200 rounded-lg p-3 font-mono text-xs overflow-x-auto">
-        <pre>{`// Initialize from localStorage
-const [name, setName] = useState(() => {
-  return localStorage.getItem('name') || '';
-});
-
-// Sync to localStorage when name changes
-useEffect(() => {
-  localStorage.setItem('name', name);
-}, [name]);`}</pre>
-      </div>
+      <CodeSnippet code={localStorageExample} language="tsx" showCopy={false} />
     </div>
   );
 }

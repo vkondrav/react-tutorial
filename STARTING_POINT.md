@@ -417,6 +417,8 @@ Common icon replacements:
 | Wrong lesson on load | Check URL hash matches a valid lesson ID (e.g., `#1.3`) |
 | daisyUI styles not working | Ensure `@plugin "daisyui"` is in `index.css` |
 | Icons not showing | Import from correct react-icons package (e.g., `react-icons/hi`) |
+| "setState synchronously within effect" linter error | Wrap setState in `queueMicrotask(() => setState(...))` to defer it |
+| "Cannot call impure function during render" | Move impure calls (e.g., `Date.now()`) into `useEffect`, not in render or ref initializers |
 
 ## Tips for Effective Teaching
 

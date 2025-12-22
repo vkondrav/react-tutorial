@@ -134,10 +134,10 @@ export default function StateCompositionDemo(): React.ReactElement {
 
   // Simulate different states
   useEffect(() => {
-    setTimeout(() => {
+    queueMicrotask(() => {
       setLoading(true);
       setError(null);
-    }, 0);
+    });
 
     const timer = setTimeout(() => {
       setLoading(false);

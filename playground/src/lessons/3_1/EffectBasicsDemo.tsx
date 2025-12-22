@@ -4,8 +4,10 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import basicEffectExample from './examples/BasicEffectExample.tsx?raw';
 
-export default function EffectBasicsDemo() {
+export default function EffectBasicsDemo(): React.ReactElement {
   const [count, setCount] = useState(0);
   const [showCode, setShowCode] = useState(false);
 
@@ -63,27 +65,7 @@ export default function EffectBasicsDemo() {
             {showCode ? 'Hide' : 'Show'} Code
           </button>
 
-          {showCode && (
-            <div className="bg-base-200 rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre className="text-base-content/90">{`import { useState, useEffect } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  // Side effect: update document title
-  useEffect(() => {
-    document.title = \`Count: \${count}\`;
-    console.log('Effect ran! Count:', count);
-  }, [count]); // Re-run when count changes
-
-  return (
-    <button onClick={() => setCount(c => c + 1)}>
-      Count: {count}
-    </button>
-  );
-}`}</pre>
-            </div>
-          )}
+          {showCode && <CodeSnippet code={basicEffectExample} language="tsx" showCopy={false} />}
 
           <div className="mt-4 space-y-3">
             <div className="bg-base-200 rounded-lg p-3">

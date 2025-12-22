@@ -5,7 +5,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { HiOutlineLightBulb, HiRefresh } from 'react-icons/hi';
 
-export default function EffectTimingDemo() {
+// ============================================
+// Types
+// ============================================
+
+type EventType = 'mount' | 'render' | 'effect' | 'cleanup';
+
+interface LifecycleEvent {
+  name: string;
+  type: EventType;
+  time: number;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EffectTimingDemo(): React.ReactElement {
   const [key, setKey] = useState(0);
 
   return (
@@ -80,14 +96,21 @@ export default function EffectTimingDemo() {
   );
 }
 
-function LifecycleVisualizer() {
-  const [events, setEvents] = useState([]);
-  const [count, setCount] = useState(0);
-  const mountTime = useRef(new Date().getTime());
+// ============================================
+// Lifecycle Visualizer Component
+// ============================================
 
-  const addEvent = (name, type) => {
-    const elapsed = Date.now() - mountTime.current;
-    setEvents((prev) => [...prev, { name, type, time: elapsed }]);
+function LifecycleVisualizer(): React.ReactElement {
+  const [events, setEvents] = useState<LifecycleEvent[]>([]);
+  const [count, setCount] = useState(0);
+  const mountTime = useRef(0);
+
+  const addEvent = (name: string, type: EventType): void => {
+    const elapsed = mountTime.current ? Date.now() - mountTime.current : 0;
+    // Use queueMicrotask to defer setState and avoid synchronous cascading renders
+    queueMicrotask(() => {
+      setEvents((prev) => [...prev, { name, type, time: elapsed }]);
+    });
   };
 
   // Main effect with cleanup
@@ -102,9 +125,23 @@ function LifecycleVisualizer() {
 
   // Initial mount effect
   useEffect(() => {
+    mountTime.current = Date.now();
     addEvent('Component mounted', 'mount');
     addEvent('First render complete', 'render');
   }, []);
+
+  const getEventColor = (type: EventType): string => {
+    switch (type) {
+      case 'mount':
+        return 'bg-info';
+      case 'render':
+        return 'bg-warning';
+      case 'effect':
+        return 'bg-success';
+      case 'cleanup':
+        return 'bg-error';
+    }
+  };
 
   return (
     <div className="bg-base-200 rounded-lg p-4">
@@ -127,17 +164,7 @@ function LifecycleVisualizer() {
             {events.map((event, i) => (
               <div key={i} className="flex items-center gap-2 text-sm font-mono">
                 <span className="text-base-content/40 text-xs w-12">{event.time}ms</span>
-                <span
-                  className={`w-2 h-2 rounded-full ${
-                    event.type === 'mount'
-                      ? 'bg-info'
-                      : event.type === 'render'
-                        ? 'bg-warning'
-                        : event.type === 'effect'
-                          ? 'bg-success'
-                          : 'bg-error'
-                  }`}
-                />
+                <span className={`w-2 h-2 rounded-full ${getEventColor(event.type)}`} />
                 <span className={event.type === 'cleanup' ? 'text-error' : 'text-base-content/80'}>
                   {event.name}
                 </span>
