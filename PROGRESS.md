@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 5: Forms & User Input |
-| **Current Lesson** | Lesson 5.2: Form Validation Patterns |
-| **Next Lesson** | Lesson 5.3: Handling Multiple Inputs |
+| **Current Lesson** | Lesson 5.3: Handling Multiple Inputs |
+| **Next Lesson** | Lesson 6.1: Component Composition |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -27,6 +27,47 @@
 - ✅ Lesson 3.5 converted to TypeScript (with typed code samples)
 - ⬜ Lessons 1.1 - 3.4 to be refactored to TypeScript (low priority)
 - ⬜ Shared components (`lessons/components/`) to be converted (when touched)
+
+---
+
+## Code Display Standards
+
+### CodeSnippet Component
+All code examples and JSON state displays should use the `CodeSnippet` component for consistent syntax highlighting.
+
+**Location:** `playground/src/lessons/components/CodeSnippet.tsx`
+
+**Usage:**
+```tsx
+import { CodeSnippet } from '../components';
+
+// For code examples
+<CodeSnippet
+  title="Handler function"
+  language="tsx"
+  code={`const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+};`}
+/>
+
+// For live state displays (no copy button)
+<CodeSnippet
+  title="Current State"
+  language="json"
+  code={JSON.stringify(state, null, 2)}
+  showCopy={false}
+/>
+```
+
+### Refactoring TODO
+- ✅ Lesson 5.3 - All code snippets use `CodeSnippet`
+- ⬜ Lesson 5.2 - Needs refactoring
+- ⬜ Lesson 5.1 - Needs refactoring
+- ⬜ Lesson 4.x - Needs refactoring
+- ⬜ Lesson 3.x - Needs refactoring
+- ⬜ Earlier lessons - Lower priority (still JavaScript)
+
+**P.S.** All code snippets should display **TypeScript** syntax (with proper type annotations like `React.ChangeEvent<HTMLInputElement>`), not plain JavaScript.
 
 ---
 
@@ -70,13 +111,13 @@
 | 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ✅ Complete | POST/PUT/PATCH/DELETE patterns, optimistic vs pessimistic updates, full CRUD playground |
 | 4.4 | Building a Custom useFetch Hook | ✅ Complete | Why useFetch, step-by-step implementation, TypeScript generics, React 19 Suspense approach, playground |
 
-### Module 5: Forms & User Input ⏳ In Progress
+### Module 5: Forms & User Input ✅ Complete!
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 5.1 | Controlled Components | ✅ Complete | Basics, uncontrolled vs controlled, input types, benefits, playground |
 | 5.2 | Form Validation Patterns | ✅ Complete | Timing approaches, rules (required/length/pattern/custom), error display, async validation, playground |
-| 5.3 | Handling Multiple Inputs | ⬜ Pending |
+| 5.3 | Handling Multiple Inputs | ✅ Complete | Single state object, name attribute pattern, dynamic fields, nested objects, form reset, playground |
 
 ### Module 6: Component Patterns ⬜ Not Started
 
@@ -494,6 +535,25 @@ Beginning the Forms & User Input module.
   - Updated `config.json` to mark 5.1 complete and add 5.2 as current
   - Updated `App.jsx` to import and register Lesson5_2 component
 
+---
+
+### Session 16 - December 9, 2025
+**Goal:** Implement Lesson 5.3: Handling Multiple Inputs
+
+#### Completed:
+- ✅ **Implemented Lesson 5.3: Handling Multiple Inputs**
+  - `index.tsx` - Main lesson with 6 sections covering multi-input forms
+  - `SingleStateDemo.tsx` - Comparing separate states vs single object state pattern
+  - `NameAttributeDemo.tsx` - Using name attribute with computed property names for generic handlers
+  - `DynamicFieldsDemo.tsx` - Add/remove phone numbers with unique IDs
+  - `FormPatternsDemo.tsx` - 3 patterns: nested objects, array fields, form reset
+  - `MultiInputPlayground.tsx` - Complete contact form with all patterns combined
+  - Updated `config.json` to mark 5.2 complete and add 5.3 as current
+  - Updated `App.jsx` to import and register Lesson5_3 component
+
+#### Module 5 Complete! 🎉
+All 3 lessons in Module 5: Forms & User Input are now implemented.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -539,7 +599,13 @@ Beginning the Forms & User Input module.
 - [x] Error display: inline, summary, toast
 - [x] Async validation with debouncing
 - [x] "touched" state for UX (avoid premature errors)
-- [ ] Handling multiple inputs - next
+- [x] Single state object for multiple inputs
+- [x] Name attribute + computed property names [e.target.name]
+- [x] Dynamic form fields (add/remove with unique IDs)
+- [x] Nested object state updates (spread at each level)
+- [x] Array state updates (spread, filter, map)
+- [x] Form reset with initial state
+- [ ] Component composition - next
 - [ ] ...more to come
 
 ---
