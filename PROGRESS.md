@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 3: Hooks Deep Dive |
-| **Current Lesson** | Lesson 3.4: useMemo & useCallback |
-| **Next Lesson** | Lesson 3.5: Custom Hooks |
+| **Current Lesson** | Lesson 3.5: Custom Hooks |
+| **Next Lesson** | Lesson 4.1: Fetching Data with useEffect |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -34,7 +34,7 @@
 | 2.4 | Conditional Rendering | ✅ Complete | Ternary, &&, early returns, pattern comparison, playground |
 | 2.5 | Lists & Keys | ✅ Complete | .map() basics, keys explained, key mistakes demo, filter/sort/transform, todo playground |
 
-### Module 3: Hooks Deep Dive ⏳ In Progress
+### Module 3: Hooks Deep Dive ✅ Complete!
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
@@ -42,7 +42,7 @@
 | 3.2 | useContext: Sharing State | ✅ Complete | Prop drilling, context basics, context + state, multiple contexts, playground |
 | 3.3 | useRef: DOM Access & Persistence | ✅ Complete | Ref basics, DOM access, persistent values, previous values, playground |
 | 3.4 | useMemo & useCallback: Performance | ✅ Complete | Render count, useMemo, useCallback, when to use, playground |
-| 3.5 | Custom Hooks: Reusable Logic | ⬜ Pending |
+| 3.5 | Custom Hooks: Reusable Logic | ✅ Complete | Hook basics, extracting logic, useToggle/useLocalStorage/useDebounce, playground |
 
 ### Module 4: Data Fetching & REST APIs ⬜ Not Started
 
@@ -353,6 +353,24 @@ Beginning the Hooks Deep Dive module.
   - `PerformancePlayground.jsx` - 3 interactive demos: List filter, Search, Todo list
   - Updated `config.json` to add lesson 3.4 and mark 3.3 as complete
   - Updated `App.jsx` to import and register Lesson3_4 component
+
+---
+
+### Session 9 - December 9, 2025
+**Goal:** Implement Lesson 3.5: Custom Hooks
+
+#### Completed:
+- ✅ **Implemented Lesson 3.5: Custom Hooks - Reusable Logic**
+  - `index.jsx` - Main lesson with 5 sections
+  - `CustomHookBasicsDemo.jsx` - useCounter hook demo with independent state
+  - `ExtractingLogicDemo.jsx` - Before/after comparison showing useWindowSize extraction
+  - `CommonHooksDemo.jsx` - 3 tabs: useToggle, useLocalStorage, useDebounce
+  - `CustomHooksPlayground.jsx` - 4 demos: useOnlineStatus, useInterval, useCopyToClipboard, useHover
+  - Updated `config.json` to add lesson 3.5 and mark 3.4 as complete
+  - Updated `App.jsx` to import and register Lesson3_5 component
+
+#### Module 3 Complete! 🎉
+All 5 lessons in Module 3: Hooks Deep Dive are now implemented.
 
 ## Concepts Mastered
 
