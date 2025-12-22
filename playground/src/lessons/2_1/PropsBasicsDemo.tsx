@@ -1,9 +1,18 @@
+// ============================================
+// PropsBasicsDemo - Introduction to Props
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function PropsBasicsDemo() {
-  const [userName, setUserName] = useState('Alice');
-  const [userAge, setUserAge] = useState(28);
+// ============================================
+// Main Component
+// ============================================
+
+export default function PropsBasicsDemo(): React.ReactElement {
+  const [userName, setUserName] = useState<string>('Alice');
+  const [userAge, setUserAge] = useState<number>(28);
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -14,7 +23,7 @@ export default function PropsBasicsDemo() {
           <input
             type="text"
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserName(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -23,7 +32,9 @@ export default function PropsBasicsDemo() {
           <input
             type="number"
             value={userAge}
-            onChange={(e) => setUserAge(Number(e.target.value))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setUserAge(Number(e.target.value))
+            }
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -31,52 +42,32 @@ export default function PropsBasicsDemo() {
 
       {/* Code Display */}
       <div className="p-6 border-b border-base-300">
-        <div className="text-xs text-base-content/50 mb-3 uppercase">
-          Parent Component (passing props)
-        </div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`function App() {
+        <CodeSnippet
+          code={`function App() {
   return (
-    <UserCard `}
-            <span className="text-primary">name</span>
-            {`="`}
-            <span className="text-success">{userName}</span>
-            {`" `}
-            <span className="text-primary">age</span>
-            {`={`}
-            <span className="text-warning">{userAge}</span>
-            {`} />
+    <UserCard name="${userName}" age={${userAge}} />
   );
 }`}
-          </code>
-        </pre>
+          language="tsx"
+          title="Parent Component (passing props)"
+          showCopy={false}
+        />
 
-        <div className="text-xs text-base-content/50 mb-3 mt-6 uppercase">
-          Child Component (receiving props)
-        </div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`function UserCard(`}
-            <span className="text-accent">props</span>
-            {`) {
+        <div className="mt-4">
+          <CodeSnippet
+            code={`function UserCard(props) {
   return (
     <div>
-      <h2>Hello, {`}
-            <span className="text-accent">props</span>
-            {`.`}
-            <span className="text-primary">name</span>
-            {`}!</h2>
-      <p>Age: {`}
-            <span className="text-accent">props</span>
-            {`.`}
-            <span className="text-primary">age</span>
-            {`}</p>
+      <h2>Hello, {props.name}!</h2>
+      <p>Age: {props.age}</p>
     </div>
   );
 }`}
-          </code>
-        </pre>
+            language="tsx"
+            title="Child Component (receiving props)"
+            showCopy={false}
+          />
+        </div>
       </div>
 
       {/* Live Preview */}

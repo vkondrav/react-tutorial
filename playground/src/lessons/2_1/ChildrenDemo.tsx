@@ -1,8 +1,17 @@
-import { useState } from 'react';
+// ============================================
+// ChildrenDemo - The Children Prop
+// ============================================
 
-export default function ChildrenDemo() {
-  const [cardTitle, setCardTitle] = useState('Welcome!');
-  const [cardContent, setCardContent] = useState('This content is passed as children.');
+import { useState } from 'react';
+import { CodeSnippet } from '../components';
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function ChildrenDemo(): React.ReactElement {
+  const [cardTitle, setCardTitle] = useState<string>('Welcome!');
+  const [cardContent, setCardContent] = useState<string>('This content is passed as children.');
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -13,7 +22,7 @@ export default function ChildrenDemo() {
           <input
             type="text"
             value={cardTitle}
-            onChange={(e) => setCardTitle(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCardTitle(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -24,7 +33,7 @@ export default function ChildrenDemo() {
           <input
             type="text"
             value={cardContent}
-            onChange={(e) => setCardContent(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCardContent(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -32,40 +41,32 @@ export default function ChildrenDemo() {
 
       {/* Code */}
       <div className="p-6 border-b border-base-300">
-        <div className="text-xs text-base-content/50 mb-3 uppercase">
-          Card Component (receives children)
-        </div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`function Card({ title, `}
-            <span className="text-accent">children</span>
-            {` }) {
+        <CodeSnippet
+          code={`function Card({ title, children }) {
   return (
     <div className="card">
       <h3>{title}</h3>
       <div className="card-body">
-        {`}
-            <span className="text-accent">children</span>
-            {`}  {/* ← Renders whatever is between <Card>...</Card> */}
+        {children}  {/* ← Renders whatever is between <Card>...</Card> */}
       </div>
     </div>
   );
 }`}
-          </code>
-        </pre>
+          language="tsx"
+          title="Card Component (receives children)"
+          showCopy={false}
+        />
 
-        <div className="text-xs text-base-content/50 mb-3 mt-6 uppercase">Usage</div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`<Card title="`}
-            <span className="text-success">{cardTitle}</span>
-            {`">
-  `}
-            <span className="text-accent">{cardContent}</span>
-            {`
+        <div className="mt-4">
+          <CodeSnippet
+            code={`<Card title="${cardTitle}">
+  ${cardContent}
 </Card>`}
-          </code>
-        </pre>
+            language="tsx"
+            title="Usage"
+            showCopy={false}
+          />
+        </div>
       </div>
 
       {/* Live Preview */}

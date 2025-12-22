@@ -1,38 +1,59 @@
+// ============================================
+// PropsPlayground - Interactive Props Editor
+// ============================================
+
 import { useState } from 'react';
 import { HiX, HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function PropsPlayground() {
-  const [name, setName] = useState('React Developer');
-  const [role, setRole] = useState('Frontend Engineer');
-  const [level, setLevel] = useState('Senior');
-  const [isOnline, setIsOnline] = useState(true);
-  const [skills, setSkills] = useState(['React', 'TypeScript', 'Node.js']);
-  const [newSkill, setNewSkill] = useState('');
+// ============================================
+// Types
+// ============================================
 
-  const levelColors = {
-    Junior: '#22c55e',
-    Mid: '#3b82f6',
-    Senior: '#8b5cf6',
-    Lead: '#f59e0b',
-  };
+type Level = 'Junior' | 'Mid' | 'Senior' | 'Lead';
 
-  const levelButtonClasses = {
-    Junior: 'btn-success',
-    Mid: 'btn-primary',
-    Senior: 'btn-secondary',
-    Lead: 'btn-warning',
-  };
+// ============================================
+// Constants
+// ============================================
 
-  const addSkill = () => {
+const levelColors: Record<Level, string> = {
+  Junior: '#22c55e',
+  Mid: '#3b82f6',
+  Senior: '#8b5cf6',
+  Lead: '#f59e0b',
+};
+
+const levelButtonClasses: Record<Level, string> = {
+  Junior: 'btn-success',
+  Mid: 'btn-primary',
+  Senior: 'btn-secondary',
+  Lead: 'btn-warning',
+};
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function PropsPlayground(): React.ReactElement {
+  const [name, setName] = useState<string>('React Developer');
+  const [role, setRole] = useState<string>('Frontend Engineer');
+  const [level, setLevel] = useState<Level>('Senior');
+  const [isOnline, setIsOnline] = useState<boolean>(true);
+  const [skills, setSkills] = useState<string[]>(['React', 'TypeScript', 'Node.js']);
+  const [newSkill, setNewSkill] = useState<string>('');
+
+  const addSkill = (): void => {
     if (newSkill.trim() && !skills.includes(newSkill.trim())) {
       setSkills([...skills, newSkill.trim()]);
       setNewSkill('');
     }
   };
 
-  const removeSkill = (skillToRemove) => {
+  const removeSkill = (skillToRemove: string): void => {
     setSkills(skills.filter((s) => s !== skillToRemove));
   };
+
+  const propsObject = JSON.stringify({ name, role, level, isOnline, skills }, null, 2);
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -49,7 +70,7 @@ export default function PropsPlayground() {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
               className="input input-bordered w-full input-sm"
             />
           </div>
@@ -62,7 +83,7 @@ export default function PropsPlayground() {
             <input
               type="text"
               value={role}
-              onChange={(e) => setRole(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRole(e.target.value)}
               className="input input-bordered w-full input-sm"
             />
           </div>
@@ -73,7 +94,7 @@ export default function PropsPlayground() {
               <span className="text-primary">level</span>: "Junior" | "Mid" | "Senior" | "Lead"
             </label>
             <div className="flex gap-2">
-              {Object.keys(levelColors).map((l) => (
+              {(Object.keys(levelColors) as Level[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLevel(l)}
@@ -91,7 +112,7 @@ export default function PropsPlayground() {
               <input
                 type="checkbox"
                 checked={isOnline}
-                onChange={(e) => setIsOnline(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIsOnline(e.target.checked)}
                 className="checkbox checkbox-sm"
               />
               <span className="text-primary">isOnline</span>: boolean = {isOnline.toString()}
@@ -120,8 +141,10 @@ export default function PropsPlayground() {
               <input
                 type="text"
                 value={newSkill}
-                onChange={(e) => setNewSkill(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && addSkill()}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewSkill(e.target.value)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                  e.key === 'Enter' && addSkill()
+                }
                 placeholder="Add skill..."
                 className="input input-bordered input-sm flex-1"
               />
@@ -183,11 +206,7 @@ export default function PropsPlayground() {
           {/* Props Object */}
           <div className="mt-4">
             <div className="text-[0.7rem] text-base-content/50 mb-2">PROPS OBJECT</div>
-            <pre className="m-0 p-3 bg-base-200 rounded-md text-[0.7rem] leading-relaxed overflow-auto">
-              <code className="text-base-content/70">
-                {JSON.stringify({ name, role, level, isOnline, skills }, null, 2)}
-              </code>
-            </pre>
+            <CodeSnippet code={propsObject} language="json" showCopy={false} />
           </div>
         </div>
       </div>

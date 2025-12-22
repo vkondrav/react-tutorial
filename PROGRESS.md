@@ -39,6 +39,12 @@
 | **react-icons** | Use icons instead of emojis in UI |
 | **daisyUI** | Use daisyUI components and semantic colors |
 
+#### CodeSnippet Usage Notes
+
+- **Static code** → Create files in `examples/` folder, import with `?raw`, pass to `CodeSnippet`
+- **Dynamic code** (changes based on user input) → Generate string inline, pass to `CodeSnippet`
+- **Never use raw `<pre><code>` elements** — always use `CodeSnippet` for consistent syntax highlighting
+
 ### Consolidated Tech Debt by Lesson
 
 | Lesson | TypeScript | CodeSnippet | examples/ folder | Icons | Status |
@@ -47,7 +53,7 @@
 | 1.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
 | 1.3 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
 | 1.4 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.1 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
 | 2.2 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
 | 2.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
 | 2.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |

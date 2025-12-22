@@ -1,28 +1,58 @@
+// ============================================
+// DefaultPropsDemo - Default Prop Values
+// ============================================
+
 import { useState } from 'react';
+import { CodeSnippet } from '../components';
 
-export default function DefaultPropsDemo() {
-  const [showSize, setShowSize] = useState(true);
-  const [showVariant, setShowVariant] = useState(true);
-  const [size, setSize] = useState('medium');
-  const [variant, setVariant] = useState('primary');
+// ============================================
+// Types
+// ============================================
 
-  const sizeOptions = ['small', 'medium', 'large'];
-  const variantOptions = ['primary', 'secondary', 'danger'];
+type Size = 'small' | 'medium' | 'large';
+type Variant = 'primary' | 'secondary' | 'danger';
 
-  const sizeStyles = {
-    small: { padding: '0.25rem 0.5rem', fontSize: '0.75rem' },
-    medium: { padding: '0.5rem 1rem', fontSize: '0.875rem' },
-    large: { padding: '0.75rem 1.5rem', fontSize: '1rem' },
-  };
+interface SizeStyle {
+  padding: string;
+  fontSize: string;
+}
 
-  const variantStyles = {
-    primary: { backgroundColor: '#3b82f6', color: 'white' },
-    secondary: { backgroundColor: '#475569', color: 'white' },
-    danger: { backgroundColor: '#ef4444', color: 'white' },
-  };
+interface VariantStyle {
+  backgroundColor: string;
+  color: string;
+}
 
-  const activeSize = showSize ? size : 'medium';
-  const activeVariant = showVariant ? variant : 'primary';
+// ============================================
+// Constants
+// ============================================
+
+const sizeOptions: Size[] = ['small', 'medium', 'large'];
+const variantOptions: Variant[] = ['primary', 'secondary', 'danger'];
+
+const sizeStyles: Record<Size, SizeStyle> = {
+  small: { padding: '0.25rem 0.5rem', fontSize: '0.75rem' },
+  medium: { padding: '0.5rem 1rem', fontSize: '0.875rem' },
+  large: { padding: '0.75rem 1.5rem', fontSize: '1rem' },
+};
+
+const variantStyles: Record<Variant, VariantStyle> = {
+  primary: { backgroundColor: '#3b82f6', color: 'white' },
+  secondary: { backgroundColor: '#475569', color: 'white' },
+  danger: { backgroundColor: '#ef4444', color: 'white' },
+};
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function DefaultPropsDemo(): React.ReactElement {
+  const [showSize, setShowSize] = useState<boolean>(true);
+  const [showVariant, setShowVariant] = useState<boolean>(true);
+  const [size, setSize] = useState<Size>('medium');
+  const [variant, setVariant] = useState<Variant>('primary');
+
+  const activeSize: Size = showSize ? size : 'medium';
+  const activeVariant: Variant = showVariant ? variant : 'primary';
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -36,7 +66,7 @@ export default function DefaultPropsDemo() {
                 type="checkbox"
                 id="showSize"
                 checked={showSize}
-                onChange={(e) => setShowSize(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setShowSize(e.target.checked)}
                 className="checkbox checkbox-sm"
               />
               <label htmlFor="showSize" className="text-base-content/70 text-sm cursor-pointer">
@@ -64,7 +94,9 @@ export default function DefaultPropsDemo() {
                 type="checkbox"
                 id="showVariant"
                 checked={showVariant}
-                onChange={(e) => setShowVariant(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setShowVariant(e.target.checked)
+                }
                 className="checkbox checkbox-sm"
               />
               <label htmlFor="showVariant" className="text-base-content/70 text-sm cursor-pointer">
@@ -89,58 +121,27 @@ export default function DefaultPropsDemo() {
 
       {/* Code */}
       <div className="p-6 border-b border-base-300">
-        <div className="text-xs text-base-content/50 mb-3 uppercase">
-          Component with Default Props
-        </div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`function Button({ 
+        <CodeSnippet
+          code={`function Button({ 
   label,
-  `}
-            <span className="text-primary">size</span>
-            {` = `}
-            <span className="text-success">"medium"</span>
-            {`,    `}
-            <span className="text-base-content/50">// ← default value</span>
-            {`
-  `}
-            <span className="text-secondary">variant</span>
-            {` = `}
-            <span className="text-success">"primary"</span>
-            {` `}
-            <span className="text-base-content/50">// ← default value</span>
-            {`
+  size = "medium",    // ← default value
+  variant = "primary" // ← default value
 }) {
   return <button className={\`btn-\${size} btn-\${variant}\`}>{label}</button>;
 }`}
-          </code>
-        </pre>
+          language="tsx"
+          title="Component with Default Props"
+          showCopy={false}
+        />
 
-        <div className="text-xs text-base-content/50 mb-3 mt-6 uppercase">Usage</div>
-        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-base-content">
-            {`<Button label="Click me"`}
-            {showSize && (
-              <>
-                {` `}
-                <span className="text-primary">size</span>
-                {`="`}
-                <span className="text-success">{size}</span>
-                {`"`}
-              </>
-            )}
-            {showVariant && (
-              <>
-                {` `}
-                <span className="text-secondary">variant</span>
-                {`="`}
-                <span className="text-success">{variant}</span>
-                {`"`}
-              </>
-            )}
-            {` />`}
-          </code>
-        </pre>
+        <div className="mt-4">
+          <CodeSnippet
+            code={`<Button label="Click me"${showSize ? ` size="${size}"` : ''}${showVariant ? ` variant="${variant}"` : ''} />`}
+            language="tsx"
+            title="Usage"
+            showCopy={false}
+          />
+        </div>
       </div>
 
       {/* Live Preview */}

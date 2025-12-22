@@ -1,3 +1,7 @@
+// ============================================
+// Module 2, Lesson 1: Props
+// ============================================
+
 import {
   HiOutlineCube,
   HiOutlineCursorClick,
@@ -13,7 +17,7 @@ import DefaultPropsDemo from './DefaultPropsDemo';
 import ChildrenDemo from './ChildrenDemo';
 import PropsPlayground from './PropsPlayground';
 
-export default function Lesson2_1() {
+export default function Lesson2_1(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="1" title="Props: Passing Data to Components" />
