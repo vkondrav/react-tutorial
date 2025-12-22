@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import FileFlowDemo from '../../../lessons/1_2/FileFlowDemo';
+import FileFlowDemo from '@lessons/1_2/FileFlowDemo';
 
 const meta: Meta<typeof FileFlowDemo> = {
   title: 'Lessons/1.2 Setting Up React App/FileFlowDemo',

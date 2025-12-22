@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import JSXTransformDemo from '../../../lessons/1_3/JSXTransformDemo';
+import JSXTransformDemo from '@lessons/1_3/JSXTransformDemo';
 
 const meta: Meta<typeof JSXTransformDemo> = {
   title: 'Lessons/1.3 Understanding JSX/JSXTransformDemo',

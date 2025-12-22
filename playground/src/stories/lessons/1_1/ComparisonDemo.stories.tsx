@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import ComparisonDemo from '../../../lessons/1_1/ComparisonDemo';
+import ComparisonDemo from '@lessons/1_1/ComparisonDemo';
 
 const meta: Meta<typeof ComparisonDemo> = {
   title: 'Lessons/1.1 What is React/ComparisonDemo',

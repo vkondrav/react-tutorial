@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import DifferencesExplorer from '../../../lessons/1_3/DifferencesExplorer';
+import DifferencesExplorer from '@lessons/1_3/DifferencesExplorer';
 
 const meta: Meta<typeof DifferencesExplorer> = {
   title: 'Lessons/1.3 Understanding JSX/DifferencesExplorer',

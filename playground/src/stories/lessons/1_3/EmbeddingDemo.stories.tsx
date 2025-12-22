@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import EmbeddingDemo from '../../../lessons/1_3/EmbeddingDemo';
+import EmbeddingDemo from '@lessons/1_3/EmbeddingDemo';
 
 const meta: Meta<typeof EmbeddingDemo> = {
   title: 'Lessons/1.3 Understanding JSX/EmbeddingDemo',

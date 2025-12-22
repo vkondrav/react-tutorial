@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import HMRDemo from '../../../lessons/1_2/HMRDemo';
+import HMRDemo from '@lessons/1_2/HMRDemo';
 
 const meta: Meta<typeof HMRDemo> = {
   title: 'Lessons/1.2 Setting Up React App/HMRDemo',

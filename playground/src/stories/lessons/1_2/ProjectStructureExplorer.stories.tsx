@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import ProjectStructureExplorer from '../../../lessons/1_2/ProjectStructureExplorer';
+import ProjectStructureExplorer from '@lessons/1_2/ProjectStructureExplorer';
 
 const meta: Meta<typeof ProjectStructureExplorer> = {
   title: 'Lessons/1.2 Setting Up React App/ProjectStructureExplorer',

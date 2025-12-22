@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import MistakesQuiz from '../../../lessons/1_3/MistakesQuiz';
+import MistakesQuiz from '@lessons/1_3/MistakesQuiz';
 
 const meta: Meta<typeof MistakesQuiz> = {
   title: 'Lessons/1.3 Understanding JSX/MistakesQuiz',

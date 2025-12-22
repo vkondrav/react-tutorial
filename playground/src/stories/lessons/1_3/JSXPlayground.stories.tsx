@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import JSXPlayground from '../../../lessons/1_3/JSXPlayground';
+import JSXPlayground from '@lessons/1_3/JSXPlayground';
 
 const meta: Meta<typeof JSXPlayground> = {
   title: 'Lessons/1.3 Understanding JSX/JSXPlayground',

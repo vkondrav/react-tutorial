@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import PackageJsonExplorer from '../../../lessons/1_2/PackageJsonExplorer';
+import PackageJsonExplorer from '@lessons/1_2/PackageJsonExplorer';
 
 const meta: Meta<typeof PackageJsonExplorer> = {
   title: 'Lessons/1.2 Setting Up React App/PackageJsonExplorer',

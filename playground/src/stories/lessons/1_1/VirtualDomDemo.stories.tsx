@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import VirtualDomDemo from '../../../lessons/1_1/VirtualDomDemo';
+import VirtualDomDemo from '@lessons/1_1/VirtualDomDemo';
 
 const meta: Meta<typeof VirtualDomDemo> = {
   title: 'Lessons/1.1 What is React/VirtualDomDemo',
