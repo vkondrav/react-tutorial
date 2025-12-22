@@ -6,44 +6,8 @@
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
-
-// ---- Inheritance Approach (Anti-pattern) ----
-// This is how you might think to do it coming from OOP
-
-const inheritanceCode = `// ❌ Inheritance approach (don't do this in React)
-class Dialog extends React.Component {
-  render() {
-    return <div className="dialog">{this.renderContent()}</div>;
-  }
-  renderContent() { return null; } // Override in subclass
-}
-
-class WelcomeDialog extends Dialog {
-  renderContent() {
-    return <h1>Welcome!</h1>;
-  }
-}
-
-class AlertDialog extends Dialog {
-  renderContent() {
-    return <h1>Warning!</h1>;
-  }
-}`;
-
-// ---- Composition Approach (React way) ----
-const compositionCode = `// ✅ Composition approach (React way)
-function Dialog({ children }: { children: React.ReactNode }) {
-  return <div className="dialog">{children}</div>;
-}
-
-// Use it by composing:
-<Dialog>
-  <h1>Welcome!</h1>
-</Dialog>
-
-<Dialog>
-  <h1>Warning!</h1>
-</Dialog>`;
+import inheritanceCode from './examples/InheritanceApproach.tsx?raw';
+import compositionCode from './examples/CompositionApproach.tsx?raw';
 
 // Simple Dialog component using composition
 interface DialogProps {

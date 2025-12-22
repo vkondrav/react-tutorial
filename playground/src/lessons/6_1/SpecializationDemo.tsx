@@ -12,6 +12,8 @@ import {
   HiOutlineLightBulb,
 } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import specializationCode from './examples/SpecializationPattern.tsx?raw';
+import usageCode from './examples/SpecializationUsage.tsx?raw';
 
 // ---- Generic Component ----
 
@@ -162,59 +164,6 @@ function WarningAlert({ children, title = 'Warning' }: SpecializedAlertProps) {
     </Alert>
   );
 }
-
-const specializationCode = `// Generic Button (flexible, many options)
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'success' | 'error' | 'warning';
-  icon?: React.ReactNode;
-  onClick?: () => void;
-}
-
-function Button({ children, variant, icon, onClick }: ButtonProps) {
-  return (
-    <button className={\`btn btn-\${variant}\`} onClick={onClick}>
-      {icon} {children}
-    </button>
-  );
-}
-
-// Specialized versions (pre-configured for specific use cases)
-function SuccessButton({ children, ...props }: SpecializedProps) {
-  return (
-    <Button 
-      variant="success" 
-      icon={<CheckIcon />}
-      {...props}
-    >
-      {children}
-    </Button>
-  );
-}
-
-function DangerButton({ children, ...props }: SpecializedProps) {
-  return (
-    <Button 
-      variant="error" 
-      icon={<XIcon />}
-      {...props}
-    >
-      {children}
-    </Button>
-  );
-}`;
-
-const usageCode = `// Without specialization - verbose, repetitive
-<Button variant="success" icon={<CheckIcon />}>
-  Save Changes
-</Button>
-<Button variant="error" icon={<XIcon />}>
-  Delete
-</Button>
-
-// With specialization - clean, semantic
-<SuccessButton>Save Changes</SuccessButton>
-<DangerButton>Delete</DangerButton>`;
 
 export default function SpecializationDemo() {
   const [clicked, setClicked] = useState<string | null>(null);

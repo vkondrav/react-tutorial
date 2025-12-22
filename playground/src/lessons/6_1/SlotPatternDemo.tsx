@@ -12,6 +12,8 @@ import {
   HiOutlineLightBulb,
 } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import slotPatternCode from './examples/SlotPattern.tsx?raw';
+import comparisonCode from './examples/RigidVsFlexible.tsx?raw';
 
 // ---- Slot Pattern Components ----
 
@@ -76,52 +78,6 @@ function Modal({ title, actions, children }: ModalProps) {
     </div>
   );
 }
-
-const slotPatternCode = `interface PageLayoutProps {
-  header: React.ReactNode;   // Named slot
-  sidebar: React.ReactNode;  // Named slot  
-  children: React.ReactNode; // Default slot (content)
-}
-
-function PageLayout({ header, sidebar, children }: PageLayoutProps) {
-  return (
-    <div className="layout">
-      <header>{header}</header>
-      <aside>{sidebar}</aside>
-      <main>{children}</main>
-    </div>
-  );
-}
-
-// Usage - full control over each section
-<PageLayout
-  header={<NavBar />}
-  sidebar={<SideMenu />}
->
-  <h1>Page Content</h1>
-  <p>Main content goes here...</p>
-</PageLayout>`;
-
-const comparisonCode = `// ❌ Without slots - rigid, one-size-fits-all
-function RigidCard({ title, text }) {
-  return (
-    <div className="card">
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </div>
-  );
-}
-
-// ✅ With slots - flexible, customizable
-function FlexibleCard({ header, footer, children }) {
-  return (
-    <div className="card">
-      {header && <div className="card-header">{header}</div>}
-      <div className="card-body">{children}</div>
-      {footer && <div className="card-footer">{footer}</div>}
-    </div>
-  );
-}`;
 
 export default function SlotPatternDemo() {
   const [activeExample, setActiveExample] = useState<'layout' | 'card' | 'modal'>('layout');

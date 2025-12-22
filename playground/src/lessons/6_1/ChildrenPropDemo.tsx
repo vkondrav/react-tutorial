@@ -6,6 +6,8 @@
 import { useState, ReactNode } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import basicChildrenCode from './examples/BasicChildren.tsx?raw';
+import childrenTypesCode from './examples/ChildrenTypes.tsx?raw';
 
 // ---- Containment Component Examples ----
 
@@ -63,49 +65,6 @@ function Collapsible({ title, children, defaultOpen = false }: CollapsibleProps)
     </div>
   );
 }
-
-const basicChildrenCode = `interface CardProps {
-  children: React.ReactNode;
-}
-
-function Card({ children }: CardProps) {
-  return (
-    <div className="card bg-base-200 p-4">
-      {children}  {/* Whatever you put between <Card>...</Card> */}
-    </div>
-  );
-}
-
-// Usage - children can be anything!
-<Card>
-  <h2>Title</h2>
-  <p>Any content works here.</p>
-</Card>`;
-
-const childrenTypesCode = `// Children can be many things:
-
-// 1. Text
-<Card>Hello!</Card>
-
-// 2. Elements
-<Card><h1>Title</h1></Card>
-
-// 3. Multiple elements
-<Card>
-  <h1>Title</h1>
-  <p>Description</p>
-</Card>
-
-// 4. Components
-<Card>
-  <UserProfile />
-  <UserActions />
-</Card>
-
-// 5. Mixed content
-<Card>
-  Welcome, <strong>{username}</strong>!
-</Card>`;
 
 export default function ChildrenPropDemo() {
   const [showCode, setShowCode] = useState(false);
