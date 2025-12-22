@@ -1,4 +1,6 @@
+// ============================================
 // Module 1, Lesson 2: Setting Up Your First React App
+// ============================================
 
 import {
   HiOutlineFolder,
@@ -13,11 +15,12 @@ import FileFlowDemo from './FileFlowDemo';
 import HMRDemo from './HMRDemo';
 import PackageJsonExplorer from './PackageJsonExplorer';
 
-export default function Lesson1_2() {
+export default function Lesson1_2(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="2" title="Setting Up Your First React App" />
 
+      {/* Section 1: Project Structure */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -33,6 +36,7 @@ export default function Lesson1_2() {
         <ProjectStructureExplorer />
       </Section>
 
+      {/* Section 2: How Files Connect */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -47,6 +51,7 @@ export default function Lesson1_2() {
         <FileFlowDemo />
       </Section>
 
+      {/* Section 3: Hot Module Replacement */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -58,6 +63,7 @@ export default function Lesson1_2() {
         <HMRDemo />
       </Section>
 
+      {/* Section 4: package.json */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -69,6 +75,7 @@ export default function Lesson1_2() {
         <PackageJsonExplorer />
       </Section>
 
+      {/* Section 5: Key Takeaways */}
       <Section
         title={
           <span className="flex items-center gap-2">

@@ -154,10 +154,3 @@ Each lesson includes:
 - ⚠️ Common pitfalls to avoid
 
 ---
-
-## Ready to Start?
-
-Let's begin with **Module 1: Foundation**!
-
-Type "ready" or ask me to start Module 1.
-

@@ -1,8 +1,12 @@
+// ============================================
+// HMRDemo - Hot Module Replacement Demo
+// ============================================
+
 import { useState } from 'react';
 
-export default function HMRDemo() {
-  const [count, setCount] = useState(0);
-  const [text, setText] = useState('');
+export default function HMRDemo(): React.ReactElement {
+  const [count, setCount] = useState<number>(0);
+  const [text, setText] = useState<string>('');
 
   return (
     <div>
@@ -12,6 +16,7 @@ export default function HMRDemo() {
       </p>
 
       <div className="grid grid-cols-2 gap-4 card bg-base-200 p-6 mt-4">
+        {/* Counter */}
         <div className="card bg-base-300 p-4">
           <div className="text-base-content/50 text-xs mb-2">Counter</div>
           <div className="text-3xl font-bold text-primary mb-3">{count}</div>
@@ -20,12 +25,13 @@ export default function HMRDemo() {
           </button>
         </div>
 
+        {/* Input */}
         <div className="card bg-base-300 p-4">
           <div className="text-base-content/50 text-xs mb-2">Input</div>
           <input
             type="text"
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
             placeholder="Type here..."
             className="input input-bordered w-full"
           />

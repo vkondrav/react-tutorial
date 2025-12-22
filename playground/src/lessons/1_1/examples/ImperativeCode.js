@@ -1,4 +1,3 @@
-// @ts-nocheck
 // Imperative (Vanilla JS)
 const btn = document.getElementById('btn');
 const display = document.getElementById('count');

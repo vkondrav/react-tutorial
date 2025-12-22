@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 interface CodeSnippetProps {
   code: string;
-  language?: 'tsx' | 'typescript' | 'javascript' | 'jsx' | 'json' | 'bash' | 'css';
+  language?: 'tsx' | 'typescript' | 'javascript' | 'jsx' | 'json' | 'bash' | 'css' | 'html';
   title?: string;
   showLineNumbers?: boolean;
   showCopy?: boolean;
