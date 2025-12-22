@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineExclamationCircle, HiCheck, HiOutlineArrowRight } from 'react-icons/hi';
 
 export default function MistakesQuiz() {
   const [answers, setAnswers] = useState({});
@@ -32,23 +33,33 @@ export default function MistakesQuiz() {
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-slate-400 mt-0 mb-2">
+      <p className="text-base-content/70 mt-0 mb-2">
         Can you spot what's wrong? Click to reveal the answer:
       </p>
       {questions.map((q) => (
         <div
           key={q.id}
           onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: true }))}
-          className="bg-slate-900 p-4 rounded-lg border border-slate-700 cursor-pointer hover:bg-slate-800 transition-colors"
+          className="card bg-base-200 p-4 border border-base-300 cursor-pointer hover:bg-base-300 transition-colors"
         >
           <div className={`flex items-center justify-between ${answers[q.id] ? 'mb-3' : ''}`}>
-            <code className="text-red-400">{q.code}</code>
-            {!answers[q.id] && <span className="text-slate-500 text-xs">Click to reveal →</span>}
+            <code className="text-error">{q.code}</code>
+            {!answers[q.id] && (
+              <span className="text-base-content/50 text-xs flex items-center gap-1">
+                Click to reveal <HiOutlineArrowRight size={12} />
+              </span>
+            )}
           </div>
           {answers[q.id] && (
-            <div className="pt-3 border-t border-slate-700">
-              <div className="text-amber-400 text-sm mb-2">⚠️ {q.error}</div>
-              <code className="text-emerald-400">✓ {q.fix}</code>
+            <div className="pt-3 border-t border-base-300">
+              <div className="text-warning text-sm mb-2 flex items-center gap-2">
+                <HiOutlineExclamationCircle size={16} />
+                {q.error}
+              </div>
+              <code className="text-success flex items-center gap-2">
+                <HiCheck size={16} />
+                {q.fix}
+              </code>
             </div>
           )}
         </div>

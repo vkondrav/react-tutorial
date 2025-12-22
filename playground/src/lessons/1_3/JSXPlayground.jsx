@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
 
 export default function JSXPlayground() {
   const [firstName, setFirstName] = useState('Sarah');
@@ -9,72 +10,81 @@ export default function JSXPlayground() {
   const grade = score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : 'D';
   const gradeColorClasses =
     score >= 90
-      ? 'bg-emerald-500/20 text-emerald-500'
+      ? 'bg-success/20 text-success'
       : score >= 80
-        ? 'bg-blue-500/20 text-blue-500'
+        ? 'bg-primary/20 text-primary'
         : score >= 70
-          ? 'bg-amber-500/20 text-amber-500'
-          : 'bg-red-500/20 text-red-500';
+          ? 'bg-warning/20 text-warning'
+          : 'bg-error/20 text-error';
 
   return (
     <div className="grid grid-cols-2 gap-6">
       <div className="flex flex-col gap-4">
         <div>
-          <label className="block mb-1 text-slate-400 text-xs">firstName</label>
+          <label className="block mb-1 text-base-content/70 text-xs">firstName</label>
           <input
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="input input-bordered w-full input-sm"
           />
         </div>
         <div>
-          <label className="block mb-1 text-slate-400 text-xs">lastName</label>
+          <label className="block mb-1 text-base-content/70 text-xs">lastName</label>
           <input
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="input input-bordered w-full input-sm"
           />
         </div>
         <div>
-          <label className="block mb-1 text-slate-400 text-xs">score: {score}</label>
+          <label className="block mb-1 text-base-content/70 text-xs">score: {score}</label>
           <input
             type="range"
             min="0"
             max="100"
             value={score}
             onChange={(e) => setScore(parseInt(e.target.value))}
-            className="w-full"
+            className="range range-primary w-full"
           />
         </div>
-        <label className="flex items-center gap-2 text-slate-400 text-xs cursor-pointer">
+        <label className="flex items-center gap-2 text-base-content/70 text-xs cursor-pointer">
           <input
             type="checkbox"
             checked={isOnline}
             onChange={(e) => setIsOnline(e.target.checked)}
+            className="checkbox checkbox-primary checkbox-sm"
           />
           isOnline
         </label>
       </div>
 
-      <div className="bg-slate-900 p-5 rounded-xl border border-slate-700">
-        <div className="text-slate-500 text-xs mb-4">Live Output:</div>
-        <div className="p-4 bg-slate-800 rounded-lg">
+      <div className="card bg-base-200 p-5 border border-base-300">
+        <div className="text-base-content/50 text-xs mb-4">Live Output:</div>
+        <div className="p-4 bg-base-300 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <div
-              className={`w-2.5 h-2.5 rounded-full ${isOnline ? 'bg-green-500' : 'bg-slate-500'}`}
+              className={`w-2.5 h-2.5 rounded-full ${isOnline ? 'bg-success' : 'bg-base-content/30'}`}
             />
-            <span className="font-semibold text-slate-50">
+            <span className="font-semibold text-base-content">
               {firstName} {lastName}
             </span>
           </div>
-          <div className="text-sm text-slate-400">
+          <div className="text-sm text-base-content/70">
             Score: {score}/100
-            <span className={`ml-2 px-2 py-0.5 rounded font-semibold ${gradeColorClasses}`}>
-              {grade}
-            </span>
+            <span className={`ml-2 badge ${gradeColorClasses}`}>{grade}</span>
           </div>
-          <div className="mt-3 text-xs text-slate-500">
-            {isOnline ? '🟢 Currently online' : '⚫ Offline'}
+          <div className="mt-3 text-xs text-base-content/50 flex items-center gap-2">
+            {isOnline ? (
+              <>
+                <HiOutlineCheckCircle size={14} className="text-success" />
+                <span>Currently online</span>
+              </>
+            ) : (
+              <>
+                <HiOutlineXCircle size={14} />
+                <span>Offline</span>
+              </>
+            )}
           </div>
         </div>
       </div>

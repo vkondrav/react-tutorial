@@ -177,6 +177,14 @@
   - `FileFlowDemo.jsx` - daisyUI `btn` components with variants, `HiOutlineArrowRight`, `HiOutlineCursorClick`
   - `HMRDemo.jsx` - daisyUI `card`, `btn`, `input` components
   - `PackageJsonExplorer.jsx` - daisyUI `btn` components, `HiOutlinePlay`, `HiOutlineCube` icons
+- ✅ **Refactored Lesson 1.3 to use daisyUI + react-icons:**
+  - `index.jsx` - Replaced emojis with icons (`HiOutlineQuestionMarkCircle`, `HiOutlineSwitchHorizontal`, `HiOutlineCode`, `HiOutlineDocumentText`, `HiOutlineExclamationTriangle`, `HiOutlineBeaker`, `HiOutlineClipboardCheck`)
+  - `JSXTransformDemo.jsx` - daisyUI `card`, `btn-circle` components, `HiCheck`, `HiOutlineArrowRight`, `HiOutlineCursorClick` icons
+  - `DifferencesExplorer.jsx` - daisyUI `btn`, `card` components, semantic colors (error, warning, success, primary)
+  - `EmbeddingDemo.jsx` - daisyUI `input`, `card` components, `HiOutlineArrowRight` icon
+  - `JSXRulesDemo.jsx` - daisyUI `btn`, `card`, `badge` components, `HiX`, `HiCheck` icons
+  - `MistakesQuiz.jsx` - daisyUI `card` component, `HiOutlineExclamationTriangle`, `HiCheck`, `HiOutlineArrowRight` icons
+  - `JSXPlayground.jsx` - daisyUI `input`, `card`, `badge`, `checkbox`, `range` components, `HiOutlineCheckCircle`, `HiOutlineXCircle` icons
 - 📝 **Established "Icons vs Emojis" rule in STARTING_POINT.md:**
   - Use react-icons for all UI elements
   - Emojis OK only in code examples that users are learning from
@@ -202,7 +210,7 @@
 | `App.jsx` | ✅ Complete | Main navigator, sidebar, header, footer |
 | Lesson 1.1 | ✅ Complete | All 4 files converted |
 | Lesson 1.2 | ✅ Complete | All 5 files converted (index, ProjectStructureExplorer, FileFlowDemo, HMRDemo, PackageJsonExplorer) |
-| Lesson 1.3 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 1.3 | ✅ Complete | All 7 files converted (index, JSXTransformDemo, DifferencesExplorer, EmbeddingDemo, JSXRulesDemo, MistakesQuiz, JSXPlayground) |
 | Lesson 1.4 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.1 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.2 | ⬜ Pending | Still using Tailwind-only |
