@@ -1,3 +1,7 @@
+// ============================================
+// Module 2, Lesson 3: Event Handling
+// ============================================
+
 import {
   HiOutlineCursorClick,
   HiOutlineDocumentText,
@@ -13,7 +17,7 @@ import EventPropagationDemo from './EventPropagationDemo';
 import EventHandlersDemo from './EventHandlersDemo';
 import EventPlayground from './EventPlayground';
 
-export default function Lesson2_3() {
+export default function Lesson2_3(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="3" title="Event Handling" />

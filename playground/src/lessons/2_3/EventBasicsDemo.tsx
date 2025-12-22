@@ -1,21 +1,48 @@
+// ============================================
+// EventBasicsDemo - Introduction to Event Handling
+// ============================================
+
 import { useState } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineExclamationCircle } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import buttonHandlerExample from './examples/ButtonHandlerExample.tsx?raw';
 
-export default function EventBasicsDemo() {
-  const [clickCount, setClickCount] = useState(0);
-  const [lastEvent, setLastEvent] = useState(null);
-  const [showCode, setShowCode] = useState(true);
+// ============================================
+// Types
+// ============================================
 
-  const handleClick = (e) => {
-    if (!e) return;
+interface LastEventInfo {
+  type: string;
+  target: string;
+  currentTarget: string;
+  timestamp: string;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EventBasicsDemo(): React.ReactElement {
+  const [clickCount, setClickCount] = useState<number>(0);
+  const [lastEvent, setLastEvent] = useState<LastEventInfo | null>(null);
+  const [showCode, setShowCode] = useState<boolean>(true);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setClickCount((prev) => prev + 1);
     setLastEvent({
       type: e.type,
-      target: e.target?.tagName || 'Unknown',
-      currentTarget: e.currentTarget?.tagName || 'Unknown',
+      target: e.target instanceof Element ? e.target.tagName : 'Unknown',
+      currentTarget: e.currentTarget.tagName,
       timestamp: new Date().toLocaleTimeString(),
     });
   };
+
+  const lastEventDisplay = lastEvent
+    ? `type: "${lastEvent.type}"
+target: ${lastEvent.target}
+currentTarget: ${lastEvent.currentTarget}
+time: ${lastEvent.timestamp}`
+    : '';
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -33,11 +60,7 @@ export default function EventBasicsDemo() {
         {lastEvent && (
           <div className="card bg-base-300 p-4 w-full max-w-md">
             <div className="text-base-content/50 text-xs mb-2">LAST EVENT DATA:</div>
-            <pre className="m-0 text-xs leading-relaxed">
-              <code className="text-base-content/70">
-                {`type: "${lastEvent.type}"\ntarget: ${lastEvent.target}\ncurrentTarget: ${lastEvent.currentTarget}\ntime: ${lastEvent.timestamp}`}
-              </code>
-            </pre>
+            <CodeSnippet code={lastEventDisplay} language="json" showCopy={false} />
           </div>
         )}
       </div>
@@ -63,36 +86,7 @@ export default function EventBasicsDemo() {
       {/* Code Explanation */}
       {showCode && (
         <div className="p-6">
-          <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
-            <code className="text-base-content">
-              <span className="text-secondary">function</span>
-              {` `}
-              <span className="text-primary">Button</span>
-              {`() {\n  `}
-              <span className="text-secondary">const</span>
-              {` [count, setCount] = `}
-              <span className="text-success">useState</span>
-              {`(0);\n\n  `}
-              <span className="text-base-content/50">// Event handler function</span>
-              {`\n  `}
-              <span className="text-secondary">const</span>
-              {` handleClick = (`}
-              <span className="text-accent">e</span>
-              {`) => {\n    `}
-              <span className="text-base-content/50">// e is the SyntheticEvent object</span>
-              {`\n    console.log(`}
-              <span className="text-warning">'Clicked!'</span>
-              {`, `}
-              <span className="text-accent">e</span>
-              {`);\n    setCount(count + 1);\n  };\n\n  `}
-              <span className="text-secondary">return</span>
-              {` (\n    <button `}
-              <span className="text-primary">onClick</span>
-              {`={`}
-              <span className="text-warning">handleClick</span>
-              {`}>\n      Click me\n    </button>\n  );\n}`}
-            </code>
-          </pre>
+          <CodeSnippet code={buttonHandlerExample} language="tsx" showCopy={false} />
 
           {/* Key Points */}
           <div className="mt-6 grid grid-cols-2 gap-4">

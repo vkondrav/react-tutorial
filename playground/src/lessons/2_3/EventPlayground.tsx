@@ -1,18 +1,50 @@
+// ============================================
+// EventPlayground - Interactive Form with Validation
+// ============================================
+
 import { useState } from 'react';
 import { HiCheck } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function EventPlayground() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    age: '',
-    newsletter: false,
-  });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+// ============================================
+// Types
+// ============================================
 
-  const validate = () => {
-    const newErrors = {};
+interface FormData {
+  name: string;
+  email: string;
+  age: string;
+  newsletter: boolean;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  age?: string;
+}
+
+// ============================================
+// Constants
+// ============================================
+
+const INITIAL_FORM_DATA: FormData = {
+  name: '',
+  email: '',
+  age: '',
+  newsletter: false,
+};
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EventPlayground(): React.ReactElement {
+  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
+  const validate = (): FormErrors => {
+    const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -27,37 +59,42 @@ export default function EventPlayground() {
     return newErrors;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
     // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const newErrors = validate();
     if (Object.keys(newErrors).length === 0) {
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
-        setFormData({ name: '', email: '', age: '', newsletter: false });
+        setFormData(INITIAL_FORM_DATA);
       }, 3000);
     } else {
       setErrors(newErrors);
     }
   };
 
-  const handleReset = () => {
-    setFormData({ name: '', email: '', age: '', newsletter: false });
+  const handleReset = (): void => {
+    setFormData(INITIAL_FORM_DATA);
     setErrors({});
     setSubmitted(false);
   };
+
+  // Generate display strings for the state panel
+  const formDataDisplay = JSON.stringify(formData, null, 2);
+  const errorsDisplay =
+    Object.keys(errors).length === 0 ? 'No errors' : JSON.stringify(errors, null, 2);
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
@@ -166,22 +203,18 @@ export default function EventPlayground() {
           <div className="text-xs text-base-content/50 mb-4 uppercase">Form State (Live)</div>
 
           <div className="mb-6">
-            <pre className="m-0 p-4 bg-base-200 rounded-lg text-xs leading-relaxed overflow-auto max-h-[200px]">
-              <code className="text-base-content/70">{JSON.stringify(formData, null, 2)}</code>
-            </pre>
+            <div className="max-h-[200px] overflow-auto">
+              <CodeSnippet code={formDataDisplay} language="json" showCopy={false} />
+            </div>
           </div>
 
           <div className="mb-6">
             <div className="text-base-content/50 text-xs mb-2">ERRORS:</div>
-            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
-              <code
-                className={
-                  errors.name || errors.email || errors.age ? 'text-error' : 'text-base-content/50'
-                }
-              >
-                {Object.keys(errors).length === 0 ? 'No errors' : JSON.stringify(errors, null, 2)}
-              </code>
-            </pre>
+            <CodeSnippet
+              code={errorsDisplay}
+              language={Object.keys(errors).length === 0 ? 'json' : 'json'}
+              showCopy={false}
+            />
           </div>
 
           <div className="p-4 card bg-base-200 border-2 border-dashed border-base-300">

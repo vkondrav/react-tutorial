@@ -1,33 +1,44 @@
+// ============================================
+// EventPropagationDemo - Bubbling, stopPropagation, preventDefault
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import stopPropagationExample from './examples/StopPropagationExample.tsx?raw';
+import preventDefaultExample from './examples/PreventDefaultExample.tsx?raw';
 
-export default function EventPropagationDemo() {
-  const [parentClicks, setParentClicks] = useState(0);
-  const [childClicks, setChildClicks] = useState(0);
-  const [stoppedClicks, setStoppedClicks] = useState(0);
-  const [log, setLog] = useState([]);
+// ============================================
+// Main Component
+// ============================================
 
-  const addLog = (message) => {
+export default function EventPropagationDemo(): React.ReactElement {
+  const [parentClicks, setParentClicks] = useState<number>(0);
+  const [childClicks, setChildClicks] = useState<number>(0);
+  const [stoppedClicks, setStoppedClicks] = useState<number>(0);
+  const [log, setLog] = useState<string[]>([]);
+
+  const addLog = (message: string): void => {
     setLog((prev) => [...prev.slice(-4), message]);
   };
 
-  const handleParentClick = () => {
+  const handleParentClick = (): void => {
     setParentClicks((prev) => prev + 1);
     addLog('Parent clicked!');
   };
 
-  const handleChildClick = () => {
+  const handleChildClick = (): void => {
     setChildClicks((prev) => prev + 1);
     addLog('Child clicked!');
   };
 
-  const handleStoppedClick = (e) => {
+  const handleStoppedClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation(); // Prevent bubbling to parent
     setStoppedClicks((prev) => prev + 1);
     addLog('Child clicked (propagation stopped)');
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault(); // Prevent default form submission
     addLog('Form submitted (default prevented)');
   };
@@ -107,33 +118,13 @@ export default function EventPropagationDemo() {
           {/* stopPropagation */}
           <div className="mb-6">
             <div className="text-warning text-sm mb-2 font-semibold">stopPropagation()</div>
-            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
-              <code className="text-base-content/70">
-                {'function Child({ onClick }) {\n' +
-                  '  const handleClick = (e) => {\n' +
-                  '    e.stopPropagation(); // ← Stops event from bubbling\n' +
-                  '    onClick();\n' +
-                  '  };\n' +
-                  '  return <div onClick={handleClick}>Child</div>;\n' +
-                  '}'}
-              </code>
-            </pre>
+            <CodeSnippet code={stopPropagationExample} language="tsx" showCopy={false} />
           </div>
 
           {/* preventDefault */}
           <div className="mb-6">
             <div className="text-success text-sm mb-2 font-semibold">preventDefault()</div>
-            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
-              <code className="text-base-content/70">
-                {'function Form() {\n' +
-                  '  const handleSubmit = (e) => {\n' +
-                  '    e.preventDefault(); // ← Prevents page refresh\n' +
-                  '    // Handle form submission\n' +
-                  '  };\n' +
-                  '  return <form onSubmit={handleSubmit}>...</form>;\n' +
-                  '}'}
-              </code>
-            </pre>
+            <CodeSnippet code={preventDefaultExample} language="tsx" showCopy={false} />
           </div>
 
           {/* Live preventDefault demo */}

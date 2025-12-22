@@ -1,20 +1,37 @@
+// ============================================
+// EventTypesDemo - Common Event Types
+// ============================================
+
 import { useState } from 'react';
 import { HiCheck } from 'react-icons/hi';
 
-export default function EventTypesDemo() {
-  const [inputValue, setInputValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState('option1');
-  const [isChecked, setIsChecked] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+// ============================================
+// Types
+// ============================================
 
-  const handleSubmit = (e) => {
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EventTypesDemo(): React.ReactElement {
+  const [inputValue, setInputValue] = useState<string>('');
+  const [selectedOption, setSelectedOption] = useState<string>('option1');
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault(); // Prevent page refresh
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 2000);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
@@ -33,7 +50,7 @@ export default function EventTypesDemo() {
             <input
               type="text"
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
               placeholder="Type something..."
               className="input input-bordered w-full input-sm"
             />
@@ -49,7 +66,9 @@ export default function EventTypesDemo() {
             </label>
             <select
               value={selectedOption}
-              onChange={(e) => setSelectedOption(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setSelectedOption(e.target.value)
+              }
               className="select select-bordered w-full select-sm"
             >
               <option value="option1">Option 1</option>
@@ -67,7 +86,9 @@ export default function EventTypesDemo() {
               <input
                 type="checkbox"
                 checked={isChecked}
-                onChange={(e) => setIsChecked(e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setIsChecked(e.target.checked)
+                }
                 className="checkbox checkbox-sm"
               />
               <code className="text-primary">onChange</code> - Checkbox

@@ -1,21 +1,50 @@
+// ============================================
+// EventHandlersDemo - Different Handler Patterns
+// ============================================
+
 import { useState } from 'react';
 import { HiCheck, HiX } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import inlineArrowExample from './examples/InlineArrowExample.tsx?raw';
+import functionReferenceExample from './examples/FunctionReferenceExample.tsx?raw';
+import passingArgumentsExample from './examples/PassingArgumentsExample.tsx?raw';
 
-export default function EventHandlersDemo() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
-  const [activeTab, setActiveTab] = useState('inline');
+// ============================================
+// Types
+// ============================================
+
+type Tab = 'inline' | 'function' | 'arguments';
+
+interface TabConfig {
+  id: Tab;
+  label: string;
+}
+
+// ============================================
+// Constants
+// ============================================
+
+const TABS: TabConfig[] = [
+  { id: 'inline', label: 'Inline Arrow' },
+  { id: 'function', label: 'Function Reference' },
+  { id: 'arguments', label: 'Passing Arguments' },
+];
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EventHandlersDemo(): React.ReactElement {
+  const [count1, setCount1] = useState<number>(0);
+  const [count2, setCount2] = useState<number>(0);
+  const [count3, setCount3] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<Tab>('inline');
 
   return (
     <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Tabs */}
       <div className="flex border-b border-base-300">
-        {[
-          { id: 'inline', label: 'Inline Arrow' },
-          { id: 'function', label: 'Function Reference' },
-          { id: 'arguments', label: 'Passing Arguments' },
-        ].map((tab) => (
+        {TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
@@ -41,15 +70,7 @@ export default function EventHandlersDemo() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <div className="text-base-content/50 text-xs mb-3">CODE:</div>
-                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
-                  <code className="text-base-content">
-                    {'<button onClick={() => {\n' +
-                      '  setCount(count + 1);\n' +
-                      '}}>\n' +
-                      '  Click me\n' +
-                      '</button>'}
-                  </code>
-                </pre>
+                <CodeSnippet code={inlineArrowExample} language="tsx" showCopy={false} />
               </div>
               <div>
                 <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
@@ -78,24 +99,13 @@ export default function EventHandlersDemo() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <div className="text-base-content/50 text-xs mb-3">CODE:</div>
-                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
-                  <code className="text-base-content">
-                    {'const handleClick = () => {\n' +
-                      '  setCount(count + 1);\n' +
-                      '};\n\n' +
-                      'return (\n' +
-                      '  <button onClick={handleClick}>\n' +
-                      '    Click me\n' +
-                      '  </button>\n' +
-                      ');'}
-                  </code>
-                </pre>
+                <CodeSnippet code={functionReferenceExample} language="tsx" showCopy={false} />
               </div>
               <div>
                 <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
                 <button
                   onClick={() => {
-                    const handleClick = () => setCount2((prev) => prev + 1);
+                    const handleClick = (): void => setCount2((prev) => prev + 1);
                     handleClick();
                   }}
                   className="btn btn-success w-full"
@@ -122,18 +132,7 @@ export default function EventHandlersDemo() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <div className="text-base-content/50 text-xs mb-3">CODE:</div>
-                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
-                  <code className="text-base-content">
-                    {'const handleDelete = (id) => {\n' +
-                      "  console.log('Deleting', id);\n" +
-                      '};\n\n' +
-                      'return (\n' +
-                      '  <button onClick={() => handleDelete(123)}>\n' +
-                      '    Delete Item 123\n' +
-                      '  </button>\n' +
-                      ');'}
-                  </code>
-                </pre>
+                <CodeSnippet code={passingArgumentsExample} language="tsx" showCopy={false} />
               </div>
               <div>
                 <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
