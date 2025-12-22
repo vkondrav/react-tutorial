@@ -298,7 +298,7 @@ Common icon replacements:
 ```css
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: synthwave --default;
+  themes: business --default;
 }
 ```
 
