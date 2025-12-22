@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 3: Hooks Deep Dive |
-| **Current Lesson** | Lesson 3.1: useEffect |
-| **Next Lesson** | Lesson 3.2: useContext |
+| **Current Lesson** | Lesson 3.2: useContext |
+| **Next Lesson** | Lesson 3.3: useRef |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -39,7 +39,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 3.1 | useEffect: Side Effects & Lifecycle | ✅ Complete | Effect basics, dependency array, cleanup, timing, playground |
-| 3.2 | useContext: Sharing State | ⬜ Pending |
+| 3.2 | useContext: Sharing State | ✅ Complete | Prop drilling, context basics, context + state, multiple contexts, playground |
 | 3.3 | useRef: DOM Access & Persistence | ⬜ Pending |
 | 3.4 | useMemo & useCallback: Performance | ⬜ Pending |
 | 3.5 | Custom Hooks: Reusable Logic | ⬜ Pending |
@@ -305,6 +305,22 @@ All 5 lessons in Module 2: Core Concepts are now implemented.
 
 #### Module 3 Started! 🎯
 Beginning the Hooks Deep Dive module.
+
+---
+
+### Session 6 - December 9, 2025
+**Goal:** Implement Lesson 3.2: useContext
+
+#### Completed:
+- ✅ **Implemented Lesson 3.2: useContext - Sharing State**
+  - `index.jsx` - Main lesson with 6 sections
+  - `PropDrillingDemo.jsx` - Visual demo of the prop drilling problem with 4-level component tree
+  - `ContextBasicsDemo.jsx` - Three-step guide: createContext, Provider, useContext with code examples
+  - `ContextWithStateDemo.jsx` - Counter example with custom useCounter hook pattern
+  - `MultipleContextsDemo.jsx` - Theme + Auth contexts in a mini app
+  - `ContextPlayground.jsx` - Full dashboard with Theme, User, and Notification contexts
+  - Updated `config.json` to add lesson 3.2 and mark 3.1 as complete
+  - Updated `App.jsx` to import and register Lesson3_2 component
 
 ## Concepts Mastered
 
