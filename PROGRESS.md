@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 2: Core Concepts |
-| **Current Lesson** | Lesson 2.4: Conditional Rendering |
-| **Next Lesson** | Lesson 2.5: Lists & Keys |
+| **Current Lesson** | Lesson 2.5: Lists & Keys |
+| **Next Lesson** | Lesson 3.1: useEffect |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -32,7 +32,7 @@
 | 2.2 | State with useState Hook | ✅ Complete |
 | 2.3 | Event Handling | ✅ Complete |
 | 2.4 | Conditional Rendering | ✅ Complete | Ternary, &&, early returns, pattern comparison, playground |
-| 2.5 | Lists & Keys | ⬜ Pending |
+| 2.5 | Lists & Keys | ✅ Complete | .map() basics, keys explained, key mistakes demo, filter/sort/transform, todo playground |
 
 ### Module 3: Hooks Deep Dive ⬜ Not Started
 
@@ -273,6 +273,19 @@
 #### Files Modified:
 - `playground/src/lessons/2_4/ConditionalPlayground.jsx`
 - `playground/src/lessons/2_4/LogicalAndDemo.jsx`
+
+- ✅ **Implemented Lesson 2.5: Lists & Keys**
+  - `index.jsx` - Main lesson with 6 sections
+  - `ListBasicsDemo.jsx` - Simple and object array rendering with .map()
+  - `KeysExplainedDemo.jsx` - Interactive demo showing why keys matter (add/remove/reorder)
+  - `KeyMistakesDemo.jsx` - Side-by-side comparison of index vs ID keys with input state
+  - `ListOperationsDemo.jsx` - Product list with search, filter by category/stock, sort
+  - `ListPlayground.jsx` - Complete todo app (add, remove, toggle, filter, clear completed)
+  - Updated `config.json` to add lesson 2.5 and mark 2.4 as complete
+  - Updated `App.jsx` to import and register Lesson2_5 component
+
+#### Module 2 Complete! 🎉
+All 5 lessons in Module 2: Core Concepts are now implemented.
 
 ## Concepts Mastered
 
