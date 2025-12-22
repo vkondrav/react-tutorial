@@ -11,41 +11,28 @@ export default function VirtualDomDemo() {
 
   return (
     <div>
-      <p style={{ lineHeight: 1.8, color: '#94a3b8', marginTop: 0 }}>
-        React uses a <strong style={{ color: '#38bdf8' }}>Virtual DOM</strong> - when state changes,
+      <p className="leading-relaxed text-slate-400 mt-0">
+        React uses a <strong className="text-cyan-400">Virtual DOM</strong> - when state changes,
         React only updates what actually changed.
       </p>
-      <div
-        style={{
-          backgroundColor: '#0f172a',
-          padding: '1.5rem',
-          borderRadius: '0.75rem',
-          marginTop: '1rem',
-        }}
-      >
+
+      <div className="bg-slate-900 p-6 rounded-xl mt-4">
         <input
           type="text"
           value={name}
           onChange={handleChange}
           placeholder="Type your name"
-          style={{
-            width: '100%',
-            padding: '0.75rem',
-            backgroundColor: '#1e293b',
-            border: '1px solid #334155',
-            borderRadius: '0.5rem',
-            color: '#f8fafc',
-            fontSize: '1rem',
-            marginBottom: '1rem',
-          }}
+          className="w-full p-3 bg-slate-800 border border-slate-700 rounded-lg text-slate-50 text-base mb-4 focus:outline-none focus:border-cyan-500 transition-colors"
         />
-        <div style={{ padding: '1rem', backgroundColor: '#1e293b', borderRadius: '0.5rem' }}>
-          <p style={{ margin: 0, fontSize: '1.25rem' }}>
-            Hello, <span style={{ color: '#38bdf8', fontWeight: '600' }}>{name || '...'}</span>! 👋
+
+        <div className="p-4 bg-slate-800 rounded-lg">
+          <p className="m-0 text-xl">
+            Hello, <span className="text-cyan-400 font-semibold">{name || '...'}</span>! 👋
           </p>
         </div>
-        <div style={{ fontSize: '0.8125rem', color: '#64748b', marginTop: '1rem' }}>
-          DOM updates: <strong style={{ color: '#22c55e' }}>{updates}</strong>
+
+        <div className="text-sm text-slate-500 mt-4">
+          DOM updates: <strong className="text-green-500">{updates}</strong>
         </div>
       </div>
     </div>

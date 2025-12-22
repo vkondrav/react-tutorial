@@ -7,100 +7,110 @@ export default function ComponentTreeDemo() {
     {
       id: 'app',
       name: 'App',
-      color: '#3b82f6',
+      color: 'blue',
       description: 'The root component - everything lives inside App',
     },
     {
       id: 'header',
       name: 'Header',
-      color: '#8b5cf6',
+      color: 'violet',
       description: 'Contains the logo and navigation',
     },
     {
       id: 'main',
       name: 'Main',
-      color: '#10b981',
+      color: 'emerald',
       description: 'The main content area with all sections',
     },
     {
       id: 'section',
       name: 'Section',
-      color: '#f59e0b',
+      color: 'amber',
       description: 'Reusable section wrapper - used 5 times on this page!',
     },
-    { id: 'demo', name: 'Demo', color: '#ec4899', description: 'Interactive demos like this one' },
+    {
+      id: 'demo',
+      name: 'Demo',
+      color: 'pink',
+      description: 'Interactive demos like this one',
+    },
   ];
+
+  const colorClasses = {
+    blue: {
+      bg: 'bg-blue-500',
+      border: 'border-blue-500',
+      text: 'text-blue-500',
+    },
+    violet: {
+      bg: 'bg-violet-500',
+      border: 'border-violet-500',
+      text: 'text-violet-500',
+    },
+    emerald: {
+      bg: 'bg-emerald-500',
+      border: 'border-emerald-500',
+      text: 'text-emerald-500',
+    },
+    amber: {
+      bg: 'bg-amber-500',
+      border: 'border-amber-500',
+      text: 'text-amber-500',
+    },
+    pink: {
+      bg: 'bg-pink-500',
+      border: 'border-pink-500',
+      text: 'text-pink-500',
+    },
+  };
 
   const selectedComp = components.find((c) => c.id === selected);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="flex flex-col gap-6">
       <div>
-        <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: 0, marginBottom: '1rem' }}>
-          👇 Click a component to learn about it:
-        </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-          {components.map((comp) => (
-            <button
-              key={comp.id}
-              onClick={() => setSelected(selected === comp.id ? null : comp.id)}
-              style={{
-                padding: '0.625rem 1rem',
-                backgroundColor: selected === comp.id ? comp.color : '#0f172a',
-                borderRadius: '0.5rem',
-                border: `2px solid ${comp.color}`,
-                color: selected === comp.id ? 'white' : comp.color,
-                fontSize: '0.875rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-              }}
-            >
-              {'<'}
-              {comp.name}
-              {' />'}
-            </button>
-          ))}
+        <p className="text-sm text-slate-500 mt-0 mb-4">👇 Click a component to learn about it:</p>
+        <div className="flex flex-wrap gap-2">
+          {components.map((comp) => {
+            const colors = colorClasses[comp.color];
+            const isSelected = selected === comp.id;
+            return (
+              <button
+                key={comp.id}
+                onClick={() => setSelected(isSelected ? null : comp.id)}
+                className={`px-4 py-2.5 rounded-lg border-2 text-sm font-semibold cursor-pointer transition-colors ${colors.border} ${
+                  isSelected
+                    ? `${colors.bg} text-white`
+                    : `bg-slate-900 ${colors.text} hover:bg-slate-800`
+                }`}
+              >
+                {'<'}
+                {comp.name}
+                {' />'}
+              </button>
+            );
+          })}
         </div>
       </div>
+
       <div
-        style={{
-          backgroundColor: '#0f172a',
-          padding: '1.25rem',
-          borderRadius: '0.75rem',
-          border: selectedComp ? `2px solid ${selectedComp.color}` : '2px solid #334155',
-          minHeight: '80px',
-        }}
+        className={`bg-slate-900 p-5 rounded-xl border-2 min-h-[80px] transition-colors ${
+          selectedComp ? colorClasses[selectedComp.color].border : 'border-slate-700'
+        }`}
       >
         {selectedComp ? (
           <div>
             <span
-              style={{
-                backgroundColor: selectedComp.color,
-                color: 'white',
-                padding: '0.25rem 0.75rem',
-                borderRadius: '0.375rem',
-                fontSize: '0.875rem',
-                fontWeight: '600',
-              }}
+              className={`${colorClasses[selectedComp.color].bg} text-white px-3 py-1 rounded text-sm font-semibold`}
             >
               {'<'}
               {selectedComp.name}
               {' />'}
             </span>
-            <p style={{ color: '#cbd5e1', margin: '0.75rem 0 0', lineHeight: 1.6 }}>
-              {selectedComp.description}
-            </p>
+            <p className="text-slate-300 mt-3 leading-relaxed">{selectedComp.description}</p>
           </div>
         ) : (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%',
-              color: '#64748b',
-            }}
-          >
+          <div className="flex items-center justify-center h-full text-slate-500">
             👆 Click a component above
           </div>
         )}

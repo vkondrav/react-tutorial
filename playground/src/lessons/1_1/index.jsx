@@ -7,13 +7,13 @@ import VirtualDomDemo from './VirtualDomDemo';
 
 export default function Lesson1_1() {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="1" title="What is React & Why Use It?" />
 
       <Section title="🎯 The Big Idea">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8' }}>
-          React lets you describe <strong style={{ color: '#38bdf8' }}>what</strong> your UI should
-          look like, not <strong style={{ color: '#f472b6' }}>how</strong> to build it step by step.
+        <p className="leading-relaxed text-slate-400">
+          React lets you describe <strong className="text-cyan-400">what</strong> your UI should
+          look like, not <strong className="text-pink-400">how</strong> to build it step by step.
           This is called <em>declarative programming</em>.
         </p>
       </Section>
@@ -23,10 +23,10 @@ export default function Lesson1_1() {
       </Section>
 
       <Section title="🧱 Components in Action">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8', marginBottom: '1.5rem' }}>
+        <p className="leading-relaxed text-slate-400 mb-6">
           Everything you see on this page is built from{' '}
-          <strong style={{ color: '#38bdf8' }}>components</strong>. Components can contain other
-          components - this is called <strong style={{ color: '#22c55e' }}>composition</strong>.
+          <strong className="text-cyan-400">components</strong>. Components can contain other
+          components - this is called <strong className="text-green-500">composition</strong>.
         </p>
         <ComponentTreeDemo />
       </Section>

@@ -24,19 +24,23 @@ export default function PatternComparisonDemo() {
   };
 
   return (
-    <div style={{
-      backgroundColor: '#1e293b',
-      borderRadius: '0.75rem',
-      padding: '1.5rem',
-      marginTop: '1rem',
-    }}>
+    <div
+      style={{
+        backgroundColor: '#1e293b',
+        borderRadius: '0.75rem',
+        padding: '1.5rem',
+        marginTop: '1rem',
+      }}
+    >
       {/* Pattern Selector */}
-      <div style={{
-        display: 'flex',
-        gap: '0.5rem',
-        flexWrap: 'wrap',
-        marginBottom: '1.5rem',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '0.5rem',
+          flexWrap: 'wrap',
+          marginBottom: '1.5rem',
+        }}
+      >
         {patterns.map((p) => (
           <button
             key={p.id}
@@ -58,15 +62,17 @@ export default function PatternComparisonDemo() {
       </div>
 
       {/* State Controls */}
-      <div style={{
-        display: 'flex',
-        gap: '0.5rem',
-        flexWrap: 'wrap',
-        marginBottom: '1.5rem',
-        padding: '1rem',
-        backgroundColor: '#0f172a',
-        borderRadius: '0.5rem',
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '0.5rem',
+          flexWrap: 'wrap',
+          marginBottom: '1.5rem',
+          padding: '1rem',
+          backgroundColor: '#0f172a',
+          borderRadius: '0.5rem',
+        }}
+      >
         <button
           onClick={simulateLoad}
           style={{
@@ -81,7 +87,10 @@ export default function PatternComparisonDemo() {
           🔄 Simulate Load
         </button>
         <button
-          onClick={() => { setHasData(!hasData); setHasError(false); }}
+          onClick={() => {
+            setHasData(!hasData);
+            setHasError(false);
+          }}
           style={{
             padding: '0.5rem 1rem',
             backgroundColor: hasData ? '#22c55e' : '#475569',
@@ -94,7 +103,10 @@ export default function PatternComparisonDemo() {
           {hasData ? '📦 Has Data' : '📭 No Data'}
         </button>
         <button
-          onClick={() => { setHasError(!hasError); setIsLoading(false); }}
+          onClick={() => {
+            setHasError(!hasError);
+            setIsLoading(false);
+          }}
           style={{
             padding: '0.5rem 1rem',
             backgroundColor: hasError ? '#ef4444' : '#475569',
@@ -108,95 +120,124 @@ export default function PatternComparisonDemo() {
         </button>
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '1rem',
-      }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '1rem',
+        }}
+      >
         {/* Code Panel */}
-        <div style={{
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          padding: '1rem',
-          overflow: 'auto',
-        }}>
-          <div style={{
-            fontSize: '0.75rem',
-            fontWeight: '600',
-            color: patterns.find(p => p.id === selectedPattern)?.color,
-            marginBottom: '0.75rem',
-            textTransform: 'uppercase',
-          }}>
+        <div
+          style={{
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            padding: '1rem',
+            overflow: 'auto',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '0.75rem',
+              fontWeight: '600',
+              color: patterns.find((p) => p.id === selectedPattern)?.color,
+              marginBottom: '0.75rem',
+              textTransform: 'uppercase',
+            }}
+          >
             Code Pattern
           </div>
-          
-          <pre style={{
-            fontFamily: 'monospace',
-            fontSize: '0.75rem',
-            margin: 0,
-            lineHeight: 1.6,
-            whiteSpace: 'pre-wrap',
-          }}>
+
+          <pre
+            style={{
+              fontFamily: 'monospace',
+              fontSize: '0.75rem',
+              margin: 0,
+              lineHeight: 1.6,
+              whiteSpace: 'pre-wrap',
+            }}
+          >
             {selectedPattern === 'ternary' && (
               <>
                 <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'      '}</span>
                 <span style={{ color: '#c084fc' }}>{'{'}</span>
-                <span style={{ color: '#f8fafc' }}>isLoading</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>isLoading</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>{'\n'}
+                <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        : '}</span>
-                <span style={{ color: '#f8fafc' }}>hasError</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>hasError</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>{'\n'}
+                <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        : '}</span>
-                <span style={{ color: '#f8fafc' }}>hasData</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>hasData</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        ? '}</span>
-                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>{'\n'}
+                <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
+                {'\n'}
                 <span style={{ color: '#f59e0b' }}>{'        : '}</span>
                 <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  );'}</span>{'\n'}
+                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'  );'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'}'}</span>
               </>
             )}
-            
+
             {selectedPattern === 'and' && (
               <>
                 <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'  return ('}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'    <div>'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'      '}</span>
                 <span style={{ color: '#c084fc' }}>{'{'}</span>
                 <span style={{ color: '#f8fafc' }}>isLoading </span>
                 <span style={{ color: '#f59e0b' }}>{'&& '}</span>
                 <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>{'\n'}
+                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'      '}</span>
                 <span style={{ color: '#c084fc' }}>{'{'}</span>
                 <span style={{ color: '#f8fafc' }}>hasError </span>
                 <span style={{ color: '#f59e0b' }}>{'&& '}</span>
                 <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>{'\n'}
+                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'      '}</span>
                 <span style={{ color: '#c084fc' }}>{'{'}</span>
                 <span style={{ color: '#f8fafc' }}>hasData </span>
                 <span style={{ color: '#f59e0b' }}>{'&& '}</span>
                 <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>{'\n'}
+                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'      '}</span>
                 <span style={{ color: '#c084fc' }}>{'{'}</span>
                 <span style={{ color: '#f8fafc' }}>{'!isLoading && !hasData '}</span>
                 <span style={{ color: '#f59e0b' }}>{'&& '}</span>
                 <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#c084fc' }}>{'}'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  );'}</span>{'\n'}
+                <span style={{ color: '#c084fc' }}>{'}'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'    </div>'}</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'  );'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'}'}</span>
               </>
             )}
@@ -204,30 +245,36 @@ export default function PatternComparisonDemo() {
             {selectedPattern === 'early' && (
               <>
                 <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>if </span>
                 <span style={{ color: '#f8fafc' }}>(isLoading) </span>
                 <span style={{ color: '#c084fc' }}>return </span>
                 <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>if </span>
                 <span style={{ color: '#f8fafc' }}>(hasError) </span>
                 <span style={{ color: '#c084fc' }}>return </span>
                 <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>if </span>
                 <span style={{ color: '#f8fafc' }}>(!hasData) </span>
                 <span style={{ color: '#c084fc' }}>return </span>
                 <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n\n'}
-                <span style={{ color: '#64748b' }}>{'  // Happy path!'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n\n'}
+                <span style={{ color: '#64748b' }}>{'  // Happy path!'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>return </span>
                 <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'}'}</span>
               </>
             )}
@@ -235,39 +282,51 @@ export default function PatternComparisonDemo() {
             {selectedPattern === 'variable' && (
               <>
                 <span style={{ color: '#c084fc' }}>{'function '}</span>
-                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>DataDisplay() {'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>let </span>
-                <span style={{ color: '#f8fafc' }}>content;</span>{'\n\n'}
+                <span style={{ color: '#f8fafc' }}>content;</span>
+                {'\n\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>if </span>
-                <span style={{ color: '#f8fafc' }}>(isLoading) {'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>(isLoading) {'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
                 <span style={{ color: '#22c55e' }}>{'<Spinner />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  } '}</span>
                 <span style={{ color: '#c084fc' }}>else if </span>
-                <span style={{ color: '#f8fafc' }}>(hasError) {'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>(hasError) {'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
                 <span style={{ color: '#ef4444' }}>{'<Error />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  } '}</span>
                 <span style={{ color: '#c084fc' }}>else if </span>
-                <span style={{ color: '#f8fafc' }}>(hasData) {'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>(hasData) {'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
                 <span style={{ color: '#3b82f6' }}>{'<DataList />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'  } '}</span>
                 <span style={{ color: '#c084fc' }}>else </span>
-                <span style={{ color: '#f8fafc' }}>{'{'}</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>{'{'}</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'    content = '}</span>
                 <span style={{ color: '#94a3b8' }}>{'<Empty />'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
-                <span style={{ color: '#f8fafc' }}>{'  }'}</span>{'\n\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
+                <span style={{ color: '#f8fafc' }}>{'  }'}</span>
+                {'\n\n'}
                 <span style={{ color: '#f8fafc' }}>{'  '}</span>
                 <span style={{ color: '#c084fc' }}>return </span>
                 <span style={{ color: '#f8fafc' }}>{'<div>{content}</div>'}</span>
-                <span style={{ color: '#f8fafc' }}>;</span>{'\n'}
+                <span style={{ color: '#f8fafc' }}>;</span>
+                {'\n'}
                 <span style={{ color: '#f8fafc' }}>{'}'}</span>
               </>
             )}
@@ -275,41 +334,49 @@ export default function PatternComparisonDemo() {
         </div>
 
         {/* Preview Panel */}
-        <div style={{
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          padding: '1rem',
-        }}>
-          <div style={{
-            fontSize: '0.75rem',
-            fontWeight: '600',
-            color: '#3b82f6',
-            marginBottom: '0.75rem',
-            textTransform: 'uppercase',
-          }}>
+        <div
+          style={{
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            padding: '1rem',
+          }}
+        >
+          <div
+            style={{
+              fontSize: '0.75rem',
+              fontWeight: '600',
+              color: '#3b82f6',
+              marginBottom: '0.75rem',
+              textTransform: 'uppercase',
+            }}
+          >
             Live Preview
           </div>
-          
-          <div style={{
-            minHeight: '150px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#1e293b',
-            borderRadius: '0.375rem',
-            padding: '1rem',
-          }}>
+
+          <div
+            style={{
+              minHeight: '150px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#1e293b',
+              borderRadius: '0.375rem',
+              padding: '1rem',
+            }}
+          >
             {isLoading ? (
               <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  border: '3px solid #334155',
-                  borderTopColor: '#3b82f6',
-                  borderRadius: '50%',
-                  margin: '0 auto 0.75rem',
-                  animation: 'spin 1s linear infinite',
-                }} />
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '3px solid #334155',
+                    borderTopColor: '#3b82f6',
+                    borderRadius: '50%',
+                    margin: '0 auto 0.75rem',
+                    animation: 'spin 1s linear infinite',
+                  }}
+                />
                 <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
                 <div style={{ color: '#64748b' }}>Loading...</div>
               </div>
@@ -317,9 +384,7 @@ export default function PatternComparisonDemo() {
               <div style={{ textAlign: 'center', color: '#ef4444' }}>
                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>❌</div>
                 <div style={{ fontWeight: '600' }}>Error Loading Data</div>
-                <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
-                  Please try again
-                </div>
+                <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>Please try again</div>
               </div>
             ) : hasData ? (
               <div style={{ width: '100%' }}>
@@ -352,32 +417,38 @@ export default function PatternComparisonDemo() {
       </div>
 
       {/* Pattern Tips */}
-      <div style={{
-        marginTop: '1.5rem',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '1rem',
-      }}>
-        <div style={{
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          borderTop: '3px solid #3b82f6',
-        }}>
+      <div
+        style={{
+          marginTop: '1.5rem',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1rem',
+        }}
+      >
+        <div
+          style={{
+            padding: '1rem',
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            borderTop: '3px solid #3b82f6',
+          }}
+        >
           <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#3b82f6' }}>
-            Ternary ?: 
+            Ternary ?:
           </div>
           <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
             Best for simple either/or. Avoid nesting more than 2 deep.
           </div>
         </div>
-        
-        <div style={{
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          borderTop: '3px solid #22c55e',
-        }}>
+
+        <div
+          style={{
+            padding: '1rem',
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            borderTop: '3px solid #22c55e',
+          }}
+        >
           <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#22c55e' }}>
             Logical &&
           </div>
@@ -385,13 +456,15 @@ export default function PatternComparisonDemo() {
             Best for show/hide one thing. Watch out for 0 gotcha!
           </div>
         </div>
-        
-        <div style={{
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          borderTop: '3px solid #f59e0b',
-        }}>
+
+        <div
+          style={{
+            padding: '1rem',
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            borderTop: '3px solid #f59e0b',
+          }}
+        >
           <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#f59e0b' }}>
             Early Return
           </div>
@@ -399,13 +472,15 @@ export default function PatternComparisonDemo() {
             Best for multiple conditions. Keeps "happy path" clean.
           </div>
         </div>
-        
-        <div style={{
-          padding: '1rem',
-          backgroundColor: '#0f172a',
-          borderRadius: '0.5rem',
-          borderTop: '3px solid #8b5cf6',
-        }}>
+
+        <div
+          style={{
+            padding: '1rem',
+            backgroundColor: '#0f172a',
+            borderRadius: '0.5rem',
+            borderTop: '3px solid #8b5cf6',
+          }}
+        >
           <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#8b5cf6' }}>
             Variable
           </div>
@@ -417,4 +492,3 @@ export default function PatternComparisonDemo() {
     </div>
   );
 }
-
