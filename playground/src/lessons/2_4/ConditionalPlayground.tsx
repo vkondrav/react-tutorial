@@ -1,3 +1,7 @@
+// ============================================
+// ConditionalPlayground - Interactive Conditional Rendering Demo
+// ============================================
+
 import { useState } from 'react';
 import {
   HiOutlineLockClosed,
@@ -8,10 +12,36 @@ import {
   HiOutlineUser,
   HiX,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
-export default function ConditionalPlayground() {
+// ============================================
+// Types
+// ============================================
+
+type UserRole = 'user' | 'moderator' | 'admin';
+
+interface UserState {
+  name: string;
+  isLoggedIn: boolean;
+  isPremium: boolean;
+  notifications: number;
+  role: UserRole;
+}
+
+interface FeatureToggles {
+  showAvatar: boolean;
+  showBadge: boolean;
+  showNotifications: boolean;
+  darkMode: boolean;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function ConditionalPlayground(): React.ReactElement {
   // User profile state
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserState>({
     name: 'Alex',
     isLoggedIn: true,
     isPremium: false,
@@ -20,20 +50,26 @@ export default function ConditionalPlayground() {
   });
 
   // Feature toggles
-  const [features, setFeatures] = useState({
+  const [features, setFeatures] = useState<FeatureToggles>({
     showAvatar: true,
     showBadge: true,
     showNotifications: true,
     darkMode: true,
   });
 
-  const updateUser = (key, value) => {
+  const updateUser = <K extends keyof UserState>(key: K, value: UserState[K]): void => {
     setUser((prev) => ({ ...prev, [key]: value }));
   };
 
-  const toggleFeature = (key) => {
+  const toggleFeature = (key: keyof FeatureToggles): void => {
     setFeatures((prev) => ({ ...prev, [key]: !prev[key] }));
   };
+
+  // Dynamic code display for current conditions
+  const conditionsDisplay = `isLoggedIn=${String(user.isLoggedIn)}
+isPremium=${String(user.isPremium)}
+role="${user.role}"
+notifications=${user.notifications}`;
 
   return (
     <div className="mt-4 card bg-base-200 p-6">
@@ -52,7 +88,9 @@ export default function ConditionalPlayground() {
             <input
               type="text"
               value={user.name}
-              onChange={(e) => updateUser('name', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                updateUser('name', e.target.value)
+              }
               className="input input-bordered w-full input-sm"
             />
           </div>
@@ -88,7 +126,9 @@ export default function ConditionalPlayground() {
             <label className="block text-xs text-base-content/50 mb-1">Role</label>
             <select
               value={user.role}
-              onChange={(e) => updateUser('role', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                updateUser('role', e.target.value as UserRole)
+              }
               className="select select-bordered w-full select-sm"
             >
               <option value="user">User</option>
@@ -107,7 +147,9 @@ export default function ConditionalPlayground() {
               min="0"
               max="99"
               value={user.notifications}
-              onChange={(e) => updateUser('notifications', Number(e.target.value))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                updateUser('notifications', Number(e.target.value))
+              }
               className="range range-sm"
             />
           </div>
@@ -120,7 +162,7 @@ export default function ConditionalPlayground() {
             Feature Toggles
           </div>
 
-          {Object.entries(features).map(([key, value]) => (
+          {(Object.entries(features) as [keyof FeatureToggles, boolean][]).map(([key, value]) => (
             <label key={key} className="flex items-center gap-2 mb-2 cursor-pointer">
               <input
                 type="checkbox"
@@ -139,18 +181,20 @@ export default function ConditionalPlayground() {
       {/* Live Preview */}
       <div
         className={`card p-6 border-2 border-primary transition-all ${
-          features.darkMode ? 'bg-base-300' : 'bg-base-100'
+          features.darkMode ? 'bg-slate-800 text-slate-100' : 'bg-white text-slate-900'
         }`}
       >
-        <div className="text-primary text-xs font-semibold mb-4 flex items-center gap-2">
+        <div
+          className={`text-xs font-semibold mb-4 flex items-center gap-2 ${features.darkMode ? 'text-sky-400' : 'text-primary'}`}
+        >
           <span>🎬</span>
           LIVE RESULT
         </div>
 
         {/* Conditional: Show logged out state OR logged in UI */}
         {!user.isLoggedIn ? (
-          <div className="text-center p-8 text-base-content/50">
-            <div className="text-5xl mb-2">
+          <div className="text-center p-8 opacity-50">
+            <div className="flex justify-center mb-2">
               <HiOutlineLockClosed size={64} />
             </div>
             <div className="font-semibold mb-1">Please Log In</div>
@@ -160,9 +204,7 @@ export default function ConditionalPlayground() {
           <div>
             {/* Header */}
             <div
-              className={`flex items-center justify-between p-4 card rounded-lg mb-4 ${
-                features.darkMode ? 'bg-base-200' : 'bg-base-200'
-              }`}
+              className={`flex items-center justify-between p-4 card rounded-lg mb-4 ${features.darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}
             >
               <div className="flex items-center gap-3">
                 {/* Conditional: Show avatar */}
@@ -173,16 +215,12 @@ export default function ConditionalPlayground() {
                 )}
 
                 <div>
-                  <div
-                    className={`font-semibold flex items-center gap-2 ${
-                      features.darkMode ? 'text-base-content' : 'text-base-content'
-                    }`}
-                  >
+                  <div className="font-semibold flex items-center gap-2">
                     {user.name || 'Anonymous'}
 
                     {/* Conditional: Premium badge */}
                     {features.showBadge && user.isPremium && (
-                      <span className="badge badge-warning badge-sm">⭐ PRO</span>
+                      <span className="badge badge-warning badge-sm">PRO</span>
                     )}
 
                     {/* Conditional: Role badge (ternary for different colors) */}
@@ -206,7 +244,7 @@ export default function ConditionalPlayground() {
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-base-content/50">
+                  <div className="text-xs opacity-50">
                     {user.isPremium ? 'Premium Member' : 'Free Account'}
                   </div>
                 </div>
@@ -228,11 +266,7 @@ export default function ConditionalPlayground() {
 
             {/* Admin Panel - Conditional */}
             {user.role === 'admin' && (
-              <div
-                className={`p-4 card rounded-lg mb-4 border-2 border-dashed ${
-                  features.darkMode ? 'bg-error/10 border-error' : 'bg-error/5 border-error/50'
-                }`}
-              >
+              <div className="p-4 card rounded-lg mb-4 border-2 border-dashed bg-error/10 border-error">
                 <div className="font-semibold mb-2 text-error flex items-center gap-2">
                   <HiOutlineCog size={16} />
                   Admin Controls
@@ -243,13 +277,7 @@ export default function ConditionalPlayground() {
 
             {/* Moderator Panel - Conditional */}
             {user.role === 'moderator' && (
-              <div
-                className={`p-4 card rounded-lg mb-4 border-2 border-dashed ${
-                  features.darkMode
-                    ? 'bg-secondary/10 border-secondary'
-                    : 'bg-secondary/5 border-secondary/50'
-                }`}
-              >
+              <div className="p-4 card rounded-lg mb-4 border-2 border-dashed bg-secondary/10 border-secondary">
                 <div className="font-semibold mb-2 text-secondary flex items-center gap-2">
                   <HiOutlineShieldCheck size={16} />
                   Moderator Tools
@@ -259,9 +287,10 @@ export default function ConditionalPlayground() {
             )}
 
             {/* Welcome Message */}
-            <div className="p-4 rounded-lg bg-base-200 text-base-content/70">
-              Welcome to your dashboard,{' '}
-              <strong className="text-base-content">{user.name || 'Guest'}</strong>!
+            <div
+              className={`p-4 rounded-lg ${features.darkMode ? 'bg-slate-700' : 'bg-slate-100'}`}
+            >
+              Welcome to your dashboard, <strong>{user.name || 'Guest'}</strong>!
               {user.isPremium && (
                 <span className="text-warning"> Enjoy your premium features ✨</span>
               )}
@@ -271,25 +300,11 @@ export default function ConditionalPlayground() {
       </div>
 
       {/* Current Conditions Display */}
-      <div className="mt-4 p-4 card bg-base-300 font-mono text-xs">
-        <div className="text-base-content/50 mb-2">// Current conditions being evaluated:</div>
-        <div className="flex flex-wrap gap-2">
-          <span className={user.isLoggedIn ? 'text-success' : 'text-error'}>
-            isLoggedIn={String(user.isLoggedIn)}
-          </span>
-          <span className="text-base-content/50">|</span>
-          <span className={user.isPremium ? 'text-warning' : 'text-base-content/50'}>
-            isPremium={String(user.isPremium)}
-          </span>
-          <span className="text-base-content/50">|</span>
-          <span className={user.role !== 'user' ? 'text-secondary' : 'text-base-content/50'}>
-            role="{user.role}"
-          </span>
-          <span className="text-base-content/50">|</span>
-          <span className={user.notifications > 0 ? 'text-primary' : 'text-base-content/50'}>
-            notifications={user.notifications}
-          </span>
+      <div className="mt-4">
+        <div className="text-base-content/50 text-xs mb-2">
+          // Current conditions being evaluated:
         </div>
+        <CodeSnippet code={conditionsDisplay} language="json" showCopy={false} />
       </div>
     </div>
   );

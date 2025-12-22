@@ -1,3 +1,7 @@
+// ============================================
+// TernaryDemo - The Ternary Operator in Depth
+// ============================================
+
 import { useState } from 'react';
 import {
   HiOutlineSun,
@@ -7,12 +11,32 @@ import {
   HiOutlineXCircle,
   HiOutlineUser,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import themeToggleExample from './examples/ThemeToggleExample.tsx?raw';
+import nestedTernaryExample from './examples/NestedTernaryExample.tsx?raw';
 
-export default function TernaryDemo() {
-  const [theme, setTheme] = useState('light');
-  const [status, setStatus] = useState('online');
+// ============================================
+// Types
+// ============================================
 
-  const statusConfig = {
+type Theme = 'light' | 'dark';
+type Status = 'online' | 'away' | 'busy' | 'offline';
+
+interface StatusConfig {
+  color: string;
+  icon: typeof HiOutlineCheckCircle;
+  label: string;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function TernaryDemo(): React.ReactElement {
+  const [theme, setTheme] = useState<Theme>('light');
+  const [status, setStatus] = useState<Status>('online');
+
+  const statusConfig: Record<Status, StatusConfig> = {
     online: { color: 'success', icon: HiOutlineCheckCircle, label: '🟢 Available' },
     away: { color: 'warning', icon: HiOutlineExclamationCircle, label: '🟡 Away' },
     busy: { color: 'error', icon: HiOutlineXCircle, label: '🔴 Do not disturb' },
@@ -51,8 +75,8 @@ export default function TernaryDemo() {
           <div
             className={`p-4 rounded-lg border transition-all ${
               theme === 'light'
-                ? 'bg-base-100 text-base-content border-base-300'
-                : 'bg-base-300 text-base-content border-base-300'
+                ? 'bg-amber-50 text-amber-900 border-amber-200'
+                : 'bg-slate-800 text-slate-100 border-slate-600'
             }`}
           >
             {theme === 'light' ? (
@@ -64,16 +88,8 @@ export default function TernaryDemo() {
         </div>
 
         {/* Code */}
-        <div className="mt-4 card bg-base-300 p-4 font-mono text-xs leading-relaxed">
-          <span className="text-base-content/50">{'// Style changes based on condition'}</span>
-          <br />
-          <span className="text-secondary">backgroundColor: </span>
-          <span className="text-base-content">theme === </span>
-          <span className="text-warning">'light'</span>
-          <span className="text-warning"> ? </span>
-          <span className="text-warning">'#f8fafc'</span>
-          <span className="text-warning"> : </span>
-          <span className="text-warning">'#0f172a'</span>
+        <div className="mt-4">
+          <CodeSnippet code={themeToggleExample} language="tsx" showCopy={false} />
         </div>
       </div>
 
@@ -84,7 +100,7 @@ export default function TernaryDemo() {
         </div>
 
         <div className="flex gap-2 mb-4 flex-wrap">
-          {['online', 'away', 'busy', 'offline'].map((s) => (
+          {(['online', 'away', 'busy', 'offline'] as Status[]).map((s) => (
             <button
               key={s}
               onClick={() => setStatus(s)}
@@ -132,22 +148,8 @@ export default function TernaryDemo() {
         </div>
 
         {/* Code */}
-        <div className="mt-4 card bg-base-300 p-4 font-mono text-xs leading-relaxed">
-          <span className="text-base-content/50">{'// Nested ternaries (use sparingly!)'}</span>
-          <br />
-          <span className="text-base-content">status === </span>
-          <span className="text-warning">'online'</span>
-          <span className="text-warning"> ? </span>
-          <span className="text-warning">'🟢 Available'</span>
-          <span className="text-warning"> :</span>
-          <br />
-          <span className="text-base-content">status === </span>
-          <span className="text-warning">'away'</span>
-          <span className="text-warning"> ? </span>
-          <span className="text-warning">'🟡 Away'</span>
-          <span className="text-warning"> :</span>
-          <br />
-          <span className="text-warning">...</span>
+        <div className="mt-4">
+          <CodeSnippet code={nestedTernaryExample} language="tsx" showCopy={false} />
         </div>
       </div>
 

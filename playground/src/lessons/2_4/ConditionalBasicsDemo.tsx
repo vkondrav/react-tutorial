@@ -1,3 +1,7 @@
+// ============================================
+// ConditionalBasicsDemo - Introduction to Conditional Rendering
+// ============================================
+
 import { useState } from 'react';
 import {
   HiChevronDown,
@@ -6,10 +10,16 @@ import {
   HiOutlineLockClosed,
   HiOutlineHand,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import ternaryBasicExample from './examples/TernaryBasicExample.tsx?raw';
 
-export default function ConditionalBasicsDemo() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showCode, setShowCode] = useState(true);
+// ============================================
+// Main Component
+// ============================================
+
+export default function ConditionalBasicsDemo(): React.ReactElement {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [showCode, setShowCode] = useState<boolean>(true);
 
   return (
     <div className="mt-4 card bg-base-200 p-6">
@@ -82,32 +92,12 @@ export default function ConditionalBasicsDemo() {
 
       {/* Code Explanation */}
       {showCode && (
-        <div className="card bg-base-300 p-4 font-mono text-sm leading-relaxed overflow-auto">
-          <div className="text-base-content/50">
-            {'// Using ternary operator for conditional rendering'}
-          </div>
-          <div>
-            <span className="text-secondary">{'{'}</span>
-            <span className="text-base-content">isLoggedIn </span>
-            <span className="text-warning">? </span>
-            <span className="text-base-content/70">{'('}</span>
-          </div>
-          <div className="pl-4">
-            <span className="text-success">&lt;WelcomeMessage /&gt;</span>
-          </div>
-          <div>
-            <span className="text-base-content/70">{')'}</span>
-            <span className="text-warning"> : </span>
-            <span className="text-base-content/70">{'('}</span>
-          </div>
-          <div className="pl-4">
-            <span className="text-error">&lt;LoginPrompt /&gt;</span>
-          </div>
-          <div>
-            <span className="text-base-content/70">{')'}</span>
-            <span className="text-secondary">{'}'}</span>
-          </div>
-        </div>
+        <CodeSnippet
+          code={ternaryBasicExample}
+          language="tsx"
+          title="Using ternary operator for conditional rendering"
+          showCopy={false}
+        />
       )}
 
       {/* Explanation */}

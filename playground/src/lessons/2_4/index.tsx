@@ -17,7 +17,11 @@ import LogicalAndDemo from './LogicalAndDemo';
 import PatternComparisonDemo from './PatternComparisonDemo';
 import ConditionalPlayground from './ConditionalPlayground';
 
-export default function Lesson2_4() {
+// ============================================
+// Main Component
+// ============================================
+
+export default function Lesson2_4(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="4" title="Conditional Rendering" />

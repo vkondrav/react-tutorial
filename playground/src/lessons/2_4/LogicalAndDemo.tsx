@@ -1,3 +1,7 @@
+// ============================================
+// LogicalAndDemo - Short-Circuit with &&
+// ============================================
+
 import { useState } from 'react';
 import {
   HiMinus,
@@ -10,11 +14,19 @@ import {
   HiOutlineExclamationCircle,
   HiOutlineBell,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import logicalAndGoodExample from './examples/LogicalAndGoodExample.tsx?raw';
+import logicalAndGotchaExample from './examples/LogicalAndGotchaExample.tsx?raw';
+import logicalAndFixExample from './examples/LogicalAndFixExample.tsx?raw';
 
-export default function LogicalAndDemo() {
-  const [notifications, setNotifications] = useState(3);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [hasError, setHasError] = useState(false);
+// ============================================
+// Main Component
+// ============================================
+
+export default function LogicalAndDemo(): React.ReactElement {
+  const [notifications, setNotifications] = useState<number>(3);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   return (
     <div className="mt-4 card bg-base-200 p-6">
@@ -155,15 +167,7 @@ export default function LogicalAndDemo() {
             <HiCheck size={12} />
             GOOD
           </div>
-          <pre className="m-0 font-mono text-xs leading-relaxed">
-            <span className="text-base-content/50">{'// Show only if true'}</span>
-            {'\n'}
-            <span className="text-secondary">{'{'}</span>
-            <span className="text-base-content">isAdmin </span>
-            <span className="text-warning">&& </span>
-            <span className="text-success">&lt;AdminPanel /&gt;</span>
-            <span className="text-secondary">{'}'}</span>
-          </pre>
+          <CodeSnippet code={logicalAndGoodExample} language="tsx" showCopy={false} />
         </div>
 
         <div className="card bg-base-300 p-4">
@@ -171,16 +175,7 @@ export default function LogicalAndDemo() {
             <HiOutlineExclamationCircle size={12} />
             GOTCHA
           </div>
-          <pre className="m-0 font-mono text-xs leading-relaxed">
-            <span className="text-base-content/50">{'// 0 will render as "0"!'}</span>
-            {'\n'}
-            <span className="text-secondary">{'{'}</span>
-            <span className="text-base-content">count </span>
-            <span className="text-warning">&& </span>
-            <span className="text-success">&lt;Badge /&gt;</span>
-            <span className="text-secondary">{'}'}</span>
-            <span className="text-base-content/50">{' // if count=0'}</span>
-          </pre>
+          <CodeSnippet code={logicalAndGotchaExample} language="tsx" showCopy={false} />
         </div>
 
         <div className="card bg-base-300 p-4">
@@ -188,15 +183,7 @@ export default function LogicalAndDemo() {
             <HiCheck size={12} />
             FIX FOR NUMBERS
           </div>
-          <pre className="m-0 font-mono text-xs leading-relaxed">
-            <span className="text-base-content/50">{'// Use > 0 for numbers'}</span>
-            {'\n'}
-            <span className="text-secondary">{'{'}</span>
-            <span className="text-base-content">count </span>
-            <span className="text-warning">&gt; 0 && </span>
-            <span className="text-success">&lt;Badge /&gt;</span>
-            <span className="text-secondary">{'}'}</span>
-          </pre>
+          <CodeSnippet code={logicalAndFixExample} language="tsx" showCopy={false} />
         </div>
       </div>
 
