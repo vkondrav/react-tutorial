@@ -100,11 +100,13 @@ import MyDemo from './MyDemo';
 
 export default function Lesson1_4() {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="4" title="Components" />
       
       <Section title="📖 Concept">
-        <p>Explanation...</p>
+        <p className="leading-relaxed text-base-content/70">
+          Explanation with <strong className="text-primary">highlighted</strong> terms...
+        </p>
         <MyDemo />
       </Section>
 
@@ -116,7 +118,7 @@ export default function Lesson1_4() {
 }
 ```
 
-### Step 4: Create Helper Components
+### Step 4: Create Helper Components (with daisyUI)
 
 ```jsx
 // playground/src/lessons/1_4/MyDemo.jsx
@@ -125,9 +127,16 @@ import { useState } from 'react';
 export default function MyDemo() {
   const [value, setValue] = useState(0);
   return (
-    <div>
-      <p>Value: {value}</p>
-      <button onClick={() => setValue(v => v + 1)}>Increment</button>
+    <div className="card bg-base-200 p-6">
+      <p className="text-xl mb-4">
+        Value: <span className="text-primary font-bold">{value}</span>
+      </p>
+      <button 
+        onClick={() => setValue(v => v + 1)}
+        className="btn btn-primary"
+      >
+        Increment
+      </button>
     </div>
   );
 }
@@ -154,11 +163,34 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 
 ## Design Guidelines
 
-### Visual Style
-- **Dark theme**: Background `#0f172a`, cards `#1e293b`
-- **Accent colors**: Blue `#3b82f6`, Cyan `#38bdf8`, Green `#22c55e`
-- **Typography**: System fonts, clear hierarchy
-- **Interactive elements**: Obvious hover/click states
+### Tech Stack
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **daisyUI v5** - Component library for Tailwind (provides `btn`, `card`, `input`, etc.)
+- **react-icons** - Icon library (using Heroicons set: `HiOutlineMenuAlt2`, etc.)
+
+### Visual Style (daisyUI Dark Theme)
+- **Theme**: `dark` theme enabled via `@plugin "daisyui" { themes: dark --default; }`
+- **Semantic colors**: Use daisyUI color names that adapt to theme:
+  - `text-primary` / `bg-primary` - Main accent (blue)
+  - `text-secondary` / `bg-secondary` - Secondary accent (purple)
+  - `text-accent` / `bg-accent` - Tertiary accent (pink)
+  - `text-success` / `bg-success` - Success states (green)
+  - `text-error` / `bg-error` - Error states (red)
+  - `text-base-content` - Default text color
+  - `text-base-content/70` - Muted text (70% opacity)
+  - `bg-base-100` - Page background
+  - `bg-base-200` - Card/section background
+  - `bg-base-300` - Elevated elements
+
+### daisyUI Components to Use
+
+| Component | Classes | Example |
+|-----------|---------|---------|
+| Button | `btn btn-primary btn-lg` | `<button className="btn btn-primary">Click</button>` |
+| Input | `input input-bordered` | `<input className="input input-bordered w-full" />` |
+| Card | `card bg-base-200 p-6` | `<div className="card bg-base-200 p-6">...</div>` |
+| Badge | `badge badge-primary` | `<span className="badge badge-primary">Tag</span>` |
+| Checkbox | `checkbox checkbox-primary` | `<input type="checkbox" className="checkbox" />` |
 
 ### Shared Components
 
@@ -168,6 +200,20 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 | `Section` | `<Section title="📖 Topic">content</Section>` |
 | `TakeawayList` | `<TakeawayList items={["Point 1", "Point 2"]} />` |
 | `CodeBlock` | `<CodeBlock title="Example" code={codeString} variant="good" />` |
+
+### Using Icons (react-icons)
+
+```jsx
+// Import from the appropriate icon set
+import { HiOutlineMenuAlt2, HiOutlineArrowLeft } from 'react-icons/hi';
+import { FaReact } from 'react-icons/fa';
+
+// Use as components
+<HiOutlineMenuAlt2 size={20} />
+<FaReact className="text-primary" />
+```
+
+Common icon sets: `hi` (Heroicons), `fa` (Font Awesome), `fi` (Feather), `md` (Material Design)
 
 ### Interactive Demos Should:
 - Be self-contained in their own `.jsx` file
@@ -204,6 +250,23 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 | "Show me the code" | Display relevant component file |
 | "I don't understand Y" | Break down concept with simpler demo |
 
+## Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `tailwindcss` | v4 | Utility-first CSS framework |
+| `daisyui` | v5 | Component library for Tailwind |
+| `react-icons` | latest | Icon library (Heroicons, etc.) |
+
+### CSS Setup (`playground/src/index.css`)
+
+```css
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes: dark --default;
+}
+```
+
 ## Troubleshooting
 
 | Issue | Solution |
@@ -214,6 +277,8 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 | Fast refresh error | Each component file should export only one component |
 | View Source not working | Update `projectPath` in `config.json` to match your system |
 | Wrong lesson on load | Check URL hash matches a valid lesson ID (e.g., `#1.3`) |
+| daisyUI styles not working | Ensure `@plugin "daisyui"` is in `index.css` |
+| Icons not showing | Import from correct react-icons package (e.g., `react-icons/hi`) |
 
 ## Tips for Effective Teaching
 

@@ -149,20 +149,48 @@
 #### Completed:
 - ✅ Installed daisyUI v5 (compatible with Tailwind CSS 4)
 - ✅ Added daisyUI plugin to `index.css` with dark theme
-- ✅ Refactored Lesson 1.1 to use daisyUI:
-  - `index.jsx` - Converted hardcoded colors to semantic colors (`text-primary`, `text-accent`, `text-success`, `text-base-content/70`)
-  - `ComparisonDemo.jsx` - Replaced button classes with `btn`, `btn-primary`, `btn-error`, `btn-outline` (70% code reduction)
-  - `ComponentTreeDemo.jsx` - Simplified color mapping using daisyUI variants (`btn-primary`, `btn-secondary`, etc.)
-  - `VirtualDomDemo.jsx` - Replaced input styling with `input input-bordered` (67% code reduction)
-- 📊 **Code Reduction Results:**
-  - Buttons: 10 classes → 3 classes (70% reduction)
-  - Inputs: 12 classes → 4 classes (67% reduction)
-  - Color mapping: 15 lines → 5 lines (67% reduction)
-- 🎨 **Benefits:**
-  - Semantic colors that adapt to theme automatically
-  - Cleaner, more readable component code
-  - Consistent styling across components
-  - Theme-aware colors (no hardcoded values) 
+- ✅ Installed react-icons for better iconography
+- ✅ **Refactored App.jsx (main navigator):**
+  - Converted all inline styles to Tailwind/daisyUI classes
+  - Sidebar uses flex layout with fixed logo/progress, scrollable nav
+  - Header/footer buttons use `btn` components
+  - Toast notification uses daisyUI `toast` and `alert` components
+  - Menu toggle uses react-icons (`HiOutlineMenuAlt2`, `HiOutlineArrowLeft`)
+  - ~46% code reduction (370 → 200 lines of styling)
+- ✅ **Refactored Lesson 1.1 to use daisyUI:**
+  - `index.jsx` - Semantic colors (`text-primary`, `text-accent`, `text-success`)
+  - `ComparisonDemo.jsx` - `btn btn-primary`, `btn btn-error`, `btn btn-outline`
+  - `ComponentTreeDemo.jsx` - daisyUI button variants, `badge` component
+  - `VirtualDomDemo.jsx` - `input input-bordered`, `card` component
+
+#### Code Reduction Results:
+| Element | Before | After | Reduction |
+|---------|--------|-------|-----------|
+| Buttons | 10 classes | 3 classes | 70% |
+| Inputs | 12 classes | 4 classes | 67% |
+| Color mapping | 15 lines | 5 lines | 67% |
+| App.jsx styles | ~370 lines | ~200 lines | 46% |
+
+#### Benefits:
+- 🎨 Semantic colors that adapt to theme automatically
+- 📦 Cleaner, more readable component code
+- 🔄 Consistent styling across components
+- 🌙 Theme-aware colors (no hardcoded values)
+- 🎯 Icons via react-icons (Heroicons set)
+
+#### daisyUI Refactoring Progress:
+| Component | Status | Notes |
+|-----------|--------|-------|
+| `App.jsx` | ✅ Complete | Main navigator, sidebar, header, footer |
+| Lesson 1.1 | ✅ Complete | All 4 files converted |
+| Lesson 1.2 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 1.3 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 1.4 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.1 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.2 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.3 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.4 | ⬜ Pending | Still using Tailwind-only |
+| Shared components | ⬜ Pending | `LessonHeader`, `Section`, `TakeawayList`, `CodeBlock` | 
 
 ## Concepts Mastered
 
