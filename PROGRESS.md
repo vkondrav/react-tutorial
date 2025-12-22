@@ -1,6 +1,6 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 6, 2025
+> Last Updated: December 9, 2025
 
 ## Current Status
 
@@ -251,6 +251,28 @@
 | Lesson 2.3 | ✅ Complete | All 6 files converted (index, EventBasicsDemo, EventHandlersDemo, EventTypesDemo, EventPropagationDemo, EventPlayground) - converted from inline styles |
 | Lesson 2.4 | ✅ Complete | All 6 files converted (index, ConditionalBasicsDemo, TernaryDemo, LogicalAndDemo, PatternComparisonDemo, ConditionalPlayground) - converted from inline styles |
 | Shared components | ✅ Complete | All 4 components converted to daisyUI + react-icons | 
+
+---
+
+### Session 4 - December 9, 2025
+**Goal:** Bug fixes for Lesson 2.4 UI issues
+
+#### Completed:
+- 🐛 **Fixed welcome message text layout in `ConditionalPlayground.jsx`:**
+  - Issue: "Welcome to your dashboard, Alex!" was split across 3 lines (text, name, exclamation mark)
+  - Cause: daisyUI `card` class applies `display: flex; flex-direction: column;` which breaks inline text flow
+  - Fix: Removed `card` class from welcome message div, kept only `rounded-lg bg-base-200`
+  - Also cleaned up redundant ternary operators (e.g., `darkMode ? 'bg-base-200' : 'bg-base-200'`)
+
+- 🐛 **Fixed notification badge covering bell icon in `LogicalAndDemo.jsx` and `ConditionalPlayground.jsx`:**
+  - Issue: Badge positioned at `-top-2 -right-2` was overlapping the bell icon too much
+  - Fix: Changed to `badge-xs` (smaller), repositioned to `-top-1 -right-3.5`
+  - Added `rounded-full` for fully circular badge appearance
+  - Added `min-w-[16px] text-[10px]` for proper sizing
+
+#### Files Modified:
+- `playground/src/lessons/2_4/ConditionalPlayground.jsx`
+- `playground/src/lessons/2_4/LogicalAndDemo.jsx`
 
 ## Concepts Mastered
 
