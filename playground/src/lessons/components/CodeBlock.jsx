@@ -1,42 +1,21 @@
+import { HiCheck, HiX } from 'react-icons/hi';
+
 export default function CodeBlock({ title, code, variant }) {
-  const borderColor = variant === 'good' ? '#22c55e' : '#ef4444';
-  const icon = variant === 'good' ? '✓' : '✗';
+  const isGood = variant === 'good';
+  const borderColor = isGood ? 'border-success' : 'border-error';
+  const bgColor = isGood ? 'bg-success/20' : 'bg-error/20';
+  const textColor = isGood ? 'text-success' : 'text-error';
+  const Icon = isGood ? HiCheck : HiX;
 
   return (
-    <div
-      style={{
-        backgroundColor: '#0f172a',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-        border: `1px solid ${borderColor}33`,
-      }}
-    >
+    <div className={`bg-base-100 rounded-xl overflow-hidden border ${borderColor}/50`}>
       <div
-        style={{
-          padding: '0.5rem 1rem',
-          backgroundColor: `${borderColor}22`,
-          borderBottom: `1px solid ${borderColor}33`,
-          fontSize: '0.75rem',
-          fontWeight: '600',
-          color: borderColor,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-        }}
+        className={`px-4 py-2 ${bgColor} border-b ${borderColor}/50 text-xs font-semibold ${textColor} flex items-center gap-2`}
       >
-        <span>{icon}</span>
+        <Icon size={16} />
         {title}
       </div>
-      <pre
-        style={{
-          margin: 0,
-          padding: '1rem',
-          fontSize: '0.75rem',
-          lineHeight: '1.6',
-          color: '#cbd5e1',
-          overflow: 'auto',
-        }}
-      >
+      <pre className="m-0 p-4 text-xs leading-relaxed text-base-content/80 overflow-auto">
         <code>{code}</code>
       </pre>
     </div>

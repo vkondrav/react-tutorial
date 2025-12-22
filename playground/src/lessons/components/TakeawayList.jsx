@@ -1,40 +1,12 @@
+import { HiCheck } from 'react-icons/hi';
+
 export default function TakeawayList({ items }) {
   return (
-    <ul
-      style={{
-        listStyle: 'none',
-        padding: 0,
-        margin: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.75rem',
-      }}
-    >
+    <ul className="list-none p-0 m-0 flex flex-col gap-3">
       {items.map((item, index) => (
-        <li
-          key={index}
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '0.75rem',
-            color: '#cbd5e1',
-            lineHeight: 1.6,
-          }}
-        >
-          <span
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '1.5rem',
-              height: '1.5rem',
-              backgroundColor: '#22c55e',
-              borderRadius: '50%',
-              fontSize: '0.75rem',
-              flexShrink: 0,
-            }}
-          >
-            ✓
+        <li key={index} className="flex items-start gap-3 text-base-content/80 leading-relaxed">
+          <span className="flex items-center justify-center w-6 h-6 bg-success rounded-full text-xs shrink-0 text-white">
+            <HiCheck />
           </span>
           {item}
         </li>
