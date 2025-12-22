@@ -87,7 +87,7 @@
 | 2.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 2.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 2.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 2.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 3.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 3.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 3.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
@@ -801,6 +801,21 @@ Beginning the Advanced Topics module with Server-Side Rendering.
   - 6 story files covering all demos
   - 15+ interaction tests covering user flows
   - Updated config.json and App.tsx
+
+---
+
+### Session 27 - December 17, 2025
+**Goal:** Add Storybook stories and tests for Lesson 2.5: Lists & Keys
+
+#### Completed:
+- ✅ **Added Storybook Stories + Tests for Lesson 2.5**
+  - `Lesson.stories.tsx` - Full page tests (header, sections, takeaways)
+  - `ListBasicsDemo.stories.tsx` - .map() basics, code toggle
+  - `KeysExplainedDemo.stories.tsx` - Key manipulation (add, remove, move, reset)
+  - `KeyMistakesDemo.stories.tsx` - Index vs ID key comparison demo
+  - `ListOperationsDemo.stories.tsx` - Filter, sort, search interactions
+  - `ListPlayground.stories.tsx` - Full todo app tests (add, toggle, filter, clear)
+- ✅ **40 passing tests** covering all list and key concepts
 
 ---
 
