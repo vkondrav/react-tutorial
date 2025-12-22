@@ -120,7 +120,7 @@ export default function ProjectStructureExplorer(): React.ReactElement {
     <div className="flex flex-col gap-4">
       {/* File List */}
       <div className="card bg-base-200 p-4 font-mono">
-        <div className="text-base-content/50 mb-3 text-sm flex items-center gap-2">
+        <div className="text-base-content/90 mb-3 text-sm flex items-center gap-2">
           <HiOutlineCube size={16} />
           playground/
         </div>
@@ -136,14 +136,12 @@ export default function ProjectStructureExplorer(): React.ReactElement {
                 className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer text-left text-sm w-full transition-colors ${
                   isSelected
                     ? `${colors.bg} ${colors.border} border ${colors.text}`
-                    : 'bg-transparent border-transparent text-base-content/70 hover:bg-base-300'
+                    : 'bg-transparent border-transparent text-base-content/80 hover:bg-base-300'
                 }`}
               >
                 <IconComponent size={18} />
                 <span className="flex-1">{file.name}</span>
-                <span className="badge badge-sm bg-base-300 text-base-content/70">
-                  {file.purpose}
-                </span>
+                <span className="badge badge-sm badge-ghost">{file.purpose}</span>
               </button>
             );
           })}
@@ -162,7 +160,7 @@ export default function ProjectStructureExplorer(): React.ReactElement {
             <CodeSnippet code={selected.code} language={selected.language} showCopy={false} />
           </div>
         ) : (
-          <div className="flex items-center justify-center h-full text-base-content/50 gap-2">
+          <div className="flex items-center justify-center h-full text-base-content/90 gap-2">
             <HiOutlineCursorClick size={20} />
             <span>Click a file to see its contents</span>
           </div>

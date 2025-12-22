@@ -70,7 +70,7 @@
 | Lesson | TypeScript | CodeSnippet | examples/ | Icons | Storybook      | Status             |
 |--------|------------|-------------|-----------|-------|----------------|--------------------|
 | 1.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 1.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 1.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 1.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 1.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 2.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |

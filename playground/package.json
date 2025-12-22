@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test": "vitest --project=storybook"
+    "test": "vitest --project=storybook --run",
+    "test:watch": "vitest --project=storybook --watch"
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",
