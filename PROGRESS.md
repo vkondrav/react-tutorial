@@ -1,6 +1,6 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 10, 2025
+> Last Updated: December 14, 2025
 
 ## Current Status
 
@@ -38,6 +38,7 @@
 | **examples/ folder** | Store code snippets in separate files with `?raw` imports |
 | **react-icons** | Use icons instead of emojis in UI |
 | **daisyUI** | Use daisyUI components and semantic colors |
+| **Storybook** | Stories for each component + interaction tests |
 
 #### CodeSnippet Usage Notes
 
@@ -45,51 +46,70 @@
 - **Dynamic code** (changes based on user input) → Generate string inline, pass to `CodeSnippet`
 - **Never use raw `<pre><code>` elements** — always use `CodeSnippet` for consistent syntax highlighting
 
+#### Storybook Coverage Notes (Added Dec 14, 2025)
+
+**What was done for Lesson 1.1:**
+- Installed Storybook 10.1.8 with React + Vite configuration
+- Configured Tailwind CSS + daisyUI integration in `.storybook/preview.ts`
+- Created stories for shared components: `LessonHeader`, `Section`, `TakeawayList`, `CodeSnippet`, `CodeBlock`
+- Created stories for 1.1 components: `ComparisonDemo`, `ComponentTreeDemo`, `VirtualDomDemo`, `Lesson` (full page)
+- Added interaction tests (play functions) for all 1.1 interactive components:
+  - `ComparisonDemo`: Counter increment/decrement/reset tests
+  - `ComponentTreeDemo`: Component selection/toggle tests  
+  - `VirtualDomDemo`: Typing, DOM updates counter, empty input tests
+- Test command: `npm test` (runs vitest with Playwright browser)
+
+**What needs to be done for all other lessons:**
+1. Create story files in `src/stories/lessons/{lesson}/` folder
+2. Add stories for each interactive demo component
+3. Add play functions for components with user interactions
+4. Ensure all stories render correctly with Tailwind/daisyUI styling
+
 ### Consolidated Tech Debt by Lesson
 
-| Lesson | TypeScript | CodeSnippet | examples/ | Icons | Status             |
-|--------|------------|-------------|-----------|-------|--------------------|
-| 1.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 1.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 1.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 1.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 2.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 2.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 2.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 2.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 2.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 4.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 4.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 4.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 4.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 5.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 5.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 5.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 6.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 6.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 6.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 6.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 6.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 7.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 7.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 7.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 7.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| Lesson | TypeScript | CodeSnippet | examples/ | Icons | Storybook      | Status             |
+|--------|------------|-------------|-----------|-------|----------------|--------------------|
+| 1.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
+| 1.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 1.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 1.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 2.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 5.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 5.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 5.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 6.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 6.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 6.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 6.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 6.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 7.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 7.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 7.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 7.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 
 ### Shared Components
 
-| Component | TypeScript | Status |
-|-----------|------------|--------|
-| `LessonHeader.tsx` | ✅ .tsx | ✅ Done |
-| `Section.tsx` | ✅ .tsx | ✅ Done |
-| `TakeawayList.tsx` | ✅ .tsx | ✅ Done |
-| `CodeBlock.tsx` | ✅ .tsx | ✅ Done |
-| `CodeSnippet.tsx` | ✅ .tsx | ✅ Done |
-| `index.ts` | ✅ .ts | ✅ Done |
+| Component | TypeScript | Storybook | Status |
+|-----------|------------|-----------|--------|
+| `LessonHeader.tsx` | ✅ .tsx | ✅ Done | ✅ Done |
+| `Section.tsx` | ✅ .tsx | ✅ Done | ✅ Done |
+| `TakeawayList.tsx` | ✅ .tsx | ✅ Done | ✅ Done |
+| `CodeBlock.tsx` | ✅ .tsx | ✅ Done | ✅ Done |
+| `CodeSnippet.tsx` | ✅ .tsx | ✅ Done | ✅ Done |
+| `index.ts` | ✅ .ts | N/A | ✅ Done |
 
 ### Core App Files
 
@@ -824,5 +844,12 @@ cd playground && npm run build
 
 # Preview production build
 cd playground && npm run preview
+
+# Storybook
+cd playground && npm run storybook        # Start Storybook dev server (port 6006)
+cd playground && npm run storybook:build  # Build static Storybook
+
+# Testing
+cd playground && npm test                 # Run all Storybook tests
 ```
 

@@ -9,7 +9,10 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "test": "vitest --project=storybook"
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",
@@ -35,6 +38,18 @@
     "prettier": "^3.7.4",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "storybook": "^10.1.8",
+    "@storybook/react-vite": "^10.1.8",
+    "@chromatic-com/storybook": "^4.1.3",
+    "@storybook/addon-vitest": "^10.1.8",
+    "@storybook/addon-a11y": "^10.1.8",
+    "@storybook/addon-docs": "^10.1.8",
+    "@storybook/addon-onboarding": "^10.1.8",
+    "eslint-plugin-storybook": "^10.1.8",
+    "vitest": "^4.0.15",
+    "playwright": "^1.57.0",
+    "@vitest/browser-playwright": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.15"
   }
 }
