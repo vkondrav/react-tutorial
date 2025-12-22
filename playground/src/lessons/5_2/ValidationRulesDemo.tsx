@@ -4,6 +4,11 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import requiredValidationCode from './examples/RequiredValidation.tsx?raw';
+import lengthValidationCode from './examples/LengthValidation.tsx?raw';
+import patternValidationCode from './examples/PatternValidation.tsx?raw';
+import customValidationCode from './examples/CustomValidation.tsx?raw';
 
 type RuleType = 'required' | 'length' | 'pattern' | 'custom';
 
@@ -79,16 +84,8 @@ function RequiredDemo() {
         )}
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`// Simple required check
-const validate = (value: string) => {
-  if (!value.trim()) {
-    return 'This field is required';
-  }
-  return '';
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={requiredValidationCode} language="tsx" />
       </div>
     </div>
   );
@@ -147,14 +144,8 @@ function LengthDemo() {
         )}
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const validate = (value: string) => {
-  if (value.length < ${minLength}) return 'Minimum ${minLength} characters';
-  if (value.length > ${maxLength}) return 'Maximum ${maxLength} characters';
-  return '';
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={lengthValidationCode} language="tsx" />
       </div>
     </div>
   );
@@ -216,17 +207,8 @@ function PatternDemo() {
         </p>
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-
-const validate = (value: string) => {
-  if (!emailPattern.test(value)) {
-    return 'Invalid email format';
-  }
-  return '';
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={patternValidationCode} language="tsx" />
       </div>
     </div>
   );
@@ -309,20 +291,8 @@ function CustomDemo() {
         )}
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const rules = [
-  { test: (v) => v.length >= 8, label: '8+ chars' },
-  { test: (v) => /[A-Z]/.test(v), label: 'Uppercase' },
-  { test: (v) => /[0-9]/.test(v), label: 'Number' },
-  // ... more rules
-];
-
-// Check all rules
-const errors = rules
-  .filter(r => !r.test(password))
-  .map(r => r.label);`}
-        </pre>
+      <div>
+        <CodeSnippet code={customValidationCode} language="tsx" />
       </div>
     </div>
   );

@@ -4,6 +4,10 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import onSubmitValidationCode from './examples/OnSubmitValidation.tsx?raw';
+import onBlurValidationCode from './examples/OnBlurValidation.tsx?raw';
+import onChangeValidationCode from './examples/OnChangeValidation.tsx?raw';
 
 type ApproachType = 'submit' | 'blur' | 'change';
 
@@ -138,17 +142,8 @@ function OnSubmitDemo() {
         </button>
       </form>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const handleSubmit = (e) => {
-  e.preventDefault();
-  const error = validate(form.email);
-  setError(error);
-  if (!error) {
-    // Submit form...
-  }
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={onSubmitValidationCode} language="tsx" />
       </div>
     </div>
   );
@@ -223,16 +218,8 @@ function OnBlurDemo() {
         </p>
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const handleBlur = () => {
-  setTouched(true);
-  setError(validate(email));
-};
-
-// Only show error if touched
-{touched && error && <span>{error}</span>}`}
-        </pre>
+      <div>
+        <CodeSnippet code={onBlurValidationCode} language="tsx" />
       </div>
     </div>
   );
@@ -302,14 +289,8 @@ function OnChangeDemo() {
         </button>
       </form>
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`const handleChange = (e) => {
-  const value = e.target.value;
-  setEmail(value);
-  setError(validate(value)); // Validate immediately
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={onChangeValidationCode} language="tsx" />
       </div>
     </div>
   );

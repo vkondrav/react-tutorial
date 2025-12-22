@@ -4,6 +4,8 @@
 
 import { useState } from 'react';
 import { HiX, HiOutlineExclamationCircle, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import toastErrorsCode from './examples/ToastErrors.tsx?raw';
 
 type DisplayType = 'inline' | 'summary' | 'toast';
 
@@ -313,16 +315,8 @@ function ToastDemo() {
         </div>
       )}
 
-      <div className="bg-base-200 rounded-lg p-3 text-xs">
-        <pre className="overflow-x-auto text-base-content/70">
-          {`// Good for: notifications, success messages
-// Not ideal for: detailed form errors
-
-const showToast = (message, type) => {
-  setToast({ show: true, message, type });
-  setTimeout(() => setToast({ show: false }), 3000);
-};`}
-        </pre>
+      <div>
+        <CodeSnippet code={toastErrorsCode} language="tsx" />
       </div>
     </div>
   );

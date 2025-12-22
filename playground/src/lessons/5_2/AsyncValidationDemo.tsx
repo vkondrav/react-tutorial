@@ -4,6 +4,8 @@
 
 import { useState, useEffect } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import asyncValidationCode from './examples/AsyncValidation.tsx?raw';
 
 // Simulated API - pretend these usernames are taken
 const TAKEN_USERNAMES = ['admin', 'user', 'test', 'john', 'jane', 'demo'];
@@ -163,25 +165,8 @@ export default function AsyncValidationDemo(): React.ReactElement {
       {/* Code Example */}
       <div className="card bg-base-300 p-4">
         <h4 className="font-semibold mb-3">The Pattern</h4>
-        <div className="bg-base-200 rounded-lg p-3 text-xs">
-          <pre className="overflow-x-auto text-base-content/70">
-            {`useEffect(() => {
-  // 1. First, run sync validation
-  const syncError = validateSync(username);
-  if (syncError) return;
-
-  // 2. Debounce: wait 500ms before API call
-  const timer = setTimeout(async () => {
-    setChecking(true);
-    const isAvailable = await checkUsername(username);
-    setAvailable(isAvailable);
-    setChecking(false);
-  }, 500);
-
-  // 3. Cleanup: cancel if user types again
-  return () => clearTimeout(timer);
-}, [username]);`}
-          </pre>
+        <div>
+          <CodeSnippet code={asyncValidationCode} language="tsx" />
         </div>
       </div>
 
