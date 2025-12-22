@@ -102,6 +102,7 @@ Welcome to your comprehensive React learning journey! This course is designed to
 | 8.1 | Server-Side Rendering | 30 min |
 | 8.2 | Testing Strategies | 30 min |
 | 8.3 | Server State with TanStack Query | 30 min |
+| 8.4 | RSC: Intro to React Server Components | 30 min |
 
 ---
 

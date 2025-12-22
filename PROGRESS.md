@@ -1,13 +1,13 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 16, 2025
+> Last Updated: December 21, 2025
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 8: Advanced Topics |
-| **Current Lesson** | 8.3 Server State with TanStack Query ✅ |
+| **Current Lesson** | 8.4 RSC: Intro to React Server Components ✅ |
 | **Next Lesson** | TBD |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
@@ -112,6 +112,7 @@
 | 8.1    | ✅ .tsx    | ✅          | N/A        | ✅    | ✅ Done         | ✅ Done            |
 | 8.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 8.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
+| 8.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 
 ### Shared Components
 
@@ -214,6 +215,8 @@
 |--------|-------|--------|-------|
 | 8.1 | Server-Side Rendering | ✅ Complete | CSR vs SSR comparison, hydration demo, decision framework, live SSR server |
 | 8.2 | Testing Strategies | ✅ Complete | Testing pyramid, Storybook setup, MSW mocking, play functions, interaction tests |
+| 8.3 | Server State with TanStack Query | ✅ Complete | useQuery, useMutation, cache invalidation, stale/fresh data |
+| 8.4 | RSC: Intro to React Server Components | ✅ Complete | Server vs Client components, "use client" directive, RSC patterns |
 
 ### Module 9: Capstone ⏸️ Deferred
 
@@ -820,6 +823,29 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 28 - December 21, 2025
+**Goal:** Implement Lesson 8.4: RSC - Intro to React Server Components
+
+#### Completed:
+- ✅ **Implemented Lesson 8.4: RSC - Intro to React Server Components**
+  - `index.tsx` - Main lesson with 6 sections covering RSC fundamentals
+  - `RSCBasicsDemo.tsx` - Evolution of rendering (CSR → SSR → RSC), two worlds mental model
+  - `ServerVsClientDemo.tsx` - Feature comparison table, composition pattern, boundary rule
+  - `UseClientDirectiveDemo.tsx` - Directive syntax, boundary behavior, common gotchas
+  - `RSCBenefitsDemo.tsx` - Benefits (bundle size, data access, security, streaming), trade-offs
+  - `RSCPlayground.tsx` - 5 tabs: Live Demo, data fetching, interactive islands, children passthrough, decision guide
+  - `examples/` folder with 9 code snippet files
+  - Updated config.json and App.tsx
+- ✅ **Built Live RSC Demo Server**
+  - `server/rsc-render.tsx` - Simulated RSC rendering with product page demo
+  - Shows Server Components (pure HTML) vs Client Component islands
+  - Interactive Add to Cart button demonstrates client hydration
+  - Console logging shows bundle size comparison (168 KB → 12 KB)
+  - Added `/rsc-demo` route to Express server
+  - Added proxy configuration in `vite.config.js`
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -920,6 +946,18 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Testing Library queries: getByRole, getByLabelText, getByText
 - [x] waitFor() for async assertions
 - [x] Jest-DOM matchers: toBeInTheDocument, toHaveTextContent, toBeDisabled
+- [x] TanStack Query: useQuery for GET requests
+- [x] TanStack Query: useMutation for POST/PUT/DELETE
+- [x] Query keys for caching and deduplication
+- [x] staleTime and cache invalidation
+- [x] React Server Components (RSC) - components that run only on server
+- [x] Server Components vs Client Components
+- [x] "use client" directive and client boundary
+- [x] RSC benefits: reduced bundle size, direct data access, security
+- [x] Composition patterns: Server Components can render Client Components
+- [x] Children passthrough pattern for mixing Server and Client
+- [x] async/await in Server Components for data fetching
+- [x] Interactive islands architecture
 - [ ] ...more to come
 
 ---

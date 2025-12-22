@@ -19,11 +19,16 @@ export default defineConfig({
       '@components': path.resolve(dirname, './src/lessons/components'),
     },
   },
-  // Proxy SSR routes to the Express server
+  // Proxy SSR/RSC routes to the Express server
   server: {
     proxy: {
       // Forward /ssr-demo to Express on port 3001
       '/ssr-demo': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      // Forward /rsc-demo to Express on port 3001
+      '/rsc-demo': {
         target: 'http://localhost:3001',
         changeOrigin: true,
       },
