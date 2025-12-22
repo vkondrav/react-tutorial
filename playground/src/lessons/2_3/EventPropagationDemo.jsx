@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineLightBulb } from 'react-icons/hi';
 
 export default function EventPropagationDemo() {
   const [parentClicks, setParentClicks] = useState(0);
@@ -32,134 +33,54 @@ export default function EventPropagationDemo() {
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '400px' }}>
+    <div className="mt-6 card bg-base-200 overflow-hidden">
+      <div className="grid grid-cols-2 min-h-[400px]">
         {/* Left: Bubbling Demo */}
-        <div style={{ padding: '1.5rem', borderRight: '1px solid #334155' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
+        <div className="p-6 border-r border-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">
             Event Bubbling (Default Behavior)
           </div>
 
           {/* Parent with child */}
           <div
             onClick={handleParentClick}
-            style={{
-              padding: '2rem',
-              backgroundColor: '#3b82f622',
-              borderRadius: '0.5rem',
-              border: '2px solid #3b82f6',
-              cursor: 'pointer',
-              position: 'relative',
-            }}
+            className="p-8 bg-primary/10 rounded-lg border-2 border-primary cursor-pointer"
           >
-            <div
-              style={{
-                fontSize: '0.75rem',
-                color: '#3b82f6',
-                marginBottom: '0.5rem',
-                fontWeight: '600',
-              }}
-            >
-              PARENT (click me)
-            </div>
-            <div style={{ fontSize: '0.875rem', color: '#94a3b8', marginBottom: '1rem' }}>
-              Clicks: <span style={{ color: '#3b82f6' }}>{parentClicks}</span>
+            <div className="text-primary text-xs mb-2 font-semibold">PARENT (click me)</div>
+            <div className="text-sm text-base-content/70 mb-4">
+              Clicks: <span className="text-primary">{parentClicks}</span>
             </div>
 
             <div
               onClick={handleChildClick}
-              style={{
-                padding: '1.5rem',
-                backgroundColor: '#22c55e22',
-                borderRadius: '0.5rem',
-                border: '2px solid #22c55e',
-                cursor: 'pointer',
-              }}
+              className="p-6 bg-success/10 rounded-lg border-2 border-success cursor-pointer"
             >
-              <div
-                style={{
-                  fontSize: '0.75rem',
-                  color: '#22c55e',
-                  marginBottom: '0.5rem',
-                  fontWeight: '600',
-                }}
-              >
-                CHILD (click me)
-              </div>
-              <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
-                Clicks: <span style={{ color: '#22c55e' }}>{childClicks}</span>
+              <div className="text-success text-xs mb-2 font-semibold">CHILD (click me)</div>
+              <div className="text-sm text-base-content/70">
+                Clicks: <span className="text-success">{childClicks}</span>
               </div>
             </div>
           </div>
 
           {/* Stop propagation example */}
-          <div style={{ marginTop: '1.5rem' }}>
-            <div
-              style={{
-                fontSize: '0.75rem',
-                color: '#64748b',
-                marginBottom: '0.75rem',
-                textTransform: 'uppercase',
-              }}
-            >
+          <div className="mt-6">
+            <div className="text-xs text-base-content/50 mb-3 uppercase">
               With stopPropagation()
             </div>
             <div
               onClick={handleParentClick}
-              style={{
-                padding: '2rem',
-                backgroundColor: '#3b82f622',
-                borderRadius: '0.5rem',
-                border: '2px solid #3b82f6',
-                cursor: 'pointer',
-              }}
+              className="p-8 bg-primary/10 rounded-lg border-2 border-primary cursor-pointer"
             >
-              <div
-                style={{
-                  fontSize: '0.75rem',
-                  color: '#3b82f6',
-                  marginBottom: '0.5rem',
-                  fontWeight: '600',
-                }}
-              >
-                PARENT
-              </div>
+              <div className="text-primary text-xs mb-2 font-semibold">PARENT</div>
               <div
                 onClick={handleStoppedClick}
-                style={{
-                  padding: '1.5rem',
-                  backgroundColor: '#f59e0b22',
-                  borderRadius: '0.5rem',
-                  border: '2px solid #f59e0b',
-                  cursor: 'pointer',
-                }}
+                className="p-6 bg-warning/10 rounded-lg border-2 border-warning cursor-pointer"
               >
-                <div
-                  style={{
-                    fontSize: '0.75rem',
-                    color: '#f59e0b',
-                    marginBottom: '0.5rem',
-                    fontWeight: '600',
-                  }}
-                >
+                <div className="text-warning text-xs mb-2 font-semibold">
                   CHILD (stops propagation)
                 </div>
-                <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
-                  Clicks: <span style={{ color: '#f59e0b' }}>{stoppedClicks}</span>
+                <div className="text-sm text-base-content/70">
+                  Clicks: <span className="text-warning">{stoppedClicks}</span>
                 </div>
               </div>
             </div>
@@ -173,57 +94,21 @@ export default function EventPropagationDemo() {
               setStoppedClicks(0);
               setLog([]);
             }}
-            style={{
-              marginTop: '1rem',
-              padding: '0.5rem 1rem',
-              backgroundColor: '#475569',
-              border: 'none',
-              borderRadius: '0.375rem',
-              color: 'white',
-              cursor: 'pointer',
-              fontSize: '0.75rem',
-            }}
+            className="btn btn-ghost btn-sm mt-4"
           >
             Reset Counts
           </button>
         </div>
 
         {/* Right: Code & preventDefault */}
-        <div style={{ padding: '1.5rem', backgroundColor: '#0f172a' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            Code Examples
-          </div>
+        <div className="p-6 bg-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">Code Examples</div>
 
           {/* stopPropagation */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <div
-              style={{
-                color: '#f59e0b',
-                fontSize: '0.875rem',
-                marginBottom: '0.5rem',
-                fontWeight: '600',
-              }}
-            >
-              stopPropagation()
-            </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.75rem',
-                lineHeight: 1.6,
-              }}
-            >
-              <code style={{ color: '#94a3b8' }}>
+          <div className="mb-6">
+            <div className="text-warning text-sm mb-2 font-semibold">stopPropagation()</div>
+            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
+              <code className="text-base-content/70">
                 {'function Child({ onClick }) {\n' +
                   '  const handleClick = (e) => {\n' +
                   '    e.stopPropagation(); // ← Stops event from bubbling\n' +
@@ -236,28 +121,10 @@ export default function EventPropagationDemo() {
           </div>
 
           {/* preventDefault */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <div
-              style={{
-                color: '#22c55e',
-                fontSize: '0.875rem',
-                marginBottom: '0.5rem',
-                fontWeight: '600',
-              }}
-            >
-              preventDefault()
-            </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.75rem',
-                lineHeight: 1.6,
-              }}
-            >
-              <code style={{ color: '#94a3b8' }}>
+          <div className="mb-6">
+            <div className="text-success text-sm mb-2 font-semibold">preventDefault()</div>
+            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
+              <code className="text-base-content/70">
                 {'function Form() {\n' +
                   '  const handleSubmit = (e) => {\n' +
                   '    e.preventDefault(); // ← Prevents page refresh\n' +
@@ -271,37 +138,14 @@ export default function EventPropagationDemo() {
 
           {/* Live preventDefault demo */}
           <div>
-            <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-              TRY IT:
-            </div>
+            <div className="text-base-content/50 text-xs mb-2">TRY IT:</div>
             <form onSubmit={handleFormSubmit}>
               <input
                 type="text"
                 placeholder="Type and press Enter"
-                style={{
-                  width: '100%',
-                  padding: '0.5rem',
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
-                  borderRadius: '0.375rem',
-                  color: '#f8fafc',
-                  fontSize: '0.875rem',
-                  marginBottom: '0.5rem',
-                }}
+                className="input input-bordered w-full input-sm mb-2"
               />
-              <button
-                type="submit"
-                style={{
-                  width: '100%',
-                  padding: '0.5rem',
-                  backgroundColor: '#22c55e',
-                  border: 'none',
-                  borderRadius: '0.375rem',
-                  color: 'white',
-                  cursor: 'pointer',
-                  fontSize: '0.875rem',
-                }}
-              >
+              <button type="submit" className="btn btn-success w-full btn-sm">
                 Submit (won't refresh!)
               </button>
             </form>
@@ -309,23 +153,11 @@ export default function EventPropagationDemo() {
 
           {/* Event log */}
           {log.length > 0 && (
-            <div style={{ marginTop: '1.5rem' }}>
-              <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                EVENT LOG:
-              </div>
-              <div
-                style={{
-                  padding: '0.75rem',
-                  backgroundColor: '#1e293b',
-                  borderRadius: '0.375rem',
-                  fontSize: '0.75rem',
-                  color: '#94a3b8',
-                  maxHeight: '100px',
-                  overflow: 'auto',
-                }}
-              >
+            <div className="mt-6">
+              <div className="text-base-content/50 text-xs mb-2">EVENT LOG:</div>
+              <div className="p-3 bg-base-200 rounded-lg text-xs text-base-content/70 max-h-[100px] overflow-auto">
                 {log.map((msg, i) => (
-                  <div key={i} style={{ marginBottom: '0.25rem' }}>
+                  <div key={i} className="mb-1">
                     {msg}
                   </div>
                 ))}
@@ -336,22 +168,12 @@ export default function EventPropagationDemo() {
       </div>
 
       {/* Key insight */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#3b82f622',
-          borderTop: '1px solid #3b82f6',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-        }}
-      >
-        <span style={{ fontSize: '1.25rem' }}>💡</span>
-        <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-          <strong style={{ color: '#f8fafc' }}>Remember:</strong> Events bubble up (child → parent).
-          Use <code style={{ color: '#f59e0b' }}>stopPropagation()</code> to stop bubbling, and{' '}
-          <code style={{ color: '#22c55e' }}>preventDefault()</code> to stop default browser
-          behavior.
+      <div className="px-6 py-4 bg-primary/10 border-t border-primary flex items-center gap-3">
+        <HiOutlineLightBulb className="text-primary" size={20} />
+        <span className="text-base-content/70 text-sm">
+          <strong className="text-base-content">Remember:</strong> Events bubble up (child →
+          parent). Use <code className="text-warning">stopPropagation()</code> to stop bubbling, and{' '}
+          <code className="text-success">preventDefault()</code> to stop default browser behavior.
         </span>
       </div>
     </div>

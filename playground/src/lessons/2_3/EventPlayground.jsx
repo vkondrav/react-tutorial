@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiCheck } from 'react-icons/hi';
 
 export default function EventPlayground() {
   const [formData, setFormData] = useState({
@@ -59,134 +60,66 @@ export default function EventPlayground() {
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '500px' }}>
+    <div className="mt-6 card bg-base-200 overflow-hidden">
+      <div className="grid grid-cols-2 min-h-[500px]">
         {/* Form */}
-        <div style={{ padding: '1.5rem', borderRight: '1px solid #334155' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
+        <div className="p-6 border-r border-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">
             Interactive Form with Validation
           </div>
 
           {submitted ? (
-            <div
-              style={{
-                padding: '2rem',
-                backgroundColor: '#22c55e22',
-                borderRadius: '0.5rem',
-                border: '1px solid #22c55e',
-                textAlign: 'center',
-              }}
-            >
-              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✓</div>
-              <div
-                style={{
-                  color: '#22c55e',
-                  fontSize: '1.125rem',
-                  fontWeight: '600',
-                  marginBottom: '0.5rem',
-                }}
-              >
+            <div className="card bg-success/10 p-8 border-2 border-success text-center">
+              <div className="text-4xl mb-2">
+                <HiCheck className="text-success mx-auto" size={48} />
+              </div>
+              <div className="text-success text-lg font-semibold mb-2">
                 Form Submitted Successfully!
               </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
+              <div className="text-base-content/70 text-sm">
                 Check the state panel to see the submitted data
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
               {/* Name */}
-              <div style={{ marginBottom: '1rem' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '0.75rem',
-                    color: '#94a3b8',
-                    marginBottom: '0.25rem',
-                  }}
-                >
-                  Name <span style={{ color: '#ef4444' }}>*</span>
+              <div className="mb-4">
+                <label className="block text-xs text-base-content/70 mb-1">
+                  Name <span className="text-error">*</span>
                 </label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem',
-                    backgroundColor: '#0f172a',
-                    border: errors.name ? '1px solid #ef4444' : '1px solid #334155',
-                    borderRadius: '0.375rem',
-                    color: '#f8fafc',
-                    fontSize: '0.875rem',
-                  }}
+                  className={`input input-bordered w-full input-sm ${
+                    errors.name ? 'input-error' : ''
+                  }`}
                 />
-                {errors.name && (
-                  <div style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#ef4444' }}>
-                    {errors.name}
-                  </div>
-                )}
+                {errors.name && <div className="mt-1 text-xs text-error">{errors.name}</div>}
               </div>
 
               {/* Email */}
-              <div style={{ marginBottom: '1rem' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '0.75rem',
-                    color: '#94a3b8',
-                    marginBottom: '0.25rem',
-                  }}
-                >
-                  Email <span style={{ color: '#ef4444' }}>*</span>
+              <div className="mb-4">
+                <label className="block text-xs text-base-content/70 mb-1">
+                  Email <span className="text-error">*</span>
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem',
-                    backgroundColor: '#0f172a',
-                    border: errors.email ? '1px solid #ef4444' : '1px solid #334155',
-                    borderRadius: '0.375rem',
-                    color: '#f8fafc',
-                    fontSize: '0.875rem',
-                  }}
+                  className={`input input-bordered w-full input-sm ${
+                    errors.email ? 'input-error' : ''
+                  }`}
                 />
-                {errors.email && (
-                  <div style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#ef4444' }}>
-                    {errors.email}
-                  </div>
-                )}
+                {errors.email && <div className="mt-1 text-xs text-error">{errors.email}</div>}
               </div>
 
               {/* Age */}
-              <div style={{ marginBottom: '1rem' }}>
-                <label
-                  style={{
-                    display: 'block',
-                    fontSize: '0.75rem',
-                    color: '#94a3b8',
-                    marginBottom: '0.25rem',
-                  }}
-                >
-                  Age <span style={{ color: '#ef4444' }}>*</span>
+              <div className="mb-4">
+                <label className="block text-xs text-base-content/70 mb-1">
+                  Age <span className="text-error">*</span>
                 </label>
                 <input
                   type="number"
@@ -194,77 +127,33 @@ export default function EventPlayground() {
                   value={formData.age}
                   onChange={handleChange}
                   min="0"
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem',
-                    backgroundColor: '#0f172a',
-                    border: errors.age ? '1px solid #ef4444' : '1px solid #334155',
-                    borderRadius: '0.375rem',
-                    color: '#f8fafc',
-                    fontSize: '0.875rem',
-                  }}
+                  className={`input input-bordered w-full input-sm ${
+                    errors.age ? 'input-error' : ''
+                  }`}
                 />
-                {errors.age && (
-                  <div style={{ marginTop: '0.25rem', fontSize: '0.75rem', color: '#ef4444' }}>
-                    {errors.age}
-                  </div>
-                )}
+                {errors.age && <div className="mt-1 text-xs text-error">{errors.age}</div>}
               </div>
 
               {/* Newsletter */}
-              <div style={{ marginBottom: '1.5rem' }}>
-                <label
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontSize: '0.875rem',
-                    color: '#94a3b8',
-                    cursor: 'pointer',
-                  }}
-                >
+              <div className="mb-6">
+                <label className="flex items-center gap-2 text-sm text-base-content/70 cursor-pointer">
                   <input
                     type="checkbox"
                     name="newsletter"
                     checked={formData.newsletter}
                     onChange={handleChange}
-                    style={{ width: '1rem', height: '1rem' }}
+                    className="checkbox checkbox-sm"
                   />
                   Subscribe to newsletter
                 </label>
               </div>
 
               {/* Buttons */}
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button
-                  type="submit"
-                  style={{
-                    flex: 1,
-                    padding: '0.75rem',
-                    backgroundColor: '#3b82f6',
-                    border: 'none',
-                    borderRadius: '0.375rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                    fontWeight: '600',
-                  }}
-                >
+              <div className="flex gap-2">
+                <button type="submit" className="btn btn-primary flex-1">
                   Submit
                 </button>
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  style={{
-                    padding: '0.75rem 1rem',
-                    backgroundColor: '#475569',
-                    border: 'none',
-                    borderRadius: '0.375rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                  }}
-                >
+                <button type="button" onClick={handleReset} className="btn btn-ghost">
                   Reset
                 </button>
               </div>
@@ -273,81 +162,42 @@ export default function EventPlayground() {
         </div>
 
         {/* State & Events */}
-        <div style={{ padding: '1.5rem', backgroundColor: '#0f172a' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
-            Form State (Live)
-          </div>
+        <div className="p-6 bg-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">Form State (Live)</div>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <pre
-              style={{
-                margin: 0,
-                padding: '1rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.5rem',
-                fontSize: '0.75rem',
-                lineHeight: 1.6,
-                overflow: 'auto',
-                maxHeight: '200px',
-              }}
-            >
-              <code style={{ color: '#94a3b8' }}>{JSON.stringify(formData, null, 2)}</code>
+          <div className="mb-6">
+            <pre className="m-0 p-4 bg-base-200 rounded-lg text-xs leading-relaxed overflow-auto max-h-[200px]">
+              <code className="text-base-content/70">{JSON.stringify(formData, null, 2)}</code>
             </pre>
           </div>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-              ERRORS:
-            </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.5rem',
-                fontSize: '0.75rem',
-                lineHeight: 1.6,
-              }}
-            >
+          <div className="mb-6">
+            <div className="text-base-content/50 text-xs mb-2">ERRORS:</div>
+            <pre className="m-0 p-3 bg-base-200 rounded-lg text-xs leading-relaxed">
               <code
-                style={{ color: errors.name || errors.email || errors.age ? '#ef4444' : '#64748b' }}
+                className={
+                  errors.name || errors.email || errors.age ? 'text-error' : 'text-base-content/50'
+                }
               >
                 {Object.keys(errors).length === 0 ? 'No errors' : JSON.stringify(errors, null, 2)}
               </code>
             </pre>
           </div>
 
-          <div
-            style={{
-              padding: '1rem',
-              backgroundColor: '#1e293b',
-              borderRadius: '0.5rem',
-              border: '1px dashed #334155',
-            }}
-          >
-            <div style={{ color: '#64748b', fontSize: '0.7rem', marginBottom: '0.5rem' }}>
-              EVENTS USED:
-            </div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1.8 }}>
+          <div className="p-4 card bg-base-200 border-2 border-dashed border-base-300">
+            <div className="text-base-content/50 text-xs mb-2">EVENTS USED:</div>
+            <div className="text-xs text-base-content/70 leading-relaxed space-y-1">
               <div>
-                • <code style={{ color: '#3b82f6' }}>onChange</code> - Updates state on input
+                • <code className="text-primary">onChange</code> - Updates state on input
               </div>
               <div>
-                • <code style={{ color: '#3b82f6' }}>onSubmit</code> - Handles form submission
+                • <code className="text-primary">onSubmit</code> - Handles form submission
               </div>
               <div>
-                • <code style={{ color: '#3b82f6' }}>onClick</code> - Reset button
+                • <code className="text-primary">onClick</code> - Reset button
               </div>
               <div>
-                • <code style={{ color: '#22c55e' }}>e.preventDefault()</code> - Prevents page
-                refresh
+                • <code className="text-success">e.preventDefault()</code> - Prevents page refresh
               </div>
             </div>
           </div>

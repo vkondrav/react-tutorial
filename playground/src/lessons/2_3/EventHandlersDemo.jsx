@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiCheck, HiX } from 'react-icons/hi';
 
 export default function EventHandlersDemo() {
   const [count1, setCount1] = useState(0);
@@ -7,16 +8,9 @@ export default function EventHandlersDemo() {
   const [activeTab, setActiveTab] = useState('inline');
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #334155' }}>
+      <div className="flex border-b border-base-300">
         {[
           { id: 'inline', label: 'Inline Arrow' },
           { id: 'function', label: 'Function Reference' },
@@ -25,46 +19,30 @@ export default function EventHandlersDemo() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            style={{
-              flex: 1,
-              padding: '0.75rem',
-              backgroundColor: activeTab === tab.id ? '#0f172a' : 'transparent',
-              border: 'none',
-              borderBottom: activeTab === tab.id ? '2px solid #3b82f6' : '2px solid transparent',
-              color: activeTab === tab.id ? '#3b82f6' : '#64748b',
-              cursor: 'pointer',
-              fontWeight: '500',
-            }}
+            className={`flex-1 px-4 py-3 border-none cursor-pointer font-medium transition-colors ${
+              activeTab === tab.id
+                ? 'bg-base-300 border-b-2 border-b-primary text-primary'
+                : 'bg-transparent border-b-2 border-b-transparent text-base-content/50'
+            }`}
           >
             {tab.label}
           </button>
         ))}
       </div>
 
-      <div style={{ padding: '1.5rem' }}>
+      <div className="p-6">
         {activeTab === 'inline' && (
           <>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
+            <div className="mb-6">
+              <p className="text-base-content/70 text-sm m-0">
                 Define the handler function directly in JSX using an arrow function:
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  CODE:
-                </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '1rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '0.5rem',
-                    fontSize: '0.75rem',
-                    lineHeight: 1.8,
-                  }}
-                >
-                  <code style={{ color: '#e2e8f0' }}>
+                <div className="text-base-content/50 text-xs mb-3">CODE:</div>
+                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
+                  <code className="text-base-content">
                     {'<button onClick={() => {\n' +
                       '  setCount(count + 1);\n' +
                       '}}>\n' +
@@ -74,65 +52,34 @@ export default function EventHandlersDemo() {
                 </pre>
               </div>
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  LIVE:
-                </div>
+                <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
                 <button
                   onClick={() => setCount1((prev) => prev + 1)}
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    backgroundColor: '#3b82f6',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                  }}
+                  className="btn btn-primary w-full"
                 >
                   Click me ({count1})
                 </button>
               </div>
             </div>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.75rem 1rem',
-                backgroundColor: '#3b82f622',
-                borderRadius: '0.5rem',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-              }}
-            >
-              ✅ <strong>Good for:</strong> Simple, one-line handlers. Easy to read.
+            <div className="mt-4 p-3 bg-primary/10 rounded-lg text-base-content/70 text-sm">
+              <HiCheck className="inline text-primary mr-1" size={16} />
+              <strong>Good for:</strong> Simple, one-line handlers. Easy to read.
             </div>
           </>
         )}
 
         {activeTab === 'function' && (
           <>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
+            <div className="mb-6">
+              <p className="text-base-content/70 text-sm m-0">
                 Define the handler function separately, then pass the reference:
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  CODE:
-                </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '1rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '0.5rem',
-                    fontSize: '0.75rem',
-                    lineHeight: 1.8,
-                  }}
-                >
-                  <code style={{ color: '#e2e8f0' }}>
+                <div className="text-base-content/50 text-xs mb-3">CODE:</div>
+                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
+                  <code className="text-base-content">
                     {'const handleClick = () => {\n' +
                       '  setCount(count + 1);\n' +
                       '};\n\n' +
@@ -145,41 +92,21 @@ export default function EventHandlersDemo() {
                 </pre>
               </div>
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  LIVE:
-                </div>
+                <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
                 <button
                   onClick={() => {
                     const handleClick = () => setCount2((prev) => prev + 1);
                     handleClick();
                   }}
-                  style={{
-                    width: '100%',
-                    padding: '1rem',
-                    backgroundColor: '#22c55e',
-                    border: 'none',
-                    borderRadius: '0.5rem',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '1rem',
-                    fontWeight: '600',
-                  }}
+                  className="btn btn-success w-full"
                 >
                   Click me ({count2})
                 </button>
               </div>
             </div>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.75rem 1rem',
-                backgroundColor: '#22c55e22',
-                borderRadius: '0.5rem',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-              }}
-            >
-              ✅ <strong>Good for:</strong> Reusable handlers, complex logic, better performance
+            <div className="mt-4 p-3 bg-success/10 rounded-lg text-base-content/70 text-sm">
+              <HiCheck className="inline text-success mr-1" size={16} />
+              <strong>Good for:</strong> Reusable handlers, complex logic, better performance
               (function isn't recreated on each render).
             </div>
           </>
@@ -187,27 +114,16 @@ export default function EventHandlersDemo() {
 
         {activeTab === 'arguments' && (
           <>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', margin: 0 }}>
+            <div className="mb-6">
+              <p className="text-base-content/70 text-sm m-0">
                 To pass arguments to an event handler, wrap it in an arrow function:
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  CODE:
-                </div>
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '1rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '0.5rem',
-                    fontSize: '0.75rem',
-                    lineHeight: 1.8,
-                  }}
-                >
-                  <code style={{ color: '#e2e8f0' }}>
+                <div className="text-base-content/50 text-xs mb-3">CODE:</div>
+                <pre className="m-0 p-4 bg-base-300 rounded-lg text-xs leading-relaxed">
+                  <code className="text-base-content">
                     {'const handleDelete = (id) => {\n' +
                       "  console.log('Deleting', id);\n" +
                       '};\n\n' +
@@ -220,10 +136,8 @@ export default function EventHandlersDemo() {
                 </pre>
               </div>
               <div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.75rem' }}>
-                  LIVE:
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div className="text-base-content/50 text-xs mb-3">LIVE:</div>
+                <div className="flex flex-col gap-2">
                   {[1, 2, 3].map((id) => (
                     <button
                       key={id}
@@ -231,78 +145,53 @@ export default function EventHandlersDemo() {
                         setCount3((prev) => prev + id);
                         console.log('Clicked item', id);
                       }}
-                      style={{
-                        padding: '0.75rem',
-                        backgroundColor: '#8b5cf6',
-                        border: 'none',
-                        borderRadius: '0.5rem',
-                        color: 'white',
-                        cursor: 'pointer',
-                        fontSize: '0.875rem',
-                      }}
+                      className="btn btn-secondary btn-sm"
                     >
                       Delete Item {id} (check console)
                     </button>
                   ))}
                 </div>
-                <div style={{ marginTop: '0.75rem', fontSize: '0.75rem', color: '#64748b' }}>
-                  Total: <span style={{ color: '#8b5cf6' }}>{count3}</span>
+                <div className="mt-3 text-xs text-base-content/50">
+                  Total: <span className="text-secondary">{count3}</span>
                 </div>
               </div>
             </div>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.75rem 1rem',
-                backgroundColor: '#8b5cf622',
-                borderRadius: '0.5rem',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-              }}
-            >
-              ✅ <strong>Pattern:</strong>{' '}
-              <code style={{ color: '#8b5cf6' }}>{'onClick={() => handleDelete(id)}'}</code> - wrap
-              in arrow function to pass arguments.
+            <div className="mt-4 p-3 bg-secondary/10 rounded-lg text-base-content/70 text-sm">
+              <HiCheck className="inline text-secondary mr-1" size={16} />
+              <strong>Pattern:</strong>{' '}
+              <code className="text-secondary">{'onClick={() => handleDelete(id)}'}</code> - wrap in
+              arrow function to pass arguments.
             </div>
           </>
         )}
       </div>
 
       {/* Common mistakes */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#ef444422',
-          borderTop: '1px solid #ef4444',
-        }}
-      >
-        <div
-          style={{
-            color: '#ef4444',
-            fontSize: '0.875rem',
-            marginBottom: '0.5rem',
-            fontWeight: '600',
-          }}
-        >
-          ⚠️ Common Mistakes:
+      <div className="px-6 py-4 bg-error/10 border-t border-error">
+        <div className="text-error text-sm mb-2 font-semibold flex items-center gap-2">
+          <HiX size={16} />
+          Common Mistakes:
         </div>
-        <div style={{ fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.8 }}>
+        <div className="text-xs text-base-content/70 leading-relaxed space-y-1">
           <div>
-            ❌ <code style={{ color: '#ef4444' }}>onClick=&#123;handleClick()&#125;</code> - Calls
+            <HiX className="inline text-error mr-1" size={12} />
+            <code className="text-error">onClick=&#123;handleClick()&#125;</code> - Calls function
+            immediately!
+          </div>
+          <div>
+            <HiCheck className="inline text-success mr-1" size={12} />
+            <code className="text-success">onClick=&#123;handleClick&#125;</code> - Passes function
+            reference
+          </div>
+          <div className="mt-2">
+            <HiX className="inline text-error mr-1" size={12} />
+            <code className="text-error">onClick=&#123;handleDelete(id)&#125;</code> - Calls
             function immediately!
           </div>
           <div>
-            ✅ <code style={{ color: '#22c55e' }}>onClick=&#123;handleClick&#125;</code> - Passes
-            function reference
-          </div>
-          <div style={{ marginTop: '0.5rem' }}>
-            ❌ <code style={{ color: '#ef4444' }}>onClick=&#123;handleDelete(id)&#125;</code> -
-            Calls function immediately!
-          </div>
-          <div>
-            ✅{' '}
-            <code style={{ color: '#22c55e' }}>onClick=&#123;() =&gt; handleDelete(id)&#125;</code>{' '}
-            - Wraps in arrow function
+            <HiCheck className="inline text-success mr-1" size={12} />
+            <code className="text-success">onClick=&#123;() =&gt; handleDelete(id)&#125;</code> -
+            Wraps in arrow function
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiChevronDown, HiChevronRight, HiOutlineExclamationCircle } from 'react-icons/hi';
 
 export default function EventBasicsDemo() {
   const [clickCount, setClickCount] = useState(0);
@@ -17,67 +18,23 @@ export default function EventBasicsDemo() {
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Live Demo */}
-      <div
-        style={{
-          padding: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem',
-          borderBottom: '1px solid #334155',
-        }}
-      >
-        <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase' }}>
+      <div className="p-8 flex flex-col items-center gap-6 border-b border-base-300">
+        <div className="text-xs text-base-content/50 uppercase">
           Click the button to see events in action!
         </div>
         <button
           onClick={handleClick}
-          style={{
-            padding: '1rem 2rem',
-            backgroundColor: '#3b82f6',
-            border: 'none',
-            borderRadius: '0.5rem',
-            color: 'white',
-            fontSize: '1rem',
-            cursor: 'pointer',
-            fontWeight: '600',
-            transition: 'transform 0.1s',
-          }}
-          onMouseDown={(e) => {
-            e.currentTarget.style.transform = 'scale(0.95)';
-          }}
-          onMouseUp={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-          }}
+          className="btn btn-primary btn-lg active:scale-95 transition-transform"
         >
           Click Me! ({clickCount})
         </button>
         {lastEvent && (
-          <div
-            style={{
-              padding: '1rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              fontSize: '0.875rem',
-              color: '#94a3b8',
-              width: '100%',
-              maxWidth: '400px',
-            }}
-          >
-            <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-              LAST EVENT DATA:
-            </div>
-            <pre style={{ margin: 0, fontSize: '0.75rem', lineHeight: 1.6 }}>
-              <code style={{ color: '#94a3b8' }}>
+          <div className="card bg-base-300 p-4 w-full max-w-md">
+            <div className="text-base-content/50 text-xs mb-2">LAST EVENT DATA:</div>
+            <pre className="m-0 text-xs leading-relaxed">
+              <code className="text-base-content/70">
                 {`type: "${lastEvent.type}"\ntarget: ${lastEvent.target}\ncurrentTarget: ${lastEvent.currentTarget}\ntime: ${lastEvent.timestamp}`}
               </code>
             </pre>
@@ -88,104 +45,70 @@ export default function EventBasicsDemo() {
       {/* Toggle */}
       <button
         onClick={() => setShowCode(!showCode)}
-        style={{
-          width: '100%',
-          padding: '0.75rem',
-          backgroundColor: '#0f172a',
-          border: 'none',
-          borderBottom: '1px solid #334155',
-          color: '#64748b',
-          cursor: 'pointer',
-          fontSize: '0.875rem',
-        }}
+        className="w-full px-4 py-3 bg-base-300 border-none border-b border-base-300 text-base-content/70 cursor-pointer text-sm hover:bg-base-200 transition-colors flex items-center justify-center gap-2"
       >
-        {showCode ? '▼ Hide Code' : '▶ Show Code'}
+        {showCode ? (
+          <>
+            <HiChevronDown size={16} />
+            Hide Code
+          </>
+        ) : (
+          <>
+            <HiChevronRight size={16} />
+            Show Code
+          </>
+        )}
       </button>
 
       {/* Code Explanation */}
       {showCode && (
-        <div style={{ padding: '1.5rem' }}>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              backgroundColor: '#0f172a',
-              borderRadius: '0.5rem',
-              overflow: 'auto',
-              fontSize: '0.8rem',
-              lineHeight: 1.8,
-            }}
-          >
-            <code style={{ color: '#e2e8f0' }}>
-              <span style={{ color: '#c084fc' }}>function</span>
+        <div className="p-6">
+          <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+            <code className="text-base-content">
+              <span className="text-secondary">function</span>
               {` `}
-              <span style={{ color: '#3b82f6' }}>Button</span>
+              <span className="text-primary">Button</span>
               {`() {\n  `}
-              <span style={{ color: '#c084fc' }}>const</span>
+              <span className="text-secondary">const</span>
               {` [count, setCount] = `}
-              <span style={{ color: '#22c55e' }}>useState</span>
+              <span className="text-success">useState</span>
               {`(0);\n\n  `}
-              <span style={{ color: '#64748b' }}>// Event handler function</span>
+              <span className="text-base-content/50">// Event handler function</span>
               {`\n  `}
-              <span style={{ color: '#c084fc' }}>const</span>
+              <span className="text-secondary">const</span>
               {` handleClick = (`}
-              <span style={{ color: '#ec4899' }}>e</span>
+              <span className="text-accent">e</span>
               {`) => {\n    `}
-              <span style={{ color: '#64748b' }}>// e is the SyntheticEvent object</span>
+              <span className="text-base-content/50">// e is the SyntheticEvent object</span>
               {`\n    console.log(`}
-              <span style={{ color: '#fbbf24' }}>'Clicked!'</span>
+              <span className="text-warning">'Clicked!'</span>
               {`, `}
-              <span style={{ color: '#ec4899' }}>e</span>
+              <span className="text-accent">e</span>
               {`);\n    setCount(count + 1);\n  };\n\n  `}
-              <span style={{ color: '#c084fc' }}>return</span>
+              <span className="text-secondary">return</span>
               {` (\n    <button `}
-              <span style={{ color: '#3b82f6' }}>onClick</span>
+              <span className="text-primary">onClick</span>
               {`={`}
-              <span style={{ color: '#f59e0b' }}>handleClick</span>
+              <span className="text-warning">handleClick</span>
               {`}>\n      Click me\n    </button>\n  );\n}`}
             </code>
           </pre>
 
           {/* Key Points */}
-          <div
-            style={{
-              marginTop: '1.5rem',
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '1rem',
-            }}
-          >
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                borderLeft: '3px solid #3b82f6',
-              }}
-            >
-              <div style={{ color: '#3b82f6', fontWeight: '600', marginBottom: '0.5rem' }}>
-                onClick (camelCase)
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+          <div className="mt-6 grid grid-cols-2 gap-4">
+            <div className="card bg-base-300 p-4 border-l-4 border-primary">
+              <div className="text-primary font-semibold mb-2">onClick (camelCase)</div>
+              <div className="text-base-content/70 text-sm">
                 React uses camelCase for event names. HTML uses lowercase{' '}
-                <code style={{ color: '#ef4444' }}>onclick</code>, React uses{' '}
-                <code style={{ color: '#22c55e' }}>onClick</code>.
+                <code className="text-error">onclick</code>, React uses{' '}
+                <code className="text-success">onClick</code>.
               </div>
             </div>
-            <div
-              style={{
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                borderLeft: '3px solid #ec4899',
-              }}
-            >
-              <div style={{ color: '#ec4899', fontWeight: '600', marginBottom: '0.5rem' }}>
-                Event Object (e)
-              </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+            <div className="card bg-base-300 p-4 border-l-4 border-accent">
+              <div className="text-accent font-semibold mb-2">Event Object (e)</div>
+              <div className="text-base-content/70 text-sm">
                 React wraps native events in a <strong>SyntheticEvent</strong>. Access event data
-                via the <code style={{ color: '#ec4899' }}>e</code> parameter.
+                via the <code className="text-accent">e</code> parameter.
               </div>
             </div>
           </div>
@@ -193,21 +116,12 @@ export default function EventBasicsDemo() {
       )}
 
       {/* Common mistake */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#ef444422',
-          borderTop: '1px solid #ef4444',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-        }}
-      >
-        <span style={{ fontSize: '1.25rem' }}>⚠️</span>
-        <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-          <strong style={{ color: '#f8fafc' }}>Common mistake:</strong> Don't call the function
-          immediately! Use <code style={{ color: '#22c55e' }}>{'onClick={handleClick}'}</code>, not{' '}
-          <code style={{ color: '#ef4444' }}>{'onClick={handleClick()}'}</code>
+      <div className="px-6 py-4 bg-error/10 border-t border-error flex items-center gap-3">
+        <HiOutlineExclamationCircle className="text-error" size={20} />
+        <span className="text-base-content/70 text-sm">
+          <strong className="text-base-content">Common mistake:</strong> Don't call the function
+          immediately! Use <code className="text-success">{'onClick={handleClick}'}</code>, not{' '}
+          <code className="text-error">{'onClick={handleClick()}'}</code>
         </span>
       </div>
     </div>
