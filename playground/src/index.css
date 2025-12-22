@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Button hover effects */
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Link hover */
+a:hover {
+  color: #38bdf8 !important;
+}
+
+/* Code styling */
+code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+pre code {
+  display: block;
+}
+
+/* Syntax highlighting colors for code preview */
+.keyword {
+  color: #c678dd;
+}
+.string {
+  color: #98c379;
+}
+.function {
+  color: #61afef;
+}
+.comment {
+  color: #5c6370;
+}
