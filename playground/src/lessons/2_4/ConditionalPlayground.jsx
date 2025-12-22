@@ -6,6 +6,7 @@ import {
   HiOutlineBell,
   HiOutlineCog,
   HiOutlineUser,
+  HiX,
 } from 'react-icons/hi';
 
 export default function ConditionalPlayground() {

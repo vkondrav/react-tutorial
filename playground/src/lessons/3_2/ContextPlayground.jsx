@@ -55,7 +55,7 @@ function useNotifications() {
 // UI Components
 // =====================
 
-function NavItem({ label, active = false }) {
+function NavItem({ icon: Icon, label, active = false }) {
   const { theme } = useTheme();
 
   return (

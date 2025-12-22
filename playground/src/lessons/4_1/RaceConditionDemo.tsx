@@ -3,7 +3,7 @@
 // Shows why cleanup is important and how to use AbortController
 // ============================================
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   HiOutlineExclamationCircle,
   HiOutlineShieldCheck,
@@ -54,13 +54,15 @@ export default function RaceConditionDemo(): React.ReactElement {
 // ============================================
 function ProblemDemo(): React.ReactElement {
   const [postId, setPostId] = useState(1);
+  const [fetchedPostId, setFetchedPostId] = useState(0);
   const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(false);
   const [responseOrder, setResponseOrder] = useState<string[]>([]);
+
+  // Derive loading from whether current postId has been fetched
+  const loading = postId !== fetchedPostId;
 
   // Intentionally NO cleanup to demonstrate race condition
   useEffect(() => {
-    setLoading(true);
     const currentPostId = postId;
 
     // Simulate variable network latency
@@ -71,12 +73,12 @@ function ProblemDemo(): React.ReactElement {
       .then((data) => {
         // This might set stale data!
         setPost(data);
+        setFetchedPostId(currentPostId);
         setResponseOrder((prev) => [
           ...prev,
           `Post ${currentPostId} arrived (${(delay / 1000).toFixed(1)}s delay)`,
         ]);
-      })
-      .finally(() => setLoading(false));
+      });
   }, [postId]);
 
   const rapidClick = () => {
@@ -174,16 +176,21 @@ function ProblemDemo(): React.ReactElement {
 // ============================================
 function SolutionDemo(): React.ReactElement {
   const [postId, setPostId] = useState(1);
+  const [fetchedPostId, setFetchedPostId] = useState(0);
   const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(false);
   const [eventLog, setEventLog] = useState<string[]>([]);
+
+  // Derive loading from whether current postId has been fetched
+  const loading = postId !== fetchedPostId;
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
     const currentPostId = postId;
 
-    setEventLog((prev) => [...prev, `→ Fetching post ${currentPostId}...`]);
+    // Log fetch start (via microtask to avoid sync setState in effect)
+    queueMicrotask(() => {
+      setEventLog((prev) => [...prev, `→ Fetching post ${currentPostId}...`]);
+    });
 
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
       signal: controller.signal,
@@ -191,14 +198,14 @@ function SolutionDemo(): React.ReactElement {
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
+        setFetchedPostId(currentPostId);
         setEventLog((prev) => [...prev, `✓ Set post ${currentPostId}`]);
       })
       .catch((err) => {
         if (err.name === 'AbortError') {
           setEventLog((prev) => [...prev, `✗ Aborted post ${currentPostId}`]);
         }
-      })
-      .finally(() => setLoading(false));
+      });
 
     // Cleanup: abort if postId changes or component unmounts
     return () => {

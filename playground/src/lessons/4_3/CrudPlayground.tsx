@@ -53,7 +53,7 @@ export default function CrudPlayground(): React.ReactElement {
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
         setTodos(data);
-      } catch (err) {
+      } catch {
         setError('Failed to load todos');
       } finally {
         setLoading(false);
@@ -87,7 +87,7 @@ export default function CrudPlayground(): React.ReactElement {
       setTodos((prev) => [{ ...newTodo, id: Date.now() }, ...prev]);
       setNewTitle('');
       showToast('Todo added!');
-    } catch (err) {
+    } catch {
       showToast('Failed to add todo', 'error');
     } finally {
       setIsAdding(false);
@@ -109,7 +109,7 @@ export default function CrudPlayground(): React.ReactElement {
       });
 
       if (!response.ok) throw new Error('Failed to update');
-    } catch (err) {
+    } catch {
       // Rollback
       setTodos((prev) =>
         prev.map((t) => (t.id === todo.id ? { ...t, completed: previousState } : t))
@@ -149,7 +149,7 @@ export default function CrudPlayground(): React.ReactElement {
       setEditingId(null);
       setEditValue('');
       showToast('Todo updated!');
-    } catch (err) {
+    } catch {
       showToast('Failed to update', 'error');
     } finally {
       setSavingId(null);
@@ -174,7 +174,7 @@ export default function CrudPlayground(): React.ReactElement {
       if (!response.ok) throw new Error('Failed to delete');
 
       showToast('Todo deleted!');
-    } catch (err) {
+    } catch {
       // Rollback
       if (todoToDelete) {
         setTodos((prev) => [todoToDelete, ...prev]);
@@ -195,7 +195,7 @@ export default function CrudPlayground(): React.ReactElement {
       if (!response.ok) throw new Error('Failed to fetch');
       const data = await response.json();
       setTodos(data);
-    } catch (err) {
+    } catch {
       setError('Failed to load todos');
     } finally {
       setLoading(false);

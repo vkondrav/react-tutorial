@@ -577,7 +577,6 @@ type DemoTab = 'todo' | 'cart' | 'form';
 
 export default function ReducerPlayground(): React.ReactElement {
   const [activeTab, setActiveTab] = useState<DemoTab>('todo');
-  const [showState, setShowState] = useState(false);
 
   const tabs: { id: DemoTab; label: string; icon: React.ReactNode }[] = [
     { id: 'todo', label: 'Todo List', icon: <HiOutlineClipboardList size={16} /> },

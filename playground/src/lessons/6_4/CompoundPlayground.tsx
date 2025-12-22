@@ -199,9 +199,7 @@ function MenuItem({ children, onClick, icon, danger }: MenuItemProps) {
   );
 }
 
-interface MenuDividerProps {}
-
-function MenuDivider({}: MenuDividerProps) {
+function MenuDivider() {
   return <div className="border-t border-base-300 my-1" />;
 }
 

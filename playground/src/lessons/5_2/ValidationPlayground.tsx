@@ -114,7 +114,9 @@ export default function ValidationPlayground(): React.ReactElement {
   // Async email check
   useEffect(() => {
     if (!form.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      setEmailTaken(false);
+      setTimeout(() => {
+        setEmailTaken(false);
+      }, 0);
       return;
     }
 

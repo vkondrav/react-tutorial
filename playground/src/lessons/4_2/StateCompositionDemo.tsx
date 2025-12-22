@@ -120,22 +120,24 @@ function UserList({
   );
 }
 
+const MOCK_USERS: User[] = [
+  { id: 1, name: 'Alice Johnson', email: 'alice@example.com', avatar: '' },
+  { id: 2, name: 'Bob Smith', email: 'bob@example.com', avatar: '' },
+  { id: 3, name: 'Carol Williams', email: 'carol@example.com', avatar: '' },
+];
+
 export default function StateCompositionDemo(): React.ReactElement {
   const [simulatedState, setSimulatedState] = useState<SimulatedState>('data');
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const mockUsers: User[] = [
-    { id: 1, name: 'Alice Johnson', email: 'alice@example.com', avatar: '' },
-    { id: 2, name: 'Bob Smith', email: 'bob@example.com', avatar: '' },
-    { id: 3, name: 'Carol Williams', email: 'carol@example.com', avatar: '' },
-  ];
-
   // Simulate different states
   useEffect(() => {
-    setLoading(true);
-    setError(null);
+    setTimeout(() => {
+      setLoading(true);
+      setError(null);
+    }, 0);
 
     const timer = setTimeout(() => {
       setLoading(false);
@@ -153,7 +155,7 @@ export default function StateCompositionDemo(): React.ReactElement {
           setUsers([]);
           break;
         case 'data':
-          setUsers(mockUsers);
+          setUsers(MOCK_USERS);
           break;
       }
     }, 800);

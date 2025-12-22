@@ -3,7 +3,7 @@
 // Shows practical render prop patterns
 // ============================================
 
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
 
@@ -57,7 +57,7 @@ function Fetch<T>({ url, children }: FetchProps<T>) {
     error: null,
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setState((prev) => ({ ...prev, loading: true, error: null }));
     try {
       const res = await fetch(url);
@@ -67,11 +67,11 @@ function Fetch<T>({ url, children }: FetchProps<T>) {
     } catch (err) {
       setState({ data: null, loading: false, error: err as Error });
     }
-  };
+  }, [url]);
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [fetchData]);
 
   return <>{children({ ...state, refetch: fetchData })}</>;
 }

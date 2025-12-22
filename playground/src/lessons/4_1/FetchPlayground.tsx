@@ -76,9 +76,12 @@ export default function FetchPlayground(): React.ReactElement {
 // ============================================
 function SearchDemo(): React.ReactElement {
   const [query, setQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [loading, setLoading] = useState(false);
   const [allTodos, setAllTodos] = useState<Todo[]>([]);
+
+  // Derive loading state from query mismatch (no setState needed!)
+  const loading = query !== appliedQuery;
 
   // Fetch all todos once on mount
   useEffect(() => {
@@ -89,7 +92,6 @@ function SearchDemo(): React.ReactElement {
 
   // Filter locally based on query (debounced)
   useEffect(() => {
-    setLoading(true);
     const timer = setTimeout(() => {
       if (query.trim() === '') {
         setTodos(allTodos.slice(0, 10));
@@ -99,7 +101,7 @@ function SearchDemo(): React.ReactElement {
         );
         setTodos(filtered.slice(0, 10));
       }
-      setLoading(false);
+      setAppliedQuery(query); // Mark query as applied
     }, 300); // 300ms debounce
 
     return () => clearTimeout(timer);
@@ -166,22 +168,26 @@ function SearchDemo(): React.ReactElement {
 // ============================================
 function PhotosDemo(): React.ReactElement {
   const [albumId, setAlbumId] = useState(1);
+  const [fetchedAlbumId, setFetchedAlbumId] = useState(0);
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [loading, setLoading] = useState(true);
+
+  // Derive loading from whether current albumId has been fetched
+  const loading = albumId !== fetchedAlbumId;
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
 
     fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}&_limit=8`, {
       signal: controller.signal,
     })
       .then((res) => res.json())
-      .then((data) => setPhotos(data))
+      .then((data) => {
+        setPhotos(data);
+        setFetchedAlbumId(albumId);
+      })
       .catch((err) => {
         if (err.name !== 'AbortError') console.error(err);
-      })
-      .finally(() => setLoading(false));
+      });
 
     return () => controller.abort();
   }, [albumId]);
@@ -234,22 +240,26 @@ function PhotosDemo(): React.ReactElement {
 // ============================================
 function CommentsDemo(): React.ReactElement {
   const [postId, setPostId] = useState(1);
+  const [fetchedPostId, setFetchedPostId] = useState(0);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(true);
+
+  // Derive loading from whether current postId has been fetched
+  const loading = postId !== fetchedPostId;
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
 
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`, {
       signal: controller.signal,
     })
       .then((res) => res.json())
-      .then((data) => setComments(data))
+      .then((data) => {
+        setComments(data);
+        setFetchedPostId(postId);
+      })
       .catch((err) => {
         if (err.name !== 'AbortError') console.error(err);
-      })
-      .finally(() => setLoading(false));
+      });
 
     return () => controller.abort();
   }, [postId]);

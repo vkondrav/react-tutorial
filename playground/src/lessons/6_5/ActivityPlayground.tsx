@@ -37,7 +37,7 @@ interface ActivityContextType {
 const ActivityContext = createContext<ActivityContextType>({ mode: 'visible' });
 
 // Hook to check if we're in a hidden Activity
-export function useActivityMode() {
+function useActivityMode() {
   return useContext(ActivityContext);
 }
 

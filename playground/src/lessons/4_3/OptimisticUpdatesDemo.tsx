@@ -75,7 +75,7 @@ export default function OptimisticUpdatesDemo(): React.ReactElement {
     try {
       await simulateApiCall(simulateError, networkDelay);
       // Success! UI is already updated
-    } catch (err) {
+    } catch {
       // Rollback on error
       setOptimisticPost((prev) => ({ ...prev, liked: previousState }));
       setOptimisticError('Failed! Rolled back.');

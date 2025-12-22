@@ -3,7 +3,7 @@
 // Combine render props in creative ways!
 // ============================================
 
-import { useState, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo, ReactNode } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
 
 // ============================================
@@ -92,30 +92,28 @@ interface TimerProps {
 function Timer({ children }: TimerProps) {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const intervalRef = useRef<number | null>(null);
 
-  const start = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      intervalRef.current = window.setInterval(() => {
-        setSeconds((s) => s + 1);
-      }, 1000);
-    }
-  };
+  // Handle interval via effect - cleaner and avoids ref issues
+  useEffect(() => {
+    if (!isRunning) return;
 
-  const pause = () => {
+    const id = window.setInterval(() => {
+      setSeconds((s) => s + 1);
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [isRunning]);
+
+  const start = useCallback(() => setIsRunning(true), []);
+  const pause = useCallback(() => setIsRunning(false), []);
+  const reset = useCallback(() => {
     setIsRunning(false);
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
-
-  const reset = () => {
-    pause();
     setSeconds(0);
-  };
+  }, []);
 
-  return <>{children(seconds, { start, pause, reset }, isRunning)}</>;
+  const actions = useMemo(() => ({ start, pause, reset }), [start, pause, reset]);
+
+  return <>{children(seconds, actions, isRunning)}</>;
 }
 
 // ============================================
