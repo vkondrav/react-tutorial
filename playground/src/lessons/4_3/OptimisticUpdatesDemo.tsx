@@ -11,6 +11,9 @@ import {
   HiHeart,
   HiOutlineRefresh,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import pessimisticUpdateCode from './examples/PessimisticUpdate.tsx?raw';
+import optimisticUpdateCode from './examples/OptimisticUpdate.tsx?raw';
 
 interface Post {
   id: number;
@@ -207,41 +210,14 @@ export default function OptimisticUpdatesDemo(): React.ReactElement {
 
       {/* Code comparison */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-base-300 rounded-lg p-4">
+        <div>
           <h5 className="font-semibold text-sm mb-2 text-secondary">Pessimistic Code</h5>
-          <pre className="text-xs overflow-x-auto">
-            <code>{`const handleLike = async () => {
-  setLoading(true);
-  try {
-    await api.like(postId);
-    // Update AFTER success
-    setLiked(true);
-  } catch (err) {
-    showError(err);
-  } finally {
-    setLoading(false);
-  }
-};`}</code>
-          </pre>
+          <CodeSnippet code={pessimisticUpdateCode} language="tsx" />
         </div>
 
-        <div className="bg-base-300 rounded-lg p-4">
+        <div>
           <h5 className="font-semibold text-sm mb-2 text-primary">Optimistic Code</h5>
-          <pre className="text-xs overflow-x-auto">
-            <code>{`const handleLike = async () => {
-  const prev = liked;
-  // Update BEFORE request
-  setLiked(true);
-  
-  try {
-    await api.like(postId);
-  } catch (err) {
-    // Rollback on error
-    setLiked(prev);
-    showError(err);
-  }
-};`}</code>
-          </pre>
+          <CodeSnippet code={optimisticUpdateCode} language="tsx" />
         </div>
       </div>
 

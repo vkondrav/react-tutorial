@@ -11,6 +11,9 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import putRequestCode from './examples/PutRequest.tsx?raw';
+import patchRequestCode from './examples/PatchRequest.tsx?raw';
 
 interface Post {
   id: number;
@@ -220,7 +223,7 @@ export default function UpdateDataDemo(): React.ReactElement {
       {lastResponse && (
         <div className="card bg-base-200 p-4">
           <h4 className="font-semibold mb-2 text-sm">Server Response ({method})</h4>
-          <pre className="text-xs bg-base-300 p-2 rounded overflow-x-auto">{lastResponse}</pre>
+          <CodeSnippet code={lastResponse} language="json" />
         </div>
       )}
 
@@ -231,33 +234,11 @@ export default function UpdateDataDemo(): React.ReactElement {
       </button>
 
       {showCode && (
-        <div className="bg-base-300 rounded-lg p-4">
-          <pre className="text-xs overflow-x-auto">
-            <code>{`// ${method} request to update data
-const handleUpdate = async (field, value) => {
-  setIsUpdating(true);
-
-  try {
-    const response = await fetch(\`/api/posts/\${post.id}\`, {
-      method: '${method}',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(${method === 'PUT' ? `{ ...post, [field]: value }  // Full object` : `{ [field]: value }           // Only changed field`}),
-    });
-
-    if (!response.ok) throw new Error('Update failed');
-
-    const updated = await response.json();
-    setPost(prev => ({ ...prev, [field]: value }));
-  } catch (err) {
-    console.error(err);
-  } finally {
-    setIsUpdating(false);
-  }
-};`}</code>
-          </pre>
-        </div>
+        <CodeSnippet
+          code={method === 'PUT' ? putRequestCode : patchRequestCode}
+          language="tsx"
+          title={`${method} Request Pattern`}
+        />
       )}
 
       {/* PUT vs PATCH comparison */}

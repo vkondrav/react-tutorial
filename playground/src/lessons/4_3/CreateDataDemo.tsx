@@ -11,6 +11,8 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import postRequestCode from './examples/PostRequest.tsx?raw';
 
 interface Post {
   id: number;
@@ -164,42 +166,7 @@ export default function CreateDataDemo(): React.ReactElement {
       </button>
 
       {showCode && (
-        <div className="bg-base-300 rounded-lg p-4">
-          <pre className="text-xs overflow-x-auto">
-            <code>{`// POST request to create new data
-const handleCreate = async (data) => {
-  setIsSubmitting(true);
-  setError(null);
-
-  try {
-    const response = await fetch('/api/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to create');
-    }
-
-    const newItem = await response.json();
-    
-    // Add to local state
-    setPosts(prev => [newItem, ...prev]);
-    
-    // Clear form
-    setTitle('');
-    setBody('');
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setIsSubmitting(false);
-  }
-};`}</code>
-          </pre>
-        </div>
+        <CodeSnippet code={postRequestCode} language="tsx" title="POST Request Pattern" />
       )}
 
       {/* Key points */}

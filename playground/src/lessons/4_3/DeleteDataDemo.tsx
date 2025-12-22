@@ -11,6 +11,8 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import deleteRequestCode from './examples/DeleteRequest.tsx?raw';
 
 interface Item {
   id: number;
@@ -146,35 +148,7 @@ export default function DeleteDataDemo(): React.ReactElement {
       </button>
 
       {showCode && (
-        <div className="bg-base-300 rounded-lg p-4">
-          <pre className="text-xs overflow-x-auto">
-            <code>{`// DELETE request to remove data
-const handleDelete = async (id) => {
-  // 1. Show confirmation first!
-  if (!confirm('Are you sure?')) return;
-
-  setDeletingId(id);
-  setError(null);
-
-  try {
-    const response = await fetch(\`/api/items/\${id}\`, {
-      method: 'DELETE',
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to delete');
-    }
-
-    // Remove from local state
-    setItems(prev => prev.filter(item => item.id !== id));
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setDeletingId(null);
-  }
-};`}</code>
-          </pre>
-        </div>
+        <CodeSnippet code={deleteRequestCode} language="tsx" title="DELETE Request Pattern" />
       )}
 
       {/* Best practices */}
