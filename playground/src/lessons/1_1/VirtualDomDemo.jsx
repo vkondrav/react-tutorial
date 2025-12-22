@@ -11,8 +11,8 @@ export default function VirtualDomDemo() {
 
   return (
     <div>
-      <p className="leading-relaxed text-slate-400 mt-0">
-        React uses a <strong className="text-cyan-400">Virtual DOM</strong> - when state changes,
+      <p className="leading-relaxed text-base-content/70 mt-0">
+        React uses a <strong className="text-primary">Virtual DOM</strong> - when state changes,
         React only updates what actually changed.
       </p>
 

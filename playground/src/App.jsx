@@ -7,6 +7,7 @@
 // ============================================
 
 import { useState, useEffect } from 'react';
+import { HiOutlineMenuAlt2, HiOutlineArrowLeft } from 'react-icons/hi';
 import config from './lessons/config.json';
 
 // Component imports - register new lesson components here
@@ -105,116 +106,70 @@ function App() {
   const nextLesson = currentIndex < LESSONS.length - 1 ? LESSONS[currentIndex + 1] : null;
 
   return (
-    <div
-      style={{
-        fontFamily: '"SF Pro Display", system-ui, sans-serif',
-        backgroundColor: '#0f172a',
-        minHeight: '100vh',
-        color: '#e2e8f0',
-        display: 'flex',
-      }}
-    >
+    <div className="font-sans bg-base-100 h-screen text-base-content flex overflow-hidden">
       {/* Sidebar */}
       <aside
-        style={{
-          width: sidebarOpen ? '280px' : '0px',
-          backgroundColor: '#1e293b',
-          borderRight: '1px solid #334155',
-          overflow: 'hidden',
-          transition: 'width 0.3s ease',
-          flexShrink: 0,
-        }}
+        className={`bg-base-200 border-r border-base-300 overflow-hidden transition-all duration-300 shrink-0 h-full ${
+          sidebarOpen ? 'w-[280px]' : 'w-0'
+        }`}
       >
-        <div style={{ width: '280px', height: '100vh', overflow: 'auto' }}>
+        <div className="w-[280px] h-full flex flex-col">
           {/* Logo */}
-          <div
-            style={{
-              padding: '1.5rem',
-              borderBottom: '1px solid #334155',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-            }}
-          >
-            <span style={{ color: '#38bdf8', fontSize: '1.5rem' }}>⚛</span>
-            <span style={{ fontWeight: '700', fontSize: '1.125rem' }}>React Tutorial</span>
+          <div className="p-6 border-b border-base-300 flex items-center gap-2 shrink-0">
+            <span className="text-primary text-2xl">⚛</span>
+            <span className="font-bold text-lg">React Tutorial</span>
           </div>
 
           {/* Lessons List */}
-          <nav style={{ padding: '1rem' }}>
+          <nav className="p-4 flex-1 overflow-auto">
             {MODULES.map((mod) => {
               const moduleLessons = LESSONS.filter((l) => l.module === mod.id);
               return (
-                <div key={mod.id} style={{ marginBottom: '1.5rem' }}>
+                <div key={mod.id} className="mb-6">
                   <div
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: '600',
-                      color: mod.color,
-                      marginBottom: '0.75rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                    }}
+                    className="text-xs font-semibold mb-3 uppercase tracking-wider"
+                    style={{ color: mod.color }}
                   >
                     Module {mod.id}: {mod.title}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    {moduleLessons.map((lesson) => (
-                      <button
-                        key={lesson.id}
-                        onClick={() => lesson.component && setCurrentLessonId(lesson.id)}
-                        disabled={!lesson.component}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.75rem',
-                          padding: '0.625rem 0.75rem',
-                          backgroundColor:
-                            currentLessonId === lesson.id ? '#334155' : 'transparent',
-                          border: 'none',
-                          borderRadius: '0.5rem',
-                          color: lesson.component
-                            ? currentLessonId === lesson.id
-                              ? '#f8fafc'
-                              : '#94a3b8'
-                            : '#475569',
-                          cursor: lesson.component ? 'pointer' : 'not-allowed',
-                          textAlign: 'left',
-                          fontSize: '0.875rem',
-                          width: '100%',
-                          transition: 'all 0.15s ease',
-                        }}
-                      >
-                        <span
-                          style={{
-                            width: '1.25rem',
-                            height: '1.25rem',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '0.625rem',
-                            backgroundColor:
-                              lesson.status === 'complete'
-                                ? '#22c55e'
-                                : lesson.status === 'current'
-                                  ? '#3b82f6'
-                                  : '#334155',
-                            color: lesson.status === 'locked' ? '#64748b' : 'white',
-                            flexShrink: 0,
-                          }}
+                  <div className="flex flex-col gap-1">
+                    {moduleLessons.map((lesson) => {
+                      const isActive = currentLessonId === lesson.id;
+                      const statusColors = {
+                        complete: 'bg-success',
+                        current: 'bg-primary',
+                        locked: 'bg-base-300',
+                      };
+                      return (
+                        <button
+                          key={lesson.id}
+                          onClick={() => lesson.component && setCurrentLessonId(lesson.id)}
+                          disabled={!lesson.component}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm w-full transition-all ${
+                            isActive
+                              ? 'bg-base-300 text-base-content'
+                              : lesson.component
+                                ? 'text-base-content/70 hover:bg-base-300/50'
+                                : 'text-base-content/40 cursor-not-allowed'
+                          }`}
                         >
-                          {lesson.status === 'complete'
-                            ? '✓'
-                            : lesson.status === 'current'
-                              ? '▶'
-                              : '🔒'}
-                        </span>
-                        <span style={{ flex: 1 }}>
-                          {lesson.id} {lesson.title}
-                        </span>
-                      </button>
-                    ))}
+                          <span
+                            className={`w-5 h-5 rounded-full flex items-center justify-center text-[0.625rem] shrink-0 ${
+                              statusColors[lesson.status] || 'bg-base-300'
+                            } ${lesson.status === 'locked' ? 'text-base-content/50' : 'text-white'}`}
+                          >
+                            {lesson.status === 'complete'
+                              ? '✓'
+                              : lesson.status === 'current'
+                                ? '▶'
+                                : '🔒'}
+                          </span>
+                          <span className="flex-1">
+                            {lesson.id} {lesson.title}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               );
@@ -222,35 +177,17 @@ function App() {
           </nav>
 
           {/* Progress */}
-          <div
-            style={{
-              padding: '1rem 1.5rem',
-              borderTop: '1px solid #334155',
-              marginTop: 'auto',
-            }}
-          >
-            <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.5rem' }}>
-              Progress
-            </div>
-            <div
-              style={{
-                height: '6px',
-                backgroundColor: '#334155',
-                borderRadius: '3px',
-                overflow: 'hidden',
-              }}
-            >
+          <div className="p-4 px-6 border-t border-base-300 shrink-0">
+            <div className="text-xs text-base-content/60 mb-2">Progress</div>
+            <div className="h-1.5 bg-base-300 rounded overflow-hidden">
               <div
+                className="h-full bg-success rounded transition-all duration-300"
                 style={{
                   width: `${(LESSONS.filter((l) => l.status === 'complete').length / LESSONS.length) * 100}%`,
-                  height: '100%',
-                  backgroundColor: '#22c55e',
-                  borderRadius: '3px',
-                  transition: 'width 0.3s ease',
                 }}
               />
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: '0.5rem' }}>
+            <div className="text-xs text-base-content/70 mt-2">
               {LESSONS.filter((l) => l.status === 'complete').length} / {LESSONS.length} lessons
               complete
             </div>
@@ -259,55 +196,26 @@ function App() {
       </aside>
 
       {/* Main Content */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+      <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '1rem 2rem',
-            borderBottom: '1px solid #1e293b',
-            backgroundColor: '#0f172a',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <header className="flex justify-between items-center px-8 py-4 border-b border-base-300 bg-base-100">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              style={{
-                padding: '0.5rem',
-                backgroundColor: 'transparent',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: '#94a3b8',
-                cursor: 'pointer',
-                fontSize: '1rem',
-              }}
+              className="btn btn-ghost btn-sm btn-square"
             >
-              {sidebarOpen ? '◀' : '▶'}
+              {sidebarOpen ? <HiOutlineArrowLeft size={20} /> : <HiOutlineMenuAlt2 size={20} />}
             </button>
             <div>
-              <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+              <div className="text-xs text-base-content/60">
                 Module {currentLesson?.module} · Lesson {currentLesson?.id}
               </div>
-              <div style={{ fontWeight: '600', color: '#f8fafc' }}>{currentLesson?.title}</div>
+              <div className="font-semibold">{currentLesson?.title}</div>
             </div>
             {currentLesson?.component && (
               <a
                 href={getLessonSourceLink(currentLessonId)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.375rem',
-                  padding: '0.375rem 0.75rem',
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
-                  borderRadius: '0.375rem',
-                  color: '#94a3b8',
-                  fontSize: '0.75rem',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                }}
+                className="btn btn-outline btn-sm text-xs"
                 title="Open source in Cursor"
               >
                 <span>{'</>'}</span>
@@ -316,39 +224,20 @@ function App() {
             )}
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="flex gap-2">
             <button
               onClick={() => prevLesson?.component && setCurrentLessonId(prevLesson.id)}
               disabled={!prevLesson?.component}
-              style={{
-                padding: '0.5rem 1rem',
-                backgroundColor: '#1e293b',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: prevLesson?.component ? '#94a3b8' : '#475569',
-                cursor: prevLesson?.component ? 'pointer' : 'not-allowed',
-                fontSize: '0.875rem',
-              }}
+              className="btn btn-ghost btn-sm"
             >
               ← Previous
             </button>
             <button
               onClick={handleNextClick}
               disabled={!nextLesson}
-              style={{
-                padding: '0.5rem 1rem',
-                backgroundColor: nextLesson?.component
-                  ? '#3b82f6'
-                  : nextLesson
-                    ? '#22c55e'
-                    : '#1e293b',
-                border: 'none',
-                borderRadius: '0.375rem',
-                color: nextLesson ? 'white' : '#475569',
-                cursor: nextLesson ? 'pointer' : 'not-allowed',
-                fontSize: '0.875rem',
-                fontWeight: '500',
-              }}
+              className={`btn btn-sm ${
+                nextLesson?.component ? 'btn-primary' : nextLesson ? 'btn-success' : 'btn-ghost'
+              }`}
             >
               {nextLesson?.component ? 'Next →' : '📋 Copy to Chat'}
             </button>
@@ -356,60 +245,30 @@ function App() {
         </header>
 
         {/* Lesson Content */}
-        <main style={{ flex: 1, overflow: 'auto' }}>
+        <main className="flex-1 overflow-auto">
           {CurrentComponent ? (
             <CurrentComponent />
           ) : (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                color: '#64748b',
-                padding: '2rem',
-              }}
-            >
-              <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🚧</div>
-              <h2 style={{ color: '#f8fafc', marginBottom: '0.5rem' }}>Coming Soon!</h2>
+            <div className="flex flex-col items-center justify-center h-full text-base-content/60 p-8">
+              <div className="text-6xl mb-4">🚧</div>
+              <h2 className="text-base-content mb-2">Coming Soon!</h2>
               <p>This lesson is still being built. Check back later!</p>
             </div>
           )}
         </main>
 
         {/* Footer Navigation */}
-        <footer
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '1rem 2rem',
-            borderTop: '1px solid #1e293b',
-            backgroundColor: '#0f172a',
-          }}
-        >
+        <footer className="flex justify-between items-center px-8 py-4 border-t border-base-300 bg-base-100">
           <div>
             {prevLesson && (
               <button
                 onClick={() => prevLesson.component && setCurrentLessonId(prevLesson.id)}
                 disabled={!prevLesson.component}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.75rem 1rem',
-                  backgroundColor: 'transparent',
-                  border: '1px solid #334155',
-                  borderRadius: '0.5rem',
-                  color: prevLesson.component ? '#94a3b8' : '#475569',
-                  cursor: prevLesson.component ? 'pointer' : 'not-allowed',
-                  fontSize: '0.875rem',
-                }}
+                className="btn btn-ghost flex items-center gap-2"
               >
                 <span>←</span>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Previous</div>
+                <div className="text-left">
+                  <div className="text-xs text-base-content/60">Previous</div>
                   <div>{prevLesson.title}</div>
                 </div>
               </button>
@@ -419,21 +278,12 @@ function App() {
             {nextLesson && (
               <button
                 onClick={handleNextClick}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.75rem 1rem',
-                  backgroundColor: nextLesson.component ? '#3b82f622' : '#22c55e22',
-                  border: `1px solid ${nextLesson.component ? '#3b82f6' : '#22c55e'}`,
-                  borderRadius: '0.5rem',
-                  color: nextLesson.component ? '#3b82f6' : '#22c55e',
-                  cursor: 'pointer',
-                  fontSize: '0.875rem',
-                }}
+                className={`btn flex items-center gap-2 ${
+                  nextLesson.component ? 'btn-outline btn-primary' : 'btn-outline btn-success'
+                }`}
               >
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                <div className="text-right">
+                  <div className="text-xs text-base-content/60">
                     {nextLesson.component ? 'Next' : '📋 Copy to Chat'}
                   </div>
                   <div>{nextLesson.title}</div>
@@ -447,26 +297,11 @@ function App() {
 
       {/* Toast notification */}
       {copiedMessage && (
-        <div
-          style={{
-            position: 'fixed',
-            bottom: '2rem',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: '#22c55e',
-            color: 'white',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.5rem',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-            zIndex: 1000,
-            animation: 'fadeIn 0.2s ease',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}
-        >
-          <span>✓</span>
-          <span>Copied! Paste in Cursor chat</span>
+        <div className="toast toast-bottom toast-center z-50 animate-fadeIn">
+          <div className="alert alert-success flex items-center gap-2">
+            <span>✓</span>
+            <span>Copied! Paste in Cursor chat</span>
+          </div>
         </div>
       )}
     </div>

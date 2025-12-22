@@ -11,10 +11,10 @@ export default function Lesson1_1() {
       <LessonHeader module="1" lesson="1" title="What is React & Why Use It?" />
 
       <Section title="🎯 The Big Idea">
-        <p className="leading-relaxed text-slate-400">
-          React lets you describe <strong className="text-cyan-400">what</strong> your UI should
-          look like, not <strong className="text-pink-400">how</strong> to build it step by step.
-          This is called <em>declarative programming</em>.
+        <p className="leading-relaxed text-base-content/70">
+          React lets you describe <strong className="text-primary">what</strong> your UI should look
+          like, not <strong className="text-accent">how</strong> to build it step by step. This is
+          called <em>declarative programming</em>.
         </p>
       </Section>
 
@@ -23,10 +23,10 @@ export default function Lesson1_1() {
       </Section>
 
       <Section title="🧱 Components in Action">
-        <p className="leading-relaxed text-slate-400 mb-6">
+        <p className="leading-relaxed text-base-content/70 mb-6">
           Everything you see on this page is built from{' '}
-          <strong className="text-cyan-400">components</strong>. Components can contain other
-          components - this is called <strong className="text-green-500">composition</strong>.
+          <strong className="text-primary">components</strong>. Components can contain other
+          components - this is called <strong className="text-success">composition</strong>.
         </p>
         <ComponentTreeDemo />
       </Section>
