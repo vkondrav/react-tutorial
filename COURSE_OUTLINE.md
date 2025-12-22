@@ -78,6 +78,7 @@ Welcome to your comprehensive React learning journey! This course is designed to
 | 6.2 | Render Props Pattern | 20 min |
 | 6.3 | Higher-Order Components | 20 min |
 | 6.4 | Compound Components | 25 min |
+| 6.5 | Activity: Preserving Hidden State (React 19) | 20 min |
 
 ---
 
