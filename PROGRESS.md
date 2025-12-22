@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 5: Forms & User Input |
-| **Current Lesson** | Lesson 5.1: Controlled Components |
-| **Next Lesson** | Lesson 5.2: Form Validation Patterns |
+| **Current Lesson** | Lesson 5.2: Form Validation Patterns |
+| **Next Lesson** | Lesson 5.3: Handling Multiple Inputs |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -75,7 +75,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 5.1 | Controlled Components | ✅ Complete | Basics, uncontrolled vs controlled, input types, benefits, playground |
-| 5.2 | Form Validation Patterns | ⬜ Pending |
+| 5.2 | Form Validation Patterns | ✅ Complete | Timing approaches, rules (required/length/pattern/custom), error display, async validation, playground |
 | 5.3 | Handling Multiple Inputs | ⬜ Pending |
 
 ### Module 6: Component Patterns ⬜ Not Started
@@ -478,6 +478,22 @@ All 4 lessons in Module 4: Data Fetching & REST APIs are now implemented.
 #### Module 5 Started! 🎯
 Beginning the Forms & User Input module.
 
+---
+
+### Session 15 - December 9, 2025
+**Goal:** Implement Lesson 5.2: Form Validation Patterns
+
+#### Completed:
+- ✅ **Implemented Lesson 5.2: Form Validation Patterns**
+  - `index.tsx` - Main lesson with 6 sections covering validation patterns
+  - `ValidationApproachesDemo.tsx` - 3 tabs comparing on-submit, on-blur (recommended), on-change validation timing
+  - `ValidationRulesDemo.tsx` - 4 rule types: required, length, pattern (regex), custom (password strength)
+  - `ErrorDisplayDemo.tsx` - 3 error display patterns: inline, summary list, toast notifications
+  - `AsyncValidationDemo.tsx` - Username availability check with debouncing and loading states
+  - `ValidationPlayground.tsx` - Complete signup form with email availability, password strength, age validation
+  - Updated `config.json` to mark 5.1 complete and add 5.2 as current
+  - Updated `App.jsx` to import and register Lesson5_2 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -518,7 +534,12 @@ Beginning the Forms & User Input module.
 - [x] Uncontrolled components (ref approach)
 - [x] Different input types (text, textarea, select, checkbox, radio)
 - [x] Benefits: real-time validation, auto formatting, conditional logic, computed values
-- [ ] Form validation patterns - next
+- [x] Validation timing: on-submit, on-blur, on-change
+- [x] Validation rules: required, length, pattern (regex), custom
+- [x] Error display: inline, summary, toast
+- [x] Async validation with debouncing
+- [x] "touched" state for UX (avoid premature errors)
+- [ ] Handling multiple inputs - next
 - [ ] ...more to come
 
 ---
