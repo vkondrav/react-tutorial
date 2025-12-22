@@ -7,7 +7,7 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 8: Advanced Topics |
-| **Current Lesson** | 8.1 Server-Side Rendering ✅ |
+| **Current Lesson** | 8.2 Testing Strategies ✅ |
 | **Next Lesson** | TBD |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
@@ -110,6 +110,7 @@
 | 7.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 7.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 8.1    | ✅ .tsx    | ✅          | N/A        | ✅    | ✅ Done         | ✅ Done            |
+| 8.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 
 ### Shared Components
 
@@ -211,6 +212,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 8.1 | Server-Side Rendering | ✅ Complete | CSR vs SSR comparison, hydration demo, decision framework, live SSR server |
+| 8.2 | Testing Strategies | ✅ Complete | Testing pyramid, Storybook setup, MSW mocking, play functions, interaction tests |
 
 ### Module 9: Capstone ⏸️ Deferred
 
@@ -783,6 +785,25 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 26 - December 16, 2025
+**Goal:** Implement Lesson 8.2: Testing Strategies
+
+#### Completed:
+- ✅ **Implemented Lesson 8.2: Testing Strategies**
+  - `index.tsx` - Main lesson with 6 sections covering testing strategies
+  - `TestingApproachesDemo.tsx` - Interactive testing pyramid (unit, integration, E2E)
+  - `StorybookSetupDemo.tsx` - Story file structure, global config, running Storybook
+  - `MSWMockingDemo.tsx` - MSW handlers, per-story overrides for loading/error states
+  - `InteractionTestsDemo.tsx` - Play functions, query methods, async testing, assertions
+  - `TestingPlayground.tsx` - Interactive counter, async data, and form validation demos
+  - `examples/` folder with code snippets (StoryBasics, PlayFunction, MSWHandler, etc.)
+- ✅ **Added Storybook Stories + Tests**
+  - 6 story files covering all demos
+  - 15+ interaction tests covering user flows
+  - Updated config.json and App.tsx
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -873,6 +894,16 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] SSR timeline and process
 - [x] Hydration: attaching React to server-rendered HTML
 - [x] When to use SSR vs CSR vs SSG
+- [x] Testing pyramid: unit, integration, E2E tests
+- [x] Storybook for component development and testing
+- [x] Story file structure: meta, stories, args, play functions
+- [x] MSW (Mock Service Worker) for API mocking
+- [x] MSW handlers: http.get(), http.post(), delay(), HttpResponse
+- [x] Override handlers per-story for testing loading/error states
+- [x] Play functions: userEvent, within(), expect()
+- [x] Testing Library queries: getByRole, getByLabelText, getByText
+- [x] waitFor() for async assertions
+- [x] Jest-DOM matchers: toBeInTheDocument, toHaveTextContent, toBeDisabled
 - [ ] ...more to come
 
 ---

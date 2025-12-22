@@ -100,6 +100,7 @@ Welcome to your comprehensive React learning journey! This course is designed to
 | Lesson | Topic | Duration |
 |--------|-------|----------|
 | 8.1 | Server-Side Rendering | 30 min |
+| 8.2 | Testing Strategies | 30 min |
 
 ---
 
@@ -116,6 +117,7 @@ By the end of this course, you will:
 - ✅ Write performant, maintainable React code
 - ✅ Apply industry best practices
 - ✅ Understand Server-Side Rendering and hydration
+- ✅ Test components with Storybook, MSW, and interaction tests
 
 ---
 
