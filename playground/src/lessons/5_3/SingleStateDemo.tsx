@@ -5,6 +5,8 @@
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import separateStatesCode from './examples/SeparateStatesApproach.tsx?raw';
+import singleObjectCode from './examples/SingleObjectApproach.tsx?raw';
 
 export default function SingleStateDemo(): React.ReactElement {
   const [activeTab, setActiveTab] = useState<'separate' | 'object'>('separate');
@@ -100,20 +102,7 @@ function SeparateStatesDemo() {
         </div>
       </div>
 
-      <CodeSnippet
-        title="Problems with this approach:"
-        language="tsx"
-        code={`// 4 separate useState calls 😬
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-const [email, setEmail] = useState('');
-const [phone, setPhone] = useState('');
-
-// 4 separate handlers or inline functions
-onChange={(e) => setFirstName(e.target.value)}
-onChange={(e) => setLastName(e.target.value)}
-// ... etc`}
-      />
+      <CodeSnippet title="Problems with this approach:" language="tsx" code={separateStatesCode} />
 
       <div className="text-xs text-base-content/60">
         <strong className="text-error">Issues:</strong> Lots of repetition, hard to reset all
@@ -222,24 +211,7 @@ function ObjectStateDemo() {
         </p>
       </div>
 
-      <CodeSnippet
-        title="Clean approach:"
-        language="tsx"
-        code={`// One state object
-const [form, setForm] = useState({
-  firstName: '', lastName: '', email: '', phone: ''
-});
-
-// One handler for ALL inputs
-const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  setForm(prev => ({ ...prev, [name]: value }));
-};
-
-// All inputs use the same handler
-<input name="firstName" onChange={handleChange} />
-<input name="lastName" onChange={handleChange} />`}
-      />
+      <CodeSnippet title="Clean approach:" language="tsx" code={singleObjectCode} />
     </div>
   );
 }

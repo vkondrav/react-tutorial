@@ -5,6 +5,9 @@
 import { useState } from 'react';
 import { HiRefresh, HiOutlineLightBulb } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import nestedObjectCode from './examples/NestedObjectUpdates.tsx?raw';
+import arrayFieldCode from './examples/ArrayFieldUpdates.tsx?raw';
+import formResetCode from './examples/FormResetPattern.tsx?raw';
 
 type PatternType = 'nested' | 'arrays' | 'reset';
 
@@ -139,21 +142,7 @@ function NestedObjectDemo() {
         showCopy={false}
       />
 
-      <CodeSnippet
-        title="Nested object updates"
-        language="tsx"
-        code={`// Spread at BOTH levels for nested updates
-const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  setForm(prev => ({
-    ...prev,              // Keep other top-level fields
-    address: {
-      ...prev.address,    // Keep other address fields
-      [name]: value       // Update specific field
-    }
-  }));
-};`}
-      />
+      <CodeSnippet title="Nested object updates" language="tsx" code={nestedObjectCode} />
     </div>
   );
 }
@@ -243,31 +232,7 @@ function ArrayFieldDemo() {
         showCopy={false}
       />
 
-      <CodeSnippet
-        title="Array field updates"
-        language="tsx"
-        code={`// State with array field
-const [form, setForm] = useState<{ name: string; skills: string[] }>({
-  name: '',
-  skills: ['React', 'TypeScript']
-});
-
-// Add to array: spread existing + new item
-const addSkill = (newSkill: string) => {
-  setForm(prev => ({
-    ...prev,
-    skills: [...prev.skills, newSkill]
-  }));
-};
-
-// Remove from array: filter out by index
-const removeSkill = (index: number) => {
-  setForm(prev => ({
-    ...prev,
-    skills: prev.skills.filter((_, i) => i !== index)
-  }));
-};`}
-      />
+      <CodeSnippet title="Array field updates" language="tsx" code={arrayFieldCode} />
     </div>
   );
 }
@@ -378,30 +343,7 @@ function FormResetDemo() {
         </div>
       </div>
 
-      <CodeSnippet
-        title="Form reset pattern"
-        language="tsx"
-        code={`interface LoginForm {
-  email: string;
-  password: string;
-  remember: boolean;
-}
-
-// Define initial state once (with type)
-const initialState: LoginForm = {
-  email: '',
-  password: '',
-  remember: false
-};
-
-// Use it for initial value
-const [form, setForm] = useState<LoginForm>(initialState);
-
-// Reset = set back to initial
-const handleReset = () => {
-  setForm(initialState);
-};`}
-      />
+      <CodeSnippet title="Form reset pattern" language="tsx" code={formResetCode} />
     </div>
   );
 }

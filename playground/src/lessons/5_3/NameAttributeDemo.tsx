@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiOutlineArrowRight } from 'react-icons/hi';
 import { CodeSnippet } from '../components';
+import genericHandlerCode from './examples/GenericHandler.tsx?raw';
 
 export default function NameAttributeDemo(): React.ReactElement {
   const [form, setForm] = useState({
@@ -184,21 +185,7 @@ export default function NameAttributeDemo(): React.ReactElement {
       <CodeSnippet
         title="Generic handler for all input types"
         language="tsx"
-        code={`const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-) => {
-  const { name, value, type } = e.target;
-  const newValue = type === 'checkbox' 
-    ? (e.target as HTMLInputElement).checked 
-    : value;
-  
-  setForm(prev => ({ ...prev, [name]: newValue }));
-};
-
-// Works for ALL input types!
-<input type="text" name="email" onChange={handleChange} />
-<input type="checkbox" name="subscribe" onChange={handleChange} />
-<select name="plan" onChange={handleChange}>...</select>`}
+        code={genericHandlerCode}
       />
     </div>
   );
