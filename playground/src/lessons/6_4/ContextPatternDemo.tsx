@@ -333,7 +333,7 @@ export default function ContextPatternDemo(): React.ReactElement {
       </div>
 
       {/* Key Insight */}
-      <div className="card bg-gradient-to-r from-primary/10 to-secondary/10 p-4">
+      <div className="card bg-linear-to-r from-primary/10 to-secondary/10 p-4">
         <p className="text-sm">
           <strong className="text-primary">Key Insight:</strong> The{' '}
           <code className="text-accent">Accordion.Trigger</code> and{' '}
