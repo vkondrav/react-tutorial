@@ -19,37 +19,27 @@ export default function PackageJsonExplorer() {
 
   return (
     <div>
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+      <div className="flex gap-2 mb-4">
         {Object.entries(sections).map(([key, s]) => (
           <button
             key={key}
             onClick={() => setActive(key)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: active === key ? '#3b82f6' : '#0f172a',
-              color: active === key ? 'white' : '#94a3b8',
-              border: '1px solid #334155',
-              borderRadius: '0.5rem',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-            }}
+            className={`px-4 py-2 rounded-lg border border-slate-700 cursor-pointer text-sm transition-colors ${
+              active === key
+                ? 'bg-blue-500 text-white border-blue-500'
+                : 'bg-slate-900 text-slate-400 hover:bg-slate-800'
+            }`}
           >
             {s.icon} {s.title}
           </button>
         ))}
       </div>
-      <div style={{ backgroundColor: '#0f172a', borderRadius: '0.5rem', overflow: 'hidden' }}>
-        <pre style={{ margin: 0, padding: '1rem', fontSize: '0.8125rem', color: '#94a3b8' }}>
+
+      <div className="bg-slate-900 rounded-xl overflow-hidden">
+        <pre className="m-0 p-4 text-sm text-slate-400">
           <code>{sections[active].code}</code>
         </pre>
-        <div
-          style={{
-            padding: '1rem',
-            borderTop: '1px solid #334155',
-            color: '#cbd5e1',
-            fontSize: '0.875rem',
-          }}
-        >
+        <div className="p-4 border-t border-slate-700 text-slate-300 text-sm">
           {sections[active].desc}
         </div>
       </div>

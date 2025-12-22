@@ -6,68 +6,87 @@ export default function FileFlowDemo() {
     {
       id: 1,
       title: 'index.html',
-      color: '#f97316',
+      color: 'orange',
+      colorHex: '#f97316',
       content: 'Browser loads index.html with <div id="root">.',
     },
     {
       id: 2,
       title: 'main.jsx',
-      color: '#8b5cf6',
+      color: 'violet',
+      colorHex: '#8b5cf6',
       content: 'React initializes and renders <App /> into #root.',
     },
     {
       id: 3,
       title: 'App.jsx',
-      color: '#3b82f6',
+      color: 'blue',
+      colorHex: '#3b82f6',
       content: 'Your components execute and return JSX.',
     },
     {
       id: 4,
       title: '🎉 Done!',
-      color: '#22c55e',
+      color: 'emerald',
+      colorHex: '#22c55e',
       content: 'UI is rendered. State changes update efficiently.',
     },
   ];
 
+  const colorClasses = {
+    orange: {
+      bg: 'bg-orange-500',
+      border: 'border-orange-500',
+      text: 'text-orange-500',
+    },
+    violet: {
+      bg: 'bg-violet-500',
+      border: 'border-violet-500',
+      text: 'text-violet-500',
+    },
+    blue: {
+      bg: 'bg-blue-500',
+      border: 'border-blue-500',
+      text: 'text-blue-500',
+    },
+    emerald: {
+      bg: 'bg-emerald-500',
+      border: 'border-emerald-500',
+      text: 'text-emerald-500',
+    },
+  };
+
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-        {steps.map((step, i) => (
-          <div key={step.id} style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-            <button
-              onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
-              style={{
-                flex: 1,
-                padding: '0.75rem',
-                backgroundColor: activeStep === step.id ? step.color : '#0f172a',
-                border: `2px solid ${step.color}`,
-                borderRadius: '0.5rem',
-                cursor: 'pointer',
-                color: activeStep === step.id ? 'white' : step.color,
-                fontWeight: '600',
-                fontSize: '0.8125rem',
-              }}
-            >
-              {step.title}
-            </button>
-            {i < steps.length - 1 && (
-              <span style={{ color: '#475569', padding: '0 0.25rem' }}>→</span>
-            )}
-          </div>
-        ))}
+      <div className="flex items-center gap-2 mb-4">
+        {steps.map((step, i) => {
+          const colors = colorClasses[step.color];
+          const isActive = activeStep === step.id;
+          return (
+            <div key={step.id} className="flex items-center flex-1">
+              <button
+                onClick={() => setActiveStep(isActive ? null : step.id)}
+                className={`flex-1 px-3 py-3 rounded-lg cursor-pointer font-semibold text-sm transition-colors border-2 ${
+                  isActive
+                    ? `${colors.bg} ${colors.border} text-white`
+                    : `bg-slate-900 ${colors.border} ${colors.text} hover:bg-slate-800`
+                }`}
+              >
+                {step.title}
+              </button>
+              {i < steps.length - 1 && (
+                <span className="text-slate-600 px-1">→</span>
+              )}
+            </div>
+          );
+        })}
       </div>
-      <div
-        style={{
-          backgroundColor: '#0f172a',
-          padding: '1rem',
-          borderRadius: '0.5rem',
-          minHeight: '60px',
-        }}
-      >
+
+      <div className="bg-slate-900 p-4 rounded-lg min-h-[60px]">
         {activeStep ? (
-          <p style={{ color: '#94a3b8', margin: 0 }}>{steps[activeStep - 1].content}</p>
+          <p className="text-slate-400 m-0">{steps[activeStep - 1].content}</p>
         ) : (
-          <p style={{ color: '#64748b', margin: 0 }}>👆 Click a step</p>
+          <p className="text-slate-500 m-0">👆 Click a step</p>
         )}
       </div>
     </div>

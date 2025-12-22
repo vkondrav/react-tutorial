@@ -6,64 +6,31 @@ export default function HMRDemo() {
 
   return (
     <div>
-      <p style={{ lineHeight: 1.8, color: '#94a3b8', marginTop: 0 }}>
-        <strong style={{ color: '#f97316' }}>Hot Module Replacement</strong> updates your app
+      <p className="leading-relaxed text-slate-400 mt-0">
+        <strong className="text-orange-500">Hot Module Replacement</strong> updates your app
         instantly while preserving state!
       </p>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '1rem',
-          backgroundColor: '#0f172a',
-          padding: '1.5rem',
-          borderRadius: '0.75rem',
-          marginTop: '1rem',
-        }}
-      >
-        <div style={{ backgroundColor: '#1e293b', padding: '1rem', borderRadius: '0.5rem' }}>
-          <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-            Counter
-          </div>
-          <div
-            style={{
-              fontSize: '2rem',
-              fontWeight: '700',
-              color: '#38bdf8',
-              marginBottom: '0.75rem',
-            }}
-          >
-            {count}
-          </div>
+
+      <div className="grid grid-cols-2 gap-4 bg-slate-900 p-6 rounded-xl mt-4">
+        <div className="bg-slate-800 p-4 rounded-lg">
+          <div className="text-slate-500 text-xs mb-2">Counter</div>
+          <div className="text-3xl font-bold text-cyan-400 mb-3">{count}</div>
           <button
             onClick={() => setCount((c) => c + 1)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: '#3b82f6',
-              color: 'white',
-              border: 'none',
-              borderRadius: '0.375rem',
-              cursor: 'pointer',
-            }}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600 transition-colors"
           >
             +1
           </button>
         </div>
-        <div style={{ backgroundColor: '#1e293b', padding: '1rem', borderRadius: '0.5rem' }}>
-          <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '0.5rem' }}>Input</div>
+
+        <div className="bg-slate-800 p-4 rounded-lg">
+          <div className="text-slate-500 text-xs mb-2">Input</div>
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Type here..."
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              backgroundColor: '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.375rem',
-              color: '#f8fafc',
-            }}
+            className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 focus:outline-none focus:border-cyan-500 transition-colors"
           />
         </div>
       </div>
