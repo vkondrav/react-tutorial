@@ -13,12 +13,14 @@ import config from './lessons/config.json';
 import Lesson1_1 from './lessons/1_1';
 import Lesson1_2 from './lessons/1_2';
 import Lesson1_3 from './lessons/1_3';
+import Lesson1_4 from './lessons/1_4';
 
 // Map lesson IDs to their components
 const LESSON_COMPONENTS = {
   1.1: Lesson1_1,
   1.2: Lesson1_2,
   1.3: Lesson1_3,
+  1.4: Lesson1_4,
 };
 
 // Get Cursor IDE link for a lesson's source file
