@@ -8,6 +8,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineMenuAlt2, HiOutlineArrowLeft } from 'react-icons/hi';
+import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
 
 // Component imports - register new lesson components here
@@ -116,7 +117,10 @@ function App() {
         <div className="w-[280px] h-full flex flex-col">
           {/* Logo */}
           <div className="p-6 border-b border-base-300 flex items-center gap-2 shrink-0">
-            <span className="text-primary text-2xl">⚛</span>
+            <DiReact
+              className="text-primary text-3xl"
+              style={{ animation: 'spin 24s linear infinite' }}
+            />
             <span className="font-bold text-lg">React Tutorial</span>
           </div>
 
