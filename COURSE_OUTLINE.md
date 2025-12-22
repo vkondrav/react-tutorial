@@ -46,62 +46,74 @@ Welcome to your comprehensive React learning journey! This course is designed to
 
 ---
 
-### **Module 4: Forms & User Input**
+### **Module 4: Data Fetching & REST APIs**
+*Connecting to the real world*
+
+| Lesson | Topic | Duration |
+|--------|-------|----------|
+| 4.1 | Fetching Data with useEffect | 25 min |
+| 4.2 | Loading, Error & Empty States | 20 min |
+| 4.3 | Creating & Updating Data (POST/PUT/DELETE) | 25 min |
+| 4.4 | Building a Custom useFetch Hook | 20 min |
+
+---
+
+### **Module 5: Forms & User Input**
 *Building interactive experiences*
 
 | Lesson | Topic | Duration |
 |--------|-------|----------|
-| 4.1 | Controlled Components | 20 min |
-| 4.2 | Form Validation Patterns | 25 min |
-| 4.3 | Handling Multiple Inputs | 20 min |
+| 5.1 | Controlled Components | 20 min |
+| 5.2 | Form Validation Patterns | 25 min |
+| 5.3 | Handling Multiple Inputs | 20 min |
 
 ---
 
-### **Module 5: Component Patterns**
+### **Module 6: Component Patterns**
 *Professional architecture techniques*
 
 | Lesson | Topic | Duration |
 |--------|-------|----------|
-| 5.1 | Component Composition | 25 min |
-| 5.2 | Render Props Pattern | 20 min |
-| 5.3 | Higher-Order Components | 20 min |
-| 5.4 | Compound Components | 25 min |
+| 6.1 | Component Composition | 25 min |
+| 6.2 | Render Props Pattern | 20 min |
+| 6.3 | Higher-Order Components | 20 min |
+| 6.4 | Compound Components | 25 min |
 
 ---
 
-### **Module 6: State Management**
+### **Module 7: State Management**
 *Scaling your application*
 
 | Lesson | Topic | Duration |
 |--------|-------|----------|
-| 6.1 | Lifting State Up | 20 min |
-| 6.2 | useReducer for Complex State | 25 min |
-| 6.3 | Context + Reducer Pattern | 25 min |
-| 6.4 | When to Use External State Libraries | 15 min |
+| 7.1 | Lifting State Up | 20 min |
+| 7.2 | useReducer for Complex State | 25 min |
+| 7.3 | Context + Reducer Pattern | 25 min |
+| 7.4 | When to Use External State Libraries | 15 min |
 
 ---
 
-### **Module 7: Best Practices & Patterns**
+### **Module 8: Best Practices & Patterns**
 *Writing maintainable React code*
 
 | Lesson | Topic | Duration |
 |--------|-------|----------|
-| 7.1 | File & Folder Structure | 15 min |
-| 7.2 | Naming Conventions | 10 min |
-| 7.3 | Performance Optimization | 25 min |
-| 7.4 | Error Boundaries | 20 min |
-| 7.5 | Testing Basics | 30 min |
+| 8.1 | File & Folder Structure | 15 min |
+| 8.2 | Naming Conventions | 10 min |
+| 8.3 | Performance Optimization | 25 min |
+| 8.4 | Error Boundaries | 20 min |
+| 8.5 | Testing Basics | 30 min |
 
 ---
 
-### **Module 8: Capstone Project**
+### **Module 9: Capstone Project**
 *Put it all together*
 
 | Lesson | Topic | Duration |
 |--------|-------|----------|
-| 8.1 | Project: Task Manager App | 60 min |
-| 8.2 | Adding Features & Polish | 45 min |
-| 8.3 | Code Review & Refactoring | 30 min |
+| 9.1 | Project: Task Manager App | 60 min |
+| 9.2 | Adding Features & Polish | 45 min |
+| 9.3 | Code Review & Refactoring | 30 min |
 
 ---
 
@@ -111,6 +123,7 @@ By the end of this course, you will:
 
 - ✅ Understand React's component-based architecture
 - ✅ Master all essential React hooks
+- ✅ Fetch and mutate data with REST APIs
 - ✅ Build forms with validation
 - ✅ Implement professional component patterns
 - ✅ Manage application state effectively
@@ -138,11 +151,12 @@ react-tutorial/
 │   ├── 01-foundation/
 │   ├── 02-core-concepts/
 │   ├── 03-hooks-deep-dive/
-│   ├── 04-forms/
-│   ├── 05-component-patterns/
-│   ├── 06-state-management/
-│   ├── 07-best-practices/
-│   └── 08-capstone/
+│   ├── 04-data-fetching/
+│   ├── 05-forms/
+│   ├── 06-component-patterns/
+│   ├── 07-state-management/
+│   ├── 08-best-practices/
+│   └── 09-capstone/
 └── playground/                 # Your sandbox for experiments
 ```
 

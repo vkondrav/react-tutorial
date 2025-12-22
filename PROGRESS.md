@@ -44,49 +44,58 @@
 | 3.4 | useMemo & useCallback: Performance | ⬜ Pending |
 | 3.5 | Custom Hooks: Reusable Logic | ⬜ Pending |
 
-### Module 4: Forms & User Input ⬜ Not Started
+### Module 4: Data Fetching & REST APIs ⬜ Not Started
 
 | Lesson | Topic | Status |
 |--------|-------|--------|
-| 4.1 | Controlled Components | ⬜ Pending |
-| 4.2 | Form Validation Patterns | ⬜ Pending |
-| 4.3 | Handling Multiple Inputs | ⬜ Pending |
+| 4.1 | Fetching Data with useEffect | ⬜ Pending |
+| 4.2 | Loading, Error & Empty States | ⬜ Pending |
+| 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ⬜ Pending |
+| 4.4 | Building a Custom useFetch Hook | ⬜ Pending |
 
-### Module 5: Component Patterns ⬜ Not Started
-
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 5.1 | Component Composition | ⬜ Pending |
-| 5.2 | Render Props Pattern | ⬜ Pending |
-| 5.3 | Higher-Order Components | ⬜ Pending |
-| 5.4 | Compound Components | ⬜ Pending |
-
-### Module 6: State Management ⬜ Not Started
+### Module 5: Forms & User Input ⬜ Not Started
 
 | Lesson | Topic | Status |
 |--------|-------|--------|
-| 6.1 | Lifting State Up | ⬜ Pending |
-| 6.2 | useReducer for Complex State | ⬜ Pending |
-| 6.3 | Context + Reducer Pattern | ⬜ Pending |
-| 6.4 | When to Use External State Libraries | ⬜ Pending |
+| 5.1 | Controlled Components | ⬜ Pending |
+| 5.2 | Form Validation Patterns | ⬜ Pending |
+| 5.3 | Handling Multiple Inputs | ⬜ Pending |
 
-### Module 7: Best Practices & Patterns ⬜ Not Started
-
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 7.1 | File & Folder Structure | ⬜ Pending |
-| 7.2 | Naming Conventions | ⬜ Pending |
-| 7.3 | Performance Optimization | ⬜ Pending |
-| 7.4 | Error Boundaries | ⬜ Pending |
-| 7.5 | Testing Basics | ⬜ Pending |
-
-### Module 8: Capstone Project ⬜ Not Started
+### Module 6: Component Patterns ⬜ Not Started
 
 | Lesson | Topic | Status |
 |--------|-------|--------|
-| 8.1 | Project: Task Manager App | ⬜ Pending |
-| 8.2 | Adding Features & Polish | ⬜ Pending |
-| 8.3 | Code Review & Refactoring | ⬜ Pending |
+| 6.1 | Component Composition | ⬜ Pending |
+| 6.2 | Render Props Pattern | ⬜ Pending |
+| 6.3 | Higher-Order Components | ⬜ Pending |
+| 6.4 | Compound Components | ⬜ Pending |
+
+### Module 7: State Management ⬜ Not Started
+
+| Lesson | Topic | Status |
+|--------|-------|--------|
+| 7.1 | Lifting State Up | ⬜ Pending |
+| 7.2 | useReducer for Complex State | ⬜ Pending |
+| 7.3 | Context + Reducer Pattern | ⬜ Pending |
+| 7.4 | When to Use External State Libraries | ⬜ Pending |
+
+### Module 8: Best Practices & Patterns ⬜ Not Started
+
+| Lesson | Topic | Status |
+|--------|-------|--------|
+| 8.1 | File & Folder Structure | ⬜ Pending |
+| 8.2 | Naming Conventions | ⬜ Pending |
+| 8.3 | Performance Optimization | ⬜ Pending |
+| 8.4 | Error Boundaries | ⬜ Pending |
+| 8.5 | Testing Basics | ⬜ Pending |
+
+### Module 9: Capstone Project ⬜ Not Started
+
+| Lesson | Topic | Status |
+|--------|-------|--------|
+| 9.1 | Project: Task Manager App | ⬜ Pending |
+| 9.2 | Adding Features & Polish | ⬜ Pending |
+| 9.3 | Code Review & Refactoring | ⬜ Pending |
 
 ---
 
