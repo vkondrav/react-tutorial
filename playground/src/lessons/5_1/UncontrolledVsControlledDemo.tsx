@@ -4,6 +4,9 @@
 
 import { useState, useRef } from 'react';
 import { HiOutlineExclamationCircle, HiCheck, HiX } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import uncontrolledInputCode from './examples/UncontrolledInput.tsx?raw';
+import controlledInputPatternCode from './examples/ControlledInputPattern.tsx?raw';
 
 export default function UncontrolledVsControlledDemo(): React.ReactElement {
   // Uncontrolled - using ref
@@ -50,18 +53,8 @@ export default function UncontrolledVsControlledDemo(): React.ReactElement {
             </div>
           </div>
 
-          <div className="mt-4 text-xs text-base-content/60">
-            <pre className="bg-base-200 rounded p-2 overflow-x-auto">
-              {`const ref = useRef(null);
-
-<input
-  ref={ref}
-  defaultValue="initial"
-/>
-
-// Read value when needed:
-const val = ref.current.value;`}
-            </pre>
+          <div className="mt-4">
+            <CodeSnippet code={uncontrolledInputCode} language="tsx" />
           </div>
         </div>
 
@@ -92,18 +85,8 @@ const val = ref.current.value;`}
             </div>
           </div>
 
-          <div className="mt-4 text-xs text-base-content/60">
-            <pre className="bg-base-200 rounded p-2 overflow-x-auto">
-              {`const [value, setValue] = useState('');
-
-<input
-  value={value}
-  onChange={(e) => setValue(e.target.value)}
-/>
-
-// Value always available:
-console.log(value);`}
-            </pre>
+          <div className="mt-4">
+            <CodeSnippet code={controlledInputPatternCode} language="tsx" />
           </div>
         </div>
       </div>

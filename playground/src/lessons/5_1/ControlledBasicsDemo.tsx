@@ -4,6 +4,8 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import controlledInputCode from './examples/ControlledInput.tsx?raw';
 
 export default function ControlledBasicsDemo(): React.ReactElement {
   const [name, setName] = useState('');
@@ -75,29 +77,7 @@ export default function ControlledBasicsDemo(): React.ReactElement {
       </button>
 
       {showCode && (
-        <div className="bg-base-300 rounded-lg p-4">
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>{`function ControlledInput() {
-  // Step 1: Create state to hold the input value
-  const [name, setName] = useState('');
-
-  return (
-    <div>
-      {/* Step 2: Connect state to input */}
-      <input
-        type="text"
-        value={name}              // Controlled by state
-        onChange={(e) => setName(e.target.value)}  // Update state on change
-      />
-      
-      {/* Step 3: Use the value anywhere! */}
-      <p>Hello, {name}!</p>
-      <p>Characters: {name.length}</p>
-    </div>
-  );
-}`}</code>
-          </pre>
-        </div>
+        <CodeSnippet code={controlledInputCode} language="tsx" title="Controlled Input Pattern" />
       )}
 
       {/* The Two-Way Connection Diagram */}

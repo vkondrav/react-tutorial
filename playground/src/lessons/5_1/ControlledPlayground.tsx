@@ -4,6 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineUser, HiOutlineMail, HiOutlineKey } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
 
 interface FormData {
   firstName: string;
@@ -422,9 +423,7 @@ export default function ControlledPlayground(): React.ReactElement {
         </button>
         {showData && (
           <div className="mt-4 bg-base-200 rounded-lg p-4">
-            <pre className="font-mono text-xs overflow-x-auto">
-              {JSON.stringify(formData, null, 2)}
-            </pre>
+            <CodeSnippet code={JSON.stringify(formData, null, 2)} language="json" />
           </div>
         )}
       </div>

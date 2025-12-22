@@ -4,6 +4,12 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import textInputCode from './examples/TextInput.tsx?raw';
+import textareaCode from './examples/Textarea.tsx?raw';
+import selectCode from './examples/Select.tsx?raw';
+import checkboxCode from './examples/Checkbox.tsx?raw';
+import radioCode from './examples/Radio.tsx?raw';
 
 type TabType = 'text' | 'textarea' | 'select' | 'checkbox' | 'radio';
 
@@ -46,16 +52,8 @@ export default function InputTypesDemo(): React.ReactElement {
               <div className="text-xs text-base-content/60 mb-1">State:</div>
               <code className="text-primary">"{textValue}"</code>
             </div>
-            <div className="bg-base-200 rounded-lg p-3">
-              <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-                {`const [text, setText] = useState('');
-
-<input
-  type="text"
-  value={text}
-  onChange={(e) => setText(e.target.value)}
-/>`}
-              </pre>
+            <div>
+              <CodeSnippet code={textInputCode} language="tsx" />
             </div>
           </div>
         );
@@ -78,16 +76,8 @@ export default function InputTypesDemo(): React.ReactElement {
               <div className="text-xs text-base-content/60 mb-1">State:</div>
               <code className="text-secondary whitespace-pre-wrap">"{textareaValue}"</code>
             </div>
-            <div className="bg-base-200 rounded-lg p-3">
-              <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-                {`const [bio, setBio] = useState('');
-
-// Same pattern as text input!
-<textarea
-  value={bio}
-  onChange={(e) => setBio(e.target.value)}
-/>`}
-              </pre>
+            <div>
+              <CodeSnippet code={textareaCode} language="tsx" />
             </div>
             <div className="flex items-start gap-2 text-sm bg-secondary/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-secondary shrink-0 mt-0.5" size={18} />
@@ -122,20 +112,8 @@ export default function InputTypesDemo(): React.ReactElement {
               <div className="text-xs text-base-content/60 mb-1">State:</div>
               <code className="text-accent">"{selectValue}"</code>
             </div>
-            <div className="bg-base-200 rounded-lg p-3">
-              <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-                {`const [framework, setFramework] = useState('');
-
-// value goes on <select>, not <option>
-<select
-  value={framework}
-  onChange={(e) => setFramework(e.target.value)}
->
-  <option value="">Choose...</option>
-  <option value="react">React</option>
-  <option value="vue">Vue</option>
-</select>`}
-              </pre>
+            <div>
+              <CodeSnippet code={selectCode} language="tsx" />
             </div>
             <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
@@ -168,17 +146,8 @@ export default function InputTypesDemo(): React.ReactElement {
                 {checkboxValue.toString()}
               </code>
             </div>
-            <div className="bg-base-200 rounded-lg p-3">
-              <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-                {`const [agreed, setAgreed] = useState(false);
-
-// Use "checked" not "value"!
-<input
-  type="checkbox"
-  checked={agreed}
-  onChange={(e) => setAgreed(e.target.checked)}
-/>`}
-              </pre>
+            <div>
+              <CodeSnippet code={checkboxCode} language="tsx" />
             </div>
             <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
@@ -216,26 +185,8 @@ export default function InputTypesDemo(): React.ReactElement {
               <div className="text-xs text-base-content/60 mb-1">State:</div>
               <code className="text-warning">"{radioValue}"</code>
             </div>
-            <div className="bg-base-200 rounded-lg p-3">
-              <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-                {`const [plan, setPlan] = useState('');
-
-// Check if this radio's value matches state
-<input
-  type="radio"
-  name="plan"
-  value="free"
-  checked={plan === 'free'}
-  onChange={(e) => setPlan(e.target.value)}
-/>
-<input
-  type="radio"
-  name="plan"
-  value="pro"
-  checked={plan === 'pro'}
-  onChange={(e) => setPlan(e.target.value)}
-/>`}
-              </pre>
+            <div>
+              <CodeSnippet code={radioCode} language="tsx" />
             </div>
             <div className="flex items-start gap-2 text-sm bg-warning/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-warning shrink-0 mt-0.5" size={18} />

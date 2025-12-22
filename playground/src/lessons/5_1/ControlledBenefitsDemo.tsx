@@ -4,6 +4,8 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import formattingCode from './examples/Formatting.tsx?raw';
 
 type BenefitTab = 'validation' | 'formatting' | 'conditional' | 'computed';
 
@@ -185,18 +187,8 @@ function FormattingDemo() {
         </div>
       </div>
 
-      <div className="bg-base-200 rounded-lg p-3">
-        <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-          {`const formatPhone = (value) => {
-  const digits = value.replace(/\\D/g, '').slice(0, 10);
-  // ... formatting logic
-};
-
-<input
-  value={phone}
-  onChange={(e) => setPhone(formatPhone(e.target.value))}
-/>`}
-        </pre>
+      <div>
+        <CodeSnippet code={formattingCode} language="tsx" />
       </div>
     </div>
   );
