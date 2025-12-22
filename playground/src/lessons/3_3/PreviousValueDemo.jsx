@@ -87,7 +87,8 @@ export default function PreviousValueDemo() {
           </div>
           {prevName !== undefined && prevName !== name && (
             <div className="mt-2 text-xs text-base-content/60">
-              Changed from "{prevName}" <HiOutlineArrowRight className="inline" size={12} /> "{name}"
+              Changed from "{prevName}" <HiOutlineArrowRight className="inline" size={12} /> "{name}
+              "
             </div>
           )}
         </div>
@@ -138,4 +139,3 @@ export default function PreviousValueDemo() {
     </div>
   );
 }
-

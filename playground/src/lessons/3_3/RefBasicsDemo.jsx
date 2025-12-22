@@ -95,9 +95,9 @@ export default function RefBasicsDemo() {
         <div className="flex items-start gap-2">
           <HiOutlineLightBulb className="text-warning shrink-0 mt-0.5" size={18} />
           <div className="text-sm text-base-content/70">
-            <strong className="text-warning">Key insight:</strong> The ref value IS updating when you
-            click (check console), but React doesn't know to re-render. Click "Force Re-render" to
-            see the actual ref value!
+            <strong className="text-warning">Key insight:</strong> The ref value IS updating when
+            you click (check console), but React doesn't know to re-render. Click "Force Re-render"
+            to see the actual ref value!
           </div>
         </div>
       </div>

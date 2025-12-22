@@ -21,8 +21,8 @@ export default function PersistentValueDemo() {
           <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
           <div className="text-sm text-base-content/70">
             <strong className="text-success">Why use a ref here?</strong> The interval ID needs to
-            persist across renders so we can clear it later, but changing it shouldn't re-render
-            the component. Refs are perfect for this!
+            persist across renders so we can clear it later, but changing it shouldn't re-render the
+            component. Refs are perfect for this!
           </div>
         </div>
       </div>
@@ -111,8 +111,8 @@ function TimerDemo() {
             {'\n'}
             <span className="text-secondary">const</span> intervalRef ={' '}
             <span className="text-primary">useRef</span>(null);{'\n\n'}
-            <span className="text-secondary">const</span> <span className="text-primary">start</span>{' '}
-            = () ={'> {'}
+            <span className="text-secondary">const</span>{' '}
+            <span className="text-primary">start</span> = () ={'> {'}
             {'\n'}
             {'  '}intervalRef.current = <span className="text-primary">setInterval</span>(() ={'>'}{' '}
             {'{'}
@@ -121,8 +121,8 @@ function TimerDemo() {
             {'  }'}, 1000);{'\n'}
             {'};'}
             {'\n\n'}
-            <span className="text-secondary">const</span> <span className="text-primary">pause</span>{' '}
-            = () ={'> {'}
+            <span className="text-secondary">const</span>{' '}
+            <span className="text-primary">pause</span> = () ={'> {'}
             {'\n'}
             {'  '}
             <span className="text-primary">clearInterval</span>(intervalRef.current);{'\n'}
@@ -138,4 +138,3 @@ function TimerDemo() {
     </div>
   );
 }
-

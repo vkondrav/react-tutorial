@@ -67,9 +67,10 @@ export default function Lesson3_3() {
         }
       >
         <p className="mb-4 leading-relaxed">
-          The most common use of refs is to access <strong className="text-primary">DOM elements</strong>{' '}
-          directly. Attach a ref to an element with the <code className="text-secondary">ref</code>{' '}
-          attribute, then access the element via <code className="text-secondary">ref.current</code>.
+          The most common use of refs is to access{' '}
+          <strong className="text-primary">DOM elements</strong> directly. Attach a ref to an
+          element with the <code className="text-secondary">ref</code> attribute, then access the
+          element via <code className="text-secondary">ref.current</code>.
         </p>
         <DomAccessDemo />
       </Section>
@@ -101,8 +102,9 @@ export default function Lesson3_3() {
         }
       >
         <p className="mb-4 leading-relaxed">
-          A common pattern is using refs to store the <strong className="text-primary">previous value</strong>{' '}
-          of props or state. This is useful for comparisons, animations, or undo functionality.
+          A common pattern is using refs to store the{' '}
+          <strong className="text-primary">previous value</strong> of props or state. This is useful
+          for comparisons, animations, or undo functionality.
         </p>
         <PreviousValueDemo />
       </Section>
@@ -147,4 +149,3 @@ export default function Lesson3_3() {
     </div>
   );
 }
-

@@ -123,7 +123,8 @@ function AutoFocusDemo() {
             <span className="text-secondary">if</span> (e.metaKey && e.key === 'k') {'{'}
             {'\n'}
             {'      '}searchRef.current?.<span className="text-primary">focus</span>();{'\n'}
-            {'    }'}{'\n'}
+            {'    }'}
+            {'\n'}
             {'  };'}
             {'\n'}
             {'  '}document.<span className="text-primary">addEventListener</span>('keydown',
@@ -183,9 +184,7 @@ function ClickOutsideDemo() {
         )}
       </div>
 
-      <div className="text-xs text-base-content/60">
-        Dropdown is {isOpen ? 'OPEN' : 'CLOSED'}
-      </div>
+      <div className="text-xs text-base-content/60">Dropdown is {isOpen ? 'OPEN' : 'CLOSED'}</div>
 
       <div className="p-3 rounded-lg bg-base-300">
         <pre className="font-mono text-xs overflow-x-auto">
@@ -197,7 +196,8 @@ function ClickOutsideDemo() {
             <span className="text-primary">contains</span>(e.target)) {'{'}
             {'\n'}
             {'    '}setIsOpen(false);{'\n'}
-            {'  }'}{'\n'}
+            {'  }'}
+            {'\n'}
             {'};'}
           </code>
         </pre>
@@ -276,9 +276,7 @@ function VideoPlayerDemo() {
           Restart
         </button>
 
-        <div className="text-xs text-base-content/60 ml-auto">
-          Time: {currentTime.toFixed(1)}s
-        </div>
+        <div className="text-xs text-base-content/60 ml-auto">Time: {currentTime.toFixed(1)}s</div>
       </div>
 
       <div className="p-3 rounded-lg bg-base-300">
@@ -346,17 +344,16 @@ function RenderCountDemo() {
             {'\n'}
             <span className="text-secondary">const</span> countRef ={' '}
             <span className="text-primary">useRef</span>(0);{'\n\n'}
-            <span className="text-base-content/60">// In an event handler (not during render):</span>
+            <span className="text-base-content/60">
+              // In an event handler (not during render):
+            </span>
             {'\n'}
-            countRef.current++;{' '}
-            <span className="text-success">// Updates silently</span>
+            countRef.current++; <span className="text-success">// Updates silently</span>
             {'\n'}
-            console.log(countRef.current);{' '}
-            <span className="text-success">// Access anytime</span>
+            console.log(countRef.current); <span className="text-success">// Access anytime</span>
           </code>
         </pre>
       </div>
     </div>
   );
 }
-

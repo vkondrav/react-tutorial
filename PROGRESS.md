@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 3: Hooks Deep Dive |
-| **Current Lesson** | Lesson 3.3: useRef |
-| **Next Lesson** | Lesson 3.4: useMemo & useCallback |
+| **Current Lesson** | Lesson 3.4: useMemo & useCallback |
+| **Next Lesson** | Lesson 3.5: Custom Hooks |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -41,7 +41,7 @@
 | 3.1 | useEffect: Side Effects & Lifecycle | ✅ Complete | Effect basics, dependency array, cleanup, timing, playground |
 | 3.2 | useContext: Sharing State | ✅ Complete | Prop drilling, context basics, context + state, multiple contexts, playground |
 | 3.3 | useRef: DOM Access & Persistence | ✅ Complete | Ref basics, DOM access, persistent values, previous values, playground |
-| 3.4 | useMemo & useCallback: Performance | ⬜ Pending |
+| 3.4 | useMemo & useCallback: Performance | ✅ Complete | Render count, useMemo, useCallback, when to use, playground |
 | 3.5 | Custom Hooks: Reusable Logic | ⬜ Pending |
 
 ### Module 4: Data Fetching & REST APIs ⬜ Not Started
@@ -337,6 +337,22 @@ Beginning the Hooks Deep Dive module.
   - `RefPlayground.jsx` - 4 demos: Auto-focus search (⌘K), Click outside, Video player, Render counter
   - Updated `config.json` to add lesson 3.3 and mark 3.2 as complete
   - Updated `App.jsx` to import and register Lesson3_3 component
+
+---
+
+### Session 8 - December 9, 2025
+**Goal:** Implement Lesson 3.4: useMemo & useCallback
+
+#### Completed:
+- ✅ **Implemented Lesson 3.4: useMemo & useCallback - Performance**
+  - `index.jsx` - Main lesson with 6 sections covering performance optimization
+  - `RenderCountDemo.jsx` - Visual demo showing how parent re-renders affect children
+  - `UseMemoDemo.jsx` - Expensive calculation demo with toggle to compare memoized vs non-memoized
+  - `UseCallbackDemo.jsx` - React.memo + useCallback demo showing function reference stability
+  - `WhenToUseDemo.jsx` - Decision guide for when to use (and NOT use) memoization
+  - `PerformancePlayground.jsx` - 3 interactive demos: List filter, Search, Todo list
+  - Updated `config.json` to add lesson 3.4 and mark 3.3 as complete
+  - Updated `App.jsx` to import and register Lesson3_4 component
 
 ## Concepts Mastered
 

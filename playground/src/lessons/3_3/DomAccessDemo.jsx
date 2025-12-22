@@ -96,8 +96,9 @@ function FocusDemo() {
             <span className="text-secondary">const</span> inputRef ={' '}
             <span className="text-primary">useRef</span>(null);{'\n\n'}
             {'<'}
-            <span className="text-accent">input</span> <span className="text-warning">ref</span>
-            ={'{inputRef}'} /{'>'}{'\n\n'}
+            <span className="text-accent">input</span> <span className="text-warning">ref</span>=
+            {'{inputRef}'} /{'>'}
+            {'\n\n'}
             inputRef.current.<span className="text-primary">focus</span>();{' '}
             <span className="text-base-content/60">// Focus the input</span>
             {'\n'}
@@ -163,10 +164,14 @@ function ScrollDemo() {
             <span className="text-secondary">const</span> bottomRef ={' '}
             <span className="text-primary">useRef</span>(null);{'\n\n'}
             {'<'}
-            <span className="text-accent">div</span> <span className="text-warning">ref</span>
-            ={'{bottomRef}'}{'>'}Bottom{'</'}<span className="text-accent">div</span>{'>'}{'\n\n'}
-            bottomRef.current.<span className="text-primary">scrollIntoView</span>
-            ({'{ '}behavior: 'smooth'{' }'});
+            <span className="text-accent">div</span> <span className="text-warning">ref</span>=
+            {'{bottomRef}'}
+            {'>'}Bottom{'</'}
+            <span className="text-accent">div</span>
+            {'>'}
+            {'\n\n'}
+            bottomRef.current.<span className="text-primary">scrollIntoView</span>({'{ '}behavior:
+            'smooth'{' }'});
           </code>
         </pre>
       </div>
@@ -247,4 +252,3 @@ function MeasureDemo() {
     </div>
   );
 }
-
