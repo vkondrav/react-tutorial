@@ -1,21 +1,49 @@
+// ============================================
+// ListPlayground - Complete Todo List Demo
+// ============================================
+
 import { useState } from 'react';
 import { HiPlus, HiX, HiCheck, HiOutlineTrash, HiOutlineFilter } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import addItemExample from './examples/AddItemExample.tsx?raw';
+import updateItemExample from './examples/UpdateItemExample.tsx?raw';
+import removeItemExample from './examples/RemoveItemExample.tsx?raw';
+import filterDisplayExample from './examples/FilterDisplayExample.tsx?raw';
 
-// Generate unique ID
-const generateId = () => `todo-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+// ============================================
+// Types
+// ============================================
 
-export default function ListPlayground() {
-  const [todos, setTodos] = useState([
+interface Todo {
+  id: string;
+  text: string;
+  completed: boolean;
+}
+
+type FilterType = 'all' | 'active' | 'completed';
+
+// ============================================
+// Helper Functions
+// ============================================
+
+const generateId = (): string => `todo-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function ListPlayground(): React.ReactElement {
+  const [todos, setTodos] = useState<Todo[]>([
     { id: generateId(), text: 'Learn React basics', completed: true },
     { id: generateId(), text: 'Master useState hook', completed: true },
     { id: generateId(), text: 'Understand lists and keys', completed: false },
     { id: generateId(), text: 'Build something awesome', completed: false },
   ]);
   const [newTodoText, setNewTodoText] = useState('');
-  const [filter, setFilter] = useState('all'); // 'all', 'active', 'completed'
+  const [filter, setFilter] = useState<FilterType>('all');
 
   // Add new todo
-  const addTodo = (e) => {
+  const addTodo = (e: React.FormEvent): void => {
     e.preventDefault();
     if (!newTodoText.trim()) return;
 
@@ -24,19 +52,19 @@ export default function ListPlayground() {
   };
 
   // Toggle todo completion
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: string): void => {
     setTodos(
       todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
     );
   };
 
   // Remove a todo
-  const removeTodo = (id) => {
+  const removeTodo = (id: string): void => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   // Clear completed todos
-  const clearCompleted = () => {
+  const clearCompleted = (): void => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
 
@@ -81,7 +109,7 @@ export default function ListPlayground() {
 
       {/* Filter Tabs */}
       <div className="flex gap-1 mb-4">
-        {['all', 'active', 'completed'].map((f) => (
+        {(['all', 'active', 'completed'] as FilterType[]).map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
@@ -160,35 +188,22 @@ export default function ListPlayground() {
       {/* Code Display */}
       <div className="mt-6 card bg-base-300 p-4">
         <div className="text-xs text-base-content/50 mb-3">Key concepts in this example:</div>
-        <div className="space-y-4 text-sm font-mono">
+        <div className="space-y-4 text-sm">
           <div>
-            <div className="text-success mb-1">// Adding items</div>
-            <pre className="text-base-content/70 bg-base-200 p-3 rounded whitespace-pre-wrap">{`setTodos([
-  ...todos,
-  { id: generateId(), text, completed: false }
-]);`}</pre>
+            <div className="text-success mb-1 font-mono text-xs">// Adding items</div>
+            <CodeSnippet code={addItemExample} language="tsx" showCopy={false} />
           </div>
           <div>
-            <div className="text-warning mb-1">// Updating items</div>
-            <pre className="text-base-content/70 bg-base-200 p-3 rounded whitespace-pre-wrap">{`setTodos(todos.map(todo =>
-  todo.id === id
-    ? { ...todo, completed: !todo.completed }
-    : todo
-));`}</pre>
+            <div className="text-warning mb-1 font-mono text-xs">// Updating items</div>
+            <CodeSnippet code={updateItemExample} language="tsx" showCopy={false} />
           </div>
           <div>
-            <div className="text-error mb-1">// Removing items</div>
-            <pre className="text-base-content/70 bg-base-200 p-3 rounded whitespace-pre-wrap">{`setTodos(
-  todos.filter(todo => todo.id !== id)
-);`}</pre>
+            <div className="text-error mb-1 font-mono text-xs">// Removing items</div>
+            <CodeSnippet code={removeItemExample} language="tsx" showCopy={false} />
           </div>
           <div>
-            <div className="text-primary mb-1">// Filtering for display</div>
-            <pre className="text-base-content/70 bg-base-200 p-3 rounded whitespace-pre-wrap">{`const filtered = todos.filter(todo =>
-  filter === 'all' ? true
-    : filter === 'active' ? !todo.completed
-    : todo.completed
-);`}</pre>
+            <div className="text-primary mb-1 font-mono text-xs">// Filtering for display</div>
+            <CodeSnippet code={filterDisplayExample} language="tsx" showCopy={false} />
           </div>
         </div>
       </div>

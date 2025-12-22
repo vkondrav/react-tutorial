@@ -1,35 +1,53 @@
+// ============================================
+// KeysExplainedDemo - Why Keys Matter in React
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiX, HiArrowUp } from 'react-icons/hi';
 
-export default function KeysExplainedDemo() {
-  const [items, setItems] = useState([
+// ============================================
+// Types
+// ============================================
+
+interface ListItem {
+  id: string;
+  name: string;
+  color: string;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function KeysExplainedDemo(): React.ReactElement {
+  const [items, setItems] = useState<ListItem[]>([
     { id: 'a1', name: 'First Item', color: 'bg-primary' },
     { id: 'b2', name: 'Second Item', color: 'bg-secondary' },
     { id: 'c3', name: 'Third Item', color: 'bg-accent' },
   ]);
 
-  const addToStart = () => {
+  const addToStart = (): void => {
     const newId = `new-${Date.now()}`;
     setItems([{ id: newId, name: `New Item`, color: 'bg-success' }, ...items]);
   };
 
-  const addToEnd = () => {
+  const addToEnd = (): void => {
     const newId = `new-${Date.now()}`;
     setItems([...items, { id: newId, name: `New Item`, color: 'bg-success' }]);
   };
 
-  const removeFirst = () => {
+  const removeFirst = (): void => {
     setItems(items.slice(1));
   };
 
-  const moveFirstToEnd = () => {
+  const moveFirstToEnd = (): void => {
     if (items.length > 1) {
       const [first, ...rest] = items;
       setItems([...rest, first]);
     }
   };
 
-  const reset = () => {
+  const reset = (): void => {
     setItems([
       { id: 'a1', name: 'First Item', color: 'bg-primary' },
       { id: 'b2', name: 'Second Item', color: 'bg-secondary' },

@@ -1,13 +1,35 @@
+// ============================================
+// ListBasicsDemo - Rendering Lists with .map()
+// ============================================
+
 import { useState } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import fruitsDataExample from './examples/FruitsDataExample.tsx?raw';
+import usersDataExample from './examples/UsersDataExample.tsx?raw';
+import mapPatternExample from './examples/MapPatternExample.tsx?raw';
 
-export default function ListBasicsDemo() {
+// ============================================
+// Types
+// ============================================
+
+interface User {
+  id: number;
+  name: string;
+  role: string;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function ListBasicsDemo(): React.ReactElement {
   const [showCode, setShowCode] = useState(true);
 
   // Sample data
   const fruits = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
 
-  const users = [
+  const users: User[] = [
     { id: 1, name: 'Alice', role: 'Developer' },
     { id: 2, name: 'Bob', role: 'Designer' },
     { id: 3, name: 'Charlie', role: 'Manager' },
@@ -22,15 +44,7 @@ export default function ListBasicsDemo() {
           {/* Data */}
           <div className="card bg-base-300 p-4">
             <div className="text-xs text-base-content/50 mb-2 font-mono">// Data</div>
-            <pre className="text-sm font-mono text-secondary">
-              {`const fruits = [
-  'Apple',
-  'Banana', 
-  'Cherry',
-  'Date',
-  'Elderberry'
-];`}
-            </pre>
+            <CodeSnippet code={fruitsDataExample} language="tsx" showCopy={false} />
           </div>
 
           {/* Result */}
@@ -54,13 +68,7 @@ export default function ListBasicsDemo() {
           {/* Data */}
           <div className="card bg-base-300 p-4">
             <div className="text-xs text-base-content/50 mb-2 font-mono">// Data</div>
-            <pre className="text-sm font-mono text-secondary">
-              {`const users = [
-  { id: 1, name: 'Alice', role: 'Developer' },
-  { id: 2, name: 'Bob', role: 'Designer' },
-  { id: 3, name: 'Charlie', role: 'Manager' },
-];`}
-            </pre>
+            <CodeSnippet code={usersDataExample} language="tsx" showCopy={false} />
           </div>
 
           {/* Result */}
@@ -90,18 +98,9 @@ export default function ListBasicsDemo() {
       </button>
 
       {showCode && (
-        <div className="card bg-base-300 p-4 font-mono text-sm">
-          <div className="text-success mb-2">// The .map() pattern</div>
-          <pre className="text-base-content/80">
-            {`{users.map((user) => (
-  <UserCard key={user.id} user={user} />
-))}
-
-// Or inline:
-{fruits.map((fruit) => (
-  <li key={fruit}>{fruit}</li>
-))}`}
-          </pre>
+        <div className="card bg-base-300 p-4">
+          <div className="text-xs text-base-content/50 mb-2 font-mono">// The .map() pattern</div>
+          <CodeSnippet code={mapPatternExample} language="tsx" showCopy={false} />
         </div>
       )}
 

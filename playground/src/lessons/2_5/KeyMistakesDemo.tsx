@@ -1,8 +1,29 @@
+// ============================================
+// KeyMistakesDemo - Common Key Mistakes Demo
+// ============================================
+
 import { useState } from 'react';
 import { HiX, HiPlus, HiOutlineExclamationCircle, HiCheck } from 'react-icons/hi';
 
-// Item component that maintains its own input state
-function ListItem({ item, onRemove }) {
+// ============================================
+// Types
+// ============================================
+
+interface Item {
+  id: number;
+  name: string;
+}
+
+interface ListItemProps {
+  item: Item;
+  onRemove: (id: number) => void;
+}
+
+// ============================================
+// ListItem Component
+// ============================================
+
+function ListItem({ item, onRemove }: ListItemProps): React.ReactElement {
   const [inputValue, setInputValue] = useState('');
 
   return (
@@ -25,43 +46,47 @@ function ListItem({ item, onRemove }) {
   );
 }
 
-export default function KeyMistakesDemo() {
+// ============================================
+// Main Component
+// ============================================
+
+export default function KeyMistakesDemo(): React.ReactElement {
   // Two separate lists to compare behavior
-  const [badKeyItems, setBadKeyItems] = useState([
+  const [badKeyItems, setBadKeyItems] = useState<Item[]>([
     { id: 1, name: 'Item A' },
     { id: 2, name: 'Item B' },
     { id: 3, name: 'Item C' },
   ]);
 
-  const [goodKeyItems, setGoodKeyItems] = useState([
+  const [goodKeyItems, setGoodKeyItems] = useState<Item[]>([
     { id: 1, name: 'Item A' },
     { id: 2, name: 'Item B' },
     { id: 3, name: 'Item C' },
   ]);
 
-  const addToBadList = () => {
+  const addToBadList = (): void => {
     setBadKeyItems([
       { id: Date.now(), name: `Item ${String.fromCharCode(65 + badKeyItems.length)}` },
       ...badKeyItems,
     ]);
   };
 
-  const addToGoodList = () => {
+  const addToGoodList = (): void => {
     setGoodKeyItems([
       { id: Date.now(), name: `Item ${String.fromCharCode(65 + goodKeyItems.length)}` },
       ...goodKeyItems,
     ]);
   };
 
-  const removeFromBadList = (id) => {
+  const removeFromBadList = (id: number): void => {
     setBadKeyItems(badKeyItems.filter((item) => item.id !== id));
   };
 
-  const removeFromGoodList = (id) => {
+  const removeFromGoodList = (id: number): void => {
     setGoodKeyItems(goodKeyItems.filter((item) => item.id !== id));
   };
 
-  const reset = () => {
+  const reset = (): void => {
     setBadKeyItems([
       { id: 1, name: 'Item A' },
       { id: 2, name: 'Item B' },
@@ -111,7 +136,6 @@ export default function KeyMistakesDemo() {
                   key={index} // BAD: Using index as key
                   item={item}
                   onRemove={removeFromBadList}
-                  label={`key=${index}`}
                 />
               ))}
             </div>
@@ -144,7 +168,6 @@ export default function KeyMistakesDemo() {
                   key={item.id} // GOOD: Using unique ID
                   item={item}
                   onRemove={removeFromGoodList}
-                  label={`key=${item.id}`}
                 />
               ))}
             </div>

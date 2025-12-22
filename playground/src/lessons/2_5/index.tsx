@@ -17,7 +17,7 @@ import KeyMistakesDemo from './KeyMistakesDemo';
 import ListOperationsDemo from './ListOperationsDemo';
 import ListPlayground from './ListPlayground';
 
-export default function Lesson2_5() {
+export default function Lesson2_5(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="5" title="Lists & Keys" />

@@ -1,7 +1,33 @@
+// ============================================
+// ListOperationsDemo - Filter, Sort, Transform
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineSearch, HiOutlineSortAscending, HiOutlineSortDescending } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import chainMethodsExample from './examples/ChainMethodsExample.tsx?raw';
 
-const PRODUCTS = [
+// ============================================
+// Types
+// ============================================
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  inStock: boolean;
+}
+
+type SortBy = 'name' | 'price';
+type SortOrder = 'asc' | 'desc';
+type StockFilter = 'all' | 'inStock' | 'outOfStock';
+
+// ============================================
+// Data
+// ============================================
+
+const PRODUCTS: Product[] = [
   { id: 1, name: 'Laptop Pro', category: 'Electronics', price: 1299, inStock: true },
   { id: 2, name: 'Wireless Mouse', category: 'Electronics', price: 49, inStock: true },
   { id: 3, name: 'Standing Desk', category: 'Furniture', price: 599, inStock: false },
@@ -12,12 +38,16 @@ const PRODUCTS = [
   { id: 8, name: 'USB-C Hub', category: 'Electronics', price: 89, inStock: true },
 ];
 
-export default function ListOperationsDemo() {
+// ============================================
+// Main Component
+// ============================================
+
+export default function ListOperationsDemo(): React.ReactElement {
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
-  const [stockFilter, setStockFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('name');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [stockFilter, setStockFilter] = useState<StockFilter>('all');
+  const [sortBy, setSortBy] = useState<SortBy>('name');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
 
   // Get unique categories
   const categories = [...new Set(PRODUCTS.map((p) => p.category))];
@@ -81,7 +111,7 @@ export default function ListOperationsDemo() {
         {/* Stock Filter */}
         <select
           value={stockFilter}
-          onChange={(e) => setStockFilter(e.target.value)}
+          onChange={(e) => setStockFilter(e.target.value as StockFilter)}
           className="select select-bordered select-sm w-full"
         >
           <option value="all">All Stock Status</option>
@@ -93,7 +123,7 @@ export default function ListOperationsDemo() {
         <div className="flex gap-2">
           <select
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
+            onChange={(e) => setSortBy(e.target.value as SortBy)}
             className="select select-bordered select-sm flex-1"
           >
             <option value="name">Sort by Name</option>
@@ -156,14 +186,7 @@ export default function ListOperationsDemo() {
       {/* Code Example */}
       <div className="mt-4 card bg-base-300 p-4">
         <div className="text-xs text-base-content/50 mb-2 font-mono">// Chain array methods</div>
-        <pre className="text-sm font-mono text-secondary overflow-x-auto">
-          {`const filteredProducts = products
-  .filter(p => p.name.includes(searchTerm))
-  .filter(p => category === 'all' || p.category === category)
-  .filter(p => stockFilter === 'all' || p.inStock === inStock)
-  .sort((a, b) => a.price - b.price)
-  .map(product => <ProductCard key={product.id} {...product} />)`}
-        </pre>
+        <CodeSnippet code={chainMethodsExample} language="tsx" showCopy={false} />
       </div>
     </div>
   );
