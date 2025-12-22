@@ -6,8 +6,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 1: Foundation ✅ Complete! |
-| **Current Lesson** | Lesson 2.1: Props (Next Up) |
+| **Current Module** | Module 2: Core Concepts |
+| **Current Lesson** | Lesson 2.1: Props |
 | **Next Lesson** | Lesson 2.1: Props - Passing Data to Components |
 | **Dev Server** | Running at http://localhost:5173 |
 
@@ -24,11 +24,11 @@
 | 1.3 | Understanding JSX | ✅ Complete | JSX transform, differences, embedding, rules, playground |
 | 1.4 | Components: Your First Building Block | ✅ Complete | Basics demo, 3 rules, composition tree, component builder |
 
-### Module 2: Core Concepts ⬜ Not Started
+### Module 2: Core Concepts ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 2.1 | Props: Passing Data to Components | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 2.1 | Props: Passing Data to Components | ✅ Complete | Basics, destructuring, defaults, children, playground |
 | 2.2 | State with useState Hook | ⬜ Pending |
 | 2.3 | Event Handling | ⬜ Pending |
 | 2.4 | Conditional Rendering | ⬜ Pending |
