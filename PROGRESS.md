@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 6: Component Patterns |
-| **Current Lesson** | Lesson 6.3: Higher-Order Components |
-| **Next Lesson** | Lesson 6.4: Compound Components |
+| **Current Lesson** | Lesson 6.4: Compound Components |
+| **Next Lesson** | Lesson 6.5: Activity: Preserving Hidden State |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -126,7 +126,7 @@ import { CodeSnippet } from '../components';
 | 6.1 | Component Composition | ✅ Complete | Why composition, children prop, slot pattern, specialization, playground |
 | 6.2 | Render Props Pattern | ✅ Complete | Basics, children as function, mouse/fetch/list use cases, playground |
 | 6.3 | Higher-Order Components | ✅ Complete | HOC basics, withAuth/withLoading/withTheme, patterns & conventions, playground |
-| 6.4 | Compound Components | ⬜ Pending |
+| 6.4 | Compound Components | ✅ Complete | Compound basics, Context pattern, flexible API design, Tabs/Menu/Select playground |
 
 ### Module 7: State Management ⬜ Not Started
 
@@ -603,6 +603,21 @@ Beginning the Component Patterns module.
   - Updated `config.json` to mark 6.2 complete and add 6.3 as current
   - Updated `App.jsx` to import and register Lesson6_3 component
 
+---
+
+### Session 20 - December 10, 2025
+**Goal:** Implement Lesson 6.4: Compound Components
+
+#### Completed:
+- ✅ **Implemented Lesson 6.4: Compound Components**
+  - `index.tsx` - Main lesson with 5 sections
+  - `CompoundBasicsDemo.tsx` - Traditional config vs compound comparison, Tabs example, code toggle
+  - `ContextPatternDemo.tsx` - 3-step pattern (create context, parent provides, children consume), interactive Accordion
+  - `FlexibleAPIDemo.tsx` - Card component with 3 different layouts (image, profile, settings), inversion of control
+  - `CompoundPlayground.tsx` - Full Tabs, Menu/Dropdown, and Select component demos with event logging
+  - Updated `config.json` to mark 6.3 complete and add 6.4 as current
+  - Updated `App.jsx` to import and register Lesson6_4 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -668,7 +683,11 @@ Beginning the Component Patterns module.
 - [x] HOC conventions: naming, displayName, pass props through
 - [x] Composing multiple HOCs together
 - [x] HOCs vs Hooks tradeoffs
-- [ ] Compound components - next
+- [x] Compound components pattern (components that work together as a unit)
+- [x] Context pattern for implicit state sharing
+- [x] Static sub-component properties (Tabs.Tab, Menu.Item)
+- [x] Flexible API design with inversion of control
+- [ ] Activity pattern (preserving hidden state) - next
 - [ ] ...more to come
 
 ---
