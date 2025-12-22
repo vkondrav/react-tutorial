@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 6: Component Patterns |
-| **Current Lesson** | Lesson 6.2: Render Props Pattern |
-| **Next Lesson** | Lesson 6.3: Higher-Order Components |
+| **Current Lesson** | Lesson 6.3: Higher-Order Components |
+| **Next Lesson** | Lesson 6.4: Compound Components |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -125,7 +125,7 @@ import { CodeSnippet } from '../components';
 |--------|-------|--------|-------|
 | 6.1 | Component Composition | ✅ Complete | Why composition, children prop, slot pattern, specialization, playground |
 | 6.2 | Render Props Pattern | ✅ Complete | Basics, children as function, mouse/fetch/list use cases, playground |
-| 6.3 | Higher-Order Components | ⬜ Pending |
+| 6.3 | Higher-Order Components | ✅ Complete | HOC basics, withAuth/withLoading/withTheme, patterns & conventions, playground |
 | 6.4 | Compound Components | ⬜ Pending |
 
 ### Module 7: State Management ⬜ Not Started
@@ -588,6 +588,21 @@ Beginning the Component Patterns module.
   - Updated `config.json` to mark 6.1 complete and add 6.2 as current
   - Updated `App.jsx` to import and register Lesson6_2 component
 
+---
+
+### Session 19 - December 10, 2025
+**Goal:** Implement Lesson 6.3: Higher-Order Components
+
+#### Completed:
+- ✅ **Implemented Lesson 6.3: Higher-Order Components**
+  - `index.tsx` - Main lesson with 5 sections
+  - `HOCBasicsDemo.tsx` - HOC formula, withBorder example, live demo with multiple enhanced components
+  - `CommonHOCsDemo.tsx` - withAuth (access denied), withLoading (spinner), withTheme (light/dark) with interactive toggles
+  - `HOCPatternsDemo.tsx` - 5 patterns: naming convention, displayName, pass props, don't mutate, composition
+  - `HOCPlayground.tsx` - Single HOC demos, composed HOCs (4 stacked), DevTools wrapper stack visualization
+  - Updated `config.json` to mark 6.2 complete and add 6.3 as current
+  - Updated `App.jsx` to import and register Lesson6_3 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -648,7 +663,12 @@ Beginning the Component Patterns module.
 - [x] Children as function syntax
 - [x] Mouse tracking, data fetching, list selection patterns
 - [x] When to use render props vs custom hooks
-- [ ] Higher-order components - next
+- [x] Higher-Order Components (HOCs) - functions that enhance components
+- [x] withAuth, withLoading, withTheme HOC patterns
+- [x] HOC conventions: naming, displayName, pass props through
+- [x] Composing multiple HOCs together
+- [x] HOCs vs Hooks tradeoffs
+- [ ] Compound components - next
 - [ ] ...more to come
 
 ---
