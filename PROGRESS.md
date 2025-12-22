@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 4: Data Fetching & REST APIs |
-| **Current Lesson** | Lesson 4.1: Fetching Data with useEffect |
-| **Next Lesson** | Lesson 4.2: Loading, Error & Empty States |
+| **Current Lesson** | Lesson 4.2: Loading, Error & Empty States |
+| **Next Lesson** | Lesson 4.3: Creating & Updating Data (POST/PUT/DELETE) |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -66,7 +66,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 4.1 | Fetching Data with useEffect | ✅ Complete | Basic fetch pattern, dependencies, race conditions, AbortController, playground |
-| 4.2 | Loading, Error & Empty States | ⬜ Pending |
+| 4.2 | Loading, Error & Empty States | ✅ Complete | Spinner/skeleton/progress/shimmer, error types/inline/toast, empty states, composition, playground |
 | 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ⬜ Pending |
 | 4.4 | Building a Custom useFetch Hook | ⬜ Pending | Cover both useEffect pattern AND React 19 `use` API with Suspense |
 
@@ -407,6 +407,22 @@ All 5 lessons in Module 3: Hooks Deep Dive are now implemented.
 #### Module 4 Started! 🎯
 Beginning the Data Fetching & REST APIs module.
 
+---
+
+### Session 11 - December 9, 2025
+**Goal:** Implement Lesson 4.2: Loading, Error & Empty States
+
+#### Completed:
+- ✅ **Implemented Lesson 4.2: Loading, Error & Empty States**
+  - `index.tsx` - Main lesson with 6 sections covering UI state patterns
+  - `LoadingStatesDemo.tsx` - 4 loading patterns: Spinner, Skeleton, Progress, Shimmer with code examples
+  - `ErrorStatesDemo.tsx` - Error types (network, server, notfound, auth), inline errors, toast errors
+  - `EmptyStatesDemo.tsx` - Empty state patterns (no data, no results, first-time, filtered) with interactive demo
+  - `StateCompositionDemo.tsx` - Interactive demo showing loading → error → empty → data flow
+  - `StatesPlayground.tsx` - 3 interactive demos: Photo Gallery, Search, Shopping Cart
+  - Updated `config.json` to mark 4.1 complete and add 4.2 as current
+  - Updated `App.jsx` to import and register Lesson4_2 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -431,7 +447,11 @@ Beginning the Data Fetching & REST APIs module.
 - [x] Custom hooks
 - [x] Data fetching with useEffect
 - [x] AbortController for cleanup
-- [ ] Loading, error, and empty states (next)
+- [x] Loading states (spinner, skeleton, progress, shimmer)
+- [x] Error states (types, inline, toast)
+- [x] Empty states (no data, no results, first-time, filtered)
+- [x] State composition pattern (loading → error → empty → data)
+- [ ] Creating & updating data (POST/PUT/DELETE) - next
 - [ ] ...more to come
 
 ---
