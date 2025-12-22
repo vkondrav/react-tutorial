@@ -27,110 +27,55 @@ export default function PropsPlayground() {
   };
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '400px' }}>
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
+      <div className="grid grid-cols-2 min-h-[400px]">
         {/* Props Editor */}
-        <div style={{ padding: '1.5rem', borderRight: '1px solid #334155' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
+        <div className="p-6 border-r border-slate-700">
+          <div className="text-xs text-slate-500 mb-4 uppercase">
             Edit Props
           </div>
 
           {/* Name */}
-          <div style={{ marginBottom: '1rem' }}>
-            <label
-              style={{
-                display: 'block',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-              }}
-            >
-              <span style={{ color: '#3b82f6' }}>name</span>: string
+          <div className="mb-4">
+            <label className="block text-slate-400 text-sm mb-1">
+              <span className="text-blue-500">name</span>: string
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.5rem',
-                backgroundColor: '#0f172a',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: '#f8fafc',
-                fontSize: '0.875rem',
-              }}
+              className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
             />
           </div>
 
           {/* Role */}
-          <div style={{ marginBottom: '1rem' }}>
-            <label
-              style={{
-                display: 'block',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-              }}
-            >
-              <span style={{ color: '#3b82f6' }}>role</span>: string
+          <div className="mb-4">
+            <label className="block text-slate-400 text-sm mb-1">
+              <span className="text-blue-500">role</span>: string
             </label>
             <input
               type="text"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.5rem',
-                backgroundColor: '#0f172a',
-                border: '1px solid #334155',
-                borderRadius: '0.375rem',
-                color: '#f8fafc',
-                fontSize: '0.875rem',
-              }}
+              className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
             />
           </div>
 
           {/* Level */}
-          <div style={{ marginBottom: '1rem' }}>
-            <label
-              style={{
-                display: 'block',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-              }}
-            >
-              <span style={{ color: '#3b82f6' }}>level</span>: "Junior" | "Mid" | "Senior" | "Lead"
+          <div className="mb-4">
+            <label className="block text-slate-400 text-sm mb-1">
+              <span className="text-blue-500">level</span>: "Junior" | "Mid" | "Senior" | "Lead"
             </label>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="flex gap-2">
               {Object.keys(levelColors).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLevel(l)}
+                  className="flex-1 px-3 py-1.5 rounded-md text-xs cursor-pointer transition-colors"
                   style={{
-                    flex: 1,
-                    padding: '0.375rem',
                     backgroundColor: level === l ? levelColors[l] : '#0f172a',
                     border: `1px solid ${level === l ? levelColors[l] : '#334155'}`,
-                    borderRadius: '0.375rem',
                     color: level === l ? 'white' : '#64748b',
-                    cursor: 'pointer',
-                    fontSize: '0.75rem',
                   }}
                 >
                   {l}
@@ -140,101 +85,51 @@ export default function PropsPlayground() {
           </div>
 
           {/* isOnline */}
-          <div style={{ marginBottom: '1rem' }}>
-            <label
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                cursor: 'pointer',
-              }}
-            >
+          <div className="mb-4">
+            <label className="flex items-center gap-2 text-slate-400 text-sm cursor-pointer">
               <input
                 type="checkbox"
                 checked={isOnline}
                 onChange={(e) => setIsOnline(e.target.checked)}
-                style={{ width: '1rem', height: '1rem' }}
+                className="w-4 h-4"
               />
-              <span style={{ color: '#3b82f6' }}>isOnline</span>: boolean = {isOnline.toString()}
+              <span className="text-blue-500">isOnline</span>: boolean = {isOnline.toString()}
             </label>
           </div>
 
           {/* Skills */}
           <div>
-            <label
-              style={{
-                display: 'block',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
-                marginBottom: '0.25rem',
-              }}
-            >
-              <span style={{ color: '#3b82f6' }}>skills</span>: string[]
+            <label className="block text-slate-400 text-sm mb-1">
+              <span className="text-blue-500">skills</span>: string[]
             </label>
-            <div
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}
-            >
+            <div className="flex flex-wrap gap-2 mb-2">
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.25rem',
-                    padding: '0.25rem 0.5rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    color: '#94a3b8',
-                  }}
+                  className="inline-flex items-center gap-1 px-2 py-1 bg-slate-900 rounded-full text-xs text-slate-400"
                 >
                   {skill}
                   <button
                     onClick={() => removeSkill(skill)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: '#ef4444',
-                      cursor: 'pointer',
-                      padding: '0 0.125rem',
-                      fontSize: '0.875rem',
-                    }}
+                    className="bg-transparent border-none text-red-500 cursor-pointer px-0.5 text-sm"
                   >
                     ×
                   </button>
                 </span>
               ))}
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="flex gap-2">
               <input
                 type="text"
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addSkill()}
                 placeholder="Add skill..."
-                style={{
-                  flex: 1,
-                  padding: '0.375rem 0.5rem',
-                  backgroundColor: '#0f172a',
-                  border: '1px solid #334155',
-                  borderRadius: '0.375rem',
-                  color: '#f8fafc',
-                  fontSize: '0.75rem',
-                }}
+                className="flex-1 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-xs"
               />
               <button
                 onClick={addSkill}
-                style={{
-                  padding: '0.375rem 0.75rem',
-                  backgroundColor: '#22c55e',
-                  border: 'none',
-                  borderRadius: '0.375rem',
-                  color: 'white',
-                  cursor: 'pointer',
-                  fontSize: '0.75rem',
-                }}
+                className="px-3 py-1.5 bg-green-500 border-none rounded-md text-white cursor-pointer text-xs"
               >
                 Add
               </button>
@@ -243,73 +138,40 @@ export default function PropsPlayground() {
         </div>
 
         {/* Preview */}
-        <div style={{ padding: '1.5rem', backgroundColor: '#0f172a' }}>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: '#64748b',
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-            }}
-          >
+        <div className="p-6 bg-slate-900">
+          <div className="text-xs text-slate-500 mb-4 uppercase">
             Live Preview: {'<ProfileCard {...props} />'}
           </div>
 
           {/* Rendered Card */}
-          <div
-            style={{
-              backgroundColor: '#1e293b',
-              borderRadius: '0.75rem',
-              padding: '1.5rem',
-              border: '1px solid #334155',
-            }}
-          >
+          <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
             {/* Header */}
-            <div
-              style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}
-            >
+            <div className="flex items-center gap-4 mb-4">
               <div
-                style={{
-                  width: '3rem',
-                  height: '3rem',
-                  borderRadius: '50%',
-                  backgroundColor: levelColors[level],
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.25rem',
-                  color: 'white',
-                  fontWeight: 'bold',
-                }}
+                className="w-12 h-12 rounded-full flex items-center justify-center text-xl text-white font-bold"
+                style={{ backgroundColor: levelColors[level] }}
               >
                 {name.charAt(0).toUpperCase()}
               </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <h3 style={{ margin: 0, color: '#f8fafc', fontSize: '1.125rem' }}>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <h3 className="m-0 text-slate-50 text-lg">
                     {name || 'Name'}
                   </h3>
                   <span
-                    style={{
-                      width: '0.5rem',
-                      height: '0.5rem',
-                      borderRadius: '50%',
-                      backgroundColor: isOnline ? '#22c55e' : '#64748b',
-                    }}
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: isOnline ? '#22c55e' : '#64748b' }}
                   />
                 </div>
-                <p style={{ margin: '0.25rem 0 0 0', color: '#64748b', fontSize: '0.875rem' }}>
+                <p className="mt-1 mb-0 text-slate-500 text-sm">
                   {role || 'Role'}
                 </p>
               </div>
               <span
+                className="px-3 py-1 rounded-full text-xs font-semibold"
                 style={{
-                  padding: '0.25rem 0.75rem',
                   backgroundColor: `${levelColors[level]}22`,
                   color: levelColors[level],
-                  borderRadius: '9999px',
-                  fontSize: '0.75rem',
-                  fontWeight: '600',
                 }}
               >
                 {level}
@@ -317,17 +179,11 @@ export default function PropsPlayground() {
             </div>
 
             {/* Skills */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  style={{
-                    padding: '0.25rem 0.75rem',
-                    backgroundColor: '#0f172a',
-                    borderRadius: '0.375rem',
-                    fontSize: '0.75rem',
-                    color: '#94a3b8',
-                  }}
+                  className="px-3 py-1 bg-slate-900 rounded-md text-xs text-slate-400"
                 >
                   {skill}
                 </span>
@@ -336,22 +192,12 @@ export default function PropsPlayground() {
           </div>
 
           {/* Props Object */}
-          <div style={{ marginTop: '1rem' }}>
-            <div style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: '0.5rem' }}>
+          <div className="mt-4">
+            <div className="text-[0.7rem] text-slate-500 mb-2">
               PROPS OBJECT
             </div>
-            <pre
-              style={{
-                margin: 0,
-                padding: '0.75rem',
-                backgroundColor: '#1e293b',
-                borderRadius: '0.375rem',
-                fontSize: '0.7rem',
-                lineHeight: 1.5,
-                overflow: 'auto',
-              }}
-            >
-              <code style={{ color: '#94a3b8' }}>
+            <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed overflow-auto">
+              <code className="text-slate-400">
                 {JSON.stringify({ name, role, level, isOnline, skills }, null, 2)}
               </code>
             </pre>

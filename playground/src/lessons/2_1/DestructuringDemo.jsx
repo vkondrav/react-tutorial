@@ -4,157 +4,100 @@ export default function DestructuringDemo() {
   const [showDestructured, setShowDestructured] = useState(false);
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Toggle */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #334155' }}>
+      <div className="flex border-b border-slate-700">
         <button
           onClick={() => setShowDestructured(false)}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: !showDestructured ? '#ef444422' : 'transparent',
-            border: 'none',
-            borderBottom: !showDestructured ? '2px solid #ef4444' : '2px solid transparent',
-            color: !showDestructured ? '#ef4444' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-4 py-3 bg-transparent border-none cursor-pointer font-medium transition-colors ${
+            !showDestructured
+              ? 'bg-red-500/10 border-b-2 border-b-red-500 text-red-500'
+              : 'border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           ❌ Without Destructuring
         </button>
         <button
           onClick={() => setShowDestructured(true)}
-          style={{
-            flex: 1,
-            padding: '0.75rem',
-            backgroundColor: showDestructured ? '#22c55e22' : 'transparent',
-            border: 'none',
-            borderBottom: showDestructured ? '2px solid #22c55e' : '2px solid transparent',
-            color: showDestructured ? '#22c55e' : '#64748b',
-            cursor: 'pointer',
-            fontWeight: '500',
-          }}
+          className={`flex-1 px-4 py-3 bg-transparent border-none cursor-pointer font-medium transition-colors ${
+            showDestructured
+              ? 'bg-green-500/10 border-b-2 border-b-green-500 text-green-500'
+              : 'border-b-2 border-b-transparent text-slate-500'
+          }`}
         >
           ✅ With Destructuring
         </button>
       </div>
 
       {/* Code Display */}
-      <div style={{ padding: '1.5rem' }}>
+      <div className="p-6">
         {!showDestructured ? (
           <>
-            <pre
-              style={{
-                margin: 0,
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                overflow: 'auto',
-                fontSize: '0.8rem',
-                lineHeight: 1.6,
-                border: '1px solid #ef444444',
-              }}
-            >
-              <code style={{ color: '#e2e8f0' }}>
+            <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed border border-red-500/30">
+              <code className="text-slate-200">
                 {`function UserProfile(`}
-                <span style={{ color: '#ec4899' }}>props</span>
+                <span className="text-pink-500">props</span>
                 {`) {
   return (
     <div>
       <img src={`}
-                <span style={{ color: '#ec4899' }}>props</span>
-                <span style={{ color: '#64748b' }}>.avatar</span>
+                <span className="text-pink-500">props</span>
+                <span className="text-slate-500">.avatar</span>
                 {`} />
       <h2>{`}
-                <span style={{ color: '#ec4899' }}>props</span>
-                <span style={{ color: '#64748b' }}>.name</span>
+                <span className="text-pink-500">props</span>
+                <span className="text-slate-500">.name</span>
                 {`}</h2>
       <p>{`}
-                <span style={{ color: '#ec4899' }}>props</span>
-                <span style={{ color: '#64748b' }}>.bio</span>
+                <span className="text-pink-500">props</span>
+                <span className="text-slate-500">.bio</span>
                 {`}</p>
       <span>{`}
-                <span style={{ color: '#ec4899' }}>props</span>
-                <span style={{ color: '#64748b' }}>.role</span>
+                <span className="text-pink-500">props</span>
+                <span className="text-slate-500">.role</span>
                 {`}</span>
     </div>
   );
 }`}
               </code>
             </pre>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.75rem 1rem',
-                backgroundColor: '#ef444422',
-                borderRadius: '0.5rem',
-                color: '#ef4444',
-                fontSize: '0.875rem',
-              }}
-            >
+            <div className="mt-4 px-4 py-3 bg-red-500/10 rounded-lg text-red-500 text-sm">
               ⚠️ Repetitive! You have to write <code>props.</code> every single time.
             </div>
           </>
         ) : (
           <>
-            <pre
-              style={{
-                margin: 0,
-                padding: '1rem',
-                backgroundColor: '#0f172a',
-                borderRadius: '0.5rem',
-                overflow: 'auto',
-                fontSize: '0.8rem',
-                lineHeight: 1.6,
-                border: '1px solid #22c55e44',
-              }}
-            >
-              <code style={{ color: '#e2e8f0' }}>
+            <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed border border-green-500/30">
+              <code className="text-slate-200">
                 {`function UserProfile({ `}
-                <span style={{ color: '#3b82f6' }}>avatar</span>
+                <span className="text-blue-500">avatar</span>
                 {`, `}
-                <span style={{ color: '#3b82f6' }}>name</span>
+                <span className="text-blue-500">name</span>
                 {`, `}
-                <span style={{ color: '#3b82f6' }}>bio</span>
+                <span className="text-blue-500">bio</span>
                 {`, `}
-                <span style={{ color: '#3b82f6' }}>role</span>
+                <span className="text-blue-500">role</span>
                 {` }) {
   return (
     <div>
       <img src={`}
-                <span style={{ color: '#3b82f6' }}>avatar</span>
+                <span className="text-blue-500">avatar</span>
                 {`} />
       <h2>{`}
-                <span style={{ color: '#3b82f6' }}>name</span>
+                <span className="text-blue-500">name</span>
                 {`}</h2>
       <p>{`}
-                <span style={{ color: '#3b82f6' }}>bio</span>
+                <span className="text-blue-500">bio</span>
                 {`}</p>
       <span>{`}
-                <span style={{ color: '#3b82f6' }}>role</span>
+                <span className="text-blue-500">role</span>
                 {`}</span>
     </div>
   );
 }`}
               </code>
             </pre>
-            <div
-              style={{
-                marginTop: '1rem',
-                padding: '0.75rem 1rem',
-                backgroundColor: '#22c55e22',
-                borderRadius: '0.5rem',
-                color: '#22c55e',
-                fontSize: '0.875rem',
-              }}
-            >
+            <div className="mt-4 px-4 py-3 bg-green-500/10 rounded-lg text-green-500 text-sm">
               💡 Clean! Props are extracted right in the function parameters.
             </div>
           </>
@@ -162,34 +105,22 @@ export default function DestructuringDemo() {
       </div>
 
       {/* Comparison */}
-      <div
-        style={{
-          padding: '1rem 1.5rem',
-          backgroundColor: '#0f172a',
-          borderTop: '1px solid #334155',
-        }}
-      >
-        <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.5rem' }}>
+      <div className="px-6 py-4 bg-slate-900 border-t border-slate-700">
+        <div className="text-xs text-slate-500 mb-2">
           DESTRUCTURING SYNTAX
         </div>
-        <pre
-          style={{
-            margin: 0,
-            fontSize: '0.8rem',
-            color: '#94a3b8',
-          }}
-        >
+        <pre className="m-0 text-sm text-slate-400">
           <code>
             {`// These are equivalent:
 function Comp(`}
-            <span style={{ color: '#ec4899' }}>props</span>
+            <span className="text-pink-500">props</span>
             {`) { ... `}
-            <span style={{ color: '#ec4899' }}>props</span>
+            <span className="text-pink-500">props</span>
             {`.name ... }
 function Comp({ `}
-            <span style={{ color: '#3b82f6' }}>name</span>
+            <span className="text-blue-500">name</span>
             {` }) { ... `}
-            <span style={{ color: '#3b82f6' }}>name</span>
+            <span className="text-blue-500">name</span>
             {` ... }`}
           </code>
         </pre>

@@ -101,7 +101,7 @@
 
 ## Session History
 
-### Session 1 - December 5, 2024
+### Session 1 - December 5, 2025
 - ✅ Created course outline and project structure
 - ✅ Set up Vite + React playground
 - ✅ Completed Lesson 1.1 with interactive demos
@@ -114,6 +114,11 @@
 - 🔧 Moved lesson metadata to `lessons/config.json`
 
 ---
+
+### Session 2 - December 6, 2025
+- refactoring the application to use tailwind instead of raw css
+- Progress: 4/12 lessons refactored (1_1, 1_2, 1_3, 1_4)
+Module 1 complete. Next up: Module 2 lessons (2_1, 2_2, 2_3, 2_4). 
 
 ## Concepts Mastered
 

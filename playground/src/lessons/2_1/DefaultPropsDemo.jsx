@@ -25,53 +25,37 @@ export default function DefaultPropsDemo() {
   const activeVariant = showVariant ? variant : 'primary';
 
   return (
-    <div
-      style={{
-        marginTop: '1.5rem',
-        backgroundColor: '#1e293b',
-        borderRadius: '0.75rem',
-        overflow: 'hidden',
-      }}
-    >
+    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
       {/* Controls */}
-      <div style={{ padding: '1.5rem', borderBottom: '1px solid #334155' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div className="p-6 border-b border-slate-700">
+        <div className="grid grid-cols-2 gap-6">
           {/* Size prop */}
           <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.75rem',
-              }}
-            >
+            <div className="flex items-center gap-2 mb-3">
               <input
                 type="checkbox"
                 id="showSize"
                 checked={showSize}
                 onChange={(e) => setShowSize(e.target.checked)}
-                style={{ width: '1rem', height: '1rem' }}
+                className="w-4 h-4"
               />
-              <label htmlFor="showSize" style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-                Pass <code style={{ color: '#3b82f6' }}>size</code> prop
+              <label htmlFor="showSize" className="text-slate-400 text-sm">
+                Pass <code className="text-blue-500">size</code> prop
               </label>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="flex gap-2">
               {sizeOptions.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSize(s)}
                   disabled={!showSize}
+                  className={`px-3 py-1.5 border rounded-md text-xs transition-opacity ${
+                    showSize ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
+                  }`}
                   style={{
-                    padding: '0.375rem 0.75rem',
                     backgroundColor: size === s && showSize ? '#3b82f6' : '#0f172a',
-                    border: '1px solid #334155',
-                    borderRadius: '0.375rem',
+                    borderColor: '#334155',
                     color: size === s && showSize ? 'white' : '#64748b',
-                    cursor: showSize ? 'pointer' : 'not-allowed',
-                    fontSize: '0.75rem',
-                    opacity: showSize ? 1 : 0.5,
                   }}
                 >
                   {s}
@@ -82,40 +66,31 @@ export default function DefaultPropsDemo() {
 
           {/* Variant prop */}
           <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.75rem',
-              }}
-            >
+            <div className="flex items-center gap-2 mb-3">
               <input
                 type="checkbox"
                 id="showVariant"
                 checked={showVariant}
                 onChange={(e) => setShowVariant(e.target.checked)}
-                style={{ width: '1rem', height: '1rem' }}
+                className="w-4 h-4"
               />
-              <label htmlFor="showVariant" style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-                Pass <code style={{ color: '#8b5cf6' }}>variant</code> prop
+              <label htmlFor="showVariant" className="text-slate-400 text-sm">
+                Pass <code className="text-purple-500">variant</code> prop
               </label>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div className="flex gap-2">
               {variantOptions.map((v) => (
                 <button
                   key={v}
                   onClick={() => setVariant(v)}
                   disabled={!showVariant}
+                  className={`px-3 py-1.5 border rounded-md text-xs transition-opacity ${
+                    showVariant ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
+                  }`}
                   style={{
-                    padding: '0.375rem 0.75rem',
                     backgroundColor: variant === v && showVariant ? '#8b5cf6' : '#0f172a',
-                    border: '1px solid #334155',
-                    borderRadius: '0.375rem',
+                    borderColor: '#334155',
                     color: variant === v && showVariant ? 'white' : '#64748b',
-                    cursor: showVariant ? 'pointer' : 'not-allowed',
-                    fontSize: '0.75rem',
-                    opacity: showVariant ? 1 : 0.5,
                   }}
                 >
                   {v}
@@ -127,44 +102,27 @@ export default function DefaultPropsDemo() {
       </div>
 
       {/* Code */}
-      <div style={{ padding: '1.5rem', borderBottom: '1px solid #334155' }}>
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#64748b',
-            marginBottom: '0.75rem',
-            textTransform: 'uppercase',
-          }}
-        >
+      <div className="p-6 border-b border-slate-700">
+        <div className="text-xs text-slate-500 mb-3 uppercase">
           Component with Default Props
         </div>
-        <pre
-          style={{
-            margin: 0,
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            overflow: 'auto',
-            fontSize: '0.8rem',
-            lineHeight: 1.6,
-          }}
-        >
-          <code style={{ color: '#e2e8f0' }}>
+        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-slate-200">
             {`function Button({ 
   label,
   `}
-            <span style={{ color: '#3b82f6' }}>size</span>
+            <span className="text-blue-500">size</span>
             {` = `}
-            <span style={{ color: '#22c55e' }}>"medium"</span>
+            <span className="text-green-500">"medium"</span>
             {`,    `}
-            <span style={{ color: '#64748b' }}>// ← default value</span>
+            <span className="text-slate-500">// ← default value</span>
             {`
   `}
-            <span style={{ color: '#8b5cf6' }}>variant</span>
+            <span className="text-purple-500">variant</span>
             {` = `}
-            <span style={{ color: '#22c55e' }}>"primary"</span>
+            <span className="text-green-500">"primary"</span>
             {` `}
-            <span style={{ color: '#64748b' }}>// ← default value</span>
+            <span className="text-slate-500">// ← default value</span>
             {`
 }) {
   return <button className={\`btn-\${size} btn-\${variant}\`}>{label}</button>;
@@ -172,45 +130,27 @@ export default function DefaultPropsDemo() {
           </code>
         </pre>
 
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#64748b',
-            marginBottom: '0.75rem',
-            marginTop: '1.5rem',
-            textTransform: 'uppercase',
-          }}
-        >
+        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">
           Usage
         </div>
-        <pre
-          style={{
-            margin: 0,
-            padding: '1rem',
-            backgroundColor: '#0f172a',
-            borderRadius: '0.5rem',
-            overflow: 'auto',
-            fontSize: '0.8rem',
-            lineHeight: 1.6,
-          }}
-        >
-          <code style={{ color: '#e2e8f0' }}>
+        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-slate-200">
             {`<Button label="Click me"`}
             {showSize && (
               <>
                 {` `}
-                <span style={{ color: '#3b82f6' }}>size</span>
+                <span className="text-blue-500">size</span>
                 {`="`}
-                <span style={{ color: '#22c55e' }}>{size}</span>
+                <span className="text-green-500">{size}</span>
                 {`"`}
               </>
             )}
             {showVariant && (
               <>
                 {` `}
-                <span style={{ color: '#8b5cf6' }}>variant</span>
+                <span className="text-purple-500">variant</span>
                 {`="`}
-                <span style={{ color: '#22c55e' }}>{variant}</span>
+                <span className="text-green-500">{variant}</span>
                 {`"`}
               </>
             )}
@@ -220,48 +160,27 @@ export default function DefaultPropsDemo() {
       </div>
 
       {/* Live Preview */}
-      <div style={{ padding: '1.5rem', backgroundColor: '#0f172a' }}>
-        <div
-          style={{
-            fontSize: '0.75rem',
-            color: '#64748b',
-            marginBottom: '0.75rem',
-            textTransform: 'uppercase',
-          }}
-        >
+      <div className="p-6 bg-slate-900">
+        <div className="text-xs text-slate-500 mb-3 uppercase">
           Live Result
         </div>
-        <div
-          style={{
-            padding: '2rem',
-            backgroundColor: '#1e293b',
-            borderRadius: '0.5rem',
-            border: '1px dashed #334155',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '1rem',
-          }}
-        >
+        <div className="p-8 bg-slate-800 rounded-lg border border-dashed border-slate-700 flex justify-center items-center gap-4">
           <button
+            className="border-none rounded-md font-medium cursor-pointer"
             style={{
               ...sizeStyles[activeSize],
               ...variantStyles[activeVariant],
-              border: 'none',
-              borderRadius: '0.375rem',
-              fontWeight: '500',
-              cursor: 'pointer',
             }}
           >
             Click me
           </button>
-          <div style={{ color: '#64748b', fontSize: '0.75rem' }}>
-            size: <span style={{ color: showSize ? '#22c55e' : '#f59e0b' }}>{activeSize}</span>
-            {!showSize && <span style={{ color: '#f59e0b' }}> (default)</span>}
+          <div className="text-slate-500 text-xs">
+            size: <span className={showSize ? 'text-green-500' : 'text-amber-500'}>{activeSize}</span>
+            {!showSize && <span className="text-amber-500"> (default)</span>}
             <br />
             variant:{' '}
-            <span style={{ color: showVariant ? '#22c55e' : '#f59e0b' }}>{activeVariant}</span>
-            {!showVariant && <span style={{ color: '#f59e0b' }}> (default)</span>}
+            <span className={showVariant ? 'text-green-500' : 'text-amber-500'}>{activeVariant}</span>
+            {!showVariant && <span className="text-amber-500"> (default)</span>}
           </div>
         </div>
       </div>

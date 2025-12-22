@@ -7,12 +7,12 @@ import PropsPlayground from './PropsPlayground';
 
 export default function Lesson2_1() {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="1" title="Props: Passing Data to Components" />
 
       <Section title="📦 What are Props?">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-          <strong style={{ color: '#3b82f6' }}>Props</strong> (short for "properties") are how you
+        <p className="text-slate-400 leading-relaxed">
+          <strong className="text-blue-500">Props</strong> (short for "properties") are how you
           pass data from a parent component to a child component. They're like function arguments,
           but for components!
         </p>
@@ -20,33 +20,33 @@ export default function Lesson2_1() {
       </Section>
 
       <Section title="🎯 Destructuring Props">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-          Instead of accessing <code style={{ color: '#22c55e' }}>props.name</code> every time, you
-          can <strong style={{ color: '#f59e0b' }}>destructure</strong> props directly in the
+        <p className="text-slate-400 leading-relaxed">
+          Instead of accessing <code className="text-green-500">props.name</code> every time, you
+          can <strong className="text-amber-500">destructure</strong> props directly in the
           function parameters:
         </p>
         <DestructuringDemo />
       </Section>
 
       <Section title="⚙️ Default Props">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           What if a prop isn't passed? You can provide{' '}
-          <strong style={{ color: '#8b5cf6' }}>default values</strong> so your component always has
+          <strong className="text-purple-500">default values</strong> so your component always has
           something to work with:
         </p>
         <DefaultPropsDemo />
       </Section>
 
       <Section title="👶 The Children Prop">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-          The special <code style={{ color: '#ec4899' }}>children</code> prop lets you pass content
+        <p className="text-slate-400 leading-relaxed">
+          The special <code className="text-pink-500">children</code> prop lets you pass content
           between component tags - just like HTML elements!
         </p>
         <ChildrenDemo />
       </Section>
 
       <Section title="🎮 Props Playground">
-        <p style={{ color: '#94a3b8', lineHeight: 1.7 }}>
+        <p className="text-slate-400 leading-relaxed">
           Experiment with props! Change the values and see how the component updates:
         </p>
         <PropsPlayground />
