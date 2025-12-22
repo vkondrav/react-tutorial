@@ -10,12 +10,12 @@ import JSXPlayground from './JSXPlayground';
 
 export default function Lesson1_3() {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="3" title="Understanding JSX" />
 
       <Section title="🤔 What is JSX?">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8', marginBottom: '1rem' }}>
-          <strong style={{ color: '#38bdf8' }}>JSX</strong> (JavaScript XML) lets you write
+        <p className="leading-relaxed text-slate-400 mb-4">
+          <strong className="text-cyan-400">JSX</strong> (JavaScript XML) lets you write
           HTML-like code inside JavaScript. It's not actually HTML - it gets transformed into
           JavaScript function calls!
         </p>
@@ -23,25 +23,16 @@ export default function Lesson1_3() {
       </Section>
 
       <Section title="🆚 JSX vs HTML Differences">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8', marginBottom: '1.5rem' }}>
+        <p className="leading-relaxed text-slate-400 mb-6">
           JSX looks like HTML but has important differences. Click each difference to learn more:
         </p>
         <DifferencesExplorer />
       </Section>
 
       <Section title="🔀 Embedding JavaScript">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8', marginBottom: '1.5rem' }}>
+        <p className="leading-relaxed text-slate-400 mb-6">
           Use curly braces{' '}
-          <code
-            style={{
-              backgroundColor: '#334155',
-              padding: '0.125rem 0.5rem',
-              borderRadius: '0.25rem',
-              color: '#fbbf24',
-            }}
-          >
-            {'{}'}
-          </code>{' '}
+          <code className="bg-slate-700 px-2 py-0.5 rounded text-amber-400">{'{}'}</code>{' '}
           to embed any JavaScript expression in JSX:
         </p>
         <EmbeddingDemo />
@@ -56,7 +47,7 @@ export default function Lesson1_3() {
       </Section>
 
       <Section title="🧪 JSX Playground">
-        <p style={{ lineHeight: 1.8, color: '#94a3b8', marginBottom: '1rem' }}>
+        <p className="leading-relaxed text-slate-400 mb-4">
           Experiment with JSX! Edit the values and see the output change in real-time:
         </p>
         <JSXPlayground />

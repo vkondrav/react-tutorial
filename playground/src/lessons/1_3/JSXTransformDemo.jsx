@@ -5,43 +5,12 @@ export default function JSXTransformDemo() {
 
   return (
     <div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
-          gap: '1rem',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.75rem',
-            overflow: 'hidden',
-            border: '1px solid #22c55e44',
-          }}
-        >
-          <div
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: '#22c55e22',
-              borderBottom: '1px solid #22c55e44',
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#22c55e',
-            }}
-          >
+      <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+        <div className="bg-slate-900 rounded-xl overflow-hidden border border-green-500/30">
+          <div className="px-4 py-2 bg-green-500/20 border-b border-green-500/30 text-xs font-semibold text-green-500">
             ✓ What you write (JSX)
           </div>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              fontSize: '0.8125rem',
-              lineHeight: 1.6,
-              color: '#94a3b8',
-            }}
-          >
+          <pre className="m-0 p-4 text-sm leading-relaxed text-slate-400">
             {`<h1 className="title">
   Hello, World!
 </h1>`}
@@ -50,50 +19,22 @@ export default function JSXTransformDemo() {
 
         <button
           onClick={() => setShowTransform(!showTransform)}
-          style={{
-            padding: '0.75rem',
-            backgroundColor: showTransform ? '#3b82f6' : '#334155',
-            border: 'none',
-            borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '1.25rem',
-          }}
+          className={`p-3 rounded-full text-white cursor-pointer text-xl transition-colors ${
+            showTransform ? 'bg-blue-500' : 'bg-slate-700'
+          }`}
         >
           →
         </button>
 
         <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.75rem',
-            overflow: 'hidden',
-            border: '1px solid #f9731644',
-            opacity: showTransform ? 1 : 0.4,
-            transition: 'opacity 0.3s',
-          }}
+          className={`bg-slate-900 rounded-xl overflow-hidden border border-orange-500/30 transition-opacity ${
+            showTransform ? 'opacity-100' : 'opacity-40'
+          }`}
         >
-          <div
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: '#f9731622',
-              borderBottom: '1px solid #f9731644',
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#f97316',
-            }}
-          >
+          <div className="px-4 py-2 bg-orange-500/20 border-b border-orange-500/30 text-xs font-semibold text-orange-500">
             What React sees (JavaScript)
           </div>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              fontSize: '0.8125rem',
-              lineHeight: 1.6,
-              color: '#94a3b8',
-            }}
-          >
+          <pre className="m-0 p-4 text-sm leading-relaxed text-slate-400">
             {`React.createElement(
   'h1',
   { className: 'title' },
@@ -102,7 +43,7 @@ export default function JSXTransformDemo() {
           </pre>
         </div>
       </div>
-      <p style={{ color: '#64748b', fontSize: '0.875rem', marginTop: '1rem', textAlign: 'center' }}>
+      <p className="text-slate-500 text-sm mt-4 text-center">
         👆 Click the arrow to see the transformation
       </p>
     </div>

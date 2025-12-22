@@ -31,92 +31,36 @@ export default function JSXRulesDemo() {
 
   return (
     <div>
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+      <div className="flex gap-2 mb-4">
         {rules.map((rule) => (
           <button
             key={rule.id}
             onClick={() => setActiveRule(rule.id)}
-            style={{
-              flex: 1,
-              padding: '0.75rem',
-              backgroundColor: activeRule === rule.id ? '#3b82f6' : '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.5rem',
-              color: activeRule === rule.id ? 'white' : '#94a3b8',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: activeRule === rule.id ? '600' : '400',
-            }}
+            className={`flex-1 px-3 py-3 rounded-lg border border-slate-700 cursor-pointer text-sm transition-colors ${
+              activeRule === rule.id
+                ? 'bg-blue-500 text-white border-blue-500 font-semibold'
+                : 'bg-slate-900 text-slate-400 hover:bg-slate-800 font-normal'
+            }`}
           >
             {rule.icon} {rule.title}
           </button>
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.75rem',
-            overflow: 'hidden',
-            border: '1px solid #ef444444',
-          }}
-        >
-          <div
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: '#ef444422',
-              borderBottom: '1px solid #ef444444',
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#ef4444',
-            }}
-          >
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-slate-900 rounded-xl overflow-hidden border border-red-500/30">
+          <div className="px-4 py-2 bg-red-500/20 border-b border-red-500/30 text-xs font-semibold text-red-500">
             ✗ Wrong
           </div>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              fontSize: '0.8125rem',
-              lineHeight: 1.6,
-              color: '#94a3b8',
-              overflow: 'auto',
-            }}
-          >
+          <pre className="m-0 p-4 text-sm leading-relaxed text-slate-400 overflow-auto">
             {currentRule.bad}
           </pre>
         </div>
-        <div
-          style={{
-            backgroundColor: '#0f172a',
-            borderRadius: '0.75rem',
-            overflow: 'hidden',
-            border: '1px solid #22c55e44',
-          }}
-        >
-          <div
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: '#22c55e22',
-              borderBottom: '1px solid #22c55e44',
-              fontSize: '0.75rem',
-              fontWeight: '600',
-              color: '#22c55e',
-            }}
-          >
+        <div className="bg-slate-900 rounded-xl overflow-hidden border border-green-500/30">
+          <div className="px-4 py-2 bg-green-500/20 border-b border-green-500/30 text-xs font-semibold text-green-500">
             ✓ Correct
           </div>
-          <pre
-            style={{
-              margin: 0,
-              padding: '1rem',
-              fontSize: '0.8125rem',
-              lineHeight: 1.6,
-              color: '#94a3b8',
-              overflow: 'auto',
-            }}
-          >
+          <pre className="m-0 p-4 text-sm leading-relaxed text-slate-400 overflow-auto">
             {currentRule.good}
           </pre>
         </div>

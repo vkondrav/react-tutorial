@@ -18,106 +18,40 @@ export default function EmbeddingDemo() {
 
   return (
     <div>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '1rem',
-          marginBottom: '1.5rem',
-        }}
-      >
+      <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
-          <label
-            style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: '#94a3b8',
-              fontSize: '0.875rem',
-            }}
-          >
-            name =
-          </label>
+          <label className="block mb-2 text-slate-400 text-sm">name =</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              backgroundColor: '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.5rem',
-              color: '#f8fafc',
-              fontSize: '1rem',
-            }}
+            className="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-slate-50 text-base focus:outline-none focus:border-cyan-500 transition-colors"
           />
         </div>
         <div>
-          <label
-            style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              color: '#94a3b8',
-              fontSize: '0.875rem',
-            }}
-          >
-            age =
-          </label>
+          <label className="block mb-2 text-slate-400 text-sm">age =</label>
           <input
             type="number"
             value={age}
             onChange={(e) => setAge(parseInt(e.target.value) || 0)}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              backgroundColor: '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.5rem',
-              color: '#f8fafc',
-              fontSize: '1rem',
-            }}
+            className="w-full p-3 bg-slate-900 border border-slate-700 rounded-lg text-slate-50 text-base focus:outline-none focus:border-cyan-500 transition-colors"
           />
         </div>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-          gap: '0.75rem',
-        }}
-      >
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
         {expressions.map((expr, i) => (
           <div
             key={i}
-            style={{
-              backgroundColor: '#0f172a',
-              padding: '1rem',
-              borderRadius: '0.5rem',
-              border: '1px solid #334155',
-            }}
+            className="bg-slate-900 p-4 rounded-lg border border-slate-700"
           >
-            <div
-              style={{
-                color: '#64748b',
-                fontSize: '0.75rem',
-                marginBottom: '0.25rem',
-                textTransform: 'uppercase',
-              }}
-            >
+            <div className="text-slate-500 text-xs mb-1 uppercase">
               {expr.label}
             </div>
-            <code
-              style={{
-                color: '#fbbf24',
-                fontSize: '0.8125rem',
-                display: 'block',
-                marginBottom: '0.5rem',
-              }}
-            >
+            <code className="text-amber-400 text-sm block mb-2">
               {expr.code}
             </code>
-            <div style={{ color: '#22c55e', fontWeight: '600', fontSize: '0.9375rem' }}>
+            <div className="text-green-500 font-semibold text-sm">
               → {expr.result}
             </div>
           </div>

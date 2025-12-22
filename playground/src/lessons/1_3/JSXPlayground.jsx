@@ -7,90 +7,46 @@ export default function JSXPlayground() {
   const [isOnline, setIsOnline] = useState(true);
 
   const grade = score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : 'D';
-  const gradeColor =
-    score >= 90 ? '#22c55e' : score >= 80 ? '#3b82f6' : score >= 70 ? '#f59e0b' : '#ef4444';
+  const gradeColorClasses =
+    score >= 90
+      ? 'bg-emerald-500/20 text-emerald-500'
+      : score >= 80
+        ? 'bg-blue-500/20 text-blue-500'
+        : score >= 70
+          ? 'bg-amber-500/20 text-amber-500'
+          : 'bg-red-500/20 text-red-500';
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div className="grid grid-cols-2 gap-6">
+      <div className="flex flex-col gap-4">
         <div>
-          <label
-            style={{
-              display: 'block',
-              marginBottom: '0.25rem',
-              color: '#94a3b8',
-              fontSize: '0.8125rem',
-            }}
-          >
-            firstName
-          </label>
+          <label className="block mb-1 text-slate-400 text-xs">firstName</label>
           <input
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              backgroundColor: '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.375rem',
-              color: '#f8fafc',
-            }}
+            className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 focus:outline-none focus:border-cyan-500 transition-colors"
           />
         </div>
         <div>
-          <label
-            style={{
-              display: 'block',
-              marginBottom: '0.25rem',
-              color: '#94a3b8',
-              fontSize: '0.8125rem',
-            }}
-          >
-            lastName
-          </label>
+          <label className="block mb-1 text-slate-400 text-xs">lastName</label>
           <input
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              backgroundColor: '#0f172a',
-              border: '1px solid #334155',
-              borderRadius: '0.375rem',
-              color: '#f8fafc',
-            }}
+            className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 focus:outline-none focus:border-cyan-500 transition-colors"
           />
         </div>
         <div>
-          <label
-            style={{
-              display: 'block',
-              marginBottom: '0.25rem',
-              color: '#94a3b8',
-              fontSize: '0.8125rem',
-            }}
-          >
-            score: {score}
-          </label>
+          <label className="block mb-1 text-slate-400 text-xs">score: {score}</label>
           <input
             type="range"
             min="0"
             max="100"
             value={score}
             onChange={(e) => setScore(parseInt(e.target.value))}
-            style={{ width: '100%' }}
+            className="w-full"
           />
         </div>
-        <label
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            color: '#94a3b8',
-            fontSize: '0.8125rem',
-            cursor: 'pointer',
-          }}
-        >
+        <label className="flex items-center gap-2 text-slate-400 text-xs cursor-pointer">
           <input
             type="checkbox"
             checked={isOnline}
@@ -100,54 +56,26 @@ export default function JSXPlayground() {
         </label>
       </div>
 
-      <div
-        style={{
-          backgroundColor: '#0f172a',
-          padding: '1.25rem',
-          borderRadius: '0.75rem',
-          border: '1px solid #334155',
-        }}
-      >
-        <div style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '1rem' }}>
-          Live Output:
-        </div>
-        <div style={{ padding: '1rem', backgroundColor: '#1e293b', borderRadius: '0.5rem' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '0.75rem',
-            }}
-          >
+      <div className="bg-slate-900 p-5 rounded-xl border border-slate-700">
+        <div className="text-slate-500 text-xs mb-4">Live Output:</div>
+        <div className="p-4 bg-slate-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-3">
             <div
-              style={{
-                width: '10px',
-                height: '10px',
-                borderRadius: '50%',
-                backgroundColor: isOnline ? '#22c55e' : '#64748b',
-              }}
+              className={`w-2.5 h-2.5 rounded-full ${
+                isOnline ? 'bg-green-500' : 'bg-slate-500'
+              }`}
             />
-            <span style={{ fontWeight: '600', color: '#f8fafc' }}>
+            <span className="font-semibold text-slate-50">
               {firstName} {lastName}
             </span>
           </div>
-          <div style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+          <div className="text-sm text-slate-400">
             Score: {score}/100
-            <span
-              style={{
-                marginLeft: '0.5rem',
-                padding: '0.125rem 0.5rem',
-                backgroundColor: gradeColor + '33',
-                color: gradeColor,
-                borderRadius: '0.25rem',
-                fontWeight: '600',
-              }}
-            >
+            <span className={`ml-2 px-2 py-0.5 rounded font-semibold ${gradeColorClasses}`}>
               {grade}
             </span>
           </div>
-          <div style={{ marginTop: '0.75rem', fontSize: '0.8125rem', color: '#64748b' }}>
+          <div className="mt-3 text-xs text-slate-500">
             {isOnline ? '🟢 Currently online' : '⚫ Offline'}
           </div>
         </div>

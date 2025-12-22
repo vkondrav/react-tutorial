@@ -10,7 +10,8 @@ export default function DifferencesExplorer() {
       jsx: 'className',
       reason: '"class" is a reserved keyword in JavaScript',
       example: '<div className="container">',
-      color: '#ef4444',
+      color: 'red',
+      colorHex: '#ef4444',
     },
     {
       id: 'for',
@@ -18,7 +19,8 @@ export default function DifferencesExplorer() {
       jsx: 'htmlFor',
       reason: '"for" is a reserved keyword in JavaScript (for loops)',
       example: '<label htmlFor="email">',
-      color: '#f97316',
+      color: 'orange',
+      colorHex: '#f97316',
     },
     {
       id: 'events',
@@ -26,7 +28,8 @@ export default function DifferencesExplorer() {
       jsx: 'onClick',
       reason: 'JSX uses camelCase for all event handlers',
       example: '<button onClick={handleClick}>',
-      color: '#eab308',
+      color: 'yellow',
+      colorHex: '#eab308',
     },
     {
       id: 'style',
@@ -34,7 +37,8 @@ export default function DifferencesExplorer() {
       jsx: 'style={{ color: "red" }}',
       reason: 'Style is an object, not a string. CSS properties are camelCase.',
       example: '<div style={{ backgroundColor: "blue", fontSize: 16 }}>',
-      color: '#22c55e',
+      color: 'emerald',
+      colorHex: '#22c55e',
     },
     {
       id: 'closing',
@@ -42,103 +46,100 @@ export default function DifferencesExplorer() {
       jsx: '<img /> <br /> <input />',
       reason: 'All tags must be explicitly closed in JSX',
       example: '<img src="photo.jpg" alt="Photo" />',
-      color: '#3b82f6',
+      color: 'blue',
+      colorHex: '#3b82f6',
     },
   ];
+
+  const colorClasses = {
+    red: {
+      bg: 'bg-red-500',
+      border: 'border-red-500',
+      text: 'text-red-500',
+      bgLight: 'bg-red-500/20',
+      borderLight: 'border-red-500/30',
+    },
+    orange: {
+      bg: 'bg-orange-500',
+      border: 'border-orange-500',
+      text: 'text-orange-500',
+      bgLight: 'bg-orange-500/20',
+      borderLight: 'border-orange-500/30',
+    },
+    yellow: {
+      bg: 'bg-yellow-500',
+      border: 'border-yellow-500',
+      text: 'text-yellow-500',
+      bgLight: 'bg-yellow-500/20',
+      borderLight: 'border-yellow-500/30',
+    },
+    emerald: {
+      bg: 'bg-emerald-500',
+      border: 'border-emerald-500',
+      text: 'text-emerald-500',
+      bgLight: 'bg-emerald-500/20',
+      borderLight: 'border-emerald-500/30',
+    },
+    blue: {
+      bg: 'bg-blue-500',
+      border: 'border-blue-500',
+      text: 'text-blue-500',
+      bgLight: 'bg-blue-500/20',
+      borderLight: 'border-blue-500/30',
+    },
+  };
 
   const selectedDiff = differences.find((d) => d.id === selected);
 
   return (
     <div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
-        {differences.map((diff) => (
-          <button
-            key={diff.id}
-            onClick={() => setSelected(selected === diff.id ? null : diff.id)}
-            style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: selected === diff.id ? diff.color : '#0f172a',
-              border: `2px solid ${diff.color}`,
-              borderRadius: '0.5rem',
-              color: selected === diff.id ? 'white' : diff.color,
-              cursor: 'pointer',
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
-            }}
-          >
-            {diff.html} → {diff.jsx}
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {differences.map((diff) => {
+          const colors = colorClasses[diff.color];
+          const isSelected = selected === diff.id;
+          return (
+            <button
+              key={diff.id}
+              onClick={() => setSelected(isSelected ? null : diff.id)}
+              className={`px-4 py-2 rounded-lg cursor-pointer font-mono text-sm border-2 transition-colors ${
+                isSelected
+                  ? `${colors.bg} ${colors.border} text-white`
+                  : `bg-slate-900 ${colors.border} ${colors.text} hover:bg-slate-800`
+              }`}
+            >
+              {diff.html} → {diff.jsx}
+            </button>
+          );
+        })}
       </div>
 
       <div
-        style={{
-          backgroundColor: '#0f172a',
-          borderRadius: '0.75rem',
-          padding: '1.25rem',
-          minHeight: '140px',
-          border: selectedDiff ? `1px solid ${selectedDiff.color}44` : '1px solid #334155',
-        }}
+        className={`bg-slate-900 rounded-xl p-5 min-h-[140px] transition-colors ${
+          selectedDiff
+            ? `${colorClasses[selectedDiff.color].borderLight} border`
+            : 'border-slate-700 border'
+        }`}
       >
         {selectedDiff ? (
           <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                marginBottom: '0.75rem',
-              }}
-            >
-              <code
-                style={{
-                  backgroundColor: '#ef444433',
-                  color: '#fca5a5',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '0.25rem',
-                  textDecoration: 'line-through',
-                }}
-              >
+            <div className="flex items-center gap-3 mb-3">
+              <code className="bg-red-500/20 text-red-300 px-2 py-1 rounded line-through">
                 {selectedDiff.html}
               </code>
-              <span style={{ color: '#64748b' }}>→</span>
-              <code
-                style={{
-                  backgroundColor: '#22c55e33',
-                  color: '#86efac',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '0.25rem',
-                }}
-              >
+              <span className="text-slate-500">→</span>
+              <code className="bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded">
                 {selectedDiff.jsx}
               </code>
             </div>
-            <p style={{ color: '#cbd5e1', marginBottom: '1rem', lineHeight: 1.6 }}>
+            <p className="text-slate-300 mb-4 leading-relaxed">
               <strong>Why?</strong> {selectedDiff.reason}
             </p>
-            <div
-              style={{
-                backgroundColor: '#1e293b',
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                fontFamily: 'monospace',
-                fontSize: '0.8125rem',
-                color: '#94a3b8',
-              }}
-            >
+            <div className="bg-slate-800 p-3 rounded-lg font-mono text-sm text-slate-400">
               {selectedDiff.example}
             </div>
           </div>
         ) : (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%',
-              color: '#64748b',
-            }}
-          >
+          <div className="flex items-center justify-center h-full text-slate-500">
             👆 Click a difference above to learn more
           </div>
         )}
