@@ -1,15 +1,16 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 15, 2025
+> Last Updated: December 16, 2025
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Tech Debt Cleanup |
-| **Current Lesson** | Refactoring from Lesson 1.1 |
-| **Next Lesson** | N/A (Module 8 & 9 deferred) |
+| **Current Module** | Module 8: Advanced Topics |
+| **Current Lesson** | 8.1 Server-Side Rendering ✅ |
+| **Next Lesson** | TBD |
 | **Dev Server** | Running at http://localhost:5173 |
+| **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
 ---
@@ -108,6 +109,7 @@
 | 7.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 7.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 7.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 8.1    | ✅ .tsx    | ✅          | N/A        | ✅    | ✅ Done         | ✅ Done            |
 
 ### Shared Components
 
@@ -204,10 +206,15 @@
 | 7.3 | Context + Reducer Pattern | ✅ Complete | Why combine, 6-step setup, separate contexts, custom providers, theme/todo/cart demos |
 | 7.4 | When to Use External State Libraries | ✅ Complete | When built-in is enough, pain points, library overview (Zustand/Redux/Query/Jotai), decision flowchart |
 
-### Module 8 & 9: Deferred ⏸️
+### Module 8: Advanced Topics ⏳ In Progress
 
-> **Note (Dec 10, 2025):** Modules 8 (Best Practices) and 9 (Capstone) are being deferred for now. 
-> The core React concepts are complete through Module 7. Focusing on tech debt cleanup first.
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 8.1 | Server-Side Rendering | ✅ Complete | CSR vs SSR comparison, hydration demo, decision framework, live SSR server |
+
+### Module 9: Capstone ⏸️ Deferred
+
+> **Note:** The capstone project is being deferred for now.
 
 ---
 
@@ -741,6 +748,41 @@ Beginning the State Management module.
 #### Module 7 Complete! 🎉
 All 4 lessons in Module 7: State Management are now implemented.
 
+---
+
+### Session 25 - December 16, 2025
+**Goal:** Implement Lesson 8.1: Server-Side Rendering
+
+#### Completed:
+- ✅ **Implemented Lesson 8.1: Server-Side Rendering**
+  - `index.tsx` - Main lesson with 6 sections covering SSR fundamentals
+  - `RenderingComparisonDemo.tsx` - Animated side-by-side CSR vs SSR timeline comparison
+  - `HowSSRWorksDemo.tsx` - 6-step walkthrough of SSR process with code examples
+  - `HydrationDemo.tsx` - Interactive simulation of React hydration process
+  - `WhenToUseSSRDemo.tsx` - Decision tree for choosing SSR/CSR/SSG
+  - `SSRPlayground.tsx` - Live SSR demo embedded in iframe
+- ✅ **Built Express SSR Server**
+  - `server/index.ts` - Express server on port 3001
+  - `server/render.tsx` - React renderToString() logic
+  - `server/template.html` - HTML template with placeholders
+  - `server/template.ts` - Template processing with data injection
+  - `shared/SSRDemoApp.tsx` - Isomorphic component (runs on server + client)
+  - `src/ssr-client.tsx` - Client hydration entry point
+- ✅ **Configured Build Pipeline**
+  - `vite.config.js` - Added proxy for /ssr-demo route
+  - `vite.ssr.config.js` - Separate Vite config for SSR client bundle
+  - `tsconfig.server.json` - TypeScript config for server code
+  - Added npm scripts: ssr:dev, ssr:server, build:ssr-client
+- ✅ **Added Storybook Stories + Tests**
+  - 6 story files covering all demos
+  - 26 interaction tests (all passing)
+  - Updated config.json and App.tsx
+
+#### Module 8 Started! 🎯
+Beginning the Advanced Topics module with Server-Side Rendering.
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -825,6 +867,12 @@ All 4 lessons in Module 7: State Management are now implemented.
 - [x] Selector hooks for specific state slices
 - [x] When to use external state libraries (Zustand, Redux Toolkit, TanStack Query, Jotai)
 - [x] Decision framework for choosing state management approach
+- [x] Server-Side Rendering (SSR) vs Client-Side Rendering (CSR)
+- [x] renderToString() for server rendering
+- [x] hydrateRoot() for client hydration
+- [x] SSR timeline and process
+- [x] Hydration: attaching React to server-rendered HTML
+- [x] When to use SSR vs CSR vs SSG
 - [ ] ...more to come
 
 ---
@@ -860,5 +908,10 @@ cd playground && npm run storybook:build  # Build static Storybook
 
 # Testing
 cd playground && npm test                 # Run all Storybook tests
+
+# SSR Demo (Lesson 8.1)
+cd playground && npm run ssr:dev          # Start Vite + SSR server together
+cd playground && npm run ssr:server       # Start only SSR server (port 3001)
+cd playground && npm run build:ssr-client # Build SSR client bundle
 ```
 

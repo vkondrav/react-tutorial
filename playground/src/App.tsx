@@ -50,6 +50,7 @@ import Lesson7_1 from './lessons/7_1';
 import Lesson7_2 from './lessons/7_2';
 import Lesson7_3 from './lessons/7_3';
 import Lesson7_4 from './lessons/7_4';
+import Lesson8_1 from './lessons/8_1';
 
 // Types
 interface LessonConfig {
@@ -120,6 +121,7 @@ const LESSON_COMPONENTS: Record<string, LessonComponent> = {
   '7.2': Lesson7_2,
   '7.3': Lesson7_3,
   '7.4': Lesson7_4,
+  '8.1': Lesson8_1,
 };
 
 // Get Cursor IDE link for a lesson's source file

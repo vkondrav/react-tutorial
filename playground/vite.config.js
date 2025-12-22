@@ -19,6 +19,27 @@ export default defineConfig({
       '@components': path.resolve(dirname, './src/lessons/components'),
     },
   },
+  // Proxy SSR routes to the Express server
+  server: {
+    proxy: {
+      // Forward /ssr-demo to Express on port 3001
+      '/ssr-demo': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      // Forward SSR assets to Express
+      '/ssr-assets': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
+  },
+  // Build configuration for SSR client bundle
+  build: {
+    rollupOptions: {
+      // SSR client is built separately via npm run build:ssr-client
+    },
+  },
   test: {
     projects: [
       {

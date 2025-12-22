@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}}</title>
+  <link rel="stylesheet" href="/ssr-assets/ssr-client.css" />
+  <style>
+    /* Critical CSS - inlined for fastest paint */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1d232a;
+      color: #a6adba;
+    }
+    .ssr-indicator {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+    .ssr-indicator.server {
+      background: #2563eb;
+      color: white;
+    }
+    .ssr-indicator.hydrated {
+      background: #16a34a;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- SSR Status Indicator -->
+  <div id="ssr-status" class="ssr-indicator server">
+    ⚡ Server Rendered
+  </div>
+
+  <!-- The server-rendered React app -->
+  <div id="ssr-root">{{APP_HTML}}</div>
+  
+  <!-- Serialized data for hydration -->
+  <script>
+    window.__INITIAL_DATA__ = "__INITIAL_DATA__";
+    window.__SSR_TIME__ = "__SSR_TIME__";
+  </script>
+  
+  <!-- Client bundle for hydration -->
+  <script type="module" src="/ssr-assets/ssr-client.js"></script>
+</body>
+</html>
+

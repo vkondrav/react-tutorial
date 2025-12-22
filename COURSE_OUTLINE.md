@@ -94,6 +94,15 @@ Welcome to your comprehensive React learning journey! This course is designed to
 
 ---
 
+### **Module 8: Advanced Topics**
+*Beyond the basics*
+
+| Lesson | Topic | Duration |
+|--------|-------|----------|
+| 8.1 | Server-Side Rendering | 30 min |
+
+---
+
 ## 🎯 Learning Objectives
 
 By the end of this course, you will:
@@ -106,6 +115,7 @@ By the end of this course, you will:
 - ✅ Manage application state effectively
 - ✅ Write performant, maintainable React code
 - ✅ Apply industry best practices
+- ✅ Understand Server-Side Rendering and hydration
 
 ---
 
