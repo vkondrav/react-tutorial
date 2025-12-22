@@ -26,6 +26,7 @@ const config: StorybookConfig = {
           ...config.resolve?.alias,
           '@lessons': path.resolve(dirname, '../src/lessons'),
           '@components': path.resolve(dirname, '../src/lessons/components'),
+          '@mocks': path.resolve(dirname, '../src/mocks'),
         },
       },
     };

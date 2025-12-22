@@ -67,6 +67,13 @@
 5. run npm run test to see that all tests pass.
 6. update the table below with status
 
+**MSW Setup for API Mocking (Added Dec 15, 2025):**
+- Installed `msw` and `msw-storybook-addon` for API mocking in tests
+- Mock handlers in `src/mocks/handlers.ts` for JSONPlaceholder API
+- MSW initialized in `.storybook/preview.ts` via `msw-storybook-addon`
+- Stories can override handlers per-story using `parameters.msw.handlers`
+- Example: Loading state test with infinite delay, Error state with 500 response
+
 ### Consolidated Tech Debt by Lesson
 
 | Lesson | TypeScript | CodeSnippet | examples/ | Icons | Storybook      | Status             |
@@ -85,7 +92,7 @@
 | 3.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 3.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 3.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
-| 4.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 4.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 4.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 4.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
