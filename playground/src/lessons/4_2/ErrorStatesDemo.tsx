@@ -13,6 +13,9 @@ import {
   HiOutlineCursorClick,
   HiX,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import inlineErrorCode from './examples/InlineError.tsx?raw';
+import toastErrorCode from './examples/ToastError.tsx?raw';
 
 type ErrorType = 'network' | 'server' | 'notfound' | 'auth';
 
@@ -218,22 +221,8 @@ export default function ErrorStatesDemo(): React.ReactElement {
               {inlineError && <InlineError message={inlineError} />}
             </div>
 
-            <div className="bg-base-300 rounded-lg p-3 mt-4">
-              <pre className="text-xs overflow-x-auto">
-                <code>{`// Inline error component
-function InlineError({ message }) {
-  return (
-    <div className="flex items-center gap-2 
-      text-error text-sm mt-1">
-      <ExclamationIcon size={16} />
-      <span>{message}</span>
-    </div>
-  );
-}
-
-// Usage in form
-{error && <InlineError message={error} />}`}</code>
-              </pre>
+            <div className="mt-4">
+              <CodeSnippet code={inlineErrorCode} language="tsx" title="Inline Error Pattern" />
             </div>
           </div>
         </div>
@@ -260,30 +249,8 @@ function InlineError({ message }) {
               <ToastError message={toastError} onDismiss={() => setToastError(null)} />
             )}
 
-            <div className="bg-base-300 rounded-lg p-3">
-              <pre className="text-xs overflow-x-auto">
-                <code>{`// Toast error component
-function ToastError({ message, onDismiss }) {
-  return (
-    <div className="flex items-center gap-3 
-      bg-error/10 border border-error/30 
-      rounded-lg p-3">
-      <ExclamationIcon className="text-error" />
-      <span className="flex-1">{message}</span>
-      <button onClick={onDismiss}>
-        <XIcon />
-      </button>
-    </div>
-  );
-}
-
-// In component with async operation
-try {
-  await saveData();
-} catch (err) {
-  setToastError(err.message);
-}`}</code>
-              </pre>
+            <div>
+              <CodeSnippet code={toastErrorCode} language="tsx" title="Toast Error Pattern" />
             </div>
           </div>
         </div>

@@ -25,12 +25,15 @@ interface Photo {
   thumbnailUrl: string;
 }
 
-function PhotoGallery() {
+interface PhotoGalleryProps {
+  simulateError?: boolean;
+  simulateEmpty?: boolean;
+}
+
+function PhotoGallery({ simulateError = false, simulateEmpty = false }: PhotoGalleryProps) {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [simulateError] = useState(false);
-  const [simulateEmpty] = useState(false);
 
   const fetchPhotos = useCallback(async () => {
     setLoading(true);
@@ -157,7 +160,11 @@ function PhotoGalleryDemo() {
         </button>
       </div>
       <div className="bg-base-300 rounded-lg p-4">
-        <PhotoGallery key={`${key}-${simulateError}-${simulateEmpty}`} />
+        <PhotoGallery
+          key={`${key}-${simulateError}-${simulateEmpty}`}
+          simulateError={simulateError}
+          simulateEmpty={simulateEmpty}
+        />
       </div>
     </div>
   );

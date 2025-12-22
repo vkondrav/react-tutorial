@@ -11,6 +11,9 @@ import {
   HiOutlineUser,
   HiOutlineCursorClick,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import stateCompositionCode from './examples/StateComposition.tsx?raw';
+import useUsersHookCode from './examples/UseUsersHook.tsx?raw';
 
 type SimulatedState = 'loading' | 'error' | 'empty' | 'data';
 
@@ -196,41 +199,12 @@ export default function StateCompositionDemo(): React.ReactElement {
         {/* Code example */}
         <div className="card bg-base-200 p-4">
           <h4 className="font-semibold mb-3">The Composition Pattern</h4>
-          <div className="bg-base-300 rounded-lg p-3 mb-4">
-            <pre className="text-xs overflow-x-auto">
-              <code>{`function UserList({ 
-  users, loading, error, onRetry 
-}) {
-  // Check states in order:
-  // loading → error → empty → data
-  
-  if (loading) {
-    return <LoadingSkeleton />;
-  }
-
-  if (error) {
-    return (
-      <ErrorState 
-        message={error.message}
-        onRetry={onRetry}
-      />
-    );
-  }
-
-  if (users.length === 0) {
-    return <EmptyState />;
-  }
-
-  // Happy path: render the data
-  return (
-    <ul>
-      {users.map(user => (
-        <UserCard key={user.id} user={user} />
-      ))}
-    </ul>
-  );
-}`}</code>
-            </pre>
+          <div className="mb-4">
+            <CodeSnippet
+              code={stateCompositionCode}
+              language="tsx"
+              title="State Composition Pattern"
+            />
           </div>
 
           <div className="space-y-2 text-sm">
@@ -273,48 +247,7 @@ export default function StateCompositionDemo(): React.ReactElement {
       {/* Advanced tip */}
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">Advanced: Custom Hook Pattern</h4>
-        <div className="bg-base-300 rounded-lg p-3">
-          <pre className="text-xs overflow-x-auto">
-            <code>{`// Extract state management into a custom hook
-function useUsers() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fetchUsers = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const res = await fetch('/api/users');
-      if (!res.ok) throw new Error('Failed');
-      setUsers(await res.json());
-    } catch (err) {
-      setError(err as Error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => { fetchUsers(); }, [fetchUsers]);
-
-  return { users, loading, error, refetch: fetchUsers };
-}
-
-// Clean component usage
-function UsersPage() {
-  const { users, loading, error, refetch } = useUsers();
-  
-  return (
-    <UserList 
-      users={users} 
-      loading={loading} 
-      error={error} 
-      onRetry={refetch}
-    />
-  );
-}`}</code>
-          </pre>
-        </div>
+        <CodeSnippet code={useUsersHookCode} language="tsx" title="Custom Hook Pattern" />
       </div>
     </div>
   );

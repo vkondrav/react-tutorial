@@ -5,6 +5,11 @@
 
 import { useState } from 'react';
 import { HiOutlineCursorClick, HiOutlineLightBulb } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import spinnerCode from './examples/Spinner.tsx?raw';
+import skeletonCode from './examples/Skeleton.tsx?raw';
+import progressCode from './examples/ProgressBar.tsx?raw';
+import shimmerCode from './examples/Shimmer.tsx?raw';
 
 type LoadingPattern = 'spinner' | 'skeleton' | 'progress' | 'shimmer';
 
@@ -240,61 +245,19 @@ export default function LoadingStatesDemo(): React.ReactElement {
           )}
 
           {/* Code example */}
-          <div className="mt-4 bg-base-300 rounded-lg p-3">
-            <pre className="text-xs overflow-x-auto">
-              {selectedPattern === 'spinner' && (
-                <code>{`// Simple spinner
-<div className="loading loading-spinner" />
-
-// Or custom with Tailwind
-<div className="w-8 h-8 border-2 
-  border-base-content/20 
-  border-t-primary rounded-full 
-  animate-spin" />`}</code>
-              )}
-              {selectedPattern === 'skeleton' && (
-                <code>{`// Static skeleton placeholder
-function Skeleton({ className }) {
-  return (
-    <div className={\`bg-base-content/10 
-      rounded \${className}\`} 
-    />
-  );
-}
-
-// Usage
-<Skeleton className="h-4 w-3/4" />
-<Skeleton className="h-12 w-12 rounded-full" />`}</code>
-              )}
-              {selectedPattern === 'progress' && (
-                <code>{`// Progress bar
-function ProgressBar({ progress }) {
-  return (
-    <div className="w-full h-2 bg-base-300 
-      rounded-full overflow-hidden">
-      <div
-        className="h-full bg-primary 
-          transition-all duration-300"
-        style={{ width: \`\${progress}%\` }}
-      />
-    </div>
-  );
-}`}</code>
-              )}
-              {selectedPattern === 'shimmer' && (
-                <code>{`// Shimmer with pulse animation
-function Shimmer({ className }) {
-  return (
-    <div className={\`bg-base-content/10 
-      rounded animate-pulse \${className}\`} 
-    />
-  );
-}
-
-// The animate-pulse class creates
-// a subtle fade in/out effect`}</code>
-              )}
-            </pre>
+          <div className="mt-4">
+            {selectedPattern === 'spinner' && (
+              <CodeSnippet code={spinnerCode} language="tsx" title="Spinner Pattern" />
+            )}
+            {selectedPattern === 'skeleton' && (
+              <CodeSnippet code={skeletonCode} language="tsx" title="Skeleton Pattern" />
+            )}
+            {selectedPattern === 'progress' && (
+              <CodeSnippet code={progressCode} language="tsx" title="Progress Bar Pattern" />
+            )}
+            {selectedPattern === 'shimmer' && (
+              <CodeSnippet code={shimmerCode} language="tsx" title="Shimmer Pattern" />
+            )}
           </div>
         </div>
       </div>
