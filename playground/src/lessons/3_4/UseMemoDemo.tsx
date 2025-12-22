@@ -8,8 +8,13 @@ import { HiOutlineLightBulb, HiOutlineClock } from 'react-icons/hi';
 // Module-level counter for calculations
 let calculationCount = 0;
 
+interface CalculationResult {
+  result: number;
+  duration: number;
+}
+
 // Simulate expensive calculation
-function expensiveCalculation(num) {
+function expensiveCalculation(num: number): CalculationResult {
   const start = performance.now();
   // Artificial delay - in real apps this could be filtering thousands of items
   let result = 0;
@@ -21,7 +26,7 @@ function expensiveCalculation(num) {
   return { result: Math.round(result), duration: Math.round(duration) };
 }
 
-export default function UseMemoDemo() {
+export default function UseMemoDemo(): React.ReactElement {
   const [number, setNumber] = useState(10);
   const [darkMode, setDarkMode] = useState(false);
   const [useMemoEnabled, setUseMemoEnabled] = useState(false);

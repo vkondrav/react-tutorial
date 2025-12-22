@@ -4,7 +4,60 @@
 
 import { HiCheck, HiX, HiOutlineExclamationCircle, HiOutlineLightBulb } from 'react-icons/hi';
 
-export default function WhenToUseDemo() {
+interface DoUseItem {
+  hook: string;
+  scenario: string;
+  example: string;
+}
+
+interface DontUseItem {
+  reason: string;
+  example: string;
+}
+
+export default function WhenToUseDemo(): React.ReactElement {
+  const doUseItems: DoUseItem[] = [
+    {
+      hook: 'useMemo',
+      scenario: 'Filtering/sorting large arrays (1000+ items)',
+      example: 'const filtered = useMemo(() => items.filter(...), [items, filter])',
+    },
+    {
+      hook: 'useMemo',
+      scenario: 'Complex calculations that take >1ms',
+      example: 'const result = useMemo(() => heavyMath(data), [data])',
+    },
+    {
+      hook: 'useCallback',
+      scenario: 'Passing callbacks to React.memo components',
+      example: 'const onClick = useCallback(() => {...}, [deps])',
+    },
+    {
+      hook: 'useCallback',
+      scenario: 'Callbacks used in useEffect dependencies',
+      example: 'useEffect(() => { fn() }, [fn]) // fn should be stable',
+    },
+  ];
+
+  const dontUseItems: DontUseItem[] = [
+    {
+      reason: 'Simple calculations',
+      example: 'useMemo(() => a + b, [a, b]) // Memoization costs more than the calc!',
+    },
+    {
+      reason: 'Primitives or small objects',
+      example: 'useMemo(() => ({ name }), [name]) // Just use the value directly',
+    },
+    {
+      reason: 'Functions not passed to memoized children',
+      example: "useCallback(() => {...}, []) // If child isn't memoized, no benefit",
+    },
+    {
+      reason: 'Premature optimization',
+      example: "// Don't optimize until you measure a real problem!",
+    },
+  ];
+
   return (
     <div className="card bg-base-200 p-5">
       <h3 className="font-semibold mb-4 flex items-center gap-2">
@@ -19,28 +72,7 @@ export default function WhenToUseDemo() {
           DO Use When...
         </div>
         <div className="space-y-2">
-          {[
-            {
-              hook: 'useMemo',
-              scenario: 'Filtering/sorting large arrays (1000+ items)',
-              example: 'const filtered = useMemo(() => items.filter(...), [items, filter])',
-            },
-            {
-              hook: 'useMemo',
-              scenario: 'Complex calculations that take >1ms',
-              example: 'const result = useMemo(() => heavyMath(data), [data])',
-            },
-            {
-              hook: 'useCallback',
-              scenario: 'Passing callbacks to React.memo components',
-              example: 'const onClick = useCallback(() => {...}, [deps])',
-            },
-            {
-              hook: 'useCallback',
-              scenario: 'Callbacks used in useEffect dependencies',
-              example: 'useEffect(() => { fn() }, [fn]) // fn should be stable',
-            },
-          ].map((item, i) => (
+          {doUseItems.map((item, i) => (
             <div key={i} className="bg-success/10 rounded-lg p-3 border border-success/20">
               <div className="flex items-center gap-2 mb-1">
                 <span className="badge badge-success badge-sm">{item.hook}</span>
@@ -59,24 +91,7 @@ export default function WhenToUseDemo() {
           DON'T Use When...
         </div>
         <div className="space-y-2">
-          {[
-            {
-              reason: 'Simple calculations',
-              example: 'useMemo(() => a + b, [a, b]) // Memoization costs more than the calc!',
-            },
-            {
-              reason: 'Primitives or small objects',
-              example: 'useMemo(() => ({ name }), [name]) // Just use the value directly',
-            },
-            {
-              reason: 'Functions not passed to memoized children',
-              example: "useCallback(() => {...}, []) // If child isn't memoized, no benefit",
-            },
-            {
-              reason: 'Premature optimization',
-              example: "// Don't optimize until you measure a real problem!",
-            },
-          ].map((item, i) => (
+          {dontUseItems.map((item, i) => (
             <div key={i} className="bg-error/10 rounded-lg p-3 border border-error/20">
               <div className="text-sm mb-1">{item.reason}</div>
               <code className="text-xs text-base-content/60 block">{item.example}</code>

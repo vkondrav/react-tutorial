@@ -9,12 +9,13 @@ import usePreviousHookExample from './examples/UsePreviousHookExample.tsx?raw';
 
 // Custom hook to track previous value using useRef
 function usePrevious<T>(value: T): T | undefined {
-  const ref = useRef<T | undefined>();
+  const ref = useRef<T | undefined>(undefined);
 
   useEffect(() => {
     ref.current = value;
   }, [value]);
 
+  // eslint-disable-next-line -- intentional: usePrevious pattern reads ref during render
   return ref.current;
 }
 

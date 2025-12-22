@@ -10,13 +10,21 @@ let parentRenderCount = 0;
 let child1RenderCount = 0;
 let child2RenderCount = 0;
 
-export default function RenderCountDemo() {
+interface RegularChildProps {
+  count: number;
+}
+
+interface RegularChild2Props {
+  text: string;
+}
+
+export default function RenderCountDemo(): React.ReactElement {
   const [count, setCount] = useState(0);
   const [text, setText] = useState('');
   const [renderKey, setRenderKey] = useState(0);
 
   // Force re-render to update display
-  const forceUpdate = () => setRenderKey((k) => k + 1);
+  const forceUpdate = (): void => setRenderKey((k) => k + 1);
 
   // Increment parent render count
   parentRenderCount++;
@@ -114,7 +122,7 @@ export default function RenderCountDemo() {
 }
 
 // Regular child - no memoization
-function RegularChild({ count }) {
+function RegularChild({ count }: RegularChildProps): React.ReactElement {
   child1RenderCount++;
 
   return (
@@ -130,7 +138,7 @@ function RegularChild({ count }) {
 }
 
 // Another regular child
-function RegularChild2({ text }) {
+function RegularChild2({ text }: RegularChild2Props): React.ReactElement {
   child2RenderCount++;
 
   return (

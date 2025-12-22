@@ -4,20 +4,27 @@
 
 import { useState, useCallback, memo } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiMinus } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import withoutCallbackExample from './examples/WithoutCallbackExample.tsx?raw';
+import withCallbackExample from './examples/WithCallbackExample.tsx?raw';
 
 // Module-level render counters for buttons
 let incrementRenderCount = 0;
 let decrementRenderCount = 0;
 
-export default function UseCallbackDemo() {
+interface ButtonProps {
+  onClick: () => void;
+}
+
+export default function UseCallbackDemo(): React.ReactElement {
   const [count, setCount] = useState(0);
   const [otherState, setOtherState] = useState(0);
   const [useCallbackEnabled, setUseCallbackEnabled] = useState(false);
   const [, forceUpdate] = useState(0);
 
   // Without useCallback - new function every render
-  const incrementWithout = () => setCount((c) => c + 1);
-  const decrementWithout = () => setCount((c) => c - 1);
+  const incrementWithout = (): void => setCount((c) => c + 1);
+  const decrementWithout = (): void => setCount((c) => c - 1);
 
   // With useCallback - same function reference
   const incrementWith = useCallback(() => setCount((c) => c + 1), []);
@@ -86,26 +93,11 @@ export default function UseCallbackDemo() {
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="card bg-error/10 border border-error/30 p-3">
           <div className="text-xs font-semibold text-error mb-2">Without useCallback</div>
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>
-              {`const increment = () => {
-  setCount(c => c + 1);
-};
-// New function every render!`}
-            </code>
-          </pre>
+          <CodeSnippet code={withoutCallbackExample} language="tsx" showCopy={false} />
         </div>
         <div className="card bg-success/10 border border-success/30 p-3">
           <div className="text-xs font-semibold text-success mb-2">With useCallback</div>
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>
-              {`const increment = useCallback(
-  () => setCount(c => c + 1),
-  []
-);
-// Same function reference`}
-            </code>
-          </pre>
+          <CodeSnippet code={withCallbackExample} language="tsx" showCopy={false} />
         </div>
       </div>
 
@@ -123,7 +115,9 @@ export default function UseCallbackDemo() {
 }
 
 // Memoized decrement button
-const DecrementButton = memo(function DecrementButton({ onClick }) {
+const DecrementButton = memo(function DecrementButton({
+  onClick,
+}: ButtonProps): React.ReactElement {
   decrementRenderCount++;
 
   return (
@@ -143,7 +137,9 @@ const DecrementButton = memo(function DecrementButton({ onClick }) {
 });
 
 // Memoized increment button
-const IncrementButton = memo(function IncrementButton({ onClick }) {
+const IncrementButton = memo(function IncrementButton({
+  onClick,
+}: ButtonProps): React.ReactElement {
   incrementRenderCount++;
 
   return (

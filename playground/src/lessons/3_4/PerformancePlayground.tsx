@@ -5,8 +5,10 @@
 import { useState, useMemo, useCallback, memo } from 'react';
 import { HiOutlineLightBulb, HiOutlineSearch, HiX, HiPlus } from 'react-icons/hi';
 
-export default function PerformancePlayground() {
-  const [activeDemo, setActiveDemo] = useState('filter');
+type DemoTab = 'filter' | 'search' | 'todo';
+
+export default function PerformancePlayground(): React.ReactElement {
+  const [activeDemo, setActiveDemo] = useState<DemoTab>('filter');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -18,9 +20,9 @@ export default function PerformancePlayground() {
       {/* Tab buttons */}
       <div className="flex gap-2 mb-4">
         {[
-          { id: 'filter', label: 'List Filter' },
-          { id: 'search', label: 'Search' },
-          { id: 'todo', label: 'Todo List' },
+          { id: 'filter' as const, label: 'List Filter' },
+          { id: 'search' as const, label: 'Search' },
+          { id: 'todo' as const, label: 'Todo List' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -45,14 +47,23 @@ export default function PerformancePlayground() {
 // ============================================
 // Demo 1: List Filtering with useMemo
 // ============================================
-function ListFilterDemo() {
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  inStock: boolean;
+}
+
+function ListFilterDemo(): React.ReactElement {
   const [filter, setFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name');
   const [count, setCount] = useState(0);
   const [useMemoEnabled, setUseMemoEnabled] = useState(true);
 
   // Generate fake products (deterministic based on index)
-  const products = useMemo(
+  const products = useMemo<Product[]>(
     () =>
       Array.from({ length: 500 }, (_, i) => ({
         id: i,
@@ -167,14 +178,19 @@ function ListFilterDemo() {
 let searchCallCount = 0;
 let searchStatsRenderCount = 0;
 
-function SearchDemo() {
+interface SearchItem {
+  id: number;
+  title: string;
+}
+
+function SearchDemo(): React.ReactElement {
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [useCallbackEnabled, setUseCallbackEnabled] = useState(true);
   const [, forceUpdate] = useState(0);
 
   // Simulate search results
-  const allItems = useMemo(
+  const allItems = useMemo<SearchItem[]>(
     () =>
       Array.from({ length: 100 }, (_, i) => ({
         id: i,
@@ -184,13 +200,13 @@ function SearchDemo() {
   );
 
   // Search function with useCallback
-  const performSearch = useCallback((q) => {
+  const performSearch = useCallback((q: string): void => {
     searchCallCount++;
     setDebouncedQuery(q);
   }, []);
 
   // Without useCallback - new function every render
-  const performSearchNoCallback = (q) => {
+  const performSearchNoCallback = (q: string): void => {
     searchCallCount++;
     setDebouncedQuery(q);
   };
@@ -268,8 +284,13 @@ function SearchDemo() {
 }
 
 // Child component that receives the search function
-// The searchFn prop triggers re-renders when it changes (without useCallback)
-const MemoizedSearchStats = memo(function MemoizedSearchStats({ searchFn }) {
+interface MemoizedSearchStatsProps {
+  searchFn: (q: string) => void;
+}
+
+const MemoizedSearchStats = memo(function MemoizedSearchStats({
+  searchFn,
+}: MemoizedSearchStatsProps): React.ReactElement {
   searchStatsRenderCount++;
 
   // We use searchFn in the comparison - when it changes, this component re-renders
@@ -293,10 +314,16 @@ const MemoizedSearchStats = memo(function MemoizedSearchStats({ searchFn }) {
 // ============================================
 
 // Module-level render counters for todo items
-const todoRenderCounts = new Map();
+const todoRenderCounts = new Map<number, number>();
 
-function TodoDemo() {
-  const [todos, setTodos] = useState([
+interface Todo {
+  id: number;
+  text: string;
+  done: boolean;
+}
+
+function TodoDemo(): React.ReactElement {
+  const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: 'Learn useMemo', done: true },
     { id: 2, text: 'Learn useCallback', done: false },
     { id: 3, text: 'Build something cool', done: false },
@@ -312,26 +339,26 @@ function TodoDemo() {
     setNewTodo('');
   }, [newTodo]);
 
-  const toggleTodoMemo = useCallback((id) => {
+  const toggleTodoMemo = useCallback((id: number) => {
     setTodos((t) => t.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
   }, []);
 
-  const deleteTodoMemo = useCallback((id) => {
+  const deleteTodoMemo = useCallback((id: number) => {
     setTodos((t) => t.filter((todo) => todo.id !== id));
   }, []);
 
   // Non-memoized callbacks
-  const addTodoNoMemo = () => {
+  const addTodoNoMemo = (): void => {
     if (!newTodo.trim()) return;
     setTodos((t) => [...t, { id: Date.now(), text: newTodo, done: false }]);
     setNewTodo('');
   };
 
-  const toggleTodoNoMemo = (id) => {
+  const toggleTodoNoMemo = (id: number): void => {
     setTodos((t) => t.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo)));
   };
 
-  const deleteTodoNoMemo = (id) => {
+  const deleteTodoNoMemo = (id: number): void => {
     setTodos((t) => t.filter((todo) => todo.id !== id));
   };
 
@@ -392,12 +419,19 @@ function TodoDemo() {
 }
 
 // Memoized Todo Item
+interface MemoizedTodoItemProps {
+  todo: Todo;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+  renderCounts: Map<number, number>;
+}
+
 const MemoizedTodoItem = memo(function MemoizedTodoItem({
   todo,
   onToggle,
   onDelete,
   renderCounts,
-}) {
+}: MemoizedTodoItemProps): React.ReactElement {
   // Increment render count for this todo
   const currentCount = (renderCounts.get(todo.id) || 0) + 1;
   renderCounts.set(todo.id, currentCount);

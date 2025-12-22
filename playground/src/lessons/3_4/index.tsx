@@ -10,14 +10,16 @@ import {
   HiOutlineBeaker,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../components';
+import { LessonHeader, Section, TakeawayList, CodeSnippet } from '../components';
 import RenderCountDemo from './RenderCountDemo';
 import UseMemoDemo from './UseMemoDemo';
 import UseCallbackDemo from './UseCallbackDemo';
 import WhenToUseDemo from './WhenToUseDemo';
 import PerformancePlayground from './PerformancePlayground';
+import useMemoExample from './examples/UseMemoExample.tsx?raw';
+import useCallbackExample from './examples/UseCallbackExample.tsx?raw';
 
-export default function Lesson3_4() {
+export default function Lesson3_4(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="3" lesson="4" title="useMemo & useCallback: Performance" />
@@ -77,21 +79,8 @@ export default function Lesson3_4() {
           recalculates when its dependencies change — perfect for expensive operations like
           filtering, sorting, or complex math.
         </p>
-        <div className="card bg-base-300 p-4 mb-4">
-          <pre className="font-mono text-sm overflow-x-auto">
-            <code>
-              <span className="text-secondary">const</span> expensiveResult ={' '}
-              <span className="text-primary">useMemo</span>
-              {'(() => {\n'}
-              {'  '}
-              <span className="text-base-content/60">// Heavy calculation here</span>
-              {'\n'}
-              {'  '}
-              <span className="text-secondary">return</span> computeExpensiveValue(data);{'\n'}
-              {'}'}, [data]);{' '}
-              <span className="text-base-content/60">// Only recalculate when data changes</span>
-            </code>
-          </pre>
+        <div className="mb-4">
+          <CodeSnippet code={useMemoExample} language="tsx" />
         </div>
         <UseMemoDemo />
       </Section>
@@ -110,17 +99,8 @@ export default function Lesson3_4() {
           it, a new function is created on every render — which can cause child components using{' '}
           <code className="text-secondary">React.memo</code> to re-render unnecessarily.
         </p>
-        <div className="card bg-base-300 p-4 mb-4">
-          <pre className="font-mono text-sm overflow-x-auto">
-            <code>
-              <span className="text-secondary">const</span> handleClick ={' '}
-              <span className="text-primary">useCallback</span>
-              {'(() => {\n'}
-              {'  setCount(c => c + 1);\n'}
-              {'}'}, []);{' '}
-              <span className="text-base-content/60">// Same function reference every render</span>
-            </code>
-          </pre>
+        <div className="mb-4">
+          <CodeSnippet code={useCallbackExample} language="tsx" />
         </div>
         <UseCallbackDemo />
       </Section>
