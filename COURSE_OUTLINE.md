@@ -94,30 +94,6 @@ Welcome to your comprehensive React learning journey! This course is designed to
 
 ---
 
-### **Module 8: Best Practices & Patterns**
-*Writing maintainable React code*
-
-| Lesson | Topic | Duration |
-|--------|-------|----------|
-| 8.1 | File & Folder Structure | 15 min |
-| 8.2 | Naming Conventions | 10 min |
-| 8.3 | Performance Optimization | 25 min |
-| 8.4 | Error Boundaries | 20 min |
-| 8.5 | Testing Basics | 30 min |
-
----
-
-### **Module 9: Capstone Project**
-*Put it all together*
-
-| Lesson | Topic | Duration |
-|--------|-------|----------|
-| 9.1 | Project: Task Manager App | 60 min |
-| 9.2 | Adding Features & Polish | 45 min |
-| 9.3 | Code Review & Refactoring | 30 min |
-
----
-
 ## 🎯 Learning Objectives
 
 By the end of this course, you will:
@@ -130,7 +106,6 @@ By the end of this course, you will:
 - ✅ Manage application state effectively
 - ✅ Write performant, maintainable React code
 - ✅ Apply industry best practices
-- ✅ Build a complete application from scratch
 
 ---
 

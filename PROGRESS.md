@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 7: State Management |
-| **Current Lesson** | Lesson 7.4: When to Use External State Libraries |
-| **Next Lesson** | Lesson 8.1: File & Folder Structure |
+| **Current Module** | Tech Debt Cleanup |
+| **Current Lesson** | Refactoring from Lesson 1.1 |
+| **Next Lesson** | N/A (Module 8 & 9 deferred) |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -23,78 +23,75 @@
 | **Existing Lessons** | Lessons 1.1 - 3.4 are still JavaScript (`.jsx`) — will refactor later |
 | **Config** | `tsconfig.json` with `allowJs: true` allows both JS and TS |
 
-### Migration Plan
-- ✅ Lesson 3.5 converted to TypeScript (with typed code samples)
-- ⬜ Lessons 1.1 - 3.4 to be refactored to TypeScript (low priority)
-- ⬜ Shared components (`lessons/components/`) to be converted (when touched)
-
 ---
 
-## Code Display Standards
+## 🔧 Tech Debt Tracker
 
-### CodeSnippet Component
-All code examples and JSON state displays should use the `CodeSnippet` component for consistent syntax highlighting.
+> **Phase: Cleanup** — Refactoring lessons 1.1 through 7.4 to meet current standards.
 
-**Location:** `playground/src/lessons/components/CodeSnippet.tsx`
+### Summary of Standards
 
-**Usage:**
-```tsx
-import { CodeSnippet } from '../components';
+| Standard | Description |
+|----------|-------------|
+| **TypeScript** | All components should be `.tsx` with proper types |
+| **CodeSnippet** | Use `CodeSnippet` component for all code displays |
+| **examples/ folder** | Store code snippets in separate files with `?raw` imports |
+| **react-icons** | Use icons instead of emojis in UI |
+| **daisyUI** | Use daisyUI components and semantic colors |
 
-// For code examples
-<CodeSnippet
-  title="Handler function"
-  language="tsx"
-  code={`const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-};`}
-/>
+### Consolidated Tech Debt by Lesson
 
-// For live state displays (no copy button)
-<CodeSnippet
-  title="Current State"
-  language="json"
-  code={JSON.stringify(state, null, 2)}
-  showCopy={false}
-/>
-```
+| Lesson | TypeScript | CodeSnippet | examples/ folder | Icons | Status |
+|--------|------------|-------------|------------------|-------|--------|
+| 1.1 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 1.2 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 1.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 1.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.1 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.2 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 2.5 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 3.1 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 3.2 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 3.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 3.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 3.5 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 4.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 4.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 4.3 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 4.4 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 5.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 5.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 5.3 | ✅ .tsx | ✅ | ⬜ | ✅ | 🔄 Needs examples/ |
+| 6.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 6.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 6.3 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 6.4 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 6.5 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
+| 7.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
+| 7.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
+| 7.3 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
+| 7.4 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
 
-### Refactoring TODO
-- ✅ Lesson 5.3 - All code snippets use `CodeSnippet`
-- ⬜ Lesson 5.2 - Needs refactoring
-- ⬜ Lesson 5.1 - Needs refactoring
-- ⬜ Lesson 4.x - Needs refactoring
-- ⬜ Lesson 3.x - Needs refactoring
-- ⬜ Earlier lessons - Lower priority (still JavaScript)
+### Shared Components
 
-**P.S.** All code snippets should display **TypeScript** syntax (with proper type annotations like `React.ChangeEvent<HTMLInputElement>`), not plain JavaScript.
+| Component | TypeScript | Status |
+|-----------|------------|--------|
+| `LessonHeader.jsx` | ⬜ .jsx | 🔄 Needs conversion |
+| `Section.jsx` | ⬜ .jsx | 🔄 Needs conversion |
+| `TakeawayList.jsx` | ⬜ .jsx | 🔄 Needs conversion |
+| `CodeBlock.jsx` | ⬜ .jsx | 🔄 Needs conversion |
+| `CodeSnippet.tsx` | ✅ .tsx | ✅ Done |
+| `index.js` | ⬜ .js | 🔄 Needs conversion |
 
-### Code Snippet File Pattern (NEW - from Lesson 6.5)
+### Refactoring Order
 
-**Going forward**, store code examples in separate files using Vite's `?raw` import:
-
-```
-lessons/X_Y/
-├── index.tsx
-├── SomeDemo.tsx
-└── examples/           ← Code snippets as separate .tsx files
-    ├── Example1.tsx    ← Add // @ts-nocheck at top
-    └── Example2.tsx
-```
-
-**Usage:**
-```tsx
-import exampleCode from './examples/Example1.tsx?raw';
-<CodeSnippet code={exampleCode} language="tsx" />
-```
-
-**Benefits:** IDE highlighting, cleaner demo files, auto-strips `// @ts-nocheck` on display.
-
-**Refactoring TODO (separate files pattern):**
-- ✅ Lesson 6.5 - Uses `examples/` folder with `?raw` imports
-- ⬜ Lesson 6.4 - Inline strings (needs refactor)
-- ⬜ Lesson 6.3 - Inline strings (needs refactor)
-- ⬜ All earlier lessons - Inline strings (low priority)
+1. **Shared components** → Convert to TypeScript first (used everywhere)
+2. **Lesson 1.1** → First lesson, set the pattern
+3. **Lessons 1.2 - 3.4** → JavaScript lessons in order
+4. **Lessons 3.5 - 6.4** → Add CodeSnippet + examples/ folder
+5. **Final pass** → Verify all lessons match standards
 
 ---
 
@@ -156,32 +153,19 @@ import exampleCode from './examples/Example1.tsx?raw';
 | 6.4 | Compound Components | ✅ Complete | Compound basics, Context pattern, flexible API design, Tabs/Menu/Select playground |
 | 6.5 | Activity: Preserving Hidden State | ✅ Complete | State preservation problem, CSS hiding approach, React 19 Activity concept, playground |
 
-### Module 7: State Management ⏳ In Progress
+### Module 7: State Management ✅ Complete!
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 7.1 | Lifting State Up | ✅ Complete | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
 | 7.2 | useReducer for Complex State | ✅ Complete | useState vs useReducer, reducer basics, action patterns, todo/cart/form demos |
 | 7.3 | Context + Reducer Pattern | ✅ Complete | Why combine, 6-step setup, separate contexts, custom providers, theme/todo/cart demos |
-| 7.4 | When to Use External State Libraries | 🔄 Current | When built-in is enough, pain points, library overview (Zustand/Redux/Query/Jotai), decision flowchart |
+| 7.4 | When to Use External State Libraries | ✅ Complete | When built-in is enough, pain points, library overview (Zustand/Redux/Query/Jotai), decision flowchart |
 
-### Module 8: Best Practices & Patterns ⬜ Not Started
+### Module 8 & 9: Deferred ⏸️
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 8.1 | File & Folder Structure | ⬜ Pending |
-| 8.2 | Naming Conventions | ⬜ Pending |
-| 8.3 | Performance Optimization | ⬜ Pending |
-| 8.4 | Error Boundaries | ⬜ Pending |
-| 8.5 | Testing Basics | ⬜ Pending |
-
-### Module 9: Capstone Project ⬜ Not Started
-
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 9.1 | Project: Task Manager App | ⬜ Pending |
-| 9.2 | Adding Features & Polish | ⬜ Pending |
-| 9.3 | Code Review & Refactoring | ⬜ Pending |
+> **Note (Dec 10, 2025):** Modules 8 (Best Practices) and 9 (Capstone) are being deferred for now. 
+> The core React concepts are complete through Module 7. Focusing on tech debt cleanup first.
 
 ---
 
