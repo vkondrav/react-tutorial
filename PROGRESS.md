@@ -64,6 +64,8 @@
 2. Add stories for each interactive demo component
 3. Add play functions for components with user interactions
 4. Ensure all stories render correctly with Tailwind/daisyUI styling
+5. run npm run test to see that all tests pass.
+6. update the table below with status
 
 ### Consolidated Tech Debt by Lesson
 
@@ -71,7 +73,7 @@
 |--------|------------|-------------|-----------|-------|----------------|--------------------|
 | 1.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 1.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 1.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 1.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 1.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 2.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 2.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |

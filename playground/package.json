@@ -13,7 +13,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest --project=storybook --run",
-    "test:watch": "vitest --project=storybook --watch"
+    "test:watch": "vitest --project=storybook --watch",
+    "test:lesson": "f() { vitest --project=storybook --run src/stories/lessons/$1; }; f"
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",
