@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 2: Core Concepts |
-| **Current Lesson** | Lesson 2.5: Lists & Keys |
-| **Next Lesson** | Lesson 3.1: useEffect |
+| **Current Module** | Module 3: Hooks Deep Dive |
+| **Current Lesson** | Lesson 3.1: useEffect |
+| **Next Lesson** | Lesson 3.2: useContext |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -34,11 +34,11 @@
 | 2.4 | Conditional Rendering | ✅ Complete | Ternary, &&, early returns, pattern comparison, playground |
 | 2.5 | Lists & Keys | ✅ Complete | .map() basics, keys explained, key mistakes demo, filter/sort/transform, todo playground |
 
-### Module 3: Hooks Deep Dive ⬜ Not Started
+### Module 3: Hooks Deep Dive ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 3.1 | useEffect: Side Effects & Lifecycle | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 3.1 | useEffect: Side Effects & Lifecycle | ✅ Complete | Effect basics, dependency array, cleanup, timing, playground |
 | 3.2 | useContext: Sharing State | ⬜ Pending |
 | 3.3 | useRef: DOM Access & Persistence | ⬜ Pending |
 | 3.4 | useMemo & useCallback: Performance | ⬜ Pending |
@@ -286,6 +286,25 @@
 
 #### Module 2 Complete! 🎉
 All 5 lessons in Module 2: Core Concepts are now implemented.
+
+---
+
+### Session 5 - December 9, 2025
+**Goal:** Implement Lesson 3.1: useEffect
+
+#### Completed:
+- ✅ **Implemented Lesson 3.1: useEffect - Side Effects & Lifecycle**
+  - `index.jsx` - Main lesson with 6 sections
+  - `EffectBasicsDemo.jsx` - Introduction to side effects, document title example with logs
+  - `DependencyArrayDemo.jsx` - 3 tabs comparing [], [deps], and no array
+  - `CleanupDemo.jsx` - Timer and keyboard listener cleanup examples
+  - `EffectTimingDemo.jsx` - Lifecycle visualization with event log
+  - `EffectPlayground.jsx` - 4 interactive demos: document title, stopwatch, window resize, localStorage
+  - Updated `config.json` to add lesson 3.1 and mark 2.5 as complete
+  - Updated `App.jsx` to import and register Lesson3_1 component
+
+#### Module 3 Started! 🎯
+Beginning the Hooks Deep Dive module.
 
 ## Concepts Mastered
 
