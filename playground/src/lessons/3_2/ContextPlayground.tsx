@@ -16,38 +16,85 @@ import {
   HiOutlineChartBar,
   HiOutlineChat,
 } from 'react-icons/hi';
+import { IconType } from 'react-icons';
+
+// =====================
+// Types
+// =====================
+
+type Theme = 'dark' | 'light';
+
+interface User {
+  name: string;
+  email: string;
+}
+
+interface Notification {
+  id: number;
+  message: string;
+}
+
+interface ThemeContextValue {
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+interface UserContextValue {
+  user: User | null;
+  login: () => void;
+  logout: () => void;
+}
+
+interface NotificationContextValue {
+  notifications: Notification[];
+  addNotification: (notification: Notification) => void;
+  clearNotifications: () => void;
+}
+
+interface NavItemProps {
+  icon: IconType;
+  label: string;
+  active?: boolean;
+}
+
+interface StatsCardProps {
+  title: string;
+  value: string;
+  change: string;
+  positive: boolean;
+}
 
 // =====================
 // Context Definitions
 // =====================
 
-const ThemeContext = createContext({
+const ThemeContext = createContext<ThemeContextValue>({
   theme: 'dark',
   toggleTheme: () => {},
 });
 
-const UserContext = createContext({
+const UserContext = createContext<UserContextValue>({
   user: null,
   login: () => {},
   logout: () => {},
 });
 
-const NotificationContext = createContext({
+const NotificationContext = createContext<NotificationContextValue>({
   notifications: [],
   addNotification: () => {},
   clearNotifications: () => {},
 });
 
 // Custom hooks for cleaner consumption
-function useTheme() {
+function useTheme(): ThemeContextValue {
   return useContext(ThemeContext);
 }
 
-function useUser() {
+function useUser(): UserContextValue {
   return useContext(UserContext);
 }
 
-function useNotifications() {
+function useNotifications(): NotificationContextValue {
   return useContext(NotificationContext);
 }
 
@@ -55,7 +102,7 @@ function useNotifications() {
 // UI Components
 // =====================
 
-function NavItem({ icon: Icon, label, active = false }) {
+function NavItem({ icon: Icon, label, active = false }: NavItemProps): React.ReactElement {
   const { theme } = useTheme();
 
   return (
@@ -76,7 +123,7 @@ function NavItem({ icon: Icon, label, active = false }) {
   );
 }
 
-function Sidebar() {
+function Sidebar(): React.ReactElement {
   const { theme } = useTheme();
   const { user } = useUser();
 
@@ -104,7 +151,7 @@ function Sidebar() {
   );
 }
 
-function Header() {
+function Header(): React.ReactElement {
   const { theme, toggleTheme } = useTheme();
   const { user, logout, login } = useUser();
   const { notifications, clearNotifications } = useNotifications();
@@ -184,7 +231,7 @@ function Header() {
   );
 }
 
-function StatsCard({ title, value, change, positive }) {
+function StatsCard({ title, value, change, positive }: StatsCardProps): React.ReactElement {
   const { theme } = useTheme();
 
   return (
@@ -202,7 +249,7 @@ function StatsCard({ title, value, change, positive }) {
   );
 }
 
-function MainContent() {
+function MainContent(): React.ReactElement {
   const { theme } = useTheme();
   const { user } = useUser();
   const { addNotification } = useNotifications();
@@ -246,20 +293,20 @@ function MainContent() {
 // Main Playground
 // =====================
 
-export default function ContextPlayground() {
+export default function ContextPlayground(): React.ReactElement {
   // Theme state
-  const [theme, setTheme] = useState('dark');
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+  const [theme, setTheme] = useState<Theme>('dark');
+  const toggleTheme = (): void => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   // User state
-  const [user, setUser] = useState(null);
-  const login = () => setUser({ name: 'Alex', email: 'alex@example.com' });
-  const logout = () => setUser(null);
+  const [user, setUser] = useState<User | null>(null);
+  const login = (): void => setUser({ name: 'Alex', email: 'alex@example.com' });
+  const logout = (): void => setUser(null);
 
   // Notification state
-  const [notifications, setNotifications] = useState([]);
-  const addNotification = (n) => setNotifications((prev) => [...prev, n]);
-  const clearNotifications = () => setNotifications([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const addNotification = (n: Notification): void => setNotifications((prev) => [...prev, n]);
+  const clearNotifications = (): void => setNotifications([]);
 
   return (
     <div className="card bg-base-200 p-5">

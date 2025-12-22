@@ -11,12 +11,22 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import createContextExample from './examples/CreateContextExample.tsx?raw';
+import providerExample from './examples/ProviderExample.tsx?raw';
+import useContextExample from './examples/UseContextExample.tsx?raw';
+
+// Types
+interface User {
+  name: string;
+  role: string;
+}
 
 // Step 1: CREATE the context
-const UserContext = createContext(null);
+const UserContext = createContext<User | null>(null);
 
 // Components that consume context
-function DeepComponent() {
+function DeepComponent(): React.ReactElement {
   // Step 3: CONSUME the context
   const user = useContext(UserContext);
 
@@ -39,7 +49,7 @@ function DeepComponent() {
   );
 }
 
-function MiddleComponent() {
+function MiddleComponent(): React.ReactElement {
   return (
     <div className="border border-base-content/20 rounded-lg p-3 ml-4 bg-base-300/30">
       <div className="text-xs text-base-content/60 font-semibold mb-2">
@@ -50,7 +60,7 @@ function MiddleComponent() {
   );
 }
 
-function OuterComponent() {
+function OuterComponent(): React.ReactElement {
   return (
     <div className="border border-base-content/20 rounded-lg p-3 bg-base-300/30">
       <div className="text-xs text-base-content/60 font-semibold mb-2">
@@ -61,9 +71,9 @@ function OuterComponent() {
   );
 }
 
-export default function ContextBasicsDemo() {
+export default function ContextBasicsDemo(): React.ReactElement {
   const [showCode, setShowCode] = useState(false);
-  const [user] = useState({ name: 'Alex Rivera', role: 'Admin' });
+  const [user] = useState<User>({ name: 'Alex Rivera', role: 'Admin' });
 
   return (
     <div className="card bg-base-200 p-5">
@@ -112,94 +122,30 @@ export default function ContextBasicsDemo() {
       {showCode && (
         <div className="space-y-3">
           {/* Step 1 */}
-          <div className="p-3 rounded-lg bg-base-300">
+          <div>
             <div className="text-xs font-semibold text-primary mb-2 flex items-center gap-2">
               <span className="badge badge-primary badge-sm">Step 1</span>
               Create the Context
             </div>
-            <pre className="font-mono text-xs overflow-x-auto">
-              <code>
-                <span className="text-secondary">import</span>
-                {' { createContext } '}
-                <span className="text-secondary">from</span>{' '}
-                <span className="text-success">'react'</span>;{'\n\n'}
-                <span className="text-base-content/60">
-                  // Create with a default value (or null)
-                </span>
-                {'\n'}
-                <span className="text-secondary">const</span>
-                {' UserContext = '}
-                <span className="text-primary">createContext</span>
-                {'('}
-                <span className="text-warning">null</span>
-                {');'}
-              </code>
-            </pre>
+            <CodeSnippet code={createContextExample} language="tsx" />
           </div>
 
           {/* Step 2 */}
-          <div className="p-3 rounded-lg bg-base-300">
+          <div>
             <div className="text-xs font-semibold text-secondary mb-2 flex items-center gap-2">
               <span className="badge badge-secondary badge-sm">Step 2</span>
               Wrap with Provider
             </div>
-            <pre className="font-mono text-xs overflow-x-auto">
-              <code>
-                <span className="text-base-content/60">// In your parent component</span>
-                {'\n'}
-                <span className="text-secondary">return</span>
-                {' ('}
-                {'\n'}
-                {'  <'}
-                <span className="text-accent">UserContext.Provider</span>{' '}
-                <span className="text-warning">value</span>
-                {'={user}>'}
-                {'\n'}
-                {'    <'}
-                <span className="text-accent">App</span>
-                {' />'}
-                {'\n'}
-                {'  </'}
-                <span className="text-accent">UserContext.Provider</span>
-                {'>'}
-                {'\n'}
-                {');'}
-              </code>
-            </pre>
+            <CodeSnippet code={providerExample} language="tsx" />
           </div>
 
           {/* Step 3 */}
-          <div className="p-3 rounded-lg bg-base-300">
+          <div>
             <div className="text-xs font-semibold text-success mb-2 flex items-center gap-2">
               <span className="badge badge-success badge-sm">Step 3</span>
               Consume with useContext
             </div>
-            <pre className="font-mono text-xs overflow-x-auto">
-              <code>
-                <span className="text-secondary">import</span>
-                {' { useContext } '}
-                <span className="text-secondary">from</span>{' '}
-                <span className="text-success">'react'</span>;{'\n\n'}
-                <span className="text-secondary">function</span>{' '}
-                <span className="text-primary">DeepComponent</span>
-                {'() {'}
-                {'\n'}
-                {'  '}
-                <span className="text-base-content/60">// Access context value anywhere!</span>
-                {'\n'}
-                {'  '}
-                <span className="text-secondary">const</span>
-                {' user = '}
-                <span className="text-primary">useContext</span>
-                {'(UserContext);'}
-                {'\n\n'}
-                {'  '}
-                <span className="text-secondary">return</span>
-                {' <div>{user.name}</div>;'}
-                {'\n'}
-                {'}'}
-              </code>
-            </pre>
+            <CodeSnippet code={useContextExample} language="tsx" />
           </div>
         </div>
       )}

@@ -5,7 +5,6 @@
 import {
   HiOutlineLightningBolt,
   HiOutlineCog,
-  HiOutlineRefresh,
   HiOutlineTrash,
   HiOutlineClock,
   HiOutlineBeaker,

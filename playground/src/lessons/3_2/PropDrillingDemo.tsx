@@ -4,11 +4,38 @@
 
 import { useState } from 'react';
 import { HiOutlineArrowDown, HiOutlineLightBulb, HiUser } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import propDrillingExample from './examples/PropDrillingExample.tsx?raw';
 
 // This demo shows why prop drilling is problematic
 // We pass `user` through 4 levels just to display it
 
-function App({ user, onLogout }) {
+interface User {
+  name: string;
+  email: string;
+}
+
+interface AppProps {
+  user: User;
+  onLogout: () => void;
+}
+
+interface LayoutProps {
+  user: User;
+  onLogout: () => void;
+}
+
+interface SidebarProps {
+  user: User;
+  onLogout: () => void;
+}
+
+interface UserProfileProps {
+  user: User;
+  onLogout: () => void;
+}
+
+function App({ user, onLogout }: AppProps): React.ReactElement {
   return (
     <div className="border border-primary/30 rounded-lg p-3 bg-base-300/50">
       <div className="text-xs text-primary font-semibold mb-2 flex items-center gap-1">
@@ -20,7 +47,7 @@ function App({ user, onLogout }) {
   );
 }
 
-function Layout({ user, onLogout }) {
+function Layout({ user, onLogout }: LayoutProps): React.ReactElement {
   return (
     <div className="border border-secondary/30 rounded-lg p-3 ml-4 bg-base-300/50">
       <div className="text-xs text-secondary font-semibold mb-2 flex items-center gap-1">
@@ -33,7 +60,7 @@ function Layout({ user, onLogout }) {
   );
 }
 
-function Sidebar({ user, onLogout }) {
+function Sidebar({ user, onLogout }: SidebarProps): React.ReactElement {
   return (
     <div className="border border-accent/30 rounded-lg p-3 ml-4 bg-base-300/50">
       <div className="text-xs text-accent font-semibold mb-2 flex items-center gap-1">
@@ -46,7 +73,7 @@ function Sidebar({ user, onLogout }) {
   );
 }
 
-function UserProfile({ user, onLogout }) {
+function UserProfile({ user, onLogout }: UserProfileProps): React.ReactElement {
   return (
     <div className="border border-success/30 rounded-lg p-3 ml-4 bg-base-300/50">
       <div className="text-xs text-success font-semibold mb-2 flex items-center gap-1">
@@ -69,11 +96,11 @@ function UserProfile({ user, onLogout }) {
   );
 }
 
-export default function PropDrillingDemo() {
-  const [user] = useState({ name: 'Sarah Chen', email: 'sarah@example.com' });
+export default function PropDrillingDemo(): React.ReactElement {
+  const [user] = useState<User>({ name: 'Sarah Chen', email: 'sarah@example.com' });
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     setIsLoggedIn(false);
     setTimeout(() => setIsLoggedIn(true), 1500);
   };
@@ -110,29 +137,12 @@ export default function PropDrillingDemo() {
       </div>
 
       {/* Code snippet showing the repetition */}
-      <div className="mt-4 p-3 rounded-lg bg-base-300 font-mono text-xs overflow-x-auto">
-        <div className="text-base-content/60 mb-2">// Every component in the chain:</div>
-        <div>
-          <span className="text-secondary">function</span>{' '}
-          <span className="text-primary">Layout</span>
-          <span className="text-base-content/70">{'({ '}</span>
-          <span className="text-warning">user, onLogout</span>
-          <span className="text-base-content/70">{' }) {'}</span>
-        </div>
-        <div className="pl-4">
-          <span className="text-secondary">return</span>{' '}
-          <span className="text-base-content/70">{'<'}</span>
-          <span className="text-accent">Sidebar</span> <span className="text-warning">user</span>
-          <span className="text-base-content/70">
-            ={'{'}user{'}'}
-          </span>{' '}
-          <span className="text-warning">onLogout</span>
-          <span className="text-base-content/70">
-            ={'{'}onLogout{'}'}
-          </span>
-          <span className="text-base-content/70">{' />'}</span>
-        </div>
-        <div className="text-base-content/70">{'}'}</div>
+      <div className="mt-4">
+        <CodeSnippet
+          code={propDrillingExample}
+          language="tsx"
+          title="Every component in the chain"
+        />
       </div>
     </div>
   );

@@ -3,12 +3,7 @@
 // ============================================
 
 import { useRef, useState, useEffect } from 'react';
-import {
-  HiOutlineLightBulb,
-  HiOutlineCursorClick,
-  HiOutlineArrowDown,
-  HiOutlinePhotograph,
-} from 'react-icons/hi';
+import { HiOutlineCursorClick, HiOutlinePhotograph } from 'react-icons/hi';
 
 export default function DomAccessDemo() {
   const [activeDemo, setActiveDemo] = useState('focus');

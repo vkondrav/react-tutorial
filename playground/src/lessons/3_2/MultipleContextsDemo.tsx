@@ -11,15 +11,31 @@ import {
   HiOutlineLogin,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import multipleContextsExample from './examples/MultipleContextsExample.tsx?raw';
+
+// Types
+type Theme = 'light' | 'dark';
+
+interface User {
+  name: string;
+  role: string;
+}
+
+interface AuthContextValue {
+  user: User | null;
+  login: () => void;
+  logout: () => void;
+}
 
 // Theme Context
-const ThemeContext = createContext('light');
+const ThemeContext = createContext<Theme>('light');
 
 // Auth Context
-const AuthContext = createContext(null);
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 // Consumer components
-function Header() {
+function Header(): React.ReactElement {
   const theme = useContext(ThemeContext);
   const auth = useContext(AuthContext);
 
@@ -38,7 +54,7 @@ function Header() {
         ) : (
           <HiOutlineSun size={16} className="text-orange-400" />
         )}
-        {auth.user ? (
+        {auth?.user ? (
           <span className="text-xs px-2 py-1 rounded bg-success/20 text-success">
             {auth.user.name}
           </span>
@@ -50,7 +66,7 @@ function Header() {
   );
 }
 
-function Sidebar() {
+function Sidebar(): React.ReactElement {
   const theme = useContext(ThemeContext);
   const auth = useContext(AuthContext);
 
@@ -71,7 +87,7 @@ function Sidebar() {
         >
           Home
         </div>
-        {auth.user && (
+        {auth?.user && (
           <div
             className={`text-xs p-1 rounded ${
               theme === 'dark' ? 'hover:bg-slate-700' : 'hover:bg-gray-200'
@@ -92,7 +108,7 @@ function Sidebar() {
   );
 }
 
-function MainContent() {
+function MainContent(): React.ReactElement {
   const theme = useContext(ThemeContext);
   const auth = useContext(AuthContext);
 
@@ -103,7 +119,7 @@ function MainContent() {
       }`}
     >
       <div className="text-xs text-base-content/50 mb-2">Main Content</div>
-      {auth.user ? (
+      {auth?.user ? (
         <div>
           <p className="text-sm mb-2">Welcome back, {auth.user.name}!</p>
           <button onClick={auth.logout} className="btn btn-xs btn-error gap-1">
@@ -114,7 +130,7 @@ function MainContent() {
       ) : (
         <div>
           <p className="text-sm mb-2">Please log in to continue</p>
-          <button onClick={auth.login} className="btn btn-xs btn-primary gap-1">
+          <button onClick={auth?.login} className="btn btn-xs btn-primary gap-1">
             <HiOutlineLogin size={12} />
             Login
           </button>
@@ -124,7 +140,7 @@ function MainContent() {
   );
 }
 
-function MiniApp() {
+function MiniApp(): React.ReactElement {
   return (
     <div className="rounded-lg overflow-hidden border border-base-content/20">
       <Header />
@@ -136,11 +152,11 @@ function MiniApp() {
   );
 }
 
-export default function MultipleContextsDemo() {
-  const [theme, setTheme] = useState('light');
-  const [user, setUser] = useState(null);
+export default function MultipleContextsDemo(): React.ReactElement {
+  const [theme, setTheme] = useState<Theme>('light');
+  const [user, setUser] = useState<User | null>(null);
 
-  const authValue = {
+  const authValue: AuthContextValue = {
     user,
     login: () => setUser({ name: 'Jordan', role: 'User' }),
     logout: () => setUser(null),
@@ -204,36 +220,9 @@ export default function MultipleContextsDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="p-3 rounded-lg bg-base-300">
+      <div>
         <div className="text-xs font-semibold mb-2">How Components Use Both:</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">function</span>{' '}
-            <span className="text-primary">Header</span>
-            {'() {'}
-            {'\n'}
-            {'  '}
-            <span className="text-secondary">const</span>
-            {' theme = '}
-            <span className="text-primary">useContext</span>
-            {'(ThemeContext);'}
-            {'  '}
-            <span className="text-base-content/60">// "dark" or "light"</span>
-            {'\n'}
-            {'  '}
-            <span className="text-secondary">const</span>
-            {' auth  = '}
-            <span className="text-primary">useContext</span>
-            {'(AuthContext);'}
-            {'   '}
-            <span className="text-base-content/60">// {'{ user, login, logout }'}</span>
-            {'\n'}
-            {'  '}
-            <span className="text-base-content/60">// ...</span>
-            {'\n'}
-            {'}'}
-          </code>
-        </pre>
+        <CodeSnippet code={multipleContextsExample} language="tsx" />
       </div>
     </div>
   );

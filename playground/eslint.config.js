@@ -39,7 +39,6 @@ export default defineConfig([
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
-          varsIgnorePattern: '^[A-Z_]',
           argsIgnorePattern: '^_',
           ignoreRestSiblings: true,
         },
