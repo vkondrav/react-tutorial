@@ -1,11 +1,15 @@
+// ============================================
+// JSXPlayground - Interactive JSX Experiment
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
 
-export default function JSXPlayground() {
-  const [firstName, setFirstName] = useState('Sarah');
-  const [lastName, setLastName] = useState('Chen');
-  const [score, setScore] = useState(85);
-  const [isOnline, setIsOnline] = useState(true);
+export default function JSXPlayground(): React.ReactElement {
+  const [firstName, setFirstName] = useState<string>('Sarah');
+  const [lastName, setLastName] = useState<string>('Chen');
+  const [score, setScore] = useState<number>(85);
+  const [isOnline, setIsOnline] = useState<boolean>(true);
 
   const grade = score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : 'D';
   const gradeColorClasses =
@@ -19,12 +23,13 @@ export default function JSXPlayground() {
 
   return (
     <div className="grid grid-cols-2 gap-6">
+      {/* Input Controls */}
       <div className="flex flex-col gap-4">
         <div>
           <label className="block mb-1 text-base-content/70 text-xs">firstName</label>
           <input
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -32,7 +37,7 @@ export default function JSXPlayground() {
           <label className="block mb-1 text-base-content/70 text-xs">lastName</label>
           <input
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)}
             className="input input-bordered w-full input-sm"
           />
         </div>
@@ -43,7 +48,9 @@ export default function JSXPlayground() {
             min="0"
             max="100"
             value={score}
-            onChange={(e) => setScore(parseInt(e.target.value))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setScore(parseInt(e.target.value))
+            }
             className="range range-primary w-full"
           />
         </div>
@@ -51,13 +58,14 @@ export default function JSXPlayground() {
           <input
             type="checkbox"
             checked={isOnline}
-            onChange={(e) => setIsOnline(e.target.checked)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIsOnline(e.target.checked)}
             className="checkbox checkbox-primary checkbox-sm"
           />
           isOnline
         </label>
       </div>
 
+      {/* Live Output */}
       <div className="card bg-base-200 p-5 border border-base-300">
         <div className="text-base-content/50 text-xs mb-4">Live Output:</div>
         <div className="p-4 bg-base-300 rounded-lg">

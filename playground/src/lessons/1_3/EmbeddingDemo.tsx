@@ -1,11 +1,29 @@
+// ============================================
+// EmbeddingDemo - Embedding JavaScript in JSX
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
-export default function EmbeddingDemo() {
-  const [name, setName] = useState('React Developer');
-  const [age, setAge] = useState(25);
+// ============================================
+// Types
+// ============================================
 
-  const expressions = [
+interface Expression {
+  label: string;
+  code: string;
+  result: string | number;
+}
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function EmbeddingDemo(): React.ReactElement {
+  const [name, setName] = useState<string>('React Developer');
+  const [age, setAge] = useState<number>(25);
+
+  const expressions: Expression[] = [
     { label: 'Variable', code: '{name}', result: name },
     { label: 'Math', code: '{age + 1}', result: age + 1 },
     { label: 'Method', code: '{name.toUpperCase()}', result: name.toUpperCase() },
@@ -19,13 +37,14 @@ export default function EmbeddingDemo() {
 
   return (
     <div>
+      {/* Input Controls */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
           <label className="block mb-2 text-base-content/70 text-sm">name =</label>
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
             className="input input-bordered w-full"
           />
         </div>
@@ -34,12 +53,15 @@ export default function EmbeddingDemo() {
           <input
             type="number"
             value={age}
-            onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setAge(parseInt(e.target.value) || 0)
+            }
             className="input input-bordered w-full"
           />
         </div>
       </div>
 
+      {/* Expression Cards */}
       <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
         {expressions.map((expr, i) => (
           <div key={i} className="card bg-base-200 p-4 border border-base-300">

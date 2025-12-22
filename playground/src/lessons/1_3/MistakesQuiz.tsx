@@ -1,35 +1,58 @@
+// ============================================
+// MistakesQuiz - Common JSX Mistakes
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineExclamationCircle, HiCheck, HiOutlineArrowRight } from 'react-icons/hi';
 
-export default function MistakesQuiz() {
-  const [answers, setAnswers] = useState({});
+// ============================================
+// Types
+// ============================================
 
-  const questions = [
-    {
-      id: 1,
-      code: '<div class="container">',
-      error: 'Using "class" instead of "className"',
-      fix: '<div className="container">',
-    },
-    {
-      id: 2,
-      code: '<p>Hello, name</p>',
-      error: 'Forgot curly braces around variable',
-      fix: '<p>Hello, {name}</p>',
-    },
-    {
-      id: 3,
-      code: '<img src="photo.jpg">',
-      error: 'Tag not closed',
-      fix: '<img src="photo.jpg" />',
-    },
-    {
-      id: 4,
-      code: '<button onclick={handleClick}>',
-      error: 'Lowercase event handler (should be camelCase)',
-      fix: '<button onClick={handleClick}>',
-    },
-  ];
+interface Question {
+  id: number;
+  code: string;
+  error: string;
+  fix: string;
+}
+
+// ============================================
+// Constants
+// ============================================
+
+const questions: Question[] = [
+  {
+    id: 1,
+    code: '<div class="container">',
+    error: 'Using "class" instead of "className"',
+    fix: '<div className="container">',
+  },
+  {
+    id: 2,
+    code: '<p>Hello, name</p>',
+    error: 'Forgot curly braces around variable',
+    fix: '<p>Hello, {name}</p>',
+  },
+  {
+    id: 3,
+    code: '<img src="photo.jpg">',
+    error: 'Tag not closed',
+    fix: '<img src="photo.jpg" />',
+  },
+  {
+    id: 4,
+    code: '<button onclick={handleClick}>',
+    error: 'Lowercase event handler (should be camelCase)',
+    fix: '<button onClick={handleClick}>',
+  },
+];
+
+// ============================================
+// Main Component
+// ============================================
+
+export default function MistakesQuiz(): React.ReactElement {
+  const [answers, setAnswers] = useState<Record<number, boolean>>({});
 
   return (
     <div className="flex flex-col gap-3">
