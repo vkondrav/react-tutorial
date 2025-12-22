@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 3: Hooks Deep Dive |
-| **Current Lesson** | Lesson 3.2: useContext |
-| **Next Lesson** | Lesson 3.3: useRef |
+| **Current Lesson** | Lesson 3.3: useRef |
+| **Next Lesson** | Lesson 3.4: useMemo & useCallback |
 | **Dev Server** | Running at http://localhost:5173 |
 
 ---
@@ -40,7 +40,7 @@
 |--------|-------|--------|-------|
 | 3.1 | useEffect: Side Effects & Lifecycle | ✅ Complete | Effect basics, dependency array, cleanup, timing, playground |
 | 3.2 | useContext: Sharing State | ✅ Complete | Prop drilling, context basics, context + state, multiple contexts, playground |
-| 3.3 | useRef: DOM Access & Persistence | ⬜ Pending |
+| 3.3 | useRef: DOM Access & Persistence | ✅ Complete | Ref basics, DOM access, persistent values, previous values, playground |
 | 3.4 | useMemo & useCallback: Performance | ⬜ Pending |
 | 3.5 | Custom Hooks: Reusable Logic | ⬜ Pending |
 
@@ -321,6 +321,22 @@ Beginning the Hooks Deep Dive module.
   - `ContextPlayground.jsx` - Full dashboard with Theme, User, and Notification contexts
   - Updated `config.json` to add lesson 3.2 and mark 3.1 as complete
   - Updated `App.jsx` to import and register Lesson3_2 component
+
+---
+
+### Session 7 - December 9, 2025
+**Goal:** Implement Lesson 3.3: useRef
+
+#### Completed:
+- ✅ **Implemented Lesson 3.3: useRef - DOM Access & Persistence**
+  - `index.jsx` - Main lesson with 6 sections
+  - `RefBasicsDemo.jsx` - useState vs useRef comparison with render counter
+  - `DomAccessDemo.jsx` - 3 tabs: Focus input, Scroll to element, Measure dimensions
+  - `PersistentValueDemo.jsx` - Timer demo storing interval ID in ref
+  - `PreviousValueDemo.jsx` - Custom usePrevious hook for tracking previous values
+  - `RefPlayground.jsx` - 4 demos: Auto-focus search (⌘K), Click outside, Video player, Render counter
+  - Updated `config.json` to add lesson 3.3 and mark 3.2 as complete
+  - Updated `App.jsx` to import and register Lesson3_3 component
 
 ## Concepts Mastered
 
