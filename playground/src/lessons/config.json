@@ -32,7 +32,8 @@
       "title": "Activity: Preserving Hidden State",
       "status": "complete"
     },
-    { "id": "7.1", "module": 7, "title": "Lifting State Up", "status": "current" }
+    { "id": "7.1", "module": 7, "title": "Lifting State Up", "status": "complete" },
+    { "id": "7.2", "module": 7, "title": "useReducer for Complex State", "status": "current" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },

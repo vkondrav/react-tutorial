@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 7: State Management |
-| **Current Lesson** | Lesson 7.1: Lifting State Up |
-| **Next Lesson** | Lesson 7.2: useReducer for Complex State |
+| **Current Lesson** | Lesson 7.2: useReducer for Complex State |
+| **Next Lesson** | Lesson 7.3: Context + Reducer Pattern |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -160,8 +160,8 @@ import exampleCode from './examples/Example1.tsx?raw';
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
-| 7.1 | Lifting State Up | 🔄 Current | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
-| 7.2 | useReducer for Complex State | ⬜ Pending | |
+| 7.1 | Lifting State Up | ✅ Complete | Why lift state, lifting pattern, guidelines, shopping cart/wizard/converter playground |
+| 7.2 | useReducer for Complex State | 🔄 Current | useState vs useReducer, reducer basics, action patterns, todo/cart/form demos |
 | 7.3 | Context + Reducer Pattern | ⬜ Pending | |
 | 7.4 | When to Use External State Libraries | ⬜ Pending | |
 
@@ -665,6 +665,22 @@ Beginning the Component Patterns module.
 #### Module 7 Started! 🎯
 Beginning the State Management module.
 
+---
+
+### Session 22 - December 10, 2025
+**Goal:** Implement Lesson 7.2: useReducer for Complex State
+
+#### Completed:
+- ✅ **Implemented Lesson 7.2: useReducer for Complex State**
+  - `index.tsx` - Main lesson with 5 sections covering useReducer fundamentals
+  - `WhyReducerDemo.tsx` - Side-by-side comparison of useState vs useReducer with undo/redo counter
+  - `ReducerBasicsDemo.tsx` - Interactive counter with action log, anatomy breakdown, key concepts visual
+  - `ActionPatternsDemo.tsx` - Action patterns (simple, payload, TypeScript union), type-safe form example
+  - `ReducerPlayground.tsx` - 3 interactive demos: Todo list, Shopping cart, Multi-step form
+  - `examples/` folder with code snippets using `?raw` import pattern
+  - Updated `config.json` to mark 7.1 complete and add 7.2 as current
+  - Updated `App.jsx` to import and register Lesson7_2 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -739,7 +755,11 @@ Beginning the State Management module.
 - [x] Single source of truth pattern
 - [x] Controlled children pattern (props down, callbacks up)
 - [x] When to lift vs keep local vs use context
-- [ ] useReducer for complex state - next
+- [x] useReducer hook for complex state
+- [x] Reducer pattern: (state, action) => newState
+- [x] Actions with type and payload
+- [x] TypeScript discriminated unions for type-safe actions
+- [ ] Context + Reducer pattern - next
 - [ ] ...more to come
 
 ---
