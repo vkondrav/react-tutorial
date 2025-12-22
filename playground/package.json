@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "cd .. && node playground/node_modules/husky/bin.js",
+    "prepare": "cd .. && npx --yes husky",
+    "pre:commit": "cd .. && sh .husky/pre-commit",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --max-warnings 0 --fix",
