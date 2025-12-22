@@ -7,7 +7,15 @@
 // ============================================
 
 import { useState, useEffect } from 'react';
-import { HiOutlineMenuAlt2, HiOutlineArrowLeft } from 'react-icons/hi';
+import {
+  HiOutlineMenuAlt2,
+  HiOutlineArrowLeft,
+  HiOutlineCheckCircle,
+  HiOutlineCheck,
+  HiOutlineCode,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+} from 'react-icons/hi';
 import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
 
@@ -48,7 +56,6 @@ interface LessonConfig {
   id: string;
   module: number;
   title: string;
-  status: 'complete' | 'current' | 'locked';
 }
 
 interface ModuleConfig {
@@ -62,6 +69,24 @@ type LessonComponent = React.ComponentType;
 interface Lesson extends LessonConfig {
   component: LessonComponent | null;
 }
+
+// LocalStorage key for completed lessons
+const COMPLETED_LESSONS_KEY = 'react-tutorial-completed-lessons';
+
+// Load completed lessons from localStorage
+const loadCompletedLessons = (): Set<string> => {
+  try {
+    const saved = localStorage.getItem(COMPLETED_LESSONS_KEY);
+    return saved ? new Set(JSON.parse(saved)) : new Set();
+  } catch {
+    return new Set();
+  }
+};
+
+// Save completed lessons to localStorage
+const saveCompletedLessons = (completed: Set<string>): void => {
+  localStorage.setItem(COMPLETED_LESSONS_KEY, JSON.stringify([...completed]));
+};
 
 // Map lesson IDs to their components
 const LESSON_COMPONENTS: Record<string, LessonComponent> = {
@@ -121,35 +146,25 @@ const getInitialLesson = (): string => {
 function App(): React.ReactElement {
   const [currentLessonId, setCurrentLessonId] = useState<string>(getInitialLesson);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
-  const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
+  const [completedLessons, setCompletedLessons] = useState<Set<string>>(loadCompletedLessons);
 
   const currentIndex = LESSONS.findIndex((l) => l.id === currentLessonId);
+  const isCurrentCompleted = completedLessons.has(currentLessonId);
+
+  const toggleLessonComplete = (lessonId: string): void => {
+    setCompletedLessons((prev) => {
+      const next = new Set(prev);
+      if (next.has(lessonId)) {
+        next.delete(lessonId);
+      } else {
+        next.add(lessonId);
+      }
+      saveCompletedLessons(next);
+      return next;
+    });
+  };
   const prevLesson = currentIndex > 0 ? LESSONS[currentIndex - 1] : null;
   const nextLesson = currentIndex < LESSONS.length - 1 ? LESSONS[currentIndex + 1] : null;
-
-  // Copy message to clipboard for pasting to Cursor chat
-  const copyToChat = (message: string): void => {
-    // Show toast immediately
-    setCopiedMessage(message);
-
-    // Try to copy to clipboard (fire and forget)
-    navigator.clipboard.writeText(message).catch(() => {
-      console.log('Clipboard unavailable, message:', message);
-    });
-
-    // Hide toast after 3 seconds
-    setTimeout(() => setCopiedMessage(null), 3000);
-  };
-
-  // Handle Next button click
-  const handleNextClick = (): void => {
-    if (nextLesson?.component) {
-      setCurrentLessonId(nextLesson.id);
-    } else if (nextLesson) {
-      // Lesson exists but not built yet - copy message for chat
-      copyToChat(`Let's continue to Lesson ${nextLesson.id}: ${nextLesson.title}`);
-    }
-  };
 
   // Sync URL hash with current lesson
   useEffect(() => {
@@ -203,11 +218,7 @@ function App(): React.ReactElement {
                   <div className="flex flex-col gap-1">
                     {moduleLessons.map((lesson) => {
                       const isActive = currentLessonId === lesson.id;
-                      const statusColors: Record<string, string> = {
-                        complete: 'bg-success',
-                        current: 'bg-primary',
-                        locked: 'bg-base-300',
-                      };
+                      const isCompleted = completedLessons.has(lesson.id);
                       return (
                         <button
                           key={lesson.id}
@@ -223,14 +234,12 @@ function App(): React.ReactElement {
                         >
                           <span
                             className={`w-5 h-5 rounded-full flex items-center justify-center text-[0.625rem] shrink-0 ${
-                              statusColors[lesson.status] || 'bg-base-300'
-                            } ${lesson.status === 'locked' ? 'text-base-content/50' : 'text-white'}`}
+                              isCompleted
+                                ? 'bg-success text-white'
+                                : 'bg-base-300 text-base-content/50'
+                            }`}
                           >
-                            {lesson.status === 'complete'
-                              ? '✓'
-                              : lesson.status === 'current'
-                                ? '▶'
-                                : '🔒'}
+                            {isCompleted ? '✓' : lesson.id}
                           </span>
                           <span className="flex-1">
                             {lesson.id} {lesson.title}
@@ -251,13 +260,12 @@ function App(): React.ReactElement {
               <div
                 className="h-full bg-success rounded transition-all duration-300"
                 style={{
-                  width: `${(LESSONS.filter((l) => l.status === 'complete').length / LESSONS.length) * 100}%`,
+                  width: `${(completedLessons.size / LESSONS.length) * 100}%`,
                 }}
               />
             </div>
             <div className="text-xs text-base-content/70 mt-2">
-              {LESSONS.filter((l) => l.status === 'complete').length} / {LESSONS.length} lessons
-              complete
+              {completedLessons.size} / {LESSONS.length} lessons complete
             </div>
           </div>
         </div>
@@ -281,14 +289,28 @@ function App(): React.ReactElement {
               <div className="font-semibold">{currentLesson?.title}</div>
             </div>
             {currentLesson?.component && (
-              <a
-                href={getLessonSourceLink(currentLessonId)}
-                className="btn btn-outline btn-sm text-xs"
-                title="Open source in Cursor"
-              >
-                <span>{'</>'}</span>
-                <span>View Source</span>
-              </a>
+              <>
+                <button
+                  onClick={() => toggleLessonComplete(currentLessonId)}
+                  className={`btn btn-sm text-xs tooltip tooltip-bottom ${
+                    isCurrentCompleted ? 'btn-success' : 'btn-outline btn-ghost'
+                  }`}
+                  data-tip={isCurrentCompleted ? 'Mark incomplete' : 'Mark complete'}
+                >
+                  {isCurrentCompleted ? (
+                    <HiOutlineCheckCircle size={18} />
+                  ) : (
+                    <HiOutlineCheck size={18} />
+                  )}
+                </button>
+                <a
+                  href={getLessonSourceLink(currentLessonId)}
+                  className="btn btn-outline btn-sm text-xs tooltip tooltip-bottom"
+                  data-tip="View Source"
+                >
+                  <HiOutlineCode size={18} />
+                </a>
+              </>
             )}
           </div>
 
@@ -296,18 +318,18 @@ function App(): React.ReactElement {
             <button
               onClick={() => prevLesson?.component && setCurrentLessonId(prevLesson.id)}
               disabled={!prevLesson?.component}
-              className="btn btn-ghost btn-sm"
+              className="btn btn-ghost btn-sm btn-square tooltip tooltip-bottom"
+              data-tip="Previous"
             >
-              ← Previous
+              <HiOutlineChevronLeft size={20} />
             </button>
             <button
-              onClick={handleNextClick}
-              disabled={!nextLesson}
-              className={`btn btn-sm ${
-                nextLesson?.component ? 'btn-primary' : nextLesson ? 'btn-success' : 'btn-ghost'
-              }`}
+              onClick={() => nextLesson?.component && setCurrentLessonId(nextLesson.id)}
+              disabled={!nextLesson?.component}
+              className="btn btn-ghost btn-sm btn-square tooltip tooltip-bottom"
+              data-tip="Next"
             >
-              {nextLesson?.component ? 'Next →' : '📋 Copy to Chat'}
+              <HiOutlineChevronRight size={20} />
             </button>
           </div>
         </header>
@@ -328,13 +350,12 @@ function App(): React.ReactElement {
         {/* Footer Navigation */}
         <footer className="flex justify-between items-center px-8 py-4 border-t border-base-300 bg-base-100">
           <div>
-            {prevLesson && (
+            {prevLesson?.component && (
               <button
-                onClick={() => prevLesson.component && setCurrentLessonId(prevLesson.id)}
-                disabled={!prevLesson.component}
+                onClick={() => setCurrentLessonId(prevLesson.id)}
                 className="btn btn-ghost flex items-center gap-2"
               >
-                <span>←</span>
+                <HiOutlineChevronLeft size={20} />
                 <div className="text-left">
                   <div className="text-xs text-base-content/60">Previous</div>
                   <div>{prevLesson.title}</div>
@@ -343,35 +364,21 @@ function App(): React.ReactElement {
             )}
           </div>
           <div>
-            {nextLesson && (
+            {nextLesson?.component && (
               <button
-                onClick={handleNextClick}
-                className={`btn flex items-center gap-2 ${
-                  nextLesson.component ? 'btn-outline btn-primary' : 'btn-outline btn-success'
-                }`}
+                onClick={() => setCurrentLessonId(nextLesson.id)}
+                className="btn btn-outline btn-primary flex items-center gap-2"
               >
                 <div className="text-right">
-                  <div className="text-xs text-base-content/60">
-                    {nextLesson.component ? 'Next' : '📋 Copy to Chat'}
-                  </div>
+                  <div className="text-xs text-base-content/60">Next</div>
                   <div>{nextLesson.title}</div>
                 </div>
-                <span>{nextLesson.component ? '→' : ''}</span>
+                <HiOutlineChevronRight size={20} />
               </button>
             )}
           </div>
         </footer>
       </div>
-
-      {/* Toast notification */}
-      {copiedMessage && (
-        <div className="toast toast-bottom toast-center z-50 animate-fadeIn">
-          <div className="alert alert-success flex items-center gap-2">
-            <span>✓</span>
-            <span>Copied! Paste in Cursor chat</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
