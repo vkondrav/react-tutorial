@@ -60,7 +60,7 @@
 | 2.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 3.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 3.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
-| 3.3    | ⬜ .jsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 3.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 | 3.4    | ⬜ .jsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
 | 3.5    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
 | 4.1    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |

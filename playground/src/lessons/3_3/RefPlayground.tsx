@@ -10,10 +10,18 @@ import {
   HiPause,
   HiOutlineVolumeUp,
   HiOutlineVolumeOff,
+  HiOutlineRefresh,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import keyboardShortcutExample from './examples/KeyboardShortcutExample.tsx?raw';
+import clickOutsideExample from './examples/ClickOutsideExample.tsx?raw';
+import videoControlExample from './examples/VideoControlExample.tsx?raw';
+import renderCountExample from './examples/RenderCountExample.tsx?raw';
 
-export default function RefPlayground() {
-  const [activeDemo, setActiveDemo] = useState('autofocus');
+type DemoTab = 'autofocus' | 'clickoutside' | 'video' | 'rendercount';
+
+export default function RefPlayground(): React.ReactElement {
+  const [activeDemo, setActiveDemo] = useState<DemoTab>('autofocus');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -22,10 +30,10 @@ export default function RefPlayground() {
       {/* Tab buttons */}
       <div className="flex gap-2 flex-wrap mb-4">
         {[
-          { id: 'autofocus', label: 'Auto-Focus' },
-          { id: 'clickoutside', label: 'Click Outside' },
-          { id: 'video', label: 'Video Player' },
-          { id: 'rendercount', label: 'Render Counter' },
+          { id: 'autofocus' as const, label: 'Auto-Focus' },
+          { id: 'clickoutside' as const, label: 'Click Outside' },
+          { id: 'video' as const, label: 'Video Player' },
+          { id: 'rendercount' as const, label: 'Render Counter' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -49,13 +57,13 @@ export default function RefPlayground() {
 }
 
 // Auto-focus search on keyboard shortcut
-function AutoFocusDemo() {
-  const searchRef = useRef(null);
+function AutoFocusDemo(): React.ReactElement {
+  const searchRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
-  const [lastShortcut, setLastShortcut] = useState(null);
+  const [lastShortcut, setLastShortcut] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent): void => {
       // Cmd/Ctrl + K to focus search
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -109,42 +117,19 @@ function AutoFocusDemo() {
         </div>
       )}
 
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">const</span> searchRef ={' '}
-            <span className="text-primary">useRef</span>(null);{'\n\n'}
-            <span className="text-primary">useEffect</span>(() ={'>'} {'{'}
-            {'\n'}
-            {'  '}
-            <span className="text-secondary">const</span> handleKeyDown = (e) ={'>'} {'{'}
-            {'\n'}
-            {'    '}
-            <span className="text-secondary">if</span> (e.metaKey && e.key === 'k') {'{'}
-            {'\n'}
-            {'      '}searchRef.current?.<span className="text-primary">focus</span>();{'\n'}
-            {'    }'}
-            {'\n'}
-            {'  };'}
-            {'\n'}
-            {'  '}document.<span className="text-primary">addEventListener</span>('keydown',
-            handleKeyDown);{'\n'}
-            {'}, []);'}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={keyboardShortcutExample} language="tsx" />
     </div>
   );
 }
 
 // Click outside to close
-function ClickOutsideDemo() {
+function ClickOutsideDemo(): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    const handleClickOutside = (e: MouseEvent): void => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -186,34 +171,20 @@ function ClickOutsideDemo() {
 
       <div className="text-xs text-base-content/60">Dropdown is {isOpen ? 'OPEN' : 'CLOSED'}</div>
 
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">const</span> handleClickOutside = (e) ={'>'} {'{'}
-            {'\n'}
-            {'  '}
-            <span className="text-secondary">if</span> (!dropdownRef.current.
-            <span className="text-primary">contains</span>(e.target)) {'{'}
-            {'\n'}
-            {'    '}setIsOpen(false);{'\n'}
-            {'  }'}
-            {'\n'}
-            {'};'}
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={clickOutsideExample} language="tsx" />
     </div>
   );
 }
 
 // Video player with ref controls
-function VideoPlayerDemo() {
-  const videoRef = useRef(null);
+function VideoPlayerDemo(): React.ReactElement {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // Start muted to allow autoplay
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-  const togglePlay = () => {
+  const togglePlay = (): void => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -224,23 +195,45 @@ function VideoPlayerDemo() {
     }
   };
 
-  const toggleMute = () => {
+  const toggleMute = (): void => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
     }
   };
 
-  const handleTimeUpdate = () => {
+  const handleTimeUpdate = (): void => {
     if (videoRef.current) {
       setCurrentTime(videoRef.current.currentTime);
     }
   };
 
-  const seekTo = (time) => {
+  const handleLoadedMetadata = (): void => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
+  };
+
+  const handleEnded = (): void => {
+    setIsPlaying(false);
+  };
+
+  const seekTo = (time: number): void => {
     if (videoRef.current) {
       videoRef.current.currentTime = time;
     }
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const time = Number(e.target.value);
+    seekTo(time);
+    setCurrentTime(time);
+  };
+
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -249,59 +242,71 @@ function VideoPlayerDemo() {
         Control video playback imperatively with ref methods like play(), pause(), and properties.
       </p>
 
-      {/* Video placeholder (using a colored box since we don't have a real video) */}
-      <div className="relative rounded-lg overflow-hidden bg-linear-to-br from-primary/20 to-secondary/20 aspect-video flex items-center justify-center">
-        <div className="text-4xl">🎬</div>
-        <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-2 text-white text-xs">
-          Video Player Demo (simulated)
-        </div>
-
-        {/* Hidden video for demo purposes */}
-        <video ref={videoRef} onTimeUpdate={handleTimeUpdate} className="hidden" muted={isMuted}>
-          <source src="" type="video/mp4" />
+      {/* Actual video player */}
+      <div className="relative rounded-lg overflow-hidden bg-black">
+        <video
+          ref={videoRef}
+          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}
+          onEnded={handleEnded}
+          className="w-full aspect-video"
+          muted={isMuted}
+          playsInline
+          poster="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Big_buck_bunny_poster_big.jpg/800px-Big_buck_bunny_poster_big.jpg"
+        >
+          <source
+            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
         </video>
       </div>
 
+      {/* Progress bar */}
+      {duration > 0 && (
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono text-base-content/60 w-10">
+            {formatTime(currentTime)}
+          </span>
+          <input
+            type="range"
+            min="0"
+            max={duration}
+            value={currentTime}
+            onChange={handleSeek}
+            className="range range-primary range-xs flex-1"
+          />
+          <span className="text-xs font-mono text-base-content/60 w-10">
+            {formatTime(duration)}
+          </span>
+        </div>
+      )}
+
       {/* Controls */}
-      <div className="flex items-center gap-2">
-        <button onClick={togglePlay} className="btn btn-primary btn-sm gap-1">
-          {isPlaying ? <HiPause size={16} /> : <HiPlay size={16} />}
-          {isPlaying ? 'Pause' : 'Play'}
+      <div className="flex items-start justify-start gap-3">
+        <button onClick={togglePlay} className="btn btn-primary btn-circle w-10 h-10">
+          {isPlaying ? <HiPause size={20} /> : <HiPlay size={20} />}
         </button>
-        <button onClick={toggleMute} className="btn btn-ghost btn-sm gap-1">
-          {isMuted ? <HiOutlineVolumeOff size={16} /> : <HiOutlineVolumeUp size={16} />}
-          {isMuted ? 'Unmute' : 'Mute'}
+        <button onClick={toggleMute} className="btn btn-ghost btn-circle w-10 h-10">
+          {isMuted ? <HiOutlineVolumeOff size={20} /> : <HiOutlineVolumeUp size={20} />}
         </button>
-        <button onClick={() => seekTo(0)} className="btn btn-ghost btn-sm">
-          Restart
+        <button onClick={() => seekTo(0)} className="btn btn-ghost btn-circle w-10 h-10">
+          <HiOutlineRefresh size={20} />
         </button>
-
-        <div className="text-xs text-base-content/60 ml-auto">Time: {currentTime.toFixed(1)}s</div>
       </div>
 
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            videoRef.current.<span className="text-primary">play</span>();{'\n'}
-            videoRef.current.<span className="text-primary">pause</span>();{'\n'}
-            videoRef.current.currentTime = 0;{' '}
-            <span className="text-base-content/60">// Seek to start</span>
-            {'\n'}
-            videoRef.current.muted = true;
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={videoControlExample} language="tsx" />
     </div>
   );
 }
 
 // Render count tracker
-function RenderCountDemo() {
+function RenderCountDemo(): React.ReactElement {
   const [value, setValue] = useState('');
   const [changeCount, setChangeCount] = useState(0);
 
   // Track changes in the event handler (not in effect)
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setChangeCount((c) => c + 1);
     setValue(e.target.value);
   };
@@ -337,23 +342,7 @@ function RenderCountDemo() {
         triggering additional renders.
       </div>
 
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-base-content/60">// Using ref to track without re-renders:</span>
-            {'\n'}
-            <span className="text-secondary">const</span> countRef ={' '}
-            <span className="text-primary">useRef</span>(0);{'\n\n'}
-            <span className="text-base-content/60">
-              // In an event handler (not during render):
-            </span>
-            {'\n'}
-            countRef.current++; <span className="text-success">// Updates silently</span>
-            {'\n'}
-            console.log(countRef.current); <span className="text-success">// Access anytime</span>
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={renderCountExample} language="tsx" />
     </div>
   );
 }

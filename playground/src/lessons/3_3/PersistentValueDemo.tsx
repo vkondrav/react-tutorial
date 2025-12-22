@@ -4,8 +4,10 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { HiOutlineLightBulb, HiPlay, HiPause, HiOutlineRefresh } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import intervalRefExample from './examples/IntervalRefExample.tsx?raw';
 
-export default function PersistentValueDemo() {
+export default function PersistentValueDemo(): React.ReactElement {
   return (
     <div className="card bg-base-200 p-5">
       <h3 className="font-semibold mb-4 flex items-center gap-2">
@@ -30,14 +32,14 @@ export default function PersistentValueDemo() {
   );
 }
 
-function TimerDemo() {
+function TimerDemo(): React.ReactElement {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   // Store the interval ID in a ref (not state!)
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const start = () => {
+  const start = (): void => {
     if (isRunning) return;
 
     setIsRunning(true);
@@ -46,13 +48,15 @@ function TimerDemo() {
     }, 1000);
   };
 
-  const pause = () => {
+  const pause = (): void => {
     setIsRunning(false);
-    clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
     intervalRef.current = null;
   };
 
-  const reset = () => {
+  const reset = (): void => {
     pause();
     setSeconds(0);
   };
@@ -67,7 +71,7 @@ function TimerDemo() {
   }, []);
 
   // Format time
-  const formatTime = (totalSeconds) => {
+  const formatTime = (totalSeconds: number): string => {
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -103,32 +107,9 @@ function TimerDemo() {
       </div>
 
       {/* Code example */}
-      <div className="p-3 rounded-lg bg-base-300">
+      <div>
         <div className="text-xs font-semibold mb-2">Storing the interval ID:</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-base-content/60">// Store interval ID in a ref</span>
-            {'\n'}
-            <span className="text-secondary">const</span> intervalRef ={' '}
-            <span className="text-primary">useRef</span>(null);{'\n\n'}
-            <span className="text-secondary">const</span>{' '}
-            <span className="text-primary">start</span> = () ={'> {'}
-            {'\n'}
-            {'  '}intervalRef.current = <span className="text-primary">setInterval</span>(() ={'>'}{' '}
-            {'{'}
-            {'\n'}
-            {'    '}setSeconds(s ={'>'} s + 1);{'\n'}
-            {'  }'}, 1000);{'\n'}
-            {'};'}
-            {'\n\n'}
-            <span className="text-secondary">const</span>{' '}
-            <span className="text-primary">pause</span> = () ={'> {'}
-            {'\n'}
-            {'  '}
-            <span className="text-primary">clearInterval</span>(intervalRef.current);{'\n'}
-            {'};'}
-          </code>
-        </pre>
+        <CodeSnippet code={intervalRefExample} language="tsx" />
       </div>
 
       {/* Status indicator */}

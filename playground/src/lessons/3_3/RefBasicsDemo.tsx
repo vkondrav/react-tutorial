@@ -4,8 +4,10 @@
 
 import { useState, useRef } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiOutlineRefresh } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useStateVsRefExample from './examples/UseStateVsRefExample.tsx?raw';
 
-export default function RefBasicsDemo() {
+export default function RefBasicsDemo(): React.ReactElement {
   // State: causes re-render
   const [stateCount, setStateCount] = useState(0);
 
@@ -16,7 +18,7 @@ export default function RefBasicsDemo() {
   const [displayedRefValue, setDisplayedRefValue] = useState(0);
 
   // Force re-render and show current ref value
-  const forceRerender = () => {
+  const forceRerender = (): void => {
     setDisplayedRefValue(refCount.current);
   };
 
@@ -71,23 +73,9 @@ export default function RefBasicsDemo() {
       </button>
 
       {/* Code example */}
-      <div className="mt-4 p-3 rounded-lg bg-base-300">
+      <div className="mt-4">
         <div className="text-xs font-semibold mb-2">The difference:</div>
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-base-content/60">// useState - triggers re-render</span>
-            {'\n'}
-            <span className="text-secondary">const</span> [count, setCount] ={' '}
-            <span className="text-primary">useState</span>(0);{'\n'}
-            setCount(count + 1); <span className="text-success">// UI updates!</span>
-            {'\n\n'}
-            <span className="text-base-content/60">// useRef - no re-render</span>
-            {'\n'}
-            <span className="text-secondary">const</span> countRef ={' '}
-            <span className="text-primary">useRef</span>(0);{'\n'}
-            countRef.current++; <span className="text-error">// UI unchanged!</span>
-          </code>
-        </pre>
+        <CodeSnippet code={useStateVsRefExample} language="tsx" />
       </div>
 
       {/* Tip */}

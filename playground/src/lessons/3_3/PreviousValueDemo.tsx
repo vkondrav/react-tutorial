@@ -2,21 +2,23 @@
 // Demo: Tracking Previous Values with useRef
 // ============================================
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { HiOutlineLightBulb, HiOutlineArrowRight, HiMinus, HiPlus } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import usePreviousHookExample from './examples/UsePreviousHookExample.tsx?raw';
 
-// Custom hook to track previous value (using state for render-safe access)
-function usePrevious(value) {
-  const [prev, setPrev] = useState();
+// Custom hook to track previous value using useRef
+function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T | undefined>();
 
   useEffect(() => {
-    setPrev(value);
+    ref.current = value;
   }, [value]);
 
-  return prev;
+  return ref.current;
 }
 
-export default function PreviousValueDemo() {
+export default function PreviousValueDemo(): React.ReactElement {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('React');
 
@@ -94,30 +96,9 @@ export default function PreviousValueDemo() {
         </div>
 
         {/* Custom hook code */}
-        <div className="p-3 rounded-lg bg-base-300">
+        <div>
           <div className="text-xs font-semibold mb-2">The usePrevious custom hook:</div>
-          <pre className="font-mono text-xs overflow-x-auto">
-            <code>
-              <span className="text-secondary">function</span>{' '}
-              <span className="text-primary">usePrevious</span>(value) {'{'}
-              {'\n'}
-              {'  '}
-              <span className="text-secondary">const</span> [prev, setPrev] ={' '}
-              <span className="text-primary">useState</span>();{'\n\n'}
-              {'  '}
-              <span className="text-primary">useEffect</span>(() ={'>'} {'{'}
-              {'\n'}
-              {'    '}setPrev(value);{' '}
-              <span className="text-base-content/60">// Update after render</span>
-              {'\n'}
-              {'  }'}, [value]);{'\n\n'}
-              {'  '}
-              <span className="text-secondary">return</span> prev;{' '}
-              <span className="text-base-content/60">// Return previous value</span>
-              {'\n'}
-              {'}'}
-            </code>
-          </pre>
+          <CodeSnippet code={usePreviousHookExample} language="tsx" />
         </div>
 
         {/* How it works */}

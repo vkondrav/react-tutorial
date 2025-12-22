@@ -17,7 +17,7 @@ import PersistentValueDemo from './PersistentValueDemo';
 import PreviousValueDemo from './PreviousValueDemo';
 import RefPlayground from './RefPlayground';
 
-export default function Lesson3_3() {
+export default function Lesson3_3(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="3" lesson="3" title="useRef: DOM Access & Persistence" />

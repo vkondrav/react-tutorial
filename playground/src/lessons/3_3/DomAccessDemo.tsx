@@ -4,9 +4,15 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { HiOutlineCursorClick, HiOutlinePhotograph } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import focusInputExample from './examples/FocusInputExample.tsx?raw';
+import scrollIntoViewExample from './examples/ScrollIntoViewExample.tsx?raw';
+import measureDimensionsExample from './examples/MeasureDimensionsExample.tsx?raw';
 
-export default function DomAccessDemo() {
-  const [activeDemo, setActiveDemo] = useState('focus');
+type DemoTab = 'focus' | 'scroll' | 'measure';
+
+export default function DomAccessDemo(): React.ReactElement {
+  const [activeDemo, setActiveDemo] = useState<DemoTab>('focus');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -18,9 +24,9 @@ export default function DomAccessDemo() {
       {/* Tab buttons */}
       <div className="flex gap-2 mb-4">
         {[
-          { id: 'focus', label: 'Focus' },
-          { id: 'scroll', label: 'Scroll' },
-          { id: 'measure', label: 'Measure' },
+          { id: 'focus' as const, label: 'Focus' },
+          { id: 'scroll' as const, label: 'Scroll' },
+          { id: 'measure' as const, label: 'Measure' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -43,15 +49,15 @@ export default function DomAccessDemo() {
 }
 
 // Focus Demo
-function FocusDemo() {
-  const inputRef = useRef(null);
+function FocusDemo(): React.ReactElement {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState('');
 
-  const focusInput = () => {
+  const focusInput = (): void => {
     inputRef.current?.focus();
   };
 
-  const selectAll = () => {
+  const selectAll = (): void => {
     inputRef.current?.select();
   };
 
@@ -85,38 +91,22 @@ function FocusDemo() {
       </div>
 
       {/* Code */}
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">const</span> inputRef ={' '}
-            <span className="text-primary">useRef</span>(null);{'\n\n'}
-            {'<'}
-            <span className="text-accent">input</span> <span className="text-warning">ref</span>=
-            {'{inputRef}'} /{'>'}
-            {'\n\n'}
-            inputRef.current.<span className="text-primary">focus</span>();{' '}
-            <span className="text-base-content/60">// Focus the input</span>
-            {'\n'}
-            inputRef.current.<span className="text-primary">select</span>();{' '}
-            <span className="text-base-content/60">// Select all text</span>
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={focusInputExample} language="tsx" />
     </div>
   );
 }
 
 // Scroll Demo
-function ScrollDemo() {
-  const topRef = useRef(null);
-  const bottomRef = useRef(null);
-  const containerRef = useRef(null);
+function ScrollDemo(): React.ReactElement {
+  const topRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToBottom = () => {
+  const scrollToBottom = (): void => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -140,7 +130,7 @@ function ScrollDemo() {
         className="h-32 overflow-y-auto rounded-lg border border-base-300 bg-base-300/50"
       >
         <div ref={topRef} className="p-3 bg-primary/20 text-sm">
-          🔝 Top of the list
+          Top of the list
         </div>
         {Array.from({ length: 10 }, (_, i) => (
           <div key={i} className="p-2 border-b border-base-300/50 text-sm text-base-content/60">
@@ -148,39 +138,23 @@ function ScrollDemo() {
           </div>
         ))}
         <div ref={bottomRef} className="p-3 bg-secondary/20 text-sm">
-          🔽 Bottom of the list
+          Bottom of the list
         </div>
       </div>
 
       {/* Code */}
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">const</span> bottomRef ={' '}
-            <span className="text-primary">useRef</span>(null);{'\n\n'}
-            {'<'}
-            <span className="text-accent">div</span> <span className="text-warning">ref</span>=
-            {'{bottomRef}'}
-            {'>'}Bottom{'</'}
-            <span className="text-accent">div</span>
-            {'>'}
-            {'\n\n'}
-            bottomRef.current.<span className="text-primary">scrollIntoView</span>({'{ '}behavior:
-            'smooth'{' }'});
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={scrollIntoViewExample} language="tsx" />
     </div>
   );
 }
 
 // Measure Demo
-function MeasureDemo() {
-  const boxRef = useRef(null);
+function MeasureDemo(): React.ReactElement {
+  const boxRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [boxSize, setBoxSize] = useState(100);
 
-  const measureBox = () => {
+  const measureBox = (): void => {
     if (boxRef.current) {
       const rect = boxRef.current.getBoundingClientRect();
       setDimensions({ width: Math.round(rect.width), height: Math.round(rect.height) });
@@ -232,18 +206,7 @@ function MeasureDemo() {
       </div>
 
       {/* Code */}
-      <div className="p-3 rounded-lg bg-base-300">
-        <pre className="font-mono text-xs overflow-x-auto">
-          <code>
-            <span className="text-secondary">const</span> rect = boxRef.current.
-            <span className="text-primary">getBoundingClientRect</span>();{'\n'}
-            console.log(rect.width, rect.height);{' '}
-            <span className="text-base-content/60">
-              // {dimensions.width}, {dimensions.height}
-            </span>
-          </code>
-        </pre>
-      </div>
+      <CodeSnippet code={measureDimensionsExample} language="tsx" />
     </div>
   );
 }
