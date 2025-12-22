@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 3: Hooks Deep Dive |
-| **Current Lesson** | Lesson 3.5: Custom Hooks |
-| **Next Lesson** | Lesson 4.1: Fetching Data with useEffect |
+| **Current Module** | Module 4: Data Fetching & REST APIs |
+| **Current Lesson** | Lesson 4.1: Fetching Data with useEffect |
+| **Next Lesson** | Lesson 4.2: Loading, Error & Empty States |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -61,14 +61,14 @@
 | 3.4 | useMemo & useCallback: Performance | ✅ Complete | Render count, useMemo, useCallback, when to use, playground |
 | 3.5 | Custom Hooks: Reusable Logic | ✅ Complete | Hook basics, extracting logic, useToggle/useLocalStorage/useDebounce, playground |
 
-### Module 4: Data Fetching & REST APIs ⬜ Not Started
+### Module 4: Data Fetching & REST APIs ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 4.1 | Fetching Data with useEffect | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 4.1 | Fetching Data with useEffect | ✅ Complete | Basic fetch pattern, dependencies, race conditions, AbortController, playground |
 | 4.2 | Loading, Error & Empty States | ⬜ Pending |
 | 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ⬜ Pending |
-| 4.4 | Building a Custom useFetch Hook | ⬜ Pending |
+| 4.4 | Building a Custom useFetch Hook | ⬜ Pending | Cover both useEffect pattern AND React 19 `use` API with Suspense |
 
 ### Module 5: Forms & User Input ⬜ Not Started
 
@@ -389,6 +389,24 @@ Beginning the Hooks Deep Dive module.
 #### Module 3 Complete! 🎉
 All 5 lessons in Module 3: Hooks Deep Dive are now implemented.
 
+---
+
+### Session 10 - December 9, 2025
+**Goal:** Implement Lesson 4.1: Fetching Data with useEffect
+
+#### Completed:
+- ✅ **Implemented Lesson 4.1: Fetching Data with useEffect**
+  - `index.tsx` - Main lesson with 6 sections covering data fetching fundamentals
+  - `FetchBasicsDemo.tsx` - Basic fetch pattern with loading/error states, live JSONPlaceholder API
+  - `DependencyFetchDemo.tsx` - Fetch on dependency change with log visualization
+  - `RaceConditionDemo.tsx` - Two tabs: "Problem" (race condition bug) vs "Solution" (AbortController)
+  - `FetchPlayground.tsx` - 4 interactive demos: Search (debounced), Photos gallery, Comments, Auto-refresh polling
+  - Updated `config.json` to add lesson 4.1 and module 4
+  - Updated `App.jsx` to import and register Lesson4_1 component
+
+#### Module 4 Started! 🎯
+Beginning the Data Fetching & REST APIs module.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -400,9 +418,20 @@ All 5 lessons in Module 3: Hooks Deep Dive are now implemented.
 - [x] Hot Module Replacement (HMR)
 - [x] package.json structure
 - [x] JSX syntax and rules
-- [ ] Creating components
-- [ ] Props
-- [ ] State (useState)
+- [x] Creating components
+- [x] Props and children
+- [x] State (useState)
+- [x] Event handling
+- [x] Conditional rendering
+- [x] Lists and keys
+- [x] useEffect for side effects
+- [x] useContext for sharing state
+- [x] useRef for DOM access and persistent values
+- [x] useMemo & useCallback for performance
+- [x] Custom hooks
+- [x] Data fetching with useEffect
+- [x] AbortController for cleanup
+- [ ] Loading, error, and empty states (next)
 - [ ] ...more to come
 
 ---
@@ -411,7 +440,12 @@ All 5 lessons in Module 3: Hooks Deep Dive are now implemented.
 
 *Add any questions or notes here during learning:*
 
-- 
+- **Lesson 4.4 Plan:** Build `useFetch` hook covering both approaches:
+  1. Traditional `useEffect` pattern (works in all React versions)
+  2. React 19 `use` API with `<Suspense>` (modern, declarative approach)
+  - Compare trade-offs: manual loading state vs automatic Suspense integration
+  - Reference: https://react.dev/reference/react/use
+
 
 ---
 
