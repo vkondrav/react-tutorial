@@ -1,6 +1,12 @@
 import { HiCheck, HiX } from 'react-icons/hi';
 
-export default function CodeBlock({ title, code, variant }) {
+interface CodeBlockProps {
+  title: string;
+  code: string;
+  variant: 'good' | 'bad';
+}
+
+export default function CodeBlock({ title, code, variant }: CodeBlockProps): React.ReactElement {
   const isGood = variant === 'good';
   const borderColor = isGood ? 'border-success' : 'border-error';
   const bgColor = isGood ? 'bg-success/20' : 'bg-error/20';

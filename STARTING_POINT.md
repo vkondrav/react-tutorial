@@ -34,30 +34,31 @@ react-tutorial/
 └── playground/            ← Live React app
     ├── index.html
     ├── package.json
-    ├── tsconfig.json      ← TypeScript config (allowJs: true)
+    ├── tsconfig.json      ← TypeScript config (strict, no JS allowed)
     ├── vite.config.js
     └── src/
-        ├── main.jsx
-        ├── App.jsx        ← LESSON NAVIGATOR (imports from lessons/)
+        ├── main.tsx       ← TypeScript entry point
+        ├── App.tsx        ← LESSON NAVIGATOR (TypeScript)
         ├── index.css
         └── lessons/
             ├── config.json       ← Lesson metadata (titles, status, modules, projectPath)
-            ├── components/       ← Shared UI components (JS - to be migrated)
-            │   ├── index.js
-            │   ├── LessonHeader.jsx
-            │   ├── Section.jsx
-            │   ├── TakeawayList.jsx
-            │   └── CodeBlock.jsx
-            ├── 1_1/              ← Lesson 1.1: What is React? (JS - legacy)
-            │   ├── index.jsx
+            ├── components/       ← Shared UI components (TypeScript)
+            │   ├── index.ts
+            │   ├── LessonHeader.tsx
+            │   ├── Section.tsx
+            │   ├── TakeawayList.tsx
+            │   ├── CodeBlock.tsx
+            │   └── CodeSnippet.tsx
+            ├── 1_1/              ← Lesson 1.1: What is React? (TypeScript)
+            │   ├── index.tsx
             │   └── ...
-            ├── 3_5/              ← Lesson 3.5: Custom Hooks (TypeScript!)
+            ├── 3_5/              ← Lesson 3.5: Custom Hooks (TypeScript)
             │   ├── index.tsx     ← Main lesson component
             │   ├── CustomHookBasicsDemo.tsx
             │   ├── ExtractingLogicDemo.tsx
             │   ├── CommonHooksDemo.tsx
             │   └── CustomHooksPlayground.tsx
-            └── 4_1/              ← Future lessons use TypeScript
+            └── 4_1/              ← All lessons use TypeScript
                 ├── index.tsx
                 └── ...
 ```
@@ -100,7 +101,7 @@ function useCounter(initialValue: number = 0, step: number = 1): UseCounterRetur
 }
 ```
 
-**Note:** Lessons 1.1 - 3.4 are still JavaScript and will be refactored later. The `tsconfig.json` has `allowJs: true` to support both.
+**Note:** All lessons and shared components are TypeScript. The `tsconfig.json` does **not** allow JavaScript files to prevent accidental introduction of `.js/.jsx` files.
 
 ## Instructions for Creating a New Lesson
 
@@ -194,14 +195,14 @@ export default function MyDemo({ initialValue = 0 }: MyDemoProps): React.ReactEl
 }
 ```
 
-### Step 5: Register in App.jsx
+### Step 5: Register in App.tsx
 
-```jsx
+```tsx
 // Add import
 import Lesson1_4 from './lessons/1_4';
 
 // Add to LESSON_COMPONENTS
-const LESSON_COMPONENTS = {
+const LESSON_COMPONENTS: Record<string, LessonComponent> = {
   '1.1': Lesson1_1,
   '1.2': Lesson1_2,
   '1.3': Lesson1_3,

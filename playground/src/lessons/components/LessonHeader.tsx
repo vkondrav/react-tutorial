@@ -1,4 +1,14 @@
-export default function LessonHeader({ module, lesson, title }) {
+interface LessonHeaderProps {
+  module: string;
+  lesson: string;
+  title: string;
+}
+
+export default function LessonHeader({
+  module,
+  lesson,
+  title,
+}: LessonHeaderProps): React.ReactElement {
   return (
     <div className="mb-12">
       <div className="text-primary text-sm font-semibold mb-2 uppercase tracking-wider">

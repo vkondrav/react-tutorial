@@ -43,68 +43,92 @@ import Lesson7_2 from './lessons/7_2';
 import Lesson7_3 from './lessons/7_3';
 import Lesson7_4 from './lessons/7_4';
 
+// Types
+interface LessonConfig {
+  id: string;
+  module: number;
+  title: string;
+  status: 'complete' | 'current' | 'locked';
+}
+
+interface ModuleConfig {
+  id: number;
+  title: string;
+  color: string;
+}
+
+type LessonComponent = React.ComponentType;
+
+interface Lesson extends LessonConfig {
+  component: LessonComponent | null;
+}
+
 // Map lesson IDs to their components
-const LESSON_COMPONENTS = {
-  1.1: Lesson1_1,
-  1.2: Lesson1_2,
-  1.3: Lesson1_3,
-  1.4: Lesson1_4,
-  2.1: Lesson2_1,
-  2.2: Lesson2_2,
-  2.3: Lesson2_3,
-  2.4: Lesson2_4,
-  2.5: Lesson2_5,
-  3.1: Lesson3_1,
-  3.2: Lesson3_2,
-  3.3: Lesson3_3,
-  3.4: Lesson3_4,
-  3.5: Lesson3_5,
-  4.1: Lesson4_1,
-  4.2: Lesson4_2,
-  4.3: Lesson4_3,
-  4.4: Lesson4_4,
-  5.1: Lesson5_1,
-  5.2: Lesson5_2,
-  5.3: Lesson5_3,
-  6.1: Lesson6_1,
-  6.2: Lesson6_2,
-  6.3: Lesson6_3,
-  6.4: Lesson6_4,
-  6.5: Lesson6_5,
-  7.1: Lesson7_1,
-  7.2: Lesson7_2,
-  7.3: Lesson7_3,
-  7.4: Lesson7_4,
+const LESSON_COMPONENTS: Record<string, LessonComponent> = {
+  '1.1': Lesson1_1,
+  '1.2': Lesson1_2,
+  '1.3': Lesson1_3,
+  '1.4': Lesson1_4,
+  '2.1': Lesson2_1,
+  '2.2': Lesson2_2,
+  '2.3': Lesson2_3,
+  '2.4': Lesson2_4,
+  '2.5': Lesson2_5,
+  '3.1': Lesson3_1,
+  '3.2': Lesson3_2,
+  '3.3': Lesson3_3,
+  '3.4': Lesson3_4,
+  '3.5': Lesson3_5,
+  '4.1': Lesson4_1,
+  '4.2': Lesson4_2,
+  '4.3': Lesson4_3,
+  '4.4': Lesson4_4,
+  '5.1': Lesson5_1,
+  '5.2': Lesson5_2,
+  '5.3': Lesson5_3,
+  '6.1': Lesson6_1,
+  '6.2': Lesson6_2,
+  '6.3': Lesson6_3,
+  '6.4': Lesson6_4,
+  '6.5': Lesson6_5,
+  '7.1': Lesson7_1,
+  '7.2': Lesson7_2,
+  '7.3': Lesson7_3,
+  '7.4': Lesson7_4,
 };
 
 // Get Cursor IDE link for a lesson's source file
-const getLessonSourceLink = (lessonId) => {
+const getLessonSourceLink = (lessonId: string): string => {
   const folder = lessonId.replace('.', '_');
-  return `cursor://file${config.projectPath}/${folder}/index.jsx`;
+  return `cursor://file${config.projectPath}/${folder}/index.tsx`;
 };
 
 // Merge config with component references
-const LESSONS = config.lessons.map((lesson) => ({
+const LESSONS: Lesson[] = (config.lessons as LessonConfig[]).map((lesson) => ({
   ...lesson,
   component: LESSON_COMPONENTS[lesson.id] || null,
 }));
 
-const MODULES = config.modules;
+const MODULES: ModuleConfig[] = config.modules as ModuleConfig[];
 
 // Get initial lesson from URL hash, or default to first available
-const getInitialLesson = () => {
+const getInitialLesson = (): string => {
   const hash = window.location.hash.slice(1); // Remove '#'
   const lesson = LESSONS.find((l) => l.id === hash && l.component);
   return lesson ? hash : LESSONS.find((l) => l.component)?.id || '1.1';
 };
 
-function App() {
-  const [currentLessonId, setCurrentLessonId] = useState(getInitialLesson);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [copiedMessage, setCopiedMessage] = useState(null);
+function App(): React.ReactElement {
+  const [currentLessonId, setCurrentLessonId] = useState<string>(getInitialLesson);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+  const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
+
+  const currentIndex = LESSONS.findIndex((l) => l.id === currentLessonId);
+  const prevLesson = currentIndex > 0 ? LESSONS[currentIndex - 1] : null;
+  const nextLesson = currentIndex < LESSONS.length - 1 ? LESSONS[currentIndex + 1] : null;
 
   // Copy message to clipboard for pasting to Cursor chat
-  const copyToChat = (message) => {
+  const copyToChat = (message: string): void => {
     // Show toast immediately
     setCopiedMessage(message);
 
@@ -117,8 +141,8 @@ function App() {
     setTimeout(() => setCopiedMessage(null), 3000);
   };
 
-  // Handle Next button click - note: uses nextLesson which is defined below
-  const handleNextClick = () => {
+  // Handle Next button click
+  const handleNextClick = (): void => {
     if (nextLesson?.component) {
       setCurrentLessonId(nextLesson.id);
     } else if (nextLesson) {
@@ -134,7 +158,7 @@ function App() {
 
   // Handle browser back/forward
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleHashChange = (): void => {
       const hash = window.location.hash.slice(1);
       const lesson = LESSONS.find((l) => l.id === hash && l.component);
       if (lesson) setCurrentLessonId(hash);
@@ -145,10 +169,6 @@ function App() {
 
   const currentLesson = LESSONS.find((l) => l.id === currentLessonId);
   const CurrentComponent = currentLesson?.component;
-
-  const currentIndex = LESSONS.findIndex((l) => l.id === currentLessonId);
-  const prevLesson = currentIndex > 0 ? LESSONS[currentIndex - 1] : null;
-  const nextLesson = currentIndex < LESSONS.length - 1 ? LESSONS[currentIndex + 1] : null;
 
   return (
     <div className="font-sans bg-base-100 h-screen text-base-content flex overflow-hidden">
@@ -183,7 +203,7 @@ function App() {
                   <div className="flex flex-col gap-1">
                     {moduleLessons.map((lesson) => {
                       const isActive = currentLessonId === lesson.id;
-                      const statusColors = {
+                      const statusColors: Record<string, string> = {
                         complete: 'bg-success',
                         current: 'bg-primary',
                         locked: 'bg-base-300',

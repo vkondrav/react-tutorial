@@ -1,6 +1,10 @@
 import { HiCheck } from 'react-icons/hi';
 
-export default function TakeawayList({ items }) {
+interface TakeawayListProps {
+  items: React.ReactNode[];
+}
+
+export default function TakeawayList({ items }: TakeawayListProps): React.ReactElement {
   return (
     <ul className="list-none p-0 m-0 flex flex-col gap-3">
       {items.map((item, index) => (

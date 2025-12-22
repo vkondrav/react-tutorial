@@ -14,14 +14,14 @@
 
 ---
 
-## TypeScript Migration
+## TypeScript Migration ✅ Complete
 
 | Status | Details |
 |--------|---------|
-| **Started** | Lesson 3.5 |
-| **New Lessons** | All new lessons should be written in TypeScript (`.tsx`) |
-| **Existing Lessons** | Lessons 1.1 - 3.4 are still JavaScript (`.jsx`) — will refactor later |
-| **Config** | `tsconfig.json` with `allowJs: true` allows both JS and TS |
+| **All Lessons** | Converted to TypeScript (`.tsx`) |
+| **Core Files** | `main.tsx`, `App.tsx` — fully typed |
+| **Shared Components** | All in TypeScript with prop interfaces |
+| **Config** | `tsconfig.json` with `allowJs: false` — JS files will cause errors |
 
 ---
 
@@ -84,12 +84,19 @@
 
 | Component | TypeScript | Status |
 |-----------|------------|--------|
-| `LessonHeader.jsx` | ⬜ .jsx | 🔄 Needs conversion |
-| `Section.jsx` | ⬜ .jsx | 🔄 Needs conversion |
-| `TakeawayList.jsx` | ⬜ .jsx | 🔄 Needs conversion |
-| `CodeBlock.jsx` | ⬜ .jsx | 🔄 Needs conversion |
+| `LessonHeader.tsx` | ✅ .tsx | ✅ Done |
+| `Section.tsx` | ✅ .tsx | ✅ Done |
+| `TakeawayList.tsx` | ✅ .tsx | ✅ Done |
+| `CodeBlock.tsx` | ✅ .tsx | ✅ Done |
 | `CodeSnippet.tsx` | ✅ .tsx | ✅ Done |
-| `index.js` | ⬜ .js | 🔄 Needs conversion |
+| `index.ts` | ✅ .ts | ✅ Done |
+
+### Core App Files
+
+| File | TypeScript | Status |
+|------|------------|--------|
+| `main.tsx` | ✅ .tsx | ✅ Done |
+| `App.tsx` | ✅ .tsx | ✅ Done |
 
 ### Refactoring Order
 
