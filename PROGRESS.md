@@ -191,6 +191,13 @@
   - `ComponentRulesDemo.jsx` - daisyUI `btn`, `card`, `badge` components, `HiX`, `HiCheck`, `HiOutlineLightBulb`, `HiOutlineExclamationCircle`, `HiOutlineCursorClick` icons
   - `ComponentBuilder.jsx` - daisyUI `input`, `card`, `btn` components, `HiOutlineExclamationCircle` icon
   - `CompositionDemo.jsx` - daisyUI `card` component, removed emoji from logo, semantic colors
+- ✅ **Refactored Lesson 2.1 to use daisyUI + react-icons:**
+  - `index.jsx` - Replaced emojis with icons (`HiOutlineCube`, `HiOutlineCursorClick`, `HiOutlineCog`, `HiOutlineUser`, `HiOutlineBeaker`, `HiOutlineClipboardCheck`)
+  - `PropsBasicsDemo.jsx` - daisyUI `card`, `input` components, `HiOutlineLightBulb` icon, semantic colors
+  - `DestructuringDemo.jsx` - daisyUI `card` component, `HiX`, `HiCheck`, `HiOutlineExclamationCircle`, `HiOutlineLightBulb` icons
+  - `DefaultPropsDemo.jsx` - daisyUI `card`, `btn`, `checkbox` components, semantic colors
+  - `ChildrenDemo.jsx` - daisyUI `card`, `input` components, semantic colors
+  - `PropsPlayground.jsx` - daisyUI `card`, `input`, `btn`, `badge`, `checkbox` components, `HiX`, `HiOutlineCheckCircle`, `HiOutlineXCircle` icons
 - 📝 **Established "Icons vs Emojis" rule in STARTING_POINT.md:**
   - Use react-icons for all UI elements
   - Emojis OK only in code examples that users are learning from
@@ -218,7 +225,7 @@
 | Lesson 1.2 | ✅ Complete | All 5 files converted (index, ProjectStructureExplorer, FileFlowDemo, HMRDemo, PackageJsonExplorer) |
 | Lesson 1.3 | ✅ Complete | All 7 files converted (index, JSXTransformDemo, DifferencesExplorer, EmbeddingDemo, JSXRulesDemo, MistakesQuiz, JSXPlayground) |
 | Lesson 1.4 | ✅ Complete | All 5 files converted (index, ComponentBasicsDemo, ComponentRulesDemo, ComponentBuilder, CompositionDemo) |
-| Lesson 2.1 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 2.1 | ✅ Complete | All 6 files converted (index, PropsBasicsDemo, DestructuringDemo, DefaultPropsDemo, ChildrenDemo, PropsPlayground) |
 | Lesson 2.2 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.3 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.4 | ⬜ Pending | Still using Tailwind-only |

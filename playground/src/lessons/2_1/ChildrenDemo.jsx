@@ -5,45 +5,47 @@ export default function ChildrenDemo() {
   const [cardContent, setCardContent] = useState('This content is passed as children.');
 
   return (
-    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Controls */}
-      <div className="p-6 grid grid-cols-2 gap-4 border-b border-slate-700">
+      <div className="p-6 grid grid-cols-2 gap-4 border-b border-base-300">
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">title prop</label>
+          <label className="block text-xs text-base-content/50 mb-2 uppercase">title prop</label>
           <input
             type="text"
             value={cardTitle}
             onChange={(e) => setCardTitle(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
+            className="input input-bordered w-full input-sm"
           />
         </div>
         <div>
-          <label className="block text-xs text-slate-500 mb-2 uppercase">children content</label>
+          <label className="block text-xs text-base-content/50 mb-2 uppercase">
+            children content
+          </label>
           <input
             type="text"
             value={cardContent}
             onChange={(e) => setCardContent(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
+            className="input input-bordered w-full input-sm"
           />
         </div>
       </div>
 
       {/* Code */}
-      <div className="p-6 border-b border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase">
+      <div className="p-6 border-b border-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase">
           Card Component (receives children)
         </div>
-        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-slate-200">
+        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-base-content">
             {`function Card({ title, `}
-            <span className="text-pink-500">children</span>
+            <span className="text-accent">children</span>
             {` }) {
   return (
     <div className="card">
       <h3>{title}</h3>
       <div className="card-body">
         {`}
-            <span className="text-pink-500">children</span>
+            <span className="text-accent">children</span>
             {`}  {/* ← Renders whatever is between <Card>...</Card> */}
       </div>
     </div>
@@ -52,14 +54,14 @@ export default function ChildrenDemo() {
           </code>
         </pre>
 
-        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">Usage</div>
-        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-slate-200">
+        <div className="text-xs text-base-content/50 mb-3 mt-6 uppercase">Usage</div>
+        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-base-content">
             {`<Card title="`}
-            <span className="text-green-500">{cardTitle}</span>
+            <span className="text-success">{cardTitle}</span>
             {`">
   `}
-            <span className="text-pink-500">{cardContent}</span>
+            <span className="text-accent">{cardContent}</span>
             {`
 </Card>`}
           </code>
@@ -67,29 +69,29 @@ export default function ChildrenDemo() {
       </div>
 
       {/* Live Preview */}
-      <div className="p-6 bg-slate-900">
-        <div className="text-xs text-slate-500 mb-3 uppercase">Live Result</div>
-        <div className="p-6 bg-slate-50 rounded-lg shadow-sm">
-          <h3 className="m-0 mb-3 text-slate-800 text-lg">{cardTitle || 'Card Title'}</h3>
-          <div className="text-slate-500">{cardContent || 'Card content goes here...'}</div>
+      <div className="p-6 bg-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase">Live Result</div>
+        <div className="card bg-base-100 p-6 shadow-sm">
+          <h3 className="m-0 mb-3 text-base-content text-lg">{cardTitle || 'Card Title'}</h3>
+          <div className="text-base-content/70">{cardContent || 'Card content goes here...'}</div>
         </div>
       </div>
 
       {/* Examples */}
-      <div className="p-6 bg-slate-800 border-t border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase">Children can be anything!</div>
+      <div className="p-6 bg-base-200 border-t border-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase">Children can be anything!</div>
         <div className="grid grid-cols-3 gap-4 text-sm">
-          <div className="bg-slate-900 p-3 rounded-md">
-            <div className="text-green-500 mb-2">Text</div>
-            <code className="text-slate-400">{`<Card>Hello</Card>`}</code>
+          <div className="card bg-base-300 p-3">
+            <div className="text-success mb-2">Text</div>
+            <code className="text-base-content/70">{`<Card>Hello</Card>`}</code>
           </div>
-          <div className="bg-slate-900 p-3 rounded-md">
-            <div className="text-blue-500 mb-2">Elements</div>
-            <code className="text-slate-400">{`<Card><p>Hi</p></Card>`}</code>
+          <div className="card bg-base-300 p-3">
+            <div className="text-primary mb-2">Elements</div>
+            <code className="text-base-content/70">{`<Card><p>Hi</p></Card>`}</code>
           </div>
-          <div className="bg-slate-900 p-3 rounded-md">
-            <div className="text-purple-500 mb-2">Components</div>
-            <code className="text-slate-400">{`<Card><List /></Card>`}</code>
+          <div className="card bg-base-300 p-3">
+            <div className="text-secondary mb-2">Components</div>
+            <code className="text-base-content/70">{`<Card><List /></Card>`}</code>
           </div>
         </div>
       </div>

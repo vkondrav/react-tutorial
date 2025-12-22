@@ -1,3 +1,11 @@
+import {
+  HiOutlineCube,
+  HiOutlineCursorClick,
+  HiOutlineCog,
+  HiOutlineUser,
+  HiOutlineBeaker,
+  HiOutlineClipboardCheck,
+} from 'react-icons/hi';
 import { LessonHeader, Section, TakeawayList } from '../components';
 import PropsBasicsDemo from './PropsBasicsDemo';
 import DestructuringDemo from './DestructuringDemo';
@@ -10,49 +18,91 @@ export default function Lesson2_1() {
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="2" lesson="1" title="Props: Passing Data to Components" />
 
-      <Section title="📦 What are Props?">
-        <p className="text-slate-400 leading-relaxed">
-          <strong className="text-blue-500">Props</strong> (short for "properties") are how you pass
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineCube className="text-primary" size={20} />
+            What are Props?
+          </span>
+        }
+      >
+        <p className="text-base-content/70 leading-relaxed">
+          <strong className="text-primary">Props</strong> (short for "properties") are how you pass
           data from a parent component to a child component. They're like function arguments, but
           for components!
         </p>
         <PropsBasicsDemo />
       </Section>
 
-      <Section title="🎯 Destructuring Props">
-        <p className="text-slate-400 leading-relaxed">
-          Instead of accessing <code className="text-green-500">props.name</code> every time, you
-          can <strong className="text-amber-500">destructure</strong> props directly in the function
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineCursorClick className="text-primary" size={20} />
+            Destructuring Props
+          </span>
+        }
+      >
+        <p className="text-base-content/70 leading-relaxed">
+          Instead of accessing <code className="text-success">props.name</code> every time, you can{' '}
+          <strong className="text-warning">destructure</strong> props directly in the function
           parameters:
         </p>
         <DestructuringDemo />
       </Section>
 
-      <Section title="⚙️ Default Props">
-        <p className="text-slate-400 leading-relaxed">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineCog className="text-primary" size={20} />
+            Default Props
+          </span>
+        }
+      >
+        <p className="text-base-content/70 leading-relaxed">
           What if a prop isn't passed? You can provide{' '}
-          <strong className="text-purple-500">default values</strong> so your component always has
+          <strong className="text-secondary">default values</strong> so your component always has
           something to work with:
         </p>
         <DefaultPropsDemo />
       </Section>
 
-      <Section title="👶 The Children Prop">
-        <p className="text-slate-400 leading-relaxed">
-          The special <code className="text-pink-500">children</code> prop lets you pass content
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineUser className="text-primary" size={20} />
+            The Children Prop
+          </span>
+        }
+      >
+        <p className="text-base-content/70 leading-relaxed">
+          The special <code className="text-accent">children</code> prop lets you pass content
           between component tags - just like HTML elements!
         </p>
         <ChildrenDemo />
       </Section>
 
-      <Section title="🎮 Props Playground">
-        <p className="text-slate-400 leading-relaxed">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineBeaker className="text-primary" size={20} />
+            Props Playground
+          </span>
+        }
+      >
+        <p className="text-base-content/70 leading-relaxed">
           Experiment with props! Change the values and see how the component updates:
         </p>
         <PropsPlayground />
       </Section>
 
-      <Section title="✅ Key Takeaways">
+      <Section
+        title={
+          <span className="flex items-center gap-2">
+            <HiOutlineClipboardCheck className="text-primary" size={20} />
+            Key Takeaways
+          </span>
+        }
+      >
         <TakeawayList
           items={[
             'Props are how data flows from parent to child components',

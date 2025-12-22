@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiX, HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
 
 export default function PropsPlayground() {
   const [name, setName] = useState('React Developer');
@@ -15,6 +16,13 @@ export default function PropsPlayground() {
     Lead: '#f59e0b',
   };
 
+  const levelButtonClasses = {
+    Junior: 'btn-success',
+    Mid: 'btn-primary',
+    Senior: 'btn-secondary',
+    Lead: 'btn-warning',
+  };
+
   const addSkill = () => {
     if (newSkill.trim() && !skills.includes(newSkill.trim())) {
       setSkills([...skills, newSkill.trim()]);
@@ -27,54 +35,49 @@ export default function PropsPlayground() {
   };
 
   return (
-    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       <div className="grid grid-cols-2 min-h-[400px]">
         {/* Props Editor */}
-        <div className="p-6 border-r border-slate-700">
-          <div className="text-xs text-slate-500 mb-4 uppercase">Edit Props</div>
+        <div className="p-6 border-r border-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">Edit Props</div>
 
           {/* Name */}
           <div className="mb-4">
-            <label className="block text-slate-400 text-sm mb-1">
-              <span className="text-blue-500">name</span>: string
+            <label className="block text-base-content/70 text-sm mb-1">
+              <span className="text-primary">name</span>: string
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
+              className="input input-bordered w-full input-sm"
             />
           </div>
 
           {/* Role */}
           <div className="mb-4">
-            <label className="block text-slate-400 text-sm mb-1">
-              <span className="text-blue-500">role</span>: string
+            <label className="block text-base-content/70 text-sm mb-1">
+              <span className="text-primary">role</span>: string
             </label>
             <input
               type="text"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full p-2 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-sm"
+              className="input input-bordered w-full input-sm"
             />
           </div>
 
           {/* Level */}
           <div className="mb-4">
-            <label className="block text-slate-400 text-sm mb-1">
-              <span className="text-blue-500">level</span>: "Junior" | "Mid" | "Senior" | "Lead"
+            <label className="block text-base-content/70 text-sm mb-1">
+              <span className="text-primary">level</span>: "Junior" | "Mid" | "Senior" | "Lead"
             </label>
             <div className="flex gap-2">
               {Object.keys(levelColors).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLevel(l)}
-                  className="flex-1 px-3 py-1.5 rounded-md text-xs cursor-pointer transition-colors"
-                  style={{
-                    backgroundColor: level === l ? levelColors[l] : '#0f172a',
-                    border: `1px solid ${level === l ? levelColors[l] : '#334155'}`,
-                    color: level === l ? 'white' : '#64748b',
-                  }}
+                  className={`btn btn-sm flex-1 ${level === l ? levelButtonClasses[l] : 'btn-outline'}`}
                 >
                   {l}
                 </button>
@@ -84,34 +87,31 @@ export default function PropsPlayground() {
 
           {/* isOnline */}
           <div className="mb-4">
-            <label className="flex items-center gap-2 text-slate-400 text-sm cursor-pointer">
+            <label className="flex items-center gap-2 text-base-content/70 text-sm cursor-pointer">
               <input
                 type="checkbox"
                 checked={isOnline}
                 onChange={(e) => setIsOnline(e.target.checked)}
-                className="w-4 h-4"
+                className="checkbox checkbox-sm"
               />
-              <span className="text-blue-500">isOnline</span>: boolean = {isOnline.toString()}
+              <span className="text-primary">isOnline</span>: boolean = {isOnline.toString()}
             </label>
           </div>
 
           {/* Skills */}
           <div>
-            <label className="block text-slate-400 text-sm mb-1">
-              <span className="text-blue-500">skills</span>: string[]
+            <label className="block text-base-content/70 text-sm mb-1">
+              <span className="text-primary">skills</span>: string[]
             </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-flex items-center gap-1 px-2 py-1 bg-slate-900 rounded-full text-xs text-slate-400"
-                >
+                <span key={skill} className="badge badge-outline gap-1">
                   {skill}
                   <button
                     onClick={() => removeSkill(skill)}
-                    className="bg-transparent border-none text-red-500 cursor-pointer px-0.5 text-sm"
+                    className="btn btn-ghost btn-xs p-0 h-auto min-h-0 text-error hover:bg-error/20"
                   >
-                    ×
+                    <HiX size={14} />
                   </button>
                 </span>
               ))}
@@ -123,12 +123,9 @@ export default function PropsPlayground() {
                 onChange={(e) => setNewSkill(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addSkill()}
                 placeholder="Add skill..."
-                className="flex-1 px-2 py-1.5 bg-slate-900 border border-slate-700 rounded-md text-slate-50 text-xs"
+                className="input input-bordered input-sm flex-1"
               />
-              <button
-                onClick={addSkill}
-                className="px-3 py-1.5 bg-green-500 border-none rounded-md text-white cursor-pointer text-xs"
-              >
+              <button onClick={addSkill} className="btn btn-success btn-sm">
                 Add
               </button>
             </div>
@@ -136,13 +133,13 @@ export default function PropsPlayground() {
         </div>
 
         {/* Preview */}
-        <div className="p-6 bg-slate-900">
-          <div className="text-xs text-slate-500 mb-4 uppercase">
+        <div className="p-6 bg-base-300">
+          <div className="text-xs text-base-content/50 mb-4 uppercase">
             Live Preview: {'<ProfileCard {...props} />'}
           </div>
 
           {/* Rendered Card */}
-          <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+          <div className="card bg-base-200 p-6 border border-base-300">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
               <div
@@ -153,16 +150,17 @@ export default function PropsPlayground() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="m-0 text-slate-50 text-lg">{name || 'Name'}</h3>
-                  <span
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: isOnline ? '#22c55e' : '#64748b' }}
-                  />
+                  <h3 className="m-0 text-base-content text-lg">{name || 'Name'}</h3>
+                  {isOnline ? (
+                    <HiOutlineCheckCircle className="text-success" size={16} />
+                  ) : (
+                    <HiOutlineXCircle className="text-base-content/30" size={16} />
+                  )}
                 </div>
-                <p className="mt-1 mb-0 text-slate-500 text-sm">{role || 'Role'}</p>
+                <p className="mt-1 mb-0 text-base-content/50 text-sm">{role || 'Role'}</p>
               </div>
               <span
-                className="px-3 py-1 rounded-full text-xs font-semibold"
+                className="badge"
                 style={{
                   backgroundColor: `${levelColors[level]}22`,
                   color: levelColors[level],
@@ -175,10 +173,7 @@ export default function PropsPlayground() {
             {/* Skills */}
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1 bg-slate-900 rounded-md text-xs text-slate-400"
-                >
+                <span key={skill} className="badge badge-outline">
                   {skill}
                 </span>
               ))}
@@ -187,9 +182,9 @@ export default function PropsPlayground() {
 
           {/* Props Object */}
           <div className="mt-4">
-            <div className="text-[0.7rem] text-slate-500 mb-2">PROPS OBJECT</div>
-            <pre className="m-0 p-3 bg-slate-800 rounded-md text-[0.7rem] leading-relaxed overflow-auto">
-              <code className="text-slate-400">
+            <div className="text-[0.7rem] text-base-content/50 mb-2">PROPS OBJECT</div>
+            <pre className="m-0 p-3 bg-base-200 rounded-md text-[0.7rem] leading-relaxed overflow-auto">
+              <code className="text-base-content/70">
                 {JSON.stringify({ name, role, level, isOnline, skills }, null, 2)}
               </code>
             </pre>

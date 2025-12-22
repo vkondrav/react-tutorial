@@ -25,9 +25,9 @@ export default function DefaultPropsDemo() {
   const activeVariant = showVariant ? variant : 'primary';
 
   return (
-    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Controls */}
-      <div className="p-6 border-b border-slate-700">
+      <div className="p-6 border-b border-base-300">
         <div className="grid grid-cols-2 gap-6">
           {/* Size prop */}
           <div>
@@ -37,10 +37,10 @@ export default function DefaultPropsDemo() {
                 id="showSize"
                 checked={showSize}
                 onChange={(e) => setShowSize(e.target.checked)}
-                className="w-4 h-4"
+                className="checkbox checkbox-sm"
               />
-              <label htmlFor="showSize" className="text-slate-400 text-sm">
-                Pass <code className="text-blue-500">size</code> prop
+              <label htmlFor="showSize" className="text-base-content/70 text-sm cursor-pointer">
+                Pass <code className="text-primary">size</code> prop
               </label>
             </div>
             <div className="flex gap-2">
@@ -49,14 +49,7 @@ export default function DefaultPropsDemo() {
                   key={s}
                   onClick={() => setSize(s)}
                   disabled={!showSize}
-                  className={`px-3 py-1.5 border rounded-md text-xs transition-opacity ${
-                    showSize ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
-                  }`}
-                  style={{
-                    backgroundColor: size === s && showSize ? '#3b82f6' : '#0f172a',
-                    borderColor: '#334155',
-                    color: size === s && showSize ? 'white' : '#64748b',
-                  }}
+                  className={`btn btn-sm ${size === s && showSize ? 'btn-primary' : 'btn-outline'} ${!showSize ? 'btn-disabled' : ''}`}
                 >
                   {s}
                 </button>
@@ -72,10 +65,10 @@ export default function DefaultPropsDemo() {
                 id="showVariant"
                 checked={showVariant}
                 onChange={(e) => setShowVariant(e.target.checked)}
-                className="w-4 h-4"
+                className="checkbox checkbox-sm"
               />
-              <label htmlFor="showVariant" className="text-slate-400 text-sm">
-                Pass <code className="text-purple-500">variant</code> prop
+              <label htmlFor="showVariant" className="text-base-content/70 text-sm cursor-pointer">
+                Pass <code className="text-secondary">variant</code> prop
               </label>
             </div>
             <div className="flex gap-2">
@@ -84,14 +77,7 @@ export default function DefaultPropsDemo() {
                   key={v}
                   onClick={() => setVariant(v)}
                   disabled={!showVariant}
-                  className={`px-3 py-1.5 border rounded-md text-xs transition-opacity ${
-                    showVariant ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
-                  }`}
-                  style={{
-                    backgroundColor: variant === v && showVariant ? '#8b5cf6' : '#0f172a',
-                    borderColor: '#334155',
-                    color: variant === v && showVariant ? 'white' : '#64748b',
-                  }}
+                  className={`btn btn-sm ${variant === v && showVariant ? 'btn-secondary' : 'btn-outline'} ${!showVariant ? 'btn-disabled' : ''}`}
                 >
                   {v}
                 </button>
@@ -102,25 +88,27 @@ export default function DefaultPropsDemo() {
       </div>
 
       {/* Code */}
-      <div className="p-6 border-b border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase">Component with Default Props</div>
-        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-slate-200">
+      <div className="p-6 border-b border-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase">
+          Component with Default Props
+        </div>
+        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-base-content">
             {`function Button({ 
   label,
   `}
-            <span className="text-blue-500">size</span>
+            <span className="text-primary">size</span>
             {` = `}
-            <span className="text-green-500">"medium"</span>
+            <span className="text-success">"medium"</span>
             {`,    `}
-            <span className="text-slate-500">// ← default value</span>
+            <span className="text-base-content/50">// ← default value</span>
             {`
   `}
-            <span className="text-purple-500">variant</span>
+            <span className="text-secondary">variant</span>
             {` = `}
-            <span className="text-green-500">"primary"</span>
+            <span className="text-success">"primary"</span>
             {` `}
-            <span className="text-slate-500">// ← default value</span>
+            <span className="text-base-content/50">// ← default value</span>
             {`
 }) {
   return <button className={\`btn-\${size} btn-\${variant}\`}>{label}</button>;
@@ -128,25 +116,25 @@ export default function DefaultPropsDemo() {
           </code>
         </pre>
 
-        <div className="text-xs text-slate-500 mb-3 mt-6 uppercase">Usage</div>
-        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-slate-200">
+        <div className="text-xs text-base-content/50 mb-3 mt-6 uppercase">Usage</div>
+        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-base-content">
             {`<Button label="Click me"`}
             {showSize && (
               <>
                 {` `}
-                <span className="text-blue-500">size</span>
+                <span className="text-primary">size</span>
                 {`="`}
-                <span className="text-green-500">{size}</span>
+                <span className="text-success">{size}</span>
                 {`"`}
               </>
             )}
             {showVariant && (
               <>
                 {` `}
-                <span className="text-purple-500">variant</span>
+                <span className="text-secondary">variant</span>
                 {`="`}
-                <span className="text-green-500">{variant}</span>
+                <span className="text-success">{variant}</span>
                 {`"`}
               </>
             )}
@@ -156,11 +144,11 @@ export default function DefaultPropsDemo() {
       </div>
 
       {/* Live Preview */}
-      <div className="p-6 bg-slate-900">
-        <div className="text-xs text-slate-500 mb-3 uppercase">Live Result</div>
-        <div className="p-8 bg-slate-800 rounded-lg border border-dashed border-slate-700 flex justify-center items-center gap-4">
+      <div className="p-6 bg-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase">Live Result</div>
+        <div className="p-8 bg-base-200 rounded-lg border border-dashed border-base-300 flex justify-center items-center gap-4">
           <button
-            className="border-none rounded-md font-medium cursor-pointer"
+            className="btn border-none rounded-md font-medium cursor-pointer"
             style={{
               ...sizeStyles[activeSize],
               ...variantStyles[activeVariant],
@@ -168,16 +156,13 @@ export default function DefaultPropsDemo() {
           >
             Click me
           </button>
-          <div className="text-slate-500 text-xs">
-            size:{' '}
-            <span className={showSize ? 'text-green-500' : 'text-amber-500'}>{activeSize}</span>
-            {!showSize && <span className="text-amber-500"> (default)</span>}
+          <div className="text-base-content/50 text-xs">
+            size: <span className={showSize ? 'text-success' : 'text-warning'}>{activeSize}</span>
+            {!showSize && <span className="text-warning"> (default)</span>}
             <br />
             variant:{' '}
-            <span className={showVariant ? 'text-green-500' : 'text-amber-500'}>
-              {activeVariant}
-            </span>
-            {!showVariant && <span className="text-amber-500"> (default)</span>}
+            <span className={showVariant ? 'text-success' : 'text-warning'}>{activeVariant}</span>
+            {!showVariant && <span className="text-warning"> (default)</span>}
           </div>
         </div>
       </div>
