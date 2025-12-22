@@ -34,28 +34,19 @@ function Counter() {
         <CodeBlock title="Declarative (React)" code={declarativeCode} variant="good" />
       </div>
 
-      <div className="bg-slate-900 p-6 rounded-xl text-center">
-        <p className="mb-4 text-slate-400">
-          👇 Try it! This is a <strong className="text-cyan-400">real React component</strong>:
+      <div className="card bg-base-200 p-6 text-center">
+        <p className="mb-4 text-base-content/70">
+          👇 Try it! This is a <strong className="text-primary">real React component</strong>:
         </p>
-        <div className="text-3xl font-bold mb-4 text-slate-50">{count}</div>
+        <div className="text-3xl font-bold mb-4">{count}</div>
         <div className="flex gap-2 justify-center">
-          <button
-            onClick={() => setCount(count - 1)}
-            className="px-6 py-2 bg-slate-600 text-white rounded-lg text-xl cursor-pointer hover:bg-slate-500 transition-colors"
-          >
+          <button onClick={() => setCount(count - 1)} className="btn btn-error btn-lg">
             −
           </button>
-          <button
-            onClick={() => setCount(count + 1)}
-            className="px-6 py-2 bg-blue-500 text-white rounded-lg text-xl cursor-pointer hover:bg-blue-600 transition-colors"
-          >
+          <button onClick={() => setCount(count + 1)} className="btn btn-primary btn-lg">
             +
           </button>
-          <button
-            onClick={() => setCount(0)}
-            className="px-6 py-2 bg-slate-700 text-slate-400 border border-slate-600 rounded-lg text-sm cursor-pointer hover:bg-slate-600 transition-colors"
-          >
+          <button onClick={() => setCount(0)} className="btn btn-lg btn-outline">
             Reset
           </button>
         </div>

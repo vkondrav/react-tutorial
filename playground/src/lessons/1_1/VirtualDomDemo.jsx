@@ -16,23 +16,23 @@ export default function VirtualDomDemo() {
         React only updates what actually changed.
       </p>
 
-      <div className="bg-slate-900 p-6 rounded-xl mt-4">
+      <div className="card bg-base-200 p-6 mt-4">
         <input
           type="text"
           value={name}
           onChange={handleChange}
           placeholder="Type your name"
-          className="w-full p-3 bg-slate-800 border border-slate-700 rounded-lg text-slate-50 text-base mb-4 focus:outline-none focus:border-cyan-500 transition-colors"
+          className="input input-bordered w-full mb-4"
         />
 
-        <div className="p-4 bg-slate-800 rounded-lg">
+        <div className="card bg-base-300 p-4">
           <p className="m-0 text-xl">
-            Hello, <span className="text-cyan-400 font-semibold">{name || '...'}</span>! 👋
+            Hello, <span className="text-primary font-semibold">{name || '...'}</span>! 👋
           </p>
         </div>
 
-        <div className="text-sm text-slate-500 mt-4">
-          DOM updates: <strong className="text-green-500">{updates}</strong>
+        <div className="text-sm text-base-content/60 mt-4">
+          DOM updates: <strong className="text-success">{updates}</strong>
         </div>
       </div>
     </div>
