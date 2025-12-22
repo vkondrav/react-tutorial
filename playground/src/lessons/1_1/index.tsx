@@ -1,4 +1,6 @@
+// ============================================
 // Module 1, Lesson 1: What is React?
+// ============================================
 
 import {
   HiOutlineLightBulb,
@@ -12,11 +14,12 @@ import ComparisonDemo from './ComparisonDemo';
 import ComponentTreeDemo from './ComponentTreeDemo';
 import VirtualDomDemo from './VirtualDomDemo';
 
-export default function Lesson1_1() {
+export default function Lesson1_1(): React.ReactElement {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <LessonHeader module="1" lesson="1" title="What is React & Why Use It?" />
 
+      {/* Section 1: The Big Idea */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -32,6 +35,7 @@ export default function Lesson1_1() {
         </p>
       </Section>
 
+      {/* Section 2: Imperative vs Declarative */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -43,6 +47,7 @@ export default function Lesson1_1() {
         <ComparisonDemo />
       </Section>
 
+      {/* Section 3: Components in Action */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -59,6 +64,7 @@ export default function Lesson1_1() {
         <ComponentTreeDemo />
       </Section>
 
+      {/* Section 4: Virtual DOM */}
       <Section
         title={
           <span className="flex items-center gap-2">
@@ -70,6 +76,7 @@ export default function Lesson1_1() {
         <VirtualDomDemo />
       </Section>
 
+      {/* Section 5: Key Takeaways */}
       <Section
         title={
           <span className="flex items-center gap-2">

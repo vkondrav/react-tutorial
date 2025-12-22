@@ -43,7 +43,7 @@
 
 | Lesson | TypeScript | CodeSnippet | examples/ folder | Icons | Status |
 |--------|------------|-------------|------------------|-------|--------|
-| 1.1 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
+| 1.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
 | 1.2 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
 | 1.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
 | 1.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |

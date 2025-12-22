@@ -1,11 +1,15 @@
+// ============================================
+// VirtualDomDemo - Virtual DOM Explanation
+// ============================================
+
 import { useState } from 'react';
 import { HiOutlineHand } from 'react-icons/hi';
 
-export default function VirtualDomDemo() {
-  const [name, setName] = useState('World');
-  const [updates, setUpdates] = useState(0);
+export default function VirtualDomDemo(): React.ReactElement {
+  const [name, setName] = useState<string>('World');
+  const [updates, setUpdates] = useState<number>(0);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setName(e.target.value);
     setUpdates((prev) => prev + 1);
   };
