@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 4: Data Fetching & REST APIs |
-| **Current Lesson** | Lesson 4.4: Building a Custom useFetch Hook |
-| **Next Lesson** | Lesson 5.1: Controlled Components |
+| **Current Module** | Module 5: Forms & User Input |
+| **Current Lesson** | Lesson 5.1: Controlled Components |
+| **Next Lesson** | Lesson 5.2: Form Validation Patterns |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -70,11 +70,11 @@
 | 4.3 | Creating & Updating Data (POST/PUT/DELETE) | ✅ Complete | POST/PUT/PATCH/DELETE patterns, optimistic vs pessimistic updates, full CRUD playground |
 | 4.4 | Building a Custom useFetch Hook | ✅ Complete | Why useFetch, step-by-step implementation, TypeScript generics, React 19 Suspense approach, playground |
 
-### Module 5: Forms & User Input ⬜ Not Started
+### Module 5: Forms & User Input ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 5.1 | Controlled Components | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 5.1 | Controlled Components | ✅ Complete | Basics, uncontrolled vs controlled, input types, benefits, playground |
 | 5.2 | Form Validation Patterns | ⬜ Pending |
 | 5.3 | Handling Multiple Inputs | ⬜ Pending |
 
@@ -459,6 +459,25 @@ Beginning the Data Fetching & REST APIs module.
 #### Module 4 Complete! 🎉
 All 4 lessons in Module 4: Data Fetching & REST APIs are now implemented.
 
+---
+
+### Session 14 - December 9, 2025
+**Goal:** Implement Lesson 5.1: Controlled Components
+
+#### Completed:
+- ✅ **Implemented Lesson 5.1: Controlled Components**
+  - `index.tsx` - Main lesson with 6 sections covering form input control
+  - `ControlledBasicsDemo.tsx` - Basic controlled input concept with live state preview
+  - `UncontrolledVsControlledDemo.tsx` - Side-by-side comparison of ref vs state approach
+  - `InputTypesDemo.tsx` - 5 tabs: text, textarea, select, checkbox, radio with code examples
+  - `ControlledBenefitsDemo.tsx` - 4 benefit demos: instant validation, auto formatting, conditional logic, computed values
+  - `ControlledPlayground.tsx` - Complete registration form with real-time validation
+  - Updated `config.json` to mark 4.4 complete, add 5.1 as current, add Module 5
+  - Updated `App.jsx` to import and register Lesson5_1 component
+
+#### Module 5 Started! 🎯
+Beginning the Forms & User Input module.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -495,7 +514,11 @@ All 4 lessons in Module 4: Data Fetching & REST APIs are now implemented.
 - [x] TypeScript generics for type-safe hooks
 - [x] React 19 `use()` hook and Suspense for data fetching
 - [x] ErrorBoundary for handling rejected promises
-- [ ] Controlled components (forms) - next
+- [x] Controlled components (value + onChange pattern)
+- [x] Uncontrolled components (ref approach)
+- [x] Different input types (text, textarea, select, checkbox, radio)
+- [x] Benefits: real-time validation, auto formatting, conditional logic, computed values
+- [ ] Form validation patterns - next
 - [ ] ...more to come
 
 ---
