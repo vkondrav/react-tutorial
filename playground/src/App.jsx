@@ -34,6 +34,7 @@ import Lesson5_1 from './lessons/5_1';
 import Lesson5_2 from './lessons/5_2';
 import Lesson5_3 from './lessons/5_3';
 import Lesson6_1 from './lessons/6_1';
+import Lesson6_2 from './lessons/6_2';
 
 // Map lesson IDs to their components
 const LESSON_COMPONENTS = {
@@ -59,6 +60,7 @@ const LESSON_COMPONENTS = {
   5.2: Lesson5_2,
   5.3: Lesson5_3,
   6.1: Lesson6_1,
+  6.2: Lesson6_2,
 };
 
 // Get Cursor IDE link for a lesson's source file

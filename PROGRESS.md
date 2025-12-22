@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 6: Component Patterns |
-| **Current Lesson** | Lesson 6.1: Component Composition |
-| **Next Lesson** | Lesson 6.2: Render Props Pattern |
+| **Current Lesson** | Lesson 6.2: Render Props Pattern |
+| **Next Lesson** | Lesson 6.3: Higher-Order Components |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -124,7 +124,7 @@ import { CodeSnippet } from '../components';
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 6.1 | Component Composition | ✅ Complete | Why composition, children prop, slot pattern, specialization, playground |
-| 6.2 | Render Props Pattern | ⬜ Pending |
+| 6.2 | Render Props Pattern | ✅ Complete | Basics, children as function, mouse/fetch/list use cases, playground |
 | 6.3 | Higher-Order Components | ⬜ Pending |
 | 6.4 | Compound Components | ⬜ Pending |
 
@@ -573,6 +573,21 @@ All 3 lessons in Module 5: Forms & User Input are now implemented.
 #### Module 6 Started! 🎯
 Beginning the Component Patterns module.
 
+---
+
+### Session 18 - December 10, 2025
+**Goal:** Implement Lesson 6.2: Render Props Pattern
+
+#### Completed:
+- ✅ **Implemented Lesson 6.2: Render Props Pattern**
+  - `index.tsx` - Main lesson with 5 sections
+  - `RenderPropsBasicsDemo.tsx` - Hardcoded vs render prop comparison, Counter with 3 different UIs
+  - `ChildrenAsFunctionDemo.tsx` - Toggle as switch/button/heart/accordion, Hover and WindowSize demos
+  - `CommonUseCasesDemo.tsx` - Mouse tracking with crosshairs, Fetch component with users, SelectableList with 4 UI styles
+  - `RenderPropsPlayground.tsx` - Nested render props (theme+counter), mouse-reactive spotlight, live search filter, stopwatch timer with ring progress
+  - Updated `config.json` to mark 6.1 complete and add 6.2 as current
+  - Updated `App.jsx` to import and register Lesson6_2 component
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -629,7 +644,11 @@ Beginning the Component Patterns module.
 - [x] Slot pattern (named props for multiple insertion points)
 - [x] Specialization pattern (pre-configured wrappers)
 - [x] Building composable component libraries
-- [ ] Render props pattern - next
+- [x] Render props pattern (function as child)
+- [x] Children as function syntax
+- [x] Mouse tracking, data fetching, list selection patterns
+- [x] When to use render props vs custom hooks
+- [ ] Higher-order components - next
 - [ ] ...more to come
 
 ---
