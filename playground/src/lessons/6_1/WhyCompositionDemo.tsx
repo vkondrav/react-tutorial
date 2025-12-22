@@ -59,11 +59,7 @@ function Dialog({ children, variant = 'default' }: DialogProps) {
     error: 'border-error bg-error/10',
   };
 
-  return (
-    <div className={`border-2 rounded-lg p-4 ${variantStyles[variant]}`}>
-      {children}
-    </div>
-  );
+  return <div className={`border-2 rounded-lg p-4 ${variantStyles[variant]}`}>{children}</div>;
 }
 
 export default function WhyCompositionDemo() {
@@ -97,7 +93,7 @@ export default function WhyCompositionDemo() {
             language="tsx"
             code={inheritanceCode}
           />
-          
+
           <div className="card bg-error/10 border border-error p-4">
             <h4 className="font-semibold text-error flex items-center gap-2 mb-2">
               <HiX size={18} />
@@ -170,7 +166,8 @@ export default function WhyCompositionDemo() {
             <h4 className="font-semibold mb-1">React's Philosophy</h4>
             <p className="text-sm text-base-content/70">
               "At Facebook, we use React in thousands of components, and we haven't found any use
-              cases where we would recommend creating component inheritance hierarchies." — React docs
+              cases where we would recommend creating component inheritance hierarchies." — React
+              docs
             </p>
           </div>
         </div>
@@ -178,4 +175,3 @@ export default function WhyCompositionDemo() {
     </div>
   );
 }
-

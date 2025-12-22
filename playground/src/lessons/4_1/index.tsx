@@ -86,8 +86,8 @@ export default function Lesson4_1(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           When fetching data that depends on changing values, you can encounter{' '}
           <strong className="text-error">race conditions</strong> — where responses arrive out of
-          order. The solution is to use <code className="text-secondary">AbortController</code> or
-          a cleanup flag.
+          order. The solution is to use <code className="text-secondary">AbortController</code> or a
+          cleanup flag.
         </p>
         <RaceConditionDemo />
       </Section>
@@ -196,4 +196,3 @@ function UserProfile({ userId }: { userId: number }) {
     </div>
   );
 }
-

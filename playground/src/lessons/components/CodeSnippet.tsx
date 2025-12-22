@@ -43,8 +43,13 @@ export default function CodeSnippet({
 }: CodeSnippetProps): React.ReactElement {
   const [copied, setCopied] = useState(false);
 
+  // Clean up raw file imports for display
+  const cleanCode = code
+    // Strip // @ts-nocheck
+    .replace(/^\/\/ @ts-nocheck\n/, '');
+
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
+    await navigator.clipboard.writeText(cleanCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -83,10 +88,9 @@ export default function CodeSnippet({
             borderRadius: title ? '0 0 0.5rem 0.5rem' : '0.5rem',
           }}
         >
-          {code.trim()}
+          {cleanCode.trim()}
         </SyntaxHighlighter>
       </div>
     </div>
   );
 }
-

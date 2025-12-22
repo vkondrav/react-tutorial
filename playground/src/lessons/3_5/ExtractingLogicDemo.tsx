@@ -123,7 +123,9 @@ function AfterCode(): React.ReactElement {
   return (
     <div className="space-y-4">
       <div className="card bg-success/10 border border-success/30 p-4">
-        <div className="text-xs font-semibold text-success mb-2">After: Custom Hook (TypeScript)</div>
+        <div className="text-xs font-semibold text-success mb-2">
+          After: Custom Hook (TypeScript)
+        </div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>
             {`interface WindowSize {
@@ -196,4 +198,3 @@ function WindowSizeDisplay(): React.ReactElement {
     </div>
   );
 }
-

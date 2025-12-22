@@ -133,10 +133,10 @@ function PostList() {
       {/* Code comparison */}
       <div className="card bg-base-300 p-4">
         <div className="flex items-center justify-between mb-2">
-          <span
-            className={`text-xs font-semibold ${showBefore ? 'text-error' : 'text-success'}`}
-          >
-            {showBefore ? '❌ Same code repeated in every component' : '✅ Logic extracted into reusable hook'}
+          <span className={`text-xs font-semibold ${showBefore ? 'text-error' : 'text-success'}`}>
+            {showBefore
+              ? '❌ Same code repeated in every component'
+              : '✅ Logic extracted into reusable hook'}
           </span>
           <span className="text-xs text-base-content/60">
             {showBefore ? '~50 lines per component' : '~5 lines per component'}
@@ -168,4 +168,3 @@ function PostList() {
     </div>
   );
 }
-

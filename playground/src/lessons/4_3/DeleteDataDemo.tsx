@@ -140,10 +140,7 @@ export default function DeleteDataDemo(): React.ReactElement {
       </div>
 
       {/* Code toggle */}
-      <button
-        onClick={() => setShowCode(!showCode)}
-        className="btn btn-ghost btn-sm gap-2"
-      >
+      <button onClick={() => setShowCode(!showCode)} className="btn btn-ghost btn-sm gap-2">
         {showCode ? <HiChevronDown size={16} /> : <HiChevronRight size={16} />}
         {showCode ? 'Hide' : 'Show'} Code
       </button>
@@ -217,5 +214,3 @@ const handleDelete = async (id) => {
     </div>
   );
 }
-
-

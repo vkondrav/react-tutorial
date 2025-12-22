@@ -71,13 +71,7 @@ function InlineError({ message }: { message: string }) {
 }
 
 // Toast error component
-function ToastError({
-  message,
-  onDismiss,
-}: {
-  message: string;
-  onDismiss: () => void;
-}) {
+function ToastError({ message, onDismiss }: { message: string; onDismiss: () => void }) {
   return (
     <div className="flex items-center gap-3 bg-error/10 border border-error/30 rounded-lg p-3">
       <HiOutlineExclamationCircle className="text-error shrink-0" size={20} />
@@ -90,13 +84,7 @@ function ToastError({
 }
 
 // Full-page error component
-function FullPageError({
-  error,
-  onRetry,
-}: {
-  error: ErrorInfo;
-  onRetry: () => void;
-}) {
+function FullPageError({ error, onRetry }: { error: ErrorInfo; onRetry: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
       <div className={`${error.color} mb-4`}>{error.icon}</div>
@@ -111,13 +99,7 @@ function FullPageError({
 }
 
 // Card with error state
-function ErrorCard({
-  errorType,
-  onSimulate,
-}: {
-  errorType: ErrorType;
-  onSimulate: () => void;
-}) {
+function ErrorCard({ errorType, onSimulate }: { errorType: ErrorType; onSimulate: () => void }) {
   const [hasError, setHasError] = useState(false);
   const [isRetrying, setIsRetrying] = useState(false);
 
@@ -139,9 +121,7 @@ function ErrorCard({
     return (
       <div className="card bg-base-300 p-4">
         <FullPageError error={error} onRetry={handleRetry} />
-        {isRetrying && (
-          <div className="text-center text-sm text-base-content/60">Retrying...</div>
-        )}
+        {isRetrying && <div className="text-center text-sm text-base-content/60">Retrying...</div>}
       </div>
     );
   }
@@ -153,9 +133,7 @@ function ErrorCard({
           <h4 className="font-semibold">{error.title}</h4>
           <p className="text-sm text-base-content/60">Click to simulate this error</p>
         </div>
-        <span className={`badge ${error.color.replace('text-', 'badge-')}`}>
-          {errorType}
-        </span>
+        <span className={`badge ${error.color.replace('text-', 'badge-')}`}>{errorType}</span>
       </div>
       <div className="flex items-center gap-3 p-4 bg-base-200 rounded-lg mb-4">
         <div className={error.color}>{error.icon}</div>
@@ -348,4 +326,3 @@ try {
     </div>
   );
 }
-

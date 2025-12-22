@@ -173,9 +173,7 @@ export default function StateCompositionDemo(): React.ReactElement {
           <button
             key={state}
             onClick={() => setSimulatedState(state)}
-            className={`btn btn-sm gap-2 ${
-              simulatedState === state ? 'btn-primary' : 'btn-ghost'
-            }`}
+            className={`btn btn-sm gap-2 ${simulatedState === state ? 'btn-primary' : 'btn-ghost'}`}
           >
             <HiOutlineCursorClick size={14} />
             {state.charAt(0).toUpperCase() + state.slice(1)}
@@ -319,4 +317,3 @@ function UsersPage() {
     </div>
   );
 }
-

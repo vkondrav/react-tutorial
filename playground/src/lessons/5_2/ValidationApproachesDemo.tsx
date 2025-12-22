@@ -140,7 +140,7 @@ function OnSubmitDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const handleSubmit = (e) => {
+          {`const handleSubmit = (e) => {
   e.preventDefault();
   const error = validate(form.email);
   setError(error);
@@ -218,14 +218,14 @@ function OnBlurDemo() {
       <div className="flex items-start gap-2 text-sm bg-secondary/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-secondary shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
-          <code className="text-secondary">touched</code> tracks if user has interacted with the field.
-          We only show errors after the field loses focus (blur).
+          <code className="text-secondary">touched</code> tracks if user has interacted with the
+          field. We only show errors after the field loses focus (blur).
         </p>
       </div>
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const handleBlur = () => {
+          {`const handleBlur = () => {
   setTouched(true);
   setError(validate(email));
 };
@@ -286,9 +286,11 @@ function OnChangeDemo() {
             }`}
           />
           {email && (
-            <div className={`flex items-center gap-1 mt-1 text-xs ${
-              error ? 'text-error' : 'text-success'
-            }`}>
+            <div
+              className={`flex items-center gap-1 mt-1 text-xs ${
+                error ? 'text-error' : 'text-success'
+              }`}
+            >
               {error ? <HiX size={14} /> : <HiCheck size={14} />}
               {error || 'Valid email'}
             </div>
@@ -302,7 +304,7 @@ function OnChangeDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const handleChange = (e) => {
+          {`const handleChange = (e) => {
   const value = e.target.value;
   setEmail(value);
   setError(validate(value)); // Validate immediately
@@ -312,4 +314,3 @@ function OnChangeDemo() {
     </div>
   );
 }
-

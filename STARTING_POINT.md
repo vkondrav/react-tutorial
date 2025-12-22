@@ -253,8 +253,70 @@ Update `PROGRESS.md` to mark the previous lesson complete and set the new one as
 | `Section` | `<Section title={<span className="flex items-center gap-2"><Icon /> Title</span>}>content</Section>` |
 | `TakeawayList` | `<TakeawayList items={["Point 1", "Point 2"]} />` |
 | `CodeBlock` | `<CodeBlock title="Example" code={codeString} variant="good" />` |
+| `CodeSnippet` | `<CodeSnippet title="Example" language="tsx" code={codeString} />` |
 
 Note: `Section` accepts JSX for the `title` prop, allowing icons to be included.
+
+### Code Snippet Best Practices (NEW)
+
+**For new lessons**, store code examples in separate files and import them using Vite's `?raw` feature:
+
+```
+lessons/
+└── 6_5/
+    ├── index.tsx
+    ├── MyDemo.tsx
+    └── examples/           ← Store code snippets here
+        ├── Example1.tsx
+        └── Example2.tsx
+```
+
+**Step 1:** Create the example file with `// @ts-nocheck` at the top (to suppress TypeScript errors for incomplete snippets):
+
+```tsx
+// lessons/6_5/examples/Example1.tsx
+// @ts-nocheck
+function MyExample() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+}
+```
+
+**Step 2:** Add the `?raw` module declaration (already in `vite-env.d.ts`):
+
+```typescript
+// src/vite-env.d.ts
+declare module '*?raw' {
+  const content: string;
+  export default content;
+}
+```
+
+**Step 3:** Import and use in your demo component:
+
+```tsx
+// lessons/6_5/MyDemo.tsx
+import exampleCode from './examples/Example1.tsx?raw';
+import { CodeSnippet } from '../components';
+
+export default function MyDemo() {
+  return (
+    <CodeSnippet
+      title="Example"
+      language="tsx"
+      code={exampleCode}
+    />
+  );
+}
+```
+
+**Benefits:**
+- IDE syntax highlighting in example files
+- Easier to read/edit than inline template strings
+- `CodeSnippet` automatically strips `// @ts-nocheck` from display
+- Keeps demo components clean and focused on logic
+
+**Note:** Existing lessons (1.1 - 6.4) still use inline code strings. A refactor to this pattern is planned.
 
 ### Using Icons (react-icons)
 

@@ -382,4 +382,3 @@ const [isHovered, bind]: [boolean, HoverBind] = useHover();
     </div>
   );
 }
-

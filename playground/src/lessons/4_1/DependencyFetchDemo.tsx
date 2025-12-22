@@ -142,11 +142,7 @@ export default function DependencyFetchDemo(): React.ReactElement {
         <div className="card bg-base-300 p-4">
           <div className="flex justify-between items-center mb-2">
             <div className="text-xs text-base-content/60">Fetch Log</div>
-            <button
-              onClick={clearLog}
-              className="btn btn-ghost btn-xs"
-              title="Clear log"
-            >
+            <button onClick={clearLog} className="btn btn-ghost btn-xs" title="Clear log">
               Clear
             </button>
           </div>
@@ -191,4 +187,3 @@ export default function DependencyFetchDemo(): React.ReactElement {
     </div>
   );
 }
-

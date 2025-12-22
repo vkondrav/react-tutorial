@@ -106,9 +106,12 @@ interface Comment {
 // ============================================
 function UserSearchDemo(): React.ReactElement {
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: users, loading, error, refetch } = useFetch<User[]>(
-    'https://jsonplaceholder.typicode.com/users'
-  );
+  const {
+    data: users,
+    loading,
+    error,
+    refetch,
+  } = useFetch<User[]>('https://jsonplaceholder.typicode.com/users');
 
   const filteredUsers = users?.filter(
     (user) =>
@@ -177,9 +180,12 @@ function UserSearchDemo(): React.ReactElement {
 // ============================================
 function PhotoGalleryDemo(): React.ReactElement {
   const [albumId, setAlbumId] = useState(1);
-  const { data: photos, loading, error, refetch } = useFetch<Photo[]>(
-    `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}&_limit=6`
-  );
+  const {
+    data: photos,
+    loading,
+    error,
+    refetch,
+  } = useFetch<Photo[]>(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}&_limit=6`);
 
   return (
     <div className="space-y-3">
@@ -221,7 +227,9 @@ function PhotoGalleryDemo(): React.ReactElement {
                   className="w-full h-full object-cover rounded-lg bg-base-300"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center p-2">
-                  <span className="text-[10px] text-white text-center line-clamp-3">{photo.title}</span>
+                  <span className="text-[10px] text-white text-center line-clamp-3">
+                    {photo.title}
+                  </span>
                 </div>
               </div>
             ))}
@@ -237,7 +245,12 @@ function PhotoGalleryDemo(): React.ReactElement {
 // ============================================
 function CommentsDemo(): React.ReactElement {
   const [postId, setPostId] = useState<number | null>(null);
-  const { data: comments, loading, error, refetch } = useFetch<Comment[]>(
+  const {
+    data: comments,
+    loading,
+    error,
+    refetch,
+  } = useFetch<Comment[]>(
     `https://jsonplaceholder.typicode.com/comments?postId=${postId}&_limit=5`,
     { enabled: postId !== null }
   );
@@ -421,4 +434,3 @@ export default function UseFetchPlayground(): React.ReactElement {
     </div>
   );
 }
-

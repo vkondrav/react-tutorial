@@ -25,7 +25,8 @@
     { "id": "6.1", "module": 6, "title": "Component Composition", "status": "complete" },
     { "id": "6.2", "module": 6, "title": "Render Props Pattern", "status": "complete" },
     { "id": "6.3", "module": 6, "title": "Higher-Order Components", "status": "complete" },
-    { "id": "6.4", "module": 6, "title": "Compound Components", "status": "current" }
+    { "id": "6.4", "module": 6, "title": "Compound Components", "status": "complete" },
+    { "id": "6.5", "module": 6, "title": "Activity: Preserving Hidden State", "status": "current" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },

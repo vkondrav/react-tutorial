@@ -158,10 +158,7 @@ export default function CreateDataDemo(): React.ReactElement {
       )}
 
       {/* Code toggle */}
-      <button
-        onClick={() => setShowCode(!showCode)}
-        className="btn btn-ghost btn-sm gap-2"
-      >
+      <button onClick={() => setShowCode(!showCode)} className="btn btn-ghost btn-sm gap-2">
         {showCode ? <HiChevronDown size={16} /> : <HiChevronRight size={16} />}
         {showCode ? 'Hide' : 'Show'} Code
       </button>
@@ -215,7 +212,9 @@ const handleCreate = async (data) => {
           <li>
             • Use <code className="text-secondary">JSON.stringify()</code> for the body
           </li>
-          <li>• Check <code className="text-secondary">response.ok</code> for errors</li>
+          <li>
+            • Check <code className="text-secondary">response.ok</code> for errors
+          </li>
           <li>• Update local state with the returned item (includes new ID)</li>
           <li>• Disable form inputs while submitting</li>
         </ul>
@@ -223,5 +222,3 @@ const handleCreate = async (data) => {
     </div>
   );
 }
-
-

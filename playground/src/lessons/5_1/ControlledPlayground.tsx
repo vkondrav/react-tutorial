@@ -54,35 +54,35 @@ export default function ControlledPlayground(): React.ReactElement {
   // Validation logic
   const validate = (): FormErrors => {
     const errors: FormErrors = {};
-    
+
     if (!formData.firstName.trim()) {
       errors.firstName = 'First name is required';
     }
-    
+
     if (!formData.lastName.trim()) {
       errors.lastName = 'Last name is required';
     }
-    
+
     if (!formData.email.includes('@') || !formData.email.includes('.')) {
       errors.email = 'Valid email is required';
     }
-    
+
     if (formData.password.length < 8) {
       errors.password = 'Password must be at least 8 characters';
     }
-    
+
     if (formData.password !== formData.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
     }
-    
+
     if (!formData.role) {
       errors.role = 'Please select a role';
     }
-    
+
     if (!formData.agreeToTerms) {
       errors.agreeToTerms = 'You must agree to the terms';
     }
-    
+
     return errors;
   };
 
@@ -94,14 +94,14 @@ export default function ControlledPlayground(): React.ReactElement {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      
+
       // Handle nested notification checkboxes
       if (name.startsWith('notifications.')) {
         const key = name.split('.')[1] as keyof FormData['notifications'];
-        setFormData(prev => ({
+        setFormData((prev) => ({
           ...prev,
           notifications: {
             ...prev.notifications,
@@ -109,10 +109,10 @@ export default function ControlledPlayground(): React.ReactElement {
           },
         }));
       } else {
-        setFormData(prev => ({ ...prev, [name]: checked }));
+        setFormData((prev) => ({ ...prev, [name]: checked }));
       }
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -148,9 +148,7 @@ export default function ControlledPlayground(): React.ReactElement {
             Welcome, {formData.firstName} {formData.lastName}!
           </p>
           <div className="bg-base-200 rounded-lg p-4 text-left text-sm">
-            <pre className="overflow-x-auto">
-              {JSON.stringify(formData, null, 2)}
-            </pre>
+            <pre className="overflow-x-auto">{JSON.stringify(formData, null, 2)}</pre>
           </div>
           <button onClick={handleReset} className="btn btn-primary">
             Start Over
@@ -229,9 +227,11 @@ export default function ControlledPlayground(): React.ReactElement {
             }`}
           />
           {formData.email && (
-            <span className={`text-xs mt-1 flex items-center gap-1 ${
-              errors.email ? 'text-error' : 'text-success'
-            }`}>
+            <span
+              className={`text-xs mt-1 flex items-center gap-1 ${
+                errors.email ? 'text-error' : 'text-success'
+              }`}
+            >
               {errors.email ? <HiX size={12} /> : <HiCheck size={12} />}
               {errors.email || 'Valid email'}
             </span>
@@ -258,9 +258,11 @@ export default function ControlledPlayground(): React.ReactElement {
               }`}
             />
             {formData.password && (
-              <span className={`text-xs mt-1 flex items-center gap-1 ${
-                errors.password ? 'text-error' : 'text-success'
-              }`}>
+              <span
+                className={`text-xs mt-1 flex items-center gap-1 ${
+                  errors.password ? 'text-error' : 'text-success'
+                }`}
+              >
                 {errors.password ? <HiX size={12} /> : <HiCheck size={12} />}
                 {errors.password || 'Strong password'}
               </span>
@@ -277,13 +279,16 @@ export default function ControlledPlayground(): React.ReactElement {
               onChange={handleChange}
               placeholder="••••••••"
               className={`input input-bordered w-full ${
-                formData.confirmPassword && (errors.confirmPassword ? 'input-error' : 'input-success')
+                formData.confirmPassword &&
+                (errors.confirmPassword ? 'input-error' : 'input-success')
               }`}
             />
             {formData.confirmPassword && (
-              <span className={`text-xs mt-1 flex items-center gap-1 ${
-                errors.confirmPassword ? 'text-error' : 'text-success'
-              }`}>
+              <span
+                className={`text-xs mt-1 flex items-center gap-1 ${
+                  errors.confirmPassword ? 'text-error' : 'text-success'
+                }`}
+              >
                 {errors.confirmPassword ? <HiX size={12} /> : <HiCheck size={12} />}
                 {errors.confirmPassword || 'Passwords match'}
               </span>
@@ -300,9 +305,7 @@ export default function ControlledPlayground(): React.ReactElement {
             name="role"
             value={formData.role}
             onChange={handleChange}
-            className={`select select-bordered w-full ${
-              formData.role ? 'select-success' : ''
-            }`}
+            className={`select select-bordered w-full ${formData.role ? 'select-success' : ''}`}
           >
             <option value="">Select your role...</option>
             <option value="developer">Developer</option>
@@ -378,25 +381,20 @@ export default function ControlledPlayground(): React.ReactElement {
               className={`checkbox ${errors.agreeToTerms ? 'checkbox-error' : 'checkbox-primary'}`}
             />
             <span className="label-text">
-              I agree to the <a href="#" className="link link-primary">Terms of Service</a>
+              I agree to the{' '}
+              <a href="#" className="link link-primary">
+                Terms of Service
+              </a>
             </span>
           </label>
         </div>
 
         {/* Submit */}
         <div className="flex gap-4">
-          <button
-            type="submit"
-            disabled={!isValid}
-            className="btn btn-primary flex-1"
-          >
+          <button type="submit" disabled={!isValid} className="btn btn-primary flex-1">
             {isValid ? 'Create Account' : 'Fill Required Fields'}
           </button>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="btn btn-ghost"
-          >
+          <button type="button" onClick={handleReset} className="btn btn-ghost">
             Reset
           </button>
         </div>
@@ -419,10 +417,7 @@ export default function ControlledPlayground(): React.ReactElement {
 
       {/* State Inspector */}
       <div className="card bg-base-300 p-4">
-        <button
-          onClick={() => setShowData(!showData)}
-          className="btn btn-ghost btn-sm w-full"
-        >
+        <button onClick={() => setShowData(!showData)} className="btn btn-ghost btn-sm w-full">
           {showData ? 'Hide' : 'Show'} Form State (Debug)
         </button>
         {showData && (
@@ -436,4 +431,3 @@ export default function ControlledPlayground(): React.ReactElement {
     </div>
   );
 }
-

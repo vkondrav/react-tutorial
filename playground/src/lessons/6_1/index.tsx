@@ -34,8 +34,8 @@ export default function Lesson6_1(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           React favors <strong className="text-primary">composition</strong> over class inheritance.
           Instead of creating complex component hierarchies, you{' '}
-          <strong className="text-secondary">compose</strong> small, focused components together like
-          building blocks.
+          <strong className="text-secondary">compose</strong> small, focused components together
+          like building blocks.
         </p>
         <WhyCompositionDemo />
       </Section>
@@ -67,8 +67,8 @@ export default function Lesson6_1(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          When you need <strong className="text-primary">multiple insertion points</strong>, use named
-          props instead of just children. This gives you{' '}
+          When you need <strong className="text-primary">multiple insertion points</strong>, use
+          named props instead of just children. This gives you{' '}
           <strong className="text-secondary">precise control</strong> over where content appears.
         </p>
         <SlotPatternDemo />
@@ -84,8 +84,8 @@ export default function Lesson6_1(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Create <strong className="text-primary">specialized versions</strong> of generic components
-          by wrapping them with pre-configured props. This is composition in action!
+          Create <strong className="text-primary">specialized versions</strong> of generic
+          components by wrapping them with pre-configured props. This is composition in action!
         </p>
         <SpecializationDemo />
       </Section>
@@ -101,8 +101,8 @@ export default function Lesson6_1(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           Build a real component library using composition! Create{' '}
-          <strong className="text-primary">flexible, reusable components</strong> that can be combined
-          in different ways.
+          <strong className="text-primary">flexible, reusable components</strong> that can be
+          combined in different ways.
         </p>
         <CompositionPlayground />
       </Section>
@@ -131,4 +131,3 @@ export default function Lesson6_1(): React.ReactElement {
     </div>
   );
 }
-

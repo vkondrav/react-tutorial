@@ -32,9 +32,9 @@ export default function Lesson4_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Users need feedback while waiting for data. Good loading states prevent confusion and
-          make your app feel <strong className="text-primary">responsive</strong>. The key patterns
-          are <strong className="text-secondary">spinners</strong>,{' '}
+          Users need feedback while waiting for data. Good loading states prevent confusion and make
+          your app feel <strong className="text-primary">responsive</strong>. The key patterns are{' '}
+          <strong className="text-secondary">spinners</strong>,{' '}
           <strong className="text-secondary">skeletons</strong>, and{' '}
           <strong className="text-secondary">progress indicators</strong>.
         </p>
@@ -51,9 +51,10 @@ export default function Lesson4_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Things go wrong — networks fail, servers error, data is invalid. Good error handling
-          shows <strong className="text-primary">what happened</strong> and{' '}
-          <strong className="text-primary">what to do next</strong>. Always give users a path forward.
+          Things go wrong — networks fail, servers error, data is invalid. Good error handling shows{' '}
+          <strong className="text-primary">what happened</strong> and{' '}
+          <strong className="text-primary">what to do next</strong>. Always give users a path
+          forward.
         </p>
         <ErrorStatesDemo />
       </Section>
@@ -69,8 +70,8 @@ export default function Lesson4_2(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           Empty states happen when there's no data to show. They're opportunities to{' '}
-          <strong className="text-primary">guide users</strong> — explain why it's empty and
-          what they can do. Great empty states turn dead ends into starting points.
+          <strong className="text-primary">guide users</strong> — explain why it's empty and what
+          they can do. Great empty states turn dead ends into starting points.
         </p>
         <EmptyStatesDemo />
       </Section>
@@ -132,4 +133,3 @@ export default function Lesson4_2(): React.ReactElement {
     </div>
   );
 }
-

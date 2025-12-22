@@ -17,9 +17,7 @@ export default function NameAttributeDemo(): React.ReactElement {
 
   const [lastChanged, setLastChanged] = useState<string | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
 
@@ -43,7 +41,9 @@ export default function NameAttributeDemo(): React.ReactElement {
 
         {/* Form Fields */}
         <div className="grid md:grid-cols-2 gap-4">
-          <div className={`transition-colors rounded-lg p-2 ${lastChanged === 'username' ? 'bg-primary/20' : ''}`}>
+          <div
+            className={`transition-colors rounded-lg p-2 ${lastChanged === 'username' ? 'bg-primary/20' : ''}`}
+          >
             <label className="label">
               <span className="label-text">
                 Username <code className="text-primary text-xs ml-1">name="username"</code>
@@ -59,7 +59,9 @@ export default function NameAttributeDemo(): React.ReactElement {
             />
           </div>
 
-          <div className={`transition-colors rounded-lg p-2 ${lastChanged === 'email' ? 'bg-primary/20' : ''}`}>
+          <div
+            className={`transition-colors rounded-lg p-2 ${lastChanged === 'email' ? 'bg-primary/20' : ''}`}
+          >
             <label className="label">
               <span className="label-text">
                 Email <code className="text-primary text-xs ml-1">name="email"</code>
@@ -75,7 +77,9 @@ export default function NameAttributeDemo(): React.ReactElement {
             />
           </div>
 
-          <div className={`transition-colors rounded-lg p-2 ${lastChanged === 'age' ? 'bg-primary/20' : ''}`}>
+          <div
+            className={`transition-colors rounded-lg p-2 ${lastChanged === 'age' ? 'bg-primary/20' : ''}`}
+          >
             <label className="label">
               <span className="label-text">
                 Age <code className="text-primary text-xs ml-1">name="age"</code>
@@ -91,7 +95,9 @@ export default function NameAttributeDemo(): React.ReactElement {
             />
           </div>
 
-          <div className={`transition-colors rounded-lg p-2 ${lastChanged === 'plan' ? 'bg-primary/20' : ''}`}>
+          <div
+            className={`transition-colors rounded-lg p-2 ${lastChanged === 'plan' ? 'bg-primary/20' : ''}`}
+          >
             <label className="label">
               <span className="label-text">
                 Plan <code className="text-primary text-xs ml-1">name="plan"</code>
@@ -111,7 +117,9 @@ export default function NameAttributeDemo(): React.ReactElement {
         </div>
 
         {/* Checkbox */}
-        <div className={`transition-colors rounded-lg p-2 ${lastChanged === 'subscribe' ? 'bg-primary/20' : ''}`}>
+        <div
+          className={`transition-colors rounded-lg p-2 ${lastChanged === 'subscribe' ? 'bg-primary/20' : ''}`}
+        >
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
@@ -137,11 +145,7 @@ export default function NameAttributeDemo(): React.ReactElement {
               </span>
             )}
           </div>
-          <CodeSnippet
-            language="json"
-            code={JSON.stringify(form, null, 2)}
-            showCopy={false}
-          />
+          <CodeSnippet language="json" code={JSON.stringify(form, null, 2)} showCopy={false} />
         </div>
       </div>
 
@@ -199,4 +203,3 @@ export default function NameAttributeDemo(): React.ReactElement {
     </div>
   );
 }
-

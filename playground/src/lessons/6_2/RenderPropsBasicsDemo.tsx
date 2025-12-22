@@ -14,7 +14,7 @@ function CounterHardcoded() {
   return (
     <div className="p-4 bg-base-300 rounded-lg text-center">
       <p className="text-2xl font-bold">{count}</p>
-      <button onClick={() => setCount(c => c + 1)} className="btn btn-primary btn-sm mt-2">
+      <button onClick={() => setCount((c) => c + 1)} className="btn btn-primary btn-sm mt-2">
         Increment
       </button>
     </div>
@@ -28,7 +28,7 @@ interface CounterProps {
 
 function Counter({ render }: CounterProps) {
   const [count, setCount] = useState(0);
-  const increment = () => setCount(c => c + 1);
+  const increment = () => setCount((c) => c + 1);
 
   // Let the consumer decide how to render!
   return <>{render(count, increment)}</>;
@@ -200,9 +200,9 @@ export default function RenderPropsBasicsDemo() {
           <div>
             <h4 className="font-semibold mb-1">The Core Idea</h4>
             <p className="text-sm text-base-content/70">
-              A render prop is a <strong className="text-primary">function that returns JSX</strong>.
-              The component calls this function, passing it the data/handlers it manages. The function
-              then renders whatever it wants with that data.
+              A render prop is a <strong className="text-primary">function that returns JSX</strong>
+              . The component calls this function, passing it the data/handlers it manages. The
+              function then renders whatever it wants with that data.
             </p>
           </div>
         </div>
@@ -210,4 +210,3 @@ export default function RenderPropsBasicsDemo() {
     </div>
   );
 }
-

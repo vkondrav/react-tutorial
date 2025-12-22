@@ -154,7 +154,13 @@ export default function ValidationPlayground(): React.ReactElement {
 
   const handleReset = () => {
     setForm({ email: '', password: '', confirmPassword: '', age: '', website: '' });
-    setTouched({ email: false, password: false, confirmPassword: false, age: false, website: false });
+    setTouched({
+      email: false,
+      password: false,
+      confirmPassword: false,
+      age: false,
+      website: false,
+    });
     setSubmitted(false);
     setSuccess(false);
     setEmailTaken(false);
@@ -169,9 +175,17 @@ export default function ValidationPlayground(): React.ReactElement {
           Welcome! Your account has been created successfully.
         </p>
         <div className="bg-base-200 rounded-lg p-4 text-left text-sm mb-4">
-          <div><strong>Email:</strong> {form.email}</div>
-          <div><strong>Age:</strong> {form.age}</div>
-          {form.website && <div><strong>Website:</strong> {form.website}</div>}
+          <div>
+            <strong>Email:</strong> {form.email}
+          </div>
+          <div>
+            <strong>Age:</strong> {form.age}
+          </div>
+          {form.website && (
+            <div>
+              <strong>Website:</strong> {form.website}
+            </div>
+          )}
         </div>
         <button onClick={handleReset} className="btn btn-primary">
           Start Over
@@ -211,7 +225,10 @@ export default function ValidationPlayground(): React.ReactElement {
               <span className="absolute right-3 top-1/2 -translate-y-1/2 loading loading-spinner loading-sm"></span>
             )}
             {!checkingEmail && touched.email && !errors.email && form.email && (
-              <HiCheck className="absolute right-3 top-1/2 -translate-y-1/2 text-success" size={20} />
+              <HiCheck
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-success"
+                size={20}
+              />
             )}
           </div>
           {touched.email && errors.email && (
@@ -219,9 +236,7 @@ export default function ValidationPlayground(): React.ReactElement {
               <HiX size={14} /> {errors.email}
             </div>
           )}
-          <div className="text-xs text-base-content/50 mt-1">
-            Try: test@example.com (taken)
-          </div>
+          <div className="text-xs text-base-content/50 mt-1">Try: test@example.com (taken)</div>
         </div>
 
         {/* Password */}
@@ -273,9 +288,7 @@ export default function ValidationPlayground(): React.ReactElement {
               ].map((passed, i) => (
                 <div
                   key={i}
-                  className={`h-1 flex-1 rounded-full ${
-                    passed ? 'bg-success' : 'bg-base-200'
-                  }`}
+                  className={`h-1 flex-1 rounded-full ${passed ? 'bg-success' : 'bg-base-200'}`}
                 />
               ))}
             </div>
@@ -333,13 +346,7 @@ export default function ValidationPlayground(): React.ReactElement {
             min="1"
             max="150"
             className={`input input-bordered w-full ${
-              touched.age
-                ? errors.age
-                  ? 'input-error'
-                  : form.age
-                    ? 'input-success'
-                    : ''
-                : ''
+              touched.age ? (errors.age ? 'input-error' : form.age ? 'input-success' : '') : ''
             }`}
           />
           {touched.age && errors.age && (
@@ -382,11 +389,7 @@ export default function ValidationPlayground(): React.ReactElement {
 
         {/* Buttons */}
         <div className="flex gap-3 pt-2">
-          <button
-            type="submit"
-            disabled={checkingEmail}
-            className="btn btn-primary flex-1"
-          >
+          <button type="submit" disabled={checkingEmail} className="btn btn-primary flex-1">
             {checkingEmail ? (
               <>
                 <span className="loading loading-spinner loading-sm"></span>
@@ -425,4 +428,3 @@ export default function ValidationPlayground(): React.ReactElement {
     </div>
   );
 }
-

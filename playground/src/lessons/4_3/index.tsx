@@ -32,9 +32,9 @@ export default function Lesson4_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          To create new data, send a <strong className="text-primary">POST</strong> request with
-          the data in the request body. The server typically returns the created item with its
-          new <code className="text-secondary">id</code>.
+          To create new data, send a <strong className="text-primary">POST</strong> request with the
+          data in the request body. The server typically returns the created item with its new{' '}
+          <code className="text-secondary">id</code>.
         </p>
         <CreateDataDemo />
       </Section>
@@ -50,8 +50,8 @@ export default function Lesson4_3(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           Use <strong className="text-primary">PUT</strong> to replace an entire resource, or{' '}
-          <strong className="text-primary">PATCH</strong> to update specific fields. Both send
-          the updated data in the request body.
+          <strong className="text-primary">PATCH</strong> to update specific fields. Both send the
+          updated data in the request body.
         </p>
         <UpdateDataDemo />
       </Section>
@@ -66,8 +66,8 @@ export default function Lesson4_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          <strong className="text-primary">DELETE</strong> requests remove resources. Always
-          confirm destructive actions and handle errors gracefully — you can't undo a delete!
+          <strong className="text-primary">DELETE</strong> requests remove resources. Always confirm
+          destructive actions and handle errors gracefully — you can't undo a delete!
         </p>
         <DeleteDataDemo />
       </Section>
@@ -82,9 +82,9 @@ export default function Lesson4_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          <strong className="text-primary">Optimistic updates</strong> update the UI immediately
-          and rollback on error. <strong className="text-secondary">Pessimistic updates</strong>{' '}
-          wait for the server response. Each has trade-offs!
+          <strong className="text-primary">Optimistic updates</strong> update the UI immediately and
+          rollback on error. <strong className="text-secondary">Pessimistic updates</strong> wait
+          for the server response. Each has trade-offs!
         </p>
         <OptimisticUpdatesDemo />
       </Section>
@@ -129,5 +129,3 @@ export default function Lesson4_3(): React.ReactElement {
     </div>
   );
 }
-
-

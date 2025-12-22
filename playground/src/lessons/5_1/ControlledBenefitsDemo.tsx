@@ -25,9 +25,7 @@ export default function ControlledBenefitsDemo(): React.ReactElement {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`btn btn-sm ${
-              activeTab === tab.id ? 'btn-primary' : 'btn-ghost'
-            }`}
+            className={`btn btn-sm ${activeTab === tab.id ? 'btn-primary' : 'btn-ghost'}`}
           >
             {tab.label}
           </button>
@@ -76,9 +74,11 @@ function ValidationDemo() {
             }`}
           />
           {email && (
-            <div className={`flex items-center gap-1 mt-1 text-xs ${
-              isValidEmail ? 'text-success' : 'text-error'
-            }`}>
+            <div
+              className={`flex items-center gap-1 mt-1 text-xs ${
+                isValidEmail ? 'text-success' : 'text-error'
+              }`}
+            >
               {isValidEmail ? <HiCheck size={14} /> : <HiX size={14} />}
               {isValidEmail ? 'Valid email format' : 'Must include @ and .'}
             </div>
@@ -100,9 +100,11 @@ function ValidationDemo() {
             }`}
           />
           {password && (
-            <div className={`flex items-center gap-1 mt-1 text-xs ${
-              isStrongPassword ? 'text-success' : 'text-error'
-            }`}>
+            <div
+              className={`flex items-center gap-1 mt-1 text-xs ${
+                isStrongPassword ? 'text-success' : 'text-error'
+              }`}
+            >
               {isStrongPassword ? <HiCheck size={14} /> : <HiX size={14} />}
               {isStrongPassword ? 'Strong password' : `Need ${8 - password.length} more characters`}
             </div>
@@ -113,8 +115,8 @@ function ValidationDemo() {
       <div className="flex items-start gap-2 text-sm bg-primary/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-primary shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
-          Validation happens on every keystroke because we have the value in state.
-          No need to wait for form submit!
+          Validation happens on every keystroke because we have the value in state. No need to wait
+          for form submit!
         </p>
       </div>
     </div>
@@ -185,7 +187,7 @@ function FormattingDemo() {
 
       <div className="bg-base-200 rounded-lg p-3">
         <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const formatPhone = (value) => {
+          {`const formatPhone = (value) => {
   const digits = value.replace(/\\D/g, '').slice(0, 10);
   // ... formatting logic
 };
@@ -273,8 +275,8 @@ function ConditionalDemo() {
       <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
-          Because we know the delivery method in state, we can conditionally
-          show or hide the address field!
+          Because we know the delivery method in state, we can conditionally show or hide the
+          address field!
         </p>
       </div>
     </div>
@@ -348,11 +350,10 @@ function ComputedDemo() {
       <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
-          <code>subtotal</code>, <code>discountAmount</code>, and <code>total</code> are
-          computed from state — they update automatically when inputs change!
+          <code>subtotal</code>, <code>discountAmount</code>, and <code>total</code> are computed
+          from state — they update automatically when inputs change!
         </p>
       </div>
     </div>
   );
 }
-

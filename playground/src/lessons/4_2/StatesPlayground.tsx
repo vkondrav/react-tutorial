@@ -52,9 +52,7 @@ function PhotoGallery() {
     }
 
     try {
-      const res = await fetch(
-        'https://jsonplaceholder.typicode.com/photos?_limit=6'
-      );
+      const res = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=6');
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       setPhotos(data);
@@ -74,10 +72,7 @@ function PhotoGallery() {
     return (
       <div className="grid grid-cols-3 gap-2">
         {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="aspect-square bg-base-content/10 rounded animate-pulse"
-          />
+          <div key={i} className="aspect-square bg-base-content/10 rounded animate-pulse" />
         ))}
       </div>
     );
@@ -156,10 +151,7 @@ function PhotoGalleryDemo() {
           />
           <span className="text-sm">Simulate Empty</span>
         </label>
-        <button
-          onClick={() => setKey((k) => k + 1)}
-          className="btn btn-ghost btn-xs gap-1"
-        >
+        <button onClick={() => setKey((k) => k + 1)} className="btn btn-ghost btn-xs gap-1">
           <HiOutlineRefresh size={14} />
           Reload
         </button>
@@ -203,7 +195,7 @@ function SearchDemo() {
       try {
         // Simulate network delay
         await new Promise((r) => setTimeout(r, 800));
-        
+
         const res = await fetch(
           `https://jsonplaceholder.typicode.com/posts?_limit=5&title_like=${encodeURIComponent(query)}`
         );
@@ -260,12 +252,8 @@ function SearchDemo() {
       return (
         <div className="flex flex-col items-center py-6 text-center">
           <HiOutlineSearch className="text-base-content/30 mb-2" size={24} />
-          <p className="text-sm text-base-content/60">
-            No results for "{query}"
-          </p>
-          <p className="text-xs text-base-content/40 mt-1">
-            Try different keywords
-          </p>
+          <p className="text-sm text-base-content/60">No results for "{query}"</p>
+          <p className="text-xs text-base-content/40 mt-1">Try different keywords</p>
         </div>
       );
     }
@@ -275,12 +263,8 @@ function SearchDemo() {
       <ul className="space-y-3">
         {results.map((result) => (
           <li key={result.id} className="p-3 bg-base-200 rounded-lg">
-            <h5 className="font-medium text-sm mb-1 line-clamp-1">
-              {result.title}
-            </h5>
-            <p className="text-xs text-base-content/60 line-clamp-2">
-              {result.body}
-            </p>
+            <h5 className="font-medium text-sm mb-1 line-clamp-1">{result.title}</h5>
+            <p className="text-xs text-base-content/60 line-clamp-2">{result.body}</p>
           </li>
         ))}
       </ul>
@@ -310,9 +294,7 @@ function SearchDemo() {
           </button>
         )}
       </div>
-      <div className="bg-base-300 rounded-lg p-4 min-h-[200px]">
-        {renderContent()}
-      </div>
+      <div className="bg-base-300 rounded-lg p-4 min-h-[200px]">{renderContent()}</div>
     </div>
   );
 }
@@ -373,13 +355,9 @@ function ShoppingCartDemo() {
       <div className="flex flex-col items-center py-8 text-center">
         <HiOutlineShoppingCart className="text-base-content/30 mb-2" size={32} />
         <h4 className="font-semibold mb-1">Your cart is empty</h4>
-        <p className="text-sm text-base-content/60 mb-4">
-          Add some items to get started!
-        </p>
+        <p className="text-sm text-base-content/60 mb-4">Add some items to get started!</p>
         <button
-          onClick={() =>
-            setItems([{ id: 1, name: 'Sample Item', price: 19.99, quantity: 1 }])
-          }
+          onClick={() => setItems([{ id: 1, name: 'Sample Item', price: 19.99, quantity: 1 }])}
           className="btn btn-primary btn-sm"
         >
           Add Sample Item
@@ -395,10 +373,7 @@ function ShoppingCartDemo() {
     <div className="space-y-4">
       <div className="space-y-3">
         {items.map((item) => (
-          <div
-            key={item.id}
-            className="flex items-center gap-3 p-3 bg-base-200 rounded-lg"
-          >
+          <div key={item.id} className="flex items-center gap-3 p-3 bg-base-200 rounded-lg">
             <div className="w-12 h-12 bg-primary/20 rounded flex items-center justify-center">
               <span className="text-lg">📚</span>
             </div>
@@ -408,10 +383,7 @@ function ShoppingCartDemo() {
                 ${item.price.toFixed(2)} × {item.quantity}
               </div>
             </div>
-            <button
-              onClick={() => removeItem(item.id)}
-              className="btn btn-ghost btn-xs btn-square"
-            >
+            <button onClick={() => removeItem(item.id)} className="btn btn-ghost btn-xs btn-square">
               <HiX size={14} />
             </button>
           </div>
@@ -454,9 +426,7 @@ export default function StatesPlayground(): React.ReactElement {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`btn btn-sm gap-2 ${
-              activeTab === tab.id ? 'btn-primary' : 'btn-ghost'
-            }`}
+            className={`btn btn-sm gap-2 ${activeTab === tab.id ? 'btn-primary' : 'btn-ghost'}`}
           >
             {tab.icon}
             {tab.label}
@@ -496,7 +466,8 @@ export default function StatesPlayground(): React.ReactElement {
           <li className="flex items-start gap-2">
             <span className="text-primary mt-1">•</span>
             <span>
-              <strong>Search shows context</strong> — Different states for "no query" vs "no results"
+              <strong>Search shows context</strong> — Different states for "no query" vs "no
+              results"
             </span>
           </li>
         </ul>
@@ -504,4 +475,3 @@ export default function StatesPlayground(): React.ReactElement {
     </div>
   );
 }
-

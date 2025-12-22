@@ -136,10 +136,7 @@ function SearchDemo(): React.ReactElement {
         ) : (
           <div className="space-y-2">
             {todos.map((todo) => (
-              <div
-                key={todo.id}
-                className="flex items-center gap-3 p-2 bg-base-200 rounded"
-              >
+              <div key={todo.id} className="flex items-center gap-3 p-2 bg-base-200 rounded">
                 <input
                   type="checkbox"
                   checked={todo.completed}
@@ -431,4 +428,3 @@ function AutoRefreshDemo(): React.ReactElement {
     </div>
   );
 }
-

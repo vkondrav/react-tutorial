@@ -205,9 +205,12 @@ export default function BuildingUseFetchDemo(): React.ReactElement {
   const [showLiveDemo, setShowLiveDemo] = useState(false);
 
   // Live demo using our hook
-  const { data: users, loading, error, refetch } = useFetch<User[]>(
-    'https://jsonplaceholder.typicode.com/users'
-  );
+  const {
+    data: users,
+    loading,
+    error,
+    refetch,
+  } = useFetch<User[]>('https://jsonplaceholder.typicode.com/users');
 
   return (
     <div className="card bg-base-200 p-5">
@@ -305,4 +308,3 @@ export default function BuildingUseFetchDemo(): React.ReactElement {
     </div>
   );
 }
-

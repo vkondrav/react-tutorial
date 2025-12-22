@@ -18,10 +18,7 @@ export default function DynamicFieldsDemo(): React.ReactElement {
   ]);
 
   const addPhone = () => {
-    setPhones((prev) => [
-      ...prev,
-      { id: crypto.randomUUID(), type: 'mobile', number: '' },
-    ]);
+    setPhones((prev) => [...prev, { id: crypto.randomUUID(), type: 'mobile', number: '' }]);
   };
 
   const removePhone = (id: string) => {
@@ -30,9 +27,7 @@ export default function DynamicFieldsDemo(): React.ReactElement {
 
   const updatePhone = (id: string, field: 'type' | 'number', value: string) => {
     setPhones((prev) =>
-      prev.map((phone) =>
-        phone.id === id ? { ...phone, [field]: value } : phone
-      )
+      prev.map((phone) => (phone.id === id ? { ...phone, [field]: value } : phone))
     );
   };
 
@@ -49,10 +44,7 @@ export default function DynamicFieldsDemo(): React.ReactElement {
         {/* Phone List */}
         <div className="space-y-3">
           {phones.map((phone, index) => (
-            <div
-              key={phone.id}
-              className="flex items-end gap-3 bg-base-200 rounded-lg p-3"
-            >
+            <div key={phone.id} className="flex items-end gap-3 bg-base-200 rounded-lg p-3">
               <div className="shrink-0">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold text-sm">
                   {index + 1}
@@ -170,4 +162,3 @@ const updatePhone = (id: string, field: keyof PhoneEntry, value: string) => {
     </div>
   );
 }
-

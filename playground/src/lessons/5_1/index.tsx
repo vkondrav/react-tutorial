@@ -32,8 +32,9 @@ export default function Lesson5_1(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          In React, a <strong className="text-primary">controlled component</strong> is a form element
-          whose value is controlled by React state. Instead of the DOM managing the input's value,{' '}
+          In React, a <strong className="text-primary">controlled component</strong> is a form
+          element whose value is controlled by React state. Instead of the DOM managing the input's
+          value,{' '}
           <strong className="text-secondary">React becomes the "single source of truth"</strong>.
         </p>
         <div className="grid grid-cols-2 gap-4 mb-4">
@@ -154,4 +155,3 @@ export default function Lesson5_1(): React.ReactElement {
     </div>
   );
 }
-

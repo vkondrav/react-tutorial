@@ -50,9 +50,8 @@ export default function Lesson5_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Most forms need similar validations:{' '}
-          <strong className="text-primary">required</strong> fields,{' '}
-          <strong className="text-secondary">length</strong> constraints,{' '}
+          Most forms need similar validations: <strong className="text-primary">required</strong>{' '}
+          fields, <strong className="text-secondary">length</strong> constraints,{' '}
           <strong className="text-accent">pattern</strong> matching, and{' '}
           <strong className="text-success">custom</strong> logic.
         </p>
@@ -89,8 +88,8 @@ export default function Lesson5_2(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           Some validations require a server check — like{' '}
           <strong className="text-primary">username availability</strong> or{' '}
-          <strong className="text-secondary">email uniqueness</strong>. Learn to handle
-          async validation with debouncing and loading states.
+          <strong className="text-secondary">email uniqueness</strong>. Learn to handle async
+          validation with debouncing and loading states.
         </p>
         <AsyncValidationDemo />
       </Section>
@@ -105,8 +104,8 @@ export default function Lesson5_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Practice building a complete validated form! This signup form combines
-          all the patterns: required fields, patterns, async validation, and good error UX.
+          Practice building a complete validated form! This signup form combines all the patterns:
+          required fields, patterns, async validation, and good error UX.
         </p>
         <ValidationPlayground />
       </Section>
@@ -135,4 +134,3 @@ export default function Lesson5_2(): React.ReactElement {
     </div>
   );
 }
-

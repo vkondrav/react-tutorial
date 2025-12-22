@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|-------|
 | **Current Module** | Module 6: Component Patterns |
-| **Current Lesson** | Lesson 6.4: Compound Components |
-| **Next Lesson** | Lesson 6.5: Activity: Preserving Hidden State |
+| **Current Lesson** | Lesson 6.5: Activity: Preserving Hidden State |
+| **Next Lesson** | Module 7: State Management |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -69,6 +69,33 @@ import { CodeSnippet } from '../components';
 
 **P.S.** All code snippets should display **TypeScript** syntax (with proper type annotations like `React.ChangeEvent<HTMLInputElement>`), not plain JavaScript.
 
+### Code Snippet File Pattern (NEW - from Lesson 6.5)
+
+**Going forward**, store code examples in separate files using Vite's `?raw` import:
+
+```
+lessons/X_Y/
+├── index.tsx
+├── SomeDemo.tsx
+└── examples/           ← Code snippets as separate .tsx files
+    ├── Example1.tsx    ← Add // @ts-nocheck at top
+    └── Example2.tsx
+```
+
+**Usage:**
+```tsx
+import exampleCode from './examples/Example1.tsx?raw';
+<CodeSnippet code={exampleCode} language="tsx" />
+```
+
+**Benefits:** IDE highlighting, cleaner demo files, auto-strips `// @ts-nocheck` on display.
+
+**Refactoring TODO (separate files pattern):**
+- ✅ Lesson 6.5 - Uses `examples/` folder with `?raw` imports
+- ⬜ Lesson 6.4 - Inline strings (needs refactor)
+- ⬜ Lesson 6.3 - Inline strings (needs refactor)
+- ⬜ All earlier lessons - Inline strings (low priority)
+
 ---
 
 ## Module Progress
@@ -127,6 +154,7 @@ import { CodeSnippet } from '../components';
 | 6.2 | Render Props Pattern | ✅ Complete | Basics, children as function, mouse/fetch/list use cases, playground |
 | 6.3 | Higher-Order Components | ✅ Complete | HOC basics, withAuth/withLoading/withTheme, patterns & conventions, playground |
 | 6.4 | Compound Components | ✅ Complete | Compound basics, Context pattern, flexible API design, Tabs/Menu/Select playground |
+| 6.5 | Activity: Preserving Hidden State | 🔄 Current | State preservation problem, CSS hiding approach, React 19 Activity concept, playground |
 
 ### Module 7: State Management ⬜ Not Started
 

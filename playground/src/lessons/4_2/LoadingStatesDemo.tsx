@@ -160,9 +160,21 @@ export default function LoadingStatesDemo(): React.ReactElement {
 
   const patterns: { id: LoadingPattern; label: string; description: string }[] = [
     { id: 'spinner', label: 'Spinner', description: 'Simple, universal, good for short waits' },
-    { id: 'skeleton', label: 'Skeleton', description: 'Static placeholder showing layout structure' },
-    { id: 'progress', label: 'Progress', description: 'Shows completion %, good for uploads/downloads' },
-    { id: 'shimmer', label: 'Shimmer', description: 'Animated skeleton with pulse effect, feels alive' },
+    {
+      id: 'skeleton',
+      label: 'Skeleton',
+      description: 'Static placeholder showing layout structure',
+    },
+    {
+      id: 'progress',
+      label: 'Progress',
+      description: 'Shows completion %, good for uploads/downloads',
+    },
+    {
+      id: 'shimmer',
+      label: 'Shimmer',
+      description: 'Animated skeleton with pulse effect, feels alive',
+    },
   ];
 
   return (
@@ -289,4 +301,3 @@ function Shimmer({ className }) {
     </div>
   );
 }
-

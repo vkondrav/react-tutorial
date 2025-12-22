@@ -26,18 +26,12 @@ function PageLayout({ header, sidebar, children }: PageLayoutProps) {
   return (
     <div className="border border-base-300 rounded-lg overflow-hidden text-sm">
       {/* Header */}
-      <div className="bg-base-300 px-4 py-2 border-b border-base-300">
-        {header}
-      </div>
+      <div className="bg-base-300 px-4 py-2 border-b border-base-300">{header}</div>
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-32 bg-base-200 border-r border-base-300 p-2">
-          {sidebar}
-        </div>
+        <div className="w-32 bg-base-200 border-r border-base-300 p-2">{sidebar}</div>
         {/* Main content */}
-        <div className="flex-1 p-4">
-          {children}
-        </div>
+        <div className="flex-1 p-4">{children}</div>
       </div>
     </div>
   );
@@ -54,18 +48,10 @@ function CardWithSlots({ header, footer, children }: CardWithSlotsProps) {
   return (
     <div className="border border-base-300 rounded-lg overflow-hidden">
       {header && (
-        <div className="bg-base-300 px-4 py-2 border-b border-base-300 font-medium">
-          {header}
-        </div>
+        <div className="bg-base-300 px-4 py-2 border-b border-base-300 font-medium">{header}</div>
       )}
-      <div className="p-4">
-        {children}
-      </div>
-      {footer && (
-        <div className="bg-base-200 px-4 py-2 border-t border-base-300">
-          {footer}
-        </div>
-      )}
+      <div className="p-4">{children}</div>
+      {footer && <div className="bg-base-200 px-4 py-2 border-t border-base-300">{footer}</div>}
     </div>
   );
 }
@@ -83,9 +69,7 @@ function Modal({ title, actions, children }: ModalProps) {
       <div className="bg-base-200 px-4 py-3 border-b border-base-300">
         <h3 className="font-semibold">{title}</h3>
       </div>
-      <div className="p-4 text-sm text-base-content/80">
-        {children}
-      </div>
+      <div className="p-4 text-sm text-base-content/80">{children}</div>
       <div className="px-4 py-3 bg-base-200 border-t border-base-300 flex justify-end gap-2">
         {actions}
       </div>
@@ -148,16 +132,13 @@ export default function SlotPatternDemo() {
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">Why Use Named Slots?</h4>
         <p className="text-sm text-base-content/70 mb-4">
-          The <code className="text-secondary">children</code> prop is great for single content areas,
-          but what if you need <strong className="text-primary">multiple insertion points</strong>? Use
-          additional props that accept <code className="text-secondary">ReactNode</code>!
+          The <code className="text-secondary">children</code> prop is great for single content
+          areas, but what if you need{' '}
+          <strong className="text-primary">multiple insertion points</strong>? Use additional props
+          that accept <code className="text-secondary">ReactNode</code>!
         </p>
 
-        <CodeSnippet
-          title="The slot pattern"
-          language="tsx"
-          code={slotPatternCode}
-        />
+        <CodeSnippet title="The slot pattern" language="tsx" code={slotPatternCode} />
       </div>
 
       {/* Interactive Examples */}
@@ -214,7 +195,8 @@ export default function SlotPatternDemo() {
             >
               <h2 className="font-bold mb-2">Welcome Back!</h2>
               <p className="text-base-content/70">
-                This is the main content area. Notice how each slot renders in its designated position.
+                This is the main content area. Notice how each slot renders in its designated
+                position.
               </p>
             </PageLayout>
           </div>
@@ -226,9 +208,7 @@ export default function SlotPatternDemo() {
               Optional slots: header, children (required), footer
             </h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <CardWithSlots
-                header={<span className="text-primary">With Header</span>}
-              >
+              <CardWithSlots header={<span className="text-primary">With Header</span>}>
                 <p className="text-sm">This card has a header but no footer.</p>
               </CardWithSlots>
 
@@ -245,9 +225,7 @@ export default function SlotPatternDemo() {
 
               <CardWithSlots
                 header={<span className="text-success">Full Card</span>}
-                footer={
-                  <span className="text-xs text-base-content/60">Last updated: today</span>
-                }
+                footer={<span className="text-xs text-base-content/60">Last updated: today</span>}
               >
                 <p className="text-sm">This card has both header and footer slots filled.</p>
               </CardWithSlots>
@@ -284,11 +262,7 @@ export default function SlotPatternDemo() {
       {/* Comparison */}
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">Rigid vs Flexible Components</h4>
-        <CodeSnippet
-          title="Comparison"
-          language="tsx"
-          code={comparisonCode}
-        />
+        <CodeSnippet title="Comparison" language="tsx" code={comparisonCode} />
       </div>
 
       {/* Key Insight */}
@@ -299,8 +273,8 @@ export default function SlotPatternDemo() {
             <h4 className="font-semibold mb-1">Named Slots = Multiple Holes</h4>
             <p className="text-sm text-base-content/70">
               Think of each slot prop as a labeled hole in your component. The{' '}
-              <code className="text-secondary">children</code> prop is the default/main hole, but you
-              can add as many named holes as you need with additional{' '}
+              <code className="text-secondary">children</code> prop is the default/main hole, but
+              you can add as many named holes as you need with additional{' '}
               <code className="text-secondary">ReactNode</code> props.
             </p>
           </div>
@@ -309,4 +283,3 @@ export default function SlotPatternDemo() {
     </div>
   );
 }
-

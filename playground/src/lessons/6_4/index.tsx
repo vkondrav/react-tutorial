@@ -30,9 +30,10 @@ export default function Lesson6_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          <strong className="text-primary">Compound components</strong> are a pattern where
-          multiple components work together to form a <strong className="text-secondary">cohesive unit</strong>.
-          Think of HTML's <code className="text-accent">&lt;select&gt;</code> and{' '}
+          <strong className="text-primary">Compound components</strong> are a pattern where multiple
+          components work together to form a{' '}
+          <strong className="text-secondary">cohesive unit</strong>. Think of HTML's{' '}
+          <code className="text-accent">&lt;select&gt;</code> and{' '}
           <code className="text-accent">&lt;option&gt;</code> — they only make sense together!
         </p>
         <CompoundBasicsDemo />
@@ -80,8 +81,10 @@ export default function Lesson6_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          Build and explore real compound component patterns: <strong className="text-primary">Tabs</strong>,{' '}
-          <strong className="text-secondary">Accordion</strong>, and <strong className="text-accent">Menu</strong>.
+          Build and explore real compound component patterns:{' '}
+          <strong className="text-primary">Tabs</strong>,{' '}
+          <strong className="text-secondary">Accordion</strong>, and{' '}
+          <strong className="text-accent">Menu</strong>.
         </p>
         <CompoundPlayground />
       </Section>
@@ -110,4 +113,3 @@ export default function Lesson6_4(): React.ReactElement {
     </div>
   );
 }
-

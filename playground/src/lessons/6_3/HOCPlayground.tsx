@@ -171,7 +171,9 @@ const EnhancedProductCard = withTimestamp(withBorder(withLoading(withError(Produ
 export default function HOCPlayground() {
   // Demo 1: Single HOC state
   const [isProductLoading, setIsProductLoading] = useState(false);
-  const [profileBorderColor, setProfileBorderColor] = useState<'primary' | 'secondary' | 'accent' | 'success' | 'error'>('primary');
+  const [profileBorderColor, setProfileBorderColor] = useState<
+    'primary' | 'secondary' | 'accent' | 'success' | 'error'
+  >('primary');
 
   // Demo 2: Composed HOCs state
   const [composedState, setComposedState] = useState<{
@@ -194,15 +196,15 @@ export default function HOCPlayground() {
 
   // Simulate composed loading
   const simulateComposedLoad = () => {
-    setComposedState(prev => ({ ...prev, isLoading: true, error: null }));
+    setComposedState((prev) => ({ ...prev, isLoading: true, error: null }));
     setTimeout(() => {
-      setComposedState(prev => ({ ...prev, isLoading: false }));
+      setComposedState((prev) => ({ ...prev, isLoading: false }));
     }, 1500);
   };
 
   // Simulate error
   const simulateError = () => {
-    setComposedState(prev => ({ ...prev, error: 'Failed to load product data' }));
+    setComposedState((prev) => ({ ...prev, error: 'Failed to load product data' }));
   };
 
   return (
@@ -240,7 +242,7 @@ export default function HOCPlayground() {
               email="jane@example.com"
             />
             <div className="flex gap-2 mt-3">
-              {(['primary', 'secondary', 'accent', 'success', 'error'] as const).map(color => (
+              {(['primary', 'secondary', 'accent', 'success', 'error'] as const).map((color) => (
                 <button
                   key={color}
                   onClick={() => setProfileBorderColor(color)}
@@ -275,7 +277,7 @@ export default function HOCPlayground() {
             Trigger Error
           </button>
           <button
-            onClick={() => setComposedState(prev => ({ ...prev, error: null }))}
+            onClick={() => setComposedState((prev) => ({ ...prev, error: null }))}
             className="btn btn-sm btn-ghost"
           >
             Clear Error
@@ -284,7 +286,9 @@ export default function HOCPlayground() {
             <input
               type="checkbox"
               checked={composedState.showTimestamp}
-              onChange={e => setComposedState(prev => ({ ...prev, showTimestamp: e.target.checked }))}
+              onChange={(e) =>
+                setComposedState((prev) => ({ ...prev, showTimestamp: e.target.checked }))
+              }
               className="checkbox checkbox-sm checkbox-primary"
             />
             <span className="text-sm">Timestamp</span>
@@ -294,10 +298,10 @@ export default function HOCPlayground() {
         {/* Border color selector */}
         <div className="flex gap-2 mb-4">
           <span className="text-sm text-base-content/60">Border:</span>
-          {(['primary', 'secondary', 'accent', 'success', 'error'] as const).map(color => (
+          {(['primary', 'secondary', 'accent', 'success', 'error'] as const).map((color) => (
             <button
               key={color}
-              onClick={() => setComposedState(prev => ({ ...prev, borderColor: color }))}
+              onClick={() => setComposedState((prev) => ({ ...prev, borderColor: color }))}
               className={`btn btn-xs ${composedState.borderColor === color ? `btn-${color}` : 'btn-ghost'}`}
             >
               {color}
@@ -321,8 +325,12 @@ export default function HOCPlayground() {
       <div className="card bg-base-300 p-4">
         <h4 className="font-semibold mb-3">HOC Wrapper Stack (DevTools View)</h4>
         <div className="font-mono text-sm bg-base-200 rounded-lg p-4 space-y-1">
-          <p className="text-primary">▸ &lt;WithTimestamp(WithBorder(WithLoading(WithError(ProductCard))))&gt;</p>
-          <p className="pl-4 text-secondary">▸ &lt;WithBorder(WithLoading(WithError(ProductCard)))&gt;</p>
+          <p className="text-primary">
+            ▸ &lt;WithTimestamp(WithBorder(WithLoading(WithError(ProductCard))))&gt;
+          </p>
+          <p className="pl-4 text-secondary">
+            ▸ &lt;WithBorder(WithLoading(WithError(ProductCard)))&gt;
+          </p>
           <p className="pl-8 text-accent">▸ &lt;WithLoading(WithError(ProductCard))&gt;</p>
           <p className="pl-12 text-warning">▸ &lt;WithError(ProductCard)&gt;</p>
           <p className="pl-16 text-success">▸ &lt;ProductCard&gt;</p>
@@ -346,8 +354,8 @@ export default function HOCPlayground() {
               </p>
               <p>
                 <strong className="text-secondary">Use Hooks when:</strong> You just need to share
-                stateful logic without affecting the component tree structure. Hooks are simpler
-                and more composable for most use cases.
+                stateful logic without affecting the component tree structure. Hooks are simpler and
+                more composable for most use cases.
               </p>
             </div>
           </div>
@@ -356,4 +364,3 @@ export default function HOCPlayground() {
     </div>
   );
 }
-

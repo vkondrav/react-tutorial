@@ -58,7 +58,7 @@ function Fetch<T>({ url, children }: FetchProps<T>) {
   });
 
   const fetchData = async () => {
-    setState(prev => ({ ...prev, loading: true, error: null }));
+    setState((prev) => ({ ...prev, loading: true, error: null }));
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error('Failed to fetch');
@@ -84,11 +84,7 @@ interface ListItem {
 
 interface SelectableListProps {
   items: ListItem[];
-  children: (
-    selected: number | null,
-    select: (id: number) => void,
-    items: ListItem[]
-  ) => ReactNode;
+  children: (selected: number | null, select: (id: number) => void, items: ListItem[]) => ReactNode;
 }
 
 function SelectableList({ items, children }: SelectableListProps) {
@@ -236,20 +232,16 @@ export default function CommonUseCasesDemo() {
           <div className="card bg-base-200 p-4">
             <h4 className="font-semibold mb-3">Live Demo: Fetch Users</h4>
 
-            <Fetch<{ id: number; name: string; email: string }[]>
-              url="https://jsonplaceholder.typicode.com/users?_limit=3"
-            >
+            <Fetch<
+              { id: number; name: string; email: string }[]
+            > url="https://jsonplaceholder.typicode.com/users?_limit=3">
               {({ data, loading, error, refetch }) => (
                 <div>
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-sm text-base-content/60">
                       {loading ? 'Loading...' : `${data?.length ?? 0} users`}
                     </span>
-                    <button
-                      onClick={refetch}
-                      disabled={loading}
-                      className="btn btn-xs btn-ghost"
-                    >
+                    <button onClick={refetch} disabled={loading} className="btn btn-xs btn-ghost">
                       <HiOutlineRefresh className={loading ? 'animate-spin' : ''} />
                       Refetch
                     </button>
@@ -257,7 +249,7 @@ export default function CommonUseCasesDemo() {
 
                   {loading && (
                     <div className="space-y-2">
-                      {[1, 2, 3].map(i => (
+                      {[1, 2, 3].map((i) => (
                         <div key={i} className="animate-pulse flex gap-3 items-center">
                           <div className="w-10 h-10 bg-base-300 rounded-full" />
                           <div className="flex-1 space-y-1">
@@ -269,14 +261,15 @@ export default function CommonUseCasesDemo() {
                     </div>
                   )}
 
-                  {error && (
-                    <div className="text-error text-sm">Error: {error.message}</div>
-                  )}
+                  {error && <div className="text-error text-sm">Error: {error.message}</div>}
 
                   {data && (
                     <div className="space-y-2">
-                      {data.map(user => (
-                        <div key={user.id} className="flex gap-3 items-center p-2 bg-base-300 rounded-lg">
+                      {data.map((user) => (
+                        <div
+                          key={user.id}
+                          className="flex gap-3 items-center p-2 bg-base-300 rounded-lg"
+                        >
                           <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-content font-bold">
                             {user.name[0]}
                           </div>
@@ -311,7 +304,7 @@ export default function CommonUseCasesDemo() {
                 <SelectableList items={listItems}>
                   {(selected, select, items) => (
                     <div className="flex flex-wrap gap-2">
-                      {items.map(item => (
+                      {items.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => select(item.id)}
@@ -333,7 +326,7 @@ export default function CommonUseCasesDemo() {
                 <SelectableList items={listItems}>
                   {(selected, select, items) => (
                     <div className="space-y-1">
-                      {items.map(item => (
+                      {items.map((item) => (
                         <div
                           key={item.id}
                           onClick={() => select(item.id)}
@@ -344,9 +337,11 @@ export default function CommonUseCasesDemo() {
                           }`}
                         >
                           <div className="flex items-center gap-2">
-                            <span className={`w-2 h-2 rounded-full ${
-                              selected === item.id ? 'bg-primary-content' : 'bg-base-content/30'
-                            }`} />
+                            <span
+                              className={`w-2 h-2 rounded-full ${
+                                selected === item.id ? 'bg-primary-content' : 'bg-base-content/30'
+                              }`}
+                            />
                             {item.text}
                           </div>
                         </div>
@@ -362,7 +357,7 @@ export default function CommonUseCasesDemo() {
                 <SelectableList items={listItems}>
                   {(selected, select, items) => (
                     <div className="space-y-1">
-                      {items.map(item => (
+                      {items.map((item) => (
                         <label
                           key={item.id}
                           className="flex items-center gap-2 p-2 cursor-pointer hover:bg-base-200 rounded"
@@ -387,7 +382,7 @@ export default function CommonUseCasesDemo() {
                 <SelectableList items={listItems}>
                   {(selected, select, items) => (
                     <div className="flex flex-wrap gap-2">
-                      {items.map(item => (
+                      {items.map((item) => (
                         <span
                           key={item.id}
                           onClick={() => select(item.id)}
@@ -412,4 +407,3 @@ export default function CommonUseCasesDemo() {
     </div>
   );
 }
-

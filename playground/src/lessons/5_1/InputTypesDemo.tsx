@@ -48,7 +48,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const [text, setText] = useState('');
+                {`const [text, setText] = useState('');
 
 <input
   type="text"
@@ -80,7 +80,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const [bio, setBio] = useState('');
+                {`const [bio, setBio] = useState('');
 
 // Same pattern as text input!
 <textarea
@@ -92,8 +92,8 @@ export default function InputTypesDemo(): React.ReactElement {
             <div className="flex items-start gap-2 text-sm bg-secondary/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-secondary shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
-                Unlike HTML where textarea content goes between tags,
-                React uses <code className="text-secondary">value</code> prop just like inputs!
+                Unlike HTML where textarea content goes between tags, React uses{' '}
+                <code className="text-secondary">value</code> prop just like inputs!
               </p>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const [framework, setFramework] = useState('');
+                {`const [framework, setFramework] = useState('');
 
 // value goes on <select>, not <option>
 <select
@@ -141,8 +141,8 @@ export default function InputTypesDemo(): React.ReactElement {
               <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
                 In React, put <code className="text-accent">value</code> on the{' '}
-                <code className="text-accent">&lt;select&gt;</code> element,
-                not <code>selected</code> on individual options!
+                <code className="text-accent">&lt;select&gt;</code> element, not{' '}
+                <code>selected</code> on individual options!
               </p>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const [agreed, setAgreed] = useState(false);
+                {`const [agreed, setAgreed] = useState(false);
 
 // Use "checked" not "value"!
 <input
@@ -183,8 +183,8 @@ export default function InputTypesDemo(): React.ReactElement {
             <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
-                Checkboxes use <code className="text-success">checked</code> (boolean),
-                not <code>value</code>. Access it via{' '}
+                Checkboxes use <code className="text-success">checked</code> (boolean), not{' '}
+                <code>value</code>. Access it via{' '}
                 <code className="text-success">e.target.checked</code>!
               </p>
             </div>
@@ -218,7 +218,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <pre className="font-mono text-xs overflow-x-auto text-base-content/70">
-{`const [plan, setPlan] = useState('');
+                {`const [plan, setPlan] = useState('');
 
 // Check if this radio's value matches state
 <input
@@ -257,11 +257,7 @@ export default function InputTypesDemo(): React.ReactElement {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`btn btn-sm ${
-              activeTab === tab.id
-                ? `btn-${tab.color}`
-                : 'btn-ghost'
-            }`}
+            className={`btn btn-sm ${activeTab === tab.id ? `btn-${tab.color}` : 'btn-ghost'}`}
           >
             {tab.label}
           </button>
@@ -269,10 +265,7 @@ export default function InputTypesDemo(): React.ReactElement {
       </div>
 
       {/* Tab Content */}
-      <div className="card bg-base-300 p-6">
-        {renderContent()}
-      </div>
+      <div className="card bg-base-300 p-6">{renderContent()}</div>
     </div>
   );
 }
-

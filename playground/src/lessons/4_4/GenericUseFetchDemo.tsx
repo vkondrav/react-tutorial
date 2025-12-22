@@ -278,4 +278,3 @@ export default function GenericUseFetchDemo(): React.ReactElement {
     </div>
   );
 }
-

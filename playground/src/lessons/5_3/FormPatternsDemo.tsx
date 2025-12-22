@@ -311,11 +311,7 @@ function FormResetDemo() {
       {submitted ? (
         <div className="bg-success/20 rounded-lg p-4 space-y-3">
           <div className="text-success font-semibold text-center">Submitted!</div>
-          <CodeSnippet
-            language="json"
-            code={JSON.stringify(form, null, 2)}
-            showCopy={false}
-          />
+          <CodeSnippet language="json" code={JSON.stringify(form, null, 2)} showCopy={false} />
           <div className="text-center">
             <button onClick={handleReset} className="btn btn-accent btn-sm gap-1">
               <HiRefresh size={16} /> Reset Form
@@ -377,9 +373,8 @@ function FormResetDemo() {
       <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
         <div className="text-base-content/70">
-          <strong className="text-accent">Pro tip:</strong> Define{' '}
-          <code>initialState</code> outside the component or use <code>useMemo</code>{' '}
-          to avoid recreating it on every render.
+          <strong className="text-accent">Pro tip:</strong> Define <code>initialState</code> outside
+          the component or use <code>useMemo</code> to avoid recreating it on every render.
         </div>
       </div>
 
@@ -410,4 +405,3 @@ const handleReset = () => {
     </div>
   );
 }
-

@@ -15,7 +15,7 @@ interface ToggleProps {
 
 function Toggle({ children, initialValue = false }: ToggleProps) {
   const [isOn, setIsOn] = useState(initialValue);
-  const toggle = () => setIsOn(prev => !prev);
+  const toggle = () => setIsOn((prev) => !prev);
 
   return <>{children(isOn, toggle)}</>;
 }
@@ -29,10 +29,7 @@ function Hover({ children }: HoverProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {children(isHovered)}
     </div>
   );
@@ -210,7 +207,10 @@ export default function ChildrenAsFunctionDemo() {
                     onClick={toggle}
                     className="flex items-center gap-2 font-medium w-full text-left"
                   >
-                    <span className="transition-transform" style={{ transform: isOn ? 'rotate(90deg)' : '' }}>
+                    <span
+                      className="transition-transform"
+                      style={{ transform: isOn ? 'rotate(90deg)' : '' }}
+                    >
                       ▶
                     </span>
                     Click to {isOn ? 'collapse' : 'expand'}
@@ -238,14 +238,10 @@ export default function ChildrenAsFunctionDemo() {
               {(isHovered) => (
                 <div
                   className={`p-4 rounded-lg border-2 transition-all cursor-pointer ${
-                    isHovered
-                      ? 'border-primary bg-primary/10 scale-105'
-                      : 'border-base-content/20'
+                    isHovered ? 'border-primary bg-primary/10 scale-105' : 'border-base-content/20'
                   }`}
                 >
-                  <p className="text-center">
-                    {isHovered ? '🎉 Hovering!' : 'Hover over me'}
-                  </p>
+                  <p className="text-center">{isHovered ? '🎉 Hovering!' : 'Hover over me'}</p>
                 </div>
               )}
             </Hover>
@@ -260,9 +256,7 @@ export default function ChildrenAsFunctionDemo() {
                   <p className="text-2xl font-mono">
                     {width} × {height}
                   </p>
-                  <p className="text-xs text-base-content/60">
-                    Resize the window to update
-                  </p>
+                  <p className="text-xs text-base-content/60">Resize the window to update</p>
                 </div>
               )}
             </WindowSize>
@@ -287,4 +281,3 @@ export default function ChildrenAsFunctionDemo() {
     </div>
   );
 }
-

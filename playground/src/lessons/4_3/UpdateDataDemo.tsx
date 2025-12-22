@@ -197,11 +197,7 @@ export default function UpdateDataDemo(): React.ReactElement {
                   disabled={isUpdating || !editValue.trim()}
                   className="btn btn-primary btn-sm"
                 >
-                  {isUpdating ? (
-                    <span className="loading loading-spinner loading-xs" />
-                  ) : (
-                    'Save'
-                  )}
+                  {isUpdating ? <span className="loading loading-spinner loading-xs" /> : 'Save'}
                 </button>
               </div>
             </div>
@@ -224,17 +220,12 @@ export default function UpdateDataDemo(): React.ReactElement {
       {lastResponse && (
         <div className="card bg-base-200 p-4">
           <h4 className="font-semibold mb-2 text-sm">Server Response ({method})</h4>
-          <pre className="text-xs bg-base-300 p-2 rounded overflow-x-auto">
-            {lastResponse}
-          </pre>
+          <pre className="text-xs bg-base-300 p-2 rounded overflow-x-auto">{lastResponse}</pre>
         </div>
       )}
 
       {/* Code toggle */}
-      <button
-        onClick={() => setShowCode(!showCode)}
-        className="btn btn-ghost btn-sm gap-2"
-      >
+      <button onClick={() => setShowCode(!showCode)} className="btn btn-ghost btn-sm gap-2">
         {showCode ? <HiChevronDown size={16} /> : <HiChevronRight size={16} />}
         {showCode ? 'Hide' : 'Show'} Code
       </button>
@@ -293,5 +284,3 @@ const handleUpdate = async (field, value) => {
     </div>
   );
 }
-
-

@@ -85,12 +85,18 @@ function Avatar({ src, name, size = 'md' }: AvatarProps) {
     lg: 'w-14 h-14 text-lg',
   };
 
-  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+  const initials = name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase();
 
   return src ? (
     <img src={src} alt={name} className={`${sizes[size]} rounded-full object-cover`} />
   ) : (
-    <div className={`${sizes[size]} rounded-full bg-primary text-primary-content flex items-center justify-center font-semibold`}>
+    <div
+      className={`${sizes[size]} rounded-full bg-primary text-primary-content flex items-center justify-center font-semibold`}
+    >
       {initials}
     </div>
   );
@@ -236,7 +242,7 @@ function PostCard({
         )}
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {tags.map(tag => (
+            {tags.map((tag) => (
               <span key={tag} className="text-xs text-primary flex items-center gap-0.5">
                 <HiOutlineTag size={10} />#{tag}
               </span>
@@ -260,11 +266,7 @@ function PostCard({
             onClick={onComment}
           />
         </div>
-        <IconButton
-          icon={<HiOutlineShare size={18} />}
-          label="Share"
-          onClick={onShare}
-        />
+        <IconButton icon={<HiOutlineShare size={18} />} label="Share" onClick={onShare} />
       </CardFooter>
     </Card>
   );
@@ -312,7 +314,7 @@ export default function CompositionPlayground() {
 
   const handleLike = () => {
     setPostLiked(!postLiked);
-    setPostLikes(prev => postLiked ? prev - 1 : prev + 1);
+    setPostLikes((prev) => (postLiked ? prev - 1 : prev + 1));
   };
 
   return (
@@ -324,7 +326,8 @@ export default function CompositionPlayground() {
           <Badge variant="secondary">Composable</Badge>
         </h4>
         <p className="text-sm text-base-content/70 mb-4">
-          These are the primitive components. Like LEGO pieces, they can be combined in different ways.
+          These are the primitive components. Like LEGO pieces, they can be combined in different
+          ways.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -423,14 +426,22 @@ export default function CompositionPlayground() {
       <div className="card bg-primary/10 border border-primary p-4">
         <h4 className="font-semibold text-primary mb-2">The Power of Composition</h4>
         <ul className="text-sm space-y-1 text-base-content/80">
-          <li>• <strong>Card</strong> + <strong>CardHeader/Body/Footer</strong> = flexible layouts</li>
-          <li>• <strong>Avatar</strong> + <strong>Badge</strong> = user displays</li>
-          <li>• <strong>IconButton</strong> = reusable actions</li>
-          <li>• Combine them all → <strong>UserCard</strong>, <strong>PostCard</strong>, <strong>StatCard</strong></li>
+          <li>
+            • <strong>Card</strong> + <strong>CardHeader/Body/Footer</strong> = flexible layouts
+          </li>
+          <li>
+            • <strong>Avatar</strong> + <strong>Badge</strong> = user displays
+          </li>
+          <li>
+            • <strong>IconButton</strong> = reusable actions
+          </li>
+          <li>
+            • Combine them all → <strong>UserCard</strong>, <strong>PostCard</strong>,{' '}
+            <strong>StatCard</strong>
+          </li>
           <li>• Each composed component is still customizable via props!</li>
         </ul>
       </div>
     </div>
   );
 }
-

@@ -4,7 +4,12 @@
 // ============================================
 
 import { useState, Suspense, use } from 'react';
-import { HiOutlineLightBulb, HiOutlineRefresh, HiChevronDown, HiChevronRight } from 'react-icons/hi';
+import {
+  HiOutlineLightBulb,
+  HiOutlineRefresh,
+  HiChevronDown,
+  HiChevronRight,
+} from 'react-icons/hi';
 
 // ============================================
 // Types
@@ -286,4 +291,3 @@ function App() {
     </div>
   );
 }
-

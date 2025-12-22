@@ -3,7 +3,14 @@
 // ============================================
 
 import { useState, createContext, useContext, ReactNode } from 'react';
-import { HiOutlineLightBulb, HiCheck, HiX, HiOutlinePhotograph, HiOutlineCog, HiOutlineUser } from 'react-icons/hi';
+import {
+  HiOutlineLightBulb,
+  HiCheck,
+  HiX,
+  HiOutlinePhotograph,
+  HiOutlineCog,
+  HiOutlineUser,
+} from 'react-icons/hi';
 import { CodeSnippet } from '../components';
 
 // -------------------------------------------
@@ -36,9 +43,7 @@ function Card({ children, variant = 'default', className = '' }: CardProps) {
 
   return (
     <CardContext.Provider value={{ variant }}>
-      <div className={`${baseStyles} ${variantStyles[variant]} ${className}`}>
-        {children}
-      </div>
+      <div className={`${baseStyles} ${variantStyles[variant]} ${className}`}>{children}</div>
     </CardContext.Provider>
   );
 }
@@ -51,7 +56,9 @@ interface CardHeaderProps {
 function CardHeader({ children, className = '' }: CardHeaderProps) {
   const { variant } = useCardContext();
   return (
-    <div className={`p-4 ${variant === 'bordered' ? 'border-b-2 border-base-300' : ''} ${className}`}>
+    <div
+      className={`p-4 ${variant === 'bordered' ? 'border-b-2 border-base-300' : ''} ${className}`}
+    >
       {children}
     </div>
   );
@@ -64,9 +71,7 @@ interface CardImageProps {
 }
 
 function CardImage({ src, alt, className = '' }: CardImageProps) {
-  return (
-    <img src={src} alt={alt} className={`w-full h-48 object-cover ${className}`} />
-  );
+  return <img src={src} alt={alt} className={`w-full h-48 object-cover ${className}`} />;
 }
 
 interface CardBodyProps {
@@ -84,11 +89,7 @@ interface CardFooterProps {
 }
 
 function CardFooter({ children, className = '' }: CardFooterProps) {
-  return (
-    <div className={`p-4 pt-0 flex gap-2 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`p-4 pt-0 flex gap-2 ${className}`}>{children}</div>;
 }
 
 // Attach sub-components
@@ -174,8 +175,8 @@ export default function FlexibleAPIDemo(): React.ReactElement {
           <div>
             <p className="font-semibold text-warning mb-1">Inversion of Control</p>
             <p className="text-base-content/70 text-sm">
-              With compound components, you <strong className="text-primary">give control</strong> to
-              the user. They decide the structure, order, and what to include — while you provide
+              With compound components, you <strong className="text-primary">give control</strong>{' '}
+              to the user. They decide the structure, order, and what to include — while you provide
               the building blocks.
             </p>
           </div>
@@ -275,7 +276,11 @@ export default function FlexibleAPIDemo(): React.ReactElement {
               <Card.Body className="space-y-3">
                 <label className="flex items-center justify-between">
                   <span className="text-sm">Email notifications</span>
-                  <input type="checkbox" defaultChecked className="checkbox checkbox-primary checkbox-sm" />
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    className="checkbox checkbox-primary checkbox-sm"
+                  />
                 </label>
                 <label className="flex items-center justify-between">
                   <span className="text-sm">Push notifications</span>
@@ -283,7 +288,11 @@ export default function FlexibleAPIDemo(): React.ReactElement {
                 </label>
                 <label className="flex items-center justify-between">
                   <span className="text-sm">Weekly digest</span>
-                  <input type="checkbox" defaultChecked className="checkbox checkbox-primary checkbox-sm" />
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    className="checkbox checkbox-primary checkbox-sm"
+                  />
                 </label>
               </Card.Body>
               <Card.Footer>
@@ -314,7 +323,7 @@ export default function FlexibleAPIDemo(): React.ReactElement {
   </Card.Footer>
 </Card>`
               : activeLayout === 2
-              ? `<Card variant="bordered">
+                ? `<Card variant="bordered">
   <Card.Header className="flex items-center gap-4">
     <Avatar>JD</Avatar>
     <div>
@@ -330,7 +339,7 @@ export default function FlexibleAPIDemo(): React.ReactElement {
     <button>Message</button>
   </Card.Footer>
 </Card>`
-              : `<Card>
+                : `<Card>
   <Card.Header>
     <h3><CogIcon /> Notification Settings</h3>
   </Card.Header>
@@ -384,11 +393,7 @@ export default function FlexibleAPIDemo(): React.ReactElement {
               </ul>
             </div>
           </div>
-          <CodeSnippet
-            title="Code Comparison"
-            language="tsx"
-            code={propsVsCompoundCode}
-          />
+          <CodeSnippet title="Code Comparison" language="tsx" code={propsVsCompoundCode} />
         </div>
       )}
 
@@ -401,4 +406,3 @@ export default function FlexibleAPIDemo(): React.ReactElement {
     </div>
   );
 }
-

@@ -204,4 +204,3 @@ export default function Lesson4_4(): React.ReactElement {
     </div>
   );
 }
-

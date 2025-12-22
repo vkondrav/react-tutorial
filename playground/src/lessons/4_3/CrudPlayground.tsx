@@ -49,9 +49,7 @@ export default function CrudPlayground(): React.ReactElement {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch(
-          'https://jsonplaceholder.typicode.com/todos?_limit=5'
-        );
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
         setTodos(data);
@@ -101,19 +99,14 @@ export default function CrudPlayground(): React.ReactElement {
     const previousState = todo.completed;
 
     // Optimistic update
-    setTodos((prev) =>
-      prev.map((t) => (t.id === todo.id ? { ...t, completed: !t.completed } : t))
-    );
+    setTodos((prev) => prev.map((t) => (t.id === todo.id ? { ...t, completed: !t.completed } : t)));
 
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
-        {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ completed: !todo.completed }),
-        }
-      );
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed: !todo.completed }),
+      });
 
       if (!response.ok) throw new Error('Failed to update');
     } catch (err) {
@@ -142,14 +135,11 @@ export default function CrudPlayground(): React.ReactElement {
     setSavingId(editingId);
 
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${editingId}`,
-        {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ title: editValue.trim() }),
-        }
-      );
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${editingId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: editValue.trim() }),
+      });
 
       if (!response.ok) throw new Error('Failed to update');
 
@@ -177,10 +167,9 @@ export default function CrudPlayground(): React.ReactElement {
     setTodos((prev) => prev.filter((t) => t.id !== id));
 
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${id}`,
-        { method: 'DELETE' }
-      );
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+        method: 'DELETE',
+      });
 
       if (!response.ok) throw new Error('Failed to delete');
 
@@ -202,9 +191,7 @@ export default function CrudPlayground(): React.ReactElement {
     setError(null);
 
     try {
-      const response = await fetch(
-        'https://jsonplaceholder.typicode.com/todos?_limit=5'
-      );
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
       if (!response.ok) throw new Error('Failed to fetch');
       const data = await response.json();
       setTodos(data);
@@ -409,5 +396,3 @@ export default function CrudPlayground(): React.ReactElement {
     </div>
   );
 }
-
-

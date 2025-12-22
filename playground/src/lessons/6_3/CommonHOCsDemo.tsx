@@ -70,7 +70,7 @@ interface ThemeProps {
 function withTheme<P extends object>(WrappedComponent: ComponentType<P & ThemeProps>) {
   return function WithThemeComponent(props: P) {
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
-    const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+    const toggleTheme = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'));
 
     return <WrappedComponent {...props} theme={theme} toggleTheme={toggleTheme} />;
   };
@@ -84,7 +84,9 @@ function Dashboard() {
   return (
     <div className="card bg-base-300 p-4">
       <h4 className="font-semibold text-success mb-2">🎉 Dashboard</h4>
-      <p className="text-sm text-base-content/70">Welcome! You have access to this protected content.</p>
+      <p className="text-sm text-base-content/70">
+        Welcome! You have access to this protected content.
+      </p>
       <div className="grid grid-cols-3 gap-2 mt-3">
         <div className="bg-base-200 rounded p-2 text-center">
           <p className="text-lg font-bold">128</p>
@@ -112,7 +114,7 @@ function UserList({ users }: UserListProps) {
     <div className="card bg-base-300 p-4">
       <h4 className="font-semibold mb-2">User List</h4>
       <ul className="space-y-1">
-        {users.map(user => (
+        {users.map((user) => (
           <li key={user.id} className="text-sm flex items-center gap-2">
             <span className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-content text-xs">
               {user.name[0]}
@@ -258,7 +260,7 @@ export default function CommonHOCsDemo() {
                 <input
                   type="checkbox"
                   checked={isAuthenticated}
-                  onChange={e => setIsAuthenticated(e.target.checked)}
+                  onChange={(e) => setIsAuthenticated(e.target.checked)}
                   className="checkbox checkbox-primary checkbox-sm"
                 />
               </label>
@@ -282,7 +284,7 @@ export default function CommonHOCsDemo() {
                 <input
                   type="checkbox"
                   checked={isLoading}
-                  onChange={e => setIsLoading(e.target.checked)}
+                  onChange={(e) => setIsLoading(e.target.checked)}
                   className="checkbox checkbox-primary checkbox-sm"
                 />
               </label>
@@ -310,4 +312,3 @@ export default function CommonHOCsDemo() {
     </div>
   );
 }
-

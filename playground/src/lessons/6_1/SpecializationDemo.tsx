@@ -103,10 +103,22 @@ interface AlertProps {
 
 function Alert({ children, type = 'info', title }: AlertProps) {
   const styles = {
-    info: { bg: 'bg-info/10 border-info', icon: <HiOutlineInformationCircle className="text-info" size={20} /> },
-    success: { bg: 'bg-success/10 border-success', icon: <HiOutlineCheckCircle className="text-success" size={20} /> },
-    warning: { bg: 'bg-warning/10 border-warning', icon: <HiOutlineExclamationCircle className="text-warning" size={20} /> },
-    error: { bg: 'bg-error/10 border-error', icon: <HiOutlineXCircle className="text-error" size={20} /> },
+    info: {
+      bg: 'bg-info/10 border-info',
+      icon: <HiOutlineInformationCircle className="text-info" size={20} />,
+    },
+    success: {
+      bg: 'bg-success/10 border-success',
+      icon: <HiOutlineCheckCircle className="text-success" size={20} />,
+    },
+    warning: {
+      bg: 'bg-warning/10 border-warning',
+      icon: <HiOutlineExclamationCircle className="text-warning" size={20} />,
+    },
+    error: {
+      bg: 'bg-error/10 border-error',
+      icon: <HiOutlineXCircle className="text-error" size={20} />,
+    },
   };
 
   return (
@@ -128,15 +140,27 @@ interface SpecializedAlertProps {
 }
 
 function SuccessAlert({ children, title = 'Success!' }: SpecializedAlertProps) {
-  return <Alert type="success" title={title}>{children}</Alert>;
+  return (
+    <Alert type="success" title={title}>
+      {children}
+    </Alert>
+  );
 }
 
 function ErrorAlert({ children, title = 'Error' }: SpecializedAlertProps) {
-  return <Alert type="error" title={title}>{children}</Alert>;
+  return (
+    <Alert type="error" title={title}>
+      {children}
+    </Alert>
+  );
 }
 
 function WarningAlert({ children, title = 'Warning' }: SpecializedAlertProps) {
-  return <Alert type="warning" title={title}>{children}</Alert>;
+  return (
+    <Alert type="warning" title={title}>
+      {children}
+    </Alert>
+  );
 }
 
 const specializationCode = `// Generic Button (flexible, many options)
@@ -206,9 +230,9 @@ export default function SpecializationDemo() {
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">What is Specialization?</h4>
         <p className="text-sm text-base-content/70 mb-4">
-          <strong className="text-primary">Specialization</strong> means creating specific versions of a
-          generic component by wrapping it with pre-set props. The specialized component is simpler to
-          use and more semantic.
+          <strong className="text-primary">Specialization</strong> means creating specific versions
+          of a generic component by wrapping it with pre-set props. The specialized component is
+          simpler to use and more semantic.
         </p>
 
         <CodeSnippet
@@ -226,29 +250,43 @@ export default function SpecializationDemo() {
           <div>
             <p className="text-xs text-base-content/60 mb-2">Generic Button (all options)</p>
             <div className="flex flex-wrap gap-2">
-              <Button variant="primary" onClick={() => showClick('Primary')}>Primary</Button>
-              <Button variant="secondary" onClick={() => showClick('Secondary')}>Secondary</Button>
-              <Button variant="success" onClick={() => showClick('Success')}>Success</Button>
-              <Button variant="warning" onClick={() => showClick('Warning')}>Warning</Button>
-              <Button variant="error" onClick={() => showClick('Error')}>Error</Button>
-              <Button variant="ghost" onClick={() => showClick('Ghost')}>Ghost</Button>
+              <Button variant="primary" onClick={() => showClick('Primary')}>
+                Primary
+              </Button>
+              <Button variant="secondary" onClick={() => showClick('Secondary')}>
+                Secondary
+              </Button>
+              <Button variant="success" onClick={() => showClick('Success')}>
+                Success
+              </Button>
+              <Button variant="warning" onClick={() => showClick('Warning')}>
+                Warning
+              </Button>
+              <Button variant="error" onClick={() => showClick('Error')}>
+                Error
+              </Button>
+              <Button variant="ghost" onClick={() => showClick('Ghost')}>
+                Ghost
+              </Button>
             </div>
           </div>
 
           <div>
-            <p className="text-xs text-base-content/60 mb-2">Specialized Buttons (pre-configured)</p>
+            <p className="text-xs text-base-content/60 mb-2">
+              Specialized Buttons (pre-configured)
+            </p>
             <div className="flex flex-wrap gap-2">
-              <SuccessButton onClick={() => showClick('Success Button')}>Save Changes</SuccessButton>
+              <SuccessButton onClick={() => showClick('Success Button')}>
+                Save Changes
+              </SuccessButton>
               <DangerButton onClick={() => showClick('Danger Button')}>Delete Item</DangerButton>
-              <WarningButton onClick={() => showClick('Warning Button')}>Proceed with Caution</WarningButton>
+              <WarningButton onClick={() => showClick('Warning Button')}>
+                Proceed with Caution
+              </WarningButton>
             </div>
           </div>
 
-          {clicked && (
-            <div className="text-sm text-success animate-pulse">
-              Clicked: {clicked}
-            </div>
-          )}
+          {clicked && <div className="text-sm text-success animate-pulse">Clicked: {clicked}</div>}
         </div>
       </div>
 
@@ -278,11 +316,7 @@ export default function SpecializationDemo() {
       {/* Usage Comparison */}
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">Before & After Specialization</h4>
-        <CodeSnippet
-          title="Usage comparison"
-          language="tsx"
-          code={usageCode}
-        />
+        <CodeSnippet title="Usage comparison" language="tsx" code={usageCode} />
       </div>
 
       {/* Benefits */}
@@ -318,8 +352,8 @@ export default function SpecializationDemo() {
             <p className="text-sm text-base-content/70">
               Instead of one giant component with 20 props, create a{' '}
               <strong className="text-primary">generic base</strong> and{' '}
-              <strong className="text-secondary">specialized wrappers</strong>. This is composition —
-              building specific things from generic parts!
+              <strong className="text-secondary">specialized wrappers</strong>. This is composition
+              — building specific things from generic parts!
             </p>
           </div>
         </div>
@@ -327,4 +361,3 @@ export default function SpecializationDemo() {
     </div>
   );
 }
-

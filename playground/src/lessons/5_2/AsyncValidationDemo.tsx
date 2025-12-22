@@ -165,7 +165,7 @@ export default function AsyncValidationDemo(): React.ReactElement {
         <h4 className="font-semibold mb-3">The Pattern</h4>
         <div className="bg-base-200 rounded-lg p-3 text-xs">
           <pre className="overflow-x-auto text-base-content/70">
-{`useEffect(() => {
+            {`useEffect(() => {
   // 1. First, run sync validation
   const syncError = validateSync(username);
   if (syncError) return;
@@ -214,4 +214,3 @@ export default function AsyncValidationDemo(): React.ReactElement {
     </div>
   );
 }
-

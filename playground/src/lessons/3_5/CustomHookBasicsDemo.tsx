@@ -130,4 +130,3 @@ function CounterCard({
     </div>
   );
 }
-

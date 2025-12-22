@@ -97,8 +97,12 @@ interface ConventionCardProps {
 
 function ConventionCard({ title, good, children }: ConventionCardProps) {
   return (
-    <div className={`card p-4 ${good ? 'bg-success/10 border border-success' : 'bg-error/10 border border-error'}`}>
-      <h5 className={`font-semibold flex items-center gap-2 mb-2 ${good ? 'text-success' : 'text-error'}`}>
+    <div
+      className={`card p-4 ${good ? 'bg-success/10 border border-success' : 'bg-error/10 border border-error'}`}
+    >
+      <h5
+        className={`font-semibold flex items-center gap-2 mb-2 ${good ? 'text-success' : 'text-error'}`}
+      >
         {good ? <HiCheck size={18} /> : <HiX size={18} />}
         {title}
       </h5>
@@ -108,7 +112,9 @@ function ConventionCard({ title, good, children }: ConventionCardProps) {
 }
 
 export default function HOCPatternsDemo() {
-  const [activePattern, setActivePattern] = useState<'naming' | 'displayName' | 'props' | 'mutate' | 'compose'>('naming');
+  const [activePattern, setActivePattern] = useState<
+    'naming' | 'displayName' | 'props' | 'mutate' | 'compose'
+  >('naming');
 
   const patterns = [
     { id: 'naming', label: 'Naming Convention' },
@@ -122,7 +128,7 @@ export default function HOCPatternsDemo() {
     <div className="space-y-6">
       {/* Pattern Tabs */}
       <div className="flex gap-2 flex-wrap">
-        {patterns.map(p => (
+        {patterns.map((p) => (
           <button
             key={p.id}
             onClick={() => setActivePattern(p.id)}
@@ -139,8 +145,8 @@ export default function HOCPatternsDemo() {
           <div className="card bg-base-200 p-4">
             <h4 className="font-semibold mb-3">1. Use "with" Prefix</h4>
             <p className="text-sm text-base-content/70 mb-4">
-              Name your HOCs with a <code className="text-secondary">with</code> prefix. This immediately
-              tells developers it's an HOC and what it adds.
+              Name your HOCs with a <code className="text-secondary">with</code> prefix. This
+              immediately tells developers it's an HOC and what it adds.
             </p>
             <CodeSnippet title="Naming convention" language="tsx" code={namingCode} />
           </div>
@@ -148,18 +154,34 @@ export default function HOCPatternsDemo() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ConventionCard title="Good Names" good>
               <ul className="space-y-1">
-                <li><code>withAuth</code> - adds authentication</li>
-                <li><code>withTheme</code> - adds theme support</li>
-                <li><code>withRouter</code> - adds routing</li>
-                <li><code>withLoading</code> - adds loading state</li>
+                <li>
+                  <code>withAuth</code> - adds authentication
+                </li>
+                <li>
+                  <code>withTheme</code> - adds theme support
+                </li>
+                <li>
+                  <code>withRouter</code> - adds routing
+                </li>
+                <li>
+                  <code>withLoading</code> - adds loading state
+                </li>
               </ul>
             </ConventionCard>
             <ConventionCard title="Avoid" good={false}>
               <ul className="space-y-1">
-                <li><code>enhance</code> - too vague</li>
-                <li><code>wrap</code> - doesn't describe what</li>
-                <li><code>make</code> - unclear purpose</li>
-                <li><code>create</code> - confusing with factories</li>
+                <li>
+                  <code>enhance</code> - too vague
+                </li>
+                <li>
+                  <code>wrap</code> - doesn't describe what
+                </li>
+                <li>
+                  <code>make</code> - unclear purpose
+                </li>
+                <li>
+                  <code>create</code> - confusing with factories
+                </li>
               </ul>
             </ConventionCard>
           </div>
@@ -208,8 +230,8 @@ export default function HOCPatternsDemo() {
           <div className="card bg-base-200 p-4">
             <h4 className="font-semibold mb-3">3. Pass Through Unrelated Props</h4>
             <p className="text-sm text-base-content/70 mb-4">
-              HOCs should be <strong className="text-primary">transparent</strong> — pass all props to
-              the wrapped component except those the HOC consumes.
+              HOCs should be <strong className="text-primary">transparent</strong> — pass all props
+              to the wrapped component except those the HOC consumes.
             </p>
             <CodeSnippet title="Passing props" language="tsx" code={passPropsCode} />
           </div>
@@ -220,9 +242,9 @@ export default function HOCPatternsDemo() {
               <div>
                 <h5 className="font-semibold mb-1">Use Spread Operator</h5>
                 <p className="text-sm text-base-content/70">
-                  Always use <code className="text-secondary">{'{...props}'}</code> to forward props.
-                  This ensures the wrapped component receives everything it needs, even props you
-                  didn't anticipate.
+                  Always use <code className="text-secondary">{'{...props}'}</code> to forward
+                  props. This ensures the wrapped component receives everything it needs, even props
+                  you didn't anticipate.
                 </p>
               </div>
             </div>
@@ -244,10 +266,16 @@ export default function HOCPatternsDemo() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ConventionCard title="Composition (Good)" good>
-              <p>Creates a new component that wraps the original. The original is unchanged and can be used elsewhere without side effects.</p>
+              <p>
+                Creates a new component that wraps the original. The original is unchanged and can
+                be used elsewhere without side effects.
+              </p>
             </ConventionCard>
             <ConventionCard title="Mutation (Bad)" good={false}>
-              <p>Modifies the original component directly. This causes unpredictable behavior and breaks component isolation.</p>
+              <p>
+                Modifies the original component directly. This causes unpredictable behavior and
+                breaks component isolation.
+              </p>
             </ConventionCard>
           </div>
         </div>
@@ -268,7 +296,8 @@ export default function HOCPatternsDemo() {
           <div className="card bg-base-300 p-4">
             <h5 className="font-semibold mb-3">Execution Order</h5>
             <div className="text-sm text-base-content/70 mb-4">
-              HOCs execute <strong className="text-primary">right to left</strong> (innermost first):
+              HOCs execute <strong className="text-primary">right to left</strong> (innermost
+              first):
             </div>
             <div className="font-mono text-sm bg-base-200 rounded p-3">
               <p className="text-base-content/60">// This:</p>
@@ -284,4 +313,3 @@ export default function HOCPatternsDemo() {
     </div>
   );
 }
-

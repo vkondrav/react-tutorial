@@ -33,17 +33,15 @@ function TraditionalTabs({ tabs }: TraditionalTabsProps) {
               activeTab === tab.id
                 ? 'text-primary border-b-2 border-primary'
                 : tab.disabled
-                ? 'text-base-content/30 cursor-not-allowed'
-                : 'text-base-content/60 hover:text-base-content'
+                  ? 'text-base-content/30 cursor-not-allowed'
+                  : 'text-base-content/60 hover:text-base-content'
             }`}
           >
             {tab.label}
           </button>
         ))}
       </div>
-      <div className="p-4">
-        {tabs.find((t) => t.id === activeTab)?.content}
-      </div>
+      <div className="p-4">{tabs.find((t) => t.id === activeTab)?.content}</div>
     </div>
   );
 }
@@ -126,8 +124,8 @@ function Tab({ id, children, disabled }: TabProps) {
         activeTab === id
           ? 'text-primary border-b-2 border-primary'
           : disabled
-          ? 'text-base-content/30 cursor-not-allowed'
-          : 'text-base-content/60 hover:text-base-content'
+            ? 'text-base-content/30 cursor-not-allowed'
+            : 'text-base-content/60 hover:text-base-content'
       }`}
     >
       {children}
@@ -191,8 +189,8 @@ export default function CompoundBasicsDemo(): React.ReactElement {
             <p className="font-semibold text-warning mb-1">Think of HTML's native elements</p>
             <p className="text-base-content/70 text-sm">
               Just like <code className="text-accent">&lt;select&gt;</code> and{' '}
-              <code className="text-accent">&lt;option&gt;</code> work together,
-              compound components are designed to be used as a <strong>family</strong>.
+              <code className="text-accent">&lt;option&gt;</code> work together, compound components
+              are designed to be used as a <strong>family</strong>.
             </p>
           </div>
         </div>
@@ -211,7 +209,12 @@ export default function CompoundBasicsDemo(): React.ReactElement {
               tabs={[
                 { id: 'home', label: '🏠 Home', content: <p>Welcome to the home tab!</p> },
                 { id: 'profile', label: '👤 Profile', content: <p>Your profile info here.</p> },
-                { id: 'settings', label: '⚙️ Settings', content: <p>Settings content.</p>, disabled: true },
+                {
+                  id: 'settings',
+                  label: '⚙️ Settings',
+                  content: <p>Settings content.</p>,
+                  disabled: true,
+                },
               ]}
             />
           </div>
@@ -231,7 +234,9 @@ export default function CompoundBasicsDemo(): React.ReactElement {
               <Tabs.List>
                 <Tabs.Tab id="home">🏠 Home</Tabs.Tab>
                 <Tabs.Tab id="profile">👤 Profile</Tabs.Tab>
-                <Tabs.Tab id="settings" disabled>⚙️ Settings</Tabs.Tab>
+                <Tabs.Tab id="settings" disabled>
+                  ⚙️ Settings
+                </Tabs.Tab>
               </Tabs.List>
               <Tabs.Panel id="home">
                 <p>Welcome to the home tab!</p>
@@ -244,33 +249,20 @@ export default function CompoundBasicsDemo(): React.ReactElement {
               </Tabs.Panel>
             </Tabs>
           </div>
-          <p className="text-xs text-base-content/50 mt-2">
-            Clean, declarative JSX structure
-          </p>
+          <p className="text-xs text-base-content/50 mt-2">Clean, declarative JSX structure</p>
         </div>
       </div>
 
       {/* Code Toggle */}
-      <button
-        onClick={() => setShowCode(!showCode)}
-        className="btn btn-sm btn-ghost gap-2"
-      >
+      <button onClick={() => setShowCode(!showCode)} className="btn btn-sm btn-ghost gap-2">
         {showCode ? <HiChevronDown size={16} /> : <HiChevronRight size={16} />}
         {showCode ? 'Hide' : 'Show'} Code Comparison
       </button>
 
       {showCode && (
         <div className="grid md:grid-cols-2 gap-4">
-          <CodeSnippet
-            title="Traditional Approach"
-            language="tsx"
-            code={traditionalCode}
-          />
-          <CodeSnippet
-            title="Compound Components"
-            language="tsx"
-            code={compoundCode}
-          />
+          <CodeSnippet title="Traditional Approach" language="tsx" code={traditionalCode} />
+          <CodeSnippet title="Compound Components" language="tsx" code={compoundCode} />
         </div>
       )}
 
@@ -280,19 +272,24 @@ export default function CompoundBasicsDemo(): React.ReactElement {
         <div className="grid sm:grid-cols-3 gap-4 text-sm">
           <div className="flex items-start gap-2">
             <span className="text-success">✓</span>
-            <span><strong>Flexible:</strong> Users control the structure</span>
+            <span>
+              <strong>Flexible:</strong> Users control the structure
+            </span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-success">✓</span>
-            <span><strong>Readable:</strong> Natural JSX hierarchy</span>
+            <span>
+              <strong>Readable:</strong> Natural JSX hierarchy
+            </span>
           </div>
           <div className="flex items-start gap-2">
             <span className="text-success">✓</span>
-            <span><strong>Encapsulated:</strong> Logic stays in parent</span>
+            <span>
+              <strong>Encapsulated:</strong> Logic stays in parent
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

@@ -39,7 +39,11 @@ interface GreetingProps {
 }
 
 function Greeting({ name }: GreetingProps) {
-  return <p className="text-lg">Hello, <strong>{name}</strong>!</p>;
+  return (
+    <p className="text-lg">
+      Hello, <strong>{name}</strong>!
+    </p>
+  );
 }
 
 interface StatsProps {
@@ -185,4 +189,3 @@ export default function HOCBasicsDemo() {
     </div>
   );
 }
-

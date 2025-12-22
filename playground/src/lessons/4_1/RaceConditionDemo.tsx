@@ -4,7 +4,11 @@
 // ============================================
 
 import { useState, useEffect, useRef } from 'react';
-import { HiOutlineExclamationCircle, HiOutlineShieldCheck, HiOutlineLightBulb } from 'react-icons/hi';
+import {
+  HiOutlineExclamationCircle,
+  HiOutlineShieldCheck,
+  HiOutlineLightBulb,
+} from 'react-icons/hi';
 
 interface Post {
   id: number;
@@ -61,7 +65,7 @@ function ProblemDemo(): React.ReactElement {
 
     // Simulate variable network latency
     const delay = Math.random() * 2000 + 500;
-    
+
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       .then((res) => res.json())
       .then((data) => {
@@ -91,8 +95,8 @@ function ProblemDemo(): React.ReactElement {
           <div>
             <div className="font-semibold text-error mb-1">Race Condition Bug</div>
             <p className="text-sm text-base-content/70">
-              When requests complete out of order, stale data can overwrite fresh data. Click rapidly
-              between posts to see this happen!
+              When requests complete out of order, stale data can overwrite fresh data. Click
+              rapidly between posts to see this happen!
             </p>
           </div>
         </div>
@@ -279,11 +283,7 @@ function SolutionDemo(): React.ReactElement {
                 <div
                   key={i}
                   className={
-                    log.startsWith('✓')
-                      ? 'text-success'
-                      : log.startsWith('✗')
-                        ? 'text-warning'
-                        : ''
+                    log.startsWith('✓') ? 'text-success' : log.startsWith('✗') ? 'text-warning' : ''
                   }
                 >
                   {log}
@@ -295,7 +295,9 @@ function SolutionDemo(): React.ReactElement {
       </div>
 
       <div className="bg-base-300 rounded-lg p-4 mt-4">
-        <div className="text-xs font-semibold text-success mb-2">Fixed Code (With AbortController)</div>
+        <div className="text-xs font-semibold text-success mb-2">
+          Fixed Code (With AbortController)
+        </div>
         <pre className="font-mono text-xs overflow-x-auto">
           <code>{`useEffect(() => {
   const controller = new AbortController();
@@ -317,4 +319,3 @@ function SolutionDemo(): React.ReactElement {
     </div>
   );
 }
-

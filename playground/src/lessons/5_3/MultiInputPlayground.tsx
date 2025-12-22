@@ -108,11 +108,7 @@ export default function MultiInputPlayground(): React.ReactElement {
           Thanks {form.firstName}! We'll get back to you soon.
         </p>
         <div className="text-left mb-4 max-h-64 overflow-y-auto">
-          <CodeSnippet
-            language="json"
-            code={JSON.stringify(form, null, 2)}
-            showCopy={false}
-          />
+          <CodeSnippet language="json" code={JSON.stringify(form, null, 2)} showCopy={false} />
         </div>
         <button onClick={handleReset} className="btn btn-primary">
           Send Another
@@ -315,11 +311,7 @@ export default function MultiInputPlayground(): React.ReactElement {
 
         {/* Actions */}
         <div className="flex gap-3 pt-2">
-          <button
-            type="submit"
-            disabled={!isValid}
-            className="btn btn-primary flex-1 gap-2"
-          >
+          <button type="submit" disabled={!isValid} className="btn btn-primary flex-1 gap-2">
             <HiCheck size={18} />
             {isValid ? 'Send Message' : 'Fill Required Fields'}
           </button>
@@ -331,18 +323,11 @@ export default function MultiInputPlayground(): React.ReactElement {
 
       {/* State Preview */}
       <details className="collapse bg-base-300 collapse-arrow">
-        <summary className="collapse-title text-sm font-medium">
-          View Form State (Debug)
-        </summary>
+        <summary className="collapse-title text-sm font-medium">View Form State (Debug)</summary>
         <div className="collapse-content">
-          <CodeSnippet
-            language="json"
-            code={JSON.stringify(form, null, 2)}
-            showCopy={false}
-          />
+          <CodeSnippet language="json" code={JSON.stringify(form, null, 2)} showCopy={false} />
         </div>
       </details>
     </form>
   );
 }
-

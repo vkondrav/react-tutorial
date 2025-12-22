@@ -37,11 +37,7 @@ function FancyBorder({ children, color = 'blue' }: FancyBorderProps) {
     orange: 'border-orange-500 bg-orange-500/10',
   };
 
-  return (
-    <div className={`border-2 rounded-lg p-4 ${colors[color]}`}>
-      {children}
-    </div>
-  );
+  return <div className={`border-2 rounded-lg p-4 ${colors[color]}`}>{children}</div>;
 }
 
 // Collapsible section
@@ -63,11 +59,7 @@ function Collapsible({ title, children, defaultOpen = false }: CollapsibleProps)
         {isOpen ? <HiChevronDown size={18} /> : <HiChevronRight size={18} />}
         <span className="font-medium">{title}</span>
       </button>
-      {isOpen && (
-        <div className="p-4 border-t border-base-300">
-          {children}
-        </div>
-      )}
+      {isOpen && <div className="p-4 border-t border-base-300">{children}</div>}
     </div>
   );
 }
@@ -124,20 +116,13 @@ export default function ChildrenPropDemo() {
       <div className="card bg-base-200 p-4">
         <div className="flex justify-between items-center mb-4">
           <h4 className="font-semibold">How Children Works</h4>
-          <button
-            onClick={() => setShowCode(!showCode)}
-            className="btn btn-xs btn-ghost"
-          >
+          <button onClick={() => setShowCode(!showCode)} className="btn btn-xs btn-ghost">
             {showCode ? 'Hide' : 'Show'} Code
           </button>
         </div>
 
         {showCode && (
-          <CodeSnippet
-            title="The children prop"
-            language="tsx"
-            code={basicChildrenCode}
-          />
+          <CodeSnippet title="The children prop" language="tsx" code={basicChildrenCode} />
         )}
 
         <p className="text-sm text-base-content/70 mt-2">
@@ -249,4 +234,3 @@ export default function ChildrenPropDemo() {
     </div>
   );
 }
-

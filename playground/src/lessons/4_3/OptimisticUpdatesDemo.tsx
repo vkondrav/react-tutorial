@@ -147,9 +147,7 @@ export default function OptimisticUpdatesDemo(): React.ReactElement {
               <button
                 onClick={handlePessimisticLike}
                 disabled={pessimisticLoading}
-                className={`btn btn-sm gap-2 ${
-                  pessimisticPost.liked ? 'btn-error' : 'btn-ghost'
-                }`}
+                className={`btn btn-sm gap-2 ${pessimisticPost.liked ? 'btn-error' : 'btn-ghost'}`}
               >
                 {pessimisticLoading ? (
                   <span className="loading loading-spinner loading-xs" />
@@ -188,24 +186,14 @@ export default function OptimisticUpdatesDemo(): React.ReactElement {
               <button
                 onClick={handleOptimisticLike}
                 disabled={optimisticLoading}
-                className={`btn btn-sm gap-2 ${
-                  optimisticPost.liked ? 'btn-error' : 'btn-ghost'
-                }`}
+                className={`btn btn-sm gap-2 ${optimisticPost.liked ? 'btn-error' : 'btn-ghost'}`}
               >
-                {optimisticPost.liked ? (
-                  <HiHeart size={18} />
-                ) : (
-                  <HiOutlineHeart size={18} />
-                )}
+                {optimisticPost.liked ? <HiHeart size={18} /> : <HiOutlineHeart size={18} />}
                 {optimisticPost.liked ? 'Liked' : 'Like'}
-                {optimisticLoading && (
-                  <span className="loading loading-spinner loading-xs" />
-                )}
+                {optimisticLoading && <span className="loading loading-spinner loading-xs" />}
               </button>
             </div>
-            {optimisticError && (
-              <div className="text-error text-xs mt-2">{optimisticError}</div>
-            )}
+            {optimisticError && <div className="text-error text-xs mt-2">{optimisticError}</div>}
           </div>
 
           <div className="text-xs bg-base-300 p-3 rounded space-y-1">
@@ -284,5 +272,3 @@ export default function OptimisticUpdatesDemo(): React.ReactElement {
     </div>
   );
 }
-
-

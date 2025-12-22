@@ -53,9 +53,7 @@ function Accordion({ children, allowMultiple = false, defaultOpen = [] }: Accord
 
   return (
     <AccordionContext.Provider value={{ openItems, toggleItem, allowMultiple }}>
-      <div className="divide-y divide-base-300 rounded-lg border border-base-300">
-        {children}
-      </div>
+      <div className="divide-y divide-base-300 rounded-lg border border-base-300">{children}</div>
     </AccordionContext.Provider>
   );
 }
@@ -67,11 +65,7 @@ interface AccordionItemProps {
 }
 
 function AccordionItem({ id, children }: AccordionItemProps) {
-  return (
-    <div data-accordion-item={id}>
-      {children}
-    </div>
-  );
+  return <div data-accordion-item={id}>{children}</div>;
 }
 
 // Accordion Trigger (Header)
@@ -111,11 +105,7 @@ function AccordionContent({ id, children }: AccordionContentProps) {
 
   if (!isOpen) return null;
 
-  return (
-    <div className="px-4 pb-4 text-base-content/70">
-      {children}
-    </div>
-  );
+  return <div className="px-4 pb-4 text-base-content/70">{children}</div>;
 }
 
 // Attach sub-components
@@ -207,8 +197,9 @@ export default function ContextPatternDemo(): React.ReactElement {
           <div>
             <p className="font-semibold text-warning mb-1">The Context Pattern</p>
             <p className="text-base-content/70 text-sm">
-              The parent component creates a <strong className="text-primary">Context Provider</strong> with
-              shared state. Child components <strong className="text-secondary">consume</strong> this context
+              The parent component creates a{' '}
+              <strong className="text-primary">Context Provider</strong> with shared state. Child
+              components <strong className="text-secondary">consume</strong> this context
               automatically — no props drilling!
             </p>
           </div>
@@ -220,7 +211,9 @@ export default function ContextPatternDemo(): React.ReactElement {
         <button
           onClick={() => setShowCode(showCode === 'context' ? null : 'context')}
           className={`card p-4 text-left transition-all ${
-            showCode === 'context' ? 'bg-primary/20 ring-2 ring-primary' : 'bg-base-200 hover:bg-base-300'
+            showCode === 'context'
+              ? 'bg-primary/20 ring-2 ring-primary'
+              : 'bg-base-200 hover:bg-base-300'
           }`}
         >
           <div className="flex items-center gap-2 mb-2">
@@ -237,7 +230,9 @@ export default function ContextPatternDemo(): React.ReactElement {
         <button
           onClick={() => setShowCode(showCode === 'parent' ? null : 'parent')}
           className={`card p-4 text-left transition-all ${
-            showCode === 'parent' ? 'bg-secondary/20 ring-2 ring-secondary' : 'bg-base-200 hover:bg-base-300'
+            showCode === 'parent'
+              ? 'bg-secondary/20 ring-2 ring-secondary'
+              : 'bg-base-200 hover:bg-base-300'
           }`}
         >
           <div className="flex items-center gap-2 mb-2">
@@ -254,7 +249,9 @@ export default function ContextPatternDemo(): React.ReactElement {
         <button
           onClick={() => setShowCode(showCode === 'child' ? null : 'child')}
           className={`card p-4 text-left transition-all ${
-            showCode === 'child' ? 'bg-accent/20 ring-2 ring-accent' : 'bg-base-200 hover:bg-base-300'
+            showCode === 'child'
+              ? 'bg-accent/20 ring-2 ring-accent'
+              : 'bg-base-200 hover:bg-base-300'
           }`}
         >
           <div className="flex items-center gap-2 mb-2">
@@ -276,11 +273,13 @@ export default function ContextPatternDemo(): React.ReactElement {
             showCode === 'context'
               ? 'Step 1: Create Context'
               : showCode === 'parent'
-              ? 'Step 2: Parent Component'
-              : 'Step 3: Child Components'
+                ? 'Step 2: Parent Component'
+                : 'Step 3: Child Components'
           }
           language="tsx"
-          code={showCode === 'context' ? contextCode : showCode === 'parent' ? parentCode : childCode}
+          code={
+            showCode === 'context' ? contextCode : showCode === 'parent' ? parentCode : childCode
+          }
         />
       )}
 
@@ -304,24 +303,24 @@ export default function ContextPatternDemo(): React.ReactElement {
             <Accordion.Item id="faq1">
               <Accordion.Trigger id="faq1">What are compound components?</Accordion.Trigger>
               <Accordion.Content id="faq1">
-                Compound components are a pattern where multiple components work together,
-                sharing implicit state through Context. They provide a flexible, declarative API.
+                Compound components are a pattern where multiple components work together, sharing
+                implicit state through Context. They provide a flexible, declarative API.
               </Accordion.Content>
             </Accordion.Item>
 
             <Accordion.Item id="faq2">
               <Accordion.Trigger id="faq2">Why use Context for this?</Accordion.Trigger>
               <Accordion.Content id="faq2">
-                Context allows the parent to share state with deeply nested children without
-                prop drilling. Each child component can access exactly what it needs.
+                Context allows the parent to share state with deeply nested children without prop
+                drilling. Each child component can access exactly what it needs.
               </Accordion.Content>
             </Accordion.Item>
 
             <Accordion.Item id="faq3">
               <Accordion.Trigger id="faq3">When should I use this pattern?</Accordion.Trigger>
               <Accordion.Content id="faq3">
-                Use compound components when you have a group of related components that need
-                to share state: tabs, accordions, menus, form fields, modal dialogs, etc.
+                Use compound components when you have a group of related components that need to
+                share state: tabs, accordions, menus, form fields, modal dialogs, etc.
               </Accordion.Content>
             </Accordion.Item>
           </Accordion>
@@ -345,4 +344,3 @@ export default function ContextPatternDemo(): React.ReactElement {
     </div>
   );
 }
-

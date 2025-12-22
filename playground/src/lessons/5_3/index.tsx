@@ -129,4 +129,3 @@ export default function Lesson5_3(): React.ReactElement {
     </div>
   );
 }
-

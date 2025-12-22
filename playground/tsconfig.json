@@ -25,6 +25,7 @@
     "allowJs": true,
     "checkJs": false
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/examples/**"]
 }
 

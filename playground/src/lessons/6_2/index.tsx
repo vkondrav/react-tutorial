@@ -30,8 +30,8 @@ export default function Lesson6_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          A <strong className="text-primary">render prop</strong> is a function prop that a component
-          uses to know what to render. Instead of hardcoding the output, the component{' '}
+          A <strong className="text-primary">render prop</strong> is a function prop that a
+          component uses to know what to render. Instead of hardcoding the output, the component{' '}
           <strong className="text-secondary">delegates rendering</strong> to whoever uses it.
         </p>
         <RenderPropsBasicsDemo />
@@ -47,8 +47,9 @@ export default function Lesson6_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          The most common render prop pattern uses <code className="text-secondary">children</code> as
-          the function. This creates a clean API where you pass a function between the component tags.
+          The most common render prop pattern uses <code className="text-secondary">children</code>{' '}
+          as the function. This creates a clean API where you pass a function between the component
+          tags.
         </p>
         <ChildrenAsFunctionDemo />
       </Section>
@@ -111,4 +112,3 @@ export default function Lesson6_2(): React.ReactElement {
     </div>
   );
 }
-

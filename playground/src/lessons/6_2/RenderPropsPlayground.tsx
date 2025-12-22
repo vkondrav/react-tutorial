@@ -18,12 +18,15 @@ interface ToggleProps {
 
 function Toggle({ children, initial = false }: ToggleProps) {
   const [isOn, setIsOn] = useState(initial);
-  return <>{children(isOn, () => setIsOn(prev => !prev))}</>;
+  return <>{children(isOn, () => setIsOn((prev) => !prev))}</>;
 }
 
 // ---- Counter ----
 interface CounterProps {
-  children: (count: number, actions: { increment: () => void; decrement: () => void; reset: () => void }) => ReactNode;
+  children: (
+    count: number,
+    actions: { increment: () => void; decrement: () => void; reset: () => void }
+  ) => ReactNode;
   initial?: number;
 }
 
@@ -32,8 +35,8 @@ function Counter({ children, initial = 0 }: CounterProps) {
   return (
     <>
       {children(count, {
-        increment: () => setCount(c => c + 1),
-        decrement: () => setCount(c => c - 1),
+        increment: () => setCount((c) => c + 1),
+        decrement: () => setCount((c) => c - 1),
         reset: () => setCount(initial),
       })}
     </>
@@ -79,7 +82,11 @@ function Input({ children, initial = '' }: InputProps) {
 
 // ---- Timer ----
 interface TimerProps {
-  children: (seconds: number, actions: { start: () => void; pause: () => void; reset: () => void }, isRunning: boolean) => ReactNode;
+  children: (
+    seconds: number,
+    actions: { start: () => void; pause: () => void; reset: () => void },
+    isRunning: boolean
+  ) => ReactNode;
 }
 
 function Timer({ children }: TimerProps) {
@@ -91,7 +98,7 @@ function Timer({ children }: TimerProps) {
     if (!isRunning) {
       setIsRunning(true);
       intervalRef.current = window.setInterval(() => {
-        setSeconds(s => s + 1);
+        setSeconds((s) => s + 1);
       }, 1000);
     }
   };
@@ -152,7 +159,9 @@ export default function RenderPropsPlayground() {
                       <button
                         onClick={decrement}
                         className={`w-10 h-10 rounded-full ${
-                          darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-200 hover:bg-slate-300'
+                          darkMode
+                            ? 'bg-slate-700 hover:bg-slate-600'
+                            : 'bg-slate-200 hover:bg-slate-300'
                         }`}
                       >
                         -
@@ -160,7 +169,9 @@ export default function RenderPropsPlayground() {
                       <button
                         onClick={reset}
                         className={`px-4 rounded ${
-                          darkMode ? 'bg-slate-700 hover:bg-slate-600' : 'bg-slate-200 hover:bg-slate-300'
+                          darkMode
+                            ? 'bg-slate-700 hover:bg-slate-600'
+                            : 'bg-slate-200 hover:bg-slate-300'
                         }`}
                       >
                         Reset
@@ -168,7 +179,9 @@ export default function RenderPropsPlayground() {
                       <button
                         onClick={increment}
                         className={`w-10 h-10 rounded-full ${
-                          darkMode ? 'bg-blue-600 hover:bg-blue-500' : 'bg-blue-500 hover:bg-blue-400'
+                          darkMode
+                            ? 'bg-blue-600 hover:bg-blue-500'
+                            : 'bg-blue-500 hover:bg-blue-400'
                         } text-white`}
                       >
                         +
@@ -200,9 +213,7 @@ export default function RenderPropsPlayground() {
             >
               <div className="text-center z-10">
                 <p className="text-white text-lg font-semibold">Move your mouse</p>
-                <p className="text-slate-400 text-sm mt-1">
-                  Spotlight follows cursor
-                </p>
+                <p className="text-slate-400 text-sm mt-1">Spotlight follows cursor</p>
               </div>
               {/* Glow effect */}
               <div
@@ -226,8 +237,17 @@ export default function RenderPropsPlayground() {
 
         <Input>
           {(search, setSearch) => {
-            const items = ['React', 'Vue', 'Angular', 'Svelte', 'Solid', 'Preact', 'Next.js', 'Nuxt'];
-            const filtered = items.filter(item =>
+            const items = [
+              'React',
+              'Vue',
+              'Angular',
+              'Svelte',
+              'Solid',
+              'Preact',
+              'Next.js',
+              'Nuxt',
+            ];
+            const filtered = items.filter((item) =>
               item.toLowerCase().includes(search.toLowerCase())
             );
 
@@ -236,18 +256,15 @@ export default function RenderPropsPlayground() {
                 <input
                   type="text"
                   value={search}
-                  onChange={e => setSearch(e.target.value)}
+                  onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search frameworks..."
                   className="input input-bordered w-full"
                 />
 
                 <div className="flex flex-wrap gap-2">
                   {filtered.length > 0 ? (
-                    filtered.map(item => (
-                      <span
-                        key={item}
-                        className="badge badge-primary badge-lg"
-                      >
+                    filtered.map((item) => (
+                      <span key={item} className="badge badge-primary badge-lg">
                         {item}
                       </span>
                     ))
@@ -324,7 +341,7 @@ export default function RenderPropsPlayground() {
                         stroke="currentColor"
                         strokeWidth="8"
                         strokeDasharray={276.46}
-                        strokeDashoffset={276.46 - (seconds % 60) / 60 * 276.46}
+                        strokeDashoffset={276.46 - ((seconds % 60) / 60) * 276.46}
                         className="text-primary transition-all duration-1000"
                         strokeLinecap="round"
                       />
@@ -347,13 +364,11 @@ export default function RenderPropsPlayground() {
           <div>
             <h4 className="font-semibold mb-1">Render Props vs Custom Hooks</h4>
             <p className="text-sm text-base-content/70 mb-2">
-              Modern React often uses <strong className="text-primary">custom hooks</strong> instead of
-              render props (e.g., <code className="text-secondary">useToggle()</code> instead of{' '}
+              Modern React often uses <strong className="text-primary">custom hooks</strong> instead
+              of render props (e.g., <code className="text-secondary">useToggle()</code> instead of{' '}
               <code className="text-secondary">&lt;Toggle&gt;</code>).
             </p>
-            <p className="text-sm text-base-content/70">
-              Render props are still useful when:
-            </p>
+            <p className="text-sm text-base-content/70">Render props are still useful when:</p>
             <ul className="text-sm text-base-content/70 list-disc list-inside mt-1">
               <li>You need to control exactly where/when rendering happens</li>
               <li>You're building library components with flexible APIs</li>
@@ -365,4 +380,3 @@ export default function RenderPropsPlayground() {
     </div>
   );
 }
-

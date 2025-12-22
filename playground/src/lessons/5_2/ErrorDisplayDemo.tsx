@@ -244,11 +244,13 @@ function SummaryDemo() {
 // ===== Toast Demo =====
 function ToastDemo() {
   const [form, setForm] = useState({ email: '' });
-  const [toast, setToast] = useState<{ show: boolean; message: string; type: 'error' | 'success' }>({
-    show: false,
-    message: '',
-    type: 'error',
-  });
+  const [toast, setToast] = useState<{ show: boolean; message: string; type: 'error' | 'success' }>(
+    {
+      show: false,
+      message: '',
+      type: 'error',
+    }
+  );
 
   const showToast = (message: string, type: 'error' | 'success') => {
     setToast({ show: true, message, type });
@@ -313,7 +315,7 @@ function ToastDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`// Good for: notifications, success messages
+          {`// Good for: notifications, success messages
 // Not ideal for: detailed form errors
 
 const showToast = (message, type) => {
@@ -325,4 +327,3 @@ const showToast = (message, type) => {
     </div>
   );
 }
-

@@ -59,11 +59,7 @@ interface TabListProps {
 }
 
 function TabList({ children, className = '' }: TabListProps) {
-  return (
-    <div className={`flex border-b border-base-300 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`flex border-b border-base-300 ${className}`}>{children}</div>;
 }
 
 interface TabProps {
@@ -84,8 +80,8 @@ function Tab({ id, children, disabled }: TabProps) {
         isActive
           ? 'text-primary border-b-2 border-primary -mb-px'
           : disabled
-          ? 'text-base-content/30 cursor-not-allowed'
-          : 'text-base-content/60 hover:text-base-content hover:bg-base-200'
+            ? 'text-base-content/30 cursor-not-allowed'
+            : 'text-base-content/60 hover:text-base-content hover:bg-base-200'
       }`}
     >
       {children}
@@ -152,10 +148,7 @@ function MenuButton({ children, className = '' }: MenuButtonProps) {
   const { toggle, isOpen } = useMenuContext();
 
   return (
-    <button
-      onClick={toggle}
-      className={`btn ${className}`}
-    >
+    <button onClick={toggle} className={`btn ${className}`}>
       {children}
       {isOpen ? <HiChevronDown size={16} /> : <HiChevronRight size={16} />}
     </button>
@@ -260,9 +253,7 @@ function Select({ children, defaultValue, onChange }: SelectProps) {
 
   return (
     <SelectContext.Provider value={{ isOpen, selectedValue, selectedLabel, toggle, close, select }}>
-      <div className="relative inline-block w-full">
-        {children}
-      </div>
+      <div className="relative inline-block w-full">{children}</div>
     </SelectContext.Provider>
   );
 }
@@ -334,9 +325,7 @@ interface SelectGroupProps {
 function SelectGroup({ label, children }: SelectGroupProps) {
   return (
     <div>
-      <div className="px-4 py-1 text-xs font-semibold text-base-content/50 uppercase">
-        {label}
-      </div>
+      <div className="px-4 py-1 text-xs font-semibold text-base-content/50 uppercase">{label}</div>
       {children}
     </div>
   );
@@ -466,9 +455,7 @@ export default function CompoundPlayground(): React.ReactElement {
                         <p className="font-medium">{notif.title}</p>
                         <p className="text-xs text-base-content/50">{notif.time}</p>
                       </div>
-                      {notif.unread && (
-                        <span className="w-2 h-2 rounded-full bg-primary" />
-                      )}
+                      {notif.unread && <span className="w-2 h-2 rounded-full bg-primary" />}
                     </div>
                   ))}
                 </div>
@@ -512,20 +499,14 @@ export default function CompoundPlayground(): React.ReactElement {
                   Notifications
                 </Menu.Item>
                 <Menu.Divider />
-                <Menu.Item
-                  icon={<HiX size={18} />}
-                  onClick={() => log('Logout clicked')}
-                  danger
-                >
+                <Menu.Item icon={<HiX size={18} />} onClick={() => log('Logout clicked')} danger>
                   Logout
                 </Menu.Item>
               </Menu.List>
             </Menu>
 
             <Menu>
-              <Menu.Button className="btn-outline">
-                Actions
-              </Menu.Button>
+              <Menu.Button className="btn-outline">Actions</Menu.Button>
               <Menu.List>
                 <Menu.Item onClick={() => log('Edit clicked')}>Edit</Menu.Item>
                 <Menu.Item onClick={() => log('Duplicate clicked')}>Duplicate</Menu.Item>
@@ -546,9 +527,7 @@ export default function CompoundPlayground(): React.ReactElement {
           <h4 className="font-semibold mb-4">Custom Select</h4>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm text-base-content/70 mb-1 block">
-                Choose a framework
-              </label>
+              <label className="text-sm text-base-content/70 mb-1 block">Choose a framework</label>
               <Select
                 onChange={(value) => {
                   setSelectedFramework(value);
@@ -572,13 +551,8 @@ export default function CompoundPlayground(): React.ReactElement {
             </div>
 
             <div>
-              <label className="text-sm text-base-content/70 mb-1 block">
-                Country
-              </label>
-              <Select
-                defaultValue="us"
-                onChange={(value) => log(`Country: ${value}`)}
-              >
+              <label className="text-sm text-base-content/70 mb-1 block">Country</label>
+              <Select defaultValue="us" onChange={(value) => log(`Country: ${value}`)}>
                 <Select.Trigger placeholder="Select country..." />
                 <Select.Content>
                   <Select.Option value="us">🇺🇸 United States</Select.Option>
@@ -609,19 +583,13 @@ export default function CompoundPlayground(): React.ReactElement {
         <div className="card bg-base-300 p-4">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold text-sm">Event Log</h4>
-            <button
-              onClick={() => setLogs([])}
-              className="btn btn-ghost btn-xs"
-            >
+            <button onClick={() => setLogs([])} className="btn btn-ghost btn-xs">
               Clear
             </button>
           </div>
           <div className="space-y-1 font-mono text-xs">
             {logs.map((log, i) => (
-              <div
-                key={i}
-                className={`text-base-content/${100 - i * 20}`}
-              >
+              <div key={i} className={`text-base-content/${100 - i * 20}`}>
                 → {log}
               </div>
             ))}
@@ -647,19 +615,14 @@ export default function CompoundPlayground(): React.ReactElement {
           </div>
           <div>
             <p className="font-semibold text-accent mb-1">Best For:</p>
-            <span className="text-base-content/70">
-              Tabs, Accordions, Menus, Selects, Modals
-            </span>
+            <span className="text-base-content/70">Tabs, Accordions, Menus, Selects, Modals</span>
           </div>
           <div>
             <p className="font-semibold text-warning mb-1">Key Benefit:</p>
-            <span className="text-base-content/70">
-              Flexible API + encapsulated logic
-            </span>
+            <span className="text-base-content/70">Flexible API + encapsulated logic</span>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

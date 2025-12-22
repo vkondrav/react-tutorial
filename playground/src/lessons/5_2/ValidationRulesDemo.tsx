@@ -81,7 +81,7 @@ function RequiredDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`// Simple required check
+          {`// Simple required check
 const validate = (value: string) => {
   if (!value.trim()) {
     return 'This field is required';
@@ -115,14 +115,14 @@ function LengthDemo() {
   return (
     <div className="space-y-4">
       <h4 className="font-semibold text-secondary">Length Constraints</h4>
-      <p className="text-sm text-base-content/70">
-        Validate minimum and maximum length.
-      </p>
+      <p className="text-sm text-base-content/70">Validate minimum and maximum length.</p>
 
       <div>
         <label className="label">
           <span className="label-text">Username</span>
-          <span className="label-text-alt">{value.length}/{maxLength}</span>
+          <span className="label-text-alt">
+            {value.length}/{maxLength}
+          </span>
         </label>
         <input
           type="text"
@@ -149,7 +149,7 @@ function LengthDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const validate = (value: string) => {
+          {`const validate = (value: string) => {
   if (value.length < ${minLength}) return 'Minimum ${minLength} characters';
   if (value.length > ${maxLength}) return 'Maximum ${maxLength} characters';
   return '';
@@ -180,9 +180,7 @@ function PatternDemo() {
   return (
     <div className="space-y-4">
       <h4 className="font-semibold text-accent">Pattern Matching (Regex)</h4>
-      <p className="text-sm text-base-content/70">
-        Use regular expressions for format validation.
-      </p>
+      <p className="text-sm text-base-content/70">Use regular expressions for format validation.</p>
 
       <div>
         <label className="label">
@@ -213,14 +211,14 @@ function PatternDemo() {
       <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
-          Common patterns: email, phone, URL, credit card, zip code.
-          Keep regex simple — complex ones can be slow!
+          Common patterns: email, phone, URL, credit card, zip code. Keep regex simple — complex
+          ones can be slow!
         </p>
       </div>
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+          {`const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
 
 const validate = (value: string) => {
   if (!emailPattern.test(value)) {
@@ -313,7 +311,7 @@ function CustomDemo() {
 
       <div className="bg-base-200 rounded-lg p-3 text-xs">
         <pre className="overflow-x-auto text-base-content/70">
-{`const rules = [
+          {`const rules = [
   { test: (v) => v.length >= 8, label: '8+ chars' },
   { test: (v) => /[A-Z]/.test(v), label: 'Uppercase' },
   { test: (v) => /[0-9]/.test(v), label: 'Number' },
@@ -329,4 +327,3 @@ const errors = rules
     </div>
   );
 }
-

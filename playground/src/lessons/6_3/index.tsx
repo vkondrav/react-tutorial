@@ -30,9 +30,10 @@ export default function Lesson6_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          A <strong className="text-primary">Higher-Order Component (HOC)</strong> is a function that
-          takes a component and returns a <strong className="text-secondary">new enhanced component</strong>.
-          It's a pattern for reusing component logic.
+          A <strong className="text-primary">Higher-Order Component (HOC)</strong> is a function
+          that takes a component and returns a{' '}
+          <strong className="text-secondary">new enhanced component</strong>. It's a pattern for
+          reusing component logic.
         </p>
         <HOCBasicsDemo />
       </Section>
@@ -47,8 +48,9 @@ export default function Lesson6_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          HOCs are commonly used to add <strong className="text-primary">cross-cutting concerns</strong>{' '}
-          like authentication, loading states, theming, and logging to components.
+          HOCs are commonly used to add{' '}
+          <strong className="text-primary">cross-cutting concerns</strong> like authentication,
+          loading states, theming, and logging to components.
         </p>
         <CommonHOCsDemo />
       </Section>
@@ -109,4 +111,3 @@ export default function Lesson6_3(): React.ReactElement {
     </div>
   );
 }
-
