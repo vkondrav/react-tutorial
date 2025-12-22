@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { HiOutlineCursorClick } from 'react-icons/hi';
 import { CodeBlock } from '../components';
 
 export default function ComparisonDemo() {
   const [count, setCount] = useState(0);
 
-  const imperativeCode = `// ❌ Imperative (Vanilla JS)
+  const imperativeCode = `// Imperative (Vanilla JS)
 const btn = document.getElementById('btn');
 const display = document.getElementById('count');
 
@@ -13,7 +14,7 @@ btn.addEventListener('click', () => {
   display.textContent = current + 1;
 });`;
 
-  const declarativeCode = `// ✅ Declarative (React)
+  const declarativeCode = `// Declarative (React)
 function Counter() {
   const [count, setCount] = useState(0);
   
@@ -35,8 +36,9 @@ function Counter() {
       </div>
 
       <div className="card bg-base-200 p-6 text-center">
-        <p className="mb-4 text-base-content/70">
-          👇 Try it! This is a <strong className="text-primary">real React component</strong>:
+        <p className="mb-4 text-base-content/70 flex items-center justify-center gap-2">
+          <HiOutlineCursorClick className="text-primary" size={18} />
+          Try it! This is a <strong className="text-primary ml-1">real React component</strong>:
         </p>
         <div className="text-3xl font-bold mb-4">{count}</div>
         <div className="flex gap-2 justify-center">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineCursorClick } from 'react-icons/hi';
 
 export default function ComponentTreeDemo() {
   const [selected, setSelected] = useState(null);
@@ -57,8 +58,9 @@ export default function ComponentTreeDemo() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="text-sm text-base-content/60 mt-0 mb-4">
-          👇 Click a component to learn about it:
+        <p className="text-sm text-base-content/60 mt-0 mb-4 flex items-center gap-2">
+          <HiOutlineCursorClick className="text-primary" size={16} />
+          Click a component to learn about it:
         </p>
         <div className="flex flex-wrap gap-2">
           {components.map((comp) => {
@@ -91,8 +93,9 @@ export default function ComponentTreeDemo() {
             <p className="text-base-content/80 mt-3 leading-relaxed">{selectedComp.description}</p>
           </div>
         ) : (
-          <div className="flex items-center justify-center h-full text-base-content/50">
-            👆 Click a component above
+          <div className="flex items-center justify-center gap-2 h-full text-base-content/50">
+            <HiOutlineCursorClick size={16} />
+            Click a component above
           </div>
         )}
       </div>

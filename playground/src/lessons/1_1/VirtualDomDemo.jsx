@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineHand } from 'react-icons/hi';
 
 export default function VirtualDomDemo() {
   const [name, setName] = useState('World');
@@ -26,8 +27,9 @@ export default function VirtualDomDemo() {
         />
 
         <div className="card bg-base-300 p-4">
-          <p className="m-0 text-xl">
-            Hello, <span className="text-primary font-semibold">{name || '...'}</span>! 👋
+          <p className="m-0 text-xl flex items-center gap-2">
+            Hello, <span className="text-primary font-semibold">{name || '...'}</span>!
+            <HiOutlineHand className="text-warning" size={24} />
           </p>
         </div>
 
