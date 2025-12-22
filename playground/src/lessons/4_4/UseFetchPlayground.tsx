@@ -11,6 +11,8 @@ import {
   HiOutlineChat,
   HiOutlineExclamationCircle,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useFetchSignatureCode from './examples/UseFetchSignature.tsx?raw';
 
 // ============================================
 // Generic useFetch Hook (Production Ready)
@@ -421,15 +423,7 @@ export default function UseFetchPlayground(): React.ReactElement {
 
       {/* Hook signature reminder */}
       <div className="mt-4 pt-4 border-t border-base-content/10">
-        <div className="text-xs font-semibold text-base-content/60 mb-2">Hook Signature:</div>
-        <pre className="font-mono text-xs bg-base-300 rounded p-2 overflow-x-auto">
-          <code>{`function useFetch<T>(url: string, options?: { enabled?: boolean }): {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
-  refetch: () => void;
-}`}</code>
-        </pre>
+        <CodeSnippet code={useFetchSignatureCode} language="tsx" title="Hook Signature" />
       </div>
     </div>
   );

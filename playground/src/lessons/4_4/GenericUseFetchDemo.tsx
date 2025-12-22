@@ -5,6 +5,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { HiOutlineLightBulb, HiOutlineRefresh } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import userTypeCode from './examples/UserType.tsx?raw';
+import postTypeCode from './examples/PostType.tsx?raw';
+import todoTypeCode from './examples/TodoType.tsx?raw';
 
 // ============================================
 // Types for different API responses
@@ -156,21 +160,21 @@ export default function GenericUseFetchDemo(): React.ReactElement {
       </div>
 
       {/* Type annotation display */}
-      <div className="card bg-base-300 p-3 mb-4">
+      <div className="mb-4">
         <div className="text-xs font-semibold text-base-content/60 mb-1">Hook Call:</div>
-        <pre className="font-mono text-xs text-primary">
-          <code>
-            {resourceType === 'users' &&
-              `const { data: users } = useFetch<User[]>('/api/users');
-// data is typed as User[] | null ✓`}
-            {resourceType === 'posts' &&
-              `const { data: posts } = useFetch<Post[]>('/api/posts');
-// data is typed as Post[] | null ✓`}
-            {resourceType === 'todos' &&
-              `const { data: todos } = useFetch<Todo[]>('/api/todos');
-// data is typed as Todo[] | null ✓`}
-          </code>
-        </pre>
+        <CodeSnippet
+          code={
+            resourceType === 'users'
+              ? `const { data: users } = useFetch<User[]>('/api/users');
+// data is typed as User[] | null ✓`
+              : resourceType === 'posts'
+                ? `const { data: posts } = useFetch<Post[]>('/api/posts');
+// data is typed as Post[] | null ✓`
+                : `const { data: todos } = useFetch<Todo[]>('/api/todos');
+// data is typed as Todo[] | null ✓`
+          }
+          language="tsx"
+        />
       </div>
 
       {/* Data display */}
@@ -236,43 +240,22 @@ export default function GenericUseFetchDemo(): React.ReactElement {
       {/* Type interface display */}
       <div className="mt-4 grid md:grid-cols-3 gap-3">
         <div
-          className={`card p-3 ${resourceType === 'users' ? 'bg-primary/20 border border-primary/30' : 'bg-base-300'}`}
+          className={`${resourceType === 'users' ? 'bg-primary/20 border border-primary/30 rounded-lg p-3' : ''}`}
         >
           <div className="text-xs font-semibold text-primary mb-1">User Type</div>
-          <pre className="font-mono text-[10px]">
-            <code>{`interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-}`}</code>
-          </pre>
+          <CodeSnippet code={userTypeCode} language="tsx" />
         </div>
         <div
-          className={`card p-3 ${resourceType === 'posts' ? 'bg-secondary/20 border border-secondary/30' : 'bg-base-300'}`}
+          className={`${resourceType === 'posts' ? 'bg-secondary/20 border border-secondary/30 rounded-lg p-3' : ''}`}
         >
           <div className="text-xs font-semibold text-secondary mb-1">Post Type</div>
-          <pre className="font-mono text-[10px]">
-            <code>{`interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}`}</code>
-          </pre>
+          <CodeSnippet code={postTypeCode} language="tsx" />
         </div>
         <div
-          className={`card p-3 ${resourceType === 'todos' ? 'bg-accent/20 border border-accent/30' : 'bg-base-300'}`}
+          className={`${resourceType === 'todos' ? 'bg-accent/20 border border-accent/30 rounded-lg p-3' : ''}`}
         >
           <div className="text-xs font-semibold text-accent mb-1">Todo Type</div>
-          <pre className="font-mono text-[10px]">
-            <code>{`interface Todo {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-}`}</code>
-          </pre>
+          <CodeSnippet code={todoTypeCode} language="tsx" />
         </div>
       </div>
     </div>

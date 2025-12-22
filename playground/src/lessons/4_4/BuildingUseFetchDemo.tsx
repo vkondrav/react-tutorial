@@ -10,6 +10,11 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import useFetchStep1Code from './examples/UseFetchStep1.tsx?raw';
+import useFetchStep2Code from './examples/UseFetchStep2.tsx?raw';
+import useFetchStep3Code from './examples/UseFetchStep3.tsx?raw';
+import useFetchStep4Code from './examples/UseFetchStep4.tsx?raw';
 
 // ============================================
 // Types
@@ -71,125 +76,27 @@ function useFetch<T>(url: string, deps: unknown[] = []): UseFetchResult<T> {
 // ============================================
 // Step definitions
 // ============================================
+const stepCodes = [useFetchStep1Code, useFetchStep2Code, useFetchStep3Code, useFetchStep4Code];
+
 const steps = [
   {
     title: 'Step 1: Basic Structure',
     description: 'Start with the three state variables every fetch needs',
-    code: `function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // TODO: Add fetch logic
-
-  return { data, loading, error };
-}`,
     highlight: 'State setup',
   },
   {
     title: 'Step 2: Add the useEffect',
     description: 'Fetch data when the URL changes',
-    code: `function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(\`HTTP \${response.status}\`);
-        setData(await response.json());
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, [url]);  // Re-fetch when URL changes
-
-  return { data, loading, error };
-}`,
     highlight: 'Fetch logic',
   },
   {
     title: 'Step 3: Add AbortController',
     description: 'Clean up to prevent memory leaks and race conditions',
-    code: `function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();  // Create controller
-
-    async function fetchData() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch(url, {
-          signal: controller.signal  // Pass signal to fetch
-        });
-        if (!response.ok) throw new Error(\`HTTP \${response.status}\`);
-        setData(await response.json());
-      } catch (err) {
-        if (err.name !== 'AbortError') {  // Ignore abort errors
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-
-    return () => controller.abort();  // Cleanup on unmount/re-run
-  }, [url]);
-
-  return { data, loading, error };
-}`,
     highlight: 'Cleanup',
   },
   {
     title: 'Step 4: Add Refetch Function',
     description: 'Allow manual re-fetching of data',
-    code: `function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [refetchIndex, setRefetchIndex] = useState(0);
-
-  const refetch = useCallback(() => {
-    setRefetchIndex(prev => prev + 1);  // Trigger re-fetch
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function fetchData() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch(url, { signal: controller.signal });
-        if (!response.ok) throw new Error(\`HTTP \${response.status}\`);
-        setData(await response.json());
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-
-    return () => controller.abort();
-  }, [url, refetchIndex]);  // Include refetchIndex
-
-  return { data, loading, error, refetch };  // Export refetch
-}`,
     highlight: 'Refetch',
   },
 ];
@@ -233,12 +140,14 @@ export default function BuildingUseFetchDemo(): React.ReactElement {
       </div>
 
       {/* Current step */}
-      <div className="card bg-base-300 p-4 mb-4">
+      <div className="mb-4">
         <h4 className="font-semibold text-primary mb-1">{steps[currentStep].title}</h4>
         <p className="text-sm text-base-content/70 mb-3">{steps[currentStep].description}</p>
-        <pre className="font-mono text-xs overflow-x-auto bg-base-200 rounded-lg p-3">
-          <code>{steps[currentStep].code}</code>
-        </pre>
+        <CodeSnippet
+          code={stepCodes[currentStep]}
+          language="tsx"
+          title={steps[currentStep].title}
+        />
       </div>
 
       {/* Progress indicator */}
@@ -298,10 +207,11 @@ export default function BuildingUseFetchDemo(): React.ReactElement {
           )}
 
           <div className="mt-3 pt-3 border-t border-base-content/10">
-            <div className="text-xs font-semibold text-base-content/60 mb-1">Usage:</div>
-            <pre className="font-mono text-xs bg-base-200 rounded p-2">
-              <code>{`const { data: users, loading, error, refetch } = useFetch<User[]>(url);`}</code>
-            </pre>
+            <CodeSnippet
+              code={`const { data: users, loading, error, refetch } = useFetch<User[]>(url);`}
+              language="tsx"
+              title="Usage"
+            />
           </div>
         </div>
       )}

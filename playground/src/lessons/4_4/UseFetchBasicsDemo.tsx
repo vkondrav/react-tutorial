@@ -5,100 +5,12 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiX, HiCheck } from 'react-icons/hi';
+import { CodeSnippet } from '../components';
+import beforeUseFetchCode from './examples/BeforeUseFetch.tsx?raw';
+import afterUseFetchCode from './examples/AfterUseFetch.tsx?raw';
 
 export default function UseFetchBasicsDemo(): React.ReactElement {
   const [showBefore, setShowBefore] = useState(true);
-
-  const beforeCode = `// Component A: Fetch users
-function UserList() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchUsers() {
-      try {
-        setLoading(true);
-        const res = await fetch('/api/users');
-        if (!res.ok) throw new Error('Failed');
-        setUsers(await res.json());
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchUsers();
-  }, []);
-  // ... render logic
-}
-
-// Component B: Fetch posts (same pattern!)
-function PostList() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        setLoading(true);
-        const res = await fetch('/api/posts');
-        if (!res.ok) throw new Error('Failed');
-        setPosts(await res.json());
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchPosts();
-  }, []);
-  // ... render logic
-}`;
-
-  const afterCode = `// The useFetch hook (defined once)
-function useFetch<T>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    
-    async function fetchData() {
-      try {
-        setLoading(true);
-        setError(null);
-        const res = await fetch(url, { signal: controller.signal });
-        if (!res.ok) throw new Error('Failed');
-        setData(await res.json());
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-    return () => controller.abort();
-  }, [url]);
-
-  return { data, loading, error };
-}
-
-// Component A: Clean and simple!
-function UserList() {
-  const { data: users, loading, error } = useFetch<User[]>('/api/users');
-  // ... render logic
-}
-
-// Component B: Same simplicity!
-function PostList() {
-  const { data: posts, loading, error } = useFetch<Post[]>('/api/posts');
-  // ... render logic
-}`;
 
   return (
     <div className="card bg-base-200 p-5">
@@ -131,7 +43,7 @@ function PostList() {
       </div>
 
       {/* Code comparison */}
-      <div className="card bg-base-300 p-4">
+      <div>
         <div className="flex items-center justify-between mb-2">
           <span className={`text-xs font-semibold ${showBefore ? 'text-error' : 'text-success'}`}>
             {showBefore
@@ -142,9 +54,11 @@ function PostList() {
             {showBefore ? '~50 lines per component' : '~5 lines per component'}
           </span>
         </div>
-        <pre className="font-mono text-xs overflow-x-auto max-h-[400px]">
-          <code>{showBefore ? beforeCode : afterCode}</code>
-        </pre>
+        <CodeSnippet
+          code={showBefore ? beforeUseFetchCode : afterUseFetchCode}
+          language="tsx"
+          title={showBefore ? 'Before: Repetitive Code' : 'After: useFetch Hook'}
+        />
       </div>
 
       {/* Benefits summary */}
