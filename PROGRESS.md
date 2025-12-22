@@ -47,38 +47,38 @@
 
 ### Consolidated Tech Debt by Lesson
 
-| Lesson | TypeScript | CodeSnippet | examples/ folder | Icons | Status |
-|--------|------------|-------------|------------------|-------|--------|
-| 1.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 1.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 1.3 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 1.4 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.3 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.4 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 2.5 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 3.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 3.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 3.3 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 3.4 | ⬜ .jsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 3.5 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 4.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 4.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 4.3 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 4.4 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 5.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 5.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 5.3 | ✅ .tsx | ✅ | ⬜ | ✅ | 🔄 Needs examples/ |
-| 6.1 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 6.2 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 6.3 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 6.4 | ✅ .tsx | ⬜ | ⬜ | ✅ | 🔄 Needs work |
-| 6.5 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 7.1 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 7.2 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 7.3 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
-| 7.4 | ✅ .tsx | ✅ | ✅ | ✅ | ✅ Done |
+| Lesson | TypeScript | CodeSnippet | examples/ | Icons | Status             |
+|--------|------------|-------------|-----------|-------|--------------------|
+| 1.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 1.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 1.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 1.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 2.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 2.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 2.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 2.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 2.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 3.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 3.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 3.3    | ⬜ .jsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 3.4    | ⬜ .jsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 3.5    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 4.1    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 4.2    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 4.3    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 4.4    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 5.1    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 5.2    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 5.3    | ✅ .tsx    | ✅          | ⬜        | ✅    | 🔄 Needs examples/ |
+| 6.1    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 6.2    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 6.3    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 6.4    | ✅ .tsx    | ⬜          | ⬜        | ✅    | 🔄 Needs work      |
+| 6.5    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 7.1    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 7.2    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 7.3    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
+| 7.4    | ✅ .tsx    | ✅          | ✅        | ✅    | ✅ Done            |
 
 ### Shared Components
 
