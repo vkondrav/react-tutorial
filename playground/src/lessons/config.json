@@ -21,13 +21,15 @@
     { "id": "4.4", "module": 4, "title": "Building a Custom useFetch Hook", "status": "complete" },
     { "id": "5.1", "module": 5, "title": "Controlled Components", "status": "complete" },
     { "id": "5.2", "module": 5, "title": "Form Validation Patterns", "status": "complete" },
-    { "id": "5.3", "module": 5, "title": "Handling Multiple Inputs", "status": "current" }
+    { "id": "5.3", "module": 5, "title": "Handling Multiple Inputs", "status": "complete" },
+    { "id": "6.1", "module": 6, "title": "Component Composition", "status": "current" }
   ],
   "modules": [
     { "id": 1, "title": "Foundation", "color": "#3b82f6" },
     { "id": 2, "title": "Core Concepts", "color": "#8b5cf6" },
     { "id": 3, "title": "Hooks Deep Dive", "color": "#ec4899" },
     { "id": 4, "title": "Data Fetching", "color": "#f59e0b" },
-    { "id": 5, "title": "Forms & User Input", "color": "#10b981" }
+    { "id": 5, "title": "Forms & User Input", "color": "#10b981" },
+    { "id": 6, "title": "Component Patterns", "color": "#06b6d4" }
   ]
 }

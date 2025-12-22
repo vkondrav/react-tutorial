@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 5: Forms & User Input |
-| **Current Lesson** | Lesson 5.3: Handling Multiple Inputs |
-| **Next Lesson** | Lesson 6.1: Component Composition |
+| **Current Module** | Module 6: Component Patterns |
+| **Current Lesson** | Lesson 6.1: Component Composition |
+| **Next Lesson** | Lesson 6.2: Render Props Pattern |
 | **Dev Server** | Running at http://localhost:5173 |
 | **Language** | **TypeScript** (from Lesson 3.5 onward) |
 
@@ -119,11 +119,11 @@ import { CodeSnippet } from '../components';
 | 5.2 | Form Validation Patterns | ✅ Complete | Timing approaches, rules (required/length/pattern/custom), error display, async validation, playground |
 | 5.3 | Handling Multiple Inputs | ✅ Complete | Single state object, name attribute pattern, dynamic fields, nested objects, form reset, playground |
 
-### Module 6: Component Patterns ⬜ Not Started
+### Module 6: Component Patterns ⏳ In Progress
 
-| Lesson | Topic | Status |
-|--------|-------|--------|
-| 6.1 | Component Composition | ⬜ Pending |
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 6.1 | Component Composition | ✅ Complete | Why composition, children prop, slot pattern, specialization, playground |
 | 6.2 | Render Props Pattern | ⬜ Pending |
 | 6.3 | Higher-Order Components | ⬜ Pending |
 | 6.4 | Compound Components | ⬜ Pending |
@@ -554,6 +554,25 @@ Beginning the Forms & User Input module.
 #### Module 5 Complete! 🎉
 All 3 lessons in Module 5: Forms & User Input are now implemented.
 
+---
+
+### Session 17 - December 10, 2025
+**Goal:** Implement Lesson 6.1: Component Composition
+
+#### Completed:
+- ✅ **Implemented Lesson 6.1: Component Composition**
+  - `index.tsx` - Main lesson with 6 sections
+  - `WhyCompositionDemo.tsx` - Composition vs inheritance with code examples and interactive tabs
+  - `ChildrenPropDemo.tsx` - Children prop basics, Card/FancyBorder containers, Collapsible component
+  - `SlotPatternDemo.tsx` - Named slots with PageLayout, CardWithSlots, Modal examples
+  - `SpecializationDemo.tsx` - Creating specialized Button/Alert components from generic ones
+  - `CompositionPlayground.tsx` - Full component library: Card/Avatar/Badge/IconButton building blocks, composed UserCard/PostCard/StatCard
+  - Updated `config.json` to mark 5.3 complete, add 6.1 as current, add Module 6
+  - Updated `App.jsx` to import and register Lesson6_1 component
+
+#### Module 6 Started! 🎯
+Beginning the Component Patterns module.
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -605,7 +624,12 @@ All 3 lessons in Module 5: Forms & User Input are now implemented.
 - [x] Nested object state updates (spread at each level)
 - [x] Array state updates (spread, filter, map)
 - [x] Form reset with initial state
-- [ ] Component composition - next
+- [x] Composition over inheritance philosophy
+- [x] Children prop for containment patterns
+- [x] Slot pattern (named props for multiple insertion points)
+- [x] Specialization pattern (pre-configured wrappers)
+- [x] Building composable component libraries
+- [ ] Render props pattern - next
 - [ ] ...more to come
 
 ---
