@@ -1,4 +1,11 @@
 import { useState } from 'react';
+import {
+  HiX,
+  HiCheck,
+  HiOutlineLightBulb,
+  HiOutlineExclamationCircle,
+  HiOutlineCursorClick,
+} from 'react-icons/hi';
 
 export default function ComponentRulesDemo() {
   const [activeRule, setActiveRule] = useState(null);
@@ -6,7 +13,7 @@ export default function ComponentRulesDemo() {
   const rules = [
     {
       id: 'capital',
-      emoji: '1️⃣',
+      number: '1',
       title: 'Name Must Be Capitalized',
       wrong: {
         code: `function greeting() {
@@ -27,7 +34,7 @@ export default function ComponentRulesDemo() {
     },
     {
       id: 'return',
-      emoji: '2️⃣',
+      number: '2',
       title: 'Must Return JSX',
       wrong: {
         code: `function BrokenComponent() {
@@ -48,7 +55,7 @@ export default function ComponentRulesDemo() {
     },
     {
       id: 'single',
-      emoji: '3️⃣',
+      number: '3',
       title: 'Single Root Element',
       wrong: {
         code: `function MultipleRoots() {
@@ -81,13 +88,10 @@ export default function ComponentRulesDemo() {
           <button
             key={rule.id}
             onClick={() => setActiveRule(activeRule === rule.id ? null : rule.id)}
-            className={`px-4 py-3 rounded-lg cursor-pointer text-sm font-medium transition-all ${
-              activeRule === rule.id
-                ? 'bg-blue-500 border border-blue-500 text-white'
-                : 'bg-slate-800 border border-slate-700 text-slate-50 hover:bg-slate-700'
-            }`}
+            className={`btn ${activeRule === rule.id ? 'btn-primary' : 'btn-outline'}`}
           >
-            {rule.emoji} {rule.title}
+            <span className="badge badge-sm mr-2">{rule.number}</span>
+            {rule.title}
           </button>
         ))}
       </div>
@@ -101,8 +105,9 @@ export default function ComponentRulesDemo() {
       )}
 
       {!activeRule && (
-        <div className="p-8 bg-slate-800 rounded-xl text-center text-slate-500">
-          👆 Click a rule to see examples
+        <div className="p-8 card bg-base-200 text-center text-base-content/50 flex items-center justify-center gap-2">
+          <HiOutlineCursorClick size={18} />
+          <span>Click a rule to see examples</span>
         </div>
       )}
     </div>
@@ -113,62 +118,72 @@ function RuleDetail({ rule, onClose }) {
   const [showCorrect, setShowCorrect] = useState(false);
 
   return (
-    <div className="bg-slate-800 rounded-xl overflow-hidden animate-fadeIn">
+    <div className="card bg-base-200 overflow-hidden">
       {/* Header */}
-      <div className="px-6 py-4 bg-slate-900 flex justify-between items-center">
-        <span className="text-slate-50 font-semibold">
-          {rule.emoji} {rule.title}
+      <div className="px-6 py-4 bg-base-300 flex justify-between items-center">
+        <span className="text-base-content font-semibold flex items-center gap-2">
+          <span className="badge badge-sm">{rule.number}</span>
+          {rule.title}
         </span>
-        <button
-          onClick={onClose}
-          className="bg-transparent border-none text-slate-500 cursor-pointer text-xl hover:text-slate-400"
-        >
-          ✕
+        <button onClick={onClose} className="btn btn-ghost btn-sm btn-circle">
+          <HiX size={20} />
         </button>
       </div>
 
       {/* Toggle */}
-      <div className="flex border-b border-slate-700">
+      <div className="flex border-b border-base-300">
         <button
           onClick={() => setShowCorrect(false)}
-          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors ${
+          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors flex items-center justify-center gap-2 ${
             !showCorrect
-              ? 'bg-red-500/20 border-b-2 border-b-red-500 text-red-500'
-              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+              ? 'bg-error/20 border-b-2 border-b-error text-error'
+              : 'bg-transparent border-b-2 border-b-transparent text-base-content/50'
           }`}
         >
-          ❌ Wrong
+          <HiX size={16} />
+          Wrong
         </button>
         <button
           onClick={() => setShowCorrect(true)}
-          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors ${
+          className={`flex-1 px-3 py-3 border-none cursor-pointer font-medium transition-colors flex items-center justify-center gap-2 ${
             showCorrect
-              ? 'bg-green-500/20 border-b-2 border-b-green-500 text-green-500'
-              : 'bg-transparent border-b-2 border-b-transparent text-slate-500'
+              ? 'bg-success/20 border-b-2 border-b-success text-success'
+              : 'bg-transparent border-b-2 border-b-transparent text-base-content/50'
           }`}
         >
-          ✅ Correct
+          <HiCheck size={16} />
+          Correct
         </button>
       </div>
 
       {/* Code */}
       <div className="p-6">
         <pre
-          className={`m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed border ${
-            showCorrect ? 'border-green-500/30' : 'border-red-500/30'
+          className={`m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed border-2 ${
+            showCorrect ? 'border-success/30' : 'border-error/30'
           }`}
         >
-          <code className="text-slate-200">
+          <code className="text-base-content">
             {showCorrect ? rule.correct.code : rule.wrong.code}
           </code>
         </pre>
 
         <div
-          className={`mt-4 px-4 py-3 rounded-lg text-sm ${
-            showCorrect ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'
+          className={`mt-4 px-4 py-3 rounded-lg text-sm flex items-center gap-2 ${
+            showCorrect ? 'bg-success/20 text-success' : 'bg-error/20 text-error'
           }`}
         >
-          {showCorrect ? `💡 ${rule.correct.note}` : `⚠️ ${rule.wrong.error}`}
+          {showCorrect ? (
+            <>
+              <HiOutlineLightBulb size={18} />
+              {rule.correct.note}
+            </>
+          ) : (
+            <>
+              <HiOutlineExclamationCircle size={18} />
+              {rule.wrong.error}
+            </>
+          )}
         </div>
       </div>
     </div>

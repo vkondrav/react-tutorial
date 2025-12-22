@@ -178,13 +178,19 @@
   - `HMRDemo.jsx` - daisyUI `card`, `btn`, `input` components
   - `PackageJsonExplorer.jsx` - daisyUI `btn` components, `HiOutlinePlay`, `HiOutlineCube` icons
 - ✅ **Refactored Lesson 1.3 to use daisyUI + react-icons:**
-  - `index.jsx` - Replaced emojis with icons (`HiOutlineQuestionMarkCircle`, `HiOutlineSwitchHorizontal`, `HiOutlineCode`, `HiOutlineDocumentText`, `HiOutlineExclamationTriangle`, `HiOutlineBeaker`, `HiOutlineClipboardCheck`)
+  - `index.jsx` - Replaced emojis with icons (`HiOutlineQuestionMarkCircle`, `HiOutlineSwitchHorizontal`, `HiOutlineCode`, `HiOutlineDocumentText`, `HiOutlineExclamationCircle`, `HiOutlineBeaker`, `HiOutlineClipboardCheck`)
   - `JSXTransformDemo.jsx` - daisyUI `card`, `btn-circle` components, `HiCheck`, `HiOutlineArrowRight`, `HiOutlineCursorClick` icons
   - `DifferencesExplorer.jsx` - daisyUI `btn`, `card` components, semantic colors (error, warning, success, primary)
   - `EmbeddingDemo.jsx` - daisyUI `input`, `card` components, `HiOutlineArrowRight` icon
   - `JSXRulesDemo.jsx` - daisyUI `btn`, `card`, `badge` components, `HiX`, `HiCheck` icons
-  - `MistakesQuiz.jsx` - daisyUI `card` component, `HiOutlineExclamationTriangle`, `HiCheck`, `HiOutlineArrowRight` icons
+  - `MistakesQuiz.jsx` - daisyUI `card` component, `HiOutlineExclamationCircle`, `HiCheck`, `HiOutlineArrowRight` icons
   - `JSXPlayground.jsx` - daisyUI `input`, `card`, `badge`, `checkbox`, `range` components, `HiOutlineCheckCircle`, `HiOutlineXCircle` icons
+- ✅ **Refactored Lesson 1.4 to use daisyUI + react-icons:**
+  - `index.jsx` - Replaced emojis with icons (`HiOutlineCube`, `HiOutlineDocumentText`, `HiOutlinePuzzle`, `HiOutlineCog`, `HiOutlineClipboardCheck`)
+  - `ComponentBasicsDemo.jsx` - daisyUI `card` component, `HiOutlineLightBulb` icon, semantic colors
+  - `ComponentRulesDemo.jsx` - daisyUI `btn`, `card`, `badge` components, `HiX`, `HiCheck`, `HiOutlineLightBulb`, `HiOutlineExclamationCircle`, `HiOutlineCursorClick` icons
+  - `ComponentBuilder.jsx` - daisyUI `input`, `card`, `btn` components, `HiOutlineExclamationCircle` icon
+  - `CompositionDemo.jsx` - daisyUI `card` component, removed emoji from logo, semantic colors
 - 📝 **Established "Icons vs Emojis" rule in STARTING_POINT.md:**
   - Use react-icons for all UI elements
   - Emojis OK only in code examples that users are learning from
@@ -211,7 +217,7 @@
 | Lesson 1.1 | ✅ Complete | All 4 files converted |
 | Lesson 1.2 | ✅ Complete | All 5 files converted (index, ProjectStructureExplorer, FileFlowDemo, HMRDemo, PackageJsonExplorer) |
 | Lesson 1.3 | ✅ Complete | All 7 files converted (index, JSXTransformDemo, DifferencesExplorer, EmbeddingDemo, JSXRulesDemo, MistakesQuiz, JSXPlayground) |
-| Lesson 1.4 | ⬜ Pending | Still using Tailwind-only |
+| Lesson 1.4 | ✅ Complete | All 5 files converted (index, ComponentBasicsDemo, ComponentRulesDemo, ComponentBuilder, CompositionDemo) |
 | Lesson 2.1 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.2 | ⬜ Pending | Still using Tailwind-only |
 | Lesson 2.3 | ⬜ Pending | Still using Tailwind-only |

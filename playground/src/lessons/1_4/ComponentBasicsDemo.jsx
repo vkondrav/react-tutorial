@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HiOutlineLightBulb } from 'react-icons/hi';
 
 export default function ComponentBasicsDemo() {
   const [syntax, setSyntax] = useState('function');
@@ -28,17 +29,17 @@ export default function ComponentBasicsDemo() {
   const current = syntaxExamples[syntax];
 
   return (
-    <div className="mt-6 bg-slate-800 rounded-xl overflow-hidden">
+    <div className="mt-6 card bg-base-200 overflow-hidden">
       {/* Syntax Tabs */}
-      <div className="flex border-b border-slate-700">
+      <div className="flex border-b border-base-300">
         {Object.entries(syntaxExamples).map(([key, { label }]) => (
           <button
             key={key}
             onClick={() => setSyntax(key)}
-            className={`flex-1 px-4 py-3 bg-transparent border-none cursor-pointer text-sm transition-all ${
+            className={`flex-1 px-4 py-3 cursor-pointer text-sm transition-all ${
               syntax === key
-                ? 'bg-slate-700 border-b-2 border-b-blue-500 text-slate-50 font-semibold'
-                : 'border-b-2 border-b-transparent text-slate-400 font-normal'
+                ? 'bg-base-300 border-b-2 border-b-primary text-base-content font-semibold'
+                : 'bg-base-100 border-b-2 border-b-transparent text-base-content/70 font-normal hover:bg-base-200'
             }`}
           >
             {label}
@@ -48,22 +49,22 @@ export default function ComponentBasicsDemo() {
 
       {/* Code Display */}
       <div className="p-6">
-        <pre className="m-0 p-4 bg-slate-900 rounded-lg overflow-auto text-sm leading-relaxed">
-          <code className="text-slate-200">{current.code}</code>
+        <pre className="m-0 p-4 bg-base-300 rounded-lg overflow-auto text-sm leading-relaxed">
+          <code className="text-base-content">{current.code}</code>
         </pre>
 
-        <p className="mt-4 mb-0 text-slate-400 text-sm flex items-center gap-2">
-          <span className="text-green-500">💡</span>
+        <p className="mt-4 mb-0 text-base-content/70 text-sm flex items-center gap-2">
+          <HiOutlineLightBulb className="text-success" size={18} />
           {current.description}
         </p>
       </div>
 
       {/* Live Preview */}
-      <div className="p-6 bg-slate-900 border-t border-slate-700">
-        <div className="text-xs text-slate-500 mb-3 uppercase tracking-wide">Preview</div>
-        <div className="p-4 bg-slate-800 rounded-lg border border-dashed border-slate-700">
+      <div className="p-6 bg-base-300 border-t border-base-300">
+        <div className="text-xs text-base-content/50 mb-3 uppercase tracking-wide">Preview</div>
+        <div className="p-4 bg-base-200 rounded-lg border border-dashed border-base-300">
           {/* This IS the Greeting component rendered! */}
-          <h1 className="m-0 text-2xl text-slate-50">Hello, World!</h1>
+          <h1 className="m-0 text-2xl text-base-content">Hello, World!</h1>
         </div>
       </div>
     </div>

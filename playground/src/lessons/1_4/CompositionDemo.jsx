@@ -24,8 +24,8 @@ export default function CompositionDemo() {
   return (
     <div className="mt-6 grid grid-cols-2 gap-6">
       {/* Live Preview */}
-      <div className="bg-slate-800 rounded-xl overflow-hidden">
-        <div className="px-4 py-3 bg-slate-900 text-xs text-slate-500 uppercase tracking-wide">
+      <div className="card bg-base-200 overflow-hidden">
+        <div className="px-4 py-3 bg-base-300 text-xs text-base-content/50 uppercase tracking-wide">
           Live Preview - Hover components to highlight
         </div>
         <div className="p-4">
@@ -37,7 +37,7 @@ export default function CompositionDemo() {
               onMouseLeave={() => setHoveredComponent(null)}
               className={`flex justify-between items-center px-3 py-2 border-b border-gray-200 transition-colors ${
                 hoveredComponent === 'Header'
-                  ? `${colorClasses.violet.bg} outline outline-2 ${colorClasses.violet.border}`
+                  ? `${colorClasses.violet.bg} outline-2 ${colorClasses.violet.border}`
                   : 'bg-white'
               }`}
             >
@@ -53,11 +53,11 @@ export default function CompositionDemo() {
                 }}
                 className={`font-bold text-blue-500 px-2 py-1 rounded transition-colors ${
                   hoveredComponent === 'Logo'
-                    ? `${colorClasses.pink.bg} outline outline-2 ${colorClasses.pink.border}`
+                    ? `${colorClasses.pink.bg} outline-2 ${colorClasses.pink.border}`
                     : ''
                 }`}
               >
-                ⚛️ MyApp
+                MyApp
               </div>
               {/* Nav */}
               <div
@@ -71,7 +71,7 @@ export default function CompositionDemo() {
                 }}
                 className={`flex gap-2 px-2 py-1 rounded transition-colors ${
                   hoveredComponent === 'Nav'
-                    ? `${colorClasses.amber.bg} outline outline-2 ${colorClasses.amber.border}`
+                    ? `${colorClasses.amber.bg} outline-2 ${colorClasses.amber.border}`
                     : ''
                 }`}
               >
@@ -88,7 +88,7 @@ export default function CompositionDemo() {
                     }}
                     className={`text-gray-600 px-1 py-0.5 rounded transition-colors ${
                       hoveredComponent === 'NavLink'
-                        ? `${colorClasses.emerald.bg} outline outline-1 ${colorClasses.emerald.border}`
+                        ? `${colorClasses.emerald.bg} outline-2 ${colorClasses.emerald.border}`
                         : ''
                     }`}
                   >
@@ -103,7 +103,7 @@ export default function CompositionDemo() {
               onMouseLeave={() => setHoveredComponent(null)}
               className={`p-4 min-h-[60px] transition-colors ${
                 hoveredComponent === 'Main'
-                  ? `${colorClasses.cyan.bg} outline outline-2 ${colorClasses.cyan.border}`
+                  ? `${colorClasses.cyan.bg} outline-2 ${colorClasses.cyan.border}`
                   : 'bg-white'
               }`}
             >
@@ -114,8 +114,8 @@ export default function CompositionDemo() {
       </div>
 
       {/* Component Tree */}
-      <div className="bg-slate-800 rounded-xl overflow-hidden">
-        <div className="px-4 py-3 bg-slate-900 text-xs text-slate-500 uppercase tracking-wide">
+      <div className="card bg-base-200 overflow-hidden">
+        <div className="px-4 py-3 bg-base-300 text-xs text-base-content/50 uppercase tracking-wide">
           Component Tree
         </div>
         <div className="p-4 font-mono text-xs">
@@ -163,7 +163,7 @@ export default function CompositionDemo() {
 
         {/* Component Info */}
         {hoveredComponent && (
-          <div className="px-4 py-3 bg-slate-900 border-t border-slate-700 text-xs">
+          <div className="px-4 py-3 bg-base-300 border-t border-base-300 text-xs">
             <span
               className={`${colorClasses[componentInfo[hoveredComponent]?.color]?.text} font-semibold`}
             >
@@ -171,7 +171,9 @@ export default function CompositionDemo() {
               {hoveredComponent}
               {' />'}
             </span>
-            <span className="text-slate-400 ml-2">{componentInfo[hoveredComponent]?.desc}</span>
+            <span className="text-base-content/70 ml-2">
+              {componentInfo[hoveredComponent]?.desc}
+            </span>
           </div>
         )}
       </div>
@@ -203,13 +205,15 @@ function TreeNode({ name, info, hovered, setHovered, children, count }) {
         }`}
       >
         <span className={colors.text}>{'<'}</span>
-        <span className={isHovered ? `${colors.text} font-semibold` : 'text-slate-200 font-normal'}>
+        <span
+          className={isHovered ? `${colors.text} font-semibold` : 'text-base-content font-normal'}
+        >
           {name}
         </span>
         <span className={colors.text}>{' />'}</span>
-        {count && <span className="text-xs text-slate-500 ml-1">×{count}</span>}
+        {count && <span className="text-xs text-base-content/50 ml-1">×{count}</span>}
       </div>
-      {children && <div className="ml-5 border-l border-slate-700 pl-3">{children}</div>}
+      {children && <div className="ml-5 border-l border-base-300 pl-3">{children}</div>}
     </div>
   );
 }
