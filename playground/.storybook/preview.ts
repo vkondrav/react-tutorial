@@ -7,11 +7,12 @@ initialize();
 const preview: Preview = {
   parameters: {
     backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#1d232a' }, // daisyUI business theme base-100
-        { name: 'light', value: '#ffffff' },
-      ],
+      options: {
+        // daisyUI business theme base-100
+        dark: { name: 'dark', value: '#1d232a' },
+
+        light: { name: 'light', value: '#ffffff' },
+      },
     },
     layout: 'padded',
     controls: {
@@ -27,8 +28,15 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+
   // Enable MSW for all stories
   loaders: [mswLoader],
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'dark',
+    },
+  },
 };
 
 export default preview;

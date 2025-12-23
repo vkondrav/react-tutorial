@@ -43,7 +43,9 @@ export const Default: Story = {
  * Lesson with dark background for better visibility.
  */
 export const WithBackground: Story = {
-  parameters: {
-    backgrounds: { default: 'dark' },
+  globals: {
+    backgrounds: {
+      value: 'dark',
+    },
   },
 };

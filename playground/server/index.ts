@@ -71,5 +71,5 @@ app.get('/rsc-demo/health', (_req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`\n🚀 SSR Demo Server running at http://localhost:${PORT}/ssr-demo`);
   console.log(`🔮 RSC Demo Server running at http://localhost:${PORT}/rsc-demo`);
-  console.log(`   Health check: http://localhost:${PORT}/ssr-demo/health\n`);
+  console.log(`🔍 Health check: http://localhost:${PORT}/ssr-demo/health\n`);
 });

@@ -8,7 +8,7 @@ import tsParser from '@typescript-eslint/parser';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['dist', 'dist-ssr', 'src/**/examples/**']),
+  globalIgnores(['dist', 'dist-ssr', 'src/**/examples/**', 'storybook-static/**']),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     extends: [

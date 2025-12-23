@@ -6,7 +6,7 @@
 // in its own file in /src/lessons/
 // ============================================
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   HiOutlineMenuAlt2,
   HiOutlineArrowLeft,
@@ -18,42 +18,6 @@ import {
 } from 'react-icons/hi';
 import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
-
-// Component imports - register new lesson components here
-import Lesson1_1 from './lessons/1_1';
-import Lesson1_2 from './lessons/1_2';
-import Lesson1_3 from './lessons/1_3';
-import Lesson1_4 from './lessons/1_4';
-import Lesson2_1 from './lessons/2_1';
-import Lesson2_2 from './lessons/2_2';
-import Lesson2_3 from './lessons/2_3';
-import Lesson2_4 from './lessons/2_4';
-import Lesson2_5 from './lessons/2_5';
-import Lesson3_1 from './lessons/3_1';
-import Lesson3_2 from './lessons/3_2';
-import Lesson3_3 from './lessons/3_3';
-import Lesson3_4 from './lessons/3_4';
-import Lesson3_5 from './lessons/3_5';
-import Lesson4_1 from './lessons/4_1';
-import Lesson4_2 from './lessons/4_2';
-import Lesson4_3 from './lessons/4_3';
-import Lesson4_4 from './lessons/4_4';
-import Lesson5_1 from './lessons/5_1';
-import Lesson5_2 from './lessons/5_2';
-import Lesson5_3 from './lessons/5_3';
-import Lesson6_1 from './lessons/6_1';
-import Lesson6_2 from './lessons/6_2';
-import Lesson6_3 from './lessons/6_3';
-import Lesson6_4 from './lessons/6_4';
-import Lesson6_5 from './lessons/6_5';
-import Lesson7_1 from './lessons/7_1';
-import Lesson7_2 from './lessons/7_2';
-import Lesson7_3 from './lessons/7_3';
-import Lesson7_4 from './lessons/7_4';
-import Lesson8_1 from './lessons/8_1';
-import Lesson8_2 from './lessons/8_2';
-import Lesson8_3 from './lessons/8_3';
-import Lesson8_4 from './lessons/8_4';
 
 // Types
 interface LessonConfig {
@@ -68,10 +32,37 @@ interface ModuleConfig {
   color: string;
 }
 
-type LessonComponent = React.ComponentType;
+type LazyLessonComponent = React.LazyExoticComponent<React.ComponentType>;
 
 interface Lesson extends LessonConfig {
-  component: LessonComponent | null;
+  component: LazyLessonComponent | null;
+}
+
+// Loading skeleton for lazy-loaded lessons
+function LessonSkeleton(): React.ReactElement {
+  return (
+    <div className="p-8 animate-pulse">
+      {/* Header skeleton */}
+      <div className="skeleton h-10 w-2/3 mb-6" />
+      <div className="skeleton h-4 w-1/2 mb-8" />
+
+      {/* Content blocks */}
+      <div className="space-y-6">
+        <div className="skeleton h-4 w-full" />
+        <div className="skeleton h-4 w-5/6" />
+        <div className="skeleton h-4 w-4/5" />
+
+        {/* Code block skeleton */}
+        <div className="skeleton h-32 w-full rounded-lg" />
+
+        <div className="skeleton h-4 w-full" />
+        <div className="skeleton h-4 w-3/4" />
+
+        {/* Interactive demo skeleton */}
+        <div className="skeleton h-48 w-full rounded-lg" />
+      </div>
+    </div>
+  );
 }
 
 // LocalStorage key for completed lessons
@@ -92,42 +83,42 @@ const saveCompletedLessons = (completed: Set<string>): void => {
   localStorage.setItem(COMPLETED_LESSONS_KEY, JSON.stringify([...completed]));
 };
 
-// Map lesson IDs to their components
-const LESSON_COMPONENTS: Record<string, LessonComponent> = {
-  '1.1': Lesson1_1,
-  '1.2': Lesson1_2,
-  '1.3': Lesson1_3,
-  '1.4': Lesson1_4,
-  '2.1': Lesson2_1,
-  '2.2': Lesson2_2,
-  '2.3': Lesson2_3,
-  '2.4': Lesson2_4,
-  '2.5': Lesson2_5,
-  '3.1': Lesson3_1,
-  '3.2': Lesson3_2,
-  '3.3': Lesson3_3,
-  '3.4': Lesson3_4,
-  '3.5': Lesson3_5,
-  '4.1': Lesson4_1,
-  '4.2': Lesson4_2,
-  '4.3': Lesson4_3,
-  '4.4': Lesson4_4,
-  '5.1': Lesson5_1,
-  '5.2': Lesson5_2,
-  '5.3': Lesson5_3,
-  '6.1': Lesson6_1,
-  '6.2': Lesson6_2,
-  '6.3': Lesson6_3,
-  '6.4': Lesson6_4,
-  '6.5': Lesson6_5,
-  '7.1': Lesson7_1,
-  '7.2': Lesson7_2,
-  '7.3': Lesson7_3,
-  '7.4': Lesson7_4,
-  '8.1': Lesson8_1,
-  '8.2': Lesson8_2,
-  '8.3': Lesson8_3,
-  '8.4': Lesson8_4,
+// Map lesson IDs to lazy-loaded components
+const LESSON_COMPONENTS: Record<string, LazyLessonComponent> = {
+  '1.1': lazy(() => import('./lessons/1_1')),
+  '1.2': lazy(() => import('./lessons/1_2')),
+  '1.3': lazy(() => import('./lessons/1_3')),
+  '1.4': lazy(() => import('./lessons/1_4')),
+  '2.1': lazy(() => import('./lessons/2_1')),
+  '2.2': lazy(() => import('./lessons/2_2')),
+  '2.3': lazy(() => import('./lessons/2_3')),
+  '2.4': lazy(() => import('./lessons/2_4')),
+  '2.5': lazy(() => import('./lessons/2_5')),
+  '3.1': lazy(() => import('./lessons/3_1')),
+  '3.2': lazy(() => import('./lessons/3_2')),
+  '3.3': lazy(() => import('./lessons/3_3')),
+  '3.4': lazy(() => import('./lessons/3_4')),
+  '3.5': lazy(() => import('./lessons/3_5')),
+  '4.1': lazy(() => import('./lessons/4_1')),
+  '4.2': lazy(() => import('./lessons/4_2')),
+  '4.3': lazy(() => import('./lessons/4_3')),
+  '4.4': lazy(() => import('./lessons/4_4')),
+  '5.1': lazy(() => import('./lessons/5_1')),
+  '5.2': lazy(() => import('./lessons/5_2')),
+  '5.3': lazy(() => import('./lessons/5_3')),
+  '6.1': lazy(() => import('./lessons/6_1')),
+  '6.2': lazy(() => import('./lessons/6_2')),
+  '6.3': lazy(() => import('./lessons/6_3')),
+  '6.4': lazy(() => import('./lessons/6_4')),
+  '6.5': lazy(() => import('./lessons/6_5')),
+  '7.1': lazy(() => import('./lessons/7_1')),
+  '7.2': lazy(() => import('./lessons/7_2')),
+  '7.3': lazy(() => import('./lessons/7_3')),
+  '7.4': lazy(() => import('./lessons/7_4')),
+  '8.1': lazy(() => import('./lessons/8_1')),
+  '8.2': lazy(() => import('./lessons/8_2')),
+  '8.3': lazy(() => import('./lessons/8_3')),
+  '8.4': lazy(() => import('./lessons/8_4')),
 };
 
 // Get Cursor IDE link for a lesson's source file
@@ -345,7 +336,9 @@ function App(): React.ReactElement {
         {/* Lesson Content */}
         <main className="flex-1 overflow-auto">
           {CurrentComponent ? (
-            <CurrentComponent />
+            <Suspense fallback={<LessonSkeleton />}>
+              <CurrentComponent />
+            </Suspense>
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-base-content/60 p-8">
               <div className="text-6xl mb-4">🚧</div>

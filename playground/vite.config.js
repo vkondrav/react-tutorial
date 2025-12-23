@@ -41,8 +41,16 @@ export default defineConfig({
   },
   // Build configuration for SSR client bundle
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      // SSR client is built separately via npm run build:ssr-client
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['react-icons'],
+          query: ['@tanstack/react-query'],
+          syntax: ['react-syntax-highlighter'],
+        },
+      },
     },
   },
   test: {

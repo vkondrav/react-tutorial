@@ -27,6 +27,10 @@ const config: StorybookConfig = {
           '@mocks': path.resolve(dirname, '../src/mocks'),
         },
       },
+      build: {
+        ...config.build,
+        chunkSizeWarningLimit: 2000,
+      },
     };
   },
 };
