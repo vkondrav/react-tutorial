@@ -65,8 +65,10 @@
 2. Add stories for each interactive demo component
 3. Add play functions for components with user interactions
 4. Ensure all stories render correctly with Tailwind/daisyUI styling
-5. run npm run test to see that all tests pass. Individual lesson can be run with `npm run test:lesson -- 2_1`
-6. update the table below with status
+5. Run `npm run format` to format all files
+6. Run `npm run lint` and fix any errors that arise
+7. Run `npm run test` to see that all tests pass. Individual lesson can be run with `npm run test:lesson -- 2_1`
+8. Update the table below with status
 
 **MSW Setup for API Mocking (Added Dec 15, 2025):**
 - Installed `msw` and `msw-storybook-addon` for API mocking in tests
@@ -91,7 +93,7 @@
 | 3.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 3.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 3.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 3.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 3.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 3.5    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 4.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 4.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
