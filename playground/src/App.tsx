@@ -15,9 +15,14 @@ import {
   HiOutlineCode,
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
+  HiOutlineHome,
+  HiOutlineExternalLink,
 } from 'react-icons/hi';
 import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
+import Homepage from './Homepage';
+import SettingsModal from './SettingsModal';
+import { loadSettings, getLessonSourceLink, type AppSettings } from './settings';
 
 // Types
 interface LessonConfig {
@@ -121,12 +126,6 @@ const LESSON_COMPONENTS: Record<string, LazyLessonComponent> = {
   '8.4': lazy(() => import('./lessons/8_4')),
 };
 
-// Get Cursor IDE link for a lesson's source file
-const getLessonSourceLink = (lessonId: string): string => {
-  const folder = lessonId.replace('.', '_');
-  return `cursor://file${config.projectPath}/${folder}/index.tsx`;
-};
-
 // Merge config with component references
 const LESSONS: Lesson[] = (config.lessons as LessonConfig[]).map((lesson) => ({
   ...lesson,
@@ -135,20 +134,22 @@ const LESSONS: Lesson[] = (config.lessons as LessonConfig[]).map((lesson) => ({
 
 const MODULES: ModuleConfig[] = config.modules as ModuleConfig[];
 
-// Get initial lesson from URL hash, or default to first available
-const getInitialLesson = (): string => {
+// Get initial lesson from URL hash, or null for homepage
+const getInitialLesson = (): string | null => {
   const hash = window.location.hash.slice(1); // Remove '#'
+  if (!hash) return null; // Show homepage when no hash
   const lesson = LESSONS.find((l) => l.id === hash && l.component);
-  return lesson ? hash : LESSONS.find((l) => l.component)?.id || '1.1';
+  return lesson ? hash : null;
 };
 
 function App(): React.ReactElement {
-  const [currentLessonId, setCurrentLessonId] = useState<string>(getInitialLesson);
+  const [currentLessonId, setCurrentLessonId] = useState<string | null>(getInitialLesson);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(loadCompletedLessons);
+  const [settings, setSettings] = useState<AppSettings>(loadSettings);
 
-  const currentIndex = LESSONS.findIndex((l) => l.id === currentLessonId);
-  const isCurrentCompleted = completedLessons.has(currentLessonId);
+  const currentIndex = currentLessonId ? LESSONS.findIndex((l) => l.id === currentLessonId) : -1;
+  const isCurrentCompleted = currentLessonId ? completedLessons.has(currentLessonId) : false;
 
   const toggleLessonComplete = (lessonId: string): void => {
     setCompletedLessons((prev) => {
@@ -167,13 +168,22 @@ function App(): React.ReactElement {
 
   // Sync URL hash with current lesson
   useEffect(() => {
-    window.location.hash = currentLessonId;
+    if (currentLessonId) {
+      window.location.hash = currentLessonId;
+    } else {
+      // Clear hash for homepage
+      history.replaceState(null, '', window.location.pathname);
+    }
   }, [currentLessonId]);
 
   // Handle browser back/forward
   useEffect(() => {
     const handleHashChange = (): void => {
       const hash = window.location.hash.slice(1);
+      if (!hash) {
+        setCurrentLessonId(null);
+        return;
+      }
       const lesson = LESSONS.find((l) => l.id === hash && l.component);
       if (lesson) setCurrentLessonId(hash);
     };
@@ -181,8 +191,21 @@ function App(): React.ReactElement {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const currentLesson = LESSONS.find((l) => l.id === currentLessonId);
+  const currentLesson = currentLessonId ? LESSONS.find((l) => l.id === currentLessonId) : null;
   const CurrentComponent = currentLesson?.component;
+
+  // Navigate to the first lesson
+  const startLearning = (): void => {
+    const firstLesson = LESSONS.find((l) => l.component);
+    if (firstLesson) setCurrentLessonId(firstLesson.id);
+  };
+
+  // Show homepage when no lesson is selected
+  if (!currentLessonId) {
+    return (
+      <Homepage onStartLearning={startLearning} settings={settings} onSaveSettings={setSettings} />
+    );
+  }
 
   return (
     <div className="font-sans bg-base-100 h-screen text-base-content flex overflow-hidden">
@@ -193,14 +216,18 @@ function App(): React.ReactElement {
         }`}
       >
         <div className="w-[280px] h-full flex flex-col">
-          {/* Logo */}
-          <div className="p-6 border-b border-base-300 flex items-center gap-2 shrink-0">
+          {/* Logo - clickable to go home */}
+          <button
+            onClick={() => setCurrentLessonId(null)}
+            className="p-6 border-b border-base-300 flex items-center gap-2 shrink-0 w-full hover:bg-base-300/30 transition-colors text-left"
+          >
             <DiReact
               className="text-primary text-3xl"
               style={{ animation: 'spin 24s linear infinite' }}
             />
             <span className="font-bold text-lg">React Tutorial</span>
-          </div>
+            <HiOutlineHome className="ml-auto text-base-content/40" size={18} />
+          </button>
 
           {/* Lessons List */}
           <nav className="p-4 flex-1 overflow-auto">
@@ -303,17 +330,22 @@ function App(): React.ReactElement {
                   )}
                 </button>
                 <a
-                  href={getLessonSourceLink(currentLessonId)}
+                  href={getLessonSourceLink(currentLessonId, settings)}
                   className="btn btn-outline btn-sm text-xs tooltip tooltip-bottom"
-                  data-tip="View Source"
+                  data-tip={`View Source (${settings.editor === 'github' ? 'GitHub' : settings.editor === 'vscode' ? 'VS Code' : 'Cursor'})`}
+                  {...(settings.editor === 'github'
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
                 >
                   <HiOutlineCode size={18} />
+                  {settings.editor === 'github' && <HiOutlineExternalLink size={14} />}
                 </a>
               </>
             )}
           </div>
 
           <div className="flex gap-2">
+            <SettingsModal settings={settings} onSave={setSettings} />
             <button
               onClick={() => prevLesson?.component && setCurrentLessonId(prevLesson.id)}
               disabled={!prevLesson?.component}

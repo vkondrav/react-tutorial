@@ -1,5 +1,4 @@
 {
-  "projectPath": "/Users/vkondratiev/react-tutorial/playground/src/lessons",
   "lessons": [
     { "id": "1.1", "module": 1, "title": "What is React?" },
     { "id": "1.2", "module": 1, "title": "Setting Up Your First React App" },
