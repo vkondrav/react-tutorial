@@ -17,10 +17,12 @@ import {
   HiOutlineChevronRight,
   HiOutlineHome,
   HiOutlineExternalLink,
+  HiOutlineDocumentAdd,
 } from 'react-icons/hi';
 import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
 import Homepage from './Homepage';
+import AddLessonGuide from './AddLessonGuide';
 import SettingsModal from './SettingsModal';
 import { loadSettings, getLessonSourceLink, type AppSettings } from './settings';
 
@@ -137,9 +139,14 @@ const MODULES: ModuleConfig[] = config.modules as ModuleConfig[];
 // Get initial lesson from URL hash, or null for homepage
 const getInitialLesson = (): string | null => {
   const hash = window.location.hash.slice(1); // Remove '#'
-  if (!hash) return null; // Show homepage when no hash
+  if (!hash || hash === 'add-lesson') return null; // Show homepage when no hash
   const lesson = LESSONS.find((l) => l.id === hash && l.component);
   return lesson ? hash : null;
+};
+
+// Check if we should show the add lesson guide
+const getInitialShowAddLesson = (): boolean => {
+  return window.location.hash === '#add-lesson';
 };
 
 function App(): React.ReactElement {
@@ -147,6 +154,7 @@ function App(): React.ReactElement {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(loadCompletedLessons);
   const [settings, setSettings] = useState<AppSettings>(loadSettings);
+  const [showAddLesson, setShowAddLesson] = useState<boolean>(getInitialShowAddLesson);
 
   const currentIndex = currentLessonId ? LESSONS.findIndex((l) => l.id === currentLessonId) : -1;
   const isCurrentCompleted = currentLessonId ? completedLessons.has(currentLessonId) : false;
@@ -166,15 +174,17 @@ function App(): React.ReactElement {
   const prevLesson = currentIndex > 0 ? LESSONS[currentIndex - 1] : null;
   const nextLesson = currentIndex < LESSONS.length - 1 ? LESSONS[currentIndex + 1] : null;
 
-  // Sync URL hash with current lesson
+  // Sync URL hash with current lesson or add-lesson guide
   useEffect(() => {
-    if (currentLessonId) {
+    if (showAddLesson) {
+      window.location.hash = 'add-lesson';
+    } else if (currentLessonId) {
       window.location.hash = currentLessonId;
     } else {
       // Clear hash for homepage
       history.replaceState(null, '', window.location.pathname);
     }
-  }, [currentLessonId]);
+  }, [currentLessonId, showAddLesson]);
 
   // Handle browser back/forward
   useEffect(() => {
@@ -182,10 +192,19 @@ function App(): React.ReactElement {
       const hash = window.location.hash.slice(1);
       if (!hash) {
         setCurrentLessonId(null);
+        setShowAddLesson(false);
+        return;
+      }
+      if (hash === 'add-lesson') {
+        setCurrentLessonId(null);
+        setShowAddLesson(true);
         return;
       }
       const lesson = LESSONS.find((l) => l.id === hash && l.component);
-      if (lesson) setCurrentLessonId(hash);
+      if (lesson) {
+        setCurrentLessonId(hash);
+        setShowAddLesson(false);
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -199,6 +218,18 @@ function App(): React.ReactElement {
     const firstLesson = LESSONS.find((l) => l.component);
     if (firstLesson) setCurrentLessonId(firstLesson.id);
   };
+
+  // Show add lesson guide
+  if (showAddLesson) {
+    return (
+      <AddLessonGuide
+        onBack={() => {
+          setShowAddLesson(false);
+          setCurrentLessonId(null);
+        }}
+      />
+    );
+  }
 
   // Show homepage when no lesson is selected
   if (!currentLessonId) {
@@ -294,6 +325,18 @@ function App(): React.ReactElement {
               {completedLessons.size} / {LESSONS.length} lessons complete
             </div>
           </div>
+
+          {/* Add Lesson Link */}
+          <button
+            onClick={() => {
+              setShowAddLesson(true);
+              setCurrentLessonId(null);
+            }}
+            className="p-4 px-6 border-t border-base-300 shrink-0 w-full flex items-center gap-3 text-left hover:bg-base-300/30 transition-colors text-base-content/70 hover:text-base-content"
+          >
+            <HiOutlineDocumentAdd size={20} className="text-primary" />
+            <span className="text-sm">Add a Lesson</span>
+          </button>
         </div>
       </aside>
 

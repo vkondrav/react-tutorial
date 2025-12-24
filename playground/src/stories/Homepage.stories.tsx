@@ -236,7 +236,8 @@ export const Footer: Story = {
     expect(canvasElement.textContent).toContain(
       'Built with React, TypeScript, Tailwind CSS, and daisyUI'
     );
-    expect(canvasElement.textContent).toContain('github.com/vkondrav/react-tutorial');
+    expect(canvasElement.textContent).toContain('GitHub');
+    expect(canvasElement.textContent).toContain('Add Your Own Lessons');
   },
 };
 

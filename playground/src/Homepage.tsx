@@ -494,15 +494,24 @@ export default function Homepage({
       <footer className="py-8 border-t border-base-content/10">
         <div className="max-w-5xl mx-auto px-6 text-center text-base-content/50 text-sm">
           <p className="mb-2">Built with React, TypeScript, Tailwind CSS, and daisyUI</p>
-          <a
-            href="https://github.com/vkondrav/react-tutorial"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 hover:text-primary transition-colors"
-          >
-            <FaGithub size={14} />
-            github.com/vkondrav/react-tutorial
-          </a>
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href="https://github.com/vkondrav/react-tutorial"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+            >
+              <FaGithub size={14} />
+              GitHub
+            </a>
+            <span className="text-base-content/30">•</span>
+            <a
+              href="#add-lesson"
+              className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+            >
+              Add Your Own Lessons
+            </a>
+          </div>
         </div>
       </footer>
     </div>
