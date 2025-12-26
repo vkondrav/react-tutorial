@@ -207,6 +207,32 @@ export const handlers = [
     return HttpResponse.json(comments);
   }),
 
+  // GET /comments - Comments with optional postId filter
+  http.get('https://jsonplaceholder.typicode.com/comments', async ({ request }) => {
+    await delay(100);
+    const url = new URL(request.url);
+    const postId = url.searchParams.get('postId');
+    const limit = url.searchParams.get('_limit');
+
+    let comments = mockComments;
+
+    if (postId) {
+      comments = comments.filter((c) => c.postId === Number(postId));
+    }
+
+    if (limit) {
+      comments = comments.slice(0, Number(limit));
+    }
+
+    return HttpResponse.json(comments);
+  }),
+
+  // Invalid endpoint for error testing (returns 404)
+  http.get('https://jsonplaceholder.typicode.com/invalid-endpoint', async () => {
+    await delay(100);
+    return new HttpResponse(null, { status: 404, statusText: 'Not Found' });
+  }),
+
   // GET /posts - List posts with optional userId filter and limit
   http.get('https://jsonplaceholder.typicode.com/posts', async ({ request }) => {
     await delay(100);

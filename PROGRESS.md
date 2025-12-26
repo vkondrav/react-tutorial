@@ -98,7 +98,7 @@
 | 4.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 4.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 4.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
-| 4.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
+| 4.4    | ✅ .tsx    | ✅          | ✅         | ✅    | ✅ Done         | ✅ Done            |
 | 5.1    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 5.2    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
 | 5.3    | ✅ .tsx    | ✅          | ✅         | ✅    | ⬜ Needs Work   | ⚠️ Needs Work      |
