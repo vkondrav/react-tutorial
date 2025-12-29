@@ -1,5 +1,5 @@
-# Storybook routes - serve storybook assets directly
-/storybook/*  /storybook/:splat  200
+# Storybook - serve index.html for the base path
+/storybook  /storybook/index.html  200
 
-# SPA fallback for main app (excluding storybook)
+# SPA fallback for main app (Storybook static files are served directly)
 /*  /index.html  200
