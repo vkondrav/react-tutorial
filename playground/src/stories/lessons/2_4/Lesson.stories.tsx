@@ -3,7 +3,7 @@ import { expect, within } from 'storybook/test';
 import Lesson2_4 from '@lessons/2_4';
 
 const meta: Meta<typeof Lesson2_4> = {
-  title: 'Lessons/2.4 Conditional Rendering/Lesson',
+  title: 'Lessons/2.4/Lesson',
   component: Lesson2_4,
   parameters: {
     layout: 'fullscreen',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Lesson1_2 from '@lessons/1_2';
 
 const meta: Meta<typeof Lesson1_2> = {
-  title: 'Lessons/1.2 Setting Up React App/Full Lesson',
+  title: 'Lessons/1.2/Lesson',
   component: Lesson1_2,
   parameters: {
     layout: 'fullscreen',

@@ -4,7 +4,7 @@ import Lesson4_4 from '@lessons/4_4';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof Lesson4_4> = {
-  title: 'Lessons/4.4 Building useFetch Hook/Lesson',
+  title: 'Lessons/4.4/Lesson',
   component: Lesson4_4,
   parameters: {
     layout: 'fullscreen',

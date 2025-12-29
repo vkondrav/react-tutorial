@@ -70,6 +70,13 @@
 7. Run `npm run test` to see that all tests pass. Individual lesson can be run with `npm run test:lesson -- 2_1`
 8. Update the table below with status
 
+**Lesson Story Naming Convention (IMPORTANT):**
+- All `Lesson.stories.tsx` files MUST use the title format: `'Lessons/{id}/Lesson'`
+- Example: `title: 'Lessons/1.1/Lesson'`, `title: 'Lessons/3.2/Lesson'`
+- Do NOT include the lesson name in the title (e.g., ❌ `'Lessons/1.1 What is React/Lesson'`)
+- This ensures predictable Storybook URLs: `lessons-{id}-lesson--default`
+- The app uses this pattern in `getLessonStorybookLink()` to link directly to lesson stories
+
 **MSW Setup for API Mocking (Added Dec 15, 2025):**
 - Installed `msw` and `msw-storybook-addon` for API mocking in tests
 - Mock handlers in `src/mocks/handlers.ts` for JSONPlaceholder API

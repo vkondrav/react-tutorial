@@ -4,7 +4,7 @@ import Lesson4_2 from '@lessons/4_2';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof Lesson4_2> = {
-  title: 'Lessons/4.2 Loading Error Empty States/Lesson',
+  title: 'Lessons/4.2/Lesson',
   component: Lesson4_2,
   parameters: {
     layout: 'fullscreen',

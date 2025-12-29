@@ -3,7 +3,7 @@ import { expect, within } from 'storybook/test';
 import Lesson3_3 from '@lessons/3_3';
 
 const meta: Meta<typeof Lesson3_3> = {
-  title: 'Lessons/3.3 useRef/Lesson',
+  title: 'Lessons/3.3/Lesson',
   component: Lesson3_3,
   parameters: {
     layout: 'fullscreen',

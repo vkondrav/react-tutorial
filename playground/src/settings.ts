@@ -16,6 +16,14 @@ export const EDITOR_GITHUB: Editor = {
   prefix: 'https://github.com/vkondrav/react-tutorial/blob/main/playground/src',
 };
 
+const EDITORS: Record<EditorType, Editor> = {
+  [EditorType.CURSOR]: EDITOR_CURSOR,
+  [EditorType.VSCODE]: EDITOR_VSCODE,
+  [EditorType.GITHUB]: EDITOR_GITHUB,
+};
+
+export const getEditor = (editorType: EditorType): Editor => EDITORS[editorType];
+
 export interface AppSettings {
   projectPath: string;
   editor: EditorType;
@@ -77,4 +85,21 @@ export const getLessonSourceLink = (lessonId: string, settings: AppSettings): st
     default:
       return `${EDITOR_GITHUB.prefix}/lessons/${folder}/index.tsx`;
   }
+};
+
+// Storybook URL: use port 6006 locally, /storybook in production
+export const getStorybookBaseUrl = (): string => {
+  if (typeof window === 'undefined') return '/storybook';
+  const isLocal =
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  return isLocal ? 'http://localhost:6006' : '/storybook';
+};
+
+export const getLessonStorybookLink = (lessonId: string): string => {
+  // All lesson stories use consistent title: 'Lessons/{id}/Lesson'
+  // Storybook converts this to path: lessons-{id}-lesson--default
+  // e.g., "1.1" -> "lessons-1-1-lesson--default"
+  const idSlug = lessonId.replace('.', '-');
+  const storyPath = `lessons-${idSlug}-lesson--default`;
+  return `${getStorybookBaseUrl()}/?path=/story/${storyPath}`;
 };

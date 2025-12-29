@@ -3,7 +3,7 @@ import Lesson8_3 from '@lessons/8_3';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof Lesson8_3> = {
-  title: 'Lessons/8.3 TanStack Query/Lesson',
+  title: 'Lessons/8.3/Lesson',
   component: Lesson8_3,
   parameters: {
     layout: 'fullscreen',

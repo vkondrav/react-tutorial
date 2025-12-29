@@ -1,0 +1,5 @@
+# Storybook routes - serve storybook assets directly
+/storybook/*  /storybook/:splat  200
+
+# SPA fallback for main app (excluding storybook)
+/*  /index.html  200

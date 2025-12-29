@@ -16,15 +16,21 @@ import {
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
   HiOutlineHome,
-  HiOutlineExternalLink,
   HiOutlineDocumentAdd,
+  HiOutlineTemplate,
 } from 'react-icons/hi';
 import { DiReact } from 'react-icons/di';
 import config from './lessons/config.json';
 import Homepage from './Homepage';
 import AddLessonGuide from './AddLessonGuide';
 import SettingsModal from './SettingsModal';
-import { loadSettings, getLessonSourceLink, type AppSettings } from './settings';
+import {
+  loadSettings,
+  getLessonSourceLink,
+  getLessonStorybookLink,
+  getEditor,
+  type AppSettings,
+} from './settings';
 
 // Types
 interface LessonConfig {
@@ -373,15 +379,23 @@ function App(): React.ReactElement {
                   )}
                 </button>
                 <a
+                  href={getLessonStorybookLink(currentLessonId)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-sm text-xs tooltip tooltip-bottom"
+                  data-tip="View in Storybook"
+                >
+                  <HiOutlineTemplate size={18} />
+                </a>
+                <a
                   href={getLessonSourceLink(currentLessonId, settings)}
                   className="btn btn-outline btn-sm text-xs tooltip tooltip-bottom"
-                  data-tip={`View Source (${settings.editor === 'github' ? 'GitHub' : settings.editor === 'vscode' ? 'VS Code' : 'Cursor'})`}
+                  data-tip={`View Source (${getEditor(settings.editor).name})`}
                   {...(settings.editor === 'github'
                     ? { target: '_blank', rel: 'noopener noreferrer' }
                     : {})}
                 >
                   <HiOutlineCode size={18} />
-                  {settings.editor === 'github' && <HiOutlineExternalLink size={14} />}
                 </a>
               </>
             )}

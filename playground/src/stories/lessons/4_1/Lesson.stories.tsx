@@ -3,7 +3,7 @@ import Lesson4_1 from '@lessons/4_1';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof Lesson4_1> = {
-  title: 'Lessons/4.1 Fetching Data/Lesson',
+  title: 'Lessons/4.1/Lesson',
   component: Lesson4_1,
   parameters: {
     layout: 'fullscreen',

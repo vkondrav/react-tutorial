@@ -12,11 +12,12 @@ import {
   HiOutlineFolder,
   HiOutlineBookOpen,
   HiOutlineArrowRight,
+  HiOutlineTemplate,
 } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 import config from './lessons/config.json';
 import SettingsModal from './SettingsModal';
-import { type AppSettings, getHomepageSourceLink } from './settings';
+import { type AppSettings, getHomepageSourceLink, getStorybookBaseUrl } from './settings';
 
 // Lesson descriptions for the course outline
 const LESSON_DESCRIPTIONS: Record<string, string> = {
@@ -138,10 +139,20 @@ export default function Homepage({
             />
 
             <a
-              href="https://github.com/vkondrav/react-tutorial"
+              href={getStorybookBaseUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-accent btn-lg gap-2"
+            >
+              <HiOutlineTemplate size={20} />
+              View Storybook
+            </a>
+
+            <a
+              href="https://github.com/vkondrav/react-tutorial"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline btn-lg gap-2"
             >
               <FaGithub size={20} />
               View on GitHub
