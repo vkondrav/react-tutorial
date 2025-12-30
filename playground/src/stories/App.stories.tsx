@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import App from '../App';
 
 const meta: Meta<typeof App> = {
-  title: 'App/App',
+  title: 'Root/App',
   component: App,
   parameters: {
     layout: 'fullscreen',

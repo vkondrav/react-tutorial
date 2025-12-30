@@ -9,7 +9,7 @@ const defaultSettings: AppSettings = {
 };
 
 const meta: Meta<typeof Homepage> = {
-  title: 'App/Homepage',
+  title: 'Root/Homepage',
   component: Homepage,
   parameters: {
     layout: 'fullscreen',

@@ -9,7 +9,7 @@ const defaultSettings: AppSettings = {
 };
 
 const meta: Meta<typeof SettingsModal> = {
-  title: 'App/SettingsModal',
+  title: 'Root/SettingsModal',
   component: SettingsModal,
   parameters: {
     layout: 'centered',
