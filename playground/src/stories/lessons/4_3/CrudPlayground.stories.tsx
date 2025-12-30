@@ -5,7 +5,7 @@ import CrudPlayground from '@lessons/4_3/CrudPlayground';
 import { mockTodos } from '@mocks/handlers';
 
 const meta: Meta<typeof CrudPlayground> = {
-  title: 'Lessons/4.3 Creating Updating Data/CrudPlayground',
+  title: 'Lessons/4.3/CrudPlayground',
   component: CrudPlayground,
   parameters: {
     layout: 'padded',

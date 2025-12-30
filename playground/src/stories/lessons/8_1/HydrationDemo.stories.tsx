@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import HydrationDemo from '@lessons/8_1/HydrationDemo';
 
 const meta: Meta<typeof HydrationDemo> = {
-  title: 'Lessons/8.1 Server-Side Rendering/HydrationDemo',
+  title: 'Lessons/8.1/HydrationDemo',
   component: HydrationDemo,
   parameters: {
     layout: 'padded',

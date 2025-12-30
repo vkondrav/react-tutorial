@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import RSCBenefitsDemo from '@lessons/8_4/RSCBenefitsDemo';
 
 const meta: Meta<typeof RSCBenefitsDemo> = {
-  title: 'Lessons/8.4 React Server Components/RSCBenefitsDemo',
+  title: 'Lessons/8.4/RSCBenefitsDemo',
   component: RSCBenefitsDemo,
   parameters: {
     layout: 'padded',

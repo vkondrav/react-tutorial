@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import TestingApproachesDemo from '@lessons/8_2/TestingApproachesDemo';
 
 const meta: Meta<typeof TestingApproachesDemo> = {
-  title: 'Lessons/8.2 Testing Strategies/TestingApproachesDemo',
+  title: 'Lessons/8.2/TestingApproachesDemo',
   component: TestingApproachesDemo,
   parameters: {
     layout: 'padded',

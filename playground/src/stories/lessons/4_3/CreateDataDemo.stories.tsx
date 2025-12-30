@@ -4,7 +4,7 @@ import { http, HttpResponse, delay } from 'msw';
 import CreateDataDemo from '@lessons/4_3/CreateDataDemo';
 
 const meta: Meta<typeof CreateDataDemo> = {
-  title: 'Lessons/4.3 Creating Updating Data/CreateDataDemo',
+  title: 'Lessons/4.3/CreateDataDemo',
   component: CreateDataDemo,
   parameters: {
     layout: 'padded',

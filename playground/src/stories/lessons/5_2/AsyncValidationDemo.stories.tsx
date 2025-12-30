@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import AsyncValidationDemo from '@lessons/5_2/AsyncValidationDemo';
 
 const meta: Meta<typeof AsyncValidationDemo> = {
-  title: 'Lessons/5.2 Form Validation Patterns/AsyncValidationDemo',
+  title: 'Lessons/5.2/AsyncValidationDemo',
   component: AsyncValidationDemo,
   parameters: {
     layout: 'padded',

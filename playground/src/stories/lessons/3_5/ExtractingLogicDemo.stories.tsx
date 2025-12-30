@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ExtractingLogicDemo from '@lessons/3_5/ExtractingLogicDemo';
 
 const meta: Meta<typeof ExtractingLogicDemo> = {
-  title: 'Lessons/3.5 Custom Hooks/ExtractingLogicDemo',
+  title: 'Lessons/3.5/ExtractingLogicDemo',
   component: ExtractingLogicDemo,
   parameters: {
     layout: 'padded',

@@ -4,7 +4,7 @@ import DependencyFetchDemo from '@lessons/4_1/DependencyFetchDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof DependencyFetchDemo> = {
-  title: 'Lessons/4.1 Fetching Data/DependencyFetchDemo',
+  title: 'Lessons/4.1/DependencyFetchDemo',
   component: DependencyFetchDemo,
   parameters: {
     layout: 'padded',

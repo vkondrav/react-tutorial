@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ComponentTreeDemo from '@lessons/1_1/ComponentTreeDemo';
 
 const meta: Meta<typeof ComponentTreeDemo> = {
-  title: 'Lessons/1.1 What is React/ComponentTreeDemo',
+  title: 'Lessons/1.1/ComponentTreeDemo',
   component: ComponentTreeDemo,
   parameters: {
     layout: 'padded',

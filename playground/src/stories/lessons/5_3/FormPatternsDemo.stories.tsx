@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import FormPatternsDemo from '@lessons/5_3/FormPatternsDemo';
 
 const meta: Meta<typeof FormPatternsDemo> = {
-  title: 'Lessons/5.3 Handling Multiple Inputs/FormPatternsDemo',
+  title: 'Lessons/5.3/FormPatternsDemo',
   component: FormPatternsDemo,
   parameters: {
     layout: 'padded',

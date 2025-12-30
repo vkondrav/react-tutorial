@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import PackageJsonExplorer from '@lessons/1_2/PackageJsonExplorer';
 
 const meta: Meta<typeof PackageJsonExplorer> = {
-  title: 'Lessons/1.2 Setting Up React App/PackageJsonExplorer',
+  title: 'Lessons/1.2/PackageJsonExplorer',
   component: PackageJsonExplorer,
   parameters: {
     layout: 'padded',

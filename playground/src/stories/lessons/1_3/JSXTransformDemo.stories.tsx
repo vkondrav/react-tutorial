@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import JSXTransformDemo from '@lessons/1_3/JSXTransformDemo';
 
 const meta: Meta<typeof JSXTransformDemo> = {
-  title: 'Lessons/1.3 Understanding JSX/JSXTransformDemo',
+  title: 'Lessons/1.3/JSXTransformDemo',
   component: JSXTransformDemo,
   parameters: {
     layout: 'padded',

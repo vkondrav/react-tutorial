@@ -5,7 +5,7 @@ import StatesPlayground from '@lessons/4_2/StatesPlayground';
 import { handlers, mockPosts } from '@mocks/handlers';
 
 const meta: Meta<typeof StatesPlayground> = {
-  title: 'Lessons/4.2 Loading Error Empty States/StatesPlayground',
+  title: 'Lessons/4.2/StatesPlayground',
   component: StatesPlayground,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import PerformancePlayground from '@lessons/3_4/PerformancePlayground';
 
 const meta: Meta<typeof PerformancePlayground> = {
-  title: 'Lessons/3.4 useMemo & useCallback/PerformancePlayground',
+  title: 'Lessons/3.4/PerformancePlayground',
   component: PerformancePlayground,
   parameters: {
     layout: 'padded',

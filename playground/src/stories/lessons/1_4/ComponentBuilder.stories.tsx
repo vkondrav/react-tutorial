@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ComponentBuilder from '@lessons/1_4/ComponentBuilder';
 
 const meta: Meta<typeof ComponentBuilder> = {
-  title: 'Lessons/1.4 Components/ComponentBuilder',
+  title: 'Lessons/1.4/ComponentBuilder',
   component: ComponentBuilder,
   parameters: {
     layout: 'padded',

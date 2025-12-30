@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import CustomHooksPlayground from '@lessons/3_5/CustomHooksPlayground';
 
 const meta: Meta<typeof CustomHooksPlayground> = {
-  title: 'Lessons/3.5 Custom Hooks/CustomHooksPlayground',
+  title: 'Lessons/3.5/CustomHooksPlayground',
   component: CustomHooksPlayground,
   parameters: {
     layout: 'padded',

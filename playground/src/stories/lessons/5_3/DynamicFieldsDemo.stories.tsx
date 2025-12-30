@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import DynamicFieldsDemo from '@lessons/5_3/DynamicFieldsDemo';
 
 const meta: Meta<typeof DynamicFieldsDemo> = {
-  title: 'Lessons/5.3 Handling Multiple Inputs/DynamicFieldsDemo',
+  title: 'Lessons/5.3/DynamicFieldsDemo',
   component: DynamicFieldsDemo,
   parameters: {
     layout: 'padded',

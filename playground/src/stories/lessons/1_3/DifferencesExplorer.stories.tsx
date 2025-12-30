@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import DifferencesExplorer from '@lessons/1_3/DifferencesExplorer';
 
 const meta: Meta<typeof DifferencesExplorer> = {
-  title: 'Lessons/1.3 Understanding JSX/DifferencesExplorer',
+  title: 'Lessons/1.3/DifferencesExplorer',
   component: DifferencesExplorer,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ContextBasicsDemo from '@lessons/3_2/ContextBasicsDemo';
 
 const meta: Meta<typeof ContextBasicsDemo> = {
-  title: 'Lessons/3.2 useContext/ContextBasicsDemo',
+  title: 'Lessons/3.2/ContextBasicsDemo',
   component: ContextBasicsDemo,
   parameters: {
     layout: 'padded',

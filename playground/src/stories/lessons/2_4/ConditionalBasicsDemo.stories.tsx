@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ConditionalBasicsDemo from '@lessons/2_4/ConditionalBasicsDemo';
 
 const meta: Meta<typeof ConditionalBasicsDemo> = {
-  title: 'Lessons/2.4 Conditional Rendering/ConditionalBasicsDemo',
+  title: 'Lessons/2.4/ConditionalBasicsDemo',
   component: ConditionalBasicsDemo,
   parameters: {
     layout: 'padded',

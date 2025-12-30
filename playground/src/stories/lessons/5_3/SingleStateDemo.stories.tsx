@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import SingleStateDemo from '@lessons/5_3/SingleStateDemo';
 
 const meta: Meta<typeof SingleStateDemo> = {
-  title: 'Lessons/5.3 Handling Multiple Inputs/SingleStateDemo',
+  title: 'Lessons/5.3/SingleStateDemo',
   component: SingleStateDemo,
   parameters: {
     layout: 'padded',

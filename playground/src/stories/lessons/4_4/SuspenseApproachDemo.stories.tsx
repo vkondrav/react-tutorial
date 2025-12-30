@@ -4,7 +4,7 @@ import SuspenseApproachDemo from '@lessons/4_4/SuspenseApproachDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof SuspenseApproachDemo> = {
-  title: 'Lessons/4.4 Building useFetch Hook/SuspenseApproachDemo',
+  title: 'Lessons/4.4/SuspenseApproachDemo',
   component: SuspenseApproachDemo,
   parameters: {
     layout: 'padded',

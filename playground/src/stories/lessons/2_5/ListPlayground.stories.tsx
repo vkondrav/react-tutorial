@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ListPlayground from '@lessons/2_5/ListPlayground';
 
 const meta: Meta<typeof ListPlayground> = {
-  title: 'Lessons/2.5 Lists & Keys/ListPlayground',
+  title: 'Lessons/2.5/ListPlayground',
   component: ListPlayground,
   parameters: {
     layout: 'padded',

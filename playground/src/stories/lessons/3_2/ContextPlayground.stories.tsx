@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ContextPlayground from '@lessons/3_2/ContextPlayground';
 
 const meta: Meta<typeof ContextPlayground> = {
-  title: 'Lessons/3.2 useContext/ContextPlayground',
+  title: 'Lessons/3.2/ContextPlayground',
   component: ContextPlayground,
   parameters: {
     layout: 'padded',

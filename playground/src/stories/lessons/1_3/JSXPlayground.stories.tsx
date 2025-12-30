@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import JSXPlayground from '@lessons/1_3/JSXPlayground';
 
 const meta: Meta<typeof JSXPlayground> = {
-  title: 'Lessons/1.3 Understanding JSX/JSXPlayground',
+  title: 'Lessons/1.3/JSXPlayground',
   component: JSXPlayground,
   parameters: {
     layout: 'padded',

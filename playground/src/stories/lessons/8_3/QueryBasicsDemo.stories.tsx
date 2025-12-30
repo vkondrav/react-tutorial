@@ -4,7 +4,7 @@ import QueryBasicsDemo from '@lessons/8_3/QueryBasicsDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof QueryBasicsDemo> = {
-  title: 'Lessons/8.3 TanStack Query/QueryBasicsDemo',
+  title: 'Lessons/8.3/QueryBasicsDemo',
   component: QueryBasicsDemo,
   parameters: {
     layout: 'padded',

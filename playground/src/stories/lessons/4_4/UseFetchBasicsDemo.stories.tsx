@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import UseFetchBasicsDemo from '@lessons/4_4/UseFetchBasicsDemo';
 
 const meta: Meta<typeof UseFetchBasicsDemo> = {
-  title: 'Lessons/4.4 Building useFetch Hook/UseFetchBasicsDemo',
+  title: 'Lessons/4.4/UseFetchBasicsDemo',
   component: UseFetchBasicsDemo,
   parameters: {
     layout: 'padded',

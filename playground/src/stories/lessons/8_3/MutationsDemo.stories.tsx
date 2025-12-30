@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import MutationsDemo from '@lessons/8_3/MutationsDemo';
 
 const meta: Meta<typeof MutationsDemo> = {
-  title: 'Lessons/8.3 TanStack Query/MutationsDemo',
+  title: 'Lessons/8.3/MutationsDemo',
   component: MutationsDemo,
   parameters: {
     layout: 'padded',

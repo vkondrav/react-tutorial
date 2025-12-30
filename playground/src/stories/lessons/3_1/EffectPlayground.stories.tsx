@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import EffectPlayground from '@lessons/3_1/EffectPlayground';
 
 const meta: Meta<typeof EffectPlayground> = {
-  title: 'Lessons/3.1 useEffect/EffectPlayground',
+  title: 'Lessons/3.1/EffectPlayground',
   component: EffectPlayground,
   parameters: {
     layout: 'padded',

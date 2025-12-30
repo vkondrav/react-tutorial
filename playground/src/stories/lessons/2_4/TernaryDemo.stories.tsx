@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import TernaryDemo from '@lessons/2_4/TernaryDemo';
 
 const meta: Meta<typeof TernaryDemo> = {
-  title: 'Lessons/2.4 Conditional Rendering/TernaryDemo',
+  title: 'Lessons/2.4/TernaryDemo',
   component: TernaryDemo,
   parameters: {
     layout: 'padded',

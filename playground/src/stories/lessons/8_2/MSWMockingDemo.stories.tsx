@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import MSWMockingDemo from '@lessons/8_2/MSWMockingDemo';
 
 const meta: Meta<typeof MSWMockingDemo> = {
-  title: 'Lessons/8.2 Testing Strategies/MSWMockingDemo',
+  title: 'Lessons/8.2/MSWMockingDemo',
   component: MSWMockingDemo,
   parameters: {
     layout: 'padded',

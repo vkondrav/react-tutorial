@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import StatePlayground from '@lessons/2_2/StatePlayground';
 
 const meta: Meta<typeof StatePlayground> = {
-  title: 'Lessons/2.2 State/StatePlayground',
+  title: 'Lessons/2.2/StatePlayground',
   component: StatePlayground,
   parameters: {
     layout: 'padded',

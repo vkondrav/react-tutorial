@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import UseClientDirectiveDemo from '@lessons/8_4/UseClientDirectiveDemo';
 
 const meta: Meta<typeof UseClientDirectiveDemo> = {
-  title: 'Lessons/8.4 React Server Components/UseClientDirectiveDemo',
+  title: 'Lessons/8.4/UseClientDirectiveDemo',
   component: UseClientDirectiveDemo,
   parameters: {
     layout: 'padded',

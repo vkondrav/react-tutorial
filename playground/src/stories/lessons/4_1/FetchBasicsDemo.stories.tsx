@@ -5,7 +5,7 @@ import FetchBasicsDemo from '@lessons/4_1/FetchBasicsDemo';
 import { handlers, mockUsers } from '@mocks/handlers';
 
 const meta: Meta<typeof FetchBasicsDemo> = {
-  title: 'Lessons/4.1 Fetching Data/FetchBasicsDemo',
+  title: 'Lessons/4.1/FetchBasicsDemo',
   component: FetchBasicsDemo,
   parameters: {
     layout: 'padded',

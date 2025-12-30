@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import HowSSRWorksDemo from '@lessons/8_1/HowSSRWorksDemo';
 
 const meta: Meta<typeof HowSSRWorksDemo> = {
-  title: 'Lessons/8.1 Server-Side Rendering/HowSSRWorksDemo',
+  title: 'Lessons/8.1/HowSSRWorksDemo',
   component: HowSSRWorksDemo,
   parameters: {
     layout: 'padded',

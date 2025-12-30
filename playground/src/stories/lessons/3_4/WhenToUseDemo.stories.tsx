@@ -3,7 +3,7 @@ import { expect } from 'storybook/test';
 import WhenToUseDemo from '@lessons/3_4/WhenToUseDemo';
 
 const meta: Meta<typeof WhenToUseDemo> = {
-  title: 'Lessons/3.4 useMemo & useCallback/WhenToUseDemo',
+  title: 'Lessons/3.4/WhenToUseDemo',
   component: WhenToUseDemo,
   parameters: {
     layout: 'padded',

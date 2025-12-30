@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import CommonHooksDemo from '@lessons/3_5/CommonHooksDemo';
 
 const meta: Meta<typeof CommonHooksDemo> = {
-  title: 'Lessons/3.5 Custom Hooks/CommonHooksDemo',
+  title: 'Lessons/3.5/CommonHooksDemo',
   component: CommonHooksDemo,
   parameters: {
     layout: 'padded',

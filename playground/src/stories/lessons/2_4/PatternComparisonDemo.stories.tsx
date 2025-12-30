@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import PatternComparisonDemo from '@lessons/2_4/PatternComparisonDemo';
 
 const meta: Meta<typeof PatternComparisonDemo> = {
-  title: 'Lessons/2.4 Conditional Rendering/PatternComparisonDemo',
+  title: 'Lessons/2.4/PatternComparisonDemo',
   component: PatternComparisonDemo,
   parameters: {
     layout: 'padded',

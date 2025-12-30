@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import RenderCountDemo from '@lessons/3_4/RenderCountDemo';
 
 const meta: Meta<typeof RenderCountDemo> = {
-  title: 'Lessons/3.4 useMemo & useCallback/RenderCountDemo',
+  title: 'Lessons/3.4/RenderCountDemo',
   component: RenderCountDemo,
   parameters: {
     layout: 'padded',

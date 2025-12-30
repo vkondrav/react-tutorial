@@ -3,7 +3,7 @@ import { expect, within } from 'storybook/test';
 import SSRPlayground from '@lessons/8_1/SSRPlayground';
 
 const meta: Meta<typeof SSRPlayground> = {
-  title: 'Lessons/8.1 Server-Side Rendering/SSRPlayground',
+  title: 'Lessons/8.1/SSRPlayground',
   component: SSRPlayground,
   parameters: {
     layout: 'padded',

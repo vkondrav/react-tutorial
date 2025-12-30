@@ -4,7 +4,7 @@ import FetchPlayground from '@lessons/4_1/FetchPlayground';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof FetchPlayground> = {
-  title: 'Lessons/4.1 Fetching Data/FetchPlayground',
+  title: 'Lessons/4.1/FetchPlayground',
   component: FetchPlayground,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import HMRDemo from '@lessons/1_2/HMRDemo';
 
 const meta: Meta<typeof HMRDemo> = {
-  title: 'Lessons/1.2 Setting Up React App/HMRDemo',
+  title: 'Lessons/1.2/HMRDemo',
   component: HMRDemo,
   parameters: {
     layout: 'padded',

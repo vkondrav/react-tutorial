@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import MultipleContextsDemo from '@lessons/3_2/MultipleContextsDemo';
 
 const meta: Meta<typeof MultipleContextsDemo> = {
-  title: 'Lessons/3.2 useContext/MultipleContextsDemo',
+  title: 'Lessons/3.2/MultipleContextsDemo',
   component: MultipleContextsDemo,
   parameters: {
     layout: 'padded',

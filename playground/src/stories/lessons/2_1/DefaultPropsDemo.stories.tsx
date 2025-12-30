@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import DefaultPropsDemo from '@lessons/2_1/DefaultPropsDemo';
 
 const meta: Meta<typeof DefaultPropsDemo> = {
-  title: 'Lessons/2.1 Props/DefaultPropsDemo',
+  title: 'Lessons/2.1/DefaultPropsDemo',
   component: DefaultPropsDemo,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ControlledBasicsDemo from '@lessons/5_1/ControlledBasicsDemo';
 
 const meta: Meta<typeof ControlledBasicsDemo> = {
-  title: 'Lessons/5.1 Controlled Components/ControlledBasicsDemo',
+  title: 'Lessons/5.1/ControlledBasicsDemo',
   component: ControlledBasicsDemo,
   parameters: {
     layout: 'padded',

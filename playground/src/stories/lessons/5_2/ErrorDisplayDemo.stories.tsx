@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ErrorDisplayDemo from '@lessons/5_2/ErrorDisplayDemo';
 
 const meta: Meta<typeof ErrorDisplayDemo> = {
-  title: 'Lessons/5.2 Form Validation Patterns/ErrorDisplayDemo',
+  title: 'Lessons/5.2/ErrorDisplayDemo',
   component: ErrorDisplayDemo,
   parameters: {
     layout: 'padded',

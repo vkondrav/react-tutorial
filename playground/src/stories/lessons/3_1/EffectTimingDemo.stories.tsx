@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import EffectTimingDemo from '@lessons/3_1/EffectTimingDemo';
 
 const meta: Meta<typeof EffectTimingDemo> = {
-  title: 'Lessons/3.1 useEffect/EffectTimingDemo',
+  title: 'Lessons/3.1/EffectTimingDemo',
   component: EffectTimingDemo,
   parameters: {
     layout: 'padded',

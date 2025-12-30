@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import PersistentValueDemo from '@lessons/3_3/PersistentValueDemo';
 
 const meta: Meta<typeof PersistentValueDemo> = {
-  title: 'Lessons/3.3 useRef/PersistentValueDemo',
+  title: 'Lessons/3.3/PersistentValueDemo',
   component: PersistentValueDemo,
   parameters: {
     layout: 'padded',

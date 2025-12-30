@@ -4,7 +4,7 @@ import UseFetchPlayground from '@lessons/4_4/UseFetchPlayground';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof UseFetchPlayground> = {
-  title: 'Lessons/4.4 Building useFetch Hook/UseFetchPlayground',
+  title: 'Lessons/4.4/UseFetchPlayground',
   component: UseFetchPlayground,
   parameters: {
     layout: 'padded',

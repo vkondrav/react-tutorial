@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import RenderingComparisonDemo from '@lessons/8_1/RenderingComparisonDemo';
 
 const meta: Meta<typeof RenderingComparisonDemo> = {
-  title: 'Lessons/8.1 Server-Side Rendering/RenderingComparisonDemo',
+  title: 'Lessons/8.1/RenderingComparisonDemo',
   component: RenderingComparisonDemo,
   parameters: {
     layout: 'padded',

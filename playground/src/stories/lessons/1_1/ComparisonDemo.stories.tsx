@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ComparisonDemo from '@lessons/1_1/ComparisonDemo';
 
 const meta: Meta<typeof ComparisonDemo> = {
-  title: 'Lessons/1.1 What is React/ComparisonDemo',
+  title: 'Lessons/1.1/ComparisonDemo',
   component: ComparisonDemo,
   parameters: {
     layout: 'padded',

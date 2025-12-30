@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import MistakesQuiz from '@lessons/1_3/MistakesQuiz';
 
 const meta: Meta<typeof MistakesQuiz> = {
-  title: 'Lessons/1.3 Understanding JSX/MistakesQuiz',
+  title: 'Lessons/1.3/MistakesQuiz',
   component: MistakesQuiz,
   parameters: {
     layout: 'padded',

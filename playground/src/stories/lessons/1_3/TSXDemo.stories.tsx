@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import TSXDemo from '@lessons/1_3/TSXDemo';
 
 const meta: Meta<typeof TSXDemo> = {
-  title: 'Lessons/1.3 Understanding JSX/TSXDemo',
+  title: 'Lessons/1.3/TSXDemo',
   component: TSXDemo,
   parameters: {
     layout: 'padded',

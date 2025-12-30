@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import DependencyArrayDemo from '@lessons/3_1/DependencyArrayDemo';
 
 const meta: Meta<typeof DependencyArrayDemo> = {
-  title: 'Lessons/3.1 useEffect/DependencyArrayDemo',
+  title: 'Lessons/3.1/DependencyArrayDemo',
   component: DependencyArrayDemo,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import WhenToUseSSRDemo from '@lessons/8_1/WhenToUseSSRDemo';
 
 const meta: Meta<typeof WhenToUseSSRDemo> = {
-  title: 'Lessons/8.1 Server-Side Rendering/WhenToUseSSRDemo',
+  title: 'Lessons/8.1/WhenToUseSSRDemo',
   component: WhenToUseSSRDemo,
   parameters: {
     layout: 'padded',

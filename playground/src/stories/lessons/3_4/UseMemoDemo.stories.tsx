@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import UseMemoDemo from '@lessons/3_4/UseMemoDemo';
 
 const meta: Meta<typeof UseMemoDemo> = {
-  title: 'Lessons/3.4 useMemo & useCallback/UseMemoDemo',
+  title: 'Lessons/3.4/UseMemoDemo',
   component: UseMemoDemo,
   parameters: {
     layout: 'padded',

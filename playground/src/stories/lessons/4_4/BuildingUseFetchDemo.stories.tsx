@@ -4,7 +4,7 @@ import BuildingUseFetchDemo from '@lessons/4_4/BuildingUseFetchDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof BuildingUseFetchDemo> = {
-  title: 'Lessons/4.4 Building useFetch Hook/BuildingUseFetchDemo',
+  title: 'Lessons/4.4/BuildingUseFetchDemo',
   component: BuildingUseFetchDemo,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import StateBasicsDemo from '@lessons/2_2/StateBasicsDemo';
 
 const meta: Meta<typeof StateBasicsDemo> = {
-  title: 'Lessons/2.2 State/StateBasicsDemo',
+  title: 'Lessons/2.2/StateBasicsDemo',
   component: StateBasicsDemo,
   parameters: {
     layout: 'padded',

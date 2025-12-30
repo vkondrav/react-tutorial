@@ -4,7 +4,7 @@ import { http, HttpResponse, delay } from 'msw';
 import DeleteDataDemo from '@lessons/4_3/DeleteDataDemo';
 
 const meta: Meta<typeof DeleteDataDemo> = {
-  title: 'Lessons/4.3 Creating Updating Data/DeleteDataDemo',
+  title: 'Lessons/4.3/DeleteDataDemo',
   component: DeleteDataDemo,
   parameters: {
     layout: 'padded',

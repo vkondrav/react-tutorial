@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ServerVsClientDemo from '@lessons/8_4/ServerVsClientDemo';
 
 const meta: Meta<typeof ServerVsClientDemo> = {
-  title: 'Lessons/8.4 React Server Components/ServerVsClientDemo',
+  title: 'Lessons/8.4/ServerVsClientDemo',
   component: ServerVsClientDemo,
   parameters: {
     layout: 'padded',

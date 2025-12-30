@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import NameAttributeDemo from '@lessons/5_3/NameAttributeDemo';
 
 const meta: Meta<typeof NameAttributeDemo> = {
-  title: 'Lessons/5.3 Handling Multiple Inputs/NameAttributeDemo',
+  title: 'Lessons/5.3/NameAttributeDemo',
   component: NameAttributeDemo,
   parameters: {
     layout: 'padded',

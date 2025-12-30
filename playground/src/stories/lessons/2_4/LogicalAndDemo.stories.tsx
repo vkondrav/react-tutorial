@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import LogicalAndDemo from '@lessons/2_4/LogicalAndDemo';
 
 const meta: Meta<typeof LogicalAndDemo> = {
-  title: 'Lessons/2.4 Conditional Rendering/LogicalAndDemo',
+  title: 'Lessons/2.4/LogicalAndDemo',
   component: LogicalAndDemo,
   parameters: {
     layout: 'padded',

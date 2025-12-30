@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ProjectStructureExplorer from '@lessons/1_2/ProjectStructureExplorer';
 
 const meta: Meta<typeof ProjectStructureExplorer> = {
-  title: 'Lessons/1.2 Setting Up React App/ProjectStructureExplorer',
+  title: 'Lessons/1.2/ProjectStructureExplorer',
   component: ProjectStructureExplorer,
   parameters: {
     layout: 'padded',

@@ -4,7 +4,7 @@ import RaceConditionDemo from '@lessons/4_1/RaceConditionDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof RaceConditionDemo> = {
-  title: 'Lessons/4.1 Fetching Data/RaceConditionDemo',
+  title: 'Lessons/4.1/RaceConditionDemo',
   component: RaceConditionDemo,
   parameters: {
     layout: 'padded',

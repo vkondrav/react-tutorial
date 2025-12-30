@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import RefPlayground from '@lessons/3_3/RefPlayground';
 
 const meta: Meta<typeof RefPlayground> = {
-  title: 'Lessons/3.3 useRef/RefPlayground',
+  title: 'Lessons/3.3/RefPlayground',
   component: RefPlayground,
   parameters: {
     layout: 'padded',

@@ -4,7 +4,7 @@ import QueryPlayground from '@lessons/8_3/QueryPlayground';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof QueryPlayground> = {
-  title: 'Lessons/8.3 TanStack Query/QueryPlayground',
+  title: 'Lessons/8.3/QueryPlayground',
   component: QueryPlayground,
   parameters: {
     layout: 'padded',

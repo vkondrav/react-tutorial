@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import PreviousValueDemo from '@lessons/3_3/PreviousValueDemo';
 
 const meta: Meta<typeof PreviousValueDemo> = {
-  title: 'Lessons/3.3 useRef/PreviousValueDemo',
+  title: 'Lessons/3.3/PreviousValueDemo',
   component: PreviousValueDemo,
   parameters: {
     layout: 'padded',

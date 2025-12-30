@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import CleanupDemo from '@lessons/3_1/CleanupDemo';
 
 const meta: Meta<typeof CleanupDemo> = {
-  title: 'Lessons/3.1 useEffect/CleanupDemo',
+  title: 'Lessons/3.1/CleanupDemo',
   component: CleanupDemo,
   parameters: {
     layout: 'padded',

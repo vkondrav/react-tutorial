@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import ConditionalPlayground from '@lessons/2_4/ConditionalPlayground';
 
 const meta: Meta<typeof ConditionalPlayground> = {
-  title: 'Lessons/2.4 Conditional Rendering/ConditionalPlayground',
+  title: 'Lessons/2.4/ConditionalPlayground',
   component: ConditionalPlayground,
   parameters: {
     layout: 'padded',

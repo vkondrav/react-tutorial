@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import DomAccessDemo from '@lessons/3_3/DomAccessDemo';
 
 const meta: Meta<typeof DomAccessDemo> = {
-  title: 'Lessons/3.3 useRef/DomAccessDemo',
+  title: 'Lessons/3.3/DomAccessDemo',
   component: DomAccessDemo,
   parameters: {
     layout: 'padded',

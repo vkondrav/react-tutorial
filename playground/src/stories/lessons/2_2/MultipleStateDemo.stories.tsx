@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import MultipleStateDemo from '@lessons/2_2/MultipleStateDemo';
 
 const meta: Meta<typeof MultipleStateDemo> = {
-  title: 'Lessons/2.2 State/MultipleStateDemo',
+  title: 'Lessons/2.2/MultipleStateDemo',
   component: MultipleStateDemo,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import RSCPlayground from '@lessons/8_4/RSCPlayground';
 
 const meta: Meta<typeof RSCPlayground> = {
-  title: 'Lessons/8.4 React Server Components/RSCPlayground',
+  title: 'Lessons/8.4/RSCPlayground',
   component: RSCPlayground,
   parameters: {
     layout: 'padded',

@@ -4,7 +4,7 @@ import GenericUseFetchDemo from '@lessons/4_4/GenericUseFetchDemo';
 import { handlers } from '@mocks/handlers';
 
 const meta: Meta<typeof GenericUseFetchDemo> = {
-  title: 'Lessons/4.4 Building useFetch Hook/GenericUseFetchDemo',
+  title: 'Lessons/4.4/GenericUseFetchDemo',
   component: GenericUseFetchDemo,
   parameters: {
     layout: 'padded',

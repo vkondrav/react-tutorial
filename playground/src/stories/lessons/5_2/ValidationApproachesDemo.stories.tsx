@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import ValidationApproachesDemo from '@lessons/5_2/ValidationApproachesDemo';
 
 const meta: Meta<typeof ValidationApproachesDemo> = {
-  title: 'Lessons/5.2 Form Validation Patterns/ValidationApproachesDemo',
+  title: 'Lessons/5.2/ValidationApproachesDemo',
   component: ValidationApproachesDemo,
   parameters: {
     layout: 'padded',

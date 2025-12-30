@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import StateCompositionDemo from '@lessons/4_2/StateCompositionDemo';
 
 const meta: Meta<typeof StateCompositionDemo> = {
-  title: 'Lessons/4.2 Loading Error Empty States/StateCompositionDemo',
+  title: 'Lessons/4.2/StateCompositionDemo',
   component: StateCompositionDemo,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import OptimisticUpdatesDemo from '@lessons/4_3/OptimisticUpdatesDemo';
 
 const meta: Meta<typeof OptimisticUpdatesDemo> = {
-  title: 'Lessons/4.3 Creating Updating Data/OptimisticUpdatesDemo',
+  title: 'Lessons/4.3/OptimisticUpdatesDemo',
   component: OptimisticUpdatesDemo,
   parameters: {
     layout: 'padded',

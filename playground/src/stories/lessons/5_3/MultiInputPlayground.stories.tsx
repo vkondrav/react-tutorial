@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import MultiInputPlayground from '@lessons/5_3/MultiInputPlayground';
 
 const meta: Meta<typeof MultiInputPlayground> = {
-  title: 'Lessons/5.3 Handling Multiple Inputs/MultiInputPlayground',
+  title: 'Lessons/5.3/MultiInputPlayground',
   component: MultiInputPlayground,
   parameters: {
     layout: 'padded',

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 import JSXRulesDemo from '@lessons/1_3/JSXRulesDemo';
 
 const meta: Meta<typeof JSXRulesDemo> = {
-  title: 'Lessons/1.3 Understanding JSX/JSXRulesDemo',
+  title: 'Lessons/1.3/JSXRulesDemo',
   component: JSXRulesDemo,
   parameters: {
     layout: 'padded',

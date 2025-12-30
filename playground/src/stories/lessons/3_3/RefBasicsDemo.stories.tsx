@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import RefBasicsDemo from '@lessons/3_3/RefBasicsDemo';
 
 const meta: Meta<typeof RefBasicsDemo> = {
-  title: 'Lessons/3.3 useRef/RefBasicsDemo',
+  title: 'Lessons/3.3/RefBasicsDemo',
   component: RefBasicsDemo,
   parameters: {
     layout: 'padded',

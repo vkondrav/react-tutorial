@@ -3,7 +3,7 @@ import { expect, userEvent, within, waitFor } from 'storybook/test';
 import PropDrillingDemo from '@lessons/3_2/PropDrillingDemo';
 
 const meta: Meta<typeof PropDrillingDemo> = {
-  title: 'Lessons/3.2 useContext/PropDrillingDemo',
+  title: 'Lessons/3.2/PropDrillingDemo',
   component: PropDrillingDemo,
   parameters: {
     layout: 'padded',
