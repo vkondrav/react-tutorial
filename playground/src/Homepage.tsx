@@ -1,6 +1,5 @@
 import { DiReact } from 'react-icons/di';
 import {
-  HiOutlineCode,
   HiOutlineDesktopComputer,
   HiOutlineTerminal,
   HiOutlineLightBulb,
@@ -18,6 +17,7 @@ import { FaGithub } from 'react-icons/fa';
 import config from './lessons/config.json';
 import SettingsModal from './SettingsModal';
 import { type AppSettings, getHomepageSourceLink, getStorybookBaseUrl } from './settings';
+import ViewSourceButton from './lessons/components/ViewSourceButton';
 
 // Lesson descriptions for the course outline
 const LESSON_DESCRIPTIONS: Record<string, string> = {
@@ -178,17 +178,13 @@ export default function Homepage({
                   <span className="text-primary font-semibold">.tsx file</span> in the{' '}
                   <code className="bg-base-100 px-2 py-0.5 rounded text-sm">src/lessons/</code>{' '}
                   folder. Click{' '}
-                  <a
+                  <ViewSourceButton
                     href={getHomepageSourceLink(settings)}
-                    className="btn btn-outline btn-xs inline-flex mx-1 tooltip"
-                    data-tip="View Source"
-                    {...(settings.editor === 'github'
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                  >
-                    <HiOutlineCode size={14} />
-                    {settings.editor === 'github' && <HiOutlineExternalLink size={12} />}
-                  </a>{' '}
+                    settings={settings}
+                    size="xs"
+                    tooltipPosition="top"
+                    className="inline-flex mx-1"
+                  />{' '}
                   on any lesson to open it in your editor. Change the code. See it update live.
                   <span className="text-accent font-semibold"> That's how you really learn.</span>
                 </p>

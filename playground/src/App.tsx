@@ -12,7 +12,6 @@ import {
   HiOutlineArrowLeft,
   HiOutlineCheckCircle,
   HiOutlineCheck,
-  HiOutlineCode,
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
   HiOutlineHome,
@@ -28,9 +27,9 @@ import {
   loadSettings,
   getLessonSourceLink,
   getLessonStorybookLink,
-  getEditor,
   type AppSettings,
 } from './settings';
+import ViewSourceButton from './lessons/components/ViewSourceButton';
 
 // Types
 interface LessonConfig {
@@ -387,16 +386,12 @@ function App(): React.ReactElement {
                 >
                   <HiOutlineTemplate size={18} />
                 </a>
-                <a
+                <ViewSourceButton
                   href={getLessonSourceLink(currentLessonId, settings)}
-                  className="btn btn-outline btn-sm text-xs tooltip tooltip-bottom"
-                  data-tip={`View Source (${getEditor(settings.editor).name})`}
-                  {...(settings.editor === 'github'
-                    ? { target: '_blank', rel: 'noopener noreferrer' }
-                    : {})}
-                >
-                  <HiOutlineCode size={18} />
-                </a>
+                  settings={settings}
+                  size="sm"
+                  tooltipPosition="bottom"
+                />
               </>
             )}
           </div>

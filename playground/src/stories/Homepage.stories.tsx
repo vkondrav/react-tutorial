@@ -256,8 +256,8 @@ export const AccessibilityCheck: Story = {
     const links = canvas.getAllByRole('link');
     expect(links.length).toBeGreaterThan(0);
 
-    // View Source should have tooltip
-    const viewSourceLink = canvasElement.querySelector('a[data-tip="View Source"]');
+    // View Source should have tooltip (shows editor name)
+    const viewSourceLink = canvasElement.querySelector('a[data-tip^="View Source"]');
     expect(viewSourceLink).toBeInTheDocument();
   },
 };
