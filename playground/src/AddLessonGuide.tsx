@@ -11,7 +11,7 @@ interface AddLessonGuideProps {
 
 const EXAMPLE_PROMPT = `I'd like to add a new lesson to the React tutorial about React Server Components.
 
-Please read @STARTING_POINT.md for the full guide on how lessons are structured.
+Please read @README.md for the full guide on how lessons are structured.
 
 The lesson should be:
 - Lesson 9.1 in a new Module 9: "Modern React"
@@ -67,12 +67,12 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
         <section className="card bg-base-200 p-8 mb-8">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
             <HiOutlineLightBulb className="text-warning" size={28} />
-            The Key: STARTING_POINT.md
+            The Key: README.md
           </h2>
           <p className="text-base-content/70 mb-4 leading-relaxed">
-            The repository includes a file called{' '}
+            The repository includes a{' '}
             <code className="px-2 py-1 bg-base-300 rounded text-primary font-mono text-sm">
-              STARTING_POINT.md
+              README.md
             </code>{' '}
             at the project root. This file contains everything an LLM needs to know to create new
             lessons:
@@ -125,15 +125,11 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
                 2
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-1">
-                  Reference STARTING_POINT.md in your prompt
-                </h3>
+                <h3 className="font-semibold text-lg mb-1">Reference README.md in your prompt</h3>
                 <p className="text-base-content/70">
                   In Cursor, you can use{' '}
-                  <code className="px-1.5 py-0.5 bg-base-300 rounded text-sm">
-                    @STARTING_POINT.md
-                  </code>{' '}
-                  to include the file in your prompt context.
+                  <code className="px-1.5 py-0.5 bg-base-300 rounded text-sm">@README.md</code> to
+                  include the file in your prompt context.
                 </p>
               </div>
             </div>
