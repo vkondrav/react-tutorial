@@ -277,5 +277,4 @@ npm run build         # Build everything
 ### Navigation Features
 
 - Hash-based routing (`#1.4`)
-- "View Source" button opens lesson in Cursor
-- "Copy to Chat" button on last lesson for continuation
+- "View Source" button opens lesson in Cursor / VSCode / GitHub
