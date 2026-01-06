@@ -32,7 +32,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-base-300 via-base-100 to-base-200">
+    <div className="min-h-screen bg-linear-to-br from-base-300 via-base-100 to-base-200">
       {/* Header */}
       <header className="border-b border-base-300 bg-base-100/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
@@ -51,7 +51,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
       <main className="max-w-4xl mx-auto px-6 py-12">
         {/* Hero */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-linear-to-br from-primary/20 to-secondary/20 mb-6">
             <HiOutlineDocumentAdd className="text-primary" size={40} />
           </div>
           <h1 className="text-4xl font-bold mb-4">
@@ -197,7 +197,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
         </section>
 
         {/* Tips */}
-        <section className="card bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 p-8">
+        <section className="card bg-linear-to-br from-primary/10 to-secondary/10 border border-primary/20 p-8">
           <h2 className="text-2xl font-bold mb-4">💡 Tips for Great Lessons</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-base-100/50 rounded-lg p-4">
