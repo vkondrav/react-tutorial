@@ -1,0 +1,26 @@
+/* Pseudo-ELEMENTS: Create VIRTUAL elements */
+
+/* Add content before an element */
+.quote::before {
+  content: '"';
+  font-size: 2em;
+  color: #94a3b8;
+}
+
+/* Add content after an element */
+.external-link::after {
+  content: ' ↗';
+}
+
+/* Style the first letter */
+p::first-letter {
+  font-size: 2em;
+  float: left;
+  color: #3b82f6;
+}
+
+/* Style selected text */
+::selection {
+  background: #3b82f6;
+  color: white;
+}

@@ -1,17 +1,18 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: December 25, 2025
+> Last Updated: January 7, 2026
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
-| **Current Module** | Module 8: Advanced Topics |
-| **Current Lesson** | 8.4 RSC: Intro to React Server Components ✅ |
-| **Next Lesson** | TBD |
+| **React Course** | Module 8: Advanced Topics ✅ Complete |
+| **CSS Course** | Module 1: Syntax & Parsing ⏳ In Progress |
+| **Current Lesson** | CSS 1.1: Syntax, Parsing & The DOM ✅ |
+| **Next Lesson** | CSS 1.2: Selectors & Specificity |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
-| **Language** | **TypeScript** (from Lesson 3.5 onward) |
+| **Language** | **TypeScript** (all lessons) |
 
 ---
 
@@ -230,6 +231,42 @@
 ### Module 9: Capstone ⏸️ Deferred
 
 > **Note:** The capstone project is being deferred for now.
+
+---
+
+## CSS Course Progress
+
+### CSS Module 1: Syntax & Parsing ⏳ In Progress
+
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 1.1 | Syntax, Parsing & The DOM | ✅ Complete | Selector matching, right-to-left parsing, pseudo-classes vs pseudo-elements |
+| 1.2 | Selectors & Specificity | ⬜ Not Started | Coming Soon |
+| 1.3 | Cascade & Inheritance | ⬜ Not Started | Coming Soon |
+
+### CSS Module 2: The Box Model & Layout ⬜ Not Started
+
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 2.1 | Box Model Deep Dive | ⬜ Not Started | Coming Soon |
+| 2.2 | Position & z-index | ⬜ Not Started | Coming Soon |
+| 2.3 | Flexbox | ⬜ Not Started | Coming Soon |
+| 2.4 | Grid | ⬜ Not Started | Coming Soon |
+
+### CSS Module 3: Responsive Design ⬜ Not Started
+
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 3.1 | Media Queries | ⬜ Not Started | Coming Soon |
+| 3.2 | Container Queries | ⬜ Not Started | Coming Soon |
+
+### CSS Module 4: Advanced CSS ⬜ Not Started
+
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 4.1 | Custom Properties (CSS Variables) | ⬜ Not Started | Coming Soon |
+| 4.2 | Animations & Transitions | ⬜ Not Started | Coming Soon |
+| 4.3 | Modern CSS Features | ⬜ Not Started | Coming Soon |
 
 ---
 
@@ -859,6 +896,55 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 29 - January 7, 2026
+**Goal:** Add CSS Mastery course and implement first lesson
+
+#### Completed:
+- ✅ **Added CSS Section to Tutorial**
+  - Introduced "sections" concept above modules (React Fundamentals, CSS Mastery)
+  - Updated `config.json` with sections array and section-based navigation
+  - Modified `App.tsx` for section switching with dropdown menu
+  - Updated `Homepage.tsx` with course selection cards (React and CSS)
+  - Created `ComingSoon.tsx` shared component for placeholder lessons
+
+- ✅ **Refactored Directory Structure**
+  - Moved React lessons from `lessons/X_X/` to `lessons/react/X_X/`
+  - Moved CSS lessons from `lessons/css/css_X_X/` to `lessons/css/X_X/`
+  - Updated all lesson imports in `App.tsx` (lazy loading)
+  - Updated `ViewSourceButton.tsx` and `settings.ts` for new paths
+  - Fixed relative imports in all lesson files (`../components` → `../../components`)
+
+- ✅ **Updated Lesson ID Format**
+  - React lessons now use `react-X.X` format (e.g., `react-1.1`)
+  - CSS lessons use `css-X.X` format (e.g., `css-1.1`)
+  - Moved lesson descriptions from `Homepage.tsx` to `config.json`
+
+- ✅ **Implemented CSS Lesson 1.1: Syntax, Parsing & The DOM**
+  - `index.tsx` - Main lesson with 5 sections
+  - `SelectorMatchingDemo.tsx` - Interactive DOM tree visualization showing how selectors match elements
+  - `SelectorPerformanceDemo.tsx` - Right-to-left parsing visualization with performance tips
+  - `PseudoDemo.tsx` - Pseudo-classes vs pseudo-elements comparison with CSS-only tooltip exercise
+  - `examples/` folder with CSS code snippets (`PseudoClassesCode.css`, `PseudoElementsCode.css`, `TooltipCode.css`)
+
+- ✅ **Added Storybook Stories + Tests for CSS 1.1**
+  - `Lesson.stories.tsx` - Full page rendering
+  - `SelectorMatchingDemo.stories.tsx` - Selector input and matching tests
+  - `SelectorPerformanceDemo.stories.tsx` - Parsing step navigation tests
+  - `PseudoDemo.stories.tsx` - Tab switching, hover effects, tooltip tests
+
+- ✅ **Fixed Storybook Tests**
+  - Updated `App.stories.tsx` and `Homepage.stories.tsx` for new course cards
+  - Fixed `SettingsModal.stories.tsx` for new lesson ID format
+  - All tests passing
+
+#### Architecture Notes:
+- **Section-based routing**: Hash format is `#react-1.1` or `#css-1.1`
+- **Lazy loading**: All lessons use `React.lazy()` for code splitting
+- **Shared components**: CSS lessons reuse `LessonHeader`, `Section`, `TakeawayList`, `CodeSnippet` from React course
+- **Code examples**: Use `?raw` imports for external CSS files, consistent with React lesson patterns
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -971,6 +1057,16 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Children passthrough pattern for mixing Server and Client
 - [x] async/await in Server Components for data fetching
 - [x] Interactive islands architecture
+
+### CSS Concepts
+- [x] CSS as a matching algorithm
+- [x] How selectors match DOM elements
+- [x] Right-to-left selector parsing for performance
+- [x] Key selector (rightmost part) importance
+- [x] Pseudo-classes (:hover, :focus, :nth-child) - state/position selectors
+- [x] Pseudo-elements (::before, ::after, ::first-letter) - targeting element parts
+- [x] Single colon vs double colon syntax
+- [x] CSS-only tooltips with ::after and content property
 - [ ] ...more to come
 
 ---
@@ -978,6 +1074,14 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 ## Notes & Questions
 
 *Add any questions or notes here during learning:*
+
+- **CSS Course Added!** The tutorial now supports multiple course sections:
+  - React Fundamentals (8 modules, 32 lessons) - ✅ Complete
+  - CSS Mastery (4 modules, 12 lessons) - ⏳ In Progress
+  - Section-based navigation with dropdown switcher in the header
+  - Shared component library between courses (LessonHeader, Section, CodeSnippet, etc.)
+  - Directory structure: `lessons/react/X_X/` and `lessons/css/X_X/`
+  - Lesson IDs now include section prefix: `react-1.1`, `css-1.1`
 
 - **Module 4 Complete!** Built comprehensive useFetch hook covering both approaches:
   1. Traditional `useEffect` pattern (works in all React versions) - production ready

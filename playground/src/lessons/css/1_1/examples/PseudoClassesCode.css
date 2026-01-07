@@ -1,0 +1,21 @@
+/* Pseudo-CLASSES: Select elements in a STATE */
+
+/* Hover state */
+.button:hover {
+  background: #3b82f6;
+}
+
+/* Focus state (keyboard navigation) */
+.input:focus {
+  outline: 2px solid #3b82f6;
+}
+
+/* First child in a list */
+li:first-child {
+  font-weight: bold;
+}
+
+/* Odd rows for zebra striping */
+tr:nth-child(odd) {
+  background: #f1f5f9;
+}
