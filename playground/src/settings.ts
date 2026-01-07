@@ -75,15 +75,20 @@ export const getHomepageSourceLink = (settings: AppSettings): string => {
 };
 
 export const getLessonSourceLink = (lessonId: string, settings: AppSettings): string => {
-  const folder = lessonId.replace('.', '_');
+  // Extract section and folder from lesson ID (e.g., "react-1.1" -> section="react", folder="1_1")
+  const match = lessonId.match(/^(react|css)-(.+)$/);
+  if (!match) return '';
+  const [, section, lessonNum] = match;
+  const folder = lessonNum.replace('.', '_');
+  const path = `lessons/${section}/${folder}/index.tsx`;
 
   switch (settings.editor) {
     case EditorType.CURSOR:
-      return `${EDITOR_CURSOR.prefix}${settings.projectPath}/playground/src/lessons/${folder}/index.tsx`;
+      return `${EDITOR_CURSOR.prefix}${settings.projectPath}/playground/src/${path}`;
     case EditorType.VSCODE:
-      return `${EDITOR_VSCODE.prefix}${settings.projectPath}/playground/src/lessons/${folder}/index.tsx`;
+      return `${EDITOR_VSCODE.prefix}${settings.projectPath}/playground/src/${path}`;
     default:
-      return `${EDITOR_GITHUB.prefix}/lessons/${folder}/index.tsx`;
+      return `${EDITOR_GITHUB.prefix}/${path}`;
   }
 };
 
@@ -96,9 +101,9 @@ export const getStorybookBaseUrl = (): string => {
 };
 
 export const getLessonStorybookLink = (lessonId: string): string => {
-  // All lesson stories use consistent title: 'Lessons/{id}/Lesson'
-  // Storybook converts this to path: lessons-{id}-lesson--default
-  // e.g., "1.1" -> "lessons-1-1-lesson--default"
+  // All lesson stories use consistent title: 'Lessons/{section}/{id}/Lesson'
+  // Storybook converts this to path: lessons-{section}-{id}-lesson--default
+  // e.g., "react-1.1" -> "lessons-react-1-1-lesson--default"
   const idSlug = lessonId.replace('.', '-');
   const storyPath = `lessons-${idSlug}-lesson--default`;
   return `${getStorybookBaseUrl()}/?path=/story/${storyPath}`;

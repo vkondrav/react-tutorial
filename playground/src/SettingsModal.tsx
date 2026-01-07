@@ -141,7 +141,7 @@ export default function SettingsModal({
               Preview: View Source link for Lesson 1.1
             </div>
             <code className="text-xs break-all text-primary">
-              {getLessonSourceLink('1.1', localSettings)}
+              {getLessonSourceLink('react-1.1', localSettings)}
             </code>
           </div>
 

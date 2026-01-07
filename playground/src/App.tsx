@@ -108,53 +108,53 @@ const saveCompletedLessons = (completed: Set<string>): void => {
 // Map lesson IDs to lazy-loaded components
 const LESSON_COMPONENTS: Record<string, LazyLessonComponent> = {
   // React lessons
-  '1.1': lazy(() => import('./lessons/1_1')),
-  '1.2': lazy(() => import('./lessons/1_2')),
-  '1.3': lazy(() => import('./lessons/1_3')),
-  '1.4': lazy(() => import('./lessons/1_4')),
-  '2.1': lazy(() => import('./lessons/2_1')),
-  '2.2': lazy(() => import('./lessons/2_2')),
-  '2.3': lazy(() => import('./lessons/2_3')),
-  '2.4': lazy(() => import('./lessons/2_4')),
-  '2.5': lazy(() => import('./lessons/2_5')),
-  '3.1': lazy(() => import('./lessons/3_1')),
-  '3.2': lazy(() => import('./lessons/3_2')),
-  '3.3': lazy(() => import('./lessons/3_3')),
-  '3.4': lazy(() => import('./lessons/3_4')),
-  '3.5': lazy(() => import('./lessons/3_5')),
-  '4.1': lazy(() => import('./lessons/4_1')),
-  '4.2': lazy(() => import('./lessons/4_2')),
-  '4.3': lazy(() => import('./lessons/4_3')),
-  '4.4': lazy(() => import('./lessons/4_4')),
-  '5.1': lazy(() => import('./lessons/5_1')),
-  '5.2': lazy(() => import('./lessons/5_2')),
-  '5.3': lazy(() => import('./lessons/5_3')),
-  '6.1': lazy(() => import('./lessons/6_1')),
-  '6.2': lazy(() => import('./lessons/6_2')),
-  '6.3': lazy(() => import('./lessons/6_3')),
-  '6.4': lazy(() => import('./lessons/6_4')),
-  '6.5': lazy(() => import('./lessons/6_5')),
-  '7.1': lazy(() => import('./lessons/7_1')),
-  '7.2': lazy(() => import('./lessons/7_2')),
-  '7.3': lazy(() => import('./lessons/7_3')),
-  '7.4': lazy(() => import('./lessons/7_4')),
-  '8.1': lazy(() => import('./lessons/8_1')),
-  '8.2': lazy(() => import('./lessons/8_2')),
-  '8.3': lazy(() => import('./lessons/8_3')),
-  '8.4': lazy(() => import('./lessons/8_4')),
+  'react-1.1': lazy(() => import('./lessons/react/1_1')),
+  'react-1.2': lazy(() => import('./lessons/react/1_2')),
+  'react-1.3': lazy(() => import('./lessons/react/1_3')),
+  'react-1.4': lazy(() => import('./lessons/react/1_4')),
+  'react-2.1': lazy(() => import('./lessons/react/2_1')),
+  'react-2.2': lazy(() => import('./lessons/react/2_2')),
+  'react-2.3': lazy(() => import('./lessons/react/2_3')),
+  'react-2.4': lazy(() => import('./lessons/react/2_4')),
+  'react-2.5': lazy(() => import('./lessons/react/2_5')),
+  'react-3.1': lazy(() => import('./lessons/react/3_1')),
+  'react-3.2': lazy(() => import('./lessons/react/3_2')),
+  'react-3.3': lazy(() => import('./lessons/react/3_3')),
+  'react-3.4': lazy(() => import('./lessons/react/3_4')),
+  'react-3.5': lazy(() => import('./lessons/react/3_5')),
+  'react-4.1': lazy(() => import('./lessons/react/4_1')),
+  'react-4.2': lazy(() => import('./lessons/react/4_2')),
+  'react-4.3': lazy(() => import('./lessons/react/4_3')),
+  'react-4.4': lazy(() => import('./lessons/react/4_4')),
+  'react-5.1': lazy(() => import('./lessons/react/5_1')),
+  'react-5.2': lazy(() => import('./lessons/react/5_2')),
+  'react-5.3': lazy(() => import('./lessons/react/5_3')),
+  'react-6.1': lazy(() => import('./lessons/react/6_1')),
+  'react-6.2': lazy(() => import('./lessons/react/6_2')),
+  'react-6.3': lazy(() => import('./lessons/react/6_3')),
+  'react-6.4': lazy(() => import('./lessons/react/6_4')),
+  'react-6.5': lazy(() => import('./lessons/react/6_5')),
+  'react-7.1': lazy(() => import('./lessons/react/7_1')),
+  'react-7.2': lazy(() => import('./lessons/react/7_2')),
+  'react-7.3': lazy(() => import('./lessons/react/7_3')),
+  'react-7.4': lazy(() => import('./lessons/react/7_4')),
+  'react-8.1': lazy(() => import('./lessons/react/8_1')),
+  'react-8.2': lazy(() => import('./lessons/react/8_2')),
+  'react-8.3': lazy(() => import('./lessons/react/8_3')),
+  'react-8.4': lazy(() => import('./lessons/react/8_4')),
   // CSS lessons
-  'css-1.1': lazy(() => import('./lessons/css/css_1_1')),
-  'css-1.2': lazy(() => import('./lessons/css/css_1_2')),
-  'css-1.3': lazy(() => import('./lessons/css/css_1_3')),
-  'css-2.1': lazy(() => import('./lessons/css/css_2_1')),
-  'css-2.2': lazy(() => import('./lessons/css/css_2_2')),
-  'css-2.3': lazy(() => import('./lessons/css/css_2_3')),
-  'css-2.4': lazy(() => import('./lessons/css/css_2_4')),
-  'css-3.1': lazy(() => import('./lessons/css/css_3_1')),
-  'css-3.2': lazy(() => import('./lessons/css/css_3_2')),
-  'css-4.1': lazy(() => import('./lessons/css/css_4_1')),
-  'css-4.2': lazy(() => import('./lessons/css/css_4_2')),
-  'css-4.3': lazy(() => import('./lessons/css/css_4_3')),
+  'css-1.1': lazy(() => import('./lessons/css/1_1')),
+  'css-1.2': lazy(() => import('./lessons/css/1_2')),
+  'css-1.3': lazy(() => import('./lessons/css/1_3')),
+  'css-2.1': lazy(() => import('./lessons/css/2_1')),
+  'css-2.2': lazy(() => import('./lessons/css/2_2')),
+  'css-2.3': lazy(() => import('./lessons/css/2_3')),
+  'css-2.4': lazy(() => import('./lessons/css/2_4')),
+  'css-3.1': lazy(() => import('./lessons/css/3_1')),
+  'css-3.2': lazy(() => import('./lessons/css/3_2')),
+  'css-4.1': lazy(() => import('./lessons/css/4_1')),
+  'css-4.2': lazy(() => import('./lessons/css/4_2')),
+  'css-4.3': lazy(() => import('./lessons/css/4_3')),
 };
 
 // Sections from config
@@ -173,15 +173,17 @@ function SectionIcon({
   sectionId,
   className,
   size,
+  style,
 }: {
   sectionId: string;
   className?: string;
   size?: number;
+  style?: React.CSSProperties;
 }): React.ReactElement {
   if (sectionId === 'css') {
-    return <DiCss3 className={className} size={size} />;
+    return <DiCss3 className={className} size={size} style={style} />;
   }
-  return <DiReact className={className} size={size} />;
+  return <DiReact className={className} size={size} style={style} />;
 }
 
 // Get initial section and lesson from URL hash, or null for homepage
@@ -409,7 +411,7 @@ function App(): React.ReactElement {
                     {moduleLessons.map((lesson) => {
                       const isActive = currentLessonId === lesson.id;
                       const isCompleted = completedLessons.has(lesson.id);
-                      const displayId = lesson.id.replace('css-', '');
+                      const displayId = lesson.id.replace(/^(react|css)-/, '');
                       return (
                         <button
                           key={lesson.id}
@@ -492,7 +494,7 @@ function App(): React.ReactElement {
             <div>
               <div className="text-xs text-base-content/60">
                 {currentSectionConfig?.title} · Module {currentLesson?.module} · Lesson{' '}
-                {currentLesson?.id.replace('css-', '')}
+                {currentLesson?.id.replace(/^(react|css)-/, '')}
               </div>
               <div className="font-semibold">{currentLesson?.title}</div>
             </div>

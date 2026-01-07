@@ -186,11 +186,11 @@ export const LessonLinksExist: Story = {
     const lessonLinks = canvasElement.querySelectorAll('a[href^="#"]');
     expect(lessonLinks.length).toBeGreaterThanOrEqual(40); // 34 React + 12 CSS lessons
 
-    // Check specific React lesson links exist
-    const link11 = canvasElement.querySelector('a[href="#1.1"]');
-    const link25 = canvasElement.querySelector('a[href="#2.5"]');
-    const link35 = canvasElement.querySelector('a[href="#3.5"]');
-    const link84 = canvasElement.querySelector('a[href="#8.4"]');
+    // Check specific React lesson links exist (now with react- prefix)
+    const link11 = canvasElement.querySelector('a[href="#react-1.1"]');
+    const link25 = canvasElement.querySelector('a[href="#react-2.5"]');
+    const link35 = canvasElement.querySelector('a[href="#react-3.5"]');
+    const link84 = canvasElement.querySelector('a[href="#react-8.4"]');
 
     expect(link11).toBeInTheDocument();
     expect(link25).toBeInTheDocument();

@@ -17,57 +17,14 @@ import SettingsModal from './SettingsModal';
 import { type AppSettings, getHomepageSourceLink, getStorybookBaseUrl } from './settings';
 import ViewSourceButton from './lessons/components/ViewSourceButton';
 
-// Lesson descriptions for the course outline
-const LESSON_DESCRIPTIONS: Record<string, string> = {
-  // React lessons
-  '1.1': 'Discover why React powers modern web apps and how its component model works',
-  '1.2': 'Scaffold a React project with Vite, explore the file structure, and run your first app',
-  '1.3': 'Learn the syntax that blends HTML with JavaScript and makes React intuitive',
-  '1.4': 'Build reusable UI pieces and understand the component mental model',
-  '2.1': 'Pass data between components and make them configurable',
-  '2.2': "Add interactivity with React's core state management hook",
-  '2.3': 'Respond to clicks, inputs, and other user interactions',
-  '2.4': 'Show or hide content based on state and props',
-  '2.5': 'Render dynamic collections efficiently with proper key usage',
-  '3.1': 'Sync with external systems, handle side effects, and manage component lifecycle',
-  '3.2': 'Share state across your app without prop drilling',
-  '3.3': 'Access DOM elements and persist values across renders',
-  '3.4': 'Optimize expensive calculations and prevent unnecessary re-renders',
-  '3.5': 'Extract and share stateful logic between components',
-  '4.1': 'Load data from APIs and display it in your components',
-  '4.2': 'Handle loading spinners, error messages, and empty states gracefully',
-  '4.3': 'Send data to APIs with POST, PUT, and DELETE requests',
-  '4.4': 'Build a reusable hook for all your data fetching needs',
-  '5.1': 'Manage form inputs with React state for full control',
-  '5.2': 'Validate user input and display helpful error messages',
-  '5.3': 'Handle complex forms with multiple fields efficiently',
-  '6.1': 'Combine components like LEGO blocks for flexible UIs',
-  '6.2': 'Share rendering logic between components with functions as children',
-  '6.3': 'Enhance components with reusable behavior wrappers',
-  '6.4': 'Build components that work together with implicit shared state',
-  '6.5': "Use React 19's Activity component to preserve state when hiding content",
-  '7.1': 'Move state to common ancestors for shared access',
-  '7.2': 'Manage complex state transitions with reducer functions',
-  '7.3': 'Combine Context and useReducer for app-wide state management',
-  '7.4': 'Know when to reach for Redux, Zustand, or other solutions',
-  '8.1': 'Render React on the server for better performance and SEO',
-  '8.2': 'Write component tests with Storybook and interaction testing',
-  '8.3': 'Simplify server state with caching, refetching, and mutations',
-  '8.4': 'Explore the future of React with server components',
-  // CSS lessons
-  'css-1.1': 'Understand how CSS matches nodes in the DOM tree and efficient selector strategies',
-  'css-1.2': 'Master the specificity calculation and understand inheritance patterns',
-  'css-1.3': 'Deep dive into box-sizing, margin collapse, and display properties',
-  'css-2.1': 'Learn relative, absolute, fixed, sticky positioning and stacking contexts',
-  'css-2.2': 'Master the one-dimensional layout system with flex properties',
-  'css-2.3': 'Create two-dimensional layouts with grid areas and fractional units',
-  'css-2.4': 'Build responsive designs with media queries and fluid typography',
-  'css-3.1': 'Create gradients, layered backgrounds, and CSS shapes',
-  'css-3.2': 'Animate performantly with transforms and keyframes',
-  'css-4.1': 'Use custom properties for theming and dynamic layouts',
-  'css-4.2': 'Learn BEM naming conventions and utility-first CSS approaches',
-  'css-4.3': 'Build accessible interfaces with proper focus management',
-};
+// Lesson type from config
+interface LessonConfig {
+  id: string;
+  section: string;
+  module: number;
+  title: string;
+  description: string;
+}
 
 interface HomepageProps {
   onStartLearning: (sectionId?: string) => void;
@@ -110,12 +67,8 @@ export default function Homepage({
   const cssModules = (
     config.modules as Array<{ id: number; section: string; title: string; color: string }>
   ).filter((m) => m.section === 'css');
-  const reactLessons = (
-    config.lessons as Array<{ id: string; section: string; module: number; title: string }>
-  ).filter((l) => l.section === 'react');
-  const cssLessons = (
-    config.lessons as Array<{ id: string; section: string; module: number; title: string }>
-  ).filter((l) => l.section === 'css');
+  const reactLessons = (config.lessons as LessonConfig[]).filter((l) => l.section === 'react');
+  const cssLessons = (config.lessons as LessonConfig[]).filter((l) => l.section === 'css');
 
   return (
     <div className="min-h-screen bg-base-100 overflow-auto">
@@ -547,14 +500,14 @@ export default function Homepage({
                           className="text-xs font-mono px-2 py-1 rounded"
                           style={{ backgroundColor: `${mod.color}15`, color: mod.color }}
                         >
-                          {lesson.id}
+                          {lesson.id.replace('react-', '')}
                         </span>
                         <div className="flex-1 min-w-0">
                           <div className="font-medium group-hover:text-primary transition-colors">
                             {lesson.title}
                           </div>
                           <p className="text-sm text-base-content/50 truncate">
-                            {LESSON_DESCRIPTIONS[lesson.id] || 'Explore this topic in depth'}
+                            {lesson.description}
                           </p>
                         </div>
                         <HiOutlineArrowRight
@@ -639,7 +592,7 @@ export default function Homepage({
                               {lesson.title}
                             </div>
                             <p className="text-sm text-base-content/50 truncate">
-                              {LESSON_DESCRIPTIONS[lesson.id] || 'Explore this topic in depth'}
+                              {lesson.description}
                             </p>
                           </div>
                           <span className="badge badge-warning badge-sm">Coming Soon</span>
