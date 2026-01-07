@@ -26,6 +26,9 @@ interface LessonConfig {
   description: string;
 }
 
+// Completed CSS lessons (not "Coming Soon")
+const COMPLETED_CSS_LESSONS = new Set(['css-1.1', 'css-1.2']);
+
 interface HomepageProps {
   onStartLearning: (sectionId?: string) => void;
   settings: AppSettings;
@@ -150,9 +153,14 @@ export default function Homepage({
                       />
                     </div>
                     <div className="flex-1">
-                      <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                        {section.title}
-                      </h2>
+                      <div className="flex items-center gap-2 mb-2">
+                        <h2 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                          {section.title}
+                        </h2>
+                        {!isReact && (
+                          <span className="badge badge-warning badge-sm">Under Development</span>
+                        )}
+                      </div>
                       <p className="text-base-content/60 text-sm mb-4">
                         {isReact
                           ? 'From components to server-side rendering — master modern React development.'
@@ -575,6 +583,7 @@ export default function Homepage({
                   <div className="divide-y divide-base-content/5">
                     {moduleLessons.map((lesson) => {
                       const displayId = lesson.id.replace('css-', '');
+                      const isComplete = COMPLETED_CSS_LESSONS.has(lesson.id);
                       return (
                         <a
                           key={lesson.id}
@@ -595,7 +604,9 @@ export default function Homepage({
                               {lesson.description}
                             </p>
                           </div>
-                          <span className="badge badge-warning badge-sm">Coming Soon</span>
+                          {!isComplete && (
+                            <span className="badge badge-warning badge-sm">Coming Soon</span>
+                          )}
                           <HiOutlineArrowRight
                             size={16}
                             className="text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0"

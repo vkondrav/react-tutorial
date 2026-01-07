@@ -138,14 +138,17 @@ export const CSSCourseOutline: Story = {
   play: async ({ canvasElement }) => {
     // Should have CSS course section
     expect(canvasElement.textContent).toContain('CSS Course');
-    expect(canvasElement.textContent).toContain('12 Lessons Across 12 Modules');
+    expect(canvasElement.textContent).toContain('12 Lessons Across 4 Modules');
 
     // Should have CSS modules
-    expect(canvasElement.textContent).toContain('Syntax & Parsing');
+    expect(canvasElement.textContent).toContain('Core Foundations');
+    expect(canvasElement.textContent).toContain('Layout Mastery');
+    expect(canvasElement.textContent).toContain('Visuals & Interactivity');
+    expect(canvasElement.textContent).toContain('Architecture at Scale');
+
+    // Should have CSS lessons
     expect(canvasElement.textContent).toContain('Flexbox');
     expect(canvasElement.textContent).toContain('CSS Grid');
-    expect(canvasElement.textContent).toContain('Animations');
-    expect(canvasElement.textContent).toContain('CSS Variables');
     expect(canvasElement.textContent).toContain('Accessibility');
   },
 };
@@ -396,13 +399,14 @@ export const HeroCtaButtons: Story = {
 };
 
 /**
- * Tests CSS lessons show "Coming Soon" badge
+ * Tests incomplete CSS lessons show "Coming Soon" badge
  */
 export const CSSLessonsComingSoon: Story = {
   play: async ({ canvasElement }) => {
-    // CSS lessons should have "Coming Soon" badges
+    // CSS lessons should have "Coming Soon" badges (10 incomplete)
+    // Plus 1 "Under Development" badge on the course card = 11 total warning badges
     const comingSoonBadges = canvasElement.querySelectorAll('.badge-warning');
-    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(12); // 12 CSS lessons
+    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(10);
   },
 };
 
@@ -415,9 +419,9 @@ export const CourseCardCounts: Story = {
     expect(canvasElement.textContent).toContain('34 lessons');
     expect(canvasElement.textContent).toContain('8 modules');
 
-    // CSS card should show 12 lessons, 12 modules
+    // CSS card should show 12 lessons, 4 modules
     expect(canvasElement.textContent).toContain('12 lessons');
-    expect(canvasElement.textContent).toContain('12 modules');
+    expect(canvasElement.textContent).toContain('4 modules');
   },
 };
 
@@ -465,6 +469,6 @@ export const SectionHeaders: Story = {
 
     // Both sections should have lesson counts in headers
     expect(canvasElement.textContent).toContain('34 Lessons Across 8 Modules');
-    expect(canvasElement.textContent).toContain('12 Lessons Across 12 Modules');
+    expect(canvasElement.textContent).toContain('12 Lessons Across 4 Modules');
   },
 };
