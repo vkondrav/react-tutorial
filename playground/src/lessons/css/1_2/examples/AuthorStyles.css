@@ -1,0 +1,18 @@
+/* Your CSS file */
+.btn {
+  background: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.card {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+/* Overriding browser defaults */
+a {
+  color: #60a5fa; /* Custom link color */
+  text-decoration: none;
+}

@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 1: Syntax & Parsing ⏳ In Progress |
-| **Current Lesson** | CSS 1.1: Syntax, Parsing & The DOM ✅ |
-| **Next Lesson** | CSS 1.2: Selectors & Specificity |
+| **Current Lesson** | CSS 1.2: Cascade, Specificity & Inheritance ✅ |
+| **Next Lesson** | CSS 1.3: Box Model & Flow |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -47,6 +47,13 @@
 - **Static code** → Create files in `examples/` folder, import with `?raw`, pass to `CodeSnippet`
 - **Dynamic code** (changes based on user input) → Generate string inline, pass to `CodeSnippet`
 - **Never use raw `<pre><code>` elements** — always use `CodeSnippet` for consistent syntax highlighting
+
+#### CSS Course Code Examples
+
+- **All CSS code examples** must be in `.css` files in the `examples/` folder
+- Import using `?raw` suffix: `import code from './examples/Example.css?raw'`
+- This applies to both React and CSS lessons — consistency across the codebase
+- Dynamic code (e.g., showing live values from state) can remain inline
 
 #### Storybook Coverage Notes (Added Dec 14, 2025)
 
@@ -241,8 +248,8 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 1.1 | Syntax, Parsing & The DOM | ✅ Complete | Selector matching, right-to-left parsing, pseudo-classes vs pseudo-elements |
-| 1.2 | Selectors & Specificity | ⬜ Not Started | Coming Soon |
-| 1.3 | Cascade & Inheritance | ⬜ Not Started | Coming Soon |
+| 1.2 | Cascade, Specificity & Inheritance | ✅ Complete | 3 style origins, specificity calculator, !important, inheritance keywords |
+| 1.3 | Box Model & Flow | ⬜ Not Started | Coming Soon |
 
 ### CSS Module 2: The Box Model & Layout ⬜ Not Started
 
@@ -1067,6 +1074,13 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Pseudo-elements (::before, ::after, ::first-letter) - targeting element parts
 - [x] Single colon vs double colon syntax
 - [x] CSS-only tooltips with ::after and content property
+- [x] Three style origins: User Agent, User, Author
+- [x] Specificity scoring: (Inline, ID, Class, Element)
+- [x] Inline styles > ID > Class/Attribute > Element
+- [x] !important override and its dangers
+- [x] Specificity wars - why !important causes maintenance nightmares
+- [x] Inherited properties (text-related) vs non-inherited (box model)
+- [x] Inheritance control: inherit, initial, unset, revert keywords
 - [ ] ...more to come
 
 ---

@@ -1,0 +1,14 @@
+/* Force border to inherit (doesn't normally) */
+.child {
+  border: inherit;
+}
+
+/* Reset all properties on an element */
+.reset {
+  all: unset;
+}
+
+/* Undo your CSS, keep browser defaults */
+button.unstyled {
+  all: revert;
+}

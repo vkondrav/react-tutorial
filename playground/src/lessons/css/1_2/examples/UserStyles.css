@@ -1,0 +1,17 @@
+/* User stylesheet (set in browser settings) */
+
+/* Force minimum font size */
+* {
+  font-size: max(16px, 1em) !important;
+}
+
+/* High contrast mode */
+body {
+  background: black !important;
+  color: white !important;
+}
+
+/* Custom font for readability */
+body {
+  font-family: 'OpenDyslexic', sans-serif !important;
+}
