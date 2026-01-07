@@ -1,15 +1,13 @@
-import { DiReact } from 'react-icons/di';
+import { DiReact, DiCss3 } from 'react-icons/di';
 import {
   HiOutlineDesktopComputer,
   HiOutlineTerminal,
   HiOutlineLightBulb,
   HiOutlineEye,
   HiOutlinePencilAlt,
-  HiOutlinePlay,
   HiOutlineExternalLink,
   HiOutlineChevronRight,
   HiOutlineFolder,
-  HiOutlineBookOpen,
   HiOutlineArrowRight,
   HiOutlineTemplate,
 } from 'react-icons/hi';
@@ -21,6 +19,7 @@ import ViewSourceButton from './lessons/components/ViewSourceButton';
 
 // Lesson descriptions for the course outline
 const LESSON_DESCRIPTIONS: Record<string, string> = {
+  // React lessons
   '1.1': 'Discover why React powers modern web apps and how its component model works',
   '1.2': 'Scaffold a React project with Vite, explore the file structure, and run your first app',
   '1.3': 'Learn the syntax that blends HTML with JavaScript and makes React intuitive',
@@ -55,12 +54,43 @@ const LESSON_DESCRIPTIONS: Record<string, string> = {
   '8.2': 'Write component tests with Storybook and interaction testing',
   '8.3': 'Simplify server state with caching, refetching, and mutations',
   '8.4': 'Explore the future of React with server components',
+  // CSS lessons
+  'css-1.1': 'Understand how CSS matches nodes in the DOM tree and efficient selector strategies',
+  'css-1.2': 'Master the specificity calculation and understand inheritance patterns',
+  'css-1.3': 'Deep dive into box-sizing, margin collapse, and display properties',
+  'css-2.1': 'Learn relative, absolute, fixed, sticky positioning and stacking contexts',
+  'css-2.2': 'Master the one-dimensional layout system with flex properties',
+  'css-2.3': 'Create two-dimensional layouts with grid areas and fractional units',
+  'css-2.4': 'Build responsive designs with media queries and fluid typography',
+  'css-3.1': 'Create gradients, layered backgrounds, and CSS shapes',
+  'css-3.2': 'Animate performantly with transforms and keyframes',
+  'css-4.1': 'Use custom properties for theming and dynamic layouts',
+  'css-4.2': 'Learn BEM naming conventions and utility-first CSS approaches',
+  'css-4.3': 'Build accessible interfaces with proper focus management',
 };
 
 interface HomepageProps {
-  onStartLearning: () => void;
+  onStartLearning: (sectionId?: string) => void;
   settings: AppSettings;
   onSaveSettings: (settings: AppSettings) => void;
+}
+
+// Section icon component
+function SectionIcon({
+  sectionId,
+  className,
+  size,
+  style,
+}: {
+  sectionId: string;
+  className?: string;
+  size?: number;
+  style?: React.CSSProperties;
+}): React.ReactElement {
+  if (sectionId === 'css') {
+    return <DiCss3 className={className} size={size} style={style} />;
+  }
+  return <DiReact className={className} size={size} style={style} />;
 }
 
 export default function Homepage({
@@ -68,6 +98,25 @@ export default function Homepage({
   settings,
   onSaveSettings,
 }: HomepageProps): React.ReactElement {
+  const sections = config.sections as Array<{
+    id: string;
+    title: string;
+    icon: string;
+    color: string;
+  }>;
+  const reactModules = (
+    config.modules as Array<{ id: number; section: string; title: string; color: string }>
+  ).filter((m) => m.section === 'react');
+  const cssModules = (
+    config.modules as Array<{ id: number; section: string; title: string; color: string }>
+  ).filter((m) => m.section === 'css');
+  const reactLessons = (
+    config.lessons as Array<{ id: string; section: string; module: number; title: string }>
+  ).filter((l) => l.section === 'react');
+  const cssLessons = (
+    config.lessons as Array<{ id: string; section: string; module: number; title: string }>
+  ).filter((l) => l.section === 'css');
+
   return (
     <div className="min-h-screen bg-base-100 overflow-auto">
       {/* Hero Section */}
@@ -102,60 +151,104 @@ export default function Homepage({
               className="text-primary text-6xl"
               style={{ animation: 'spin 20s linear infinite' }}
             />
-            <span className="font-bold text-3xl tracking-tight">React Tutorial</span>
+            <span className="font-bold text-3xl tracking-tight">Web Dev Tutorial</span>
           </div>
 
           {/* Tagline */}
           <h1 className="text-center text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Learn React by{' '}
+            Learn by{' '}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-secondary to-accent">
               Reading the Source
             </span>
           </h1>
 
           <p className="text-center text-xl text-base-content/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-            An interactive course designed to be run{' '}
+            Interactive courses in React and CSS designed to be run{' '}
             <span className="text-primary font-semibold">locally on your machine</span>. Each lesson
-            is real React code you can inspect, modify, and learn from.
+            is real code you can inspect, modify, and learn from.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <button
-              onClick={onStartLearning}
-              className="btn btn-primary btn-lg gap-2 px-8 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow"
-            >
-              <HiOutlinePlay size={22} />
-              Start Learning
-              <HiOutlineChevronRight size={18} />
-            </button>
+          {/* Course Selection Cards */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {sections.map((section) => {
+              const isReact = section.id === 'react';
+              const sectionLessons = isReact ? reactLessons : cssLessons;
+              const sectionModules = isReact ? reactModules : cssModules;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => onStartLearning(section.id)}
+                  className="group bg-base-200/50 hover:bg-base-200 border border-base-content/10 hover:border-base-content/20 rounded-2xl p-8 text-left transition-all hover:shadow-lg"
+                  style={{
+                    borderTopWidth: 4,
+                    borderTopColor: section.color,
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-16 h-16 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${section.color}20` }}
+                    >
+                      <SectionIcon
+                        sectionId={section.id}
+                        size={36}
+                        className="transition-transform group-hover:scale-110"
+                        style={{ color: section.color }}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {section.title}
+                      </h2>
+                      <p className="text-base-content/60 text-sm mb-4">
+                        {isReact
+                          ? 'From components to server-side rendering — master modern React development.'
+                          : 'From selectors to animations — understand the physics of CSS layout.'}
+                      </p>
+                      <div className="flex items-center gap-4 text-xs text-base-content/50">
+                        <span>{sectionLessons.length} lessons</span>
+                        <span>•</span>
+                        <span>{sectionModules.length} modules</span>
+                      </div>
+                    </div>
+                    <HiOutlineChevronRight
+                      size={24}
+                      className="text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all mt-2"
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
+          {/* Quick Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             {/* Settings Button */}
             <SettingsModal
               settings={settings}
               onSave={onSaveSettings}
-              buttonClassName="btn btn-secondary btn-lg gap-2"
-              buttonLabel="Adjust Settings"
+              buttonClassName="btn btn-primary btn-lg gap-2"
+              buttonLabel="Settings"
             />
 
             <a
               href={getStorybookBaseUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-accent btn-lg gap-2"
+              className="btn btn-secondary btn-lg gap-2"
             >
               <HiOutlineTemplate size={20} />
-              View Storybook
+              Storybook
             </a>
 
             <a
               href="https://github.com/vkondrav/react-tutorial"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline btn-lg gap-2"
+              className="btn btn-accent btn-lg gap-2"
             >
               <FaGithub size={20} />
-              View on GitHub
+              GitHub
               <HiOutlineExternalLink size={16} />
             </a>
           </div>
@@ -234,14 +327,14 @@ export default function Homepage({
                 </div>
                 <h3 className="font-bold text-lg mb-2">Learn Interactively</h3>
                 <p className="text-base-content/60 text-sm leading-relaxed mb-4">
-                  Work through 30+ lessons with live demos you can interact with in the browser.
+                  Work through 40+ lessons across React and CSS with live demos.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="badge badge-outline badge-sm">Components</span>
                   <span className="badge badge-outline badge-sm">Hooks</span>
-                  <span className="badge badge-outline badge-sm">State</span>
-                  <span className="badge badge-outline badge-sm">Context</span>
-                  <span className="badge badge-outline badge-sm">Patterns</span>
+                  <span className="badge badge-outline badge-sm">Flexbox</span>
+                  <span className="badge badge-outline badge-sm">Grid</span>
+                  <span className="badge badge-outline badge-sm">Animations</span>
                 </div>
               </div>
             </div>
@@ -312,7 +405,7 @@ export default function Homepage({
                   <div>
                     <span className="font-semibold">Real project structure</span>
                     <p className="text-base-content/60 text-sm">
-                      Learn patterns you'll use in production React apps
+                      Learn patterns you'll use in production apps
                     </p>
                   </div>
                 </li>
@@ -396,16 +489,16 @@ export default function Homepage({
         </div>
       </div>
 
-      {/* Course Outline */}
+      {/* Course Outline - React */}
       <div className="bg-base-200/30 py-16">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-medium mb-4">
-              <HiOutlineBookOpen size={16} />
-              Course Outline
+            <div className="inline-flex items-center gap-2 bg-[#61dafb]/10 text-[#61dafb] px-3 py-1 rounded-full text-sm font-medium mb-4">
+              <DiReact size={16} />
+              React Course
             </div>
             <h2 className="text-3xl font-bold mb-3">
-              {config.lessons.length} Lessons Across {config.modules.length} Modules
+              {reactLessons.length} Lessons Across {reactModules.length} Modules
             </h2>
             <p className="text-base-content/60 max-w-2xl mx-auto">
               From your first component to server-side rendering — a complete journey through modern
@@ -414,11 +507,11 @@ export default function Homepage({
           </div>
 
           <div className="space-y-8">
-            {config.modules.map((mod) => {
-              const moduleLessons = config.lessons.filter((l) => l.module === mod.id);
+            {reactModules.map((mod) => {
+              const moduleLessons = reactLessons.filter((l) => l.module === mod.id);
               return (
                 <div
-                  key={mod.id}
+                  key={`react-${mod.id}`}
                   className="bg-base-100 rounded-xl border border-base-content/10 overflow-hidden"
                 >
                   {/* Module Header */}
@@ -470,6 +563,93 @@ export default function Homepage({
                         />
                       </a>
                     ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Course Outline - CSS */}
+      <div className="bg-base-200/50 py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-[#264de4]/10 text-[#264de4] px-3 py-1 rounded-full text-sm font-medium mb-4">
+              <DiCss3 size={16} />
+              CSS Course
+            </div>
+            <h2 className="text-3xl font-bold mb-3">
+              {cssLessons.length} Lessons Across {cssModules.length} Modules
+            </h2>
+            <p className="text-base-content/60 max-w-2xl mx-auto">
+              Understand the physics of CSS — from the cascade to animations, build layouts with
+              confidence.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {cssModules.map((mod) => {
+              const moduleLessons = cssLessons.filter((l) => l.module === mod.id);
+              if (moduleLessons.length === 0) return null;
+              return (
+                <div
+                  key={`css-${mod.id}`}
+                  className="bg-base-100 rounded-xl border border-base-content/10 overflow-hidden"
+                >
+                  {/* Module Header */}
+                  <div
+                    className="px-6 py-4 border-b border-base-content/10"
+                    style={{ borderLeftWidth: 4, borderLeftColor: mod.color }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold"
+                        style={{ backgroundColor: `${mod.color}20`, color: mod.color }}
+                      >
+                        {mod.id}
+                      </span>
+                      <div>
+                        <h3 className="font-bold text-lg">{mod.title}</h3>
+                        <p className="text-xs text-base-content/50">
+                          {moduleLessons.length} lesson{moduleLessons.length > 1 ? 's' : ''}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Lessons */}
+                  <div className="divide-y divide-base-content/5">
+                    {moduleLessons.map((lesson) => {
+                      const displayId = lesson.id.replace('css-', '');
+                      return (
+                        <a
+                          key={lesson.id}
+                          href={`#${lesson.id}`}
+                          className="flex items-center gap-4 px-6 py-4 hover:bg-base-200/50 transition-colors group"
+                        >
+                          <span
+                            className="text-xs font-mono px-2 py-1 rounded"
+                            style={{ backgroundColor: `${mod.color}15`, color: mod.color }}
+                          >
+                            {displayId}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-medium group-hover:text-primary transition-colors">
+                              {lesson.title}
+                            </div>
+                            <p className="text-sm text-base-content/50 truncate">
+                              {LESSON_DESCRIPTIONS[lesson.id] || 'Explore this topic in depth'}
+                            </p>
+                          </div>
+                          <span className="badge badge-warning badge-sm">Coming Soon</span>
+                          <HiOutlineArrowRight
+                            size={16}
+                            className="text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0"
+                          />
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               );

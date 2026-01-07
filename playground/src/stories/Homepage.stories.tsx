@@ -38,13 +38,13 @@ export const Default: Story = {
     const canvas = within(canvasElement);
 
     // Should have hero section
-    expect(canvasElement.textContent).toContain('React Tutorial');
-    expect(canvasElement.textContent).toContain('Learn React by');
+    expect(canvasElement.textContent).toContain('Web Dev Tutorial');
+    expect(canvasElement.textContent).toContain('Learn by');
     expect(canvasElement.textContent).toContain('Reading the Source');
 
-    // Should have CTA buttons
-    expect(canvas.getByRole('button', { name: /Start Learning/i })).toBeInTheDocument();
-    expect(canvas.getByRole('link', { name: /View on GitHub/i })).toBeInTheDocument();
+    // Should have course selection cards
+    expect(canvas.getByRole('button', { name: /React Fundamentals/i })).toBeInTheDocument();
+    expect(canvas.getByRole('button', { name: /CSS Mastery/i })).toBeInTheDocument();
 
     // Should have "The Point" section
     expect(canvasElement.textContent).toContain('THE POINT');
@@ -83,8 +83,8 @@ export const HowItWorksSection: Story = {
     expect(canvasElement.textContent).toContain('npm i');
     expect(canvasElement.textContent).toContain('npm run dev');
 
-    // Should mention lesson count
-    expect(canvasElement.textContent).toContain('30+');
+    // Should mention lesson count (40+ now with CSS)
+    expect(canvasElement.textContent).toContain('40+');
   },
 };
 
@@ -111,15 +111,15 @@ export const WhyLocalSection: Story = {
 };
 
 /**
- * Verifies the course outline section displays all modules
+ * Verifies the React course outline section displays all modules
  */
-export const CourseOutlineModules: Story = {
+export const ReactCourseOutline: Story = {
   play: async ({ canvasElement }) => {
-    // Should have section header
-    expect(canvasElement.textContent).toContain('Course Outline');
-    expect(canvasElement.textContent).toContain('Lessons Across 8 Modules');
+    // Should have React course section
+    expect(canvasElement.textContent).toContain('React Course');
+    expect(canvasElement.textContent).toContain('34 Lessons Across 8 Modules');
 
-    // Should have all 8 modules
+    // Should have all 8 React modules
     expect(canvasElement.textContent).toContain('Foundation');
     expect(canvasElement.textContent).toContain('Core Concepts');
     expect(canvasElement.textContent).toContain('Hooks Deep Dive');
@@ -128,6 +128,25 @@ export const CourseOutlineModules: Story = {
     expect(canvasElement.textContent).toContain('Component Patterns');
     expect(canvasElement.textContent).toContain('State Management');
     expect(canvasElement.textContent).toContain('Advanced Topics');
+  },
+};
+
+/**
+ * Verifies the CSS course outline section displays all modules
+ */
+export const CSSCourseOutline: Story = {
+  play: async ({ canvasElement }) => {
+    // Should have CSS course section
+    expect(canvasElement.textContent).toContain('CSS Course');
+    expect(canvasElement.textContent).toContain('12 Lessons Across 12 Modules');
+
+    // Should have CSS modules
+    expect(canvasElement.textContent).toContain('Syntax & Parsing');
+    expect(canvasElement.textContent).toContain('Flexbox');
+    expect(canvasElement.textContent).toContain('CSS Grid');
+    expect(canvasElement.textContent).toContain('Animations');
+    expect(canvasElement.textContent).toContain('CSS Variables');
+    expect(canvasElement.textContent).toContain('Accessibility');
   },
 };
 
@@ -165,9 +184,9 @@ export const LessonLinksExist: Story = {
   play: async ({ canvasElement }) => {
     // Should have lesson links with hash navigation
     const lessonLinks = canvasElement.querySelectorAll('a[href^="#"]');
-    expect(lessonLinks.length).toBeGreaterThanOrEqual(30); // 34 lessons in the course
+    expect(lessonLinks.length).toBeGreaterThanOrEqual(40); // 34 React + 12 CSS lessons
 
-    // Check specific lesson links exist
+    // Check specific React lesson links exist
     const link11 = canvasElement.querySelector('a[href="#1.1"]');
     const link25 = canvasElement.querySelector('a[href="#2.5"]');
     const link35 = canvasElement.querySelector('a[href="#3.5"]');
@@ -177,24 +196,48 @@ export const LessonLinksExist: Story = {
     expect(link25).toBeInTheDocument();
     expect(link35).toBeInTheDocument();
     expect(link84).toBeInTheDocument();
+
+    // Check CSS lesson links exist
+    const cssLink11 = canvasElement.querySelector('a[href="#css-1.1"]');
+    const cssLink22 = canvasElement.querySelector('a[href="#css-2.2"]');
+    expect(cssLink11).toBeInTheDocument();
+    expect(cssLink22).toBeInTheDocument();
   },
 };
 
 /**
- * Tests the Start Learning button calls the callback
+ * Tests clicking a course card calls the callback
  */
-export const StartLearningButton: Story = {
+export const CourseCardNavigation: Story = {
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
 
-    // Find and click the Start Learning button
-    const startButton = canvas.getByRole('button', { name: /Start Learning/i });
-    expect(startButton).toBeInTheDocument();
+    // Find and click the React Fundamentals card
+    const reactCard = canvas.getByRole('button', { name: /React Fundamentals/i });
+    expect(reactCard).toBeInTheDocument();
 
-    await userEvent.click(startButton);
+    await userEvent.click(reactCard);
 
-    // Should have called onStartLearning
-    expect(args.onStartLearning).toHaveBeenCalledTimes(1);
+    // Should have called onStartLearning with 'react'
+    expect(args.onStartLearning).toHaveBeenCalledWith('react');
+  },
+};
+
+/**
+ * Tests clicking CSS course card calls callback with 'css'
+ */
+export const CSSCourseCardNavigation: Story = {
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    // Find and click the CSS Mastery card
+    const cssCard = canvas.getByRole('button', { name: /CSS Mastery/i });
+    expect(cssCard).toBeInTheDocument();
+
+    await userEvent.click(cssCard);
+
+    // Should have called onStartLearning with 'css'
+    expect(args.onStartLearning).toHaveBeenCalledWith('css');
   },
 };
 
@@ -263,31 +306,31 @@ export const AccessibilityCheck: Story = {
 };
 
 /**
- * Tests the Adjust Settings button in hero section
+ * Tests the Settings button in hero section
  */
 export const SettingsButtonInHero: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Should have the Adjust Settings button
-    const settingsButton = canvas.getByRole('button', { name: /Adjust Settings/i });
+    // Should have the Settings button
+    const settingsButton = canvas.getByRole('button', { name: /Settings/i });
     expect(settingsButton).toBeInTheDocument();
 
-    // Button should be styled correctly (btn-secondary, btn-lg)
-    expect(settingsButton.className).toContain('btn-secondary');
+    // Button should be styled correctly (btn-primary, btn-lg)
+    expect(settingsButton.className).toContain('btn-primary');
     expect(settingsButton.className).toContain('btn-lg');
   },
 };
 
 /**
- * Tests that clicking Adjust Settings opens the modal
+ * Tests that clicking Settings opens the modal
  */
 export const SettingsButtonOpensModal: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Click the Adjust Settings button
-    const settingsButton = canvas.getByRole('button', { name: /Adjust Settings/i });
+    // Click the Settings button
+    const settingsButton = canvas.getByRole('button', { name: /Settings/i });
     await userEvent.click(settingsButton);
 
     // Modal should open
@@ -308,7 +351,7 @@ export const SaveSettingsFromHomepage: Story = {
     const canvas = within(canvasElement);
 
     // Open settings modal
-    await userEvent.click(canvas.getByRole('button', { name: /Adjust Settings/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /Settings/i }));
 
     await waitFor(() => {
       expect(canvas.getByRole('button', { name: /VS Code/i })).toBeInTheDocument();
@@ -328,19 +371,100 @@ export const SaveSettingsFromHomepage: Story = {
 };
 
 /**
- * Tests all three CTA buttons are present in hero
+ * Tests the hero CTA buttons are present
  */
 export const HeroCtaButtons: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Should have Start Learning button
-    expect(canvas.getByRole('button', { name: /Start Learning/i })).toBeInTheDocument();
+    // Should have course selection cards
+    expect(canvas.getByRole('button', { name: /React Fundamentals/i })).toBeInTheDocument();
+    expect(canvas.getByRole('button', { name: /CSS Mastery/i })).toBeInTheDocument();
 
-    // Should have Adjust Settings button
-    expect(canvas.getByRole('button', { name: /Adjust Settings/i })).toBeInTheDocument();
+    // Should have Settings button
+    expect(canvas.getByRole('button', { name: /Settings/i })).toBeInTheDocument();
 
-    // Should have View on GitHub link
-    expect(canvas.getByRole('link', { name: /View on GitHub/i })).toBeInTheDocument();
+    // Should have Storybook link (check by href since accessible name includes icon)
+    const storybookLink = canvasElement.querySelector('a[href*="6006"]');
+    expect(storybookLink).toBeInTheDocument();
+    expect(storybookLink?.textContent).toContain('Storybook');
+
+    // Should have GitHub link
+    const githubLink = canvasElement.querySelector('a[href*="github.com"]');
+    expect(githubLink).toBeInTheDocument();
+  },
+};
+
+/**
+ * Tests CSS lessons show "Coming Soon" badge
+ */
+export const CSSLessonsComingSoon: Story = {
+  play: async ({ canvasElement }) => {
+    // CSS lessons should have "Coming Soon" badges
+    const comingSoonBadges = canvasElement.querySelectorAll('.badge-warning');
+    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(12); // 12 CSS lessons
+  },
+};
+
+/**
+ * Tests course cards display correct lesson and module counts
+ */
+export const CourseCardCounts: Story = {
+  play: async ({ canvasElement }) => {
+    // React card should show 34 lessons, 8 modules
+    expect(canvasElement.textContent).toContain('34 lessons');
+    expect(canvasElement.textContent).toContain('8 modules');
+
+    // CSS card should show 12 lessons, 12 modules
+    expect(canvasElement.textContent).toContain('12 lessons');
+    expect(canvasElement.textContent).toContain('12 modules');
+  },
+};
+
+/**
+ * Tests both course sections have their icons
+ */
+export const CourseIcons: Story = {
+  play: async ({ canvasElement }) => {
+    // Should have React icon (DiReact)
+    const reactIcons = canvasElement.querySelectorAll('svg');
+    expect(reactIcons.length).toBeGreaterThan(0);
+
+    // Course cards should have their themed colors
+    const reactCard = canvasElement.querySelector('button[style*="rgb(97, 218, 251)"]');
+    const cssCard = canvasElement.querySelector('button[style*="rgb(38, 77, 228)"]');
+    expect(reactCard).toBeInTheDocument();
+    expect(cssCard).toBeInTheDocument();
+  },
+};
+
+/**
+ * Tests CSS lesson descriptions are present
+ */
+export const CSSLessonDescriptions: Story = {
+  play: async ({ canvasElement }) => {
+    // CSS lesson descriptions should be shown
+    expect(canvasElement.textContent).toContain('CSS matches nodes in the DOM');
+    expect(canvasElement.textContent).toContain('specificity calculation');
+    expect(canvasElement.textContent).toContain('flex properties');
+    expect(canvasElement.textContent).toContain('grid areas');
+    expect(canvasElement.textContent).toContain('focus management');
+  },
+};
+
+/**
+ * Tests section headers have correct styling
+ */
+export const SectionHeaders: Story = {
+  play: async ({ canvasElement }) => {
+    // React section should have React icon badge
+    expect(canvasElement.textContent).toContain('React Course');
+
+    // CSS section should have CSS icon badge
+    expect(canvasElement.textContent).toContain('CSS Course');
+
+    // Both sections should have lesson counts in headers
+    expect(canvasElement.textContent).toContain('34 Lessons Across 8 Modules');
+    expect(canvasElement.textContent).toContain('12 Lessons Across 12 Modules');
   },
 };

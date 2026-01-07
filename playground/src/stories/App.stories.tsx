@@ -29,47 +29,49 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     // Should show homepage content
-    expect(canvasElement.textContent).toContain('React Tutorial');
-    expect(canvasElement.textContent).toContain('Learn React by');
+    expect(canvasElement.textContent).toContain('Web Dev Tutorial');
+    expect(canvasElement.textContent).toContain('Learn by');
     expect(canvasElement.textContent).toContain('Reading the Source');
   },
 };
 
 /**
- * Homepage has Start Learning button
+ * Homepage has course selection cards
  */
-export const HomepageStartLearning: Story = {
+export const HomepageCourseCards: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Should have Start Learning button
-    const startButton = canvas.getByRole('button', { name: /Start Learning/i });
-    expect(startButton).toBeInTheDocument();
+    // Should have React and CSS course cards
+    const reactCard = canvas.getByRole('button', { name: /React Fundamentals/i });
+    const cssCard = canvas.getByRole('button', { name: /CSS Mastery/i });
+    expect(reactCard).toBeInTheDocument();
+    expect(cssCard).toBeInTheDocument();
   },
 };
 
 /**
- * Homepage has Adjust Settings button
+ * Homepage has Settings button
  */
-export const HomepageAdjustSettings: Story = {
+export const HomepageSettings: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Should have Adjust Settings button
-    const settingsButton = canvas.getByRole('button', { name: /Adjust Settings/i });
+    // Should have Settings button
+    const settingsButton = canvas.getByRole('button', { name: /Settings/i });
     expect(settingsButton).toBeInTheDocument();
   },
 };
 
 /**
- * Clicking Start Learning navigates to first lesson
+ * Clicking React course card navigates to first React lesson
  */
-export const NavigateToFirstLesson: Story = {
+export const NavigateToFirstReactLesson: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Click Start Learning
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    // Click React Fundamentals card
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     // Should show lesson content (sidebar with modules)
     await waitFor(() => {
@@ -83,14 +85,32 @@ export const NavigateToFirstLesson: Story = {
 };
 
 /**
+ * Clicking CSS course card navigates to first CSS lesson
+ */
+export const NavigateToCSSLesson: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Click CSS Mastery card
+    await userEvent.click(canvas.getByRole('button', { name: /CSS Mastery/i }));
+
+    // Should show CSS lesson content
+    await waitFor(() => {
+      expect(canvasElement.textContent).toContain('CSS Mastery');
+      expect(canvasElement.textContent).toContain('Syntax');
+    });
+  },
+};
+
+/**
  * Settings modal opens from homepage
  */
 export const OpenSettingsFromHomepage: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Click Adjust Settings
-    await userEvent.click(canvas.getByRole('button', { name: /Adjust Settings/i }));
+    // Click Settings
+    await userEvent.click(canvas.getByRole('button', { name: /Settings/i }));
 
     // Should show settings modal
     await waitFor(() => {
@@ -110,7 +130,7 @@ export const SettingsInLessonView: Story = {
     const canvas = within(canvasElement);
 
     // Go to a lesson first
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
       expect(canvasElement.textContent).toContain('Lesson 1.1');
@@ -145,7 +165,7 @@ export const ViewSourceTooltip: Story = {
     const canvas = within(canvasElement);
 
     // Go to a lesson first
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
       expect(canvasElement.textContent).toContain('Lesson 1.1');
@@ -163,17 +183,17 @@ export const ViewSourceTooltip: Story = {
 };
 
 /**
- * Sidebar shows all modules
+ * Sidebar shows all modules for React section
  */
-export const SidebarShowsModules: Story = {
+export const SidebarShowsReactModules: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     // Go to a lesson to see sidebar
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
-      // Should show all 8 modules
+      // Should show React modules
       expect(canvasElement.textContent).toContain('Module 1: Foundation');
       expect(canvasElement.textContent).toContain('Module 2: Core Concepts');
       expect(canvasElement.textContent).toContain('Module 3: Hooks Deep Dive');
@@ -190,19 +210,19 @@ export const HomeButtonReturnsToHomepage: Story = {
     const canvas = within(canvasElement);
 
     // Go to a lesson first
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
       expect(canvasElement.textContent).toContain('Lesson 1.1');
     });
 
-    // Click the React Tutorial logo/home button in sidebar
-    const homeButton = canvas.getByRole('button', { name: /React Tutorial/i });
+    // Click the section title/home button in sidebar (now shows "React Fundamentals")
+    const homeButton = canvas.getByRole('button', { name: /React Fundamentals/i });
     await userEvent.click(homeButton);
 
     // Should return to homepage
     await waitFor(() => {
-      expect(canvasElement.textContent).toContain('Learn React by');
+      expect(canvasElement.textContent).toContain('Learn by');
       expect(canvasElement.textContent).toContain('Reading the Source');
     });
   },
@@ -216,7 +236,7 @@ export const ProgressBarVisible: Story = {
     const canvas = within(canvasElement);
 
     // Go to a lesson to see sidebar
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
       // Should show progress section
@@ -234,7 +254,7 @@ export const MarkLessonComplete: Story = {
     const canvas = within(canvasElement);
 
     // Go to a lesson
-    await userEvent.click(canvas.getByRole('button', { name: /Start Learning/i }));
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
 
     await waitFor(() => {
       expect(canvasElement.textContent).toContain('Lesson 1.1');
@@ -256,5 +276,30 @@ export const MarkLessonComplete: Story = {
         expect(markIncompleteButton).toBeInTheDocument();
       });
     }
+  },
+};
+
+/**
+ * Section switcher allows switching between React and CSS
+ */
+export const SectionSwitcher: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Go to React lesson first
+    await userEvent.click(canvas.getByRole('button', { name: /React Fundamentals/i }));
+
+    await waitFor(() => {
+      expect(canvasElement.textContent).toContain('React Fundamentals');
+    });
+
+    // Find and click CSS tab in sidebar
+    const cssTab = canvas.getByRole('button', { name: /^CSS$/i });
+    await userEvent.click(cssTab);
+
+    // Should show CSS modules
+    await waitFor(() => {
+      expect(canvasElement.textContent).toContain('CSS Mastery');
+    });
   },
 };
