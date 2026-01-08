@@ -1,6 +1,10 @@
-# 🚀 React Fundamentals & Best Practices
+# 🚀 React & CSS Mastery
 
-An interactive React tutorial designed to be taught through an AI assistant. Features live playground examples, Storybook integration, and progress tracking.
+An interactive tutorial for React and CSS, designed to be taught through an AI assistant. Features live playground examples, Storybook integration, and progress tracking.
+
+**Two courses available:**
+- **React Fundamentals** — 8 modules, 32 lessons (✅ Complete)
+- **CSS Mastery** — 4 modules, 12 lessons (⏳ In Progress)
 
 ## Quick Start
 
@@ -39,11 +43,17 @@ react-tutorial/
 │   │   ├── lessons/
 │   │   │   ├── config.json      ← Lesson metadata
 │   │   │   ├── components/      ← Shared components
-│   │   │   ├── 1_1/             ← Lesson folders
-│   │   │   │   ├── index.tsx
-│   │   │   │   ├── MyDemo.tsx
-│   │   │   │   └── examples/    ← Code snippets
-│   │   │   └── ...
+│   │   │   ├── react/           ← React lessons
+│   │   │   │   ├── 1_1/         ← Lesson folders
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── MyDemo.tsx
+│   │   │   │   │   └── examples/
+│   │   │   │   └── ...
+│   │   │   └── css/             ← CSS lessons
+│   │   │       ├── 1_1/
+│   │   │       │   ├── index.tsx
+│   │   │       │   └── examples/
+│   │   │       └── ...
 │   │   └── stories/             ← Storybook stories
 │   └── package.json
 └── vite-import-navigator/       ← VS Code extension
@@ -52,6 +62,8 @@ react-tutorial/
 ---
 
 ## Course Modules
+
+### React Fundamentals (✅ Complete)
 
 | Module | Topic | Lessons |
 |--------|-------|---------|
@@ -64,6 +76,15 @@ react-tutorial/
 | 7 | State Management | Lifting state, useReducer, Context + Reducer |
 | 8 | Advanced | SSR, Testing, TanStack Query, React Server Components |
 
+### CSS Mastery (⏳ In Progress)
+
+| Module | Topic | Lessons |
+|--------|-------|---------|
+| 1 | Core Foundations | Selectors & Parsing, Cascade & Specificity, Box Model |
+| 2 | Layout Mastery | Positioning, Flexbox, Grid, Responsive Strategy |
+| 3 | Visuals & Interactivity | Backgrounds & Borders, Transitions & Animations |
+| 4 | Architecture at Scale | CSS Variables, BEM & Utility CSS, Accessibility |
+
 ---
 
 ## Creating a New Lesson
@@ -73,7 +94,8 @@ react-tutorial/
 ```json
 {
   "lessons": [
-    { "id": "1.4", "module": 1, "title": "Components", "status": "current" }
+    { "id": "react-1.4", "section": "react", "module": 1, "title": "Components", "description": "..." },
+    { "id": "css-2.2", "section": "css", "module": 2, "title": "Flexbox", "description": "..." }
   ]
 }
 ```
@@ -81,17 +103,25 @@ react-tutorial/
 ### 2. Create Lesson Folder
 
 ```
-playground/src/lessons/1_4/
+playground/src/lessons/react/1_4/   ← React lessons
 ├── index.tsx           ← Main lesson component
 ├── MyDemo.tsx          ← Interactive demo
 └── examples/           ← Code snippets (with // @ts-nocheck)
     └── Example1.tsx
+
+playground/src/lessons/css/1_4/     ← CSS lessons
+├── index.tsx           ← Main lesson component
+├── MyDemo.tsx          ← Interactive demo
+└── examples/           ← Code snippets (.css files)
+    └── Example1.css
 ```
 
 ### 3. Create Example Code Snippet
 
+**React examples** (`.tsx` files with `// @ts-nocheck`):
+
 ```tsx
-// playground/src/lessons/1_4/examples/Example1.tsx
+// playground/src/lessons/react/1_4/examples/Example1.tsx
 // @ts-nocheck
 function Counter() {
   const [count, setCount] = useState(0);
@@ -104,14 +134,25 @@ function Counter() {
 }
 ```
 
+**CSS examples** (`.css` files):
+
+```css
+/* playground/src/lessons/css/2_2/examples/FlexCenter.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
 The `// @ts-nocheck` comment suppresses TypeScript errors for incomplete snippets (missing imports, etc.). The `CodeSnippet` component automatically strips this line from display.
 
 ### 4. Main Lesson Component
 
 ```tsx
-// playground/src/lessons/1_4/index.tsx
+// playground/src/lessons/react/1_4/index.tsx (or css/1_4/index.tsx)
 import { HiOutlineBookOpen, HiOutlineClipboardCheck } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import MyDemo from './MyDemo';
 
 export default function Lesson1_4(): React.ReactElement {
@@ -135,9 +176,9 @@ export default function Lesson1_4(): React.ReactElement {
 ### 5. Demo Component with Code Snippets
 
 ```tsx
-// playground/src/lessons/1_4/MyDemo.tsx
+// playground/src/lessons/react/1_4/MyDemo.tsx
 import { useState } from 'react';
-import { CodeSnippet } from '../components';
+import { CodeSnippet } from '@components';
 import exampleCode from './examples/Example1.tsx?raw';
 
 export default function MyDemo(): React.ReactElement {
@@ -154,27 +195,52 @@ export default function MyDemo(): React.ReactElement {
 }
 ```
 
-### 6. Register in `App.tsx`
+For CSS lessons, import `.css` files:
 
 ```tsx
-import Lesson1_4 from './lessons/1_4';
+// playground/src/lessons/css/2_2/FlexDemo.tsx
+import { CodeSnippet } from '@components';
+import flexCode from './examples/FlexCenter.css?raw';
 
-const LESSON_COMPONENTS: Record<string, LessonComponent> = {
-  // ...existing lessons
-  '1.4': Lesson1_4,
+export default function FlexDemo(): React.ReactElement {
+  return (
+    <div className="card bg-base-200 p-6">
+      <CodeSnippet title="Flexbox Centering" language="css" code={flexCode} />
+      {/* Interactive demo */}
+    </div>
+  );
+}
+```
+
+### 6. Register in `App.tsx`
+
+Lessons are lazy-loaded. Add to the appropriate section:
+
+```tsx
+// React lessons
+const ReactLesson1_4 = React.lazy(() => import('./lessons/react/1_4'));
+
+// CSS lessons  
+const CSSLesson2_2 = React.lazy(() => import('./lessons/css/2_2'));
+
+const LESSON_COMPONENTS: Record<string, React.LazyExoticComponent<...>> = {
+  // React lessons use 'react-X.X' format
+  'react-1.4': ReactLesson1_4,
+  // CSS lessons use 'css-X.X' format
+  'css-2.2': CSSLesson2_2,
 };
 ```
 
 ### 7. Create Storybook Stories
 
 ```tsx
-// playground/src/stories/lessons/1_4/MyDemo.stories.tsx
+// playground/src/stories/lessons/react/1_4/MyDemo.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent } from '@storybook/test';
-import MyDemo from '../../../lessons/1_4/MyDemo';
+import MyDemo from '@lessons/react/1_4/MyDemo';
 
 const meta: Meta<typeof MyDemo> = {
-  title: 'Lessons/1.4/MyDemo',
+  title: 'Lessons/react-1.4/MyDemo',
   component: MyDemo,
 };
 export default meta;
@@ -187,6 +253,22 @@ export const Default: StoryObj<typeof MyDemo> = {
     await expect(button).toHaveTextContent('Count: 1');
   },
 };
+```
+
+For CSS lessons:
+
+```tsx
+// playground/src/stories/lessons/css/2_2/FlexDemo.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import FlexDemo from '@lessons/css/2_2/FlexDemo';
+
+const meta: Meta<typeof FlexDemo> = {
+  title: 'Lessons/css-2.2/FlexDemo',
+  component: FlexDemo,
+};
+export default meta;
+
+export const Default: StoryObj<typeof FlexDemo> = {};
 ```
 
 ### 8. Update Progress
@@ -232,23 +314,25 @@ Update `PROGRESS.md` to reflect completion status.
 
 ### Code Snippets
 
-- Store in `examples/` folder with `// @ts-nocheck` header
+- Store in `examples/` folder within each lesson
+- **React**: `.tsx` files with `// @ts-nocheck` header (auto-stripped)
+- **CSS**: `.css` files (no header needed)
 - Import with `?raw` suffix: `import code from './examples/Ex.tsx?raw'`
-- Pass to `CodeSnippet` component (auto-strips `@ts-nocheck`)
+- Pass to `CodeSnippet` component with appropriate `language` prop (`tsx` or `css`)
 
 ---
 
 ## Commands
 
 ```bash
-npm run dev                       # Start all servers
+npm run dev                       # Start all servers (app, SSR, storybook)
 npm run dev:app                   # App only
 npm run dev:storybook             # Storybook only
 npm run test                      # Run all tests
-npm run test:react                # Run all react section tests
-npm run test:css                  # Run all css section tests
-npm run test:react:lesson -- 1_1  # Test specific react lesson
-npm run test:css:lesson -- 1_1    # Test specific css lesson
+npm run test:react                # Run all React lesson tests
+npm run test:css                  # Run all CSS lesson tests
+npm run test:react:lesson -- 1_1  # Test specific React lesson
+npm run test:css:lesson -- 1_1    # Test specific CSS lesson
 npm run lint                      # Lint and fix
 npm run format                    # Format with Prettier
 npm run build                     # Build everything
@@ -275,9 +359,15 @@ npm run build                     # Build everything
 3. **Always use TypeScript** (`.tsx` files)
 4. **Create Storybook stories** with interaction tests for new demos
 5. **Update `PROGRESS.md`** after completing work
-6. **URL routing**: `http://localhost:5173/#1.4` loads Lesson 1.4 directly
+6. **URL routing**: `http://localhost:5173/#react-1.4` or `#css-2.2` loads lessons directly
+
+### Lesson ID Format
+
+- React lessons: `react-X.X` (e.g., `react-1.4`, `react-3.2`)
+- CSS lessons: `css-X.X` (e.g., `css-1.1`, `css-2.3`)
 
 ### Navigation Features
 
-- Hash-based routing (`#1.4`)
+- Hash-based routing (`#react-1.4`, `#css-2.2`)
+- Section switcher dropdown in header (React / CSS)
 - "View Source" button opens lesson in Cursor / VSCode / GitHub
