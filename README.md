@@ -1,4 +1,5 @@
 [![CI](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml/badge.svg)](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml)
+[![Deployed](https://img.shields.io/badge/demo-live-brightgreen)](https://react.vkondrav.dev/)
 
 # React & CSS Mastery
 
