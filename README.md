@@ -1,4 +1,6 @@
-# 🚀 React & CSS Mastery
+[![CI](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml/badge.svg)](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml)
+
+# React & CSS Mastery
 
 An interactive tutorial for React and CSS, designed to be taught through an AI assistant. Features live playground examples, Storybook integration, and progress tracking.
 
