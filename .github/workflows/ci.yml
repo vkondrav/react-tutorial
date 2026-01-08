@@ -30,5 +30,4 @@ jobs:
         working-directory: playground
 
       - name: Run checks
-        run: ../scripts/checks.sh
-        working-directory: playground
+        run: ./scripts/checks.sh
