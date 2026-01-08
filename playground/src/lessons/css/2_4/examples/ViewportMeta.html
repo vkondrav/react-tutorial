@@ -1,0 +1,20 @@
+<!-- The viewport meta tag (goes in HTML <head>) -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!--
+  width=device-width
+  Sets the viewport width to the device's screen width.
+  Without this, mobile browsers assume 980px (desktop width).
+  
+  initial-scale=1
+  Sets the initial zoom level to 100%.
+  Prevents the browser from zooming in or out on load.
+-->
+
+<!-- Common variations (usually not recommended): -->
+
+<!-- Disable user zoom (BAD for accessibility!) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<!-- Allow zoom between 1x and 3x -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3" />

@@ -1,0 +1,46 @@
+/* Desktop-First: Start with desktop, undo for mobile */
+
+.container {
+  /* Base styles for desktop (complex!) */
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* Tablet and down */
+@media (max-width: 1023px) {
+  .container {
+    max-width: none;
+    padding: 1.5rem;
+  }
+
+  .sidebar {
+    width: 250px;
+  }
+}
+
+/* Mobile and down */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 100%; /* Undo the sidebar width */
+  }
+}
+
+/* 
+ * Notice how each breakpoint REMOVES features.
+ * We have to "undo" desktop styles for mobile.
+ * This creates more CSS and more overrides.
+ */

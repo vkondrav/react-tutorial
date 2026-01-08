@@ -1,0 +1,51 @@
+/* Fluid Typography with clamp() */
+
+/* The formula: clamp(min, preferred, max) */
+h1 {
+  /* Minimum 2rem, scales at 5vw, maximum 4rem */
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+/* Better formula: vw + rem for smoother scaling */
+h1 {
+  /* Base of 1rem + 3% of viewport width */
+  font-size: clamp(1.5rem, 1rem + 3vw, 3rem);
+}
+
+/* Complete fluid type scale */
+:root {
+  --font-body: clamp(1rem, 0.875rem + 0.5vw, 1.125rem);
+  --font-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --font-xl: clamp(1.25rem, 1rem + 1.25vw, 2rem);
+  --font-2xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --font-3xl: clamp(2rem, 1rem + 3vw, 4rem);
+}
+
+body {
+  font-size: var(--font-body);
+}
+h4 {
+  font-size: var(--font-lg);
+}
+h3 {
+  font-size: var(--font-xl);
+}
+h2 {
+  font-size: var(--font-2xl);
+}
+h1 {
+  font-size: var(--font-3xl);
+}
+
+/* Fluid spacing too! */
+.section {
+  padding: clamp(1rem, 5vw, 4rem);
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+/* Why this works:
+ * clamp(min, preferred, max)
+ * - min: Never go smaller (accessibility)
+ * - preferred: Scale with viewport (usually vw)
+ * - max: Never go larger (design constraint)
+ */

@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
-| **Current Lesson** | CSS 2.3: CSS Grid ✅ |
-| **Next Lesson** | CSS 2.4: Responsive Strategy |
+| **Current Lesson** | CSS 2.4: Responsive Strategy ✅ |
+| **Next Lesson** | CSS 3.1: Backgrounds & Borders |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -251,14 +251,14 @@
 | 1.2 | Cascade, Specificity & Inheritance | ✅ Complete | 3 style origins, specificity calculator, !important, inheritance keywords |
 | 1.3 | The Box Model & Flow | ✅ Complete | box-sizing (content-box vs border-box), margin collapse, display property (block/inline/inline-block) |
 
-### CSS Module 2: Layout Mastery ⏳ In Progress
+### CSS Module 2: Layout Mastery ✅ Complete
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 2.1 | Positioning Contexts | ✅ Complete | Document flow, position values (static/relative/absolute/fixed/sticky), stacking contexts & z-index |
 | 2.2 | Flexbox | ✅ Complete | Main/cross axes, justify-content/align-items, flex shorthand (grow/shrink/basis), common patterns |
 | 2.3 | CSS Grid | ✅ Complete | Explicit vs implicit grid, fr unit, grid-template-areas, alignment (items vs content) |
-| 2.4 | Responsive Strategy | ⬜ Not Started | Coming Soon |
+| 2.4 | Responsive Strategy | ✅ Complete | Viewport meta tag, mobile-first media queries (min-width), fluid typography with clamp() |
 
 ### CSS Module 3: Visuals & Interactivity ⬜ Not Started
 
@@ -1065,6 +1065,33 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 34 - January 8, 2026
+**Goal:** Complete CSS Module 2 - Responsive Strategy
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 2.4: Responsive Strategy**
+  - `index.tsx` - Main lesson with 5 sections
+  - `ViewportMetaDemo.tsx` - Interactive demo showing with/without viewport meta tag
+  - `MediaQueryDemo.tsx` - Mobile-first vs desktop-first comparison with viewport slider
+  - `FluidTypographyDemo.tsx` - Interactive clamp() builder with live preview
+  - `examples/` folder with CSS code snippets (ViewportMeta.css, MobileFirst.css, DesktopFirst.css, FluidTypography.css)
+
+- ✅ **Key Concepts Covered:**
+  - Viewport meta tag: width=device-width, initial-scale=1
+  - Mobile-first (min-width) vs desktop-first (max-width) approaches
+  - Why mobile-first produces less CSS and is recommended
+  - Progressive enhancement vs graceful degradation
+  - clamp(min, preferred, max) for fluid typography
+  - Common typography presets and breakpoints
+
+- ✅ **Added Storybook Stories + Tests**
+  - 28 tests for CSS 2.4 components
+  - Tests cover viewport toggle, approach switching, slider interactions, presets
+
+#### CSS Module 2: Layout Mastery Complete! 🎉
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1223,6 +1250,16 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] justify-items/align-items for cell alignment
 - [x] justify-content/align-content for grid position
 - [x] place-items and place-content shorthands
+- [x] Viewport meta tag: required for responsive design on mobile
+- [x] width=device-width tells browsers to use actual device width, not 980px
+- [x] initial-scale=1 prevents automatic zooming on load
+- [x] Mobile-first media queries: use min-width (styles apply upward)
+- [x] Desktop-first media queries: use max-width (requires more overrides)
+- [x] Progressive enhancement vs graceful degradation
+- [x] Common breakpoints: sm 640px, md 768px, lg 1024px, xl 1280px
+- [x] clamp(min, preferred, max) for fluid values without breakpoints
+- [x] Fluid typography: clamp() with vw units for smooth scaling
+- [x] The preferred value in clamp() typically uses vw or calc(rem + vw)
 - [ ] ...more to come
 
 ---
