@@ -86,7 +86,7 @@ export default function CSSShapesDemo(): React.ReactElement {
               <div className="absolute inset-0 w-48 h-48 mx-auto border-2 border-dashed border-base-content/20 rounded-lg" />
               {/* Clipped element */}
               <div
-                className="w-48 h-48 mx-auto bg-gradient-to-br from-primary to-secondary transition-all duration-300"
+                className="w-48 h-48 mx-auto bg-linear-to-br from-primary to-secondary transition-all duration-300"
                 style={{ clipPath }}
               />
             </div>
@@ -228,7 +228,7 @@ export default function CSSShapesDemo(): React.ReactElement {
 
         <div className="bg-base-300 rounded-lg p-4">
           <div
-            className="w-24 h-24 bg-gradient-to-br from-primary to-secondary float-left mr-4 mb-2"
+            className="w-24 h-24 bg-linear-to-br from-primary to-secondary float-left mr-4 mb-2"
             style={{
               clipPath: 'circle(50%)',
               shapeOutside: showShapeOutside ? 'circle(50%)' : 'none',
@@ -275,7 +275,7 @@ export default function CSSShapesDemo(): React.ReactElement {
           ].map((shape) => (
             <div key={shape.name} className="text-center">
               <div
-                className="w-16 h-16 mx-auto bg-gradient-to-br from-primary to-secondary"
+                className="w-16 h-16 mx-auto bg-linear-to-br from-primary to-secondary"
                 style={{ clipPath: shape.path }}
               />
               <p className="text-xs mt-2">{shape.name}</p>
