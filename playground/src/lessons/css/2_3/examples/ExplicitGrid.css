@@ -1,0 +1,12 @@
+/* Explicit Grid: You define the structure */
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 100px 100px;
+  gap: 10px;
+}
+
+/* You explicitly created:
+   - 3 columns (200px, flexible, 200px)
+   - 2 rows (100px each)
+   - 6 cells total */

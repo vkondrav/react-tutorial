@@ -1,0 +1,24 @@
+/* Alignment has TWO levels in Grid */
+
+/* Level 1: Align items WITHIN their cells */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-items: center; /* Horizontal within cell */
+  align-items: center; /* Vertical within cell */
+}
+
+/* Level 2: Align the GRID within container */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  height: 400px;
+  justify-content: center; /* Center grid horizontally */
+  align-content: center; /* Center grid vertically */
+}
+
+/* Shorthand */
+.container {
+  place-items: center; /* align-items + justify-items */
+  place-content: center; /* align-content + justify-content */
+}

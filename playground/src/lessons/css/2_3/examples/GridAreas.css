@@ -1,0 +1,34 @@
+/* Grid Template Areas: Visual Layout */
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-areas:
+    'header  header'
+    'sidebar main'
+    'footer  footer';
+  gap: 10px;
+  height: 100vh;
+}
+
+/* Assign items to areas */
+.header {
+  grid-area: header;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.main {
+  grid-area: main;
+}
+.footer {
+  grid-area: footer;
+}
+
+/* Use "." for empty cells */
+.alternative {
+  grid-template-areas:
+    'header header header'
+    'sidebar main .'
+    'footer footer footer';
+}

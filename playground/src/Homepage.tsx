@@ -27,7 +27,14 @@ interface LessonConfig {
 }
 
 // Completed CSS lessons (not "Coming Soon")
-const COMPLETED_CSS_LESSONS = new Set(['css-1.1', 'css-1.2', 'css-1.3', 'css-2.1', 'css-2.2']);
+const COMPLETED_CSS_LESSONS = new Set([
+  'css-1.1',
+  'css-1.2',
+  'css-1.3',
+  'css-2.1',
+  'css-2.2',
+  'css-2.3',
+]);
 
 interface HomepageProps {
   onStartLearning: (sectionId?: string) => void;
