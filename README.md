@@ -1,5 +1,5 @@
 [![CI](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml/badge.svg)](https://github.com/vkondrav/react-tutorial/actions/workflows/ci.yml)
-![Cloudflare Pages Status](https://img.shields.io/website?url=https%3A%2F%2Freact.vkondrav.dev%2F&up_message=online&up_color=F38020&down_message=down&down_color=critical&logo=cloudflare&logoColor=white&label=Deployment)
+[![Cloudflare Pages Status](https://img.shields.io/website?url=https%3A%2F%2Freact.vkondrav.dev%2F&up_message=online&up_color=F38020&down_message=down&down_color=critical&logo=cloudflare&logoColor=white&label=Deployment)](https://react.vkondrav.dev/)
 
 # React & CSS Mastery
 
