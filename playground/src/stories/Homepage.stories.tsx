@@ -403,10 +403,10 @@ export const HeroCtaButtons: Story = {
  */
 export const CSSLessonsComingSoon: Story = {
   play: async ({ canvasElement }) => {
-    // CSS lessons should have "Coming Soon" badges (10 incomplete)
-    // Plus 1 "Under Development" badge on the course card = 11 total warning badges
+    // CSS lessons should have "Coming Soon" badges (9 incomplete)
+    // Plus 1 "Under Development" badge on the course card = 10 total warning badges
     const comingSoonBadges = canvasElement.querySelectorAll('.badge-warning');
-    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(10);
+    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(9);
   },
 };
 

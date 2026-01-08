@@ -1,0 +1,30 @@
+/* Block Elements */
+.block-element {
+  display: block;
+  width: 200px; /* Works! */
+  height: 100px; /* Works! */
+  margin: 20px; /* All margins work */
+  padding: 10px; /* All padding works */
+}
+
+/* Inline Elements */
+.inline-element {
+  display: inline;
+  width: 200px; /* IGNORED! */
+  height: 100px; /* IGNORED! */
+  margin-top: 20px; /* IGNORED! */
+  margin-bottom: 20px; /* IGNORED! */
+  margin-left: 10px; /* Works */
+  margin-right: 10px; /* Works */
+  padding: 5px; /* Renders but doesn't affect flow */
+}
+
+/* Inline-Block Elements (Best of Both) */
+.inline-block-element {
+  display: inline-block;
+  width: 200px; /* Works! */
+  height: 100px; /* Works! */
+  margin: 20px; /* All margins work! */
+  padding: 10px; /* All padding works! */
+  /* Flows inline with text */
+}

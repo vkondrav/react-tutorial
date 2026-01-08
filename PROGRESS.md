@@ -1,15 +1,15 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: January 7, 2026
+> Last Updated: January 8, 2026
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
-| **CSS Course** | Module 1: Syntax & Parsing ⏳ In Progress |
-| **Current Lesson** | CSS 1.2: Cascade, Specificity & Inheritance ✅ |
-| **Next Lesson** | CSS 1.3: Box Model & Flow |
+| **CSS Course** | Module 1: Core Foundations ✅ Complete |
+| **Current Lesson** | CSS 1.3: The Box Model & Flow ✅ |
+| **Next Lesson** | CSS 2.1: Positioning Contexts |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -243,15 +243,15 @@
 
 ## CSS Course Progress
 
-### CSS Module 1: Syntax & Parsing ⏳ In Progress
+### CSS Module 1: Core Foundations ✅ Complete
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 1.1 | Syntax, Parsing & The DOM | ✅ Complete | Selector matching, right-to-left parsing, pseudo-classes vs pseudo-elements |
 | 1.2 | Cascade, Specificity & Inheritance | ✅ Complete | 3 style origins, specificity calculator, !important, inheritance keywords |
-| 1.3 | Box Model & Flow | ⬜ Not Started | Coming Soon |
+| 1.3 | The Box Model & Flow | ✅ Complete | box-sizing (content-box vs border-box), margin collapse, display property (block/inline/inline-block) |
 
-### CSS Module 2: The Box Model & Layout ⬜ Not Started
+### CSS Module 2: Layout Mastery ⬜ Not Started
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
@@ -952,6 +952,41 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 30 - January 7, 2026
+**Goal:** Complete CSS Module 1 (Core Foundations)
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 1.2: Cascade, Specificity & Inheritance**
+  - `CascadeOriginsDemo.tsx` - Interactive demo of 3 style origins (User Agent, User, Author)
+  - `SpecificityCalculatorDemo.tsx` - Interactive specificity score calculator
+  - `ImportantDemo.tsx` - Demonstrates !important behavior and dangers
+  - `InheritanceDemo.tsx` - Inherited vs non-inherited properties, control keywords
+  - All code examples moved to `examples/` folder with `?raw` imports
+
+- ✅ **Implemented CSS Lesson 1.3: The Box Model & Flow**
+  - `BoxSizingDemo.tsx` - Visual comparison of content-box vs border-box with math calculations
+  - `MarginCollapseDemo.tsx` - Interactive demo of margin collapse scenarios (siblings, parent-child, empty) and fixes
+  - `DisplayPropertyDemo.tsx` - Block, inline, and inline-block comparison with property behavior table
+  - `examples/` folder with CSS code snippets (`ContentBox.css`, `BorderBox.css`, `MarginCollapse.css`, `DisplayProperty.css`)
+
+- ✅ **Added Storybook Stories + Tests**
+  - 28 tests for CSS 1.3 components
+  - Tests cover box-sizing toggle, margin collapse fixes, display type switching
+
+- ✅ **Fixed CSS Module Structure**
+  - Updated `config.json` to group CSS lessons into 4 modules instead of 12
+  - Module 1: Core Foundations (1.1, 1.2, 1.3)
+  - Module 2: Layout Mastery (2.1, 2.2, 2.3, 2.4)
+  - Module 3: Visuals & Interactivity (3.1, 3.2)
+  - Module 4: Architecture at Scale (4.1, 4.2, 4.3)
+
+- ✅ **Updated Homepage**
+  - Added "Under Development" badge to CSS Mastery course card
+  - "Coming Soon" badges only show on incomplete lessons
+  - Completed lessons (1.1, 1.2, 1.3) show without badge
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1081,6 +1116,12 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Specificity wars - why !important causes maintenance nightmares
 - [x] Inherited properties (text-related) vs non-inherited (box model)
 - [x] Inheritance control: inherit, initial, unset, revert keywords
+- [x] Box model: content, padding, border, margin
+- [x] box-sizing: content-box vs border-box (why border-box is preferred)
+- [x] Margin collapse: vertical margin collapsing behavior
+- [x] Block Formatting Context (BFC) - how overflow, padding, borders prevent margin collapse
+- [x] Display property: block (stacks vertically), inline (flows with text), inline-block (both)
+- [x] Which properties work with each display type
 - [ ] ...more to come
 
 ---

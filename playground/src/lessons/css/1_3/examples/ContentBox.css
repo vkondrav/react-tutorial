@@ -1,0 +1,13 @@
+/* content-box (the frustrating default) */
+.box {
+  box-sizing: content-box; /* default */
+  width: 300px;
+  padding: 20px;
+  border: 5px solid;
+}
+
+/*
+ * Total rendered width:
+ * 300px (content) + 40px (padding) + 10px (border)
+ * = 350px ← NOT what you set!
+ */

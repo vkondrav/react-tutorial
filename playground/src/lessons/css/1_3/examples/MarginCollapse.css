@@ -1,0 +1,28 @@
+/* Margin Collapse Example */
+.paragraph {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/*
+ * Adjacent paragraphs:
+ * Expected gap: 20px + 30px = 50px
+ * Actual gap: 30px (margins collapse to larger value!)
+ */
+
+/* Fix 1: overflow: hidden on parent */
+.container {
+  overflow: hidden;
+}
+
+/* Fix 2: Add padding to parent */
+.container {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+/* Fix 3: Use flexbox (creates BFC) */
+.container {
+  display: flex;
+  flex-direction: column;
+}
