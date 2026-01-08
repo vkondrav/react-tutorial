@@ -1,0 +1,14 @@
+/* Old way: margin on each item */
+.item {
+  margin-right: 8px;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+/* New way: gap on container */
+.container {
+  display: flex;
+  gap: 8px;
+}

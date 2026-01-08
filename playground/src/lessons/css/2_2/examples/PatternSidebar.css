@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+  gap: 8px;
+}
+
+.sidebar {
+  flex: 0 0 120px;
+}
+
+.main {
+  flex: 1;
+}

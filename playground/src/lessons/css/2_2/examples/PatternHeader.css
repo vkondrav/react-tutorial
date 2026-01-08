@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  flex: 0 0 auto;
+}
+
+.nav {
+  flex: 1;
+}
+
+.actions {
+  flex: 0 0 auto;
+}

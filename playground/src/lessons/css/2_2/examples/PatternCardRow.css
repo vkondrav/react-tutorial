@@ -1,0 +1,8 @@
+.card-row {
+  display: flex;
+  gap: 16px;
+}
+
+.card {
+  flex: 1;
+}

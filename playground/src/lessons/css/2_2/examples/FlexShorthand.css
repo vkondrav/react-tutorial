@@ -1,0 +1,60 @@
+/* The flex shorthand: flex-grow | flex-shrink | flex-basis */
+
+/* flex: 1 (most common) */
+.equal-width {
+  flex: 1;
+  /* Expands to: flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+  /* All items share space equally */
+}
+
+/* flex: auto */
+.content-based {
+  flex: auto;
+  /* Expands to: flex-grow: 1, flex-shrink: 1, flex-basis: auto */
+  /* Items grow/shrink but start from their content size */
+}
+
+/* flex: none (fixed size) */
+.fixed-size {
+  flex: none;
+  /* Expands to: flex-grow: 0, flex-shrink: 0, flex-basis: auto */
+  /* Item never grows or shrinks */
+}
+
+/* Custom flex values */
+.sidebar {
+  flex: 0 0 250px;
+  /* Don't grow, don't shrink, fixed 250px width */
+}
+
+.main-content {
+  flex: 1 1 0%;
+  /* Take all remaining space */
+}
+
+/* Proportional sizing */
+.one-third {
+  flex: 1; /* Gets 1 part */
+}
+
+.two-thirds {
+  flex: 2; /* Gets 2 parts */
+}
+
+/* Real-world example: Header layout */
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  flex: 0 0 auto; /* Fixed: don't grow/shrink */
+}
+
+.nav {
+  flex: 1; /* Grows to fill space */
+}
+
+.actions {
+  flex: 0 0 auto; /* Fixed: don't grow/shrink */
+}

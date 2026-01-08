@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
-| **Current Lesson** | CSS 2.1: Positioning Contexts ✅ |
-| **Next Lesson** | CSS 2.2: Flexbox |
+| **Current Lesson** | CSS 2.2: Flexbox ✅ |
+| **Next Lesson** | CSS 2.3: CSS Grid |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -256,7 +256,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 2.1 | Positioning Contexts | ✅ Complete | Document flow, position values (static/relative/absolute/fixed/sticky), stacking contexts & z-index |
-| 2.2 | Flexbox | ⬜ Not Started | Coming Soon |
+| 2.2 | Flexbox | ✅ Complete | Main/cross axes, justify-content/align-items, flex shorthand (grow/shrink/basis), common patterns |
 | 2.3 | CSS Grid | ⬜ Not Started | Coming Soon |
 | 2.4 | Responsive Strategy | ⬜ Not Started | Coming Soon |
 
@@ -1012,6 +1012,31 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 32 - January 8, 2026
+**Goal:** Continue CSS Module 2 - Flexbox
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 2.2: Flexbox**
+  - `index.tsx` - Main lesson with 4 sections
+  - `FlexAxesDemo.tsx` - Interactive demo of flex-direction, justify-content, and align-items
+  - `FlexShorthandDemo.tsx` - Deconstruct flex: grow/shrink/basis with adjustable controls
+  - `FlexLayoutDemo.tsx` - Common patterns (centering, header, cards, sidebar, gap property)
+  - `examples/` folder with CSS code snippets
+
+- ✅ **Key Concepts Covered:**
+  - Main axis vs cross axis (determined by flex-direction)
+  - justify-content (distributes on main axis) vs align-items (aligns on cross axis)
+  - flex shorthand: flex-grow, flex-shrink, flex-basis
+  - Common flex values: flex: 1, flex: auto, flex: none
+  - Common patterns: perfect centering, header layout, card rows, sidebar layout
+  - The gap property for consistent spacing
+
+- ✅ **Added Storybook Stories + Tests**
+  - 28 tests for CSS 2.2 components
+  - Tests cover axis switching, justify/align options, presets, patterns
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1155,6 +1180,13 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Sticky: hybrid - normal until scroll threshold, then sticks within container
 - [x] Stacking contexts: z-index is relative, not global
 - [x] What creates stacking contexts: position+z-index, opacity, transform, filter
+- [x] Flexbox: one-dimensional layout system
+- [x] Main axis (flex-direction) vs cross axis
+- [x] justify-content: distributes space on main axis
+- [x] align-items: aligns items on cross axis
+- [x] flex shorthand: flex-grow, flex-shrink, flex-basis
+- [x] Common flex values: flex: 1, flex: auto, flex: none
+- [x] gap property for spacing flex/grid items
 - [ ] ...more to come
 
 ---

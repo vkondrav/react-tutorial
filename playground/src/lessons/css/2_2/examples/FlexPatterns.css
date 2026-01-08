@@ -1,0 +1,88 @@
+/* Pattern 1: Perfect Centering */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Pattern 2: Header Layout */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.header .logo {
+  flex: 0 0 auto; /* Fixed size */
+}
+
+.header .nav {
+  flex: 1; /* Takes remaining space */
+}
+
+.header .actions {
+  flex: 0 0 auto; /* Fixed size */
+}
+
+/* Pattern 3: Equal-Width Cards */
+.card-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.card-row .card {
+  flex: 1; /* All cards equal width */
+}
+
+/* Pattern 4: Sidebar Layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex: 0 0 250px; /* Fixed 250px width */
+}
+
+.main-content {
+  flex: 1; /* Fills remaining space */
+}
+
+/* Pattern 5: The gap Property */
+.spaced-items {
+  display: flex;
+  gap: 1rem; /* Horizontal gap */
+  /* or */
+  row-gap: 1rem; /* Vertical gap */
+  column-gap: 2rem; /* Horizontal gap */
+}
+
+/* Pattern 6: Sticky Footer */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page .content {
+  flex: 1; /* Push footer down */
+}
+
+.page .footer {
+  flex: 0 0 auto;
+}
+
+/* Pattern 7: Input with Button */
+.input-group {
+  display: flex;
+}
+
+.input-group input {
+  flex: 1; /* Input takes available space */
+}
+
+.input-group button {
+  flex: 0 0 auto; /* Button stays fixed size */
+}

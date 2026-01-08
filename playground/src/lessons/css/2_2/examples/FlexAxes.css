@@ -1,0 +1,63 @@
+/* Flex Container Setup */
+.container {
+  display: flex;
+  flex-direction: row; /* default: main axis = horizontal */
+}
+
+/* flex-direction determines the MAIN AXIS */
+.row {
+  flex-direction: row;
+} /* → main axis horizontal */
+.row-reverse {
+  flex-direction: row-reverse;
+}
+.column {
+  flex-direction: column;
+} /* ↓ main axis vertical */
+.column-reverse {
+  flex-direction: column-reverse;
+}
+
+/* justify-content: distributes space on MAIN AXIS */
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* align-items: aligns items on CROSS AXIS */
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.align-center {
+  align-items: center;
+}
+.align-stretch {
+  align-items: stretch;
+} /* default */
+.align-baseline {
+  align-items: baseline;
+}
+
+/* The most common centering trick */
+.center-everything {
+  display: flex;
+  justify-content: center; /* center on main axis */
+  align-items: center; /* center on cross axis */
+}
