@@ -1,0 +1,44 @@
+/* clip-path: Clips an element to a shape */
+
+/* Circle: circle(radius at position) */
+.avatar {
+  clip-path: circle(50%);
+  /* or: circle(100px at center) */
+}
+
+/* Ellipse: ellipse(x-radius y-radius at position) */
+.oval {
+  clip-path: ellipse(50% 30% at center);
+}
+
+/* Inset: inset(top right bottom left round radius) */
+.rounded-inset {
+  clip-path: inset(10% 10% 10% 10% round 20px);
+}
+
+/* Polygon: polygon(x1 y1, x2 y2, ...) */
+.triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* shape-outside: Text wrapping around floated elements */
+.float-circle {
+  float: left;
+  width: 200px;
+  height: 200px;
+  clip-path: circle(50%);
+  shape-outside: circle(50%);
+  /* Text will wrap around the circle, not the box */
+}
+
+/* Tip: shape-outside only works on floated elements */
+.float-polygon {
+  float: right;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  shape-outside: polygon(0 0, 100% 0, 100% 100%);
+  shape-margin: 10px; /* spacing around the shape */
+}

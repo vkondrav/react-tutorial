@@ -1,0 +1,33 @@
+/* Conic Gradient: rotates around a center point */
+
+/* Basic color wheel */
+.color-wheel {
+  background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+  border-radius: 50%;
+}
+
+/* Pie chart (hard stops) */
+.pie-chart {
+  background: conic-gradient(
+    #3b82f6 0deg 90deg,
+    /* 25% blue */ #22c55e 90deg 216deg,
+    /* 35% green */ #f97316 216deg 360deg /* 40% orange */
+  );
+  border-radius: 50%;
+}
+
+/* Progress ring */
+.progress-75 {
+  background: conic-gradient(#3b82f6 0%, #3b82f6 75%, #e5e7eb 75%, #e5e7eb 100%);
+  border-radius: 50%;
+}
+
+/* Starting angle */
+.rotated {
+  background: conic-gradient(from 45deg, #f97316, #ec4899, #f97316);
+}
+
+/* Repeating conic */
+.starburst {
+  background: repeating-conic-gradient(#3b82f6 0deg 10deg, #e5e7eb 10deg 20deg);
+}

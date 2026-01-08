@@ -1,0 +1,43 @@
+/* Multiple backgrounds: first is on TOP, last is on BOTTOM */
+
+/* Gradient overlay on image */
+.hero {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)), url('hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Color tint effect */
+.tinted {
+  background:
+    linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(236, 72, 153, 0.8)), url('photo.jpg');
+  background-size: cover;
+}
+
+/* Pattern over gradient */
+.patterned {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.1) 10px,
+      rgba(255, 255, 255, 0.1) 20px
+    ),
+    linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Blend modes (like Photoshop) */
+.blended {
+  background: linear-gradient(135deg, #3b82f6, #ec4899), url('photo.jpg');
+  background-size: cover;
+  background-blend-mode: multiply; /* or: screen, overlay, etc. */
+}
+
+/* Common blend modes:
+ * multiply - darkens (good for shadows)
+ * screen - lightens (good for highlights)
+ * overlay - increases contrast
+ * soft-light - subtle tint
+ * difference - inverts colors
+ */

@@ -1,0 +1,29 @@
+/* Radial Gradient: radiates from a center point */
+
+/* Basic circle */
+.spotlight {
+  background: radial-gradient(circle, #fbbf24, #f97316);
+}
+
+/* Ellipse (default shape) */
+.ellipse {
+  background: radial-gradient(ellipse, #3b82f6, #1e3a8a);
+}
+
+/* Size keywords: closest-side, farthest-corner, etc. */
+.sized {
+  background: radial-gradient(circle closest-side, #22c55e, #15803d);
+}
+
+/* Positioned center */
+.corner {
+  background: radial-gradient(circle at top right, #f97316, transparent 70%);
+}
+
+/* Multiple radial gradients (layered) */
+.bubbles {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.2) 0%, transparent 15%),
+    radial-gradient(circle, #3b82f6, #1e3a8a);
+}

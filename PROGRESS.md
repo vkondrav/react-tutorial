@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
-| **Current Lesson** | CSS 2.4: Responsive Strategy ✅ |
-| **Next Lesson** | CSS 3.1: Backgrounds & Borders |
+| **Current Lesson** | CSS 3.1: Backgrounds & Borders ✅ |
+| **Next Lesson** | CSS 3.2: Transitions & Animations |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -260,11 +260,11 @@
 | 2.3 | CSS Grid | ✅ Complete | Explicit vs implicit grid, fr unit, grid-template-areas, alignment (items vs content) |
 | 2.4 | Responsive Strategy | ✅ Complete | Viewport meta tag, mobile-first media queries (min-width), fluid typography with clamp() |
 
-### CSS Module 3: Visuals & Interactivity ⬜ Not Started
+### CSS Module 3: Visuals & Interactivity ⏳ In Progress
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
-| 3.1 | Backgrounds & Borders | ⬜ Not Started | Coming Soon |
+| 3.1 | Backgrounds & Borders | ✅ Complete | Gradient syntax (linear/radial/conic), hard vs smooth stops, background layering, blend modes, clip-path shapes |
 | 3.2 | Transitions & Animations | ⬜ Not Started | Coming Soon |
 
 ### CSS Module 4: Architecture at Scale ⬜ Not Started
@@ -1088,6 +1088,33 @@ Beginning the Advanced Topics module with Server-Side Rendering.
   - 28 tests for CSS 2.4 components
   - Tests cover viewport toggle, approach switching, slider interactions, presets
 
+---
+
+### Session 35 - January 8, 2026
+**Goal:** Start CSS Module 3 - Backgrounds & Borders
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 3.1: Backgrounds & Borders**
+  - `index.tsx` - Main lesson with 5 sections
+  - `GradientDemo.tsx` - Interactive gradient builder for linear/radial/conic with color presets
+  - `BackgroundLayeringDemo.tsx` - Multi-layer backgrounds with blend mode controls
+  - `CSSShapesDemo.tsx` - clip-path shapes with polygon presets and shape-outside demo
+  - `examples/` folder with CSS code snippets (LinearGradient.css, RadialGradient.css, ConicGradient.css, BackgroundLayering.css, ClipPath.css)
+
+- ✅ **Key Concepts Covered:**
+  - linear-gradient: direction + color stops
+  - radial-gradient: circle/ellipse + size + position
+  - conic-gradient: from angle for pie charts and color wheels
+  - Hard stops (same position) vs smooth transitions
+  - Background layering: first is on top, last is on bottom
+  - background-blend-mode: multiply, screen, overlay, etc.
+  - clip-path: circle(), ellipse(), polygon(), inset()
+  - shape-outside: text wrapping around floated elements
+
+- ✅ **Added Storybook Stories + Tests**
+  - 28 tests for CSS 3.1 components
+  - Tests cover gradient type switching, presets, blend modes, shape toggles
+
 #### CSS Module 2: Layout Mastery Complete! 🎉
 
 ---
@@ -1260,6 +1287,20 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] clamp(min, preferred, max) for fluid values without breakpoints
 - [x] Fluid typography: clamp() with vw units for smooth scaling
 - [x] The preferred value in clamp() typically uses vw or calc(rem + vw)
+- [x] linear-gradient: direction + color stops (e.g., to right, 135deg)
+- [x] radial-gradient: circle/ellipse + size + position + color stops
+- [x] conic-gradient: from angle for pie charts, color wheels, progress rings
+- [x] Hard stops: same position creates sharp edge (e.g., red 50%, blue 50%)
+- [x] Smooth transitions: spread positions for gradual blending
+- [x] Color stop positions: percentages or lengths to control spread
+- [x] Multiple backgrounds: comma-separated, first is on top
+- [x] background-blend-mode: multiply, screen, overlay, soft-light, etc.
+- [x] Blend modes work like Photoshop layer blending
+- [x] clip-path: clips element to shape (circle, ellipse, polygon, inset)
+- [x] polygon() accepts any number of x% y% coordinate pairs
+- [x] inset() for rectangular clips with optional border-radius
+- [x] shape-outside: text wraps around floated element's shape
+- [x] shape-margin: adds spacing around shape-outside
 - [ ] ...more to come
 
 ---

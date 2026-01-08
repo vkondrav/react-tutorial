@@ -1,0 +1,35 @@
+/* Linear Gradient: flows in a straight line */
+
+/* Basic: direction + colors */
+.hero {
+  background: linear-gradient(to right, #f97316, #ec4899);
+}
+
+/* Using degrees (0 = up, 90 = right, 180 = down) */
+.diagonal {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Multiple color stops */
+.rainbow {
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+}
+
+/* Color stops with positions */
+.precise {
+  background: linear-gradient(
+    90deg,
+    #3b82f6 0%,
+    #3b82f6 25%,
+    /* Blue until 25% */ #ec4899 25%,
+    /* Pink starts at 25% (hard edge) */ #ec4899 100%
+  );
+}
+
+/* Gradient text (modern browsers) */
+.gradient-text {
+  background: linear-gradient(90deg, #f97316, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
