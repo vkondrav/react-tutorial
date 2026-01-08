@@ -11,7 +11,7 @@ import {
   HiOutlineCog,
   HiOutlineUser,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import flexibleCode from './examples/FlexibleLayouts.tsx?raw';
 import propsVsCompoundCode from './examples/PropsVsCompound.tsx?raw';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiOutlineEye, HiOutlineQuestionMarkCircle } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import documentFlowCode from './examples/DocumentFlow.css?raw';
 
 type FlowMode = 'in-flow' | 'absolute' | 'fixed';

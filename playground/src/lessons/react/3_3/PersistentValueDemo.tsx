@@ -4,7 +4,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { HiOutlineLightBulb, HiPlay, HiPause, HiOutlineRefresh } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import intervalRefExample from './examples/IntervalRefExample.tsx?raw';
 
 export default function PersistentValueDemo(): React.ReactElement {

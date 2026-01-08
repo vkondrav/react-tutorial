@@ -5,7 +5,7 @@
 import { useState } from 'react';
 import { HiOutlinePlay, HiOutlineCube } from 'react-icons/hi';
 import { IconType } from 'react-icons';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // Import code examples
 import scriptsCode from './examples/ScriptsCode.json?raw';

@@ -3,7 +3,7 @@
 // ============================================
 
 import { useState } from 'react';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // ============================================
 // Types

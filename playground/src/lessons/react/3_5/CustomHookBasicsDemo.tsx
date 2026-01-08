@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiMinus } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useCounterCode from './examples/UseCounterHook.tsx?raw';
 
 // ============================================

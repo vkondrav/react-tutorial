@@ -5,7 +5,7 @@
 
 import { useState, useEffect, ReactNode } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import namedPropCode from './examples/NamedRenderProp.tsx?raw';
 import childrenAsFunctionCode from './examples/ChildrenAsFunction.tsx?raw';
 import toggleComponentCode from './examples/ToggleComponent.tsx?raw';

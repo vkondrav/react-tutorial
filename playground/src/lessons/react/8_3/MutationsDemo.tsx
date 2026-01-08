@@ -18,7 +18,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import mutationPatternCode from './examples/MutationPattern.tsx?raw';
 
 // Create a client for this demo

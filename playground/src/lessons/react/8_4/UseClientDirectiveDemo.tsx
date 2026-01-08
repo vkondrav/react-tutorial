@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiOutlineExclamationCircle, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useClientBoundaryCode from './examples/UseClientBoundary.tsx?raw';
 import useClientGotchasCode from './examples/UseClientGotchas.tsx?raw';
 

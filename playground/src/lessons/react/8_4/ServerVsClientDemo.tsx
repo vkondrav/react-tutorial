@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineServer, HiOutlineDesktopComputer, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import compositionPatternCode from './examples/CompositionPattern.tsx?raw';
 
 interface FeatureRow {

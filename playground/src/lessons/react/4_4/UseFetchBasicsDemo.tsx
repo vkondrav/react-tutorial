@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiX, HiCheck } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import beforeUseFetchCode from './examples/BeforeUseFetch.tsx?raw';
 import afterUseFetchCode from './examples/AfterUseFetch.tsx?raw';
 

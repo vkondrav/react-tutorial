@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback, type ChangeEvent } from 'react';
 import { HiOutlineLightBulb, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useToggleCode from './examples/UseToggleHook.tsx?raw';
 import useLocalStorageUsageCode from './examples/UseLocalStorageUsage.tsx?raw';
 import useDebounceCode from './examples/UseDebounceHook.tsx?raw';

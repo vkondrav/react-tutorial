@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiPlus, HiX, HiCheck, HiOutlineMail, HiOutlineUser, HiOutlinePhone } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 interface ContactForm {
   firstName: string;

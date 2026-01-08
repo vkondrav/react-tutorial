@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import CSSLesson2_3 from '../../../../lessons/css/2_3';
+import CSSLesson2_3 from '@lessons/css/2_3';
 
 const meta: Meta<typeof CSSLesson2_3> = {
   title: 'Lessons/CSS/2.3 CSS Grid/Lesson',

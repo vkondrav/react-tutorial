@@ -12,7 +12,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import providerPatternExample from './examples/ProviderPatternExample.tsx?raw';
 import customHookExample from './examples/CustomHookExample.tsx?raw';
 import consumerExample from './examples/ConsumerExample.tsx?raw';

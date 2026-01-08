@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineExclamationCircle, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import emptyArrayExample from './examples/EmptyArrayExample.tsx?raw';
 import withDepsExample from './examples/WithDepsExample.tsx?raw';
 import noArrayExample from './examples/NoArrayExample.tsx?raw';

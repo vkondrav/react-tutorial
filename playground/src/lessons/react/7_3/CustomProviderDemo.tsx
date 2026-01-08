@@ -4,7 +4,7 @@
 
 import { useState, useReducer, createContext, useContext, useCallback } from 'react';
 import { HiOutlineLightBulb, HiCheck, HiPlus, HiMinus, HiTrash } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import advancedPatternsCode from './examples/AdvancedPatterns.tsx?raw';
 
 // ============================================

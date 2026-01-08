@@ -10,7 +10,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import serverComponentCode from './examples/ServerComponent.tsx?raw';
 import clientComponentCode from './examples/ClientComponent.tsx?raw';
 

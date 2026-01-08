@@ -9,7 +9,7 @@ import {
   HiOutlineClock,
   HiOutlineCheck,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import playFunctionCode from './examples/PlayFunction.tsx?raw';
 import queryMethodsCode from './examples/QueryMethods.tsx?raw';
 import asyncTestingCode from './examples/AsyncTesting.tsx?raw';

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import textInputCode from './examples/TextInput.tsx?raw';
 import textareaCode from './examples/Textarea.tsx?raw';
 import selectCode from './examples/Select.tsx?raw';

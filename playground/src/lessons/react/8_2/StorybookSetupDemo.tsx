@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineChevronRight, HiOutlineChevronDown } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import storyBasicsCode from './examples/StoryBasics.tsx?raw';
 import previewCode from './examples/StorybookPreview.tsx?raw';
 

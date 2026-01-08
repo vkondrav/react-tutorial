@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import traditionalCode from './examples/TraditionalApproach.tsx?raw';
 import compoundCode from './examples/CompoundApproach.tsx?raw';
 

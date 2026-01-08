@@ -11,7 +11,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import createContextExample from './examples/CreateContextExample.tsx?raw';
 import providerExample from './examples/ProviderExample.tsx?raw';
 import useContextExample from './examples/UseContextExample.tsx?raw';

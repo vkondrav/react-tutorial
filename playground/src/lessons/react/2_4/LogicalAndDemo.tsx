@@ -14,7 +14,7 @@ import {
   HiOutlineExclamationCircle,
   HiOutlineBell,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import logicalAndGoodExample from './examples/LogicalAndGoodExample.tsx?raw';
 import logicalAndGotchaExample from './examples/LogicalAndGotchaExample.tsx?raw';
 import logicalAndFixExample from './examples/LogicalAndFixExample.tsx?raw';

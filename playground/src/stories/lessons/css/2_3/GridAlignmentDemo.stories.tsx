@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import GridAlignmentDemo from '../../../../lessons/css/2_3/GridAlignmentDemo';
+import GridAlignmentDemo from '@lessons/css/2_3/GridAlignmentDemo';
 
 const meta: Meta<typeof GridAlignmentDemo> = {
   title: 'Lessons/CSS/2.3 CSS Grid/GridAlignmentDemo',

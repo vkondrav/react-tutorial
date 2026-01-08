@@ -9,7 +9,7 @@ import {
   HiOutlineCube,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import ProjectStructureExplorer from './ProjectStructureExplorer';
 import FileFlowDemo from './FileFlowDemo';
 import HMRDemo from './HMRDemo';

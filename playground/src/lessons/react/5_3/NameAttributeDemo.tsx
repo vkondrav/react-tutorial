@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiOutlineArrowRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import genericHandlerCode from './examples/GenericHandler.tsx?raw';
 
 export default function NameAttributeDemo(): React.ReactElement {

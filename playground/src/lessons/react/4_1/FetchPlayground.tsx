@@ -10,7 +10,7 @@ import {
   HiOutlineDocumentText,
   HiOutlineRefresh,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import pollingPatternCode from './examples/PollingPattern.tsx?raw';
 
 // Types

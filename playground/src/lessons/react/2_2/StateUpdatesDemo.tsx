@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineRefresh, HiOutlineArrowRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import functionalUpdatesExample from './examples/FunctionalUpdates.tsx?raw';
 
 // ============================================

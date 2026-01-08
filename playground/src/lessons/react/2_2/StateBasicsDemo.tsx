@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiMinus, HiPlus, HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import counterExample from './examples/CounterExample.tsx?raw';
 
 // ============================================

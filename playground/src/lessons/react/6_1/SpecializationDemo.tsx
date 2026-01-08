@@ -11,7 +11,7 @@ import {
   HiOutlineXCircle,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import specializationCode from './examples/SpecializationPattern.tsx?raw';
 import usageCode from './examples/SpecializationUsage.tsx?raw';
 

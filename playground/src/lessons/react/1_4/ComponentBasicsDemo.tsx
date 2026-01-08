@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import functionDeclaration from './examples/FunctionDeclaration.tsx?raw';
 import arrowFunction from './examples/ArrowFunction.tsx?raw';
 import arrowImplicit from './examples/ArrowImplicit.tsx?raw';

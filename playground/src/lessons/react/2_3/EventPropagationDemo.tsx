@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import stopPropagationExample from './examples/StopPropagationExample.tsx?raw';
 import preventDefaultExample from './examples/PreventDefaultExample.tsx?raw';
 

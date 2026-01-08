@@ -11,7 +11,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import putRequestCode from './examples/PutRequest.tsx?raw';
 import patchRequestCode from './examples/PatchRequest.tsx?raw';
 

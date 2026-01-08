@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import cssCode from './examples/CSSHiding.tsx?raw';
 
 // Counter component with state

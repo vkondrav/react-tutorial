@@ -12,7 +12,7 @@ import {
   HiOutlineUser,
   HiX,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // ============================================
 // Types

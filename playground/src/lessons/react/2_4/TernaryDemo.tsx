@@ -11,7 +11,7 @@ import {
   HiOutlineXCircle,
   HiOutlineUser,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import themeToggleExample from './examples/ThemeToggleExample.tsx?raw';
 import nestedTernaryExample from './examples/NestedTernaryExample.tsx?raw';
 

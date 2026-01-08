@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import namingCode from './examples/NamingConvention.tsx?raw';
 import displayNameCode from './examples/DisplayName.tsx?raw';
 import passPropsCode from './examples/PassProps.tsx?raw';

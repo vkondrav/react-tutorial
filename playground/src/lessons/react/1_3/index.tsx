@@ -12,7 +12,7 @@ import {
   HiOutlineClipboardCheck,
   HiOutlineSparkles,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import JSXTransformDemo from './JSXTransformDemo';
 import DifferencesExplorer from './DifferencesExplorer';
 import EmbeddingDemo from './EmbeddingDemo';

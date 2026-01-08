@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiOutlineArrowRight, HiOutlineCursorClick } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import jsxWriteCode from './examples/JsxWriteCode.tsx?raw';
 import jsxTransformCode from './examples/JsxTransformCode.js?raw';
 

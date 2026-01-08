@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineExternalLink, HiCheck, HiOutlineStar } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // Code examples from separate files
 import zustandExample from './examples/ZustandExample.tsx?raw';

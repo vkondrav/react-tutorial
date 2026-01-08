@@ -11,7 +11,7 @@ import {
   HiOutlineUser,
   HiOutlineCursorClick,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import stateCompositionCode from './examples/StateComposition.tsx?raw';
 import useUsersHookCode from './examples/UseUsersHook.tsx?raw';
 

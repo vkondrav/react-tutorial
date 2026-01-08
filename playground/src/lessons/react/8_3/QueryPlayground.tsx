@@ -17,7 +17,7 @@ import {
   HiOutlineDuplicate,
   HiOutlineLightningBolt,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import suspenseQueryPatternCode from './examples/SuspenseQueryPattern.tsx?raw';
 
 // Create a client for the playground

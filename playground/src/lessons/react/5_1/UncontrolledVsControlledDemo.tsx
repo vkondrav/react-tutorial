@@ -4,7 +4,7 @@
 
 import { useState, useRef } from 'react';
 import { HiOutlineExclamationCircle, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import uncontrolledInputCode from './examples/UncontrolledInput.tsx?raw';
 import controlledInputPatternCode from './examples/ControlledInputPattern.tsx?raw';
 

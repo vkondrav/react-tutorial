@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import onSubmitValidationCode from './examples/OnSubmitValidation.tsx?raw';
 import onBlurValidationCode from './examples/OnBlurValidation.tsx?raw';
 import onChangeValidationCode from './examples/OnChangeValidation.tsx?raw';

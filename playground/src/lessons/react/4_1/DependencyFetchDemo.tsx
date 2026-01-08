@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineUser } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import dependencyFetchCode from './examples/DependencyFetch.tsx?raw';
 
 interface User {

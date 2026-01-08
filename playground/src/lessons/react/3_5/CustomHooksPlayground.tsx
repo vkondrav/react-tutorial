@@ -11,7 +11,7 @@ import {
   HiOutlineClipboard,
   HiCheck,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useOnlineStatusUsageCode from './examples/UseOnlineStatusUsage.tsx?raw';
 import useIntervalUsageCode from './examples/UseIntervalUsage.tsx?raw';
 import useCopyToClipboardUsageCode from './examples/UseCopyToClipboardUsage.tsx?raw';

@@ -9,7 +9,7 @@ import {
   HiOutlineDesktopComputer,
   HiOutlineDatabase,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import documentTitleExample from './examples/DocumentTitleExample.tsx?raw';
 import stopwatchExample from './examples/StopwatchExample.tsx?raw';
 import windowResizeExample from './examples/WindowResizeExample.tsx?raw';

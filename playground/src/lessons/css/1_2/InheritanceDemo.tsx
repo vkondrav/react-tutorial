@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineArrowDown, HiOutlineX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import inheritanceControlCode from './examples/InheritanceControl.css?raw';
 
 interface PropertyInfo {

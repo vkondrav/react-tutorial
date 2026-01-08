@@ -10,7 +10,7 @@ import {
   HiOutlineBeaker,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import PropsBasicsDemo from './PropsBasicsDemo';
 import DestructuringDemo from './DestructuringDemo';
 import DefaultPropsDemo from './DefaultPropsDemo';

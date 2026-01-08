@@ -4,7 +4,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { HiOutlineCursorClick, HiOutlinePhotograph } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import focusInputExample from './examples/FocusInputExample.tsx?raw';
 import scrollIntoViewExample from './examples/ScrollIntoViewExample.tsx?raw';
 import measureDimensionsExample from './examples/MeasureDimensionsExample.tsx?raw';

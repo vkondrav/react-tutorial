@@ -13,7 +13,7 @@ import {
   HiOutlineExternalLink,
   HiOutlineExclamationCircle,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import patternDataFetchingCode from './examples/PatternDataFetching.tsx?raw';
 import patternInteractiveIslandCode from './examples/PatternInteractiveIsland.tsx?raw';
 import patternChildrenPassthroughCode from './examples/PatternChildrenPassthrough.tsx?raw';

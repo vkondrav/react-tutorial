@@ -4,7 +4,7 @@
 
 import { useState, useReducer, createContext, useContext } from 'react';
 import { HiChevronRight, HiChevronDown, HiOutlineLightBulb, HiCheck } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import contextReducerSetupCode from './examples/ContextReducerSetup.tsx?raw';
 import separateContextsCode from './examples/SeparateContexts.tsx?raw';
 import step1TypesCode from './examples/SetupStep1Types.tsx?raw';

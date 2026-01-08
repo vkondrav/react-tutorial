@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineExclamationCircle, HiOutlineLightBulb, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import problemCode from './examples/ConditionalProblem.tsx?raw';
 
 // A component with internal state

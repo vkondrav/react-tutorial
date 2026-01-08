@@ -10,7 +10,7 @@ import {
   HiOutlineLink,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import CascadeOriginsDemo from './CascadeOriginsDemo';
 import SpecificityCalculatorDemo from './SpecificityCalculatorDemo';
 import ImportantDemo from './ImportantDemo';

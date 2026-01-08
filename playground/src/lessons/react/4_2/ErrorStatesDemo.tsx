@@ -13,7 +13,7 @@ import {
   HiOutlineCursorClick,
   HiX,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import inlineErrorCode from './examples/InlineError.tsx?raw';
 import toastErrorCode from './examples/ToastError.tsx?raw';
 

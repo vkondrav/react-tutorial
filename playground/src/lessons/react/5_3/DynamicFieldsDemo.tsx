@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiPlus, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import dynamicFieldsCode from './examples/DynamicFieldsPattern.tsx?raw';
 
 interface PhoneEntry {

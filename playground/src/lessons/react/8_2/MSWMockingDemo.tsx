@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineServer, HiOutlineShieldCheck, HiOutlineLightningBolt } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import mswHandlerCode from './examples/MSWHandler.tsx?raw';
 import storyMswCode from './examples/StoryMSW.tsx?raw';
 

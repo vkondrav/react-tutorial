@@ -3,7 +3,7 @@
 // ============================================
 
 import { useState } from 'react';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import pseudoClassesCode from './examples/PseudoClassesCode.css?raw';
 import pseudoElementsCode from './examples/PseudoElementsCode.css?raw';
 import tooltipCode from './examples/TooltipCode.css?raw';

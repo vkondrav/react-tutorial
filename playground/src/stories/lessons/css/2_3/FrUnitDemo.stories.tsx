@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import FrUnitDemo from '../../../../lessons/css/2_3/FrUnitDemo';
+import FrUnitDemo from '@lessons/css/2_3/FrUnitDemo';
 
 const meta: Meta<typeof FrUnitDemo> = {
   title: 'Lessons/CSS/2.3 CSS Grid/FrUnitDemo',

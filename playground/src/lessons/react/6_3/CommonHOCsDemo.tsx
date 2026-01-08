@@ -5,7 +5,7 @@
 
 import { useState, ComponentType } from 'react';
 import { HiOutlineLockClosed, HiOutlineRefresh, HiOutlineMoon, HiOutlineSun } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import withAuthCode from './examples/WithAuth.tsx?raw';
 import withLoadingCode from './examples/WithLoading.tsx?raw';
 import withThemeCode from './examples/WithTheme.tsx?raw';

@@ -11,7 +11,7 @@ import {
   HiOutlineChat,
   HiOutlineExclamationCircle,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useFetchSignatureCode from './examples/UseFetchSignature.tsx?raw';
 
 // ============================================

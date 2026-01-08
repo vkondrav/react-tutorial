@@ -9,7 +9,7 @@ import {
   HiOutlineBeaker,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import WhyLiftStateDemo from './WhyLiftStateDemo';
 import LiftingPatternDemo from './LiftingPatternDemo';
 import LiftingGuidelinesDemo from './LiftingGuidelinesDemo';

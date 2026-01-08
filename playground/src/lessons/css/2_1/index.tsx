@@ -9,7 +9,7 @@ import {
   HiOutlineCollection,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import DocumentFlowDemo from './DocumentFlowDemo';
 import PositionTypesDemo from './PositionTypesDemo';
 import StackingContextDemo from './StackingContextDemo';

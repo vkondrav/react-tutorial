@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HiOutlineClock, HiOutlineRefresh, HiChevronDown, HiChevronRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import staleFreshCode from './examples/StaleFreshData.tsx?raw';
 
 // Create a client with short stale time for demo

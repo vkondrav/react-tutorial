@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineExclamationCircle } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import buttonHandlerExample from './examples/ButtonHandlerExample.tsx?raw';
 
 // ============================================

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiPlus, HiX, HiCheck, HiOutlineTrash, HiOutlineFilter } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import addItemExample from './examples/AddItemExample.tsx?raw';
 import updateItemExample from './examples/UpdateItemExample.tsx?raw';
 import removeItemExample from './examples/RemoveItemExample.tsx?raw';

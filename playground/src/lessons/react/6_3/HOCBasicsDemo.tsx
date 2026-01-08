@@ -5,7 +5,7 @@
 
 import { ComponentType } from 'react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import basicHOCCode from './examples/BasicHOC.tsx?raw';
 import formulaCode from './examples/HOCFormula.tsx?raw';
 

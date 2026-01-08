@@ -13,7 +13,7 @@ import {
   HiOutlineRefresh,
   HiOutlineCursorClick,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 interface Step {
   id: number;

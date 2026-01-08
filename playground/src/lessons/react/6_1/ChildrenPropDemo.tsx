@@ -5,7 +5,7 @@
 
 import { useState, ReactNode } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import basicChildrenCode from './examples/BasicChildren.tsx?raw';
 import childrenTypesCode from './examples/ChildrenTypes.tsx?raw';
 

@@ -4,7 +4,7 @@
 
 import { useState, useReducer } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import patternSimpleGood from './examples/PatternSimpleGood.tsx?raw';
 import patternSimpleBad from './examples/PatternSimpleBad.tsx?raw';
 import patternPayloadGood from './examples/PatternPayloadGood.tsx?raw';

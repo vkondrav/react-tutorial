@@ -10,7 +10,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import basicFetchPatternCode from './examples/BasicFetchPattern.tsx?raw';
 
 interface User {

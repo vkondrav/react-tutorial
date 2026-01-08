@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiOutlineArrowsExpand, HiOutlineCalculator } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import contentBoxCode from './examples/ContentBox.css?raw';
 import borderBoxCode from './examples/BorderBox.css?raw';
 

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineArrowDown, HiOutlineLightBulb, HiUser } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import propDrillingExample from './examples/PropDrillingExample.tsx?raw';
 
 // This demo shows why prop drilling is problematic

@@ -11,7 +11,7 @@ import {
   HiHeart,
   HiOutlineRefresh,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import pessimisticUpdateCode from './examples/PessimisticUpdate.tsx?raw';
 import optimisticUpdateCode from './examples/OptimisticUpdate.tsx?raw';
 

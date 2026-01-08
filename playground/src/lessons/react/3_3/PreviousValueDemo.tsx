@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { HiOutlineLightBulb, HiOutlineArrowRight, HiMinus, HiPlus } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import usePreviousHookExample from './examples/UsePreviousHookExample.tsx?raw';
 
 // Custom hook to track previous value using useRef

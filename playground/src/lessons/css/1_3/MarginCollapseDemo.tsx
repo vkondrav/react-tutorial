@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiOutlineEye, HiOutlineQuestionMarkCircle } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import marginCollapseCode from './examples/MarginCollapse.css?raw';
 
 type CollapseScenario = 'siblings' | 'parent-child' | 'empty';

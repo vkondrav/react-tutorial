@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineLightBulb, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import beforeExtractionCode from './examples/BeforeExtraction.tsx?raw';
 import afterExtractionHookCode from './examples/AfterExtractionHook.tsx?raw';
 import afterExtractionUsageCode from './examples/AfterExtractionUsage.tsx?raw';

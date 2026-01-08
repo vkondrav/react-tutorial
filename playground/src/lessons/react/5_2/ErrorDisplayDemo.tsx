@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiX, HiOutlineExclamationCircle, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import toastErrorsCode from './examples/ToastErrors.tsx?raw';
 
 type DisplayType = 'inline' | 'summary' | 'toast';

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineDocumentText, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import todoUpdatesExample from './examples/TodoUpdates.tsx?raw';
 
 // ============================================

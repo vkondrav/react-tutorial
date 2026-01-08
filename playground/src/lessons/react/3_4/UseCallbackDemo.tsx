@@ -4,7 +4,7 @@
 
 import { useState, useCallback, memo } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiMinus } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import withoutCallbackExample from './examples/WithoutCallbackExample.tsx?raw';
 import withCallbackExample from './examples/WithCallbackExample.tsx?raw';
 

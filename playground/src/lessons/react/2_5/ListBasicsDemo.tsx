@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import fruitsDataExample from './examples/FruitsDataExample.tsx?raw';
 import usersDataExample from './examples/UsersDataExample.tsx?raw';
 import mapPatternExample from './examples/MapPatternExample.tsx?raw';

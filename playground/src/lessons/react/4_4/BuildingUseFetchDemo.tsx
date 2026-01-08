@@ -10,7 +10,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useFetchStep1Code from './examples/UseFetchStep1.tsx?raw';
 import useFetchStep2Code from './examples/UseFetchStep2.tsx?raw';
 import useFetchStep3Code from './examples/UseFetchStep3.tsx?raw';

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineKey } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // ============================================
 // Constants

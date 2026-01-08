@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import { HiOutlineRefresh } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import mouseCode from './examples/MouseTracking.tsx?raw';
 import fetchCode from './examples/FetchComponent.tsx?raw';
 

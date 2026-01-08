@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiRefresh, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import nestedObjectCode from './examples/NestedObjectUpdates.tsx?raw';
 import arrayFieldCode from './examples/ArrayFieldUpdates.tsx?raw';
 import formResetCode from './examples/FormResetPattern.tsx?raw';

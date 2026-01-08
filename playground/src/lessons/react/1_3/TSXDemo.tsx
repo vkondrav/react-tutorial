@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import jsxCode from './examples/JsxVsTsxCode.tsx?raw';
 import tsxCode from './examples/TsxTypedCode.tsx?raw';
 

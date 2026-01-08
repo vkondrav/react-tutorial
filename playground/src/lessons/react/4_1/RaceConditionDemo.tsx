@@ -9,7 +9,7 @@ import {
   HiOutlineShieldCheck,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import raceConditionBugCode from './examples/RaceConditionBug.tsx?raw';
 import abortControllerFixCode from './examples/AbortControllerFix.tsx?raw';
 

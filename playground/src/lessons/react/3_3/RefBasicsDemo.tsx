@@ -4,7 +4,7 @@
 
 import { useState, useRef } from 'react';
 import { HiOutlineLightBulb, HiPlus, HiOutlineRefresh } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useStateVsRefExample from './examples/UseStateVsRefExample.tsx?raw';
 
 export default function RefBasicsDemo(): React.ReactElement {

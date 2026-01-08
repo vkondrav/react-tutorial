@@ -11,7 +11,7 @@ import {
   HiOutlineLogout,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import slotPatternCode from './examples/SlotPattern.tsx?raw';
 import comparisonCode from './examples/RigidVsFlexible.tsx?raw';
 

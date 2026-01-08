@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineShoppingCart, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import siblingProblemCode from './examples/SiblingProblem.tsx?raw';
 import siblingSolutionCode from './examples/SiblingSolution.tsx?raw';
 

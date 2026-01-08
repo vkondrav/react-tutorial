@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiX, HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // ============================================
 // Types

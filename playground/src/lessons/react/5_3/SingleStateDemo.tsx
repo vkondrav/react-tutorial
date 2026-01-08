@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import separateStatesCode from './examples/SeparateStatesApproach.tsx?raw';
 import singleObjectCode from './examples/SingleObjectApproach.tsx?raw';
 

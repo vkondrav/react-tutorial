@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiOutlineViewList, HiOutlineQuestionMarkCircle } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import displayPropertyCode from './examples/DisplayProperty.css?raw';
 
 type DisplayType = 'block' | 'inline' | 'inline-block';

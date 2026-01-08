@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import basicEffectExample from './examples/BasicEffectExample.tsx?raw';
 
 export default function EffectBasicsDemo(): React.ReactElement {

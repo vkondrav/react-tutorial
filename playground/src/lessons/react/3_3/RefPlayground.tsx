@@ -12,7 +12,7 @@ import {
   HiOutlineVolumeOff,
   HiOutlineRefresh,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import keyboardShortcutExample from './examples/KeyboardShortcutExample.tsx?raw';
 import clickOutsideExample from './examples/ClickOutsideExample.tsx?raw';
 import videoControlExample from './examples/VideoControlExample.tsx?raw';

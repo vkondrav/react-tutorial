@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
-import ExplicitImplicitDemo from '../../../../lessons/css/2_3/ExplicitImplicitDemo';
+import ExplicitImplicitDemo from '@lessons/css/2_3/ExplicitImplicitDemo';
 
 const meta: Meta<typeof ExplicitImplicitDemo> = {
   title: 'Lessons/CSS/2.3 CSS Grid/ExplicitImplicitDemo',

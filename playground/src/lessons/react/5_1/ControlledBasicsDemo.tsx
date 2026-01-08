@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineLightBulb, HiChevronDown, HiChevronRight } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import controlledInputCode from './examples/ControlledInput.tsx?raw';
 
 export default function ControlledBasicsDemo(): React.ReactElement {

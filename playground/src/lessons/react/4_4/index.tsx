@@ -11,7 +11,7 @@ import {
   HiOutlineBeaker,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import UseFetchBasicsDemo from './UseFetchBasicsDemo';
 import BuildingUseFetchDemo from './BuildingUseFetchDemo';
 import GenericUseFetchDemo from './GenericUseFetchDemo';

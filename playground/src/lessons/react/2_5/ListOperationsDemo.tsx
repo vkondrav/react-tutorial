@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineSearch, HiOutlineSortAscending, HiOutlineSortDescending } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import chainMethodsExample from './examples/ChainMethodsExample.tsx?raw';
 
 // ============================================

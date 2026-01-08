@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineGlobe, HiOutlineUser, HiOutlineCode } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import userAgentStylesCode from './examples/UserAgentStyles.css?raw';
 import userStylesCode from './examples/UserStyles.css?raw';
 import authorStylesCode from './examples/AuthorStyles.css?raw';

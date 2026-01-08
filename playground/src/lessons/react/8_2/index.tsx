@@ -10,7 +10,7 @@ import {
   HiOutlineCursorClick,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import TestingApproachesDemo from './TestingApproachesDemo';
 import StorybookSetupDemo from './StorybookSetupDemo';
 import MSWMockingDemo from './MSWMockingDemo';

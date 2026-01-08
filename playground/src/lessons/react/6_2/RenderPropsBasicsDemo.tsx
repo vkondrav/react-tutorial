@@ -5,7 +5,7 @@
 
 import { useState, ReactNode } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import hardcodedCode from './examples/HardcodedComponent.tsx?raw';
 import renderPropCode from './examples/RenderPropComponent.tsx?raw';
 

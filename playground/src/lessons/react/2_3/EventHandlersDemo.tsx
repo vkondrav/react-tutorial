@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import inlineArrowExample from './examples/InlineArrowExample.tsx?raw';
 import functionReferenceExample from './examples/FunctionReferenceExample.tsx?raw';
 import passingArgumentsExample from './examples/PassingArgumentsExample.tsx?raw';

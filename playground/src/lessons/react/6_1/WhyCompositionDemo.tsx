@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { HiX, HiCheck, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import inheritanceCode from './examples/InheritanceApproach.tsx?raw';
 import compositionCode from './examples/CompositionApproach.tsx?raw';
 

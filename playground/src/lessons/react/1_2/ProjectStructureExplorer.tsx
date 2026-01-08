@@ -11,7 +11,7 @@ import {
 } from 'react-icons/hi';
 import { FaReact } from 'react-icons/fa';
 import { IconType } from 'react-icons';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 
 // Import code examples
 import indexHtmlCode from './examples/IndexHtmlCode.html?raw';

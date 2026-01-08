@@ -11,7 +11,7 @@ import {
   HiChevronDown,
   HiChevronRight,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import deleteRequestCode from './examples/DeleteRequest.tsx?raw';
 
 interface Item {

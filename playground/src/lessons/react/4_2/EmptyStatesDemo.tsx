@@ -13,7 +13,7 @@ import {
   HiOutlineFilter,
   HiX,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import emptyStateCode from './examples/EmptyState.tsx?raw';
 
 type EmptyType = 'no-data' | 'no-results' | 'first-time' | 'filtered';

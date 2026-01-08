@@ -11,7 +11,7 @@ import {
   HiOutlineLogin,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import multipleContextsExample from './examples/MultipleContextsExample.tsx?raw';
 
 // Types

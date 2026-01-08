@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiCheck, HiX, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import asyncValidationCode from './examples/AsyncValidation.tsx?raw';
 
 // Simulated API - pretend these usernames are taken

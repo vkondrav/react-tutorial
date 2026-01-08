@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineCursorClick, HiCheck, HiX } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import imperativeCode from './examples/ImperativeCode.js?raw';
 import declarativeCode from './examples/DeclarativeCode.tsx?raw';
 

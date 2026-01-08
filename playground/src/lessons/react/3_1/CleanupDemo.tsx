@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { HiOutlineExclamationCircle, HiOutlineTrash } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import timerCleanupExample from './examples/TimerCleanupExample.tsx?raw';
 import keyboardCleanupExample from './examples/KeyboardCleanupExample.tsx?raw';
 

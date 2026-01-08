@@ -9,7 +9,7 @@ import {
   HiOutlineLightningBolt,
   HiOutlineClipboardCheck,
 } from 'react-icons/hi';
-import { LessonHeader, Section, TakeawayList } from '../../components';
+import { LessonHeader, Section, TakeawayList } from '@components';
 import ComparisonDemo from './ComparisonDemo';
 import ComponentTreeDemo from './ComponentTreeDemo';
 import VirtualDomDemo from './VirtualDomDemo';

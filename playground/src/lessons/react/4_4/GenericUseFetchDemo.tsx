@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { HiOutlineLightBulb, HiOutlineRefresh } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import userTypeCode from './examples/UserType.tsx?raw';
 import postTypeCode from './examples/PostType.tsx?raw';
 import todoTypeCode from './examples/TodoType.tsx?raw';

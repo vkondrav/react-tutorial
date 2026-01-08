@@ -9,7 +9,7 @@ import {
   HiChevronRight,
   HiOutlineLightBulb,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import reducerAnatomyCode from './examples/ReducerAnatomy.tsx?raw';
 import anatomyStep1Code from './examples/AnatomyStep1State.tsx?raw';
 import anatomyStep2Code from './examples/AnatomyStep2Actions.tsx?raw';

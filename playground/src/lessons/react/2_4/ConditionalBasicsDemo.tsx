@@ -10,7 +10,7 @@ import {
   HiOutlineLockClosed,
   HiOutlineHand,
 } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import ternaryBasicExample from './examples/TernaryBasicExample.tsx?raw';
 
 // ============================================

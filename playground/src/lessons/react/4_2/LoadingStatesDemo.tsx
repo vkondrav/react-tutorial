@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { HiOutlineCursorClick, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import spinnerCode from './examples/Spinner.tsx?raw';
 import skeletonCode from './examples/Skeleton.tsx?raw';
 import progressCode from './examples/ProgressBar.tsx?raw';

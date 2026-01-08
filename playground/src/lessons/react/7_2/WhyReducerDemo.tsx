@@ -4,7 +4,7 @@
 
 import { useState, useReducer } from 'react';
 import { HiX, HiCheck, HiPlus, HiMinus, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import useStateProblemCode from './examples/UseStateProblem.tsx?raw';
 import useReducerSolutionCode from './examples/UseReducerSolution.tsx?raw';
 

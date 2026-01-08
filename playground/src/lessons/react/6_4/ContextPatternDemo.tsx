@@ -4,7 +4,7 @@
 
 import { useState, createContext, useContext, ReactNode } from 'react';
 import { HiChevronDown, HiChevronRight, HiOutlineLightBulb } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import contextCode from './examples/CreateContext.tsx?raw';
 import parentCode from './examples/ParentComponent.tsx?raw';
 import childCode from './examples/ChildComponents.tsx?raw';

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { HiOutlineRefresh, HiX, HiCheck, HiOutlineCube, HiOutlineInbox } from 'react-icons/hi';
-import { CodeSnippet } from '../../components';
+import { CodeSnippet } from '@components';
 import patternTernary from './examples/PatternTernary.tsx?raw';
 import patternLogicalAnd from './examples/PatternLogicalAnd.tsx?raw';
 import patternEarlyReturn from './examples/PatternEarlyReturn.tsx?raw';
