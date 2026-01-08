@@ -7,9 +7,9 @@
 | Field | Value |
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
-| **CSS Course** | Module 1: Core Foundations ✅ Complete |
-| **Current Lesson** | CSS 1.3: The Box Model & Flow ✅ |
-| **Next Lesson** | CSS 2.1: Positioning Contexts |
+| **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
+| **Current Lesson** | CSS 2.1: Positioning Contexts ✅ |
+| **Next Lesson** | CSS 2.2: Flexbox |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -251,29 +251,29 @@
 | 1.2 | Cascade, Specificity & Inheritance | ✅ Complete | 3 style origins, specificity calculator, !important, inheritance keywords |
 | 1.3 | The Box Model & Flow | ✅ Complete | box-sizing (content-box vs border-box), margin collapse, display property (block/inline/inline-block) |
 
-### CSS Module 2: Layout Mastery ⬜ Not Started
+### CSS Module 2: Layout Mastery ⏳ In Progress
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
-| 2.1 | Box Model Deep Dive | ⬜ Not Started | Coming Soon |
-| 2.2 | Position & z-index | ⬜ Not Started | Coming Soon |
-| 2.3 | Flexbox | ⬜ Not Started | Coming Soon |
-| 2.4 | Grid | ⬜ Not Started | Coming Soon |
+| 2.1 | Positioning Contexts | ✅ Complete | Document flow, position values (static/relative/absolute/fixed/sticky), stacking contexts & z-index |
+| 2.2 | Flexbox | ⬜ Not Started | Coming Soon |
+| 2.3 | CSS Grid | ⬜ Not Started | Coming Soon |
+| 2.4 | Responsive Strategy | ⬜ Not Started | Coming Soon |
 
-### CSS Module 3: Responsive Design ⬜ Not Started
-
-| Lesson | Topic | Status | Notes |
-|--------|-------|--------|-------|
-| 3.1 | Media Queries | ⬜ Not Started | Coming Soon |
-| 3.2 | Container Queries | ⬜ Not Started | Coming Soon |
-
-### CSS Module 4: Advanced CSS ⬜ Not Started
+### CSS Module 3: Visuals & Interactivity ⬜ Not Started
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
-| 4.1 | Custom Properties (CSS Variables) | ⬜ Not Started | Coming Soon |
-| 4.2 | Animations & Transitions | ⬜ Not Started | Coming Soon |
-| 4.3 | Modern CSS Features | ⬜ Not Started | Coming Soon |
+| 3.1 | Backgrounds & Borders | ⬜ Not Started | Coming Soon |
+| 3.2 | Transitions & Animations | ⬜ Not Started | Coming Soon |
+
+### CSS Module 4: Architecture at Scale ⬜ Not Started
+
+| Lesson | Topic | Status | Notes |
+|--------|-------|--------|-------|
+| 4.1 | CSS Variables | ⬜ Not Started | Coming Soon |
+| 4.2 | Methodologies (BEM & Utility) | ⬜ Not Started | Coming Soon |
+| 4.3 | Accessibility | ⬜ Not Started | Coming Soon |
 
 ---
 
@@ -987,6 +987,31 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 31 - January 8, 2026
+**Goal:** Continue CSS Module 2 - Layout Mastery
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 2.1: Positioning Contexts**
+  - `index.tsx` - Main lesson with 4 sections
+  - `DocumentFlowDemo.tsx` - Interactive demo showing in-flow vs out-of-flow elements
+  - `PositionTypesDemo.tsx` - All 5 position values with offset controls and sticky scroll demo
+  - `StackingContextDemo.tsx` - z-index basic mode + stacking context trap visualization
+  - `examples/` folder with CSS code snippets
+
+- ✅ **Key Concepts Covered:**
+  - Document flow: what "taken out of flow" means
+  - All 5 position values: static, relative, absolute, fixed, sticky
+  - The essential pattern: relative parent + absolute child
+  - Stacking contexts: why z-index isn't global
+  - What creates stacking contexts (opacity, transform, filter, etc.)
+  - Debugging z-index issues
+
+- ✅ **Added Storybook Stories + Tests**
+  - 25 tests for CSS 2.1 components
+  - Tests cover position type switching, stacking context scenarios, offset controls
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1122,6 +1147,14 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Block Formatting Context (BFC) - how overflow, padding, borders prevent margin collapse
 - [x] Display property: block (stacks vertically), inline (flows with text), inline-block (both)
 - [x] Which properties work with each display type
+- [x] Document flow: elements stack/flow by default, can be "taken out of flow"
+- [x] Position values: static, relative, absolute, fixed, sticky
+- [x] Relative: stays in flow, creates positioning context for children
+- [x] Absolute: out of flow, positioned relative to nearest positioned ancestor
+- [x] Fixed: out of flow, positioned relative to viewport
+- [x] Sticky: hybrid - normal until scroll threshold, then sticks within container
+- [x] Stacking contexts: z-index is relative, not global
+- [x] What creates stacking contexts: position+z-index, opacity, transform, filter
 - [ ] ...more to come
 
 ---

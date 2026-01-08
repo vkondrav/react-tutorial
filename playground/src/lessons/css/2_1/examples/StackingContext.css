@@ -1,0 +1,43 @@
+/* z-index only works on positioned elements */
+.positioned {
+  position: relative; /* or absolute, fixed, sticky */
+  z-index: 10; /* Now z-index works! */
+}
+
+.static {
+  position: static; /* default */
+  z-index: 9999; /* IGNORED! No effect */
+}
+
+/* The Stacking Context Problem */
+.parent-a {
+  position: relative;
+  z-index: 1; /* Creates stacking context */
+}
+
+.child-a {
+  position: absolute;
+  z-index: 9999; /* High, but trapped in parent's context */
+}
+
+.parent-b {
+  position: relative;
+  z-index: 2; /* Higher than parent-a */
+}
+
+.child-b {
+  position: absolute;
+  z-index: 1; /* Low, but parent wins! */
+}
+
+/*
+ * Result: child-b appears ABOVE child-a
+ * because parent-b > parent-a
+ *
+ * Child z-index only matters WITHIN its parent's context
+ */
+
+/* Solution: Use isolation to explicitly create context */
+.modal-container {
+  isolation: isolate; /* Creates new stacking context */
+}

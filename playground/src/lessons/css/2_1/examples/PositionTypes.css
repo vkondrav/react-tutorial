@@ -1,0 +1,46 @@
+/* STATIC (default) */
+.static {
+  position: static;
+  /* top, left, right, bottom, z-index are IGNORED */
+}
+
+/* RELATIVE */
+.relative {
+  position: relative;
+  top: 20px; /* offset from normal position */
+  left: 20px;
+  /* Still takes up original space in flow */
+  /* Creates positioning context for children */
+}
+
+/* ABSOLUTE */
+.container {
+  position: relative; /* Required! Creates positioning context */
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Removed from flow */
+  /* Positioned relative to .container */
+}
+
+/* FIXED */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Always relative to viewport */
+  /* Stays in place during scroll */
+}
+
+/* STICKY */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  /* Normal until you scroll past it */
+  /* Then "sticks" at top: 0 */
+  /* Unsticks when reaching container boundary */
+}

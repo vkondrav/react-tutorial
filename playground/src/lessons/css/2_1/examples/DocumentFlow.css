@@ -1,0 +1,26 @@
+/* Elements IN the document flow */
+.in-flow {
+  position: static; /* default - participates in flow */
+  position: relative; /* stays in flow, but can be offset */
+}
+
+/* Elements OUT of the document flow */
+.out-of-flow {
+  position: absolute; /* removed from flow */
+  position: fixed; /* removed from flow */
+  float: left; /* also removes from flow! */
+}
+
+/* Common pattern: relative parent + absolute child */
+.container {
+  position: relative; /* creates positioning context */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* This covers the container without affecting siblings */
+}
