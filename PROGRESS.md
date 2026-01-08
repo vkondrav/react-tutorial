@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
-| **Current Lesson** | CSS 3.1: Backgrounds & Borders ✅ |
-| **Next Lesson** | CSS 3.2: Transitions & Animations |
+| **Current Lesson** | CSS 3.2: Transitions & Animations ✅ |
+| **Next Lesson** | CSS 4.1: CSS Variables |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -260,12 +260,12 @@
 | 2.3 | CSS Grid | ✅ Complete | Explicit vs implicit grid, fr unit, grid-template-areas, alignment (items vs content) |
 | 2.4 | Responsive Strategy | ✅ Complete | Viewport meta tag, mobile-first media queries (min-width), fluid typography with clamp() |
 
-### CSS Module 3: Visuals & Interactivity ⏳ In Progress
+### CSS Module 3: Visuals & Interactivity ✅ Complete
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 3.1 | Backgrounds & Borders | ✅ Complete | Gradient syntax (linear/radial/conic), hard vs smooth stops, background layering, blend modes, clip-path shapes |
-| 3.2 | Transitions & Animations | ⬜ Not Started | Coming Soon |
+| 3.2 | Transitions & Animations | ✅ Complete | Rendering pipeline (Layout/Paint/Composite), transform vs layout properties, cubic-bezier timing, @keyframes, animation-fill-mode |
 
 ### CSS Module 4: Architecture at Scale ⬜ Not Started
 
@@ -1115,7 +1115,33 @@ Beginning the Advanced Topics module with Server-Side Rendering.
   - 28 tests for CSS 3.1 components
   - Tests cover gradient type switching, presets, blend modes, shape toggles
 
-#### CSS Module 2: Layout Mastery Complete! 🎉
+---
+
+### Session 36 - January 8, 2026
+**Goal:** Complete CSS Module 3 - Transitions & Animations
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 3.2: Transitions & Animations**
+  - `index.tsx` - Main lesson with 5 sections covering animation performance
+  - `PerformanceLayerDemo.tsx` - Live comparison of transform vs left animations with FPS counter
+  - `BezierCurvesDemo.tsx` - Interactive cubic-bezier curve builder with presets
+  - `KeyframesDemo.tsx` - Keyframe animation playground with fill-mode and direction controls
+  - `examples/` folder with CSS code snippets (Performance.css, TimingFunctions.css, Keyframes.css)
+
+- ✅ **Key Concepts Covered:**
+  - Browser rendering pipeline: Layout → Paint → Composite
+  - Transform and opacity are GPU-accelerated (Composite only)
+  - Avoid animating left, width, margin (triggers Layout)
+  - cubic-bezier(x1, y1, x2, y2) for custom timing curves
+  - ease-out for entrances, ease-in for exits
+  - @keyframes with percentage-based stops
+  - animation-fill-mode: forwards, backwards, both
+
+- ✅ **Added Storybook Stories + Tests**
+  - 25 tests for CSS 3.2 components
+  - Tests cover animation switching, presets, controls, timing functions
+
+#### CSS Module 3: Visuals & Interactivity Complete! 🎉
 
 ---
 
@@ -1301,6 +1327,23 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] inset() for rectangular clips with optional border-radius
 - [x] shape-outside: text wraps around floated element's shape
 - [x] shape-margin: adds spacing around shape-outside
+- [x] Browser rendering pipeline: Layout → Paint → Composite
+- [x] Layout: geometry calculations (width, height, position) - most expensive
+- [x] Paint: pixel drawing (color, shadow, border) - moderate cost
+- [x] Composite: layer operations (transform, opacity) - cheapest, GPU-accelerated
+- [x] Only animate transform and opacity for smooth 60fps animations
+- [x] Avoid animating left, top, width, height, margin, padding (trigger Layout)
+- [x] Use translateX/Y instead of left/top for movement
+- [x] Use scale() instead of width/height changes
+- [x] cubic-bezier(x1, y1, x2, y2) defines custom timing curve
+- [x] Control points: first (0,0) and last (1,1) are fixed, you control middle two
+- [x] ease-out: starts fast, ends slow - best for entrances
+- [x] ease-in: starts slow, ends fast - best for exits
+- [x] ease-in-out: slow at both ends - best for continuous/looping
+- [x] @keyframes: define multi-step animations with percentage stops
+- [x] animation-fill-mode: forwards keeps end state, backwards applies start during delay
+- [x] animation-direction: normal, reverse, alternate, alternate-reverse
+- [x] will-change: hint for browser optimization, use sparingly
 - [ ] ...more to come
 
 ---

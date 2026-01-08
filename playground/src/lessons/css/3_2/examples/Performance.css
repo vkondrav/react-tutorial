@@ -1,0 +1,68 @@
+/* Performance: transform vs layout properties */
+
+/* ✓ GOOD: GPU-accelerated, only triggers Composite */
+.slide-good {
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+}
+.slide-good:hover {
+  transform: translateX(100px);
+}
+
+/* ✗ BAD: Triggers Layout recalculation every frame */
+.slide-bad {
+  position: relative;
+  left: 0;
+  transition: left 0.3s ease-out;
+}
+.slide-bad:hover {
+  left: 100px;
+}
+
+/* Use transform equivalents instead of layout properties */
+.scale-good {
+  transform: scale(1); /* Instead of width/height */
+  transition: transform 0.3s;
+}
+.scale-good:hover {
+  transform: scale(1.1);
+}
+
+/* Fade with opacity (cheapest animation) */
+.fade {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+.fade:hover {
+  opacity: 0.5;
+}
+
+/* Combine transforms for complex animations */
+.card-hover {
+  transform: translateY(0) scale(1);
+  transition: transform 0.3s ease-out;
+}
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* will-change: hint for browser optimization */
+.will-animate {
+  will-change: transform, opacity;
+  /* Remove after animation completes! */
+}
+
+/* Keyframe with transform (smooth) */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bouncing {
+  animation: bounce 0.6s ease-in-out infinite;
+}

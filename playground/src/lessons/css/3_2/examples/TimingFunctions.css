@@ -1,0 +1,76 @@
+/* Timing Functions: Control animation acceleration */
+
+/* Built-in keywords */
+.ease {
+  transition: transform 0.3s ease;
+  /* Same as: cubic-bezier(0.25, 0.1, 0.25, 1) */
+}
+
+.ease-in {
+  transition: transform 0.3s ease-in;
+  /* Same as: cubic-bezier(0.42, 0, 1, 1) */
+  /* Starts slow - best for EXITS */
+}
+
+.ease-out {
+  transition: transform 0.3s ease-out;
+  /* Same as: cubic-bezier(0, 0, 0.58, 1) */
+  /* Ends slow - best for ENTRANCES */
+}
+
+.ease-in-out {
+  transition: transform 0.3s ease-in-out;
+  /* Same as: cubic-bezier(0.42, 0, 0.58, 1) */
+  /* Best for continuous/looping animations */
+}
+
+.linear {
+  transition: transform 0.3s linear;
+  /* Same as: cubic-bezier(0, 0, 1, 1) */
+  /* Constant speed - best for progress bars */
+}
+
+/* Custom bezier curves */
+.bounce {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* y values outside 0-1 create overshoot/bounce */
+}
+
+.snap {
+  transition: transform 0.2s cubic-bezier(0.9, 0, 0.1, 1);
+  /* Quick snap effect */
+}
+
+/* Different timing for different properties */
+.multi-timing {
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.2s ease-in,
+    background-color 0.5s linear;
+}
+
+/* Step functions (no smooth transition) */
+.steps {
+  transition: transform 0.5s steps(5, end);
+  /* 5 discrete steps instead of smooth curve */
+}
+
+/* Common UI pattern: entrance vs exit */
+.modal {
+  transform: scale(0.9);
+  opacity: 0;
+  transition:
+    transform 0.3s ease-out,
+    /* Fast start for entrance */ opacity 0.3s ease-out;
+}
+
+.modal.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal.closing {
+  transition:
+    transform 0.2s ease-in,
+    /* Fast end for exit */ opacity 0.2s ease-in;
+}

@@ -1,0 +1,102 @@
+/* @keyframes: Multi-step animations */
+
+/* Basic syntax */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Percentage-based stops */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* Multiple properties */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Complex multi-step animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Using the animation */
+.animate-bounce {
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+/* Animation shorthand */
+.element {
+  animation: fadeIn 0.3s ease-out 0.1s forwards;
+  /* name | duration | timing | delay | fill-mode */
+}
+
+/* Full animation property breakdown */
+.detailed {
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+/* Fill modes */
+.stays-visible {
+  animation: fadeIn 0.5s ease-out forwards;
+  /* 'forwards' keeps the end state */
+}
+
+.starts-hidden {
+  animation: fadeIn 0.5s ease-out 1s backwards;
+  /* 'backwards' applies 0% styles during 1s delay */
+}
+
+/* Direction */
+.yoyo {
+  animation: bounce 1s ease-in-out infinite alternate;
+  /* 'alternate' reverses every other iteration */
+}
+
+/* Multiple animations */
+.complex {
+  animation:
+    fadeIn 0.3s ease-out,
+    slideIn 0.5s ease-out 0.1s;
+}

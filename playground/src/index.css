@@ -89,3 +89,37 @@ pre code {
 .animate-fadeIn {
   animation: fadeIn 0.2s ease;
 }
+
+/* CSS 3.2 Performance Demo Animations */
+.animation-track {
+  container-type: inline-size;
+}
+
+@keyframes slide-transform {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(100cqi - 4rem));
+  }
+}
+
+@keyframes slide-left {
+  0%,
+  100% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - 4rem);
+  }
+}
+
+.animate-slide-transform {
+  animation: slide-transform 2s ease-in-out infinite;
+}
+
+.animate-slide-left {
+  position: relative;
+  animation: slide-left 2s ease-in-out infinite;
+}
