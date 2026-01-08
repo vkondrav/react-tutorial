@@ -20,8 +20,10 @@
     "dev:app": "vite",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:app\" \"npm run dev:storybook\"",
     "test": "vitest --project=storybook --run",
-    "test:watch": "vitest --project=storybook --watch",
-    "test:lesson": "f() { vitest --project=storybook --run src/stories/lessons/$1; }; f",
+    "test:react": "vitest --project=storybook --run src/stories/lessons/react",
+    "test:css": "vitest --project=storybook --run src/stories/lessons/css",
+    "test:react:lesson": "f() { vitest --project=storybook --run src/stories/lessons/react/$1; }; f",
+    "test:css:lesson": "f() { vitest --project=storybook --run src/stories/lessons/css/$1; }; f",
     "msw:install": "npx msw init public --save"
   },
   "dependencies": {

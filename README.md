@@ -241,14 +241,17 @@ Update `PROGRESS.md` to reflect completion status.
 ## Commands
 
 ```bash
-npm run dev           # Start all servers
-npm run dev:app       # App only
-npm run dev:storybook # Storybook only
-npm run test          # Run all tests
-npm run test:lesson -- 1_1  # Test specific lesson
-npm run lint          # Lint and fix
-npm run format        # Format with Prettier
-npm run build         # Build everything
+npm run dev                       # Start all servers
+npm run dev:app                   # App only
+npm run dev:storybook             # Storybook only
+npm run test                      # Run all tests
+npm run test:react                # Run all react section tests
+npm run test:css                  # Run all css section tests
+npm run test:react:lesson -- 1_1  # Test specific react lesson
+npm run test:css:lesson -- 1_1    # Test specific css lesson
+npm run lint                      # Lint and fix
+npm run format                    # Format with Prettier
+npm run build                     # Build everything
 ```
 
 ---
