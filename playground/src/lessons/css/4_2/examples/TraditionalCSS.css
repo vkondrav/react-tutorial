@@ -1,0 +1,24 @@
+.product-card {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.product-card__image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.25rem;
+}
+
+.product-card__title {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.product-card__price {
+  color: #6b7280;
+  margin-top: 0.25rem;
+}

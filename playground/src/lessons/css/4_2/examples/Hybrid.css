@@ -1,0 +1,113 @@
+/* ================================
+   Hybrid Approach
+   BEM for structure + Utilities for spacing
+   ================================ */
+
+/* 
+   The Best of Both Worlds:
+   - BEM for component structure (what it IS)
+   - Utilities for layout/spacing (how it LOOKS)
+*/
+
+/* BEM: Component Structure */
+.product-card {
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-card__image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+/* .product-card__content uses utilities in HTML (p-4, etc.) */
+
+.product-card__title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #1f2937;
+}
+
+.product-card__price {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #3b82f6;
+}
+
+.product-card__description {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* BEM Modifiers for variations */
+.product-card--featured {
+  outline: 2px solid #f59e0b;
+}
+
+.product-card--sold-out {
+  opacity: 0.6;
+}
+
+/* ================================
+   In HTML, combine BEM + utilities:
+   
+   <div class="product-card">
+     <img class="product-card__image" />
+     <div class="product-card__content p-4">
+       <h3 class="product-card__title mb-2">Product Name</h3>
+       <p class="product-card__description mb-4">Description...</p>
+       <div class="flex items-center justify-between">
+         <span class="product-card__price">$29.99</span>
+         <button class="btn btn-primary">Add to Cart</button>
+       </div>
+     </div>
+   </div>
+   
+   Benefits:
+   ✓ Component names are semantic (BEM)
+   ✓ Spacing is flexible (utilities)
+   ✓ No specificity issues
+   ✓ Easy to adjust layout without touching CSS
+   ================================ */
+
+/* Common pattern: BEM component + utility overrides */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.15s;
+}
+
+.button--primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.button--primary:hover {
+  background: #2563eb;
+}
+
+.button--secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.button--secondary:hover {
+  background: #d1d5db;
+}
+
+/* Size variants via modifiers, spacing via utilities */
+.button--sm {
+  font-size: 0.875rem;
+}
+
+.button--lg {
+  font-size: 1.125rem;
+}
+
+/* Usage: <button class="button button--primary px-4 py-2"> */

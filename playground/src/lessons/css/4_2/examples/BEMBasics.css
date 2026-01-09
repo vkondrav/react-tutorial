@@ -1,0 +1,103 @@
+/* ================================
+   BEM Naming Convention
+   Block__Element--Modifier
+   ================================ */
+
+/* BLOCK: The standalone component */
+.card {
+  background: #1f2937;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* ELEMENTS: Parts of the block (use __) */
+.card__header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+
+.card__subtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.card__body {
+  padding: 1rem;
+}
+
+.card__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 0;
+}
+
+.card__footer {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* MODIFIERS: Variations of block/element (use --) */
+.card--featured {
+  outline: 2px solid #f59e0b;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+  background: #1e1b4b;
+}
+
+.card--compact .card__header {
+  padding: 0.75rem;
+}
+
+.card--compact .card__body {
+  padding: 0.75rem;
+}
+
+.card--compact .card__footer {
+  padding: 0.75rem;
+}
+
+.card--compact .card__avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.card--compact .card__title {
+  font-size: 0.875rem;
+}
+
+/* Element modifiers */
+.card__title--large {
+  font-size: 1.25rem;
+}
+
+.card__item--highlight {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* ================================
+   Why BEM Works:
+   - Every selector is a single class
+   - Specificity is always (0, 1, 0)
+   - No nesting required
+   - Self-documenting names
+   ================================ */

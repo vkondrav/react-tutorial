@@ -8,8 +8,8 @@
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
 | **CSS Course** | Module 4: Architecture at Scale ⏳ In Progress |
-| **Current Lesson** | CSS 4.1: CSS Variables ✅ |
-| **Next Lesson** | CSS 4.2: Methodologies (BEM & Utility) |
+| **Current Lesson** | CSS 4.2: Methodologies (BEM & Utility) ✅ |
+| **Next Lesson** | CSS 4.3: Accessibility |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -272,7 +272,7 @@
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 4.1 | CSS Variables | ✅ Complete | Scope, theming, calc() demos |
-| 4.2 | Methodologies (BEM & Utility) | ⬜ Not Started | Coming Soon |
+| 4.2 | Methodologies (BEM & Utility) | ✅ Complete | BEM naming, flat specificity, utility-first, approach comparison |
 | 4.3 | Accessibility | ⬜ Not Started | Coming Soon |
 
 ---
@@ -1172,6 +1172,36 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 38 - January 9, 2026
+**Goal:** Continue CSS Module 4 - Methodologies
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 4.2: Methodologies (BEM & Utility)**
+  - `index.tsx` - Main lesson with 6 sections covering CSS methodologies
+  - `BEMBasicsDemo.tsx` - Interactive BEM naming demo with Block/Element/Modifier tabs, modifier toggles
+  - `SpecificityComparisonDemo.tsx` - Side-by-side Traditional vs BEM specificity visualization with bars
+  - `UtilityFirstDemo.tsx` - Utility-first philosophy, code comparison, live product card preview
+  - `ApproachComparisonDemo.tsx` - BEM vs Utility vs Hybrid comparison with decision table
+  - `examples/` folder with CSS code snippets (BEMBasics.css, Specificity.css, UtilityFirst.css, Hybrid.css)
+
+- ✅ **Key Concepts Covered:**
+  - BEM: .block__element--modifier naming convention
+  - Block = standalone component, Element = child, Modifier = variant
+  - BEM keeps specificity flat (all selectors are 0,1,0)
+  - Traditional CSS leads to specificity wars and !important abuse
+  - Utility-first: atomic single-purpose classes
+  - Tailwind popularized utility-first with responsive variants
+  - Advantages: no naming, rapid prototyping, dead code elimination
+  - Trade-offs: long class lists, framework knowledge required
+  - Hybrid approach: BEM for structure, utilities for spacing
+  - Start utility-first, extract to BEM when patterns repeat 3+ times
+
+- ✅ **Added Storybook Stories + Tests**
+  - 23 tests for CSS 4.2 components
+  - Tests cover BEM part switching, modifier toggles, approach selection, code snippets
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1379,6 +1409,17 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] calc() with variables: calc(100vh - var(--header-height))
 - [x] CSS variables are live in browser: can be changed at runtime
 - [x] Semantic naming: use --color-primary not --blue
+- [x] BEM methodology: Block__Element--Modifier naming convention
+- [x] Block = standalone component, Element = part of block, Modifier = variation
+- [x] BEM keeps specificity flat: all selectors are single class (0,1,0)
+- [x] Flat specificity eliminates cascade conflicts and !important abuse
+- [x] Traditional CSS specificity escalation leads to !important abuse
+- [x] Utility-first CSS: atomic single-purpose classes (.flex, .p-4, .text-center)
+- [x] Tailwind popularized utility-first with responsive variants and purging
+- [x] Utility-first advantages: no naming, rapid prototyping, no context-switching
+- [x] Utility-first trade-offs: long class lists, framework knowledge required
+- [x] Hybrid approach: BEM for component structure, utilities for spacing/layout
+- [x] Start utility-first, extract to BEM when patterns repeat 3+ times
 - [ ] ...more to come
 
 ---
