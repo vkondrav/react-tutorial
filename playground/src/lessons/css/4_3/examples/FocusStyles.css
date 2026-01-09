@@ -1,0 +1,39 @@
+/* ❌ NEVER DO THIS - breaks keyboard navigation */
+button:focus {
+  outline: none;
+}
+
+/* ✅ Browser default - acceptable but may not match design */
+/* (No CSS needed - browser provides default) */
+
+/* ✅ Custom :focus - shows for both mouse and keyboard */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  border-color: #3b82f6;
+}
+
+/* ✅ BEST: :focus-visible - keyboard only */
+button:focus {
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Alternative: ring pattern (Tailwind-style) */
+button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px #3b82f6;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  button:focus-visible {
+    outline: 3px solid CanvasText;
+  }
+}

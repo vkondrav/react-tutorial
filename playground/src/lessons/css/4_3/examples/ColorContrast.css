@@ -1,0 +1,52 @@
+/* WCAG Contrast Requirements:
+   - 4.5:1 for normal text (AA)
+   - 3:1 for large text (18pt+ or 14pt bold)
+   - 7:1 for enhanced contrast (AAA)
+*/
+
+/* ✅ Good contrast - dark text on light background */
+.text-readable {
+  color: #1a1a1a; /* Very dark gray */
+  background: #ffffff; /* White */
+  /* Contrast ratio: 16.1:1 - exceeds AAA */
+}
+
+/* ✅ Minimum AA contrast for normal text */
+.text-acceptable {
+  color: #767676; /* Gray */
+  background: #ffffff; /* White */
+  /* Contrast ratio: 4.54:1 - passes AA */
+}
+
+/* ❌ Fails WCAG AA for normal text */
+.text-poor {
+  color: #999999; /* Light gray */
+  background: #ffffff; /* White */
+  /* Contrast ratio: 2.85:1 - FAILS */
+}
+
+/* Use CSS custom properties for theme contrast */
+:root {
+  --color-text: #1a1a1a;
+  --color-text-muted: #767676;
+  --color-background: #ffffff;
+}
+
+/* Dark theme with proper contrast */
+[data-theme='dark'] {
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-background: #111827;
+}
+
+/* Don't rely on color alone for meaning */
+.error-message {
+  color: #dc2626; /* Red for sighted users */
+  /* Also use icon, border, or prefix for colorblind users */
+  border-left: 4px solid currentColor;
+}
+
+.error-message::before {
+  content: 'Error: ';
+  font-weight: bold;
+}

@@ -7,9 +7,9 @@
 | Field | Value |
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
-| **CSS Course** | Module 4: Architecture at Scale ⏳ In Progress |
-| **Current Lesson** | CSS 4.2: Methodologies (BEM & Utility) ✅ |
-| **Next Lesson** | CSS 4.3: Accessibility |
+| **CSS Course** | Module 4: Architecture at Scale ✅ Complete |
+| **Current Lesson** | CSS 4.3: Accessibility ✅ |
+| **Next Lesson** | CSS Course Complete! |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -267,13 +267,13 @@
 | 3.1 | Backgrounds & Borders | ✅ Complete | Gradient syntax (linear/radial/conic), hard vs smooth stops, background layering, blend modes, clip-path shapes |
 | 3.2 | Transitions & Animations | ✅ Complete | Rendering pipeline (Layout/Paint/Composite), transform vs layout properties, cubic-bezier timing, @keyframes, animation-fill-mode |
 
-### CSS Module 4: Architecture at Scale ⏳ In Progress
+### CSS Module 4: Architecture at Scale ✅ Complete
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
 | 4.1 | CSS Variables | ✅ Complete | Scope, theming, calc() demos |
 | 4.2 | Methodologies (BEM & Utility) | ✅ Complete | BEM naming, flat specificity, utility-first, approach comparison |
-| 4.3 | Accessibility | ⬜ Not Started | Coming Soon |
+| 4.3 | Accessibility | ✅ Complete | Focus indicators, :focus-visible, color contrast (WCAG), visually hidden (sr-only), prefers-reduced-motion |
 
 ---
 
@@ -1202,6 +1202,36 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 39 - January 9, 2026
+**Goal:** Complete CSS Module 4 - Accessibility
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 4.3: Accessibility**
+  - `index.tsx` - Main lesson with 5 sections covering CSS accessibility
+  - `FocusIndicatorsDemo.tsx` - Interactive demo of focus approaches (none, default, custom, :focus-visible)
+  - `ColorContrastDemo.tsx` - Live WCAG contrast ratio calculator with color pickers and presets
+  - `VisuallyHiddenDemo.tsx` - Comparison of hiding methods (sr-only, display:none, visibility:hidden, aria-hidden)
+  - `ReducedMotionDemo.tsx` - prefers-reduced-motion simulation with animation comparisons
+  - `examples/` folder with CSS code snippets (FocusStyles.css, ColorContrast.css, VisuallyHidden.css, ReducedMotion.css)
+
+- ✅ **Key Concepts Covered:**
+  - Never remove focus indicators without providing alternatives
+  - :focus-visible shows focus only for keyboard navigation, not mouse clicks
+  - WCAG contrast ratios: 4.5:1 for normal text (AA), 3:1 for large text, 7:1 for enhanced (AAA)
+  - sr-only pattern for screen-reader-only content
+  - Difference between display:none, visibility:hidden, and aria-hidden
+  - prefers-reduced-motion media query for respecting user preferences
+  - Providing reduced-motion alternatives for essential animations
+
+- ✅ **Added Storybook Stories + Tests**
+  - 20 tests for CSS 4.3 components
+  - Tests cover focus approach switching, contrast presets, method comparison, motion toggle
+
+#### CSS Course Complete! 🎉
+All 4 modules and 12 lessons of the CSS Mastery course are now implemented.
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1420,7 +1450,23 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] Utility-first trade-offs: long class lists, framework knowledge required
 - [x] Hybrid approach: BEM for component structure, utilities for spacing/layout
 - [x] Start utility-first, extract to BEM when patterns repeat 3+ times
-- [ ] ...more to come
+- [x] Focus indicators: never use outline:none without providing alternatives
+- [x] :focus shows on all focus events, :focus-visible only for keyboard navigation
+- [x] :focus-visible is best practice for modern focus management
+- [x] WCAG contrast ratios: 4.5:1 for normal text (AA), 3:1 for large text
+- [x] Enhanced contrast (AAA): 7:1 for normal text, 4.5:1 for large text
+- [x] Contrast checking: calculate relative luminance of colors
+- [x] sr-only pattern: position:absolute, width:1px, height:1px, overflow:hidden
+- [x] sr-only hides content visually but keeps it in accessibility tree
+- [x] display:none and visibility:hidden both hide from screen readers
+- [x] aria-hidden="true" makes visible content invisible to screen readers
+- [x] Skip links: hidden until focused, help keyboard users bypass navigation
+- [x] Icon buttons need sr-only labels for accessibility
+- [x] prefers-reduced-motion: respects user preference for reduced animation
+- [x] Motion sensitivity: vestibular disorders, photosensitive epilepsy
+- [x] Reduced motion alternative: replace movement with opacity/color changes
+- [x] Keep essential animations (loading) but simplify them
+- [x] Reduce animation duration to under 100ms for reduced motion mode
 
 ---
 
@@ -1428,9 +1474,9 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 *Add any questions or notes here during learning:*
 
-- **CSS Course Added!** The tutorial now supports multiple course sections:
+- **CSS Course Complete!** The tutorial now has two complete courses:
   - React Fundamentals (8 modules, 32 lessons) - ✅ Complete
-  - CSS Mastery (4 modules, 12 lessons) - ⏳ In Progress
+  - CSS Mastery (4 modules, 12 lessons) - ✅ Complete
   - Section-based navigation with dropdown switcher in the header
   - Shared component library between courses (LessonHeader, Section, CodeSnippet, etc.)
   - Directory structure: `lessons/react/X_X/` and `lessons/css/X_X/`

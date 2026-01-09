@@ -1,0 +1,102 @@
+/* Detect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Better approach: provide alternatives */
+.animated-element {
+  /* Default: full animation */
+  animation: slideIn 0.5s ease-out;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-element {
+    /* Reduced: simple fade instead of slide */
+    animation: fadeIn 0.2s ease-out;
+    transition: opacity 0.1s;
+  }
+}
+
+/* Keep essential feedback, just simpler */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    /* Pulse instead of spin */
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+/* Keyframes for both modes */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Hover effects: reduce movement */
+.button {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: filter 0.1s;
+  }
+
+  .button:hover {
+    transform: none;
+    box-shadow: none;
+    filter: brightness(1.1);
+  }
+}
