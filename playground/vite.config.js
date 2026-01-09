@@ -72,9 +72,6 @@ export default defineConfig({
             provider: playwright({}),
             instances: [{ browser: 'chromium' }],
           },
-          sequence: {
-            concurrent: true,
-          },
           setupFiles: ['.storybook/vitest.setup.ts'],
         },
       },
