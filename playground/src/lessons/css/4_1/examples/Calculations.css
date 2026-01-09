@@ -1,0 +1,79 @@
+/* Store Reusable Measurements */
+:root {
+  --header-height: 4rem;
+  --sidebar-width: 280px;
+  --spacing-unit: 0.25rem;
+  --base-font-size: 16;
+}
+
+/* Calculate Remaining Space */
+.main-content {
+  /* Full viewport minus header */
+  height: calc(100vh - var(--header-height));
+
+  /* Full width minus sidebar */
+  width: calc(100% - var(--sidebar-width));
+}
+
+/* Spacing Scale with Multipliers */
+.spacing-xs {
+  padding: calc(var(--spacing-unit) * 1);
+} /* 0.25rem */
+.spacing-sm {
+  padding: calc(var(--spacing-unit) * 2);
+} /* 0.5rem  */
+.spacing-md {
+  padding: calc(var(--spacing-unit) * 4);
+} /* 1rem    */
+.spacing-lg {
+  padding: calc(var(--spacing-unit) * 6);
+} /* 1.5rem  */
+.spacing-xl {
+  padding: calc(var(--spacing-unit) * 8);
+} /* 2rem    */
+
+/* Typography Scale */
+.text-sm {
+  font-size: calc(var(--base-font-size) * 0.875 * 1px);
+}
+.text-md {
+  font-size: calc(var(--base-font-size) * 1 * 1px);
+}
+.text-lg {
+  font-size: calc(var(--base-font-size) * 1.25 * 1px);
+}
+.text-xl {
+  font-size: calc(var(--base-font-size) * 1.5 * 1px);
+}
+
+/* Grid with Variable Columns */
+.grid {
+  --columns: 3;
+  --gap: 1rem;
+
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+/* Override for different contexts */
+@media (max-width: 768px) {
+  .grid {
+    --columns: 1;
+  }
+}
+
+/* Dynamic Sizing */
+.avatar {
+  --size: 3rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: calc(var(--size) / 2);
+}
+
+.avatar.small {
+  --size: 2rem;
+}
+.avatar.large {
+  --size: 5rem;
+}

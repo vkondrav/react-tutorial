@@ -1,0 +1,47 @@
+/* Global Variables - Available Everywhere */
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --spacing-base: 1rem;
+  --border-radius: 0.5rem;
+}
+
+/* Using Global Variables */
+.button {
+  background: var(--color-primary);
+  padding: var(--spacing-base);
+  border-radius: var(--border-radius);
+}
+
+/* Local Variables - Scoped to Element */
+.card {
+  --card-padding: 2rem;
+  --card-bg: #1e293b;
+
+  padding: var(--card-padding);
+  background: var(--card-bg);
+}
+
+/* Child inherits parent's variables */
+.card .card-title {
+  /* Can access both global AND parent variables */
+  color: var(--color-primary);
+  margin-bottom: var(--card-padding);
+}
+
+/* Override in child scope */
+.card.featured {
+  --card-bg: #312e81;
+  --color-primary: #818cf8;
+
+  /* These only affect this element and children */
+}
+
+/* Fallback Values */
+.element {
+  /* If --custom-color doesn't exist, use #333 */
+  color: var(--custom-color, #333);
+
+  /* Nested fallbacks */
+  background: var(--bg, var(--fallback-bg, white));
+}

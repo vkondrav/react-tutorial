@@ -1,15 +1,15 @@
 # 📊 Course Progress Tracker
 
-> Last Updated: January 8, 2026
+> Last Updated: January 9, 2026
 
 ## Current Status
 
 | Field | Value |
 |-------|-------|
 | **React Course** | Module 8: Advanced Topics ✅ Complete |
-| **CSS Course** | Module 2: Layout Mastery ⏳ In Progress |
-| **Current Lesson** | CSS 3.2: Transitions & Animations ✅ |
-| **Next Lesson** | CSS 4.1: CSS Variables |
+| **CSS Course** | Module 4: Architecture at Scale ⏳ In Progress |
+| **Current Lesson** | CSS 4.1: CSS Variables ✅ |
+| **Next Lesson** | CSS 4.2: Methodologies (BEM & Utility) |
 | **Dev Server** | Running at http://localhost:5173 |
 | **SSR Server** | Running at http://localhost:3001 (via proxy at /ssr-demo) |
 | **Language** | **TypeScript** (all lessons) |
@@ -267,11 +267,11 @@
 | 3.1 | Backgrounds & Borders | ✅ Complete | Gradient syntax (linear/radial/conic), hard vs smooth stops, background layering, blend modes, clip-path shapes |
 | 3.2 | Transitions & Animations | ✅ Complete | Rendering pipeline (Layout/Paint/Composite), transform vs layout properties, cubic-bezier timing, @keyframes, animation-fill-mode |
 
-### CSS Module 4: Architecture at Scale ⬜ Not Started
+### CSS Module 4: Architecture at Scale ⏳ In Progress
 
 | Lesson | Topic | Status | Notes |
 |--------|-------|--------|-------|
-| 4.1 | CSS Variables | ⬜ Not Started | Coming Soon |
+| 4.1 | CSS Variables | ✅ Complete | Scope, theming, calc() demos |
 | 4.2 | Methodologies (BEM & Utility) | ⬜ Not Started | Coming Soon |
 | 4.3 | Accessibility | ⬜ Not Started | Coming Soon |
 
@@ -1145,6 +1145,33 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 
 ---
 
+### Session 37 - January 9, 2026
+**Goal:** Start CSS Module 4 - Architecture at Scale
+
+#### Completed:
+- ✅ **Implemented CSS Lesson 4.1: CSS Variables (Custom Properties)**
+  - `index.tsx` - Main lesson with 5 sections covering CSS custom properties
+  - `VariableScopeDemo.tsx` - Interactive demo showing global (:root) vs local scope, overrides, and fallback values
+  - `ThemeSwitchDemo.tsx` - Live dark/light theme toggle using only CSS variables and one attribute
+  - `CalcDemo.tsx` - Dynamic layouts with calc() and variables, adjustable header/sidebar/spacing/columns
+  - `examples/` folder with CSS code snippets (VariableScope.css, Theming.css, Calculations.css)
+
+- ✅ **Key Concepts Covered:**
+  - Declare with --name: value; Access with var(--name)
+  - :root variables are global, element variables are scoped
+  - Variables cascade: children inherit and can override
+  - Fallback values: var(--color, #000) uses fallback if undefined
+  - Theme switching with [data-theme="dark"] attribute selector
+  - calc() with variables: calc(100vh - var(--header-height))
+  - Variables are live in the browser (can be changed at runtime)
+  - Use semantic names: --color-primary not --blue
+
+- ✅ **Added Storybook Stories + Tests**
+  - 18 tests for CSS 4.1 components
+  - Tests cover scope switching, theme toggle, calc controls, code snippets
+
+---
+
 ## Concepts Mastered
 
 - [x] What React is and why it's popular
@@ -1344,6 +1371,14 @@ Beginning the Advanced Topics module with Server-Side Rendering.
 - [x] animation-fill-mode: forwards keeps end state, backwards applies start during delay
 - [x] animation-direction: normal, reverse, alternate, alternate-reverse
 - [x] will-change: hint for browser optimization, use sparingly
+- [x] CSS custom properties: declare with --name, access with var(--name)
+- [x] :root scope makes variables global; element scope makes them local
+- [x] CSS variables cascade: children inherit and can override
+- [x] Fallback values: var(--color, #000) uses fallback if undefined
+- [x] Theme switching: define on :root, override with [data-theme="dark"]
+- [x] calc() with variables: calc(100vh - var(--header-height))
+- [x] CSS variables are live in browser: can be changed at runtime
+- [x] Semantic naming: use --color-primary not --blue
 - [ ] ...more to come
 
 ---
