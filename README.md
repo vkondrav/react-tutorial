@@ -6,8 +6,8 @@
 An interactive tutorial for React and CSS, designed to be taught through an AI assistant. Features live playground examples, Storybook integration, and progress tracking.
 
 **Two courses available:**
-- **React Fundamentals** — 8 modules, 32 lessons (✅ Complete)
-- **CSS Mastery** — 4 modules, 12 lessons (⏳ In Progress)
+- **React Fundamentals** — 8 modules, 34 lessons (✅ Complete)
+- **CSS Mastery** — 4 modules, 12 lessons (✅ Complete)
 
 ## Quick Start
 
@@ -79,7 +79,7 @@ react-tutorial/
 | 7 | State Management | Lifting state, useReducer, Context + Reducer |
 | 8 | Advanced | SSR, Testing, TanStack Query, React Server Components |
 
-### CSS Mastery (⏳ In Progress)
+### CSS Mastery (✅ Complete)
 
 | Module | Topic | Lessons |
 |--------|-------|---------|

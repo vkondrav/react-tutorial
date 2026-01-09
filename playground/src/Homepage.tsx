@@ -26,16 +26,6 @@ interface LessonConfig {
   description: string;
 }
 
-// Completed CSS lessons (not "Coming Soon")
-const COMPLETED_CSS_LESSONS = new Set([
-  'css-1.1',
-  'css-1.2',
-  'css-1.3',
-  'css-2.1',
-  'css-2.2',
-  'css-2.3',
-]);
-
 interface HomepageProps {
   onStartLearning: (sectionId?: string) => void;
   settings: AppSettings;
@@ -164,9 +154,6 @@ export default function Homepage({
                         <h2 className="text-2xl font-bold group-hover:text-primary transition-colors">
                           {section.title}
                         </h2>
-                        {!isReact && (
-                          <span className="badge badge-warning badge-sm">Under Development</span>
-                        )}
                       </div>
                       <p className="text-base-content/60 text-sm mb-4">
                         {isReact
@@ -588,39 +575,32 @@ export default function Homepage({
 
                   {/* Lessons */}
                   <div className="divide-y divide-base-content/5">
-                    {moduleLessons.map((lesson) => {
-                      const displayId = lesson.id.replace('css-', '');
-                      const isComplete = COMPLETED_CSS_LESSONS.has(lesson.id);
-                      return (
-                        <a
-                          key={lesson.id}
-                          href={`#${lesson.id}`}
-                          className="flex items-center gap-4 px-6 py-4 hover:bg-base-200/50 transition-colors group"
+                    {moduleLessons.map((lesson) => (
+                      <a
+                        key={lesson.id}
+                        href={`#${lesson.id}`}
+                        className="flex items-center gap-4 px-6 py-4 hover:bg-base-200/50 transition-colors group"
+                      >
+                        <span
+                          className="text-xs font-mono px-2 py-1 rounded"
+                          style={{ backgroundColor: `${mod.color}15`, color: mod.color }}
                         >
-                          <span
-                            className="text-xs font-mono px-2 py-1 rounded"
-                            style={{ backgroundColor: `${mod.color}15`, color: mod.color }}
-                          >
-                            {displayId}
-                          </span>
-                          <div className="flex-1 min-w-0">
-                            <div className="font-medium group-hover:text-primary transition-colors">
-                              {lesson.title}
-                            </div>
-                            <p className="text-sm text-base-content/50 truncate">
-                              {lesson.description}
-                            </p>
+                          {lesson.id.replace('css-', '')}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium group-hover:text-primary transition-colors">
+                            {lesson.title}
                           </div>
-                          {!isComplete && (
-                            <span className="badge badge-warning badge-sm">Coming Soon</span>
-                          )}
-                          <HiOutlineArrowRight
-                            size={16}
-                            className="text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0"
-                          />
-                        </a>
-                      );
-                    })}
+                          <p className="text-sm text-base-content/50 truncate">
+                            {lesson.description}
+                          </p>
+                        </div>
+                        <HiOutlineArrowRight
+                          size={16}
+                          className="text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0"
+                        />
+                      </a>
+                    ))}
                   </div>
                 </div>
               );

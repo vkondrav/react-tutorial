@@ -399,18 +399,6 @@ export const HeroCtaButtons: Story = {
 };
 
 /**
- * Tests incomplete CSS lessons show "Coming Soon" badge
- */
-export const CSSLessonsComingSoon: Story = {
-  play: async ({ canvasElement }) => {
-    // CSS lessons should have "Coming Soon" badges (6 incomplete: 2.4, 3.1, 3.2, 4.1, 4.2, 4.3)
-    // Plus 1 "Under Development" badge on the course card = 7 total warning badges
-    const comingSoonBadges = canvasElement.querySelectorAll('.badge-warning');
-    expect(comingSoonBadges.length).toBeGreaterThanOrEqual(6);
-  },
-};
-
-/**
  * Tests course cards display correct lesson and module counts
  */
 export const CourseCardCounts: Story = {
