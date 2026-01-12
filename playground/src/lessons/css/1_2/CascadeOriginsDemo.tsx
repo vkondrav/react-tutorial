@@ -155,8 +155,11 @@ export default function CascadeOriginsDemo(): React.ReactElement {
       <div className="bg-warning/10 border border-warning/30 rounded-lg p-4">
         <p className="text-sm">
           <strong className="text-warning">Note:</strong> The{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-1 rounded">!important</code> flag can flip this order!
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           User <code className="text-xs">!important</code> beats Author{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-xs">!important</code>, ensuring accessibility needs are respected.
         </p>
       </div>

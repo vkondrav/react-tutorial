@@ -130,6 +130,7 @@ export default function VisuallyHiddenDemo(): React.ReactElement {
       {/* Active Method Details */}
       <div className="bg-base-300 rounded-lg p-4 mb-6">
         <div className="flex items-center gap-3 mb-3">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-1 rounded text-sm font-mono">{current.code}</code>
         </div>
         <p className="text-sm text-base-content/70 mb-2">{current.description}</p>
@@ -187,8 +188,10 @@ export default function VisuallyHiddenDemo(): React.ReactElement {
               </button>
             </div>
             <p className="text-xs text-base-content/50 mt-2">
-              Each button has{' '}
-              <code className="bg-base-200 px-1 rounded">&lt;span className="sr-only"&gt;</code>{' '}
+              Each button has {/* eslint-disable-next-line local/no-raw-code-element */}
+              <code className="bg-base-200 px-1 rounded">
+                &lt;span className="sr-only"&gt;
+              </code>{' '}
               inside for screen readers.
             </p>
           </div>
@@ -206,6 +209,7 @@ export default function VisuallyHiddenDemo(): React.ReactElement {
               <span>Congratulations on completing the course!</span>
             </div>
             <p className="text-xs text-base-content/50 mt-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               The emoji has <code className="bg-base-200 px-1 rounded">aria-hidden="true"</code> —
               screen readers will only announce the text.
             </p>

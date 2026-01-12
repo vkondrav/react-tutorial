@@ -124,6 +124,7 @@ function DependentQueriesDemo(): React.ReactElement {
         Dependent Queries
       </h4>
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         The posts query only runs when a user is selected. Use <code>enabled: !!userId</code> to
         control when queries execute.
       </p>
@@ -219,6 +220,7 @@ function ParallelQueriesDemo(): React.ReactElement {
         Parallel Queries
       </h4>
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         Multiple <code>useQuery</code> calls in the same component run in parallel. Each has its own
         loading state.
       </p>
@@ -292,6 +294,7 @@ function DeduplicationDemo(): React.ReactElement {
         Request Deduplication
       </h4>
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         Multiple components with the same <code>queryKey</code> share one request. Watch the network
         tab — only 1 request is made!
       </p>
@@ -388,6 +391,7 @@ function PollingDemo(): React.ReactElement {
         Automatic Polling
       </h4>
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         Use <code>refetchInterval</code> to automatically poll for updates. Perfect for dashboards,
         live feeds, or real-time data.
       </p>
@@ -474,7 +478,9 @@ function SuspenseQueryDemo(): React.ReactElement {
         useSuspenseQuery
       </h4>
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code>useSuspenseQuery</code> integrates with React Suspense. No need to handle{' '}
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code>isLoading</code> — the component suspends until data is ready!
       </p>
 

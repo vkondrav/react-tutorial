@@ -157,7 +157,7 @@ export default function EventHandlersDemo(): React.ReactElement {
             </div>
             <div className="mt-4 p-3 bg-secondary/10 rounded-lg text-base-content/70 text-sm">
               <HiCheck className="inline text-secondary mr-1" size={16} />
-              <strong>Pattern:</strong>{' '}
+              <strong>Pattern:</strong> {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">{'onClick={() => handleDelete(id)}'}</code> - wrap in
               arrow function to pass arguments.
             </div>
@@ -174,21 +174,25 @@ export default function EventHandlersDemo(): React.ReactElement {
         <div className="text-xs text-base-content/70 leading-relaxed space-y-1">
           <div>
             <HiX className="inline text-error mr-1" size={12} />
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-error">onClick=&#123;handleClick()&#125;</code> - Calls function
             immediately!
           </div>
           <div>
             <HiCheck className="inline text-success mr-1" size={12} />
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">onClick=&#123;handleClick&#125;</code> - Passes function
             reference
           </div>
           <div className="mt-2">
             <HiX className="inline text-error mr-1" size={12} />
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-error">onClick=&#123;handleDelete(id)&#125;</code> - Calls
             function immediately!
           </div>
           <div>
             <HiCheck className="inline text-success mr-1" size={12} />
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">onClick=&#123;() =&gt; handleDelete(id)&#125;</code> -
             Wraps in arrow function
           </div>

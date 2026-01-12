@@ -32,6 +32,7 @@ export default function Lesson5_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Instead of creating separate <code className="text-secondary">useState</code> for each
           field, use a <strong className="text-primary">single state object</strong>. This scales
           better and keeps related data together.
@@ -49,6 +50,7 @@ export default function Lesson5_3(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="text-secondary">name</code> attribute identifies which field changed.
           Combined with <strong className="text-primary">computed property names</strong>, you can
           handle all inputs with a single function.

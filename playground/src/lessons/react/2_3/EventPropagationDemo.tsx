@@ -162,8 +162,10 @@ export default function EventPropagationDemo(): React.ReactElement {
       <div className="px-6 py-4 bg-primary/10 border-t border-primary flex items-center gap-3">
         <HiOutlineLightBulb className="text-primary" size={20} />
         <span className="text-base-content/70 text-sm">
-          <strong className="text-base-content">Remember:</strong> Events bubble up (child →
+          <strong className="text-base-content">Remember:</strong> Events bubble up (child →{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           parent). Use <code className="text-warning">stopPropagation()</code> to stop bubbling, and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-success">preventDefault()</code> to stop default browser behavior.
         </span>
       </div>

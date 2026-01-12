@@ -52,7 +52,7 @@ export default function CSSLesson4_1(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
-          Variables defined on{' '}
+          Variables defined on {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:root</code> are{' '}
           <strong className="text-success">global</strong>—available everywhere. Variables defined
           on a specific selector are <strong className="text-warning">local</strong>—only available
@@ -82,8 +82,9 @@ export default function CSSLesson4_1(): React.ReactElement {
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           The pattern: define theme colors as variables on{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:root</code>, then override them
-          with an attribute selector like{' '}
+          with an attribute selector like {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">[data-theme="dark"]</code>.
         </p>
         <ThemeSwitchDemo />
@@ -100,8 +101,10 @@ export default function CSSLesson4_1(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           CSS variables become even more powerful with{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">calc()</code>. Store a header
           height, then calculate the remaining viewport:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
             calc(100vh - var(--header-height))
           </code>
@@ -109,7 +112,10 @@ export default function CSSLesson4_1(): React.ReactElement {
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           You can even do math with unitless variables:{' '}
-          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">calc(var(--spacing) * 2)</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            calc(var(--spacing) * 2)
+          </code>{' '}
           for consistent spacing scales.
         </p>
         <CalcDemo />

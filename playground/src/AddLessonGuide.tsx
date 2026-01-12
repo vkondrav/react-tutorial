@@ -70,7 +70,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
             The Key: README.md
           </h2>
           <p className="text-base-content/70 mb-4 leading-relaxed">
-            The repository includes a{' '}
+            The repository includes a {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="px-2 py-1 bg-base-300 rounded text-primary font-mono text-sm">
               README.md
             </code>{' '}
@@ -127,7 +127,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
               <div>
                 <h3 className="font-semibold text-lg mb-1">Reference README.md in your prompt</h3>
                 <p className="text-base-content/70">
-                  In Cursor, you can use{' '}
+                  In Cursor, you can use {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="px-1.5 py-0.5 bg-base-300 rounded text-sm">@README.md</code> to
                   include the file in your prompt context.
                 </p>
@@ -168,6 +168,7 @@ export default function AddLessonGuide({ onBack }: AddLessonGuideProps): React.R
                 <h3 className="font-semibold text-lg mb-1">Run and iterate</h3>
                 <p className="text-base-content/70">
                   Start the dev server with{' '}
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="px-1.5 py-0.5 bg-base-300 rounded text-sm">npm run dev</code> and
                   refine the lesson until you're happy with it.
                 </p>

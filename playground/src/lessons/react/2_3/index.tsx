@@ -34,7 +34,9 @@ export default function Lesson2_3(): React.ReactElement {
           React lets you handle user interactions like clicks, typing, and form submissions. Event
           handlers are functions that run when events occur. In React, event names are{' '}
           <strong className="text-primary">camelCase</strong> (like{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-success">onClick</code> instead of{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-error">onclick</code>).
         </p>
         <EventBasicsDemo />

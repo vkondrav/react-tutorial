@@ -271,7 +271,9 @@ export default function ContextPatternDemo(): React.ReactElement {
       <div className="card bg-linear-to-r from-primary/10 to-secondary/10 p-4">
         <p className="text-sm">
           <strong className="text-primary">Key Insight:</strong> The{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">Accordion.Trigger</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">Accordion.Content</code> components don't receive any props
           from their parent — they get everything they need from{' '}
           <strong className="text-secondary">Context</strong>!

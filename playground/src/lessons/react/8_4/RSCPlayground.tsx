@@ -190,6 +190,7 @@ export default function RSCPlayground(): React.ReactElement {
                       <p className="text-base-content/70 mb-4">{error}</p>
                       <div className="bg-base-200 p-4 rounded-lg text-left">
                         <p className="text-sm font-semibold mb-2">To start the server:</p>
+                        {/* eslint-disable-next-line local/no-raw-code-element */}
                         <code className="block bg-base-300 p-2 rounded text-sm font-mono">
                           cd playground && npm run ssr:dev
                         </code>
@@ -418,6 +419,7 @@ export default function RSCPlayground(): React.ReactElement {
               <h5 className="font-semibold text-success mb-2">Golden Rule</h5>
               <p className="text-sm">
                 <strong>Default to Server Components.</strong> Only add{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-secondary">"use client"</code> when you actually need
                 client-side interactivity. Push the client boundary down as far as possible.
               </p>

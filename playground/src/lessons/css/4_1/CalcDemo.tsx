@@ -47,6 +47,7 @@ export default function CalcDemo(): React.ReactElement {
           <div className="space-y-2">
             <label className="flex justify-between text-sm">
               <span>--header-height</span>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">{headerHeight}px</code>
             </label>
             <input
@@ -63,6 +64,7 @@ export default function CalcDemo(): React.ReactElement {
           <div className="space-y-2">
             <label className="flex justify-between text-sm">
               <span>--sidebar-width</span>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">{sidebarWidth}px</code>
             </label>
             <input
@@ -79,6 +81,7 @@ export default function CalcDemo(): React.ReactElement {
           <div className="space-y-2">
             <label className="flex justify-between text-sm">
               <span>--spacing-unit</span>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">{spacingUnit}px</code>
             </label>
             <input
@@ -95,6 +98,7 @@ export default function CalcDemo(): React.ReactElement {
           <div className="space-y-2">
             <label className="flex justify-between text-sm">
               <span>--columns</span>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">{columns}</code>
             </label>
             <input

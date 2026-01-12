@@ -66,6 +66,7 @@ export default function EmbeddingDemo(): React.ReactElement {
         {expressions.map((expr, i) => (
           <div key={i} className="card bg-base-200 p-4 border border-base-300">
             <div className="text-base-content/50 text-xs mb-1 uppercase">{expr.label}</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning text-sm block mb-2">{expr.code}</code>
             <div className="text-success font-semibold text-sm flex items-center gap-1">
               <HiOutlineArrowRight size={14} />

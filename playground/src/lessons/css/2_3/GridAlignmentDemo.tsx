@@ -134,7 +134,9 @@ export default function GridAlignmentDemo(): React.ReactElement {
           <div>
             <h4 className="font-bold">Items Alignment</h4>
             <p className="text-sm mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-success">justify-items</code> and{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-warning">align-items</code> control how items are positioned{' '}
               <strong>within their grid cells</strong>. Notice how items can be smaller than their
               cells.
@@ -144,7 +146,9 @@ export default function GridAlignmentDemo(): React.ReactElement {
           <div>
             <h4 className="font-bold">Content Alignment</h4>
             <p className="text-sm mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-success">justify-content</code> and{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-warning">align-content</code> position{' '}
               <strong>the entire grid</strong> within its container. The container must be larger
               than the grid for this to have any effect.
@@ -218,6 +222,7 @@ export default function GridAlignmentDemo(): React.ReactElement {
       <div className="alert alert-info">
         <div>
           <h4 className="font-bold">Remember the Pattern</h4>
+          {/* eslint-disable local/no-raw-code-element */}
           <ul className="text-sm mt-1 space-y-1">
             <li>
               • <code>justify-*</code> = horizontal (row axis)
@@ -235,6 +240,7 @@ export default function GridAlignmentDemo(): React.ReactElement {
               • <code>place-*</code> = shorthand for both directions
             </li>
           </ul>
+          {/* eslint-enable local/no-raw-code-element */}
         </div>
       </div>
     </div>

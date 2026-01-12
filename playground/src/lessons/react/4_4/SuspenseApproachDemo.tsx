@@ -172,8 +172,11 @@ export default function SuspenseApproachDemo(): React.ReactElement {
       <div className="card bg-primary/10 border border-primary/30 p-3 mb-4">
         <p className="text-sm">
           <strong className="text-primary">React 19</strong> introduces the{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">use()</code> hook that can read promises during render.
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Combined with <code className="text-secondary">{'<Suspense>'}</code>, you get declarative
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           loading states without manual <code>loading</code> state management.
         </p>
       </div>
@@ -212,6 +215,7 @@ export default function SuspenseApproachDemo(): React.ReactElement {
           <div className="text-lg mb-1">2️⃣</div>
           <div className="text-xs font-semibold text-secondary mb-1">use() Suspends</div>
           <div className="text-xs text-base-content/60">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             Call <code>use(promise)</code> — it suspends the component until data is ready
           </div>
         </div>
@@ -219,6 +223,7 @@ export default function SuspenseApproachDemo(): React.ReactElement {
           <div className="text-lg mb-1">3️⃣</div>
           <div className="text-xs font-semibold text-accent mb-1">Suspense Catches</div>
           <div className="text-xs text-base-content/60">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code>{'<Suspense>'}</code> shows fallback UI while suspended
           </div>
         </div>

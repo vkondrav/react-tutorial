@@ -114,6 +114,7 @@ export default function DynamicFieldsDemo(): React.ReactElement {
         <div className="text-base-content/70">
           <strong className="text-error">Never use array index as key!</strong> When items are
           added/removed, indexes shift and React can't track items properly. Always use a{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong>unique ID</strong> (like <code>crypto.randomUUID()</code>).
         </div>
       </div>

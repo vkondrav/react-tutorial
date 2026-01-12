@@ -137,6 +137,7 @@ export default function SSRPlayground(): React.ReactElement {
                 <p className="text-base-content/70 mb-4">{error}</p>
                 <div className="bg-base-200 p-4 rounded-lg text-left">
                   <p className="text-sm font-semibold mb-2">To start the SSR server:</p>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="block bg-base-300 p-2 rounded text-sm font-mono">
                     cd playground && npm run ssr:dev
                   </code>

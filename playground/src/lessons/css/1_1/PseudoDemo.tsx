@@ -188,7 +188,9 @@ export default function PseudoDemo(): React.ReactElement {
           <div className="bg-accent/10 border border-accent/30 rounded-lg p-4">
             <p className="text-sm">
               <strong className="text-accent">Challenge:</strong> Build a CSS-only tooltip using{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-base-200 px-1 rounded">data-*</code> attributes and{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-base-200 px-1 rounded">::after</code>.
             </p>
           </div>
@@ -222,24 +224,28 @@ export default function PseudoDemo(): React.ReactElement {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-base-200 rounded-lg p-4">
                 <h5 className="font-medium text-primary mb-2">1. HTML Setup</h5>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-sm bg-base-300 px-2 py-1 rounded block">
                   {'<span data-tooltip="Hello!">Text</span>'}
                 </code>
               </div>
               <div className="bg-base-200 rounded-lg p-4">
                 <h5 className="font-medium text-primary mb-2">2. Read with attr()</h5>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-sm bg-base-300 px-2 py-1 rounded block">
                   content: attr(data-tooltip);
                 </code>
               </div>
               <div className="bg-base-200 rounded-lg p-4">
                 <h5 className="font-medium text-primary mb-2">3. Position absolutely</h5>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-sm bg-base-300 px-2 py-1 rounded block">
                   position: absolute; bottom: 100%;
                 </code>
               </div>
               <div className="bg-base-200 rounded-lg p-4">
                 <h5 className="font-medium text-primary mb-2">4. Show on hover</h5>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-sm bg-base-300 px-2 py-1 rounded block">
                   .tooltip:hover::after {'{ opacity: 1; }'}
                 </code>
@@ -264,20 +270,24 @@ export default function PseudoDemo(): React.ReactElement {
             <tr>
               <td className="font-semibold text-primary">Pseudo-class</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>:name</code>
               </td>
               <td>Select by state/position</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>:hover, :focus, :first-child</code>
               </td>
             </tr>
             <tr>
               <td className="font-semibold text-secondary">Pseudo-element</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>::name</code>
               </td>
               <td>Create virtual elements</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>::before, ::after, ::first-letter</code>
               </td>
             </tr>

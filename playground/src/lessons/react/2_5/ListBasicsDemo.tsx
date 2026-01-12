@@ -108,7 +108,9 @@ export default function ListBasicsDemo(): React.ReactElement {
       <div className="mt-4 p-3 rounded-lg bg-info/10 flex items-start gap-3">
         <HiOutlineLightBulb className="text-info shrink-0 mt-0.5" size={18} />
         <div className="text-sm text-info">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong>Remember:</strong> <code>.map()</code> returns a new array. Each element in the
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           returned array becomes a React element. Don't forget the <code>key</code> prop!
         </div>
       </div>

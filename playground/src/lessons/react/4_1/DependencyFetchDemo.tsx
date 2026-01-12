@@ -94,6 +94,7 @@ export default function DependencyFetchDemo(): React.ReactElement {
       {/* Dependency array visualization */}
       <div className="bg-base-300 rounded-lg p-3 mb-4">
         <div className="text-xs text-base-content/60 mb-1">Dependency Array:</div>
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code className="text-sm text-secondary">
           useEffect(() =&gt; {'{'} fetchUser() {'}'}, [
           <span className="text-primary font-bold">selectedUserId</span>

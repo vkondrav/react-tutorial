@@ -75,6 +75,7 @@ export default function VariableScopeDemo(): React.ReactElement {
                 onChange={(e) => setPrimaryColor(e.target.value)}
                 className="w-10 h-10 rounded cursor-pointer"
               />
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-xs bg-base-300 px-2 py-1 rounded">{primaryColor}</code>
             </div>
             <div className="grid grid-cols-3 gap-4">
@@ -207,6 +208,7 @@ export default function VariableScopeDemo(): React.ReactElement {
                   } as React.CSSProperties
                 }
               >
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-xs block mb-2">var(--undefined-color, #ef4444)</code>
                 <p className="text-sm">Uses fallback (red) because variable doesn't exist</p>
               </div>
@@ -216,6 +218,7 @@ export default function VariableScopeDemo(): React.ReactElement {
                   background: 'var(--demo-primary, #ef4444)',
                 }}
               >
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-xs block mb-2">var(--demo-primary, #ef4444)</code>
                 <p className="text-sm">Uses --demo-primary because it exists</p>
               </div>
@@ -228,6 +231,7 @@ export default function VariableScopeDemo(): React.ReactElement {
                 } as React.CSSProperties
               }
             >
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-xs block mb-2">
                 var(--missing, var(--also-missing, var(--demo-secondary)))
               </code>

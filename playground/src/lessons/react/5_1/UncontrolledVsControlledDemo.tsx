@@ -47,6 +47,7 @@ export default function UncontrolledVsControlledDemo(): React.ReactElement {
 
             <div className="bg-base-200 rounded p-3 text-sm">
               <div className="text-xs text-base-content/60 mb-1">Last read value:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-warning">
                 {uncontrolledValue !== null ? `"${uncontrolledValue}"` : '(click button to read)'}
               </code>
@@ -81,6 +82,7 @@ export default function UncontrolledVsControlledDemo(): React.ReactElement {
 
             <div className="bg-base-200 rounded p-3 text-sm">
               <div className="text-xs text-base-content/60 mb-1">Current state value:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-success">"{controlledValue}"</code>
             </div>
           </div>

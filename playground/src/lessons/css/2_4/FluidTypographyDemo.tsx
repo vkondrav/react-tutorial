@@ -100,6 +100,7 @@ export default function FluidTypographyDemo(): React.ReactElement {
           </span>
           <span className="text-sm text-base-content/60">)</span>
           <div className="mt-2 text-sm text-base-content/70">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-200 px-2 py-1 rounded">{clampString}</code>
           </div>
         </div>
@@ -216,6 +217,7 @@ export default function FluidTypographyDemo(): React.ReactElement {
           ].map((preset) => (
             <div key={preset.name} className="bg-base-300 rounded-lg p-3">
               <p className="font-semibold text-sm">{preset.name}</p>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-xs text-primary break-all">{preset.value}</code>
               <p className="text-xs text-base-content/60 mt-1">{preset.demo}</p>
             </div>
@@ -236,10 +238,12 @@ export default function FluidTypographyDemo(): React.ReactElement {
           <h4 className="font-bold">Pro Tips</h4>
           <ul className="text-sm mt-1 space-y-1">
             <li>
-              • Use <code>clamp()</code> for font-size, padding, margins, and gap
+              {/* eslint-disable-line local/no-raw-code-element */}• Use <code>clamp()</code> for
+              font-size, padding, margins, and gap
             </li>
             <li>
-              • The formula <code>vw + rem</code> gives smoother scaling than pure vw
+              {/* eslint-disable-next-line local/no-raw-code-element */}• The formula{' '}
+              <code>vw + rem</code> gives smoother scaling than pure vw
             </li>
             <li>• Test at 320px and 1440px to ensure text is always readable</li>
             <li>• Tools like utopia.fyi generate perfect fluid scales automatically</li>

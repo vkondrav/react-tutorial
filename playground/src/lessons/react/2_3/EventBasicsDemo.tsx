@@ -94,7 +94,9 @@ time: ${lastEvent.timestamp}`
               <div className="text-primary font-semibold mb-2">onClick (camelCase)</div>
               <div className="text-base-content/70 text-sm">
                 React uses camelCase for event names. HTML uses lowercase{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-error">onclick</code>, React uses{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-success">onClick</code>.
               </div>
             </div>
@@ -102,6 +104,7 @@ time: ${lastEvent.timestamp}`
               <div className="text-accent font-semibold mb-2">Event Object (e)</div>
               <div className="text-base-content/70 text-sm">
                 React wraps native events in a <strong>SyntheticEvent</strong>. Access event data
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 via the <code className="text-accent">e</code> parameter.
               </div>
             </div>
@@ -113,8 +116,10 @@ time: ${lastEvent.timestamp}`
       <div className="px-6 py-4 bg-error/10 border-t border-error flex items-center gap-3">
         <HiOutlineExclamationCircle className="text-error" size={20} />
         <span className="text-base-content/70 text-sm">
-          <strong className="text-base-content">Common mistake:</strong> Don't call the function
+          <strong className="text-base-content">Common mistake:</strong> Don't call the function{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           immediately! Use <code className="text-success">{'onClick={handleClick}'}</code>, not{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-error">{'onClick={handleClick()}'}</code>
         </span>
       </div>

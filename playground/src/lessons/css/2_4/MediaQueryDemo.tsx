@@ -235,6 +235,7 @@ export default function MediaQueryDemo(): React.ReactElement {
             </li>
             <li>
               <HiOutlineArrowRight className="inline text-success" size={14} /> Uses{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code>min-width</code>
             </li>
             <li>
@@ -262,6 +263,7 @@ export default function MediaQueryDemo(): React.ReactElement {
             </li>
             <li>
               <HiOutlineArrowRight className="inline text-error" size={14} /> Uses{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code>max-width</code>
             </li>
             <li>

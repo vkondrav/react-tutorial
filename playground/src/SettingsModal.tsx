@@ -140,6 +140,7 @@ export default function SettingsModal({
             <div className="text-xs text-base-content/50 mb-2">
               Preview: View Source link for Lesson 1.1
             </div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs break-all text-primary">
               {getLessonSourceLink('react-1.1', localSettings)}
             </code>

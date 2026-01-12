@@ -71,7 +71,7 @@ export default function CSSLesson1_2(): React.ReactElement {
         <p className="leading-relaxed text-base-content/70 mb-4">
           When rules from the same origin conflict,{' '}
           <strong className="text-primary">specificity</strong> determines the winner. Think of it
-          as a scoring system:{' '}
+          as a scoring system: {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">(ID, Class, Element)</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
@@ -90,7 +90,10 @@ export default function CSSLesson1_2(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
-          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm text-error">!important</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm text-error">
+            !important
+          </code>{' '}
           declaration is a nuclear option that overrides normal specificity rules. It's powerful but
           dangerous—overuse leads to <strong className="text-error">specificity wars</strong> and
           unmaintainable CSS.

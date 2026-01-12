@@ -55,13 +55,19 @@ export default function CSSLesson3_2(): React.ReactElement {
           The browser renders in three phases: <strong className="text-error">Layout</strong>{' '}
           (geometry), <strong className="text-warning">Paint</strong> (pixels), and{' '}
           <strong className="text-success">Composite</strong> (GPU layers). Animating{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">transform</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">opacity</code> only triggers
           Composite—the fastest phase.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
-          Properties like <code className="bg-base-200 px-2 py-0.5 rounded text-sm">left</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          Properties like <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            left
+          </code>, {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">width</code>, or{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">margin</code> trigger Layout,
           forcing the browser to recalculate geometry for every frame—a recipe for jank.
         </p>
@@ -80,14 +86,17 @@ export default function CSSLesson3_2(): React.ReactElement {
         <p className="leading-relaxed text-base-content/70 mb-4">
           Timing functions control the <strong className="text-primary">acceleration</strong> of
           animations. The built-in keywords (
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">ease</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">ease-in-out</code>) are just
-          presets for{' '}
+          presets for {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">cubic-bezier()</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           A bezier curve has four control points. The first and last are fixed at (0,0) and (1,1).
           You control the two middle points:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
             cubic-bezier(x1, y1, x2, y2)
           </code>
@@ -109,11 +118,16 @@ export default function CSSLesson3_2(): React.ReactElement {
           While transitions animate between two states,{' '}
           <strong className="text-primary">@keyframes</strong> define multi-step animations with
           precise control. Use percentage-based stops (0%, 50%, 100%) or keywords (
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">from</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">to</code>).
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
-          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">animation-fill-mode</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            animation-fill-mode
+          </code>{' '}
           property determines what styles apply before/after the animation:{' '}
           <strong className="text-success">forwards</strong> keeps end state,{' '}
           <strong className="text-warning">backwards</strong> applies start state during delay.

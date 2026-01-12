@@ -163,6 +163,7 @@ function WithDepsDemo(): React.ReactElement {
           </span>
         </div>
         <p className="text-sm text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The effect only runs when <code className="text-primary">name</code> changes. Changing age
           re-renders but does NOT trigger the effect. <strong>Check your browser tab!</strong>
         </p>

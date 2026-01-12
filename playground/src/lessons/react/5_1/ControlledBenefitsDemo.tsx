@@ -342,6 +342,7 @@ function ComputedDemo() {
       <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>subtotal</code>, <code>discountAmount</code>, and <code>total</code> are computed
           from state — they update automatically when inputs change!
         </p>

@@ -224,6 +224,7 @@ export default function Homepage({
                 <p className="text-base-content/70 text-lg leading-relaxed">
                   Every demo you see is a{' '}
                   <span className="text-primary font-semibold">.tsx file</span> in the{' '}
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="bg-base-100 px-2 py-0.5 rounded text-sm">src/lessons/</code>{' '}
                   folder. Click{' '}
                   <ViewSourceButton
@@ -309,6 +310,7 @@ export default function Homepage({
                 </p>
                 <div className="flex items-center gap-2 text-sm text-base-content/50">
                   <HiOutlineFolder size={16} />
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-xs">src/lessons/3_2/index.tsx</code>
                 </div>
               </div>

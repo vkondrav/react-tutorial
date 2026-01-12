@@ -50,6 +50,7 @@ export default function Lesson6_1(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="text-secondary">children</code> prop is React's built-in way to pass
           content between opening and closing tags. It's the foundation of{' '}
           <strong className="text-primary">containment</strong> patterns.

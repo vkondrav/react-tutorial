@@ -111,6 +111,7 @@ export default function ContextBasicsDemo(): React.ReactElement {
             <strong className="text-success">No Prop Drilling!</strong>{' '}
             <span className="text-base-content/70">
               DeepComponent gets the user directly via{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">useContext()</code>. Middle components don't need to
               know about user at all.
             </span>

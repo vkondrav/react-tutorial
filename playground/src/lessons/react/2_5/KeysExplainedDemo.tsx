@@ -123,12 +123,14 @@ export default function KeysExplainedDemo(): React.ReactElement {
               <li className="flex items-start gap-2">
                 <span className="text-success">•</span>
                 <span>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <strong>Database IDs:</strong> <code>user.id</code>, <code>post._id</code>
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-success">•</span>
                 <span>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <strong>Unique identifiers:</strong> <code>uuid()</code>, <code>nanoid()</code>
                 </span>
               </li>
@@ -148,12 +150,14 @@ export default function KeysExplainedDemo(): React.ReactElement {
               <li className="flex items-start gap-2">
                 <span className="text-error">•</span>
                 <span>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <strong>Array index:</strong> <code>key={'{index}'}</code> (usually)
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-error">•</span>
                 <span>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <strong>Random values:</strong> <code>Math.random()</code>
                 </span>
               </li>

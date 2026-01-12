@@ -34,6 +34,7 @@ export default function Lesson4_3(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           To create new data, send a <strong className="text-primary">POST</strong> request with the
           data in the request body. The server typically returns the created item with its new{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">id</code>.
         </p>
         <CreateDataDemo />

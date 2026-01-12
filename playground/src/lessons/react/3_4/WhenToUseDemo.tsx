@@ -78,6 +78,7 @@ export default function WhenToUseDemo(): React.ReactElement {
                 <span className="badge badge-success badge-sm">{item.hook}</span>
                 <span className="text-sm">{item.scenario}</span>
               </div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-xs text-base-content/60 block">{item.example}</code>
             </div>
           ))}
@@ -94,6 +95,7 @@ export default function WhenToUseDemo(): React.ReactElement {
           {dontUseItems.map((item, i) => (
             <div key={i} className="bg-error/10 rounded-lg p-3 border border-error/20">
               <div className="text-sm mb-1">{item.reason}</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-xs text-base-content/60 block">{item.example}</code>
             </div>
           ))}

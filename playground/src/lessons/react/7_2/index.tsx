@@ -30,6 +30,7 @@ export default function Lesson7_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           As state logic grows complex, <code className="text-error">useState</code> can become
           unwieldy. <strong className="text-primary">useReducer</strong> provides a more structured
           way to handle state updates with{' '}

@@ -206,6 +206,7 @@ function ObjectStateDemo() {
       <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           One state, one handler, easy reset! The <code className="text-success">name</code>{' '}
           attribute tells us which field changed.
         </p>

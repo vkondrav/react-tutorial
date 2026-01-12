@@ -217,6 +217,7 @@ export default function HOCPlayground() {
           {/* withLoading */}
           <div>
             <p className="text-xs text-base-content/60 mb-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code>withLoading(ProductCard)</code>
             </p>
             <LoadableProductCard
@@ -234,6 +235,7 @@ export default function HOCPlayground() {
           {/* withBorder */}
           <div>
             <p className="text-xs text-base-content/60 mb-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code>withBorder(UserProfile)</code>
             </p>
             <BorderedUserProfile
@@ -260,6 +262,7 @@ export default function HOCPlayground() {
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-2">Demo 2: Composed HOCs</h4>
         <p className="text-xs text-base-content/60 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>withTimestamp(withBorder(withLoading(withError(ProductCard))))</code>
         </p>
 

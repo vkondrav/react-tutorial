@@ -47,6 +47,7 @@ export default function Lesson2_1(): React.ReactElement {
         }
       >
         <p className="text-base-content/70 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Instead of accessing <code className="text-success">props.name</code> every time, you can{' '}
           <strong className="text-warning">destructure</strong> props directly in the function
           parameters:
@@ -79,6 +80,7 @@ export default function Lesson2_1(): React.ReactElement {
         }
       >
         <p className="text-base-content/70 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The special <code className="text-accent">children</code> prop lets you pass content
           between component tags - just like HTML elements!
         </p>

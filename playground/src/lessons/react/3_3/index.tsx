@@ -69,7 +69,9 @@ export default function Lesson3_3(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           The most common use of refs is to access{' '}
           <strong className="text-primary">DOM elements</strong> directly. Attach a ref to an
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           element with the <code className="text-secondary">ref</code> attribute, then access the
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           element via <code className="text-secondary">ref.current</code>.
         </p>
         <DomAccessDemo />

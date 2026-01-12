@@ -52,6 +52,7 @@ export default function Lesson4_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Let's build <code className="text-primary">useFetch</code> incrementally, starting simple
           and adding features like <strong className="text-secondary">refetch</strong>,{' '}
           <strong className="text-accent">abort on unmount</strong>, and{' '}
@@ -87,7 +88,9 @@ export default function Lesson4_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           React 19 introduces the <code className="text-primary">use()</code> hook for reading
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           promises. Combined with <code className="text-secondary">{'<Suspense>'}</code>, it offers
           a declarative alternative to manual loading states.
         </p>
@@ -174,6 +177,7 @@ export default function Lesson4_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           See our <code className="text-primary">useFetch</code> hook in action! Try different
           endpoints, simulate errors, and observe how the hook handles all states automatically.
         </p>

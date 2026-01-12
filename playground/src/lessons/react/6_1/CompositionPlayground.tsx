@@ -335,6 +335,7 @@ export default function CompositionPlayground() {
             <div className="flex justify-center mb-2">
               <Avatar name="John Doe" size="lg" />
             </div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs">Avatar</code>
           </div>
           <div className="text-center">
@@ -342,6 +343,7 @@ export default function CompositionPlayground() {
               <Badge>Default</Badge>
               <Badge variant="primary">Primary</Badge>
             </div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs">Badge</code>
           </div>
           <div className="text-center">
@@ -349,12 +351,14 @@ export default function CompositionPlayground() {
               <IconButton icon={<HiOutlineHeart size={18} />} label="Like" count={5} />
               <IconButton icon={<HiOutlineChatAlt size={18} />} label="Comment" />
             </div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs">IconButton</code>
           </div>
           <div className="text-center">
             <Card className="p-2">
               <span className="text-xs">Content</span>
             </Card>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs mt-2 block">Card</code>
           </div>
         </div>

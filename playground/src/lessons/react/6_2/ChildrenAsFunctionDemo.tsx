@@ -79,6 +79,7 @@ export default function ChildrenAsFunctionDemo() {
           </div>
         </div>
         <p className="text-sm text-base-content/70 mt-3">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Both work the same way, but <code className="text-secondary">children</code> feels more
           natural since it goes between the tags.
         </p>
@@ -232,7 +233,9 @@ export default function ChildrenAsFunctionDemo() {
           <div>
             <h4 className="font-semibold mb-1">Why Children as Function?</h4>
             <p className="text-sm text-base-content/70">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Using <code className="text-secondary">children</code> instead of a named prop like{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">render</code> is purely ergonomic. It reads more
               naturally and avoids extra prop syntax. Both approaches work identically!
             </p>

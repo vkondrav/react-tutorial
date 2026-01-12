@@ -174,13 +174,16 @@ export default function CreateDataDemo(): React.ReactElement {
         <h4 className="font-semibold mb-2">Key Points</h4>
         <ul className="text-sm space-y-1 text-base-content/70">
           <li>
-            • Set <code className="text-secondary">Content-Type: application/json</code> header
+            {/* eslint-disable-next-line local/no-raw-code-element */}• Set{' '}
+            <code className="text-secondary">Content-Type: application/json</code> header
           </li>
           <li>
-            • Use <code className="text-secondary">JSON.stringify()</code> for the body
+            {/* eslint-disable-next-line local/no-raw-code-element */}• Use{' '}
+            <code className="text-secondary">JSON.stringify()</code> for the body
           </li>
           <li>
-            • Check <code className="text-secondary">response.ok</code> for errors
+            {/* eslint-disable-next-line local/no-raw-code-element */}• Check{' '}
+            <code className="text-secondary">response.ok</code> for errors
           </li>
           <li>• Update local state with the returned item (includes new ID)</li>
           <li>• Disable form inputs while submitting</li>

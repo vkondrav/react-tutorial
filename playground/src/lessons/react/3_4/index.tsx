@@ -51,13 +51,16 @@ export default function Lesson3_4(): React.ReactElement {
             <h4 className="font-semibold text-success mb-2">Solutions</h4>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
-                • <code className="text-secondary">useMemo</code> — cache values
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-secondary">useMemo</code> — cache values
               </li>
               <li>
-                • <code className="text-secondary">useCallback</code> — cache functions
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-secondary">useCallback</code> — cache functions
               </li>
               <li>
-                • <code className="text-secondary">React.memo</code> — skip re-renders
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-secondary">React.memo</code> — skip re-renders
               </li>
             </ul>
           </div>
@@ -97,6 +100,7 @@ export default function Lesson3_4(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           <strong className="text-primary">useCallback</strong> memoizes a function itself. Without
           it, a new function is created on every render — which can cause child components using{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">React.memo</code> to re-render unnecessarily.
         </p>
         <div className="mb-4">

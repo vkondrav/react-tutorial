@@ -174,7 +174,9 @@ export default function ThemeSwitchDemo(): React.ReactElement {
                   className="w-4 h-4 rounded border border-base-300"
                   style={{ background: value }}
                 />
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-base-content/70">{name}</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-base-content/50">{value}</code>
               </div>
             ))}

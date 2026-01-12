@@ -188,6 +188,7 @@ export default function UtilityFirstDemo(): React.ReactElement {
               className="bg-base-200 rounded p-2 text-xs"
               style={{ borderLeft: `3px solid ${categoryColors[util.category]}` }}
             >
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="font-bold text-base-content">.{util.name}</code>
               <div className="text-base-content/60 mt-0.5 font-mono">{util.css}</div>
             </div>

@@ -103,6 +103,7 @@ export default function CSSApproachDemo(): React.ReactElement {
         <div className="mt-4 flex items-start gap-2 text-xs text-success">
           <HiCheck className="shrink-0 mt-0.5" size={14} />
           <span>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             Using <code className="bg-base-300 px-1 rounded">display: none</code>— components stay
             mounted, state preserved!
           </span>

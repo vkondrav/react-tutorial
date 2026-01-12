@@ -79,6 +79,7 @@ function SpecificityBar({ specificity }: { specificity: [number, number, number,
           style={{ width: `${(width / maxWidth) * 100}%` }}
         />
       </div>
+      {/* eslint-disable-next-line local/no-raw-code-element */}
       <code className="text-xs font-mono bg-base-200 px-2 py-1 rounded min-w-[80px] text-center">
         ({inline},{id},{cls},{el})
       </code>
@@ -132,6 +133,7 @@ export default function SpecificityComparisonDemo(): React.ReactElement {
             <div className="space-y-3">
               {traditionalExamples.map((ex, i) => (
                 <div key={i} className="bg-base-300 rounded p-3">
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-sm block mb-1 text-error">{ex.selector}</code>
                   <p className="text-xs text-base-content/60 mb-2">{ex.description}</p>
                   <SpecificityBar specificity={ex.specificity} />
@@ -142,6 +144,7 @@ export default function SpecificityComparisonDemo(): React.ReactElement {
               <HiOutlineExclamationCircle className="text-error shrink-0 mt-0.5" size={18} />
               <p className="text-xs text-base-content/70">
                 Specificity keeps growing! Eventually leads to{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">!important</code>
               </p>
             </div>
@@ -156,6 +159,7 @@ export default function SpecificityComparisonDemo(): React.ReactElement {
             <div className="space-y-3">
               {bemExamples.map((ex, i) => (
                 <div key={i} className="bg-base-300 rounded p-3">
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-sm block mb-1 text-success">{ex.selector}</code>
                   <p className="text-xs text-base-content/60 mb-2">{ex.description}</p>
                   <SpecificityBar specificity={ex.specificity} />
@@ -186,6 +190,7 @@ export default function SpecificityComparisonDemo(): React.ReactElement {
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code
                     className={`text-sm font-medium ${
                       ex.approach === 'traditional' ? 'text-error' : 'text-success'

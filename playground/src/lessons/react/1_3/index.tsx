@@ -68,7 +68,7 @@ export default function Lesson1_3(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-6">
-          Use curly braces{' '}
+          Use curly braces {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-300 px-2 py-0.5 rounded text-warning">{'{}'}</code> to embed any
           JavaScript expression in JSX:
         </p>

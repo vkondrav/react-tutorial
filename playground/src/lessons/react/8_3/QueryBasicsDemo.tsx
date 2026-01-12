@@ -155,7 +155,9 @@ function QueryBasicsContent(): React.ReactElement {
       <div className="bg-success/10 border border-success/30 rounded-lg p-4 mb-4">
         <h4 className="font-semibold text-success mb-2">Compare to useEffect!</h4>
         <p className="text-sm text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           With TanStack Query, you don't need to manage <code>loading</code>, <code>error</code>,
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           and <code>data</code> state manually. No cleanup functions, no race conditions, and the
           data is automatically cached!
         </p>

@@ -194,13 +194,19 @@ export default function LogicalAndDemo(): React.ReactElement {
           Why && Works
         </div>
         <div className="text-sm leading-relaxed text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           JavaScript's <code className="text-warning">&&</code> returns the first falsy value OR the
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           last value. So <code>true && &lt;Component /&gt;</code> returns{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>&lt;Component /&gt;</code>, while <code>false && &lt;Component /&gt;</code> returns{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>false</code> (which React ignores).
           <br />
           <br />
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong className="text-warning">⚠️ Gotcha:</strong> <code>0 && &lt;X /&gt;</code> renders{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>"0"</code> because 0 is falsy but still a number React will display!
         </div>
       </div>

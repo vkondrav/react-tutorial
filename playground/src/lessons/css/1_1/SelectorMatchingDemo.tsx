@@ -79,6 +79,7 @@ export default function SelectorMatchingDemo(): React.ReactElement {
             }`}
           >
             <HiOutlinePlay size={14} />
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="font-mono">{s.selector}</code>
           </button>
         ))}
@@ -92,6 +93,7 @@ export default function SelectorMatchingDemo(): React.ReactElement {
       {currentSelector && (
         <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
           <p className="text-sm">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-primary font-bold">{currentSelector.selector}</code>
             {' → '}
             {currentSelector.description}

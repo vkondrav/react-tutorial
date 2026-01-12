@@ -89,6 +89,7 @@ export default function EffectTimingDemo(): React.ReactElement {
         <p className="text-sm text-base-content/80">
           <strong>Why after paint?</strong> useEffect runs after the browser paints so it doesn't
           block the visual update. This makes your app feel faster. For layout-dependent effects,
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           use <code className="text-primary">useLayoutEffect</code> instead.
         </p>
       </div>

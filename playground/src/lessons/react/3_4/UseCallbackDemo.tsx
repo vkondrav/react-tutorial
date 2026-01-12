@@ -41,7 +41,9 @@ export default function UseCallbackDemo(): React.ReactElement {
       </h3>
 
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         The button components are wrapped in <code className="text-secondary">React.memo</code>.
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         Without <code className="text-secondary">useCallback</code>, they re-render because the
         function prop is a new reference every time.
       </p>

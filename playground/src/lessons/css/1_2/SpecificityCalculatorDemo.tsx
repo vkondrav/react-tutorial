@@ -188,6 +188,7 @@ export default function SpecificityCalculatorDemo(): React.ReactElement {
               className="btn btn-sm btn-outline gap-1"
             >
               <HiOutlinePlus size={12} />
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="font-mono text-xs">{preset.selector}</code>
             </button>
           ))}
@@ -238,6 +239,7 @@ export default function SpecificityCalculatorDemo(): React.ReactElement {
                       {isWinner && selectedSelectors.length > 1 && (
                         <span className="badge badge-success">WINS</span>
                       )}
+                      {/* eslint-disable-next-line local/no-raw-code-element */}
                       <code className="font-mono text-lg">{item.selector}</code>
                     </div>
                     <div className="flex items-center gap-3">
@@ -290,45 +292,55 @@ export default function SpecificityCalculatorDemo(): React.ReactElement {
             <tr>
               <td className="font-semibold text-error">Inline styles</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>style="..."</code>
               </td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>(1, 0, 0, 0)</code>
               </td>
             </tr>
             <tr>
               <td className="font-semibold text-warning">ID selectors</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>#header</code>
               </td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>(0, 1, 0, 0)</code>
               </td>
             </tr>
             <tr>
               <td className="font-semibold text-info">Classes, attributes, pseudo-classes</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>.btn, [type], :hover</code>
               </td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>(0, 0, 1, 0)</code>
               </td>
             </tr>
             <tr>
               <td className="font-semibold text-success">Elements, pseudo-elements</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>div, ::before</code>
               </td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>(0, 0, 0, 1)</code>
               </td>
             </tr>
             <tr>
               <td className="font-semibold text-base-content/50">Universal, combinators</td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>*, &gt;, +, ~</code>
               </td>
               <td>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>(0, 0, 0, 0)</code>
               </td>
             </tr>

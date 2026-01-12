@@ -108,7 +108,7 @@ export default function StatePreservationProblemDemo(): React.ReactElement {
         <div className="mt-4 flex items-start gap-2 text-xs text-error">
           <HiOutlineExclamationCircle className="shrink-0 mt-0.5" size={14} />
           <span>
-            Using{' '}
+            Using {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-300 px-1 rounded">{`{activeTab === 'x' && <Component />}`}</code>
             — component unmounts and state is lost!
           </span>
@@ -126,9 +126,11 @@ export default function StatePreservationProblemDemo(): React.ReactElement {
             <p className="font-semibold text-warning mb-1">Why does this happen?</p>
             <p className="text-base-content/70 text-sm">
               When a component is conditionally rendered with{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-accent">&& </code>
               and the condition becomes false, React <strong>unmounts</strong> the component
               entirely. Unmounting destroys the component instance, including all its{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-accent">useState</code> values.
             </p>
           </div>

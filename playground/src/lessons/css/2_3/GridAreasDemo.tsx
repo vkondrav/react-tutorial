@@ -159,14 +159,17 @@ ${uniqueAreas.map((area) => `.${area} { grid-area: ${area}; }`).join('\n')}`;
           <h4 className="font-bold">Pro Tips</h4>
           <ul className="text-sm mt-1 space-y-1">
             <li>
-              • Each string in <code>grid-template-areas</code> represents one row
+              {/* eslint-disable-next-line local/no-raw-code-element */}• Each string in{' '}
+              <code>grid-template-areas</code> represents one row
             </li>
             <li>• Area names must form rectangles (no L-shapes or T-shapes)</li>
             <li>
-              • Use <code>.</code> (period) for empty cells
+              {/* eslint-disable-line local/no-raw-code-element */}• Use <code>.</code> (period) for
+              empty cells
             </li>
             <li>
-              • Area names are case-sensitive: <code>Header</code> ≠ <code>header</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}• Area names are
+              case-sensitive: <code>Header</code> ≠ <code>header</code>
             </li>
           </ul>
         </div>

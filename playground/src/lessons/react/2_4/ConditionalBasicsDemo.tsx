@@ -107,8 +107,10 @@ export default function ConditionalBasicsDemo(): React.ReactElement {
           How it works
         </div>
         <div className="text-sm leading-relaxed text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="text-warning">?</code> is called the{' '}
           <strong>ternary operator</strong>. It works like:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>condition ? valueIfTrue : valueIfFalse</code>. Inside JSX, we use it to choose
           between different elements to render!
         </div>

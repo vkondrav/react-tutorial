@@ -55,6 +55,7 @@ export default function UseClientDirectiveDemo(): React.ReactElement {
                 <li className="flex items-start gap-2">
                   <HiCheck className="text-success shrink-0 mt-0.5" size={16} />
                   <span>
+                    {/* eslint-disable-next-line local/no-raw-code-element */}
                     Uses double quotes: <code className="text-secondary">"use client"</code>
                   </span>
                 </li>
@@ -114,6 +115,7 @@ export function Counter() {
               <HiOutlineLightBulb className="text-primary shrink-0 mt-0.5" size={20} />
               <p className="text-sm">
                 <strong className="text-primary">Key insight:</strong> When you mark a file with{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-secondary">"use client"</code>, everything that file imports
                 also becomes part of the client bundle. It creates a "client boundary".
               </p>
@@ -131,6 +133,7 @@ export function Counter() {
                 <li className="flex items-start gap-2">
                   <span className="text-purple-400">→</span>
                   <span>
+                    {/* eslint-disable-next-line local/no-raw-code-element */}
                     The <code className="text-secondary">"use client"</code> file itself
                   </span>
                 </li>

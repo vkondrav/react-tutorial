@@ -59,6 +59,7 @@ export default function BEMBasicsDemo(): React.ReactElement {
         }}
       >
         <div className="flex items-center gap-3 mb-2">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code
             className="text-lg font-bold px-3 py-1 rounded"
             style={{ backgroundColor: bemParts[activePart].color, color: 'white' }}
@@ -86,6 +87,7 @@ export default function BEMBasicsDemo(): React.ReactElement {
               className="checkbox checkbox-primary checkbox-sm"
             />
             <span className="text-sm">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-base-200 px-1 rounded">.card--featured</code>
             </span>
           </label>
@@ -97,6 +99,7 @@ export default function BEMBasicsDemo(): React.ReactElement {
               className="checkbox checkbox-primary checkbox-sm"
             />
             <span className="text-sm">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-base-200 px-1 rounded">.card--compact</code>
             </span>
           </label>

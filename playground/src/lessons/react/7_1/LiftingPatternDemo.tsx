@@ -157,6 +157,7 @@ function StepsExplainer() {
               Step {step.number}: {step.title}
             </h4>
             <p className="text-base-content/80 mb-3">{step.description}</p>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="block bg-base-100 p-3 rounded-lg text-sm text-secondary">
               {step.highlight}
             </code>
@@ -181,6 +182,7 @@ function DataFlowDiagram() {
         <div className="card bg-primary text-primary-content p-4 w-64 text-center">
           <div className="font-bold">Parent Component</div>
           <div className="text-sm opacity-80">useState lives here</div>
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-xs bg-primary-content/20 px-2 py-1 rounded mt-2 block">
             const [state, setState] = useState()
           </code>

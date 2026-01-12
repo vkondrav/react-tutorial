@@ -6,6 +6,7 @@ import prettierConfig from 'eslint-config-prettier';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import localPlugin from './eslint-rules/index.js';
 
 export default defineConfig([
   globalIgnores(['dist', 'dist-ssr', 'src/**/examples/**', 'storybook-static/**', 'public/**']),
@@ -32,6 +33,7 @@ export default defineConfig([
     },
     plugins: {
       '@typescript-eslint': tseslint,
+      local: localPlugin,
     },
     rules: {
       // Disable base rule in favor of TypeScript version
@@ -43,6 +45,7 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
+      'local/no-raw-code-element': 'warn',
     },
   },
 ]);

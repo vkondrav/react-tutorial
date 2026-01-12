@@ -153,6 +153,7 @@ export default function ContextWithStateDemo(): React.ReactElement {
           <div className="text-sm text-base-content/70">
             <strong className="text-success">Key Pattern:</strong> The Provider holds the state. Any
             child component can both <strong>read</strong> and <strong>update</strong> it using the
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             custom <code className="text-secondary">useCounter()</code> hook.
           </div>
         </div>

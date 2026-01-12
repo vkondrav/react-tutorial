@@ -33,6 +33,7 @@ export default function Lesson2_5(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           In React, you'll often need to display <strong>collections of data</strong> — users,
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           products, messages, etc. The <code>.map()</code> method transforms an array of data into
           an array of JSX elements.
         </p>
@@ -50,6 +51,7 @@ export default function Lesson2_5(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           When rendering lists, React needs a way to <strong>identify each item</strong>. The{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>key</code> prop helps React track which items changed, were added, or removed —
           making updates efficient.
         </p>
@@ -84,6 +86,7 @@ export default function Lesson2_5(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           Real apps don't just display lists — they <strong>filter</strong>, <strong>sort</strong>,
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           and <strong>transform</strong> them. Chain array methods before <code>.map()</code> to
           create dynamic list views.
         </p>

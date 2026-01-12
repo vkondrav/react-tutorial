@@ -116,10 +116,12 @@ export default function DocumentFlowDemo(): React.ReactElement {
             <li>• Each element takes up space</li>
             <li>• Other elements respect its position</li>
             <li>
-              • <code>position: static</code> (default)
+              {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+              <code>position: static</code> (default)
             </li>
             <li>
-              • <code>position: relative</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+              <code>position: relative</code>
             </li>
           </ul>
         </div>
@@ -130,10 +132,12 @@ export default function DocumentFlowDemo(): React.ReactElement {
             <li>• Takes no space in layout</li>
             <li>• Other elements collapse around it</li>
             <li>
-              • <code>position: absolute</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+              <code>position: absolute</code>
             </li>
             <li>
-              • <code>position: fixed</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+              <code>position: fixed</code>
             </li>
           </ul>
         </div>

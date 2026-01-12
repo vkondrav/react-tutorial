@@ -168,13 +168,16 @@ export default function PerformanceLayerDemo(): React.ReactElement {
             </h5>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">transform</code> (translate, scale,
                 rotate)
               </li>
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">opacity</code>
               </li>
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">filter</code> (blur, brightness)
               </li>
             </ul>
@@ -185,17 +188,25 @@ export default function PerformanceLayerDemo(): React.ReactElement {
             </h5>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">left</code>,{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">top</code>,{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">right</code>,{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">bottom</code>
               </li>
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">width</code>,{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">height</code>
               </li>
               <li>
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">margin</code>,{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">padding</code>
               </li>
             </ul>

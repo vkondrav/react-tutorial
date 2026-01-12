@@ -221,16 +221,20 @@ export default function EventPlayground(): React.ReactElement {
             <div className="text-base-content/50 text-xs mb-2">EVENTS USED:</div>
             <div className="text-xs text-base-content/70 leading-relaxed space-y-1">
               <div>
-                • <code className="text-primary">onChange</code> - Updates state on input
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-primary">onChange</code> - Updates state on input
               </div>
               <div>
-                • <code className="text-primary">onSubmit</code> - Handles form submission
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-primary">onSubmit</code> - Handles form submission
               </div>
               <div>
-                • <code className="text-primary">onClick</code> - Reset button
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-primary">onClick</code> - Reset button
               </div>
               <div>
-                • <code className="text-success">e.preventDefault()</code> - Prevents page refresh
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code className="text-success">e.preventDefault()</code> - Prevents page refresh
               </div>
             </div>
           </div>

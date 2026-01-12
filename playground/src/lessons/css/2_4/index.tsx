@@ -57,6 +57,7 @@ export default function CSSLesson2_4(): React.ReactElement {
           unreadable.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">viewport</code> meta tag
           tells browsers to use the device's actual width and not to zoom out.
         </p>
@@ -74,7 +75,9 @@ export default function CSSLesson2_4(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           There are two approaches to writing media queries:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong className="text-error">desktop-first</strong> (using <code>max-width</code>) and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong className="text-success">mobile-first</strong> (using <code>min-width</code>).
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
@@ -96,12 +99,16 @@ export default function CSSLesson2_4(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           Traditional responsive typography uses breakpoints:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">16px</code> on mobile,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">18px</code> on tablet,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">20px</code> on desktop. That's a
           lot of code for a small change.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">clamp()</code> function
           creates <strong className="text-success">fluid scaling</strong> between a minimum and
           maximum value—no breakpoints needed.

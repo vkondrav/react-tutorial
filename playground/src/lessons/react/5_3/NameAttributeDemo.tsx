@@ -35,6 +35,7 @@ export default function NameAttributeDemo(): React.ReactElement {
         {/* The Magic Formula */}
         <div className="bg-base-200 rounded-lg p-4 text-center">
           <div className="text-sm text-base-content/60 mb-2">The Generic Handler Pattern</div>
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-lg text-primary">
             {'{ ...prev, [e.target.name]: e.target.value }'}
           </code>
@@ -47,6 +48,7 @@ export default function NameAttributeDemo(): React.ReactElement {
           >
             <label className="label">
               <span className="label-text">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Username <code className="text-primary text-xs ml-1">name="username"</code>
               </span>
             </label>
@@ -65,6 +67,7 @@ export default function NameAttributeDemo(): React.ReactElement {
           >
             <label className="label">
               <span className="label-text">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Email <code className="text-primary text-xs ml-1">name="email"</code>
               </span>
             </label>
@@ -83,6 +86,7 @@ export default function NameAttributeDemo(): React.ReactElement {
           >
             <label className="label">
               <span className="label-text">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Age <code className="text-primary text-xs ml-1">name="age"</code>
               </span>
             </label>
@@ -101,6 +105,7 @@ export default function NameAttributeDemo(): React.ReactElement {
           >
             <label className="label">
               <span className="label-text">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Plan <code className="text-primary text-xs ml-1">name="plan"</code>
               </span>
             </label>
@@ -130,7 +135,7 @@ export default function NameAttributeDemo(): React.ReactElement {
               className="checkbox checkbox-primary checkbox-sm"
             />
             <span className="label-text">
-              Subscribe to newsletter{' '}
+              Subscribe to newsletter {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary text-xs ml-1">name="subscribe"</code>
             </span>
           </label>
@@ -156,16 +161,19 @@ export default function NameAttributeDemo(): React.ReactElement {
         <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
           <div className="bg-base-200 rounded-lg p-3 flex-1 text-center">
             <div className="text-xs text-base-content/60 mb-1">1. Input has name</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-secondary">{'<input name="email" />'}</code>
           </div>
           <HiOutlineArrowRight className="text-primary hidden md:block" size={24} />
           <div className="bg-base-200 rounded-lg p-3 flex-1 text-center">
             <div className="text-xs text-base-content/60 mb-1">2. Extract from event</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-secondary">e.target.name → "email"</code>
           </div>
           <HiOutlineArrowRight className="text-primary hidden md:block" size={24} />
           <div className="bg-base-200 rounded-lg p-3 flex-1 text-center">
             <div className="text-xs text-base-content/60 mb-1">3. Update that key</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-secondary">{'{ [name]: value }'}</code>
           </div>
         </div>
@@ -176,7 +184,9 @@ export default function NameAttributeDemo(): React.ReactElement {
         <HiOutlineLightBulb className="text-warning shrink-0 mt-0.5" size={18} />
         <div className="text-base-content/70">
           <strong className="text-warning">Checkbox gotcha:</strong> Checkboxes use{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-warning">e.target.checked</code> (boolean), not{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>e.target.value</code>. Check the input type first!
         </div>
       </div>

@@ -33,7 +33,9 @@ export default function Lesson6_4(): React.ReactElement {
           <strong className="text-primary">Compound components</strong> are a pattern where multiple
           components work together to form a{' '}
           <strong className="text-secondary">cohesive unit</strong>. Think of HTML's{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">&lt;select&gt;</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">&lt;option&gt;</code> — they only make sense together!
         </p>
         <CompoundBasicsDemo />

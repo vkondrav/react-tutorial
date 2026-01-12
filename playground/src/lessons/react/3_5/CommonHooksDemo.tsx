@@ -183,6 +183,7 @@ function LocalStorageDemo(): React.ReactElement {
             className="input input-bordered w-full mb-2"
           />
           <div className="text-xs text-base-content/50">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             Saved to: <code>localStorage['demo-name']</code>
           </div>
         </div>

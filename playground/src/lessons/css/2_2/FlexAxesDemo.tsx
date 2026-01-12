@@ -149,6 +149,7 @@ export default function FlexAxesDemo(): React.ReactElement {
       <div className="bg-base-200 rounded-xl p-4">
         <h5 className="font-semibold text-sm mb-2">Generated CSS</h5>
         <pre className="bg-base-300 rounded-lg p-4 text-sm font-mono overflow-x-auto">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>
             {`.container {
   display: flex;
@@ -164,6 +165,7 @@ export default function FlexAxesDemo(): React.ReactElement {
       <div className="grid md:grid-cols-2 gap-4">
         <div className="p-4 rounded-lg border-2 border-success bg-success/10">
           <h5 className="font-semibold text-success mb-2">justify-content (Main Axis)</h5>
+          {/* eslint-disable local/no-raw-code-element */}
           <ul className="text-sm space-y-1 text-base-content/70">
             <li>
               • <code>flex-start</code> — Pack items at start
@@ -184,9 +186,11 @@ export default function FlexAxesDemo(): React.ReactElement {
               • <code>space-evenly</code> — Equal space everywhere
             </li>
           </ul>
+          {/* eslint-enable local/no-raw-code-element */}
         </div>
         <div className="p-4 rounded-lg border-2 border-warning bg-warning/10">
           <h5 className="font-semibold text-warning mb-2">align-items (Cross Axis)</h5>
+          {/* eslint-disable local/no-raw-code-element */}
           <ul className="text-sm space-y-1 text-base-content/70">
             <li>
               • <code>flex-start</code> — Align at start
@@ -204,6 +208,7 @@ export default function FlexAxesDemo(): React.ReactElement {
               • <code>baseline</code> — Align by text baseline
             </li>
           </ul>
+          {/* eslint-enable local/no-raw-code-element */}
         </div>
       </div>
 

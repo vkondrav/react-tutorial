@@ -553,6 +553,7 @@ export default function ActivityPlayground(): React.ReactElement {
         <h4 className="font-semibold text-warning mb-2">⚡ About This Simulation</h4>
         <p className="text-sm text-base-content/70">
           The Activity demo above <em>simulates</em> React 19's{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">&lt;Activity&gt;</code> behavior. Our Timer component checks
           the Activity mode and pauses itself when hidden. In the real React 19 API, this happens
           automatically for all effects — you don't need to modify your components!

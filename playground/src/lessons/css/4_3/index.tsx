@@ -60,8 +60,10 @@ export default function CSSLesson4_3(): React.ReactElement {
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           The rule: <strong className="text-warning">never use</strong>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">outline: none</code> without
           providing a visible alternative. Better yet, use{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:focus-visible</code> to show
           focus only for keyboard navigation.
         </p>
@@ -103,12 +105,14 @@ export default function CSSLesson4_3(): React.ReactElement {
           Sometimes you need content for{' '}
           <strong className="text-primary">screen readers only</strong>—like "Skip to main content"
           links or additional context for icon-only buttons. The{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.sr-only</code> pattern hides
           content visually while keeping it accessible.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
-          Important distinction:{' '}
+          Important distinction: {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">display: none</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">visibility: hidden</code> both
           hide content from <em>everyone</em>, including screen readers. The sr-only technique keeps
           content in the accessibility tree.
@@ -128,7 +132,10 @@ export default function CSSLesson4_3(): React.ReactElement {
         <p className="leading-relaxed text-base-content/70 mb-4">
           Animations can cause <strong className="text-error">discomfort or seizures</strong> for
           users with vestibular disorders or photosensitive epilepsy. The{' '}
-          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">prefers-reduced-motion</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            prefers-reduced-motion
+          </code>{' '}
           media query lets you respect user preferences.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">

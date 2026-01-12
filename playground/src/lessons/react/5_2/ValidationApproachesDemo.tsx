@@ -213,6 +213,7 @@ function OnBlurDemo() {
       <div className="flex items-start gap-2 text-sm bg-secondary/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-secondary shrink-0 mt-0.5" size={18} />
         <p className="text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">touched</code> tracks if user has interacted with the
           field. We only show errors after the field loses focus (blur).
         </p>

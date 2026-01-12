@@ -71,6 +71,7 @@ function QueryStatesContent(): React.ReactElement {
       </h3>
 
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         TanStack Query marks data as "stale" after <code>staleTime</code> milliseconds. Stale data
         is shown immediately while fresh data is fetched in the background.
       </p>

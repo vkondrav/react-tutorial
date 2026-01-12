@@ -243,19 +243,24 @@ export default function StackingContextDemo(): React.ReactElement {
             </div>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
-                • <code>position: absolute/relative</code> + <code>z-index</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>position: absolute/relative</code> + <code>z-index</code>
               </li>
               <li>
-                • <code>position: fixed</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>position: fixed</code>
               </li>
               <li>
-                • <code>position: sticky</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>position: sticky</code>
               </li>
               <li>
-                • <code>opacity</code> less than 1
+                {/* eslint-disable-line local/no-raw-code-element */}• <code>opacity</code> less
+                than 1
               </li>
               <li>
-                • <code>transform</code> (any value)
+                {/* eslint-disable-line local/no-raw-code-element */}• <code>transform</code> (any
+                value)
               </li>
             </ul>
           </div>
@@ -265,19 +270,23 @@ export default function StackingContextDemo(): React.ReactElement {
             </div>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
-                • <code>filter</code> (any value)
+                {/* eslint-disable-line local/no-raw-code-element */}• <code>filter</code> (any
+                value)
               </li>
               <li>
-                • <code>backdrop-filter</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>backdrop-filter</code>
               </li>
               <li>
-                • <code>isolation: isolate</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>isolation: isolate</code>
               </li>
               <li>
-                • <code>will-change</code>
+                {/* eslint-disable-line local/no-raw-code-element */}• <code>will-change</code>
               </li>
               <li>
-                • <code>contain: layout/paint</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}•{' '}
+                <code>contain: layout/paint</code>
               </li>
             </ul>
           </div>
@@ -290,9 +299,13 @@ export default function StackingContextDemo(): React.ReactElement {
           <h4 className="font-bold">Debugging z-index Issues</h4>
           <p className="text-sm mt-1">
             When z-index "isn't working," look for ancestors with{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-success-content/20 px-1 rounded">position</code>,{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-success-content/20 px-1 rounded">opacity</code>,{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-success-content/20 px-1 rounded">transform</code>, or{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-success-content/20 px-1 rounded">filter</code>. One of these is
             likely creating a stacking context that traps your element!
           </p>

@@ -107,10 +107,13 @@ export default function PreviousValueDemo(): React.ReactElement {
           <div className="text-xs font-semibold text-primary mb-2">How it works:</div>
           <ol className="text-sm space-y-1 text-base-content/70 list-decimal list-inside">
             <li>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               When <code className="text-secondary">count</code> changes, component re-renders
             </li>
             <li>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">usePrevious</code> returns{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">ref.current</code> (still the OLD value)
             </li>
             <li>After render, useEffect updates ref with the NEW value</li>

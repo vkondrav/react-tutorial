@@ -85,8 +85,11 @@ export default function ChildrenPropDemo() {
         )}
 
         <p className="text-sm text-base-content/70 mt-2">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Anything between <code className="text-secondary">&lt;Component&gt;</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">&lt;/Component&gt;</code> becomes the{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-primary">children</code> prop.
         </p>
       </div>
@@ -183,9 +186,10 @@ export default function ChildrenPropDemo() {
           <div>
             <h4 className="font-semibold mb-1">Think of Children as a "Hole"</h4>
             <p className="text-sm text-base-content/70">
-              A component with <code className="text-secondary">children</code> is like a picture
-              frame — it provides structure and styling, but you decide what goes inside. This is
-              the essence of <strong className="text-primary">containment</strong>.
+              {/* eslint-disable-next-line local/no-raw-code-element */}A component with{' '}
+              <code className="text-secondary">children</code> is like a picture frame — it provides
+              structure and styling, but you decide what goes inside. This is the essence of{' '}
+              <strong className="text-primary">containment</strong>.
             </p>
           </div>
         </div>

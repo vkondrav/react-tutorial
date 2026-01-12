@@ -47,7 +47,10 @@ export default function Lesson6_2(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
-          The most common render prop pattern uses <code className="text-secondary">children</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          The most common render prop pattern uses <code className="text-secondary">
+            children
+          </code>{' '}
           as the function. This creates a clean API where you pass a function between the component
           tags.
         </p>

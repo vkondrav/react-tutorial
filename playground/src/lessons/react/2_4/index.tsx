@@ -41,6 +41,7 @@ export default function Lesson2_4(): React.ReactElement {
           on state, props, or any expression.
         </p>
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Just like JavaScript has <code>if</code>, <code>? :</code>, and <code>&&</code> for
           conditionals, React uses these same operators inside JSX. The difference? You're deciding
           what <em>UI</em> to show!
@@ -58,6 +59,7 @@ export default function Lesson2_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <strong>ternary operator</strong> (<code>condition ? ifTrue : ifFalse</code>) is the
           most common way to conditionally render in React. It's perfect for "either this OR that"
           situations.
@@ -76,6 +78,7 @@ export default function Lesson2_4(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           When you only want to show something <em>if a condition is true</em> (and nothing
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           otherwise), the <strong>logical AND</strong> (<code>&&</code>) operator is your friend!
         </p>
         <LogicalAndDemo />

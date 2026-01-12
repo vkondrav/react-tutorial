@@ -88,9 +88,11 @@ export default function SlotPatternDemo() {
       <div className="card bg-base-200 p-4">
         <h4 className="font-semibold mb-3">Why Use Named Slots?</h4>
         <p className="text-sm text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="text-secondary">children</code> prop is great for single content
           areas, but what if you need{' '}
           <strong className="text-primary">multiple insertion points</strong>? Use additional props
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           that accept <code className="text-secondary">ReactNode</code>!
         </p>
 
@@ -229,8 +231,10 @@ export default function SlotPatternDemo() {
             <h4 className="font-semibold mb-1">Named Slots = Multiple Holes</h4>
             <p className="text-sm text-base-content/70">
               Think of each slot prop as a labeled hole in your component. The{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">children</code> prop is the default/main hole, but
               you can add as many named holes as you need with additional{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">ReactNode</code> props.
             </p>
           </div>

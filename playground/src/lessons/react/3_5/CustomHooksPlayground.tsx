@@ -191,8 +191,8 @@ function IntervalDemo(): React.ReactElement {
   return (
     <div className="space-y-4">
       <p className="text-sm text-base-content/70">
-        A declarative interval hook. Pass <code className="text-secondary">null</code> as delay to
-        pause.
+        {/* eslint-disable-next-line local/no-raw-code-element */}A declarative interval hook. Pass{' '}
+        <code className="text-secondary">null</code> as delay to pause.
       </p>
 
       <div className="card bg-base-300 p-4">
@@ -259,6 +259,7 @@ function ClipboardDemo(): React.ReactElement {
             onClick={() => copy(text)}
             className="w-full flex items-center justify-between bg-base-300 rounded-lg p-3 hover:bg-base-100 transition-colors text-left"
           >
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-sm font-mono">{text}</code>
             <span className="shrink-0 ml-2">
               {copiedText === text ? (

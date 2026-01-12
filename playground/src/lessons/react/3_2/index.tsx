@@ -58,14 +58,17 @@ export default function Lesson3_2(): React.ReactElement {
           <ol className="text-sm space-y-2 text-base-content/70 list-decimal list-inside">
             <li>
               <strong className="text-base-content">Create</strong> the context with{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">createContext()</code>
             </li>
             <li>
               <strong className="text-base-content">Provide</strong> the context with{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">&lt;Context.Provider&gt;</code>
             </li>
             <li>
               <strong className="text-base-content">Consume</strong> the context with{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">useContext()</code>
             </li>
           </ol>

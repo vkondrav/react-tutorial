@@ -219,6 +219,7 @@ export default function FlexLayoutDemo(): React.ReactElement {
       <div className="alert alert-info">
         <div>
           <h4 className="font-bold">Pro Tips</h4>
+          {/* eslint-disable local/no-raw-code-element */}
           <ul className="text-sm mt-1 space-y-1">
             <li>
               • <code>gap</code> works on both flex and grid containers
@@ -234,6 +235,7 @@ export default function FlexLayoutDemo(): React.ReactElement {
               perfect centering
             </li>
           </ul>
+          {/* eslint-enable local/no-raw-code-element */}
         </div>
       </div>
 

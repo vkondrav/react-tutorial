@@ -49,13 +49,16 @@ export default function CSSLesson1_3(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">box-sizing</code> property
           determines <strong className="text-primary">what "width" actually means</strong>. The
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           default (<code className="text-warning">content-box</code>) is counterintuitive—padding
           and borders are <em>added</em> to your width.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           Modern CSS resets always include{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm text-success">
             box-sizing: border-box
           </code>{' '}
@@ -95,19 +98,23 @@ export default function CSSLesson1_3(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">display</code> property
           controls how an element participates in the{' '}
           <strong className="text-primary">document flow</strong>. The three fundamental values are:
         </p>
         <ul className="list-disc list-inside text-base-content/70 mb-6 space-y-2">
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">block</code> — Takes full width, stacks vertically
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning">inline</code> — Flows with text, ignores vertical
             margin/padding
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-accent">inline-block</code> — Best of both: flows inline but
             respects all dimensions
           </li>

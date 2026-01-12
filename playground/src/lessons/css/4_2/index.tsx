@@ -56,15 +56,21 @@ export default function CSSLesson4_2(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           <strong className="text-primary">BEM</strong> stands for{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">Block__Element--Modifier</code>.
           This strict naming convention creates{' '}
           <strong className="text-success">self-documenting</strong> class names that reveal
           structure at a glance.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The pattern: <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.card</code> is a
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Block, <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.card__title</code> is an
-          Element, <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.card--featured</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          Element, <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            .card--featured
+          </code>{' '}
           is a Modifier.
         </p>
         <BEMBasicsDemo />
@@ -87,6 +93,7 @@ export default function CSSLesson4_2(): React.ReactElement {
         <p className="leading-relaxed text-base-content/70 mb-6">
           Traditional CSS often ends in <strong className="text-error">specificity wars</strong>—
           each override requires higher specificity until you're forced to use{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">!important</code>. BEM avoids
           this by keeping everything flat.
         </p>
@@ -106,8 +113,11 @@ export default function CSSLesson4_2(): React.ReactElement {
           <strong className="text-primary">Utility-First</strong> (or Atomic CSS) takes a different
           approach: instead of semantic names, use{' '}
           <strong className="text-success">single-purpose classes</strong> like{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.flex</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.p-4</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.text-center</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">

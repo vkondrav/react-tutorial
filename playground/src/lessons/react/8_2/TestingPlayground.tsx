@@ -205,6 +205,7 @@ function AsyncTestDemo(): React.ReactElement {
         <div className="bg-base-200 rounded-lg p-3">
           <div className="text-xs text-base-content/60 mb-1">Current State</div>
           <div className="font-medium">{testPhase}</div>
+          {/* eslint-disable local/no-raw-code-element */}
           <div className="text-xs text-base-content/60 mt-2">
             {testPhase === 'Loading state...' && (
               <code>await waitFor(() =&gt; expect(loading).toBeInTheDocument())</code>
@@ -216,6 +217,7 @@ function AsyncTestDemo(): React.ReactElement {
               <code>expect(canvas.getByText(/Failed to fetch/)).toBeInTheDocument()</code>
             )}
           </div>
+          {/* eslint-enable local/no-raw-code-element */}
         </div>
       )}
     </div>
@@ -450,9 +452,11 @@ function FormTestDemo(): React.ReactElement {
           <div className="font-medium mb-2">How to test this:</div>
           <ol className="list-decimal list-inside space-y-1 text-base-content/70">
             <li>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Find inputs: <code>getByLabelText('Email')</code>
             </li>
             <li>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Type invalid data: <code>await userEvent.type(email, 'bad')</code>
             </li>
             <li>Click submit and assert error messages appear</li>

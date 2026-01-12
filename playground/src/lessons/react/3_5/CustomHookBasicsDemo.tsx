@@ -52,6 +52,7 @@ export default function CustomHookBasicsDemo(): React.ReactElement {
       </h3>
 
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         Each call to <code className="text-secondary">useCounter</code> creates independent state.
         Counter 1 steps by 1, Counter 2 steps by 5.
       </p>

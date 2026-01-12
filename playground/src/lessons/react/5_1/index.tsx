@@ -69,8 +69,10 @@ export default function Lesson5_1(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           React supports both approaches. <strong className="text-warning">Uncontrolled</strong>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           components use <code className="text-secondary">ref</code> to read values from the DOM,
           while <strong className="text-success">controlled</strong> components use{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">state</code> to manage values.
         </p>
         <UncontrolledVsControlledDemo />

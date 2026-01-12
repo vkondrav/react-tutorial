@@ -43,6 +43,7 @@ export default function ReducedMotionDemo(): React.ReactElement {
               <HiOutlineExclamation className="text-warning" size={20} />
               <span>
                 Your system allows motion. Toggle below to simulate{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-200 px-1 rounded">prefers-reduced-motion</code>.
               </span>
             </>

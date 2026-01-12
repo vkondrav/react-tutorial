@@ -149,7 +149,9 @@ export default function CompoundBasicsDemo(): React.ReactElement {
           <div>
             <p className="font-semibold text-warning mb-1">Think of HTML's native elements</p>
             <p className="text-base-content/70 text-sm">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Just like <code className="text-accent">&lt;select&gt;</code> and{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-accent">&lt;option&gt;</code> work together, compound components
               are designed to be used as a <strong>family</strong>.
             </p>

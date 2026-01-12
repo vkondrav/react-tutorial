@@ -100,6 +100,7 @@ export default function FrUnitDemo(): React.ReactElement {
       {/* Description */}
       <div className="alert bg-base-200">
         <div>
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-primary font-mono">{currentPreset.columns}</code>
           <p className="text-sm mt-1">{currentPreset.description}</p>
         </div>
@@ -183,6 +184,7 @@ export default function FrUnitDemo(): React.ReactElement {
         <div>
           <h4 className="font-bold">Key Insight</h4>
           <p className="text-sm mt-1">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code>fr</code> units are <strong>smarter than percentages</strong> because they only
             divide the <em>remaining</em> space after fixed sizes and gaps are calculated. This
             prevents overflow issues.

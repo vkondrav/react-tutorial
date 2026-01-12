@@ -69,6 +69,7 @@ export default function Lesson8_4(): React.ReactElement {
         }
       >
         <p className="mb-4 leading-relaxed">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="text-secondary">"use client"</code> directive marks the boundary
           between server and client code. When you add it at the top of a file, that component and
           all its imports become part of the client bundle.

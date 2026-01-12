@@ -363,7 +363,9 @@ export default function RenderPropsPlayground() {
             <h4 className="font-semibold mb-1">Render Props vs Custom Hooks</h4>
             <p className="text-sm text-base-content/70 mb-2">
               Modern React often uses <strong className="text-primary">custom hooks</strong> instead
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               of render props (e.g., <code className="text-secondary">useToggle()</code> instead of{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">&lt;Toggle&gt;</code>).
             </p>
             <p className="text-sm text-base-content/70">Render props are still useful when:</p>

@@ -78,7 +78,10 @@ export default function CSSLesson3_1(): React.ReactElement {
           images, pattern combinations, and decorative layers.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
-          Use <code className="bg-base-200 px-2 py-0.5 rounded text-sm">background-blend-mode</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          Use <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            background-blend-mode
+          </code>{' '}
           to control how layers interact—similar to Photoshop blend modes.
         </p>
         <BackgroundLayeringDemo />
@@ -94,8 +97,10 @@ export default function CSSLesson3_1(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">clip-path</code> property
           clips an element to a shape. Combined with{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">shape-outside</code>, you can
           wrap text around non-rectangular objects.
         </p>

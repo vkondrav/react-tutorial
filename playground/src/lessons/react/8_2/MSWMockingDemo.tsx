@@ -116,6 +116,7 @@ export default function MSWMockingDemo(): React.ReactElement {
             />
             <div className="bg-info/10 border border-info/30 rounded-lg p-3">
               <p className="text-sm text-info">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <strong>Tip:</strong> Use <code className="bg-base-300 px-1 rounded">delay()</code>{' '}
                 to simulate realistic network latency. This helps test loading states.
               </p>
@@ -133,6 +134,7 @@ export default function MSWMockingDemo(): React.ReactElement {
             <div className="bg-warning/10 border border-warning/30 rounded-lg p-3">
               <p className="text-sm text-warning">
                 <strong>Key Pattern:</strong> Use{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="bg-base-300 px-1 rounded">delay('infinite')</code> to freeze the
                 loading state for testing. The request never resolves, keeping your loading spinner
                 visible.
@@ -147,18 +149,22 @@ export default function MSWMockingDemo(): React.ReactElement {
         <h4 className="font-semibold mb-3">MSW Handler Types</h4>
         <div className="grid gap-2 text-sm">
           <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-200 px-2 py-1 rounded text-success">http.get()</code>
             <span className="text-base-content/70">Mock GET requests (fetching data)</span>
           </div>
           <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-200 px-2 py-1 rounded text-primary">http.post()</code>
             <span className="text-base-content/70">Mock POST requests (creating data)</span>
           </div>
           <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-200 px-2 py-1 rounded text-warning">http.put()</code>
             <span className="text-base-content/70">Mock PUT requests (updating data)</span>
           </div>
           <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-200 px-2 py-1 rounded text-error">http.delete()</code>
             <span className="text-base-content/70">Mock DELETE requests (removing data)</span>
           </div>

@@ -601,12 +601,14 @@ export default function CompoundPlayground(): React.ReactElement {
         <div className="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
             <p className="font-semibold text-primary mb-1">Structure:</p>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs bg-base-300 px-2 py-1 rounded block">
               Parent.Child (Tabs.Tab, Menu.Item)
             </code>
           </div>
           <div>
             <p className="font-semibold text-secondary mb-1">State Sharing:</p>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-xs bg-base-300 px-2 py-1 rounded block">
               React Context + custom hook
             </code>

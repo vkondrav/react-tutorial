@@ -156,6 +156,7 @@ function NotificationDemo() {
           Pattern 1: Provider with Named Actions
         </h4>
         <p className="text-sm text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Instead of exposing raw <code>dispatch</code>, provide named action functions for cleaner
           API.
         </p>
@@ -332,6 +333,7 @@ function CartDemo() {
         </h4>
         <p className="text-sm text-base-content/70 mb-4">
           Create specialized hooks that return specific slices of state (like{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>useCartTotal</code>).
         </p>
 
@@ -369,6 +371,7 @@ export default function CustomProviderDemo(): React.ReactElement {
         <HiOutlineLightBulb className="text-warning" size={20} />
         <div>
           <strong>Best Practice:</strong> Export everything from a single file:{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>export {'{ Provider, useAppState, useAppDispatch }'}</code>. Keep the Context itself
           private!
         </div>

@@ -108,6 +108,7 @@ export default function SelectorPerformanceDemo(): React.ReactElement {
             onClick={() => setSelectedExample(i)}
             className={`btn btn-sm ${selectedExample === i ? 'btn-primary' : 'btn-outline'}`}
           >
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="font-mono text-xs">{ex.selector}</code>
           </button>
         ))}
@@ -189,7 +190,8 @@ export default function SelectorPerformanceDemo(): React.ReactElement {
           <h4 className="font-semibold text-success mb-2 text-sm">✓ Good Practices</h4>
           <ul className="text-sm text-base-content/70 space-y-1">
             <li>
-              • Use class selectors: <code>.btn-primary</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}• Use class selectors:{' '}
+              <code>.btn-primary</code>
             </li>
             <li>• Keep selectors short (2-3 levels max)</li>
             <li>• Be specific on the rightmost part</li>
@@ -199,11 +201,13 @@ export default function SelectorPerformanceDemo(): React.ReactElement {
           <h4 className="font-semibold text-error mb-2 text-sm">✗ Avoid</h4>
           <ul className="text-sm text-base-content/70 space-y-1">
             <li>
-              • Universal selectors: <code>* {'{}'}</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}• Universal selectors:{' '}
+              <code>* {'{}'}</code>
             </li>
             <li>• Deep descendant chains</li>
             <li>
-              • Qualifying classes: <code>div.container</code>
+              {/* eslint-disable-next-line local/no-raw-code-element */}• Qualifying classes:{' '}
+              <code>div.container</code>
             </li>
           </ul>
         </div>

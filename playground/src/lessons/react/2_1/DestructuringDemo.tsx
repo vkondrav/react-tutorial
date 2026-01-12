@@ -80,6 +80,7 @@ export default function DestructuringDemo(): React.ReactElement {
             </div>
             <div className="mt-4 px-4 py-3 bg-error/10 rounded-lg text-error text-sm flex items-center gap-2">
               <HiOutlineExclamationCircle size={18} />
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Repetitive! You have to write <code className="bg-error/20 px-1 rounded">
                 props.
               </code>{' '}

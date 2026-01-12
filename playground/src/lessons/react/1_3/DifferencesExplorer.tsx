@@ -135,10 +135,12 @@ export default function DifferencesExplorer(): React.ReactElement {
         {selectedDiff ? (
           <div>
             <div className="flex items-center gap-3 mb-3">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-error/20 text-error px-2 py-1 rounded line-through">
                 {selectedDiff.html}
               </code>
               <HiOutlineArrowRight className="text-base-content/50" size={16} />
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="bg-success/20 text-success px-2 py-1 rounded">
                 {selectedDiff.jsx}
               </code>

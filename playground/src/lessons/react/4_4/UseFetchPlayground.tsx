@@ -285,6 +285,7 @@ function CommentsDemo(): React.ReactElement {
             <HiOutlineChat size={32} className="mx-auto mb-2 opacity-50" />
             <p className="text-sm">Select a post to load comments</p>
             <p className="text-xs text-base-content/40 mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Note: useFetch has <code className="text-accent">enabled: false</code> until a post is
               selected
             </p>
@@ -371,7 +372,7 @@ function ErrorSimulationDemo(): React.ReactElement {
       </div>
 
       <div className="text-xs text-base-content/50">
-        URL:{' '}
+        URL: {/* eslint-disable-next-line local/no-raw-code-element */}
         <code className={shouldError ? 'text-error' : 'text-success'}>
           {url.replace('https://jsonplaceholder.typicode.com', '...')}
         </code>

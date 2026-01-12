@@ -52,6 +52,7 @@ export default function UseMemoDemo(): React.ReactElement {
 
       <p className="text-sm text-base-content/70 mb-4">
         Toggle dark mode (unrelated state) and watch the calculation time. Without{' '}
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code className="text-secondary">useMemo</code>, it recalculates every render!
       </p>
 
@@ -136,6 +137,7 @@ export default function UseMemoDemo(): React.ReactElement {
         <HiOutlineLightBulb className="text-primary shrink-0 mt-0.5" size={18} />
         <div className="text-sm text-base-content/80">
           <strong>Try this:</strong> With useMemo OFF, click the dark/light toggle. Notice the
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           delay? The expensive calculation runs even though only <code>darkMode</code> changed. Turn
           useMemo ON and try again — instant toggle!
         </div>

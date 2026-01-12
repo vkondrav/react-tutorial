@@ -210,7 +210,7 @@ export default function BoxSizingDemo(): React.ReactElement {
         <div>
           <h4 className="font-bold">Pro Tip: Universal Reset</h4>
           <p className="text-sm">
-            Add{' '}
+            Add {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-success-content/20 px-1 rounded">
               *, *::before, *::after {'{'} box-sizing: border-box; {'}'}
             </code>{' '}

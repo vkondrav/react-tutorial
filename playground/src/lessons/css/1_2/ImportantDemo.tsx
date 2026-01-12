@@ -218,8 +218,10 @@ export default function ImportantDemo(): React.ReactElement {
           <div>
             <p className="text-sm font-semibold text-error">The Specificity Wars Problem</p>
             <p className="text-sm text-base-content/70 mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               When you use <code className="text-error">!important</code> to fix a styling issue,
               the <em>only</em> way to override it later is with another{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-error">!important</code> and higher specificity. This creates an
               escalating war that makes CSS unmaintainable.
             </p>

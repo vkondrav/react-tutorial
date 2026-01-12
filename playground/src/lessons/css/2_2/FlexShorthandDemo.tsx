@@ -194,24 +194,28 @@ export default function FlexShorthandDemo(): React.ReactElement {
         <h5 className="font-semibold mb-3">Common flex Values</h5>
         <div className="grid sm:grid-cols-2 gap-3 text-sm">
           <div className="bg-base-300 rounded p-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-primary font-semibold">flex: 1</code>
             <p className="text-xs text-base-content/60 mt-1">
               = flex: 1 1 0% — Grow equally, shrink equally, start from 0
             </p>
           </div>
           <div className="bg-base-300 rounded p-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-secondary font-semibold">flex: auto</code>
             <p className="text-xs text-base-content/60 mt-1">
               = flex: 1 1 auto — Grow & shrink based on content size
             </p>
           </div>
           <div className="bg-base-300 rounded p-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-accent font-semibold">flex: none</code>
             <p className="text-xs text-base-content/60 mt-1">
               = flex: 0 0 auto — Fixed size, no grow/shrink
             </p>
           </div>
           <div className="bg-base-300 rounded p-3">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning font-semibold">flex: 0 1 auto</code>
             <p className="text-xs text-base-content/60 mt-1">
               Default — Don't grow, shrink if needed

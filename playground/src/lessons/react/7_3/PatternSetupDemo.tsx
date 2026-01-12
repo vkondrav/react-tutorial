@@ -306,6 +306,7 @@ export default function PatternSetupDemo(): React.ReactElement {
         <HiOutlineLightBulb className="text-warning" size={20} />
         <div>
           <strong>Pro tip:</strong> Put your context, reducer, provider, and hooks in a single file
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           (e.g., <code>AppContext.tsx</code>) for easy imports and maintenance.
         </div>
       </div>

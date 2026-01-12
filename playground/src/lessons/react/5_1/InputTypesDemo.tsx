@@ -50,6 +50,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <div className="text-xs text-base-content/60 mb-1">State:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">"{textValue}"</code>
             </div>
             <div>
@@ -74,6 +75,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <div className="text-xs text-base-content/60 mb-1">State:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary whitespace-pre-wrap">"{textareaValue}"</code>
             </div>
             <div>
@@ -83,6 +85,7 @@ export default function InputTypesDemo(): React.ReactElement {
               <HiOutlineLightBulb className="text-secondary shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
                 Unlike HTML where textarea content goes between tags, React uses{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-secondary">value</code> prop just like inputs!
               </p>
             </div>
@@ -110,6 +113,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <div className="text-xs text-base-content/60 mb-1">State:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-accent">"{selectValue}"</code>
             </div>
             <div>
@@ -118,8 +122,11 @@ export default function InputTypesDemo(): React.ReactElement {
             <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 In React, put <code className="text-accent">value</code> on the{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-accent">&lt;select&gt;</code> element, not{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>selected</code> on individual options!
               </p>
             </div>
@@ -142,6 +149,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <div className="text-xs text-base-content/60 mb-1">State:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className={checkboxValue ? 'text-success' : 'text-error'}>
                 {checkboxValue.toString()}
               </code>
@@ -152,8 +160,11 @@ export default function InputTypesDemo(): React.ReactElement {
             <div className="flex items-start gap-2 text-sm bg-success/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-success shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Checkboxes use <code className="text-success">checked</code> (boolean), not{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code>value</code>. Access it via{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-success">e.target.checked</code>!
               </p>
             </div>
@@ -183,6 +194,7 @@ export default function InputTypesDemo(): React.ReactElement {
             </div>
             <div className="bg-base-200 rounded-lg p-3">
               <div className="text-xs text-base-content/60 mb-1">State:</div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-warning">"{radioValue}"</code>
             </div>
             <div>
@@ -191,7 +203,9 @@ export default function InputTypesDemo(): React.ReactElement {
             <div className="flex items-start gap-2 text-sm bg-warning/10 rounded-lg p-3">
               <HiOutlineLightBulb className="text-warning shrink-0 mt-0.5" size={18} />
               <p className="text-base-content/70">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Radio buttons compare their <code className="text-warning">value</code> to state.
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Use the same <code className="text-warning">name</code> to group them!
               </p>
             </div>

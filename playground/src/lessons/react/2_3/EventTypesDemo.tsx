@@ -45,6 +45,7 @@ export default function EventTypesDemo(): React.ReactElement {
           {/* onChange - Input */}
           <div className="mb-6">
             <label className="block text-xs text-base-content/70 mb-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onChange</code> - Text Input
             </label>
             <input
@@ -62,6 +63,7 @@ export default function EventTypesDemo(): React.ReactElement {
           {/* onChange - Select */}
           <div className="mb-6">
             <label className="block text-xs text-base-content/70 mb-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onChange</code> - Select Dropdown
             </label>
             <select
@@ -91,6 +93,7 @@ export default function EventTypesDemo(): React.ReactElement {
                 }
                 className="checkbox checkbox-sm"
               />
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onChange</code> - Checkbox
             </label>
             <div className="mt-2 text-xs text-base-content/50">
@@ -102,6 +105,7 @@ export default function EventTypesDemo(): React.ReactElement {
           <div>
             <form onSubmit={handleSubmit}>
               <label className="block text-xs text-base-content/70 mb-2">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-primary">onSubmit</code> - Form Submission
               </label>
               <div className="flex gap-2">
@@ -130,35 +134,44 @@ export default function EventTypesDemo(): React.ReactElement {
 
           <div className="card bg-base-300 p-4 text-sm leading-relaxed">
             <div className="mb-4">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onClick</code>
               <div className="text-base-content/50 text-xs mt-1">
                 Button clicks, div clicks, etc.
               </div>
             </div>
             <div className="mb-4">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onChange</code>
               <div className="text-base-content/50 text-xs mt-1">
                 Input, select, textarea changes
               </div>
             </div>
             <div className="mb-4">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onSubmit</code>
               <div className="text-base-content/50 text-xs mt-1">
                 Form submission (use preventDefault!)
               </div>
             </div>
             <div className="mb-4">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onFocus</code> /{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onBlur</code>
               <div className="text-base-content/50 text-xs mt-1">When input gains/loses focus</div>
             </div>
             <div className="mb-4">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onMouseEnter</code> /{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onMouseLeave</code>
               <div className="text-base-content/50 text-xs mt-1">Mouse hover events</div>
             </div>
             <div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onKeyDown</code> /{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-primary">onKeyUp</code>
               <div className="text-base-content/50 text-xs mt-1">Keyboard key presses</div>
             </div>
@@ -170,6 +183,7 @@ export default function EventTypesDemo(): React.ReactElement {
             onMouseMove={handleMouseMove}
           >
             <div className="text-xs text-base-content/50 mb-2">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Hover here for <code className="text-primary">onMouseMove</code>:
             </div>
             <div className="text-sm text-base-content/70">

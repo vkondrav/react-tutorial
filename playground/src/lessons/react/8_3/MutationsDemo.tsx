@@ -132,7 +132,9 @@ function MutationsContent(): React.ReactElement {
       </h3>
 
       <p className="text-sm text-base-content/70 mb-4">
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code>useMutation</code> handles create, update, and delete operations. After success,{' '}
+        {/* eslint-disable-next-line local/no-raw-code-element */}
         <code>invalidateQueries</code> marks cached data as stale and triggers a refetch.
       </p>
 
@@ -241,6 +243,7 @@ function MutationsContent(): React.ReactElement {
           <li>Mutation triggers (e.g., add todo)</li>
           <li>API call made, UI shows loading state</li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             On success, <code>invalidateQueries</code> called
           </li>
           <li>Query marked as stale, refetch triggered</li>

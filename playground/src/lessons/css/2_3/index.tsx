@@ -52,13 +52,18 @@ export default function CSSLesson2_3(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           The <strong className="text-success">explicit grid</strong> is what you define with{' '}
-          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">grid-template-columns</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            grid-template-columns
+          </code> and {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">grid-template-rows</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           The <strong className="text-warning">implicit grid</strong> is what the browser creates
           automatically when content overflows your explicit grid. Control it with{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">grid-auto-rows</code> and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">grid-auto-columns</code>.
         </p>
         <ExplicitImplicitDemo />
@@ -74,12 +79,14 @@ export default function CSSLesson2_3(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">fr</code> unit is unique to
           Grid. It represents a fraction of the{' '}
           <strong className="text-accent">available free space</strong>—not the total space.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           This distinction matters: fixed-size columns are calculated first, then{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-success">fr</code> units divide the remaining space.
         </p>
         <FrUnitDemo />
@@ -95,12 +102,16 @@ export default function CSSLesson2_3(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
-          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">grid-template-areas</code>{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
+          The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">
+            grid-template-areas
+          </code>{' '}
           property lets you define your layout using a visual, ASCII-art-like syntax. It's the
           fastest way to prototype complex layouts.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           Each string represents a row, and each word represents a column. Use{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.</code> for empty cells.
         </p>
         <GridAreasDemo />
@@ -120,12 +131,16 @@ export default function CSSLesson2_3(): React.ReactElement {
         </p>
         <ul className="list-disc list-inside text-base-content/70 mb-6 space-y-2">
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">justify-items</code> /{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">align-items</code> — Align items{' '}
             <strong>within their cells</strong>
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning">justify-content</code> /{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning">align-content</code> — Align the{' '}
             <strong>entire grid</strong> within its container
           </li>

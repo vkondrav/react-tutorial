@@ -84,14 +84,17 @@ export default function ChildrenDemo(): React.ReactElement {
         <div className="grid grid-cols-3 gap-4 text-sm">
           <div className="card bg-base-300 p-3">
             <div className="text-success mb-2">Text</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-base-content/70">{`<Card>Hello</Card>`}</code>
           </div>
           <div className="card bg-base-300 p-3">
             <div className="text-primary mb-2">Elements</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-base-content/70">{`<Card><p>Hi</p></Card>`}</code>
           </div>
           <div className="card bg-base-300 p-3">
             <div className="text-secondary mb-2">Components</div>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-base-content/70">{`<Card><List /></Card>`}</code>
           </div>
         </div>

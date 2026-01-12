@@ -70,6 +70,7 @@ export default function DefaultPropsDemo(): React.ReactElement {
                 className="checkbox checkbox-sm"
               />
               <label htmlFor="showSize" className="text-base-content/70 text-sm cursor-pointer">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Pass <code className="text-primary">size</code> prop
               </label>
             </div>
@@ -100,6 +101,7 @@ export default function DefaultPropsDemo(): React.ReactElement {
                 className="checkbox checkbox-sm"
               />
               <label htmlFor="showVariant" className="text-base-content/70 text-sm cursor-pointer">
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 Pass <code className="text-secondary">variant</code> prop
               </label>
             </div>

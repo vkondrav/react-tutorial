@@ -32,6 +32,7 @@ export default function Lesson3_5(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           <strong className="text-primary">Custom hooks</strong> are JavaScript functions that let
           you extract and reuse stateful logic between components. They're named with the{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">use</code> prefix and can call other hooks inside them.
         </p>
         <div className="grid grid-cols-2 gap-4 mb-4">
@@ -48,7 +49,8 @@ export default function Lesson3_5(): React.ReactElement {
             <h4 className="font-semibold text-secondary mb-2">Rules</h4>
             <ul className="text-sm space-y-1 text-base-content/70">
               <li>
-                • Name must start with <code>use</code>
+                {/* eslint-disable-next-line local/no-raw-code-element */}• Name must start with{' '}
+                <code>use</code>
               </li>
               <li>• Can call other hooks inside</li>
               <li>• Follow the Rules of Hooks</li>

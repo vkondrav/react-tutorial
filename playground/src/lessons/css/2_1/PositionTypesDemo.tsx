@@ -293,7 +293,9 @@ export default function PositionTypesDemo(): React.ReactElement {
           <div className="mt-4 text-sm text-base-content/60 flex items-center gap-2">
             <HiOutlineArrowDown size={16} />
             <span>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               In this demo, we use <code>absolute</code> to simulate fixed behavior within the
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               container. Real <code>fixed</code> elements would appear relative to your browser
               viewport.
             </span>
@@ -306,8 +308,9 @@ export default function PositionTypesDemo(): React.ReactElement {
         <div>
           <h4 className="font-bold">The Essential Pattern: Relative Parent + Absolute Child</h4>
           <p className="text-sm mt-1">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-info-content/20 px-1 rounded">position: absolute</code> looks for
-            the nearest ancestor with{' '}
+            the nearest ancestor with {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-info-content/20 px-1 rounded">position: relative</code> (or
             absolute/fixed). Always wrap absolute elements in a relative container!
           </p>

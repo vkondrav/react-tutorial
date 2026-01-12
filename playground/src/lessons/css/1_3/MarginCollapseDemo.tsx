@@ -250,6 +250,7 @@ export default function MarginCollapseDemo(): React.ReactElement {
 
         {fixMethod !== 'none' && (
           <div className="mt-4 p-3 bg-success/10 border border-success/30 rounded-lg">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-sm text-success">
               .container {'{'} {fixes.find((f) => f.id === fixMethod)?.css} {'}'}
             </code>

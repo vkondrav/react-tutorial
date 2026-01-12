@@ -62,6 +62,7 @@ export const WithCodeContent: Story = {
       <div>
         <p className="text-base-content/70 mb-4">Here's how you would write this in React:</p>
         <pre className="bg-base-300 p-4 rounded-lg text-sm">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code>{`function App() {
   return <h1>Hello World</h1>;
 }`}</code>

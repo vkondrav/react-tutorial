@@ -100,6 +100,7 @@ export default function TSXDemo(): React.ReactElement {
         <div>
           <div className="text-sm">
             <strong className="text-primary">Note:</strong> This course uses{' '}
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="bg-base-300 px-1 rounded">.tsx</code> files. The JSX syntax is
             identical — TypeScript just adds optional type annotations!
           </div>

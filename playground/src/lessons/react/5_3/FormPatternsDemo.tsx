@@ -338,7 +338,9 @@ function FormResetDemo() {
       <div className="flex items-start gap-2 text-sm bg-accent/10 rounded-lg p-3">
         <HiOutlineLightBulb className="text-accent shrink-0 mt-0.5" size={18} />
         <div className="text-base-content/70">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <strong className="text-accent">Pro tip:</strong> Define <code>initialState</code> outside
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           the component or use <code>useMemo</code> to avoid recreating it on every render.
         </div>
       </div>

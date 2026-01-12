@@ -128,7 +128,9 @@ export default function PropDrillingDemo(): React.ReactElement {
           <div className="text-sm">
             <strong className="text-error">The Problem:</strong>{' '}
             <span className="text-base-content/70">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Layout and Sidebar don't even use <code className="text-secondary">user</code> or{' '}
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-secondary">onLogout</code> — they just pass them through! This
               makes code harder to maintain and refactor.
             </span>

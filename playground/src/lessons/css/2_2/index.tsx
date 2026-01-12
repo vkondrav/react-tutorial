@@ -54,14 +54,17 @@ export default function CSSLesson2_2(): React.ReactElement {
         </p>
         <ul className="list-disc list-inside text-base-content/70 mb-6 space-y-2">
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">justify-content</code> — Distributes space along the{' '}
             <strong>main axis</strong>
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning">align-items</code> — Aligns items along the{' '}
             <strong>cross axis</strong>
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-accent">flex-direction</code> — Determines which axis is "main"
             (row = horizontal, column = vertical)
           </li>
@@ -79,9 +82,13 @@ export default function CSSLesson2_2(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           The <code className="bg-base-200 px-2 py-0.5 rounded text-sm">flex</code> property is
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           shorthand for three values: <code className="text-success">flex-grow</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-warning">flex-shrink</code>, and{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">flex-basis</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">

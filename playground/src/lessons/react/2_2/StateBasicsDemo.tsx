@@ -85,6 +85,7 @@ export default function StateBasicsDemo(): React.ReactElement {
       <div className="px-6 py-4 bg-success/10 border-t border-success flex items-center gap-3">
         <HiOutlineLightBulb className="text-success" size={20} />
         <span className="text-base-content/70 text-sm">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           Every time you call <code className="text-accent">setCount</code>, React re-renders the
           component with the new value. Try clicking the buttons!
         </span>

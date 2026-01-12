@@ -66,6 +66,7 @@ export default function MistakesQuiz(): React.ReactElement {
           className="card bg-base-200 p-4 border border-base-300 cursor-pointer hover:bg-base-300 transition-colors"
         >
           <div className={`flex items-center justify-between ${answers[q.id] ? 'mb-3' : ''}`}>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-error">{q.code}</code>
             {!answers[q.id] && (
               <span className="text-base-content/50 text-xs flex items-center gap-1">
@@ -79,6 +80,7 @@ export default function MistakesQuiz(): React.ReactElement {
                 <HiOutlineExclamationCircle size={16} />
                 {q.error}
               </div>
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-success flex items-center gap-2">
                 <HiCheck size={16} />
                 {q.fix}

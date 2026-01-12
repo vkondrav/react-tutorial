@@ -68,8 +68,11 @@ export default function CSSLesson1_1(): React.ReactElement {
         <p className="leading-relaxed text-base-content/70 mb-6">
           Here's a secret: browsers parse selectors{' '}
           <strong className="text-warning">right-to-left</strong>. For the selector{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">.nav ul li a</code>, the browser
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           first finds <em>all</em> <code className="text-primary">&lt;a&gt;</code> elements, then
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           checks if each has a <code className="text-primary">&lt;li&gt;</code> parent, and so on.
         </p>
         <SelectorPerformanceDemo />
@@ -86,16 +89,21 @@ export default function CSSLesson1_1(): React.ReactElement {
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
           <strong className="text-primary">Pseudo-classes</strong> (single colon) select elements in
-          a specific <em>state</em>—like{' '}
+          a specific <em>state</em>—like {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:hover</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:focus</code>, or{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">:first-child</code>.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
           <strong className="text-secondary">Pseudo-elements</strong> (double colon) create{' '}
           <em>virtual elements</em> that don't exist in your HTML—like{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">::before</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">::after</code>, or{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">::first-letter</code>.
         </p>
         <PseudoDemo />

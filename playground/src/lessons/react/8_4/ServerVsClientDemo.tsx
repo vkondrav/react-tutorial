@@ -221,6 +221,7 @@ import ServerComp from './ServerComp'
             <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
               <p className="text-sm">
                 <strong className="text-primary">The workaround:</strong> Pass Server Components as{' '}
+                {/* eslint-disable-next-line local/no-raw-code-element */}
                 <code className="text-secondary">children</code> props to Client Components. This
                 way the Server Component is rendered on the server and passed as pre-rendered
                 content.

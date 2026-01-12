@@ -64,6 +64,7 @@ export default function Lesson2_2(): React.ReactElement {
       >
         <p className="text-base-content/70 leading-relaxed">
           Components often need to track multiple pieces of data. You can call{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-accent">useState</code> multiple times!
         </p>
         <MultipleStateDemo />

@@ -57,9 +57,11 @@ export default function CSSLesson2_1(): React.ReactElement {
           position of other elements.
         </p>
         <p className="leading-relaxed text-base-content/70 mb-6">
-          Elements with{' '}
+          Elements with {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">position: absolute</code>,{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">fixed</code>, or{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">float</code> are removed from
           the normal flow.
         </p>
@@ -80,21 +82,26 @@ export default function CSSLesson2_1(): React.ReactElement {
         </p>
         <ul className="list-disc list-inside text-base-content/70 mb-6 space-y-2">
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-base-content">static</code> — Default, follows normal flow
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-success">relative</code> — Offset from normal position, stays in
             flow
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-warning">absolute</code> — Removed from flow, positioned relative
             to nearest positioned ancestor
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-error">fixed</code> — Removed from flow, positioned relative to
             viewport
           </li>
           <li>
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             <code className="text-accent">sticky</code> — Hybrid: normal until scroll threshold,
             then fixed within container
           </li>
@@ -112,6 +119,7 @@ export default function CSSLesson2_1(): React.ReactElement {
         }
       >
         <p className="leading-relaxed text-base-content/70 mb-4">
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="bg-base-200 px-2 py-0.5 rounded text-sm">z-index</code> controls which
           elements appear on top of others. But here's the catch:{' '}
           <strong className="text-warning">z-index is not global</strong>.

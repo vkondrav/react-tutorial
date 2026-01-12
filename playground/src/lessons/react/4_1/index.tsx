@@ -69,6 +69,7 @@ export default function Lesson4_1(): React.ReactElement {
       >
         <p className="mb-4 leading-relaxed">
           The <strong className="text-primary">dependency array</strong> controls when your fetch
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           runs. An empty array <code className="text-secondary">[]</code> fetches once on mount;
           adding dependencies re-fetches when they change.
         </p>
@@ -87,6 +88,7 @@ export default function Lesson4_1(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           When fetching data that depends on changing values, you can encounter{' '}
           <strong className="text-error">race conditions</strong> — where responses arrive out of
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           order. The solution is to use <code className="text-secondary">AbortController</code> or a
           cleanup flag.
         </p>

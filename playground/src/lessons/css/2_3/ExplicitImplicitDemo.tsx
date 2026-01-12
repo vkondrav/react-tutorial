@@ -145,6 +145,7 @@ export default function ExplicitImplicitDemo(): React.ReactElement {
           <div>
             <h4 className="font-bold">Explicit Grid</h4>
             <p className="text-sm mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               With <code>grid-template-rows</code> and <code>grid-template-columns</code>, you
               define exactly how many rows and columns exist. Items beyond this overflow without
               proper sizing.
@@ -154,6 +155,7 @@ export default function ExplicitImplicitDemo(): React.ReactElement {
           <div>
             <h4 className="font-bold">Implicit Grid</h4>
             <p className="text-sm mt-1">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               Use <code>grid-auto-rows: {autoRowHeight}px</code> to control the size of auto-created
               rows. The browser creates new rows as needed to fit all items.
             </p>
@@ -173,6 +175,7 @@ export default function ExplicitImplicitDemo(): React.ReactElement {
         <div>
           <h4 className="font-bold">Pro Tip</h4>
           <p className="text-sm mt-1">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             Use <code>grid-auto-rows: minmax(100px, auto)</code> for implicit rows that are at least
             100px but can grow to fit content. This is more flexible than a fixed height.
           </p>

@@ -58,7 +58,9 @@ export default function ActivityConceptDemo(): React.ReactElement {
         <div className="flex-1">
           <p className="font-semibold text-warning">Experimental API</p>
           <p className="text-sm text-base-content/70">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             The <code className="text-accent">Activity</code> component is currently experimental in
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             React 19. Import it as <code className="text-accent">unstable_Activity</code>. The API
             may change before stable release.
           </p>
@@ -72,6 +74,7 @@ export default function ActivityConceptDemo(): React.ReactElement {
           <div>
             <p className="font-semibold text-warning mb-2">What is Activity?</p>
             <p className="text-base-content/70 text-sm mb-3">
+              {/* eslint-disable-next-line local/no-raw-code-element */}
               <code className="text-accent">&lt;Activity&gt;</code> is React's built-in solution for
               preserving component state while hiding content. It has two modes:
             </p>
@@ -121,16 +124,19 @@ export default function ActivityConceptDemo(): React.ReactElement {
                 <th className="text-center">
                   <span className="text-error">Conditional</span>
                   <br />
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-xs">{`{x && <C />}`}</code>
                 </th>
                 <th className="text-center">
                   <span className="text-warning">CSS Hide</span>
                   <br />
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-xs">display:none</code>
                 </th>
                 <th className="text-center">
                   <span className="text-success">Activity</span>
                   <br />
+                  {/* eslint-disable-next-line local/no-raw-code-element */}
                   <code className="text-xs">&lt;Activity&gt;</code>
                 </th>
               </tr>

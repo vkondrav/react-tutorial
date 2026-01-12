@@ -57,6 +57,7 @@ function RSCProductPage({ data }: { data: RSCPageData }): React.ReactElement {
                 {data.renderInfo.serverComponents.map((c) => (
                   <li key={c} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+                    {/* eslint-disable-next-line local/no-raw-code-element */}
                     <code className="text-gray-300">{c}</code>
                   </li>
                 ))}
@@ -68,6 +69,7 @@ function RSCProductPage({ data }: { data: RSCPageData }): React.ReactElement {
                 {data.renderInfo.clientComponents.map((c) => (
                   <li key={c} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-purple-400"></span>
+                    {/* eslint-disable-next-line local/no-raw-code-element */}
                     <code className="text-gray-300">{c}</code>
                   </li>
                 ))}

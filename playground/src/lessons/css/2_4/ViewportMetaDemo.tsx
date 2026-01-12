@@ -144,6 +144,7 @@ export default function ViewportMetaDemo(): React.ReactElement {
         <div>
           <h4 className="font-bold">Important</h4>
           <p className="text-sm mt-1">
+            {/* eslint-disable-next-line local/no-raw-code-element */}
             This tag goes in your HTML <code>&lt;head&gt;</code>, not in CSS. Every responsive
             website needs it. Frameworks like Vite and Next.js add it automatically.
           </p>

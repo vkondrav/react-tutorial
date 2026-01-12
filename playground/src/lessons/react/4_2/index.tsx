@@ -88,6 +88,7 @@ export default function Lesson4_2(): React.ReactElement {
         <p className="mb-4 leading-relaxed">
           Real components need to handle <strong className="text-primary">all three states</strong>{' '}
           gracefully. The order of conditionals matters: typically{' '}
+          {/* eslint-disable-next-line local/no-raw-code-element */}
           <code className="text-secondary">loading → error → empty → data</code>.
         </p>
         <StateCompositionDemo />
