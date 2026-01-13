@@ -22,10 +22,6 @@ jobs:
         run: npm ci
         working-directory: playground
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-        working-directory: playground
-
       - name: Build
         run: npm run build
         working-directory: playground
