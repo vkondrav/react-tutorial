@@ -27,3 +27,5 @@ dist-server
 
 *storybook.log
 storybook-static
+
+coverage/

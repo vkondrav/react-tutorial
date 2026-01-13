@@ -91,12 +91,8 @@ jobs:
         run: npm run build
         working-directory: playground
 
-  test:
+  test-and-coverage:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1, 2, 3, 4]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -116,73 +112,14 @@ jobs:
         run: npx playwright install --with-deps chromium
         working-directory: playground
 
-      - name: Run tests with coverage (shard ${{ matrix.shard }}/4)
-        run: npx vitest --project=storybook --run --coverage.enabled=true --coverage.reporter=json --shard=${{ matrix.shard }}/4
+      - name: Run tests with coverage
+        run: npm run test:coverage
         working-directory: playground
 
-      - name: Upload coverage data from shard
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-${{ matrix.shard }}
-          path: playground/coverage/
-          include-hidden-files: true
-
-  coverage:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Download coverage from all shards
-        uses: actions/download-artifact@v4
-        with:
-          path: coverage-artifacts
-          pattern: coverage-*
-
-      - name: Merge coverage and check thresholds
-        run: |
-          # List what we downloaded
-          echo "Downloaded coverage artifacts:"
-          ls -la coverage-artifacts/
-          
-          # Create merged coverage directory
-          mkdir -p coverage
-          
-          # Copy all coverage-final.json files with unique names
-          cp coverage-artifacts/coverage-1/coverage-final.json coverage/coverage-1.json || echo "Shard 1 coverage not found"
-          cp coverage-artifacts/coverage-2/coverage-final.json coverage/coverage-2.json || echo "Shard 2 coverage not found"
-          cp coverage-artifacts/coverage-3/coverage-final.json coverage/coverage-3.json || echo "Shard 3 coverage not found"
-          cp coverage-artifacts/coverage-4/coverage-final.json coverage/coverage-4.json || echo "Shard 4 coverage not found"
-          
-          # Install c8 for merging and checking coverage
-          npm install -g c8
-          
-          # Merge coverage files and generate reports
-          c8 report \
-            --reporter=text \
-            --reporter=json-summary \
-            --reporter=html \
-            --temp-directory=coverage \
-            --reports-dir=coverage-report
-          
-          # Check coverage thresholds
-          c8 check-coverage \
-            --temp-directory=coverage \
-            --lines 80 \
-            --functions 80 \
-            --branches 80 \
-            --statements 80
-
-      - name: Upload merged coverage report
+      - name: Upload coverage report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage-report
-          path: coverage-report/
+          path: playground/coverage/
           retention-days: 30
