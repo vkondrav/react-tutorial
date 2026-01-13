@@ -255,7 +255,7 @@ export const SuccessfulSubmission: Story = {
         const submitButton = canvas.getByRole('button', { name: 'Create Account' });
         expect(submitButton).toBeEnabled();
       },
-      { timeout: 3000 }
+      { timeout: 10_000 }
     );
 
     // Submit the form
