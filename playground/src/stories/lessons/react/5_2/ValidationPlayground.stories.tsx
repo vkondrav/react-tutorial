@@ -249,8 +249,18 @@ export const SuccessfulSubmission: Story = {
       { timeout: 3000 }
     );
 
+    // Wait for the submit button to be ready (not showing "Checking...")
+    await waitFor(
+      () => {
+        const submitButton = canvas.getByRole('button', { name: 'Create Account' });
+        expect(submitButton).toBeEnabled();
+      },
+      { timeout: 3000 }
+    );
+
     // Submit the form
-    await userEvent.click(canvas.getByRole('button', { name: 'Create Account' }));
+    const submitButton = canvas.getByRole('button', { name: 'Create Account' });
+    await userEvent.click(submitButton);
 
     // Should show success state
     await waitFor(() => {
