@@ -19,7 +19,7 @@ npm run typecheck
 echo "🏗️  Building..."
 npm run build
 
-echo "🧪 Running tests..."
-npm run test
+echo "🧪 Running tests with coverage..."
+npm run test:coverage
 
 echo "✅ All checks passed!"
