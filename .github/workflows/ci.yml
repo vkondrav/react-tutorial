@@ -18,21 +18,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v4
-        with:
-          path: playground/node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('playground/package-lock.json') }}
-
       - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
         working-directory: playground
 
       - name: Build
         run: npm run build
         working-directory: playground
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
 
   format:
     runs-on: ubuntu-latest
@@ -41,16 +41,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Restore node_modules cache
-        uses: actions/cache/restore@v4
-        with:
-          path: playground/node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('playground/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: playground
 
       - name: Check formatting
         run: npm run format:check
@@ -68,11 +74,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore node_modules cache
-        uses: actions/cache/restore@v4
+      - name: Restore npm cache
+        uses: actions/cache@v4
         with:
-          path: playground/node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('playground/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: playground
 
       - name: Check linting
         run: npm run lint:check
@@ -90,11 +102,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore node_modules cache
-        uses: actions/cache/restore@v4
+      - name: Restore npm cache
+        uses: actions/cache@v4
         with:
-          path: playground/node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('playground/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: playground
 
       - name: Type check
         run: npm run typecheck
@@ -116,11 +134,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore node_modules cache
-        uses: actions/cache/restore@v4
+      - name: Restore npm cache
+        uses: actions/cache@v4
         with:
-          path: playground/node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('playground/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: playground
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
