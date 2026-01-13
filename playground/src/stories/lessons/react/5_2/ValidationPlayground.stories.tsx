@@ -255,7 +255,7 @@ export const SuccessfulSubmission: Story = {
         const submitButton = canvas.getByRole('button', { name: 'Create Account' });
         expect(submitButton).toBeEnabled();
       },
-      { timeout: 10_000 }
+      { timeout: 3000 }
     );
 
     // Submit the form
@@ -263,10 +263,13 @@ export const SuccessfulSubmission: Story = {
     await userEvent.click(submitButton);
 
     // Should show success state
-    await waitFor(() => {
-      expect(canvas.getByText('Account Created!')).toBeInTheDocument();
-      expect(canvas.getByText('newuser@email.com')).toBeInTheDocument();
-    });
+    await waitFor(
+      () => {
+        expect(canvas.getByText('Account Created!')).toBeInTheDocument();
+        expect(canvas.getByText('newuser@email.com')).toBeInTheDocument();
+      },
+      { timeout: 3000 }
+    );
 
     // Start Over button should be present
     expect(canvas.getByRole('button', { name: 'Start Over' })).toBeInTheDocument();
