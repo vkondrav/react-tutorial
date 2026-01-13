@@ -13,6 +13,12 @@ npm run format:check
 echo "🔍 Checking linting..."
 npm run lint:check
 
+echo "🔷 Type checking..."
+npm run typecheck
+
+echo "🏗️  Building..."
+npm run build
+
 echo "🧪 Running tests..."
 npm run test
 

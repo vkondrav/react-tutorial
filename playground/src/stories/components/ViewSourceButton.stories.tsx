@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, within } from 'storybook/test';
-import ViewSourceButton from '../../lessons/components/ViewSourceButton';
+import { ViewSourceButton } from '@components';
 import { EditorType, type AppSettings } from '../../settings';
 
 const cursorSettings: AppSettings = {

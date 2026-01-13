@@ -5,7 +5,6 @@
 // conversion using renderToString.
 // ============================================
 
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { SSRDemoApp } from '../shared/SSRDemoApp.js';
 import { createHtmlTemplate } from './template.js';

@@ -170,7 +170,7 @@ export const MessageCounter: Story = {
 
     // Verify the message was typed
     expect(messageInput).toHaveValue('Hello, I need help.');
-    expect(messageInput.value.length).toBe(19);
+    expect((messageInput as HTMLTextAreaElement).value.length).toBe(19);
   },
 };
 

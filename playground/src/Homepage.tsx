@@ -15,7 +15,7 @@ import { FaGithub } from 'react-icons/fa';
 import config from './lessons/config.json';
 import SettingsModal from './SettingsModal';
 import { type AppSettings, getHomepageSourceLink, getStorybookBaseUrl } from './settings';
-import ViewSourceButton from './lessons/components/ViewSourceButton';
+import { ViewSourceButton } from '@components';
 
 // Lesson type from config
 interface LessonConfig {

@@ -13,7 +13,7 @@ interface Step {
   title: string;
   description: string;
   code?: string;
-  language?: string;
+  language?: 'tsx' | 'typescript' | 'javascript' | 'jsx' | 'json' | 'bash' | 'css' | 'html';
   codeTitle?: string;
 }
 

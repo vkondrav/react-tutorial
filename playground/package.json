@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "cd .. && npx --yes husky",
     "pre:commit": "cd .. && sh .husky/pre-commit",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0 --fix",
     "lint:check": "eslint . --max-warnings 0",
     "format": "prettier --write .",
@@ -29,7 +30,6 @@
   "dependencies": {
     "@tanstack/react-query": "^5.90.12",
     "@tanstack/react-query-devtools": "^5.91.1",
-    "@types/react-syntax-highlighter": "^15.5.13",
     "express": "^5.2.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -50,6 +50,7 @@
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "@vitejs/plugin-react": "^5.1.1",

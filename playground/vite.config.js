@@ -17,6 +17,7 @@ export default defineConfig({
     alias: {
       '@lessons': path.resolve(dirname, './src/lessons'),
       '@components': path.resolve(dirname, './src/lessons/components'),
+      '@mocks': path.resolve(dirname, './src/mocks'),
     },
   },
   // Proxy SSR/RSC routes to the Express server

@@ -30,7 +30,7 @@ import {
   getLessonStorybookLink,
   type AppSettings,
 } from './settings';
-import ViewSourceButton from './lessons/components/ViewSourceButton';
+import { ViewSourceButton } from '@components';
 
 // Types
 interface SectionConfig {
@@ -105,57 +105,29 @@ const saveCompletedLessons = (completed: Set<string>): void => {
   localStorage.setItem(COMPLETED_LESSONS_KEY, JSON.stringify([...completed]));
 };
 
-// Map lesson IDs to lazy-loaded components
-const LESSON_COMPONENTS: Record<string, LazyLessonComponent> = {
-  // React lessons
-  'react-1.1': lazy(() => import('./lessons/react/1_1')),
-  'react-1.2': lazy(() => import('./lessons/react/1_2')),
-  'react-1.3': lazy(() => import('./lessons/react/1_3')),
-  'react-1.4': lazy(() => import('./lessons/react/1_4')),
-  'react-2.1': lazy(() => import('./lessons/react/2_1')),
-  'react-2.2': lazy(() => import('./lessons/react/2_2')),
-  'react-2.3': lazy(() => import('./lessons/react/2_3')),
-  'react-2.4': lazy(() => import('./lessons/react/2_4')),
-  'react-2.5': lazy(() => import('./lessons/react/2_5')),
-  'react-3.1': lazy(() => import('./lessons/react/3_1')),
-  'react-3.2': lazy(() => import('./lessons/react/3_2')),
-  'react-3.3': lazy(() => import('./lessons/react/3_3')),
-  'react-3.4': lazy(() => import('./lessons/react/3_4')),
-  'react-3.5': lazy(() => import('./lessons/react/3_5')),
-  'react-4.1': lazy(() => import('./lessons/react/4_1')),
-  'react-4.2': lazy(() => import('./lessons/react/4_2')),
-  'react-4.3': lazy(() => import('./lessons/react/4_3')),
-  'react-4.4': lazy(() => import('./lessons/react/4_4')),
-  'react-5.1': lazy(() => import('./lessons/react/5_1')),
-  'react-5.2': lazy(() => import('./lessons/react/5_2')),
-  'react-5.3': lazy(() => import('./lessons/react/5_3')),
-  'react-6.1': lazy(() => import('./lessons/react/6_1')),
-  'react-6.2': lazy(() => import('./lessons/react/6_2')),
-  'react-6.3': lazy(() => import('./lessons/react/6_3')),
-  'react-6.4': lazy(() => import('./lessons/react/6_4')),
-  'react-6.5': lazy(() => import('./lessons/react/6_5')),
-  'react-7.1': lazy(() => import('./lessons/react/7_1')),
-  'react-7.2': lazy(() => import('./lessons/react/7_2')),
-  'react-7.3': lazy(() => import('./lessons/react/7_3')),
-  'react-7.4': lazy(() => import('./lessons/react/7_4')),
-  'react-8.1': lazy(() => import('./lessons/react/8_1')),
-  'react-8.2': lazy(() => import('./lessons/react/8_2')),
-  'react-8.3': lazy(() => import('./lessons/react/8_3')),
-  'react-8.4': lazy(() => import('./lessons/react/8_4')),
-  // CSS lessons
-  'css-1.1': lazy(() => import('./lessons/css/1_1')),
-  'css-1.2': lazy(() => import('./lessons/css/1_2')),
-  'css-1.3': lazy(() => import('./lessons/css/1_3')),
-  'css-2.1': lazy(() => import('./lessons/css/2_1')),
-  'css-2.2': lazy(() => import('./lessons/css/2_2')),
-  'css-2.3': lazy(() => import('./lessons/css/2_3')),
-  'css-2.4': lazy(() => import('./lessons/css/2_4')),
-  'css-3.1': lazy(() => import('./lessons/css/3_1')),
-  'css-3.2': lazy(() => import('./lessons/css/3_2')),
-  'css-4.1': lazy(() => import('./lessons/css/4_1')),
-  'css-4.2': lazy(() => import('./lessons/css/4_2')),
-  'css-4.3': lazy(() => import('./lessons/css/4_3')),
-};
+// Auto-generate lesson component mapping from file structure
+// Using Vite's import.meta.glob for dynamic imports
+const lessonModules = import.meta.glob<{ default: React.ComponentType }>('./lessons/*/*/index.tsx');
+
+// Transform file paths to lesson IDs
+// Example: './lessons/react/1_1/index.tsx' -> 'react-1.1'
+const LESSON_COMPONENTS: Record<string, LazyLessonComponent> = Object.keys(lessonModules).reduce(
+  (acc, path) => {
+    const match = path.match(/\.\/lessons\/(react|css)\/(\d+)_(\d+)\/index\.tsx$/);
+    if (match) {
+      const [, section, module, lesson] = match;
+      const lessonId = `${section}-${module}.${lesson}`;
+      acc[lessonId] = lazy(lessonModules[path] as () => Promise<{ default: React.ComponentType }>);
+    }
+    return acc;
+  },
+  {} as Record<string, LazyLessonComponent>
+);
+
+// Validate lesson component mapping
+if (import.meta.env.DEV) {
+  console.log(`✅ Auto-loaded ${Object.keys(LESSON_COMPONENTS).length} lesson components`);
+}
 
 // Sections from config
 const SECTIONS: SectionConfig[] = config.sections as SectionConfig[];
